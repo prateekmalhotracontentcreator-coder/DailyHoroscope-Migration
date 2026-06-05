@@ -1,0 +1,242 @@
+{
+  "vector_id": "tv-300h1-ch022",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch022_INDIAN_PRESIDENT_06--NEELAM_SANJIVA_REDDY",
+  "pdf_path": "Split_Chapters/Ch022_INDIAN_PRESIDENT_06--NEELAM_SANJIVA_REDDY.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Neelam Sanjiva Reddy",
+    "description": "Neelam Sanjiva Reddy was the sixth President of India, serving from 1977 to 1982, and",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Sagittarius",
+      "degree": 14.6553,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 5.4989,
+      "house": 6,
+      "significations": [
+        6,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 27.2594,
+      "house": 11,
+      "significations": [
+        1,
+        4,
+        8,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 16.2542,
+      "house": 4,
+      "significations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 20.5481,
+      "house": 5,
+      "significations": [
+        5,
+        6,
+        7,
+        10,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 24.9861,
+      "house": 1,
+      "significations": [
+        1,
+        4,
+        5,
+        6,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 13.7061,
+      "house": 6,
+      "significations": [
+        2,
+        3,
+        6,
+        8,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 7.8378,
+      "house": 4,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 7.8378,
+      "house": 10,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Sun are in proximity, while Rahu is in Pisces indicate Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Ketu is posited in the star of Sun in 10th house, while Sun is posited in own star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars (power) is aspecting 10th house from the star of Saturn (democracy).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "101h lord Mercury gets aspect of Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign, 10th lord Moon gets aspect of Mars (power) too.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu signifying Jupiter is in Pisces.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Venus is in Aries and Sun is in Taurus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

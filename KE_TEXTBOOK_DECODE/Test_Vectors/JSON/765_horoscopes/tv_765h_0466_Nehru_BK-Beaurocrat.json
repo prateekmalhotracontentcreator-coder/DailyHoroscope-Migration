@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0466",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0466",
+  "source_file": "0466_N-19_Nehru_BK-Beaurocrat.pdf",
+  "subject": {
+    "name": "Nehru BK-Beaurocrat",
+    "name_from_filename": "Nehru BK-Beaurocrat",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1907-03-07",
+    "time_local": "00:22",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1907-03-07T18:52:00Z",
+    "latitude": 25.447,
+    "longitude": 81.842,
+    "place": "Allahabad, Uttar Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 2,
+    "months": 5,
+    "days": 11,
+    "raw_text": "Balance of dasha Sat 2-5-11"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 9.0167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 22.5,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 24.8,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 7.35,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 9.0,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 14.95,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 16.35,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 24.0667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 16.35,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,29 @@
+===========================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_ch52_flagged_triage_20260604_092812_dryrun.log
+===========================================================================
+
+BPHS Ch.52 Flagged Triage Patch
+Mode        : 🟡 DRY RUN — no changes
+Confirmed   : 3 rules → PHR + validator_error:True + C_pdf_confirmed
+Source      : Santhanam BPHS Vol 2 PDF, triage session 2026-06-03
+
+───────────────────────────────────────────────────────────────────────────
+#     Rule ID                             Pre-status           Result
+───────────────────────────────────────────────────────────────────────────
+  1    R-BPHS52-040                        flagged              🟡 DRY RUN  [Ch.52 slokas 21-22]
+  2    R-BPHS52-137                        flagged              🟡 DRY RUN  [Ch.52 slokas 69-73]
+  3    R-BPHS52-138                        flagged              🟡 DRY RUN  [Ch.52 slokas 69-73]
+
+===========================================================================
+SUMMARY
+  Mode      : DRY RUN
+  Total     : 3
+  Patched   : 3 / 3
+
+ENCODING ERROR NOTED (separate data correction task):
+  R-BPHS52-040 : condition_text 'own sign' → should be 'debilitation sign'
+                 (mis-decode of sloka 21 — PDF says 'sign of debilitation or be weak')
+
+Re-run with --live to apply.
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_ch52_flagged_triage_20260604_092812_dryrun.log

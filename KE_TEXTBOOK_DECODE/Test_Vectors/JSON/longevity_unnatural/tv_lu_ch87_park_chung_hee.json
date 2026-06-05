@@ -1,0 +1,302 @@
+{
+  "vector_id": "tv-lu-ch87",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch87_Park_Chung_hee",
+  "pdf_path": "Chapter_Splits/Ch87_Park_Chung_hee.pdf",
+  "subject": {
+    "name": "Park Chung-hee",
+    "description": "President of South Korea",
+    "nationality": "South Korean"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "06:33:00",
+    "timezone_offset_hours": 9.0,
+    "time_utc": null,
+    "latitude": 36.25,
+    "longitude": 128.75,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-36-42.00",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 15.7,
+      "house": 1,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 13.5333,
+      "house": 1,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        12,
+        1,
+        11,
+        6
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 29.9833,
+      "house": 6,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "significations": [
+        4,
+        6,
+        7,
+        11,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 18.0667,
+      "house": 11,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "significations": [
+        3,
+        1,
+        8,
+        10,
+        12,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 27.15,
+      "house": 12,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "significations": [
+        1,
+        10,
+        12,
+        "Su"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 18.9,
+      "house": 9,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        4,
+        7,
+        9,
+        6,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 23.2167,
+      "house": 2,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        2,
+        9,
+        4,
+        7
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 19.0667,
+      "house": 11,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "significations": [
+        5,
+        6,
+        11,
+        1,
+        12,
+        10
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 13.35,
+      "house": 10,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        "Me",
+        "Ra"
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 11.9333,
+      "house": 12,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        "Ketu"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "violent",
+    "death_date": "1917-09-30",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "SATURN",
+      "pratyantardasha": "MARS",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Venus-Saturn-Mars-Venus. Dasha and sookshma lord Venus is lord of maraca (02) and it is in the star of Jupiter, who is m"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The chart has got Virgo rising in Moon star, who is in 06th house and is posited in the star of maraca & badhaka Jupiter. Moon is further aspected by Mars. Park Chung-hee 357",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Maraca and badhaka Jupiter is aspecting lagna, which will make lagna weak for longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08lh bhava falls in the star of Venus in Aries, while Venus signifies maraca and badhaka by occupying in Jupiter star in 0200 house. Hence the longevity shall be under reduction.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Venus is posited in maraca and badhaka Jupiter star and is aspecting 08lh house (longevity). This will make longevity reduced. ?) Lagna lord is in 12th .house, while 12th lord is in lagna.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Moon, Rahu, Ketu, Jupiter, Venus become maraca and badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Saturn and Mars are conjoined in lagna lord Mercury star and between them, they are linked to 01, 06, 08 houses denoting body, injury & enemy, longevity & accident.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Moon, who is maraca and badhaka by virtue of its position in Jupiter star, i$ aspecting lagna lord Mercury, making lagna lord further weak. The assassination of Park took place in the VMD period of Venus-Saturn-Mars-Venus. Dasha and sookshma lord Venus is lord of maraca (02) and it is in the star of Jupiter, who is maraca and badhaka. Venus is further aspected by Mars, the causative planet signifies injury. Rahu is posited in Sagittarius and is in the star of Venus. Rahu could cause blast. Bhukti lord Saturn is in Mercury star Aslesha and hence signifies 05, 06, 11, 01, 10, 12 houses. Out of w",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Bhukti lord Saturn is in Mercury star Aslesha and hence signifies 05, 06, 11, 01, 10, 12 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Antara lord Mars signifies 01,03,08,10 and 11 houses, out of which houses such as 01 (body), 08 (accident or longevity) and 10 (profession) should be taken note of.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "sookshma lord Venus is lord of maraca (02) and it is in the star of Jupiter, who is maraca and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "lagna lord Mercury is in Jupiter (maraca & badhaka) star.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "madhya aayu, which is due to non-connection of 08th lord to maraca or badhaka.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

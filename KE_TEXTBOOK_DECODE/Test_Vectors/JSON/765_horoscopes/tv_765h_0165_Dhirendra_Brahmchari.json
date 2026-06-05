@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0165",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0165",
+  "source_file": "0165_D-20_Dhirendra_Brahmchari.pdf",
+  "subject": {
+    "name": "Dhirendra Brahmchari",
+    "name_from_filename": "Dhirendra Brahmchari",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Guru",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1929-02-13",
+    "time_local": "03:02",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1929-02-13T21:32:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Darbhanga",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 11,
+    "months": 3,
+    "days": 28,
+    "raw_text": "Balance of dasha Sat 11-3-28"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 8.7167,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 2.9333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 17.5167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 29.6833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 0.8333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 18.8,
+      "retrograde": true
+    },
+    "LAGNA": {
+      "degree_in_sign": 6.25,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 6.25,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Guru",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

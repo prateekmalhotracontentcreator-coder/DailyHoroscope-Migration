@@ -1,0 +1,299 @@
+{
+  "vector_id": "tv-lu-ch62",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch62_Madhavrao_Scindia",
+  "pdf_path": "Chapter_Splits/Ch62_Madhavrao_Scindia.pdf",
+  "subject": {
+    "name": "Madhavrao Scindia",
+    "description": "Indian Politician",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1946-03-09",
+    "time_local": "00:42:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1946-03-08T19:12:00Z",
+    "latitude": 22.7333,
+    "longitude": 75.8333,
+    "place": "Indore, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-00-31.66",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 18.4167,
+      "house": 1,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 24.6167,
+      "house": 4,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "significations": [
+        10,
+        4,
+        12,
+        2,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 2.2333,
+      "house": 7,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": [
+        9,
+        7,
+        10,
+        4
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 22.3833,
+      "house": 8,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        1,
+        6,
+        8,
+        2,
+        5,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 12.7667,
+      "house": 5,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "significations": [
+        5,
+        8,
+        11,
+        3,
+        4
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 3.35,
+      "house": 12,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 3.2,
+      "house": 5,
+      "nakshatra": "PBha",
+      "pada": 4,
+      "significations": [
+        7,
+        5,
+        12,
+        2
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 2.9167,
+      "house": 8,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "significations": [
+        8,
+        "Ma",
+        "Me",
+        "Sa",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 2.9167,
+      "house": 2,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        2,
+        "Sa",
+        "Ma",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in an air plane crash on 30 Sept 2001",
+    "death_type": "violent",
+    "death_date": "1945-03-10",
+    "age_at_death": 56,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "SATURN",
+      "pratyantardasha": "KETU",
+      "sookshma": "MERCURY",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Saturn-Ketu-Mercury in his 56th year. Dasha and Bhukti lord Saturn signifies 04 (vehicle) 08th (longevity or acci"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is rising in Scorpio in the star of Mercury, who is 08th lord.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord (body) Mars is also 06th lord (injury or enemy) is posited in 08th house (longevity or accidents). Hence Mars alone signifies 01, 06, 08. 260 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Badhaka Moon is posited in maraca house and aspects lagna.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter signifies maraca (02) is posited in 12th house and is in the star of Mars (01, 06, 08).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Ketu is in Sagittarius and gives the result of Jupiter.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Sun is posited in maraca Jupiter star, Purva Bhadra.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Saturn is posited in Jupiter star (maraca) and is in 08th house (longevity).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Mars and Saturn are conjoined with Rahu in 08th house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "The conjunction of Mars and Saturn become grave for injury and death when Saturn (02, 08) and Mars (01, 06, 08) are involved.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Rahu is posited in 08th house (longevity) in Gemini (lord Mercury) in Mars star Mrigashira and is conjoined with Saturn and Mars. From the above, 08th Lord Mercury is comparatively safer since 1t signifies 08, 11, 05, 03, 04, 08 houses. But the combinations and permutations illustrated vide point no.l through 10 are very detrimental for a good longevity and it squarely attributes to injury and accidental death. Lagna, 06th lord Mars is posited in 08th house (accident) in Gemini, which is an airy sign. It is conjoined with Rahu, who also signifies Mercury (air plane). Gemini is further occupied",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Bhukti lord Saturn signifies 04 (vehicle) 08th (longevity or accidents) and Jupiter (maraca).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Antara lord Ketu signifies Mars (01, 06, 08), Saturn (04, 08, 02) and Jupiter (02).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "madhya aayu, is due to the position of 08th lord Mercury in a punya house (OSth) in the natal chart.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

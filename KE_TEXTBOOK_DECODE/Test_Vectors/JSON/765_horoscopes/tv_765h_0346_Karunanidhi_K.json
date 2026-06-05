@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0346",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0346",
+  "source_file": "0346_K-19_Karunanidhi_K.pdf",
+  "subject": {
+    "name": "Karunanidhi K",
+    "name_from_filename": "Karunanidhi K",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Cm",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1924-06-03",
+    "time_local": "09:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1924-06-03T04:00:00Z",
+    "latitude": 11.9833,
+    "longitude": 79.2167,
+    "place": "79E13 & 11N59",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 3,
+    "months": 10,
+    "days": 10,
+    "raw_text": "Balance of dasha Sun 3-10-10"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 1.0167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 4.4167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 1.4167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 10.0667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 9.4667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 7.3667,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 10.0667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Cm",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "vector_id": "tv-300h2-ch057",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch057_56_Subhash_Chandra_Bose",
+  "pdf_path": "Chapters/Ch057_56_Subhash_Chandra_Bose.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Nethaji Subhash Chandra Bose",
+    "description": "Nethaji Subhash Chandra Bose was a prominent Indian Independence leader. Bose was a brilliant student and had passed the Indian Civil Services Examinations.",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1897-01-23",
+    "time_local": "12:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "lagna_degree_stated": 22.68,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 11.255,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        10,
+        4,
+        6
+      ],
+      "significations_raw": "05,10,04,06"
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 7.511,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        4,
+        6,
+        5,
+        10
+      ],
+      "significations_raw": "04,06,05,10"
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 19.537,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        8,
+        2,
+        4,
+        6
+      ],
+      "significations_raw": "01, 08,02,04,06"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": 26.418,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        711,
+        12,
+        9,
+        5
+      ],
+      "significations_raw": "02 0711,12,09,05"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 6.74,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        10,
+        11,
+        8
+      ],
+      "significations_raw": "10,11,08"
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 23.639,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        10
+      ],
+      "significations_raw": "10,Ma,Me,Su,Sa"
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 23.639,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4
+      ],
+      "significations_raw": "04,Me,Sa,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Unknown",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Unknown",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Venus are in 02/12, while Venus is in star of Jupiter and is under aspect from Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Rahu is in star of Mars and sign of Saturn in 10.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "and is conjunct with Sun (Government) and Mercury (in star of Sun).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn is in own star, while Jupiter and Venus are in each other's star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn (democracy) is in sign of Mars and is under aspect of Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "All these combinations helped native to attain fame and reach such a level in life, fight democratically, but preferring to use military forces.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

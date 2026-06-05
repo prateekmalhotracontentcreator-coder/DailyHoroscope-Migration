@@ -1,0 +1,81 @@
+{
+  "vector_id": "tv-765h-0149",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0149",
+  "source_file": "0149_D-4_Dalmia_Vishnuhari-industry.pdf",
+  "subject": {
+    "name": "Dalmia, Vishnuhari",
+    "name_from_filename": "Dalmia, Vishnuhari-industry",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "industry",
+    "profession_category": "Business",
+    "profession_subcategory": "industry",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1928-01-17",
+    "time_local": "09:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1928-01-17T04:15:00Z",
+    "latitude": 28.2,
+    "longitude": 75.7,
+    "place": ": 75E42 & 28N12",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 6,
+    "months": 9,
+    "days": 4,
+    "raw_text": "Balance of dasha Jup 6-9-4"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 6.9667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 15.8333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 2.9667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 8.2,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 15.8333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "industry",
+    "profession_category": "Business",
+    "profession_subcategory": "industry",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

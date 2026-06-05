@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0432",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0432",
+  "source_file": "0432_M-33_Milton_John-Blind_Poet.pdf",
+  "subject": {
+    "name": "Milton John",
+    "name_from_filename": "Milton John-Blind Poet",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Blind Poet",
+    "profession_category": "Arts_Literature",
+    "profession_subcategory": "Poet",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1608-12-09",
+    "time_local": "06:30",
+    "timezone_offset_hours": 0.0,
+    "time_utc": "1608-12-09T06:30:00Z",
+    "latitude": 51.507,
+    "longitude": -0.128,
+    "place": "London, United Kingdom",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 9,
+    "months": 4,
+    "days": 6,
+    "raw_text": "Balance of dasha Mon 9-4-6"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 5.35,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 19.95,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 0.2167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 10.35,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 19.95,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.3667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 26.5167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Blind Poet",
+    "profession_category": "Arts_Literature",
+    "profession_subcategory": "Poet",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

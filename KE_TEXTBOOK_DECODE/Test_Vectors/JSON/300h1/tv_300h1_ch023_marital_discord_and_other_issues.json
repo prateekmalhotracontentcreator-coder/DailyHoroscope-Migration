@@ -1,0 +1,227 @@
+{
+  "vector_id": "tv-300h1-ch023",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch023_MARITAL_DISCORD_AND_OTHER_ISSUES",
+  "pdf_path": "Split_Chapters/Ch023_MARITAL_DISCORD_AND_OTHER_ISSUES.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Marital Discord And Other Issues",
+    "description": "The following female is having severe marital discord in her life, who was married in",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1986-03-17",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": "Hyderabad,lndia",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 4.7325,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 2.9956,
+      "house": 8,
+      "significations": [
+        1,
+        5,
+        7,
+        8
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 19.4886,
+      "house": 10,
+      "significations": [
+        10,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Sagittarius",
+      "degree": 0.8778,
+      "house": 5,
+      "significations": [
+        4,
+        5,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 1.7503,
+      "house": 8,
+      "significations": [
+        2,
+        5,
+        7,
+        8,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 16.7767,
+      "house": 8,
+      "significations": [
+        2,
+        3,
+        8,
+        10,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 16.1353,
+      "house": 4,
+      "significations": [
+        4,
+        6,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 8.26,
+      "house": 9,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 8.26,
+      "house": 3,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is in 07 in female chart indicates sadistic, non-cooperative, administrating, orthodox, harassing husband.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter signifies 07 and 08 along with Sun and Mercury t causes disgrace, humiliation, etc.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "071h lord Saturn is in a watery sign and aspecting is Moon (female).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "The girl was said to be in her monthly periods ~ when the marriage and other religious functions were held.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "There has been no marital harmony between the couples.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mars is in 05 in star of Ketu indicates fear, anxiety, serious of thoughts, lack of romance and love.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

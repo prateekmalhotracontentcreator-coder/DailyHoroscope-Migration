@@ -1,0 +1,298 @@
+{
+  "vector_id": "tv-300h1-ch054",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch054_INCARCERATION_OR_JAIL_TERM",
+  "pdf_path": "Split_Chapters/Ch054_INCARCERATION_OR_JAIL_TERM.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Incarceration Or Jail Term",
+    "description": "The following native was Incarcerated for more than one occasions and each term the",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1966-01-18",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 9.4833,
+    "longitude": 76.3167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": null,
+      "degree": null,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 4.5844,
+      "house": 9,
+      "significations": [
+        4,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 28.6433,
+      "house": 7,
+      "significations": [
+        2,
+        3,
+        5,
+        7,
+        8
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 27.3414,
+      "house": 9,
+      "significations": [
+        7,
+        9,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 22.7583,
+      "house": 8,
+      "significations": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 29.2436,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        7,
+        8,
+        9,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 17.2417,
+      "house": 9,
+      "significations": [
+        1,
+        3,
+        6,
+        7,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 20.6847,
+      "house": 10,
+      "significations": [
+        1,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 8.4428,
+      "house": 1,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 8.4428,
+      "house": 7,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "When Rahu signifies 01,03,08,12 and denotes Mars, Sun and Saturn, one shall be a jail bird.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun stands for Government.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn is for restriction.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "0151 house signifies self.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "03 negates 041h house (home).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "081h house is for restriction.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "121h house is for isolation.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Rahu is posited in the star of Sun (Government) in lagna (self).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "It is further conjoined with Jupiter (081h lord), which is in star of Mars (Police, 12).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Rahu is further aspected by Moon (03), which is star of Mercury (08).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Under these conditions Saturn signifies 01 and 08.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-015",
+      "verbatim": "Indeed, the native was arrested in the VMD of Moon-Sun-Mercury-Sun.",
+      "condition_type_guess": "dasha_planet",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

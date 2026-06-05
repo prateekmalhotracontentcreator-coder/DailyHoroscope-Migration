@@ -1,0 +1,223 @@
+{
+  "vector_id": "tv-300h1-ch091",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch091_US_PRESIDENT_07th_ANDREW_JACKSON",
+  "pdf_path": "Split_Chapters/Ch091_US_PRESIDENT_07th_ANDREW_JACKSON.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Andrew Jackson",
+    "description": "Andrew Jackson was born to Presbyterian Scots-Irish immigrants. Jackson was· the 7th",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "07:35:37",
+    "timezone_offset_hours": -5.0,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Pisces",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Pisces",
+      "degree": 26.4803,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 4.1186,
+      "house": 1,
+      "significations": [
+        1,
+        3,
+        6,
+        11,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 3.0786,
+      "house": 7,
+      "significations": [
+        1,
+        5,
+        6,
+        7
+      ]
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 12.8908,
+      "house": 1,
+      "significations": [
+        1,
+        3,
+        4,
+        7,
+        11,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 19.73,
+      "house": 1,
+      "significations": [
+        1,
+        3,
+        4,
+        7,
+        8
+      ]
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 23.1536,
+      "house": 3,
+      "significations": [
+        3,
+        5,
+        7,
+        11,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 17.0003,
+      "house": 11,
+      "significations": [
+        11
+      ]
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 17.0003,
+      "house": 5,
+      "significations": [
+        5
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is lord of 101h house and it is in star of Venus.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is aspecting 10111 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars (09-Federal) is aspecting 10111 house and 101h lord Jupiter (admn., expansion).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun is lord of 061h house (service), while it is in star of Saturn (11) signifies democracy and Senate.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Moon is in star of Sun in 071h house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

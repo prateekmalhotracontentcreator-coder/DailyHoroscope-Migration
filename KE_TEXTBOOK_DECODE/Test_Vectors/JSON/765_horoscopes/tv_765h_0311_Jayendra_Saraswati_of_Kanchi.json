@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0311",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0311",
+  "source_file": "0311_J-18_Jayendra_Saraswati_of_Kanchi.pdf",
+  "subject": {
+    "name": "Jayendra Saraswati of Kanchi",
+    "name_from_filename": "Jayendra Saraswati of Kanchi",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_compound": false,
+    "profession_secondary": "Politics",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1935-07-18",
+    "time_local": "19:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1935-07-18T13:30:00Z",
+    "latitude": 10.4333,
+    "longitude": 79.4333,
+    "place": "79E26 & 10N26",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 2,
+    "months": 5,
+    "days": 13,
+    "raw_text": "Balance of dasha Mar 2-5-13"
+  },
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 22.0333,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 28.7667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 4.5667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 2.0167,
+      "retrograde": true
+    },
+    "VENUS": {
+      "degree_in_sign": 8.25,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 1.2333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 28.7667,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

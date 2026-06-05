@@ -1,0 +1,240 @@
+{
+  "vector_id": "tv-300h2-ch062",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch062_61_Dr_Rajendra_Prasad",
+  "pdf_path": "Chapters/Ch062_61_Dr_Rajendra_Prasad.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Indian President# 01 •· Dr. Rajendra Prasad",
+    "description": "Dr. Rajendra Prasad was born in a Kayasth family in a village in the Siwan district of Bihar, and was credited with the distinction as the 1st President of India. Sa) Gl Ke Mo Rasl w ll-. RJjetd'a Prasad",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "lagna_degree_stated": 18.998,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 19.27,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        9,
+        12,
+        710,
+        1
+      ],
+      "significations_raw": "09,12,0710,01"
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 24.14,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        6,
+        5,
+        1,
+        2,
+        1
+      ],
+      "significations_raw": "08,06,05,1 2,01"
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 4.564,
+      "house": null,
+      "nakshatra": "Mool",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        7,
+        10,
+        1
+      ],
+      "significations_raw": "07,10,01,Ke"
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 13.17,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        4,
+        9
+      ],
+      "significations_raw": "01,04,09,Ke"
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 13.058,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6,
+        11
+      ],
+      "significations_raw": "06,11,Ra"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 18.613,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Mo,Me"
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lord of 09 (Central), Sun signifies 101h house through Mercury, taking native to Government with job at Centre.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord and 051h lord are in trine giving some special status on given conditions.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is aspecting 101h house from Moon sign, while Mars become a significator through Ketu (in Mercury star).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Thus 10111 hosue becomes very strong.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations led the native to be at highest level.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

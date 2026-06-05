@@ -1,0 +1,317 @@
+{
+  "vector_id": "tv-300h2-ch106",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch106_105_Ronald_Reagan",
+  "pdf_path": "Chapters/Ch106_105_Ronald_Reagan.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Us President # 40 - Ronald Reagan",
+    "description": "Ronald Wilson Reagan (06 Feb 1911 -05 Jun 2004) was the US 40th President (1981- 1989) and was also the 33rd Governor of California (1967-1975). As: -4So« Su: 2• Cp 01· AmK Mo: 21 .Ar 12· MK Ma: 11 So 29-PiK Me: 29 So 01",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1911-02-06",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 24.014,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        12,
+        5,
+        1
+      ],
+      "significations_raw": "02,09, 12,05,01"
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 21.2,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        8,
+        5,
+        6,
+        11,
+        3
+      ],
+      "significations_raw": "08,05,06,11 ,03"
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 29.024,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        7,
+        10,
+        1,
+        2,
+        9
+      ],
+      "significations_raw": "07,10,01, 02,09"
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 21.224,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        4,
+        11
+      ],
+      "significations_raw": "01 04 11"
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 11.151,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6,
+        11,
+        3
+      ],
+      "significations_raw": "06,11 ,03,Ra.05"
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 8.309,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        5,
+        11
+      ],
+      "significations_raw": "02,03,05, Ke, 11"
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 21.993,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve Sa Ju,Mo,Ma"
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 21.993,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve,Ju,Mo,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1911
+      },
+      {
+        "event": "Died",
+        "year": 2004
+      },
+      {
+        "event": "Tenure",
+        "year": 1967
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "2004-06-05",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "101h lord Mercury is in star of Sun (Government, 02, 09), while Sun is in star of Mars (power).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "This passes on power to one's job.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is in own star in 11 and hence it is strong.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Sun is in 10th house in Mars star, while 101h lord Saturn (Democracy, conjunct with Moon) gets aspect of Jupiter (expansion, admn.).",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations helped native to lead his country, but after several attempts, due to Saturn-Moon conjunction.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu (illusion) is in 05 (creativity) and it is in star of Venus (creativity), while Venus is in star of Rahu.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Saturn signifies (02-dialogue) and 05 (creativity).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "From Moon sign, Sun signifies 05 and 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "These could be the reasons that native became an actor.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

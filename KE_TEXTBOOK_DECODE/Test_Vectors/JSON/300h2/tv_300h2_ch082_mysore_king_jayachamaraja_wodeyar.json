@@ -1,0 +1,293 @@
+{
+  "vector_id": "tv-300h2-ch082",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch082_81_King_Jayachamaraia_Wodeyar",
+  "pdf_path": "Chapters/Ch082_81_King_Jayachamaraia_Wodeyar.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Mysore King Jayachamaraja Wodeyar",
+    "description": null,
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "08:17:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "lagna_degree_stated": 24.443,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 2.195,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        8,
+        1,
+        4
+      ],
+      "significations_raw": "09,08,01,04"
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 7.179,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        8,
+        4,
+        2,
+        3,
+        9
+      ],
+      "significations_raw": "08,04,02 03 09"
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 13.958,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        5,
+        12,
+        7
+      ],
+      "significations_raw": "05,12 07 Ra"
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 28.966,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        10,
+        8
+      ],
+      "significations_raw": "07,10,08"
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 4.066,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        4,
+        8,
+        9,
+        2,
+        3
+      ],
+      "significations_raw": "01,04,08,09,02 03"
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 16.915,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6,
+        11,
+        9
+      ],
+      "significations_raw": "06 11,09"
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 4.342,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        9,
+        6
+      ],
+      "significations_raw": "02,03,09,06,Ke"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 8.559,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Sa,Ma,Ju"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 8.559,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Su,Ve,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "There is proximity between Venus, Jupiter and Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is in 07 and aspects 10.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, Mars is in 04 and aspects 10.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "This shows h.igh level job similar to ruler.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sun signifies 10 from Moon sign taking native to Government.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Saturn is in star of Ketu (exit), in 09 (Kingdom) while Ketu is in star of Sun (Government) and Sun signifies 10 from Moon.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "This shows exit from Gov.ernmental or Kingdom.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

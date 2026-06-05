@@ -1,0 +1,248 @@
+{
+  "vector_id": "tv-300h2-ch077",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch077_76_President_Bill_Clinton",
+  "pdf_path": "Chapters/Ch077_76_President_Bill_Clinton.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Us President# 42-Bill Clinton",
+    "description": "William Jefferson 'Bill' Clinton was the 42r<l US President serving from 1992 to 2000 for a period of 08 years consisting of two terms.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Ayanamsa",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "lagna_degree_stated": 12.487,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Leo",
+      "degree": 2.997,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12, Ke-"
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 27.294,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        11,
+        8
+      ],
+      "significations_raw": "11,08 Su-"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 13.351,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3,
+        8
+      ],
+      "significations_raw": "03,08 Mo-"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 0.216,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        7,
+        2,
+        3,
+        8,
+        1
+      ],
+      "significations_raw": "04,07,02,03,08,01"
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 18.113,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        1,
+        8,
+        1,
+        1
+      ],
+      "significations_raw": "02,09,01 ,08,1 1"
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 9.132,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5,
+        6,
+        1,
+        5,
+        6,
+        11
+      ],
+      "significations_raw": "05,06,1 1. 05,06,11"
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 24.251,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        9
+      ],
+      "significations_raw": "09,Ve, Ma"
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Scorpio",
+      "degree": 8.92
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "l<ethu 24 Sc 15' 05 Jye 3 03,Ma, Me There is proximity between Sun, Venus and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter (07) is in 02r<l house in star of Mars and aspects 101h house.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Node Ketu offers result of 10 through Mercury while Sun (Government) is in star of Ketu.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mercury denotes (1 0,11) , while its star lord Saturn (05,11) is in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations made native a politician and become a statesman.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

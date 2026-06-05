@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0628",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0628",
+  "source_file": "0628_S-31_Simpson_OJ.pdf",
+  "subject": {
+    "name": "Simpson OJ",
+    "name_from_filename": "Simpson OJ",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1947-07-09",
+    "time_local": "09:22",
+    "timezone_offset_hours": -8.0,
+    "time_utc": "1947-07-09T17:22:00Z",
+    "latitude": 37.775,
+    "longitude": -122.419,
+    "place": "San Francisco, California, USA",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 6,
+    "months": 2,
+    "days": 7,
+    "raw_text": "Balance of dasha Jup 6-2-7"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 12.95,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 23.55,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 0.5333,
+      "retrograde": true
+    },
+    "SATURN": {
+      "degree_in_sign": 15.9167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 16.45,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 8.3333,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 16.45,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

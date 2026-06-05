@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0145",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0145",
+  "source_file": "0145_C-38_Curzon_Lord.pdf",
+  "subject": {
+    "name": "Curzon, Lord",
+    "name_from_filename": "Curzon, Lord",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1859-01-11",
+    "time_local": "17:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1859-01-11T11:50:00Z",
+    "latitude": 52.1167,
+    "longitude": -1.55,
+    "place": "1W33 & 52N7",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 10,
+    "months": 0,
+    "days": 11,
+    "raw_text": "Balance of dasha Mer 10-0-11"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 22.1333,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 8.0667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 22.9667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 18.3667,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 8.1167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 8.0667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 23.6667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 29.0667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

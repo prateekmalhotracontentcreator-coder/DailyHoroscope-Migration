@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0675",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0675",
+  "source_file": "0675_T-4_Tauqir_Qazi.pdf",
+  "subject": {
+    "name": "Tauqir Qazi",
+    "name_from_filename": "Tauqir Qazi",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "RAHU",
+    "years": 7,
+    "months": 5,
+    "days": 19,
+    "raw_text": "Balance of dasha Rah 7-5-19"
+  },
+  "planet_degrees_from_text": {
+    "SATURN": {
+      "degree_in_sign": 2.75,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 4.6333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 2.8,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 16.9167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 26.5833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 27.1,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 4.6333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 2.1833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 23.2833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 2.1833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

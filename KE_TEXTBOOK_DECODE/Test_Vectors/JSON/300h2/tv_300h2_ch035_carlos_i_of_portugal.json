@@ -1,0 +1,327 @@
+{
+  "vector_id": "tv-300h2-ch035",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch035_34_King_Carlos_I_Portugal",
+  "pdf_path": "Chapters/Ch035_34_King_Carlos_I_Portugal.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Carlos I Of Portugal",
+    "description": "Carlos I (28 Sep 1863-01 Feb 1908) was the King of Portugal from 1•1 Oct 1889 until his assassination.",
+    "nationality": "Portuguese"
+  },
+  "birth_data": {
+    "date": "1863-09-28",
+    "time_local": "13:35:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1863-09-28T11:35:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-57-15.15",
+    "nakshatra_stated": "Revati",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "lagna_degree_stated": 13.247,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 12.883,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        10,
+        5
+      ],
+      "significations_raw": "10,11.09,05"
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 28.947,
+      "house": null,
+      "nakshatra": "Reva",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        8,
+        12,
+        11
+      ],
+      "significations_raw": "09,08,12,11"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 14.351,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        9,
+        11,
+        5
+      ],
+      "significations_raw": "01,06,09,11 ,05"
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 4.538,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        8,
+        1,
+        6
+      ],
+      "significations_raw": "08,11.12,01,06"
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 8.706,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        5,
+        12
+      ],
+      "significations_raw": "02,05,12,Ra"
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 13.494,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        7,
+        11,
+        12,
+        9,
+        5
+      ],
+      "significations_raw": "07,11,12,09,05"
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 16.192,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3,
+        4,
+        11,
+        9,
+        5
+      ],
+      "significations_raw": "03,04,11,09,05"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 8.498,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Ma"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 8.498,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve,Su"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": 13.63
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1863
+      },
+      {
+        "event": "Died",
+        "year": 1908
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Assassination",
+    "death_type": "violent",
+    "death_date": "1908-02-01",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter, Venus and Sun are in proximity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "10th lord Sun (Government) is in 11 and it signifies 09 (Kingdom).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Ketu signifies 07 and 10 through Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Jupiter is lord of 10, while Mars (09) is in 7 and aspects 10.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "All these combinations helped native to become King.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Ketu's link with 10 shows sudden exit.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "08tn lord Mercury is in 12.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Badhaka Moon is in star of 081h lord Mercury.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Lagna lord Mars is in star of badhaka Moon.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "All these combinations led early death of king.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

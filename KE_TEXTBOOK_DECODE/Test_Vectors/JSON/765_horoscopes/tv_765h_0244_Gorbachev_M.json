@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0244",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0244",
+  "source_file": "0244_G-37_Gorbachev_M.pdf",
+  "subject": {
+    "name": "Gorbachev, M",
+    "name_from_filename": "Gorbachev, M",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Politics",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1930-03-02",
+    "time_local": "20:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1930-03-02T15:00:00Z",
+    "latitude": 46.65,
+    "longitude": 43.4333,
+    "place": "43E26 & 46N39",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 5,
+    "months": 2,
+    "days": 21,
+    "raw_text": "Balance of dasha Sat 5-2-21"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 13.0,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 18.55,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 24.4,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 25.7833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 26.1667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 17.05,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 17.05,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

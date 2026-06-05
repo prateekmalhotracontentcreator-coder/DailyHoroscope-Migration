@@ -1,0 +1,318 @@
+{
+  "vector_id": "tv-300h1-ch119",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch119_EMPERIOR_CZAR_NICHOLAS_II",
+  "pdf_path": "Split_Chapters/Ch119_EMPERIOR_CZAR_NICHOLAS_II.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Emperior Czar Nicholas Ii",
+    "description": "Ke",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "00:15:00",
+    "timezone_offset_hours": 5.0,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 13.6017,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 6.1447,
+      "house": 7,
+      "significations": [
+        7,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 22.3169,
+      "house": 5,
+      "significations": [
+        5,
+        7,
+        8,
+        9,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 6.1911,
+      "house": 6,
+      "significations": [
+        1,
+        4,
+        6
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 10.5175,
+      "house": 7,
+      "significations": [
+        5,
+        7,
+        8,
+        9,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 14.0575,
+      "house": 5,
+      "significations": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 10.8225,
+      "house": 1,
+      "significations": [
+        1,
+        3,
+        4
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 8.8089,
+      "house": 10,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 8.8089,
+      "house": 4,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus is in star of Jupiter and is close to Sun.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "1Qih lord Sun is in own star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars signifies 10 through Nodes.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn is in own star in lagna.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign Jupiter becomes lord of 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "But Rahu is in 10 indicates manipulations in profession, and since it is in star of Ketu, it can exit one from job suddenly.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Ketu is in 04 shows one is moody and lacks interest.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Q81h lord Mercury is in star of badhaka Moon, while Badhka Moon is in star of 081h lord Mercury.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "The longevity is under threat.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Venus and Jupiter signifies Q2nd house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Q61h house is signified by Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Sun and Nodes signifies 10th house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-014",
+      "verbatim": "Mercury, Jupiter and Moon signify 111h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-015",
+      "verbatim": "Indeed Jupiter signifies 02 and 11.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-016",
+      "verbatim": "Wealth factors are seen thus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

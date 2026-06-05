@@ -1,0 +1,225 @@
+{
+  "vector_id": "tv-lu-ch81",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch81_Giorgia_Padoan",
+  "pdf_path": "Chapter_Splits/Ch81_Giorgia_Padoan.pdf",
+  "subject": {
+    "name": "Giorgia Padoan",
+    "description": "Italian National",
+    "nationality": "Italian"
+  },
+  "birth_data": {
+    "date": "1967-12-12",
+    "time_local": "19:45:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1967-12-12T18:45:00Z",
+    "latitude": 45.05,
+    "longitude": 7.6667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-18-45.88",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 5.9667,
+      "house": 1,
+      "nakshatra": "Push",
+      "pada": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 26.75,
+      "house": 5,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        2,
+        5,
+        3,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 10.7167,
+      "house": 10,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "significations": [
+        1,
+        10,
+        4,
+        "Ke"
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 15.1667,
+      "house": 7,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "significations": [
+        5,
+        10,
+        7,
+        1
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 17.8167,
+      "house": 5,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        3,
+        12,
+        5
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 12.3667,
+      "house": 2,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        2,
+        6,
+        9,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 12.9167,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        4,
+        11,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 12.3333,
+      "house": 9,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "significations": [
+        7,
+        8,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 1.6833,
+      "house": 10,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "significations": [
+        "Mo",
+        "Ve",
+        "Ma",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 1.6833,
+      "house": 4,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "significations": [
+        "Ve",
+        "Mo",
+        "Ma"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "the native took place on 09 Feb 1988 at the age",
+    "death_type": "unknown",
+    "death_date": "1967-12-12",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "SATURN",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "Venus-Mercury-Saturn-Jupiter. Except Sun, Mercury and Saturn, all other planets do signify the detrimental houses. The 0"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Venus is badhaka and is aspecting Moon (lagna lord).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "bhukti lord Mercury is not connected to any of the damaging house, but just is lord of 12th house (moksha).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sookshma lord Jupiter signifies maraca and injury and also Mars, since it is posited in Ketu star.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "fortunately, the native was murdered on 09 Feb 1988.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0533",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0533",
+  "source_file": "0533_P-44_Dr_Prakash_Srivastava.pdf",
+  "subject": {
+    "name": "PrakashSrivastava",
+    "name_from_filename": "Dr Prakash Srivastava",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1955-09-20",
+    "time_local": "03:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1955-09-20T21:45:00Z",
+    "latitude": 27.18,
+    "longitude": 78.021,
+    "place": "Agra, Uttar Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "RAHU",
+    "years": 4,
+    "months": 11,
+    "days": 4,
+    "raw_text": "Balance of dasha Rah 4-11-4"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 27.95,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 24.75,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 27.7833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 21.7167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 2.9333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 7.9167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 24.75,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "vector_id": "tv-765h-0580",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0580",
+  "source_file": "0580_R-39_Shri_Ravi_Shankar_ji.pdf",
+  "subject": {
+    "name": "Shri Ravi Shankar ji",
+    "name_from_filename": "Shri Ravi Shankar ji",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1956-05-13",
+    "time_local": null,
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": "Mid night at Papansum (Tamil)",
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 14.85,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 15.5,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 28.9,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 29.1833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 16.85,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 24.1667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 6.85,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 14.85,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 16.85,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

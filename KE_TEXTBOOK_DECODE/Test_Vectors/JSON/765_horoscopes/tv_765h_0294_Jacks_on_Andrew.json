@@ -1,0 +1,91 @@
+{
+  "vector_id": "tv-765h-0294",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0294",
+  "source_file": "0294_J-1_Jacks_on_Andrew.pdf",
+  "subject": {
+    "name": "Jacks on, Andrew",
+    "name_from_filename": "Jacks on, Andrew",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1767-03-15",
+    "time_local": "05:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1767-03-15T00:10:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": ": Caroline-USA",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 4.0333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 1.7,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 12.7333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 23.1167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 29.6333,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 11.9667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 18.5167,
+      "retrograde": true
+    },
+    "MOON": {
+      "degree_in_sign": 2.1167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

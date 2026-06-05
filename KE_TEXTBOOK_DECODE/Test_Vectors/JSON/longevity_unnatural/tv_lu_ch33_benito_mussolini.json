@@ -1,0 +1,263 @@
+{
+  "vector_id": "tv-lu-ch33",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch33_Benito_Mussolini",
+  "pdf_path": "Chapter_Splits/Ch33_Benito_Mussolini.pdf",
+  "subject": {
+    "name": "Benito Mussolini",
+    "description": "Prime Minister of Italy, Fascist Leader",
+    "nationality": "Italian"
+  },
+  "birth_data": {
+    "date": "1883-07-29",
+    "time_local": "14:00:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1883-07-29T12:00:00Z",
+    "latitude": 44.1,
+    "longitude": 11.9833,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-08-04.45",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 13.0833,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 4,
+      "significations": [
+        11,
+        4,
+        5,
+        8,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 16.3667,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "significations": [
+        10,
+        8
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 20.9667,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        2,
+        7,
+        8,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 13.3,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 3,
+      "significations": [
+        9,
+        12,
+        10,
+        8,
+        4,
+        5
+      ]
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 26.4,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        3,
+        6,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 29.35,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 3,
+      "significations": [
+        1,
+        8,
+        3,
+        6,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 15.4167,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "significations": [
+        4,
+        5,
+        8,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 14.7167,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        "Ve",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 14.7167,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "significations": [
+        "Ma",
+        "Ve"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon",
+    "death_type": "violent",
+    "death_date": "1883-07-29",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "MARS",
+      "pratyantardasha": "SATURN",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Jupiter-Mars Saturn. Of course bhukti lord Mars signifies maraca and longevity. Jupiter aspects lagna. Saturn is also co"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Saturn is conjoined with Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Dasha lord Jupiter signifies 03, 06, 09 and is in own star.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Dasha lord Jupiter is not connected to maraca or badhaka, but aspects lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Bhukti lord Moon signifies 10 and 08 and is in own star.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "bhukti lord Mars signifies maraca and longevity.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Antara lord Venus signifies 1, 08, 09, 03 and 06 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Sookshma lord Rahu signifies Venus and Jupiter.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "injury and unnatural death by weapon.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "survived a failed assassination attempt in Rome by anarchist Gino Lucetti, and a planned attempt by the Italian anarchist Michele Schirru, which ended with Schirru's capture and execution.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

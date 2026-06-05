@@ -1,0 +1,236 @@
+{
+  "vector_id": "tv-lu-ch70",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch70_Theodore_Roosevelt",
+  "pdf_path": "Chapter_Splits/Ch70_Theodore_Roosevelt.pdf",
+  "subject": {
+    "name": "Theodore Roosevelt",
+    "description": "26th US President",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1858-10-27",
+    "time_local": "17:53:00",
+    "timezone_offset_hours": -4.933333333333334,
+    "time_utc": "1858-10-27T22:49:00Z",
+    "latitude": 40.7142,
+    "longitude": -74.0064,
+    "place": "Body Longitude Star I p Significations",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-47-20.32",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 1.75,
+      "house": 1,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 12.45,
+      "house": 6,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        4,
+        6,
+        10,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 23.95,
+      "house": 2,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        3,
+        2,
+        1,
+        8,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Sagittarius",
+      "degree": 26.2167,
+      "house": 8,
+      "nakshatra": "PSha",
+      "pada": 4,
+      "significations": [
+        14,
+        7,
+        8,
+        1,
+        6
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 11.05,
+      "house": 6,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        2,
+        5,
+        6,
+        "Ra"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 29.2833,
+      "house": 1,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "significations": [
+        1,
+        12,
+        7,
+        8,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 26.4167,
+      "house": 7,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        1,
+        2,
+        5,
+        6,
+        7
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 19.8667,
+      "house": 3,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "significations": [
+        3,
+        2,
+        "o5;o9",
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Aquarius",
+      "degree": 13.7833,
+      "house": 10,
+      "nakshatra": "Sata",
+      "pada": 3,
+      "significations": [
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 13.7833,
+      "house": 4,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        "Ve",
+        "Su"
+      ]
+    }
+  },
+  "life_events": [
+    {
+      "event_id": "ev-001",
+      "event_type": "life_threatening_event",
+      "description": "was attacked in Saade-saath, since transit Saturn was in 12th house from natal Moon.",
+      "date": null,
+      "age_at_event": null,
+      "survived": true,
+      "dasha_at_event": {
+        "mahadasha": "KETU",
+        "antardasha": "MERCURY",
+        "pratyantardasha": "RAHU",
+        "sookshma": "MARS",
+        "stated_by_author": true,
+        "raw_text": "Ketu-Mercury-Rahu Mars. Ketu signifies 06 through Sun. Rahu signifies (10). Saturn (03, 02, OS, 06, 09; 10) is aspected"
+      }
+    }
+  ],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": "1858-10-27",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "KETU",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "RAHU",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Ketu-Mercury-Rahu Mars. Ketu signifies 06 through Sun. Rahu signifies (10). Saturn (03, 02, OS, 06, 09; 10) is aspected"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "was the 26th President of the United States. He is well remembered for his energetic personality, range of interests and achievements, leadership of the Progressive Movement, model of masculinity, and his \"cowboy\" image. Date: Oct 27, 1858 Time: 5:53:00 pm Time Zone: 4:56 (W of GMT) Place: 74W00'23\", 40N 42'51\" New York, USA Theodore Lunar Yr-Mo: Kaala-yukta-Aswayuja Roosevelt Tithi: Krishna Shashthi Vedic Weekday: Wednesday Nakshatra: Punarvasu Yoga: Siddha (Ke) Sunrise: 6:29:04 am Sunset: 4:58:22 pm Ayanamsa: 21-47-20.32 Sidereal Time: 20:16:59 Theodore Roosevelt 289 Ju) As Mo Mo (Ju) As N..",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "antara lord Saturn is in 03rd house and signifies OS (recovery from injury) and 10.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "stablished in 1912 by himself and other political free thinkers, after he split from the Republican Party, in Milwaukee, Wisconsin 290 Longevity and Unnatural Deaths State, John F.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

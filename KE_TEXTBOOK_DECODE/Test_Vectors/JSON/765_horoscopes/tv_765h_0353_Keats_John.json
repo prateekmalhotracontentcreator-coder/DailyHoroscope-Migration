@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0353",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0353",
+  "source_file": "0353_K-26_Keats_John.pdf",
+  "subject": {
+    "name": "Keats, John",
+    "name_from_filename": "Keats, John",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Arts_Literature",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1795-10-29",
+    "time_local": "06:00",
+    "timezone_offset_hours": 0.0,
+    "time_utc": "1795-10-29T06:00:00Z",
+    "latitude": 51.507,
+    "longitude": -0.128,
+    "place": "London, United Kingdom",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": null,
+    "years": 8,
+    "months": 9,
+    "days": 9,
+    "raw_text": "Balance of dasha 8-9-9"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 11.7,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 21.7167,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 2.9667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 2.9667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 8.5333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 5.3,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 14.8167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 18.2,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 5.3,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

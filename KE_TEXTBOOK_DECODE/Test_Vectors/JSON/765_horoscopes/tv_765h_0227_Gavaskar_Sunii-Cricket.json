@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0227",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0227",
+  "source_file": "0227_G-20_Gavaskar_Sunii-Cricket.pdf",
+  "subject": {
+    "name": "Gavaskar, Sunii-Cricket",
+    "name_from_filename": "Gavaskar, Sunii-Cricket",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1949-07-10",
+    "time_local": "20:42",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1949-07-10T15:12:00Z",
+    "latitude": 19.076,
+    "longitude": 72.877,
+    "place": "Mumbai, Maharashtra, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 5,
+    "months": 1,
+    "days": 3,
+    "raw_text": "Balance of dasha Sun 5-1-3"
+  },
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 7.7167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 24.8667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 17.4,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 5.3333,
+      "retrograde": true
+    },
+    "LAGNA": {
+      "degree_in_sign": 17.15,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 28.6833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 17.15,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

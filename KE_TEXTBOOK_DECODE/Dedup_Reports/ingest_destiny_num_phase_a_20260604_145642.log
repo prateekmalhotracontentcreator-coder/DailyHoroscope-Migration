@@ -1,0 +1,6 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_destiny_num_phase_a_20260604_145642.log
+DESTINY NUMEROLOGY PHASE A INGEST  |  batch: destiny-numerology-phase-a-20260604
+Scope: Ch03-Ch16 (310 rules, 20 files)
+======================================================================
+✗  MONGO_URL not set. Export it or pass --mongo-url.

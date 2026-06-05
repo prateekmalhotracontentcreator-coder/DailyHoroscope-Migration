@@ -1,0 +1,214 @@
+{
+  "vector_id": "tv-lu-ch08",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch08_Osama_Bin_Laden",
+  "pdf_path": "Chapter_Splits/Ch08_Osama_Bin_Laden.pdf",
+  "subject": {
+    "name": "Osama Bin Laden",
+    "description": "Founder of al-Qaeda, Terrorist Leader",
+    "nationality": "Saudi Arabian"
+  },
+  "birth_data": {
+    "date": "1957-03-10",
+    "time_local": "10:36:00",
+    "timezone_offset_hours": 3.0,
+    "time_utc": "1957-03-10T07:36:00Z",
+    "latitude": 24.6333,
+    "longitude": 46.7667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-09-44.95",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 17.6167,
+      "house": 1,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        "---"
+      ]
+    },
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 26.3,
+      "house": 10,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "significations": [
+        4,
+        10,
+        11,
+        8,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 6.7333,
+      "house": 2,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "significations": [
+        3,
+        2,
+        6,
+        "Ra"
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 2.0667,
+      "house": 1,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": [
+        1,
+        12,
+        7,
+        4,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 16.9667,
+      "house": 10,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        2,
+        5,
+        10,
+        6,
+        "Ra"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 4.6667,
+      "house": 5,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "significations": [
+        5,
+        8,
+        11,
+        4,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 17.3833,
+      "house": 10,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        1,
+        6,
+        10,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 20.9833,
+      "house": 7,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "significations": [
+        9,
+        10,
+        7,
+        5,
+        2
+      ]
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 29.9167,
+      "house": 6,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "significations": [
+        "Ju",
+        "Ve"
+      ]
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 29.9167,
+      "house": 12,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "significations": [
+        "Ma",
+        "Su"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon",
+    "death_type": "violent",
+    "death_date": "1957-03-10",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "MERCURY",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "MARS",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Mercury Mercury-Mars-Saturn. Mercury signifies 02 (maraca). Mars signifies 01, 07, 12 and aspects 08th house. Saturn is"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "longevity is not under threat.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "fortunately, Mars is in mutual aspect with Saturn, who is in Scorpio and is in Mercury star.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

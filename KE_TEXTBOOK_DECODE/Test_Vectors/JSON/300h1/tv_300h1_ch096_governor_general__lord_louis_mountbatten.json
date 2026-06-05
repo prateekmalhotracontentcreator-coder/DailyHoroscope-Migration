@@ -1,0 +1,227 @@
+{
+  "vector_id": "tv-300h1-ch096",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch096_GOVERNOR_GENERAL--LORD_LOUIS_MOUNTBATTEN",
+  "pdf_path": "Split_Chapters/Ch096_GOVERNOR_GENERAL--LORD_LOUIS_MOUNTBATTEN.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Governor General Lord Louis Mountbatten",
+    "description": "Louis Nicholas George Mountbatten, 1st Earl Mountbatten of Burma (25 Jun 1900-27",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": "1900-06-25",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 24.6164,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 17.8953,
+      "house": 12,
+      "significations": [
+        2,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 6.0797,
+      "house": 12,
+      "significations": [
+        1,
+        3,
+        6,
+        11,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 4.7092,
+      "house": 2,
+      "significations": [
+        1,
+        2,
+        4,
+        7,
+        8,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 10.3222,
+      "house": 6,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 0.275,
+      "house": 2,
+      "significations": [
+        2,
+        5,
+        6,
+        7,
+        10,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 9.2586,
+      "house": 7,
+      "significations": [
+        7,
+        8,
+        9,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 17.5078,
+      "house": 6,
+      "significations": [
+        6
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 17.5078,
+      "house": 12,
+      "significations": [
+        12
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1979
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1979-08-27",
+    "age_at_death": 79,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun is in lagna and Venus is in 0200 house in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is aspecting Ketu, who is in 12 to Sun.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter is in 06 and it is lord of 10.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "It is in star of Saturn (democracy).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "From Moon sign, Jupiter signifies 10 (admn., expansion, etc.) and it is under aspect of Mars (power).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

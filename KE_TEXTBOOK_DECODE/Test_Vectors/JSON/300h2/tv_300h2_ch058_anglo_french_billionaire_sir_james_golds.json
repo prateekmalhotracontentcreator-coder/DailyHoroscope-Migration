@@ -1,0 +1,271 @@
+{
+  "vector_id": "tv-300h2-ch058",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch058_57_James_Goldsmith",
+  "pdf_path": "Chapters/Ch058_57_James_Goldsmith.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Anglo-French Billionaire Sir James Goldsmith",
+    "description": "Place:",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": "1933-02-26",
+    "time_local": "09:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 48.8667,
+    "longitude": 2.3333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 6.261,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        5,
+        11,
+        12
+      ],
+      "significations_raw": "01,05,11,12"
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 19.38,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        2,
+        1,
+        0,
+        6,
+        3,
+        12,
+        8
+      ],
+      "significations_raw": "02,1 0,06,03,12,08"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 15.094,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve,Su,Me,Ju,Ma"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Pisces",
+      "degree": 21.95
+    },
+    "ghati_lagna": {
+      "sign": "Taurus",
+      "degree": 18.27
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Sun are conjunct with Rahu, while Jupiter is aspecting Rahu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter (10) is in 06 with Mars and linked to Nodes.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Hence Rahu, the materialistic planet offers result of Sun, Mercury, Jupiter, Mars and Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn is 11, the best position for it.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "02nd house is signified by Mars, Venus and Nodes.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Jupiter is in star of Venus.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "06th house is signified by Jupiter, Mars, Nodes and Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "101h house is signified by Jupiter, Nodes and Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "These combinations made native a rich businessman.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

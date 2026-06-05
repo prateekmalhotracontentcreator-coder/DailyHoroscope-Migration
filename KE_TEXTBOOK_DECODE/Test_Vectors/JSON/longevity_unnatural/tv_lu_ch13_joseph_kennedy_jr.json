@@ -1,0 +1,243 @@
+{
+  "vector_id": "tv-lu-ch13",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch13_Joseph_Kennedy_Jr",
+  "pdf_path": "Chapter_Splits/Ch13_Joseph_Kennedy_Jr.pdf",
+  "subject": {
+    "name": "Joseph Kennedy Jr.",
+    "description": "Elder brother of JFK, US Navy Pilot",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1915-07-25",
+    "time_local": "09:40:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": "1915-07-25T14:40:00Z",
+    "latitude": 42.3,
+    "longitude": -70.9,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-34-52.32",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 8.4333,
+      "house": 1,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 8.9667,
+      "house": 11,
+      "nakshatra": "Push",
+      "pada": 2,
+      "significations": [
+        12,
+        11,
+        5,
+        6,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 26.7833,
+      "house": 4,
+      "nakshatra": "USha",
+      "pada": 1,
+      "significations": [
+        11,
+        4,
+        12,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 20.8833,
+      "house": 9,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        3,
+        8,
+        9,
+        11,
+        4
+      ]
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 20.2833,
+      "house": 10,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        1,
+        10,
+        4,
+        7
+      ]
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 5.85,
+      "house": 7,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "significations": [
+        4,
+        7,
+        5,
+        6,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 25.6,
+      "house": 10,
+      "nakshatra": "Puna.",
+      "pada": 2,
+      "significations": [
+        2,
+        9,
+        4,
+        7,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Gemini",
+      "degree": 16.7667,
+      "house": 10,
+      "nakshatra": "Ardr",
+      "pada": 4,
+      "significations": [
+        5,
+        6,
+        10,
+        "Ra"
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 25.6,
+      "house": 5,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        "OS",
+        "Sa",
+        "Ma",
+        "Su"
+      ]
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 25.6,
+      "house": 11,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "significations": [
+        11,
+        "Su",
+        "Mo",
+        "Me",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in the air accident on August",
+    "death_type": "violent",
+    "death_date": "1915-07-25",
+    "age_at_death": 29,
+    "dasha_at_death": {
+      "mahadasha": "KETU",
+      "antardasha": "SUN",
+      "pratyantardasha": "MOON",
+      "sookshma": "MERCURY",
+      "stated_by_author": true,
+      "raw_text": "06 Joseph Kennedy Jr 59 (injury) is in an airy sign, Gemini. Antara lord Ketu signifies Sun, Moon and Mercury. Mercury i"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Rahu is posited in Mars star and signifies 08 (longevity).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Ketu signifies Sun, Moon and Mercury.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna lord Mercury is in the star of maraca and badhka Jupiter.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Lagna lord Mercury was in maraca and badhaka significator Venus (Vehicle) star in 12th house from natallagna.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Lagna lord Mercury was in Venus star in Leo and was conjoined with maraca and badhaka Jupiter.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

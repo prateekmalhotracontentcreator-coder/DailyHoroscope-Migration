@@ -1,0 +1,298 @@
+{
+  "vector_id": "tv-lu-ch36",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch36_Vijaya_Kumaratunga",
+  "pdf_path": "Chapter_Splits/Ch36_Vijaya_Kumaratunga.pdf",
+  "subject": {
+    "name": "Vijaya Kumaratunga",
+    "description": "Sri Lankan Politician",
+    "nationality": "Sri Lankan"
+  },
+  "birth_data": {
+    "date": "1945-10-09",
+    "time_local": "23:00:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1945-10-09T17:30:00Z",
+    "latitude": 6.9167,
+    "longitude": 79.8333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-00-11.00",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 10.0167,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 23.05,
+      "house": 4,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": [
+        3,
+        2,
+        4,
+        6
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 1.1833,
+      "house": 6,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "significations": [
+        2,
+        6,
+        4,
+        7,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 24.2667,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        6,
+        11,
+        0,
+        1,
+        4,
+        7,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Virgo",
+      "degree": 28.3667,
+      "house": 4,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "significations": [
+        1,
+        4,
+        6,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 16.65,
+      "house": 4,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        7,
+        10,
+        4,
+        2,
+        6
+      ]
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 25.3667,
+      "house": 3,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "significations": [
+        3,
+        5,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 10.8833,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "significations": [
+        "Me",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 10.8833,
+      "house": 7,
+      "nakshatra": "I",
+      "pada": 4,
+      "significations": [
+        "Ma",
+        "Ju"
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 6.6167,
+      "house": 7,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        "Ketu"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in his saade-saath when transit Saturn",
+    "death_type": "violent",
+    "death_date": "1945-10-09",
+    "age_at_death": 42,
+    "dasha_at_death": {
+      "mahadasha": "KETU",
+      "antardasha": "RAHU",
+      "pratyantardasha": "SUN",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Ketu-Rahu-Sun-Saturn. Dasha lord Ketu signifies Mars, Jupiter and lagna through Mars. Mars signifies (01, 06, 07). Jupit"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is rising in the star of Rahu in Gemini, while Rahu, conjoined with 06th lord Mars and they are posited in lagna.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord is Mercury, who is posited in Mars star in Chitra in Virgo.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": ". Mars is posited in lagna in the star of maraca & badhka Jupiter and signify 01,06 houses, besides aspecting oath house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": ". There is a proximity between Mars (06th lord) and oath lord Saturn. The distance from the longitude of Mars upto the longitude of Saturn is less than 7 deg. only.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "08th lord Saturn is posited in 07th lord Jupiter star who is maraca and badhaka. Saturn is in mara~a house. This will reduce longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "02nd lord (Maraca) Moon is posited in 06th house (injury) and _is in the star of maraca and badhka Jupiter.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "08th bhava star lord is Moon, who signifies 02 (maraca), 06 (injury) and 07 (maraca & badhaka). All these combinations are not favourable for good longevity and the native is vulnerable to physical attack by others due Mars, Saturn, 01, 02, 06, 07 and 08 links. At the time of assassination of Mr. Kumaratunga on 16 Feb 1988 he was 42 years and 04 months old, which gave him Madhya aayu. 01 and 08th houses are afflicted and lagna lord Mercury is in 04th house and signifying lagna and 11 through Mars gave some solace to longevity issue. The VMD period was that of Ketu-Rahu-Sun-Saturn. Dasha lord K",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Dasha lord Ketu signifies Mars, Jupiter and lagna through Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Bhukti lord Rahu signifies Mars (01, 06, 07) and Mercury (01, 06) which signifies lagna, enemy & injury, maraca & badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Antara lord Sun signifies 04 (home) and 06 (enemy and injury).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Sookshma lord Saturn signifies 02 (maraca) and 08 (longevity), 07 (maraca and Badhaka).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "08th lord Saturn was in natal maraca and badhaka house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

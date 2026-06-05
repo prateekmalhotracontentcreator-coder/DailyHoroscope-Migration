@@ -1,0 +1,297 @@
+{
+  "vector_id": "tv-300h2-ch020",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch020_19_Medical_Doctor",
+  "pdf_path": "Chapters/Ch020_19_Medical_Doctor.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Medical Doctor",
+    "description": "The following native is a medical doctor and is settled abroad.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1949-08-12",
+    "time_local": "23:59:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1949-08-12T18:29:00Z",
+    "latitude": 17.05,
+    "longitude": 79.2667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-09-11.82",
+    "nakshatra_stated": "Utharabhadra",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "lagna_degree_stated": 2.704,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 26.538,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        4,
+        2,
+        5
+      ],
+      "significations_raw": "03,04,02,05"
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 10.88,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        11,
+        9,
+        10,
+        4
+      ],
+      "significations_raw": "03, 11,09,10,04"
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 20.501,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        11,
+        9,
+        2,
+        7
+      ],
+      "significations_raw": "11,09,02,07"
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 12.806,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        5,
+        4
+      ],
+      "significations_raw": "02 05,04,Ke"
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 1.268,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        9,
+        8,
+        11,
+        3,
+        4
+      ],
+      "significations_raw": "09,08,11,03,04"
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 27.536,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6,
+        4,
+        3,
+        1
+      ],
+      "significations_raw": "06,04,03,01"
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 13.847,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        1,
+        6,
+        9,
+        1,
+        0
+      ],
+      "significations_raw": "04,01,06,09,1 0"
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 26.438,
+      "house": null,
+      "nakshatra": "Reva",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Mo,Me,Ju"
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 26.438,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ma,Me"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Capricorn",
+      "degree": 25.85
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Anonymous Case",
+    "profession_category": "Special_Case",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Special_Case",
+    "key_claim_axes": [
+      "career",
+      "health",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun (medicine) is lord of 04 (education) and is in star of Mercury (05-cure).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Saturn who is lord of Q9th house is in star of Ketu (05).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Ketu is in Mars (07- patients, 12-disease of patients) star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Hence Saturn offers result of Ketu (04, 05, 07, 12).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter is in 09111 house in star of Sun and signifies 11 (cure of patient).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "All these combinations helped native to become a Doctor.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Venus and Sun signifies 04 and 03.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Jupiter signifies 03 and 09 through Sun, while 12th lord Mars is in Jupiter star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "All these helped native to settle abroad.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

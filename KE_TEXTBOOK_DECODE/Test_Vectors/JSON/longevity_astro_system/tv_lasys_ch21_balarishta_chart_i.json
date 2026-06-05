@@ -1,0 +1,162 @@
+{
+  "vector_id": "tv-lasys-ch21",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch21",
+  "chapter_title": "Balarishta or Infant Mortality Chart-I",
+  "pdf_path": "Text Books/LongevityAstroSystem/21_Balarishta or Infant Mortality Chart-I.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Unnamed Balarishta Case I (Male Child)",
+    "description": "Male infant born at primary health centre in Banda, Sagar district, Madhya Pradesh. Died 10 minutes after birth on same day.",
+    "nationality": "Indian"
+  },
+
+  "birth_data": {
+    "date": "2012-04-22",
+    "time_local": "04:59:37",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "23:29:37",
+    "latitude": 24.0167,
+    "longitude": 78.9833,
+    "place": "Banda, Sagar District, Madhya Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-55-58",
+    "notes": "Reported birth time was 5:00 AM. Rectified to 4:59:37 AM so that lagna CSL = Sun and 9th CSL = Moon. Both Sun and Moon conjunct in Aries. Sidereal time 18h 47m 18s."
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Pisces",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Lagna at 21° Pi 56' Revati (Ju-Me-Su). Moon at 15° Ar 38' Bharani (Ma-Ve-Su)."
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "SUN",
+    "8th_csl": "MERCURY",
+    "badhaka_house": 7,
+    "badhaka_house_rationale": "Pisces = dual sign → 7th house is both maraka and badhaka",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "balarishta",
+  "aayu_bucket_computed": null,
+
+  "planet_positions_from_table": {
+    "LAGNA": { "sign": "Pisces", "degree": "21°56'", "house": 1, "significations": [1] },
+    "SUN":   { "sign": "Aries", "degree": "8°18'", "house": 2, "significations": [1, 6] },
+    "MOON":  { "sign": "Aries", "degree": "15°38'", "house": 2, "significations": [1, 5] },
+    "MARS":  { "sign": "Leo", "degree": "10°07'", "house": 6, "significations": [6] },
+    "MERCURY": { "sign": "Pisces", "degree": "11°11'", "house": 1, "significations": [7, 12] },
+    "JUPITER": { "sign": "Aries", "degree": "24°09'", "house": 2, "significations": [1, 10] },
+    "VENUS":   { "sign": "Taurus", "degree": "21°00'", "house": 3, "significations": [2, 3, 8] },
+    "SATURN":  { "sign": "Libra", "degree": "01°46'", "house": 8, "significations": [7, 8] },
+    "RAHU":    { "sign": "Scorpio", "degree": "13°06'", "house": 9, "significations": [7, 8] },
+    "KETU":    { "sign": "Taurus", "degree": "13°06'", "house": 3, "significations": [2, 3] }
+  },
+
+  "death_data": {
+    "cause_of_death": "Unknown — possibly brain-related (Sun in Aries signifies brain, 6th cusp = illness); died in hospital",
+    "death_type": "unknown",
+    "death_date": "2012-04-22",
+    "age_at_death": 0,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "SUN",
+      "pratyantardasha": "MOON",
+      "sookshma": "KETU",
+      "kp_significations": [8, 6, 1, 7],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "death of the baby occurred on the same day in almost 10 minutes after birth, at 5-10 a.m. during the Vimshottari Maha Dasha (VMD) of Venus-Sun-Moon-Ketu-Saturn-Rahu"
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna cusp sub lord is Sun, who denotes cusps 01 and 06 by self. It is in the star of Ketu (Ashwini) in Aries. Ketu denotes Venus and Moon. Moon denotes Venus (02, 03 and 08). Hence Sun cannot be termed as detrimental for reducing the longevity per se, but 02nd Cusp is detrimental due to maraca — no link of badhaka.",
+      "aayu_gate": "gate_1",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "mixed",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "For all dual signs, 07th house shall be maraca as well as badhaka. In this case lagna falls at 21 deg. 56 min. in Pisces in the sign of Jupiter, star of Mercury (Revati) and sub of Sun.",
+      "aayu_gate": "gate_1",
+      "condition_type_guess": "badhaka_rule",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08th cusp falls in Libra, a sign ruled by Venus, and in the star of Visakha ruled by Jupiter and in the sub of Mercury. Mercury is the maraca and badhaka lord as it is lord of Virgo. Mercury is posited at 11 deg. 11 min. in Pisces, which is close to lagna. Tenancy of Maraka and/badhaka lord in lagna precincts is detrimental for longevity, especially when it has got portfolio of 08th cusp. 08th cusp sub lord is Mercury. Hence Mercury causes negation of longevity.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "The sub lord of the 07th cusp is Venus, who is in 02nd cusp (maraca). It is signifying 08th house by lordship. These significations shall be termed as a situation of adding fuel to fire.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Venus signifies 08th cusp. Sun signifies 06th cusp (illness) and it is in Aries. Hence there was some issue with the brain of the baby. Sun too signifies 08th cusp through Ketu. Moon too signifies 08th cusp through Venus. Saturn is in the 07th bhava (maraca and badhaka). Rahu denotes 07th and 08th cusps through Saturn and Venus.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "dasha_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "The birth chart indicates 08th house is afflicted by maraca and badhaka. The Dasha period also operated detrimentally. So the birth and death took place in maraca and badhaka period causing instantaneous death, which is the crux of this article.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "dasha_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": ""
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

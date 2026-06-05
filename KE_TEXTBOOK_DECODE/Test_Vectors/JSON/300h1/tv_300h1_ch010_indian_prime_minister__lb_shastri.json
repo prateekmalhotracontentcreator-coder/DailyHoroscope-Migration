@@ -1,0 +1,244 @@
+{
+  "vector_id": "tv-300h1-ch010",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch010_INDIAN_PRIME_MINISTER--LB_SHASTRI",
+  "pdf_path": "Split_Chapters/Ch010_INDIAN_PRIME_MINISTER--LB_SHASTRI.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Lal Bahadur Shastri",
+    "description": "Lal Bahadur Shastri (09 Oct 1904- 11 Jan 1966) was the second Prime Minister of",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1904-10-09",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Sagittarius",
+      "degree": 0.3992,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 22.9733,
+      "house": 10,
+      "significations": [
+        8,
+        9,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 23.0622,
+      "house": 10,
+      "significations": [
+        8,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 12.2097,
+      "house": 9,
+      "significations": [
+        1,
+        2,
+        3,
+        5,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Virgo",
+      "degree": 7.7303,
+      "house": 10,
+      "significations": [
+        7
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 3.9303,
+      "house": 5,
+      "significations": [
+        1,
+        3,
+        4,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 17.7853,
+      "house": 11,
+      "significations": [
+        6,
+        9,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 21.9036,
+      "house": 2,
+      "significations": [
+        2,
+        3,
+        8,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 24.3714,
+      "house": 9,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 24.3714,
+      "house": 3,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Prime Minister",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1966
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1966-01-11",
+    "age_at_death": 62,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Actual DoB of native is 09 Oct., though it is celebrated on 02 Oct.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From Moon sign, Sun is in lagna and Venus is in 021Y.l house and it is aspected by Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is also aspecting Rahu, who is in 12 to Sun.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From lagna, Sun, being lord of 09th house (Central), is posited in 1Oth house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Venus is lord of 11th house (parliament) and it signifies 10 and 09 through Rahu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "0711' lord Mercury also signifies 09 and 10th houses.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Saturn (democracy) is in star of Moon and signifies 10th house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

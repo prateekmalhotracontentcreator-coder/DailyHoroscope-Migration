@@ -1,0 +1,569 @@
+============================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_phaladeepika_20260603_044750_live.log
+============================================================
+
+Positional conflicts in report    : 2701
+  self-match artifacts (SKIP)     : 0
+  polarity_conflict (PATCH)       : 7
+  alternate_result (REVIEW-ONLY)  : 2694
+TF-IDF similarity matches (PATCH) : 0
+Contradiction pairs (PATCH)       : 0
+
+CONTEXTUAL ALTERNATE RESULTS (review-only, 2694 pairs across 108 keys):
+  [rahu in house 1]  (170 pair(s))
+    pd-ch02-010 vs R-ATEXTB-RAH-1H-AQU-V-082-01
+    pd-ch02-010 vs R-ATEXTB-RAH-1H-ARI-V-082-02
+    pd-ch02-010 vs R-ATEXTB-RAH-1H-CAN-V-082-03
+    ... and 167 more
+  [ketu in house 1]  (115 pair(s))
+    pd-ch02-014 vs R-ATEXTB-KET-1H-AQU-V-094-01
+    pd-ch02-014 vs R-ATEXTB-KET-1H-ARI-V-094-02
+    pd-ch02-014 vs R-ATEXTB-KET-1H-CAN-V-094-03
+    ... and 112 more
+  [saturn in house 1]  (106 pair(s))
+    pd-ch08-074 vs R-ATEXTB-SAT-1H-AQU-V-071-01
+    pd-ch08-074 vs R-ATEXTB-SAT-1H-ARI-V-071-02
+    pd-ch08-074 vs R-ATEXTB-SAT-1H-CAN-V-071-03
+    ... and 103 more
+  [moon in house 1]  (102 pair(s))
+    pd-ch08-013 vs R-ATEXTB-MOO-1H-AQU-V-013-01
+    pd-ch08-013 vs R-ATEXTB-MOO-1H-ARI-V-013-02
+    pd-ch08-013 vs R-ATEXTB-MOO-1H-CAN-V-013-03
+    ... and 99 more
+  [jupiter in house 1]  (68 pair(s))
+    pd-ch08-050 vs R-ATEXTB-JUP-1H-ARI-V-048-01
+    pd-ch08-050 vs R-ATEXTB-JUP-1H-CAP-V-048-02
+    pd-ch08-050 vs R-ATEXTB-JUP-1H-DEB-V-048-09
+    ... and 65 more
+  [venus in house 1]  (68 pair(s))
+    pd-ch04-027 vs R-ATEXTB-VEN-1H-AQU-V-059-01
+    pd-ch04-027 vs R-ATEXTB-VEN-1H-ARI-V-059-02
+    pd-ch04-027 vs R-ATEXTB-VEN-1H-CAN-V-059-03
+    ... and 65 more
+  [venus in house 7]  (66 pair(s))
+    pd-ch08-068 vs R-300IMP-VEN-7H-132
+    pd-ch08-068 vs R-ATEXTB-VEN-7H-AQU-V-065-01
+    pd-ch08-068 vs R-ATEXTB-VEN-7H-ARI-V-065-02
+    ... and 63 more
+  [mercury in house 7]  (50 pair(s))
+    pd-ch08-044 vs R-ATEXTB-MER-7H-DEB-V-042-05
+    pd-ch08-044 vs R-ATEXTB-MER-7H-ENE-V-042-06
+    pd-ch08-044 vs R-ATEXTB-MER-7H-GEM-V-042-01
+    ... and 47 more
+  [jupiter in house 3]  (46 pair(s))
+    pd-ch08-052 vs R-ATEXTB-JUP-3H-AQU-V-050-01
+    pd-ch08-052 vs R-ATEXTB-JUP-3H-ARI-V-050-02
+    pd-ch08-052 vs R-ATEXTB-JUP-3H-CAN-V-050-03
+    ... and 43 more
+  [moon in house 5]  (44 pair(s))
+    pd-ch08-018 vs R-TBA15-239
+    pd-ch08-018 vs R-TBA15-240
+    pd-ch08-018 vs R-TBA15-241
+    ... and 41 more
+  [mars in house 1]  (42 pair(s))
+    pd-ch08-026 vs R-ATEXTB-MAR-1H-ARI-V-024-01
+    pd-ch08-026 vs R-ATEXTB-MAR-1H-CAN-V-024-02
+    pd-ch08-026 vs R-ATEXTB-MAR-1H-CAP-V-024-03
+    ... and 39 more
+  [mars in house 7]  (38 pair(s))
+    pd-ch08-032 vs R-ATEXTB-MAR-7H-084
+    pd-ch08-032 vs R-ATEXTB-MAR-7H-ARI-V-030-01
+    pd-ch08-032 vs R-ATEXTB-MAR-7H-CAN-V-030-02
+    ... and 35 more
+  [mercury in house 5]  (38 pair(s))
+    pd-ch08-042 vs R-ATEXTB-MER-5H-007
+    pd-ch08-042 vs R-ATEXTB-MER-5H-CAN-V-040-01
+    pd-ch08-042 vs R-ATEXTB-MER-5H-ENE-V-040-04
+    ... and 35 more
+  [jupiter in house 7]  (37 pair(s))
+    pd-ch08-056 vs R-ATEXTB-JUP-7H-AQU-V-054-01
+    pd-ch08-056 vs R-ATEXTB-JUP-7H-CAP-V-054-02
+    pd-ch08-056 vs R-ATEXTB-JUP-7H-DEB-V-054-04
+    ... and 34 more
+  [mars in house 6]  (36 pair(s))
+    pd-ch08-031 vs R-ATEXTB-MAR-6H-AQU-V-029-01
+    pd-ch08-031 vs R-ATEXTB-MAR-6H-ARI-V-029-02
+    pd-ch08-031 vs R-ATEXTB-MAR-6H-CAN-V-029-03
+    ... and 33 more
+  [mars in house 9]  (36 pair(s))
+    pd-ch08-034 vs R-ATEXTB-MAR-9H-AQU-V-032-01
+    pd-ch08-034 vs R-ATEXTB-MAR-9H-CAN-V-032-02
+    pd-ch08-034 vs R-ATEXTB-MAR-9H-CAP-V-032-03
+    ... and 33 more
+  [jupiter in house 9]  (35 pair(s))
+    pd-ch08-058 vs R-ATEXTB-JUP-9H-ARI-V-055-01
+    pd-ch08-058 vs R-ATEXTB-JUP-9H-CAN-V-055-02
+    pd-ch08-058 vs R-ATEXTB-JUP-9H-CAP-V-055-03
+    ... and 32 more
+  [sun in house 2]  (34 pair(s))
+    pd-ch08-002 vs R-ATEXTB-SUN-2H-AQU-V-002-01
+    pd-ch08-002 vs R-ATEXTB-SUN-2H-ARI-V-002-02
+    pd-ch08-002 vs R-ATEXTB-SUN-2H-CAN-V-002-03
+    ... and 31 more
+  [mars in house 5]  (33 pair(s))
+    pd-ch08-030 vs R-300IMP-MAR-5H-095
+    pd-ch08-030 vs R-ATEXTB-MAR-5H-AQU-V-028-01
+    pd-ch08-030 vs R-ATEXTB-MAR-5H-ARI-V-028-02
+    ... and 30 more
+  [moon in house 6]  (32 pair(s))
+    pd-ch08-019 vs R-ATEXTB-MOO-6H-CAN-V-017-01
+    pd-ch08-019 vs R-ATEXTB-MOO-6H-CAP-V-017-02
+    pd-ch08-019 vs R-ATEXTB-MOO-6H-DEB-V-017-08
+    ... and 29 more
+  [moon in house 7]  (32 pair(s))
+    pd-ch08-020 vs R-ATEXTB-MOO-7H-003
+    pd-ch08-020 vs R-ATEXTB-MOO-7H-AQU-V-018-01
+    pd-ch08-020 vs R-ATEXTB-MOO-7H-CAN-V-018-02
+    ... and 29 more
+  [saturn in house 6]  (31 pair(s))
+    pd-ch08-080 vs R-300IMP-SAT-6H-121
+    pd-ch08-080 vs R-ATEXTB-SAT-6H-DEB-V-076-08
+    pd-ch08-080 vs R-ATEXTB-SAT-6H-ENE-V-076-09
+    ... and 28 more
+  [mars in house 3]  (30 pair(s))
+    pd-ch08-028 vs R-ATEXTB-MAR-3H-ARI-V-026-01
+    pd-ch08-028 vs R-ATEXTB-MAR-3H-EXA-V-026-03
+    pd-ch08-028 vs R-ATEXTB-MAR-3H-GEM-V-026-02
+    ... and 27 more
+  [mercury in house 1]  (30 pair(s))
+    pd-ch08-038 vs R-ATEXTB-MER-1H-AQU-V-036-01
+    pd-ch08-038 vs R-ATEXTB-MER-1H-CAP-V-036-02
+    pd-ch08-038 vs R-ATEXTB-MER-1H-EXA-V-036-07
+    ... and 27 more
+  [moon in house 4]  (30 pair(s))
+    pd-ch08-017 vs R-ATEXTB-MOO-4H-CAN-V-016-01
+    pd-ch08-017 vs R-ATEXTB-MOO-4H-DEB-V-016-07
+    pd-ch08-017 vs R-ATEXTB-MOO-4H-ENE-V-016-08
+    ... and 27 more
+  [rahu in house 10]  (30 pair(s))
+    pd-ch08-096 vs R-ATEXTB-RAH-10H-ARI-V-091-01
+    pd-ch08-096 vs R-ATEXTB-RAH-10H-CAN-V-091-02
+    pd-ch08-096 vs R-ATEXTB-RAH-10H-GEM-V-091-03
+    ... and 27 more
+  [saturn in house 7]  (30 pair(s))
+    pd-ch08-081 vs R-ATEXTB-SAT-7H-AQU-V-077-01
+    pd-ch08-081 vs R-ATEXTB-SAT-7H-CAP-V-077-02
+    pd-ch08-081 vs R-ATEXTB-SAT-7H-EXA-V-077-09
+    ... and 27 more
+  [sun in house 1]  (30 pair(s))
+    pd-ch08-001 vs R-ATEXTB-SUN-1H-002
+    pd-ch08-001 vs R-ATEXTB-SUN-1H-ARI-V-001-01
+    pd-ch08-001 vs R-ATEXTB-SUN-1H-CAN-V-001-02
+    ... and 27 more
+  [mars in house 10]  (29 pair(s))
+    pd-ch08-035 vs R-ATEXTB-MAR-10H-ARI-V-033-01
+    pd-ch08-035 vs R-ATEXTB-MAR-10H-CAP-V-033-02
+    pd-ch08-035 vs R-ATEXTB-MAR-10H-EXA-V-033-07
+    ... and 26 more
+  [sun in house 6]  (29 pair(s))
+    pd-ch08-006 vs R-ATEXTB-SUN-6H-AQU-V-006-01
+    pd-ch08-006 vs R-ATEXTB-SUN-6H-CAN-V-006-02
+    pd-ch08-006 vs R-ATEXTB-SUN-6H-CAP-V-006-03
+    ... and 26 more
+  [sun in house 10]  (27 pair(s))
+    pd-ch08-010 vs R-ATEXTB-SUN-10H-ARI-V-010-01
+    pd-ch08-010 vs R-ATEXTB-SUN-10H-CAN-V-010-02
+    pd-ch08-010 vs R-ATEXTB-SUN-10H-DEB-V-010-05
+    ... and 24 more
+  [moon in house 10]  (26 pair(s))
+    pd-ch08-023 vs R-ATEXTB-MOO-10H-ARI-V-021-01
+    pd-ch08-023 vs R-ATEXTB-MOO-10H-CAN-V-021-02
+    pd-ch08-023 vs R-ATEXTB-MOO-10H-CAP-V-021-03
+    ... and 23 more
+  [moon in house 12]  (26 pair(s))
+    pd-ch08-025 vs R-ATEXTB-MOO-12H-AQU-V-023-01
+    pd-ch08-025 vs R-ATEXTB-MOO-12H-CAN-V-023-02
+    pd-ch08-025 vs R-ATEXTB-MOO-12H-CAP-V-023-03
+    ... and 23 more
+  [ketu in house 4]  (25 pair(s))
+    pd-ch08-102 vs R-ATEXTB-KET-4H-ARI-V-096-01
+    pd-ch08-102 vs R-ATEXTB-KET-4H-EXA-V-096-06
+    pd-ch08-102 vs R-ATEXTB-KET-4H-LEO-V-096-02
+    ... and 22 more
+  [mars in house 11]  (25 pair(s))
+    pd-ch08-036 vs R-ATEXTB-MAR-11H-ARI-V-034-01
+    pd-ch08-036 vs R-ATEXTB-MAR-11H-CAP-V-034-02
+    pd-ch08-036 vs R-ATEXTB-MAR-11H-EXA-V-034-07
+    ... and 22 more
+  [mars in house 4]  (25 pair(s))
+    pd-ch08-029 vs R-ATEXTB-MAR-4H-ARI-V-027-01
+    pd-ch08-029 vs R-ATEXTB-MAR-4H-CAN-V-027-02
+    pd-ch08-029 vs R-ATEXTB-MAR-4H-CAP-V-027-03
+    ... and 22 more
+  [ketu in house 8]  (24 pair(s))
+    pd-ch08-106 vs R-ATEXTB-KET-8H-ARI-V-100-01
+    pd-ch08-106 vs R-ATEXTB-KET-8H-CAN-V-100-02
+    pd-ch08-106 vs R-ATEXTB-KET-8H-EXA-V-100-07
+    ... and 21 more
+  [moon in house 2]  (24 pair(s))
+    pd-ch08-015 vs R-ATEXTB-MOO-2H-AQU-V-014-01
+    pd-ch08-015 vs R-ATEXTB-MOO-2H-CAP-V-014-02
+    pd-ch08-015 vs R-ATEXTB-MOO-2H-DEB-V-014-06
+    ... and 21 more
+  [saturn in house 3]  (24 pair(s))
+    pd-ch08-077 vs R-ATEXTB-SAT-3H-AQU-V-073-01
+    pd-ch08-077 vs R-ATEXTB-SAT-3H-ARI-V-073-02
+    pd-ch08-077 vs R-ATEXTB-SAT-3H-CAP-V-073-03
+    ... and 21 more
+  [sun in house 5]  (24 pair(s))
+    pd-ch08-005 vs R-300IMP-SUN-5H-090
+    pd-ch08-005 vs R-ATEXTB-SUN-5H-CAN-V-005-01
+    pd-ch08-005 vs R-ATEXTB-SUN-5H-OWN-V-005-03
+    ... and 21 more
+  [jupiter in house 2]  (23 pair(s))
+    pd-ch08-051 vs R-ATEXTB-JUP-2H-DEB-V-049-03
+    pd-ch08-051 vs R-ATEXTB-JUP-2H-EXA-V-049-04
+    pd-ch08-051 vs R-ATEXTB-JUP-2H-OWN-V-049-05
+    ... and 20 more
+  [jupiter in house 5]  (23 pair(s))
+    pd-ch08-054 vs R-ATEXTB-JUP-5H-ARI-V-052-01
+    pd-ch08-054 vs R-ATEXTB-JUP-5H-DEB-V-052-02
+    pd-ch08-054 vs R-ATEXTB-JUP-5H-EXA-V-052-03
+    ... and 20 more
+  [ketu in house 2]  (23 pair(s))
+    pd-ch08-100 vs R-TBA15-1308
+    pd-ch08-100 vs R-TBA15-1309
+    pd-ch08-100 vs R-TBA15-1310
+    ... and 20 more
+  [rahu in house 4]  (23 pair(s))
+    pd-ch08-090 vs R-ATEXTB-RAH-4H-ARI-V-085-01
+    pd-ch08-090 vs R-ATEXTB-RAH-4H-CAN-V-085-02
+    pd-ch08-090 vs R-ATEXTB-RAH-4H-CAP-V-085-03
+    ... and 20 more
+  [saturn in house 8]  (23 pair(s))
+    pd-ch08-082 vs R-ATEXTB-SAT-8H-DEB-V-078-01
+    pd-ch08-082 vs R-ATEXTB-SAT-8H-ENE-V-078-02
+    pd-ch08-082 vs R-ATEXTB-SAT-8H-EXA-V-078-03
+    ... and 20 more
+  [moon in house 8]  (22 pair(s))
+    pd-ch08-021 vs R-ATEXTB-MOO-8H-CAN-V-019-01
+    pd-ch08-021 vs R-ATEXTB-MOO-8H-EXA-V-019-03
+    pd-ch08-021 vs R-ATEXTB-MOO-8H-OWN-V-019-04
+    ... and 19 more
+  [mercury in house 2]  (21 pair(s))
+    pd-ch08-039 vs R-ATEXTB-MER-2H-052
+    pd-ch08-039 vs R-ATEXTB-MER-2H-LEO-V-037-01
+    pd-ch08-039 vs R-ATEXTB-MER-2H-V-037
+    ... and 18 more
+  [mercury in house 6]  (20 pair(s))
+    pd-ch08-043 vs R-300IMP-MER-6H-142
+    pd-ch08-043 vs R-ATEXTB-MER-6H-CAN-V-041-01
+    pd-ch08-043 vs R-ATEXTB-MER-6H-DEB-V-041-02
+    ... and 17 more
+  [sun in house 8]  (20 pair(s))
+    pd-ch08-008 vs R-ATEXTB-SUN-8H-ENE-V-008-01
+    pd-ch08-008 vs R-ATEXTB-SUN-8H-EXA-V-008-02
+    pd-ch08-008 vs R-ATEXTB-SUN-8H-OWN-V-008-03
+    ... and 17 more
+  [mars in house 2]  (19 pair(s))
+    pd-ch08-027 vs R-ATEXTB-MAR-2H-DEB-V-025-03
+    pd-ch08-027 vs R-ATEXTB-MAR-2H-ENE-V-025-04
+    pd-ch08-027 vs R-ATEXTB-MAR-2H-EXA-V-025-05
+    ... and 16 more
+  [mercury in house 4]  (19 pair(s))
+    pd-ch08-041 vs R-ATEXTB-MER-4H-DEB-V-039-03
+    pd-ch08-041 vs R-ATEXTB-MER-4H-EXA-V-039-04
+    pd-ch08-041 vs R-ATEXTB-MER-4H-OWN-V-039-05
+    ... and 16 more
+  [rahu in house 7]  (19 pair(s))
+    pd-ch08-093 vs R-ATEXTB-RAH-7H-087
+    pd-ch08-093 vs R-ATEXTB-RAH-7H-ARI-V-088-01
+    pd-ch08-093 vs R-ATEXTB-RAH-7H-CAN-V-088-02
+    ... and 16 more
+  [saturn in house 4]  (19 pair(s))
+    pd-ch08-078 vs R-ATEXTB-SAT-4H-ARI-V-074-01
+    pd-ch08-078 vs R-ATEXTB-SAT-4H-ENE-V-074-03
+    pd-ch08-078 vs R-ATEXTB-SAT-4H-EXA-V-074-04
+    ... and 16 more
+  [sun in house 7]  (19 pair(s))
+    pd-ch08-007 vs R-ATEXTB-SUN-7H-CAP-V-007-01
+    pd-ch08-007 vs R-ATEXTB-SUN-7H-DEB-V-007-02
+    pd-ch08-007 vs R-ATEXTB-SUN-7H-ENE-V-007-03
+    ... and 16 more
+  [saturn in house 10]  (18 pair(s))
+    pd-ch08-084 vs R-ATEXTB-SAT-10H-021
+    pd-ch08-084 vs R-ATEXTB-SAT-10H-DEB-V-080-02
+    pd-ch08-084 vs R-ATEXTB-SAT-10H-ENE-V-080-03
+    ... and 15 more
+  [saturn in house 5]  (18 pair(s))
+    pd-ch08-079 vs R-ATEXTB-SAT-5H-AQU-V-075-01
+    pd-ch08-079 vs R-ATEXTB-SAT-5H-CAN-V-075-02
+    pd-ch08-079 vs R-ATEXTB-SAT-5H-DEB-V-075-03
+    ... and 15 more
+  [saturn in house 9]  (18 pair(s))
+    pd-ch08-083 vs R-ATEXTB-SAT-9H-061
+    pd-ch08-083 vs R-ATEXTB-SAT-9H-DEB-V-079-01
+    pd-ch08-083 vs R-ATEXTB-SAT-9H-EXA-V-079-02
+    ... and 15 more
+  [mars in house 8]  (17 pair(s))
+    pd-ch08-033 vs R-300IMP-MAR-8H-128
+    pd-ch08-033 vs R-ATEXTB-MAR-8H-DEB-V-031-01
+    pd-ch08-033 vs R-ATEXTB-MAR-8H-ENE-V-031-02
+    ... and 14 more
+  [rahu in house 3]  (17 pair(s))
+    pd-ch08-089 vs R-ATEXTB-RAH-3H-AQU-V-084-01
+    pd-ch08-089 vs R-ATEXTB-RAH-3H-DEB-V-084-05
+    pd-ch08-089 vs R-ATEXTB-RAH-3H-EXA-V-084-06
+    ... and 14 more
+  [venus in house 8]  (17 pair(s))
+    pd-ch08-069 vs R-ATEXTB-VEN-8H-DEB-V-066-04
+    pd-ch08-069 vs R-ATEXTB-VEN-8H-EXA-V-066-05
+    pd-ch08-069 vs R-ATEXTB-VEN-8H-LIB-V-066-01
+    ... and 14 more
+  [ketu in house 3]  (16 pair(s))
+    pd-ch08-101 vs R-ATEXTB-KET-3H-LEO-V-095-01
+    pd-ch08-101 vs R-ATEXTB-KET-3H-OWN-V-095-05
+    pd-ch08-101 vs R-ATEXTB-KET-3H-PIS-V-095-02
+    ... and 13 more
+  [sun in house 9]  (16 pair(s))
+    pd-ch08-009 vs R-ATEXTB-SUN-9H-DEB-V-009-02
+    pd-ch08-009 vs R-ATEXTB-SUN-9H-ENE-V-009-03
+    pd-ch08-009 vs R-ATEXTB-SUN-9H-EXA-V-009-04
+    ... and 13 more
+  [jupiter in house 6]  (15 pair(s))
+    pd-ch08-055 vs R-300IMP-JUP-6H-120
+    pd-ch08-055 vs R-ATEXTB-JUP-6H-DEB-V-053-03
+    pd-ch08-055 vs R-ATEXTB-JUP-6H-ENE-V-053-04
+    ... and 12 more
+  [ketu in house 10]  (15 pair(s))
+    pd-ch08-108 vs R-ATEXTB-KET-10H-ARI-V-102-01
+    pd-ch08-108 vs R-ATEXTB-KET-10H-SAG-V-102-02
+    pd-ch08-108 vs R-ATEXTB-KET-10H-SCO-V-102-03
+    ... and 12 more
+  [mars in house 12]  (15 pair(s))
+    pd-ch08-037 vs R-ATEXTB-MAR-12H-CAN-V-035-01
+    pd-ch08-037 vs R-ATEXTB-MAR-12H-LEO-V-035-02
+    pd-ch08-037 vs R-ATEXTB-MAR-12H-OWN-V-035-04
+    ... and 12 more
+  [mercury in house 10]  (15 pair(s))
+    pd-ch08-047 vs R-ATEXTB-MER-10H-011
+    pd-ch08-047 vs R-ATEXTB-MER-10H-DEB-V-045-02
+    pd-ch08-047 vs R-ATEXTB-MER-10H-EXA-V-045-03
+    ... and 12 more
+  [mercury in house 11]  (15 pair(s))
+    pd-ch08-048 vs R-ATEXTB-MER-11H-ARI-V-046-01
+    pd-ch08-048 vs R-ATEXTB-MER-11H-EXA-V-046-03
+    pd-ch08-048 vs R-ATEXTB-MER-11H-OWN-V-046-04
+    ... and 12 more
+  [mercury in house 8]  (15 pair(s))
+    pd-ch08-045 vs R-ATEXTB-MER-8H-EXA-V-043-02
+    pd-ch08-045 vs R-ATEXTB-MER-8H-LIB-V-043-01
+    pd-ch08-045 vs R-ATEXTB-MER-8H-OWN-V-043-03
+    ... and 12 more
+  [mercury in house 9]  (15 pair(s))
+    pd-ch08-046 vs R-300IMP-MER-9H-116
+    pd-ch08-046 vs R-ATEXTB-MER-9H-V-044
+    pd-ch08-046 vs R-TBA15-705
+    ... and 12 more
+  [moon in house 11]  (15 pair(s))
+    pd-ch08-024 vs R-ATEXTB-MOO-11H-057
+    pd-ch08-024 vs R-ATEXTB-MOO-11H-DEB-V-022-01
+    pd-ch08-024 vs R-ATEXTB-MOO-11H-ENE-V-022-02
+    ... and 12 more
+  [moon in house 9]  (15 pair(s))
+    pd-ch08-022 vs R-ATEXTB-MOO-9H-DEB-V-020-01
+    pd-ch08-022 vs R-ATEXTB-MOO-9H-ENE-V-020-02
+    pd-ch08-022 vs R-ATEXTB-MOO-9H-V-020
+    ... and 12 more
+  [venus in house 2]  (15 pair(s))
+    pd-ch08-063 vs R-ATEXTB-VEN-2H-002
+    pd-ch08-063 vs R-ATEXTB-VEN-2H-DEB-V-060-01
+    pd-ch08-063 vs R-ATEXTB-VEN-2H-ENE-V-060-02
+    ... and 12 more
+  [jupiter in house 12]  (14 pair(s))
+    pd-ch08-061 vs R-ATEXTB-JUP-12H-DEB-V-058-01
+    pd-ch08-061 vs R-ATEXTB-JUP-12H-ENE-V-058-02
+    pd-ch08-061 vs R-ATEXTB-JUP-12H-EXA-V-058-03
+    ... and 11 more
+  [jupiter in house 4]  (14 pair(s))
+    pd-ch08-053 vs R-ATEXTB-JUP-4H-EXA-V-051-03
+    pd-ch08-053 vs R-ATEXTB-JUP-4H-SCO-V-051-01
+    pd-ch08-053 vs R-ATEXTB-JUP-4H-TAU-V-051-02
+    ... and 11 more
+  [moon in house 3]  (14 pair(s))
+    pd-ch08-016 vs R-ATEXTB-MOO-3H-DEB-V-015-01
+    pd-ch08-016 vs R-ATEXTB-MOO-3H-EXA-V-015-02
+    pd-ch08-016 vs R-ATEXTB-MOO-3H-V-015
+    ... and 11 more
+  [sun in house 4]  (14 pair(s))
+    pd-ch08-004 vs R-ATEXTB-SUN-4H-EXA-V-004-02
+    pd-ch08-004 vs R-ATEXTB-SUN-4H-OWN-V-004-03
+    pd-ch08-004 vs R-ATEXTB-SUN-4H-SCO-V-004-01
+    ... and 11 more
+  [ketu in house 5]  (13 pair(s))
+    pd-ch08-103 vs R-ATEXTB-KET-5H-ARI-V-097-01
+    pd-ch08-103 vs R-ATEXTB-KET-5H-CAN-V-097-02
+    pd-ch08-103 vs R-ATEXTB-KET-5H-GEM-V-097-03
+    ... and 10 more
+  [rahu in house 5]  (13 pair(s))
+    pd-ch08-091 vs R-300IMP-RAH-5H-088
+    pd-ch08-091 vs R-ATEXTB-RAH-5H-ARI-V-086-01
+    pd-ch08-091 vs R-ATEXTB-RAH-5H-CAN-V-086-02
+    ... and 10 more
+  [sun in house 12]  (13 pair(s))
+    pd-ch08-012 vs R-ATEXTB-SUN-12H-EXA-V-012-02
+    pd-ch08-012 vs R-ATEXTB-SUN-12H-V-012
+    pd-ch08-012 vs R-ATEXTB-SUN-12H-VIR-V-012-01
+    ... and 10 more
+  [venus in house 12]  (13 pair(s))
+    pd-ch08-073 vs R-ATEXTB-VEN-12H-DEB-V-070-02
+    pd-ch08-073 vs R-ATEXTB-VEN-12H-EXA-V-070-03
+    pd-ch08-073 vs R-ATEXTB-VEN-12H-LIB-V-070-01
+    ... and 10 more
+  [mercury in house 3]  (12 pair(s))
+    pd-ch08-040 vs R-ATEXTB-MER-3H-GEM-V-038-01
+    pd-ch08-040 vs R-ATEXTB-MER-3H-V-038
+    pd-ch08-040 vs R-TBA15-636
+    ... and 9 more
+  [saturn in house 12]  (12 pair(s))
+    pd-ch08-086 vs R-ATEXTB-SAT-12H-EXA-V-081-01
+    pd-ch08-086 vs R-ATEXTB-SAT-12H-V-081
+    pd-ch08-086 vs R-TBA15-1180
+    ... and 9 more
+  [saturn in house 2]  (12 pair(s))
+    pd-ch08-076 vs R-ATEXTB-SAT-2H-V-072
+    pd-ch08-076 vs R-BRIHAT-SAT-2H-257
+    pd-ch08-076 vs R-TBA15-1052
+    ... and 9 more
+  [sun in house 11]  (12 pair(s))
+    pd-ch08-011 vs R-ATEXTB-SUN-11H-089
+    pd-ch08-011 vs R-ATEXTB-SUN-11H-OWN-V-011-02
+    pd-ch08-011 vs R-ATEXTB-SUN-11H-SAG-V-011-01
+    ... and 9 more
+  [venus in house 9]  (12 pair(s))
+    pd-ch08-070 vs R-ATEXTB-VEN-9H-CAP-V-067-01
+    pd-ch08-070 vs R-ATEXTB-VEN-9H-TAU-V-067-02
+    pd-ch08-070 vs R-ATEXTB-VEN-9H-V-067
+    ... and 9 more
+  [ketu in house 6]  (11 pair(s))
+    pd-ch08-104 vs R-ATEXTB-KET-6H-V-098
+    pd-ch08-104 vs R-TBA15-1367
+    pd-ch08-104 vs R-TBA15-1368
+    ... and 8 more
+  [ketu in house 7]  (11 pair(s))
+    pd-ch08-105 vs R-ATEXTB-KET-7H-CAN-V-099-01
+    pd-ch08-105 vs R-ATEXTB-KET-7H-CAP-V-099-02
+    pd-ch08-105 vs R-ATEXTB-KET-7H-SCO-V-099-03
+    ... and 8 more
+  [ketu in house 9]  (11 pair(s))
+    pd-ch08-107 vs R-ATEXTB-KET-9H-GEM-V-101-01
+    pd-ch08-107 vs R-ATEXTB-KET-9H-LIB-V-101-02
+    pd-ch08-107 vs R-ATEXTB-KET-9H-SAG-V-101-03
+    ... and 8 more
+  [venus in house 10]  (11 pair(s))
+    pd-ch08-071 vs R-ATEXTB-VEN-10H-EXA-V-068-01
+    pd-ch08-071 vs R-ATEXTB-VEN-10H-OWN-V-068-02
+    pd-ch08-071 vs R-ATEXTB-VEN-10H-V-068
+    ... and 8 more
+  [venus in house 11]  (11 pair(s))
+    pd-ch08-072 vs R-ATEXTB-VEN-11H-DEB-V-069-02
+    pd-ch08-072 vs R-ATEXTB-VEN-11H-LEO-V-069-01
+    pd-ch08-072 vs R-ATEXTB-VEN-11H-V-069
+    ... and 8 more
+  [jupiter in house 11]  (10 pair(s))
+    pd-ch08-060 vs R-ATEXTB-JUP-11H-CAN-V-057-01
+    pd-ch08-060 vs R-ATEXTB-JUP-11H-DEB-V-057-02
+    pd-ch08-060 vs R-ATEXTB-JUP-11H-V-057
+    ... and 7 more
+  [jupiter in house 8]  (10 pair(s))
+    pd-ch08-057 vs R-TBA15-851
+    pd-ch08-057 vs R-TBA15-852
+    pd-ch08-057 vs R-TBA15-853
+    ... and 7 more
+  [sun in house 3]  (10 pair(s))
+    pd-ch08-003 vs R-ATEXTB-SUN-3H-DEB-V-003-01
+    pd-ch08-003 vs R-ATEXTB-SUN-3H-V-003
+    pd-ch08-003 vs R-BRIHAT-SUN-3H-177
+    ... and 7 more
+  [venus in house 5]  (10 pair(s))
+    pd-ch08-066 vs R-ATEXTB-VEN-5H-CAN-V-063-01
+    pd-ch08-066 vs R-ATEXTB-VEN-5H-DEB-V-063-03
+    pd-ch08-066 vs R-ATEXTB-VEN-5H-V-063
+    ... and 7 more
+  [venus in house 6]  (10 pair(s))
+    pd-ch08-067 vs R-ATEXTB-VEN-6H-DEB-V-064-01
+    pd-ch08-067 vs R-ATEXTB-VEN-6H-ENE-V-064-02
+    pd-ch08-067 vs R-ATEXTB-VEN-6H-EXA-V-064-03
+    ... and 7 more
+  [ketu in house 11]  (9 pair(s))
+    pd-ch08-109 vs R-ATEXTB-KET-11H-GEM-V-103-01
+    pd-ch08-109 vs R-ATEXTB-KET-11H-OWN-V-103-03
+    pd-ch08-109 vs R-ATEXTB-KET-11H-SAG-V-103-02
+    ... and 6 more
+  [mercury in house 12]  (9 pair(s))
+    pd-ch08-049 vs R-ATEXTB-MER-12H-V-047
+    pd-ch08-049 vs R-TBA15-734
+    pd-ch08-049 vs R-TBA15-735
+    ... and 6 more
+  [venus in house 4]  (9 pair(s))
+    pd-ch08-065 vs R-ATEXTB-VEN-4H-V-062
+    pd-ch08-065 vs R-TBA15-934
+    pd-ch08-065 vs R-TBA15-935
+    ... and 6 more
+  [ketu in house 12]  (8 pair(s))
+    pd-ch08-110 vs R-TBA15-1416
+    pd-ch08-110 vs R-TBA15-1417
+    pd-ch08-110 vs R-TBA15-1418
+    ... and 5 more
+  [rahu in house 2]  (8 pair(s))
+    pd-ch08-088 vs R-ATEXTB-RAH-2H-DEB-V-083-02
+    pd-ch08-088 vs R-ATEXTB-RAH-2H-LIB-V-083-01
+    pd-ch08-088 vs R-ATEXTB-RAH-2H-V-083
+    ... and 5 more
+  [rahu in house 8]  (8 pair(s))
+    pd-ch08-094 vs R-ATEXTB-RAH-8H-EXA-V-089-01
+    pd-ch08-094 vs R-ATEXTB-RAH-8H-V-089
+    pd-ch08-094 vs R-TBA15-1265
+    ... and 5 more
+  [rahu in house 9]  (8 pair(s))
+    pd-ch08-095 vs R-ATEXTB-RAH-9H-EXA-V-090-02
+    pd-ch08-095 vs R-ATEXTB-RAH-9H-OWN-V-090-03
+    pd-ch08-095 vs R-ATEXTB-RAH-9H-TAU-V-090-01
+    ... and 5 more
+  [saturn in house 11]  (8 pair(s))
+    pd-ch08-085 vs R-TBA15-1173
+    pd-ch08-085 vs R-TBA15-1174
+    pd-ch08-085 vs R-TBA15-1175
+    ... and 5 more
+  [rahu in house 6]  (7 pair(s))
+    pd-ch08-092 vs R-ATEXTB-RAH-6H-EXA-V-087-01
+    pd-ch08-092 vs R-ATEXTB-RAH-6H-V-087
+    pd-ch08-092 vs R-BRIHAT-RAH-6H-090
+    ... and 4 more
+  [jupiter in house 10]  (6 pair(s))
+    pd-ch08-059 vs R-ATEXTB-JUP-10H-EXA-V-056-01
+    pd-ch08-059 vs R-ATEXTB-JUP-10H-V-056
+    pd-ch08-059 vs R-TBA15-880
+    ... and 3 more
+  [venus in house 3]  (6 pair(s))
+    pd-ch08-064 vs R-ATEXTB-VEN-3H-V-061
+    pd-ch08-064 vs R-TBA15-930
+    pd-ch08-064 vs R-TBA15-931
+    ... and 3 more
+  [rahu in house 12]  (5 pair(s))
+    pd-ch08-098 vs R-ATEXTB-RAH-12H-V-093
+    pd-ch08-098 vs R-TBA15-1296
+    pd-ch08-098 vs R-TBA15-1297
+    ... and 2 more
+  [rahu in house 11]  (3 pair(s))
+    pd-ch08-097 vs R-ATEXTB-RAH-11H-V-092
+    pd-ch08-097 vs R-TBA15-1294
+    pd-ch08-097 vs R-TBA15-1295
+  → No DB patch needed. These are multi-authority complementary results.
+
+  [OK]   pd-ch08-011 → pending_review=True
+  [OK]   pd-ch08-030 → pending_review=True
+  [OK]   pd-ch08-032 → pending_review=True
+  [OK]   pd-ch08-050 → pending_review=True
+  [OK]   pd-ch08-056 → pending_review=True
+  [OK]   pd-ch08-060 → pending_review=True
+  [OK]   pd-ch13-022 → pending_review=True
+
+Patch complete: 7 patched / 0 skipped / 0 errors
+
+Final DB state for batch phaladeepika-v1-20260601:
+  auto_approved: 825
+  pending_human_review: 393
+  pending_review: 0
+  flagged: 0
+  pending_review=True (flag):  7

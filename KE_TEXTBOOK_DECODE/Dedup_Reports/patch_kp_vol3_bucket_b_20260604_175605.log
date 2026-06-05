@@ -1,0 +1,25 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_kp_vol3_bucket_b_20260604_175605.log
+KP VOL 3 — BUCKET B TRIAGE PATCH (29 flagged rules)
+======================================================================
+
+Group 1 — engine_specification (6 rules): methodology/framework rules
+  Patched: 6/6
+
+Group 2 — kp_significator (14 rules): contradiction pairs + AI uncertainty
+  Patched: 14/14
+
+Group 3 — kp_sub_lord (6 rules): complex/unusual domain rules
+  Patched: 6/6
+
+Group 4 — other types (planet_in_house × 2, kp_badhaka × 1)
+  Patched: 3/3
+
+──────────────────────────────────────────────────
+TOTAL patched: 29/29
+
+Final batch counts:
+  auto_approved                  158
+  pending_human_review           98
+  flagged                        0
+  pending_review                 0

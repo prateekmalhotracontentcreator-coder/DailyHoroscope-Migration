@@ -1,0 +1,365 @@
+[
+  {
+    "rule_id": "bphs1-ch03-044",
+    "chapter": "",
+    "summary": "Sun's dignities in Leo: First 20 degrees of Leo are Moolatrikona; the remaining 10 degrees (20°-30°) are own house (Swakshetra). Sun's other own sign is Cancer (ruled exclusively as Swakshetra, no MT).",
+    "detailed": "Sun: Moolatrikona = Leo 0°-20°. Swakshetra (own sign) = Leo 20°-30°. Note: Sun's second own sign Cancer is treated as plain Swakshetra.",
+    "flag_reason": "Sun does not own Cancer in classical BPHS; Sun owns only Leo. The statement 'Sun's other own sign is Cancer' is incorrect and contradicts Parasara's teachings.",
+    "condition": {
+      "type": "engine_specification",
+      "subject": "Sun",
+      "description": "Sun's Moolatrikona and Swakshetra (own sign) degree ranges"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch04-020",
+    "chapter": "",
+    "summary": "Nocturnal and diurnal signs: Aries, Taurus, Gemini, Cancer, Sagittarius and Capricorn are nocturnal (Ratri-bala) signs — strong during nighttime. Leo, Virgo, Libra, Scorpio, Aquarius and Pisces are diurnal (Dina-bala) signs — strong during daytime. (From translator's notes in context of Nisheka Lagna.)",
+    "detailed": "Nocturnal (night-strong) signs: Aries, Taurus, Gemini, Cancer, Sagittarius, Capricorn. Diurnal (day-strong) signs: Leo, Virgo, Libra, Scorpio, Aquarius, Pisces. Used for Nisheka Lagna: Adhana Lagna in nocturnal sign → birth in diurnal sign, and vice versa.",
+    "flag_reason": "Contradicts rule bphs1-ch04-019: assigns Gemini and Cancer to nocturnal but rule 019 assigns them to Shirshodaya (day-strong); internal inconsistency in extracted rules.",
+    "condition": {
+      "type": "engine_specification",
+      "subject": "zodiac_signs",
+      "description": "Day/night strength classification of signs for use in Nisheka Lagna and chart rectification"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch26-004",
+    "chapter": "",
+    "summary": "Deduct the longitude of the aspected planet (or house) from that of the aspecting planet. If the sum exceeds six signs (or 180 deg) deduct the sum again from 10 signs (or 300 deg). Convert the latest",
+    "detailed": "Drishti Kona (aspectual angle) computation: Step 1: subtract longitude of aspected body from longitude of aspecting planet. Step 2: if result > 180°, subtract result from 300°. Step 3: convert to degrees and divide by 2. Result = Drishti Kona. If the difference (before step 2) is in excess of 5 signs (150°), ignore signs and multiply remaining degrees by 2 = Drishti value.",
+    "flag_reason": "Summary is truncated ('Convert the latest' incomplete); detailed description contains conflicting formulas (step 2 says subtract from 300°, but step 3 mentions 5 signs/150° threshold with different logic). Requires clarification.",
+    "condition": {
+      "type": "engine_specification"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch26-005",
+    "chapter": "",
+    "summary": "The longitude of the aspected is to be deducted from that of the aspector. If the longitude of the aspected is lesser than that of the aspector, increase the longitude of the aspected by 360 to facili",
+    "detailed": "Drishti angle computation clarification: (1) aspectual angle = aspector longitude − aspected longitude; (2) if aspected longitude < aspector longitude, add 360° to aspected before subtracting; (3) the resulting angle ranges from 0° to 360°; (4) if the angle is between 300° and 30° (i.e., within 30° of the aspected, going forward), there is NO aspect (Drishti value = 0).",
+    "flag_reason": "Summary is truncated ('facili' incomplete); detailed text contradicts rule bphs1-ch26-004 on angle computation and introduces a 300°-30° no-aspect zone that conflicts with standard Drishti formulas in subsequent rules.",
+    "condition": {
+      "type": "engine_specification"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch26-017",
+    "chapter": "",
+    "summary": "Mars special aspect formula: deduct longitude of Mars from aspected planet. If sum is 3 Rasis or 7 Rasis, degrees (ignoring Rasis) be reduced from 60. If above 2 Rasis, degrees be increased by half (a",
+    "detailed": "Mars detailed aspect formula (sloka 11): (a) if angular difference = 3 signs (90°) or 7 signs (210°): 60 - degrees (ignoring signs) = Drishti value; (b) if angular difference > 2 signs (60°): degrees × 1.5 + 15 = Drishti value; (c) if angular difference = 6 signs (180°): 60 Virupas (1 Rupa, full aspect). Engine should use simplified Addition A (rule 013) for implementation.",
+    "flag_reason": "Summary is truncated ('a' incomplete); detailed text contains multiple conflicting formulas (60-degrees, degrees×1.5+15, etc.) and references 'simplified Addition A' which is not defined. Requires reconstruction.",
+    "condition": {
+      "field": "planet",
+      "value": "mars"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch26-018",
+    "chapter": "",
+    "summary": "Jupiter special aspect formula: deduct longitude of Jupiter from aspected planet. If sum is 3 Rasis or 7 Rasis, halve degrees (ignoring Rasis) and increase by 45. If sum is 4 Rasis or 8 Rasis, degrees",
+    "detailed": "Jupiter detailed aspect formula (sloka 12): (a) if angular difference = 3 signs (90°) or 7 signs (210°): (degrees / 2) + 45 = Drishti value; (b) if angular difference = 4 signs (120°) or 8 signs (240°): 60 - degrees = Drishti value; (c) otherwise: standard formula. Engine should use simplified Addition B (rule 014) for implementation.",
+    "flag_reason": "Summary is truncated ('degrees' incomplete); detailed text lists multiple sub-formulas with inconsistent logic and references 'simplified Addition B' which is undefined. Requires clarification.",
+    "condition": {
+      "field": "planet",
+      "value": "jupiter"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch30-026",
+    "chapter": "",
+    "summary": "Rescue condition — benefic aspect/conjunction removes all wife health disorder combinations",
+    "detailed": "All wife health disorder combinations stated for the 2nd from Upa Pada (rules 017-025) will NOT come to pass if there is conjunction with or aspect from a benefic on the afflicting planets or on the 2nd from Upa Pada itself. Even if the affliction is caused by a benefic planet (like Jupiter in rule 023), another distinct benefic aspect/conjunction can counteract the evil.",
+    "flag_reason": "The statement 'even if the affliction is caused by a benefic planet (like Jupiter in rule 023), another distinct benefic aspect/conjunction can counteract' contradicts classical Vedic logic where a benefic in its own nature cannot be 'afflicting' and does not require cancellation by another benefic.",
+    "condition": {
+      "type": "engine_specification",
+      "field": "rescue_condition",
+      "value": "benefic_cancels_wife_health_evils"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch32-003",
+    "chapter": "",
+    "summary": "When both degrees and minutes are identical, the planet with higher seconds of arc is Atmakaraka. When three planets are exactly equal, the three are designated Anthyakaraka, Madhyakaraka, and Upakheta respectively.",
+    "detailed": "If the minutes of arc are also identical between two planets, the one with higher seconds of arc is Atmakaraka. In the case where three planets are tied at the same degree, minute, and second, these three are called Anthyakaraka, Madhyakaraka, and Upakheta respectively — a special designation for a rare triple tie.",
+    "flag_reason": "The terminology 'Anthyakaraka, Madhyakaraka, and Upakhet' for a triple tie is non-standard and not found in classical BPHS texts; the rule conflates tiebreaker logic with non-existent special designations.",
+    "condition": {
+      "type": "engine_specification",
+      "planet": null,
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch32-004",
+    "chapter": "",
+    "summary": "For Rahu, the longitude used in Chara Karaka ranking is obtained by deducting its actual position within the sign from 30 degrees — because Rahu moves retrograde and its effective longitude must be counted from the sign's end.",
+    "detailed": "In the case of Rahu, deduct his longitude in that particular sign from 30 degrees to obtain the effective longitude for Chara Karaka ranking purposes. Because Rahu is always retrograde, it traverses a sign from the end backward; therefore, a Rahu at 8 degrees in a sign has effectively traversed 22 degrees (30 - 8 = 22) and is ranked accordingly among the eight Chara Karakas.",
+    "flag_reason": "The rule is incomplete (summary cuts off mid-sentence with 'must be co') and the retrograde longitude adjustment for Rahu in Chara Karaka ranking is not a standard BPHS procedure; this appears to be a misinterpretation or non-classical addition.",
+    "condition": {
+      "type": "engine_specification",
+      "planet": "rahu",
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch32-011",
+    "chapter": "",
+    "summary": "For the father relationship, the Sthira (constant) Karaka is whichever is stronger between the Sun and Venus in the natal chart.",
+    "detailed": "Among the constant significators, the stronger of the Sun and Venus indicates the father. If the Sun is stronger, it acts as the karaka for father; if Venus is stronger, Venus takes on this role. This Sthira Karaka assessment supplements (and in Karaka-deficit cases, replaces) the Chara Karaka for the father-relationship judgement.",
+    "flag_reason": "The rule states the stronger of Sun and Venus indicates father, but classical BPHS assigns Sun as the constant significator for father; Venus is not a co-significator for father in standard texts.",
+    "condition": {
+      "type": "engine_specification",
+      "planet": null,
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch32-012",
+    "chapter": "",
+    "summary": "For the mother relationship, the Sthira Karaka is whichever is stronger between the Moon and Mars in the natal chart.",
+    "detailed": "Among the constant significators, the stronger of the Moon and Mars indicates the mother. If the Moon is stronger, it acts as the karaka for mother; if Mars is stronger, Mars takes on this role for mother-relationship judgements.",
+    "flag_reason": "The rule states the stronger of Moon and Mars indicates mother, but classical BPHS assigns Moon as the constant significator for mother; Mars is not a co-significator for mother in standard texts.",
+    "condition": {
+      "type": "engine_specification",
+      "planet": null,
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch32-018",
+    "chapter": "",
+    "summary": "Ketu is the constant significator for a broad set of relationships: wife, father, mother, parents-in-law, and maternal grandfather.",
+    "detailed": "From Ketu one notes wife, father, mother, parents-in-law and maternal grandfather as constant significators. Ketu's wide karaka scope covers multiple relationship domains — it is a secondary or supplementary significator for several relationships that other planets primarily govern (e.g., Sun for father, Moon for mother), adding a karmic or past-life dimension to these relationships.",
+    "flag_reason": "Ketu as constant significator for wife, father, mother, parents-in-law, and maternal grandfather is overly broad and not supported by classical BPHS; Ketu's karaka scope is much narrower (typically moksha, spiritual matters, and past-life karma).",
+    "condition": {
+      "type": "engine_specification",
+      "planet": "ketu",
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch32-033",
+    "chapter": "",
+    "summary": "Jupiter is the natural karaka for the 2nd house, representing family, accumulated wealth, and the wife.",
+    "detailed": "The second house denotes wife, family, and finance, and its significator is Jupiter. Jupiter's condition reflects the native's family happiness, accumulated wealth (Dhana), and the quality of domestic life.",
+    "flag_reason": "Jupiter as Bhava Karaka for 2nd house is correct, but the summary incorrectly lists 'wife' as a 2nd house signification. Wife is 7th house; 2nd house signifies family, wealth, and speech. The detailed text compounds this by repeating 'wife' in the context of 2nd house.",
+    "condition": {
+      "type": "engine_specification",
+      "planet": "jupiter",
+      "house": 2,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch32-041",
+    "chapter": "",
+    "summary": "Mercury is the natural karaka for the 10th house, representing honour, profession, trade, and the native's public standing.",
+    "detailed": "The tenth house denotes honour, and its significator is Mercury. Mercury's condition reflects the native's professional reputation, intellectual standing, and capacity to achieve distinction in their chosen career or public role.",
+    "flag_reason": "Mercury as Bhava Karaka for 10th house is non-standard in classical BPHS. The 10th house Karaka is typically the Sun (authority, career, father) or Saturn (profession, work). Mercury may govern communication/intellect aspects but is not the primary 10th house significator.",
+    "condition": {
+      "type": "engine_specification",
+      "planet": "mercury",
+      "house": 10,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch33-035",
+    "chapter": "",
+    "summary": "When Rahu and the Sun are in Karakamsa, placed in a malefic's sign, and Jupiter aspects this combination, the native will burn a neighbouring house.",
+    "detailed": "If Rahu and the Sun be in Karakamsa and be in a malefic's sign in aspect to Jupiter, one will burn a neighbouring house. The combination of Rahu-Sun in a malefic's sign (owned by Saturn, Mars, or Rahu/Ketu) with Jupiter's expansive aspect creates a specific arson outcome — directed at a neighbour's property rather than one's own.",
+    "flag_reason": "The outcome 'burn a neighbouring house' is extreme and specific; classical BPHS texts do not typically prescribe such literal destructive acts. The interpretation conflates Rahu-Sun malefic energy with arson, which lacks textual support.",
+    "condition": {
+      "type": "yoga_combination",
+      "planet": "rahu",
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": "in_malefic_sign",
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false,
+      "co_planet": "sun",
+      "aspect_modifier": "jupiter_aspect_on_combination",
+      "notes": "Rahu+Sun in Karakamsa in a malefic's sign with Jupiter aspect"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch33-038",
+    "chapter": "",
+    "summary": "When Gulika is in the Karakamsa and is unaspected by any other planet, the native will either administer poison to others or will die from poisoning himself.",
+    "detailed": "If Gulika is in Karakamsa but is unaspected by others, one will administer poison to others or will himself die of poisoning. Gulika's inherent poison nature, when unchecked by any planetary aspect (even malefic ones), expresses itself in its most unmediated form: either the native poisons others or is himself poisoned — with fatal or near-fatal consequences. Mercury's aspect alone modifies this, per the next rule.",
+    "flag_reason": "The outcome 'administer poison or die from poisoning' is extreme and literal. While Gulika is associated with poison in classical texts, assigning fatal poisoning outcomes to an unaspected Gulika placement lacks clear textual precedent in BPHS.",
+    "condition": {
+      "type": "planet_in_house",
+      "planet": "gulika",
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": "unaspected",
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false,
+      "notes": "Gulika in Karakamsa with no planetary aspects"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch33-039",
+    "chapter": "",
+    "summary": "When Gulika is in the Karakamsa and Mercury aspects Gulika, the native will have abnormally large testicles (physical anomaly).",
+    "detailed": "Mercury's aspect in this context (Gulika in Karakamsa) will give large testicles. Mercury as karaka of the nervous system and subtle body pathways, when aspecting the upagraha Gulika, redirects the Gulika energy away from poison/theft (rules 037-038) into an unusual physical manifestation — enlarged reproductive glands. This is a body-level expression of Gulika's Saturnian heaviness.",
+    "flag_reason": "The outcome 'abnormally large testicles' is anatomically specific and crude. This interpretation appears fabricated or misattributed; classical BPHS does not contain such explicit physical anomaly predictions tied to Mercury-Gulika aspects.",
+    "condition": {
+      "type": "yoga_combination",
+      "planet": "gulika",
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false,
+      "aspect_modifier": "mercury_aspect_on_gulika",
+      "notes": "Gulika in Karakamsa, Mercury aspects Gulika"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch33-043",
+    "chapter": "",
+    "summary": "When Ketu is in the Karakamsa and both Mercury and Venus aspect Ketu, the native will be the son of a female slave or of a woman who has remarried.",
+    "detailed": "With Mercury and Venus aspecting Ketu in Karakamsa, he will be the son of a female slave or of a female remarried. This rule speaks to birth lineage and social status at origin. Mercury's duality and Venus's sensual nature combined with Ketu (past-karma, ambiguous origins) in the Karakamsa indicates a birth circumstance where the mother was socially disadvantaged (enslaved or remarried, thus of uncertain lineage). This may affect the native's social standing and self-identity.",
+    "flag_reason": "The outcome 'son of a female slave or remarried woman' is socially specific and appears to conflate Mercury-Venus-Ketu significations with birth lineage in a way that lacks clear classical textual support. The interpretation is incoherent.",
+    "condition": {
+      "type": "yoga_combination",
+      "planet": "ketu",
+      "house": null,
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false,
+      "aspect_modifier": "mercury_and_venus_aspect_on_ketu",
+      "notes": "Ketu in Karakamsa with Mercury AND Venus both aspecting"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch33-049",
+    "chapter": "",
+    "summary": "When Jupiter is in the 2nd from Karakamsa (in a division of Venus or Mars), the native WILL have the adultery addiction — Jupiter's presence here causes this evil rather than preventing it.",
+    "detailed": "The position of Jupiter (in the 2nd from Karakamsa in a Venus/Mars division) will cause such an evil. Unexpectedly, Jupiter's placement here produces the undesirable outcome of addiction to others' wives. Jupiter's expansive nature in a sensually charged position (Venus/Mars division) at the 2nd from Karakamsa amplifies the desire rather than restraining it — this is a counter-intuitive result that highlights Jupiter's dual role as an expansive principle.",
+    "flag_reason": "Jupiter in 2nd from Karakamsa in Venus/Mars division causing adultery is counter-intuitive and contradicts Jupiter's classical role as a benefic restrainer. The claim that Jupiter 'amplifies desire rather than restraining it' lacks clear textual support.",
+    "condition": {
+      "type": "planet_in_house",
+      "planet": "jupiter",
+      "house": "2nd_from_karakamsa",
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": "in_venus_or_mars_division",
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false,
+      "notes": "Jupiter in 2nd from Karakamsa in Venus or Mars division — causes adultery inclination"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch33-079",
+    "chapter": "",
+    "summary": "When the Sun is in the Karakamsa or the 5th house from it, the native will be a musician.",
+    "detailed": "The Sun in this context (Karakamsa or 5th therefrom) denotes a musician. The Sun governs sound (Nada Brahman), rhythm, and creative arts tied to the divine. In the 5th from Karakamsa, the Sun manifests its creative artistry through music — the native becomes skilled in musical performance, composition, or theory. The Sun's brightness and resonance find expression in the harmonic arts.",
+    "flag_reason": "The Sun as karaka of music is not a standard BPHS doctrine; the Sun typically governs authority, power, and soul, not musical arts. Mercury or Venus are the classical karakas for music. This interpretation appears fabricated or conflated with other traditions.",
+    "condition": {
+      "type": "planet_in_house",
+      "planet": "sun",
+      "house": "karakamsa_or_5th_therefrom",
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false,
+      "notes": "Sun in Karakamsa OR in 5th from Karakamsa"
+    },
+    "tags": []
+  },
+  {
+    "rule_id": "bphs1-ch33-098",
+    "chapter": "",
+    "summary": "When both Jupiter and the Sun are related to (aspect or occupy) the 9th from the Karakamsa, the native will betray his elders and be disobedient to them.",
+    "detailed": "If Jupiter and the Sun are so related as above (9th from Karakamsa), one will betray his elders and will be disobedient to them. Jupiter (expansion) and the Sun (ego, authority) together in the 9th from Karakamsa create an inflated sense of personal authority — the native believes himself superior to his teachers and elders, leading to disobedience and betrayal of those who guided him. This is a counter-intuitive result where two individually positive planets create negative character traits through their combined influence.",
+    "flag_reason": "Jupiter and Sun together in 9th from Karakamsa should produce spiritual authority and dharmic leadership, not betrayal of elders; this contradicts classical Jupiter-Sun synergy which elevates dharma.",
+    "condition": {
+      "type": "yoga_combination",
+      "planet": "jupiter",
+      "house": "9th_from_karakamsa",
+      "sign": null,
+      "nakshatra": null,
+      "strength_requirement": null,
+      "dasha_lord": null,
+      "antardasha_planet": null,
+      "applies_to_all_dasha_lords": false,
+      "co_planet": "sun",
+      "notes": "Jupiter and Sun both related (aspect or conjunction) to 9th from Karakamsa"
+    },
+    "tags": []
+  }
+]

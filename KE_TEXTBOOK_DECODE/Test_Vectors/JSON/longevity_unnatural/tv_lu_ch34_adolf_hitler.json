@@ -1,0 +1,222 @@
+{
+  "vector_id": "tv-lu-ch34",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch34_Adolf_Hitler",
+  "pdf_path": "Chapter_Splits/Ch34_Adolf_Hitler.pdf",
+  "subject": {
+    "name": "Adolf Hitler",
+    "description": "Leader of Nazi Germany",
+    "nationality": "German"
+  },
+  "birth_data": {
+    "date": "1889-04-20",
+    "time_local": "18:30:00",
+    "timezone_offset_hours": 0.8666666666666667,
+    "time_utc": "1889-04-20T17:38:00Z",
+    "latitude": 48.25,
+    "longitude": 13.0333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-12-52.36",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 4.4667,
+      "house": 1,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 8.6,
+      "house": 7,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "significations": [
+        11,
+        7,
+        3,
+        "Ke"
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 14.4167,
+      "house": 3,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "significations": [
+        10,
+        3,
+        7,
+        1,
+        8
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 24.1667,
+      "house": 7,
+      "nakshatra": "·Bhar",
+      "pada": 4,
+      "significations": [
+        2,
+        7,
+        8,
+        1
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 3.4667,
+      "house": 7,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "significations": [
+        9,
+        12,
+        "Ke",
+        3,
+        7
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 16.0333,
+      "house": 3,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "significations": [
+        3,
+        6,
+        1,
+        8,
+        7
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 24.4833,
+      "house": 7,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "significations": [
+        1,
+        8,
+        7
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 21.25,
+      "house": 10,
+      "nakshatra": "Asre",
+      "pada": 2,
+      "significations": [
+        4,
+        5,
+        9112,
+        10,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 23.8333,
+      "house": 9,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        9,
+        "Me",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 23.8333,
+      "house": 3,
+      "nakshatra": "PSha",
+      "pada": 4,
+      "significations": [
+        3,
+        "Ju",
+        "Ve",
+        "Mo"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "over 30 million people",
+    "death_type": "unknown",
+    "death_date": "1889-04-20",
+    "age_at_death": 56,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "SUN",
+      "pratyantardasha": "MOON",
+      "sookshma": "KETU",
+      "stated_by_author": true,
+      "raw_text": "Rahu Sun-Moon-Ketu. Suicide is definitely un-natural death and is a self inflicted destruction. It could be treated as a"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Antara lord Moon is in Venus star and signifies 01, 07, 08 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "longevity of Madhya aayu of 33-66 years.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Madhya aayu of 33-66 years.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

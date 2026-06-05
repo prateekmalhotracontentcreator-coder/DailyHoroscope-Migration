@@ -1,0 +1,297 @@
+{
+  "vector_id": "tv-300h2-ch011",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch011_10_JD_Tippit",
+  "pdf_path": "Chapters/Ch011_10_JD_Tippit.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Dallas Police Officer--J.D. Tippit",
+    "description": "J.D. Tippit was a Police Officer with the Dallas Police, Texas State, USA. On the fateful day he went in pursuit of the assassin of President John F Kennedy, but was killed by the alleged assassin, Lee Oswald. Place: Dal",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "17:07:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Krithika",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aquarius",
+    "lagna_degree_stated": 4.427,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 3.026,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        7,
+        8
+      ],
+      "significations_raw": "07,08"
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 9.152,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        6,
+        4,
+        7,
+        8
+      ],
+      "significations_raw": "06,04,07,08"
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 2.702,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        3,
+        1,
+        10
+      ],
+      "significations_raw": "03,01,10"
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 20.272,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        5,
+        8,
+        7,
+        4,
+        9,
+        6
+      ],
+      "significations_raw": "05,08,07,04,09,06"
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 20.043,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        11
+      ],
+      "significations_raw": "02,11"
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 17.295,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6,
+        4,
+        10,
+        7,
+        8,
+        9
+      ],
+      "significations_raw": "06,04, 10,07,08,09"
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 7.827,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        9,
+        12
+      ],
+      "significations_raw": "01,09,12,Ra"
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 28.435,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Me,Ve,Mo,Ju"
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Cancer",
+      "degree": 27.8
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": "Violent death",
+    "death_type": "violent",
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is in 10, while Mars is lord of 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun, Government, is in own star, and Mars too is in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Moon is in star of Sun and aspects Jupiter in 10.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "These have made native famous.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars (10) in 01 in own star indicates single and independent actions in job.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Lagna lord Saturn is in badhaka, while badhaka Venus is in 081h lord Mercury star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mercury signifies 07, 08 and 09 denoting maraca, aayu and badhaka.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "These have reduced longevity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

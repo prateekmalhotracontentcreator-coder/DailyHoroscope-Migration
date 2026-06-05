@@ -1,0 +1,246 @@
+{
+  "vector_id": "tv-lu-ch57",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch57_Alexei_Nikolaevich",
+  "pdf_path": "Chapter_Splits/Ch57_Alexei_Nikolaevich.pdf",
+  "subject": {
+    "name": "Alexei Nikolaevich",
+    "description": "Tsarevich of Russia, son of Nicholas II",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1904-08-12",
+    "time_local": "13:15:00",
+    "timezone_offset_hours": 5.0,
+    "time_utc": "1904-08-12T08:15:00Z",
+    "latitude": 59.8833,
+    "longitude": 29.9,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-25-41.87",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 22.5,
+      "house": 1,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": [
+        "Mon"
+      ]
+    },
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 26.7333,
+      "house": 11,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "significations": [
+        "Mer",
+        12,
+        11,
+        10,
+        1
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 5.7667,
+      "house": 11,
+      "nakshatra": "Push",
+      "pada": 1,
+      "significations": [
+        "Sat",
+        3,
+        8,
+        5,
+        6,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 22.8833,
+      "house": 12,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "significations": [
+        "Ven",
+        10,
+        1,
+        12,
+        2,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 7.6833,
+      "house": 8,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "significations": [
+        "Ket",
+        4,
+        7,
+        8,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 6.4167,
+      "house": 12,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "significations": [
+        "Ket",
+        2,
+        9,
+        12,
+        "Ke"
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 27.5333,
+      "house": 12,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "significations": [
+        "Sun",
+        "Me",
+        "Mo",
+        "Ve",
+        "Sun",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 27.5333,
+      "house": 6,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "significations": [
+        "Jup",
+        "Sa",
+        "Me",
+        "Ve",
+        "Mo",
+        "Ju",
+        "Ma"
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 5.45,
+      "house": 2,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "significations": [
+        "Mars"
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 22.1833,
+      "house": 11,
+      "nakshatra": "Asre",
+      "pada": 2,
+      "significations": [
+        "Mercury"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed by Government",
+    "death_type": "violent",
+    "death_date": "1904-08-12",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Venus-Jupiter-Mercury-Rahu. Dasha lord Venus signifies Q2nd house (maraca) and 06 (injury) house through Ketu . . · Bhuk"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Venus signifies Q2nd house (maraca) and 06 (injury) house through Ketu .",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Jupiter is maraca and badhaka and occupant of Q8th house (longevity, accidents, etc.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Mercury is lord of 01 (lagna or body).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sookshma lord Rahu signifies Jupiter (07,08), Mercury (01,02), Venus (06,02), Sun (12,01,10,11) houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "lagna lord Mercury, Venus, Moon and Rahu, who will therefore become weak to offer longevity.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0157",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0157",
+  "source_file": "0157_D-12_Ms_Oeepika_Singhal-law_grad.pdf",
+  "subject": {
+    "name": "Ms Oeepika, Singhal",
+    "name_from_filename": "Ms Oeepika, Singhal-law grad",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "law grad",
+    "profession_category": "Judiciary_Law",
+    "profession_subcategory": "law grad",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1985-09-30",
+    "time_local": "09:39",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1985-09-30T04:09:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 4,
+    "months": 10,
+    "days": 4,
+    "raw_text": "Balance of dasha Mer 4-10-4"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 26.2,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 16.1833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 19.0833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 15.7167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 26.9333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 19.05,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 26.9333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "law grad",
+    "profession_category": "Judiciary_Law",
+    "profession_subcategory": "law grad",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

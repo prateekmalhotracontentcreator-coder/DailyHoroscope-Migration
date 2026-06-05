@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0207",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0207",
+  "source_file": "0207_F-16_Fox_Michael_J-Hollywood.pdf",
+  "subject": {
+    "name": "Fox, Michael, J-Hollywood",
+    "name_from_filename": "Fox, Michael, J-Hollywood",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Director",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1961-06-09",
+    "time_local": "00:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1961-06-09T18:45:00Z",
+    "latitude": 54.5,
+    "longitude": -113.5,
+    "place": "113W30 & 54N30",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 2,
+    "months": 7,
+    "days": 0,
+    "raw_text": "Balance of dasha Ket 2-7-0"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 8.4167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 9.6833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 6.9,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 11.7333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 5.8,
+      "retrograde": true
+    },
+    "JUPITER": {
+      "degree_in_sign": 6.9,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 11.7333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Director",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

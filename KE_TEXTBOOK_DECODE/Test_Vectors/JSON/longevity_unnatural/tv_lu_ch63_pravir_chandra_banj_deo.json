@@ -1,0 +1,296 @@
+{
+  "vector_id": "tv-lu-ch63",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch63_Pravir_Chandra_Banj_Deo",
+  "pdf_path": "Chapter_Splits/Ch63_Pravir_Chandra_Banj_Deo.pdf",
+  "subject": {
+    "name": "Pravir Chandra Banj Deo",
+    "description": "King of Bastar",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "14:50:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 19.25,
+    "longitude": 81.6667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-46-31.98",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Capricorn",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 18.85,
+      "house": 1,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 10.5333,
+      "house": 9,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "significations": [
+        11,
+        9,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 15.6667,
+      "house": 4,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "significations": [
+        10,
+        4
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 1.85,
+      "house": 11,
+      "nakshatra": "Magh",
+      "pada": 1,
+      "significations": [
+        1,
+        2,
+        7,
+        8,
+        11,
+        "Ke"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 21.7167,
+      "house": 8,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        9,
+        12,
+        4,
+        8
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 10.1,
+      "house": 8,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "significations": [
+        3,
+        6,
+        4,
+        8,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 24.9333,
+      "house": 7,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "significations": [
+        1,
+        8,
+        7
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 3.9667,
+      "house": 3,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        3,
+        4,
+        5,
+        "Ke"
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 26.2,
+      "house": 7,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "significations": [
+        "Ve",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 26.2,
+      "house": 1,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "significations": [
+        "Ve",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon",
+    "death_type": "violent",
+    "death_date": "1929-06-25",
+    "age_at_death": 36,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "RAHU",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "Jupiter-Mercury-Rahu in his in his 36th year. Dasha lord Jupiter signifies 06, 08, 10 houses denoting injury & enemy, lo"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord and lord Venus, who denotes body and longevity is posited in maraca house, but is in own star.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Venus is conjqined with Rahu, who will give the result of Venus and Mars. Mars is marac and occupant of badhaka house. 264 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Ketu is occupant of Libra (lagna)\"in lagna and is in the star of Jupite~. Hence Ketu will give the result of Jupiter and Venus.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter being lord of 06 (injury and enemy) is posited in the star of Moon in Taurus, which is 08th house (longevity).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "So Ketu signifies 01,06,'07,08 houses which are houses of body, injury & enemy, maraca, longevity & accidents respectively.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Mars is lord of 02, 07 (both maraca) and is posited in 11th house (badhaka). It is further posited in the star of Ketu (Makha) in Leo while Ketu signifies 01,06,07,08. Hence Mars will· follow all these significations and thus has become extremely strong in inflicting injury, and taking away life by way of gun shot.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Saturn and Mars are in Ketu star, and they offer result given by Ketu. Hence the chart is vulnerable to injury and death by weapon. The King was killed on 25 March 1966 during the VMD of Jupiter-Mercury-Rahu in his in his 36th year. Dasha lord Jupiter signifies 06, 08, 10 houses denoting injury & enemy, longevity & accidents and profession respectively. Bhukti lord Mercury signifies Q8, 09 and 10 houses denoting longevity & accidents, kingdom and profession respectively. Antara lord Rahu signifies 01, 07, 08 houses which are houses of body, maraca, longevity & accidents respectively. Therefore",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Dasha lord Jupiter signifies 06, 08, 10 houses denoting injury & enemy, longevity & accidents and profession respectively.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Bhukti lord Mercury signifies Q8, 09 and 10 houses denoting longevity & accidents, kingdom and profession respectively.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Antara lord Rahu signifies 01, 07, 08 houses which are houses of body, maraca, longevity & accidents respectively.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "longevity is posited in maraca house, but is in own star.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "injury, enmity and death thereof by weapon is justified.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

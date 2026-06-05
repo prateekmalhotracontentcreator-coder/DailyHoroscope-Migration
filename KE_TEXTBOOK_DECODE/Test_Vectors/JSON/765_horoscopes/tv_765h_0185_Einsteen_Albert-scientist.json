@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0185",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0185",
+  "source_file": "0185_E-4_Einsteen_Albert-scientist.pdf",
+  "subject": {
+    "name": "Einsteen, Albert",
+    "name_from_filename": "Einsteen, Albert-scientist",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "scientist",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Scientist",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1879-03-14",
+    "time_local": "11:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1879-03-14T06:00:00Z",
+    "latitude": 52.4,
+    "longitude": 10.8667,
+    "place": "10E52 & 52N24",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 9,
+    "months": 9,
+    "days": 1,
+    "raw_text": "Balance of dasha Mer 9-9-1"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 1.5,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 10.9833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 12.0167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 24.8167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 5.3167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 4.75,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 9.35,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 22.35,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "scientist",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Scientist",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

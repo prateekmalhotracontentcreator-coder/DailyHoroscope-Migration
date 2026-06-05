@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0220",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0220",
+  "source_file": "0220_G-13_Garg_Brig_Anil_Arty.pdf",
+  "subject": {
+    "name": "Garg, Brig Anil, Arty",
+    "name_from_filename": "Garg, Brig Anil, Arty",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1953-11-03",
+    "time_local": "03:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1953-11-03T22:15:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Kota",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 2,
+    "months": 3,
+    "days": 0,
+    "raw_text": "Balance of dasha Sun 2-3-0"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 2.6667,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 4.5,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 4.5,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 8.15,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 7.6167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 16.9833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 8.1333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 25.7667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 8.1333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

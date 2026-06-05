@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0706",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0706",
+  "source_file": "0706_T-35_Twin_brothers-.pdf",
+  "subject": {
+    "name": "Twin brothers-",
+    "name_from_filename": "Twin brothers-",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Doctor",
+    "profession_compound": false,
+    "profession_secondary": "Royalty_Nobility",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1957-01-18",
+    "time_local": "08:35",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1957-01-18T03:05:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Udhampur (J & K)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 6,
+    "months": 1,
+    "days": 6,
+    "raw_text": "Balance dasha Ket6-1-6"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 0.4333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 17.8667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 4.5333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 13.35,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 3.7,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 18.4833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 17.7667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 17.8667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Doctor",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

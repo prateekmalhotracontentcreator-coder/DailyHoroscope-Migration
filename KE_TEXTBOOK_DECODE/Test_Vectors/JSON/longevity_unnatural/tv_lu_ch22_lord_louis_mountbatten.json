@@ -1,0 +1,233 @@
+{
+  "vector_id": "tv-lu-ch22",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch22_Lord_Louis_Mountbatten",
+  "pdf_path": "Chapter_Splits/Ch22_Lord_Louis_Mountbatten.pdf",
+  "subject": {
+    "name": "Lord Louis Mountbatten",
+    "description": "Last Viceroy of India, British Royalty",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": "1900-06-25",
+    "time_local": "06:00:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1900-06-25T05:00:00Z",
+    "latitude": 51.4839,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-22-14.18",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 24.6,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        "---"
+      ]
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 10.7833,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "significations": [
+        1,
+        3,
+        6,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 17.8833,
+      "house": 12,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        2,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 6.0667,
+      "house": 12,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        11,
+        6,
+        12,
+        1,
+        3
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 10.3167,
+      "house": 6,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 0.2667,
+      "house": 2,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "significations": [
+        5,
+        12,
+        6,
+        7,
+        10,
+        2
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 9.25,
+      "house": 7,
+      "nakshatra": "I",
+      "pada": 3,
+      "significations": [
+        7,
+        8,
+        9,
+        11,
+        "Ke"
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 17.5,
+      "house": 6,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        6,
+        "Ju",
+        "Ma",
+        "Me",
+        "Mo"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 17.5,
+      "house": 12,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        12,
+        "Mo",
+        "Ju",
+        "Ve",
+        "Ma"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 24.9667,
+      "house": 2,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "significations": [
+        "Mercury"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "assassinated",
+    "death_type": "violent",
+    "death_date": "1900-06-25",
+    "age_at_death": 79,
+    "dasha_at_death": {
+      "mahadasha": "MERCURY",
+      "antardasha": "SATURN",
+      "pratyantardasha": "MARS",
+      "sookshma": null,
+      "stated_by_author": true,
+      "raw_text": "Mer-Sat-Mer-Sat: Mercury signifies 01 (lagna) and 02 (maraca). Saturn signifies 08 (longevity) and 07 (maraca and badhak"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "lagna lord is Mercury, who is posited in maraca house and is posited in the star of Saturn.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord Mercury is under aspect of Jupiter who is maraca and badhaka lord.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "lagna lord Mercury and 07111 lord Jupiter (maraca and badhaka) were conjoined in natal 2nd house (maraca).",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "longevity is considered somewhat good and it is in the slot of 66-99 years.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

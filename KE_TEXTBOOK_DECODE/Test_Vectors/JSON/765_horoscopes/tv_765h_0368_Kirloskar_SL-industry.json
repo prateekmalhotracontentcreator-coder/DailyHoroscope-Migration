@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0368",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0368",
+  "source_file": "0368_K-41_Kirloskar_SL-industry.pdf",
+  "subject": {
+    "name": "Kirloskar SL",
+    "name_from_filename": "Kirloskar SL-industry",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "industry",
+    "profession_category": "Business",
+    "profession_subcategory": "industry",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1903-06-28",
+    "time_local": "06:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1903-06-28T01:00:00Z",
+    "latitude": 18.52,
+    "longitude": 73.856,
+    "place": "Pune, Maharashtra, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 9,
+    "months": 11,
+    "days": 10,
+    "raw_text": "Balance dasha Mer9-11-10"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 12.6667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 18.5167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 22.1333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 27.6833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 15.6833,
+      "retrograde": true
+    },
+    "MARS": {
+      "degree_in_sign": 17.1,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 19.4,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 18.5167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "industry",
+    "profession_category": "Business",
+    "profession_subcategory": "industry",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

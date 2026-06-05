@@ -19,6 +19,19 @@ if str(BACKEND_DIR) not in sys.path:
 
 from knowledge_validator import RuleValidator
 
+# ── Tee-logging ───────────────────────────────────────────────────────────────
+LOG_DIR  = Path("KE_TEXTBOOK_DECODE/Dedup_Reports")
+TS       = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+LOG_PATH = LOG_DIR / f"validate_rules_{TS}.log"
+
+_buf: list[str] = []
+def out(msg: str = "") -> None:
+    print(msg); _buf.append(msg)
+def _write_log(p: Path) -> None:
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text("\n".join(_buf) + "\n", encoding="utf-8")
+    print(f"Log saved: {p}")
+
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -180,7 +193,7 @@ def apply_verdict(
             except AutoReconnect as exc:
                 if attempt < 3:
                     wait = 2 ** attempt  # 1s, 2s, 4s
-                    print(f"\n    [retry {attempt + 1}/3] MongoDB timeout for {rule_id} -- retrying in {wait}s ({exc})")
+                    out(f"\n    [retry {attempt + 1}/3] MongoDB timeout for {rule_id} -- retrying in {wait}s ({exc})")
                     time.sleep(wait)
                 else:
                     raise
@@ -227,7 +240,7 @@ def write_report(path: str, counters: dict, contradictions: list, flagged_sample
 
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text("\n".join(lines), encoding="utf-8")
-    print(f"\n  Report written to {path}")
+    out(f"\n  Report written to {path}")
 
 
 def main():
@@ -236,11 +249,22 @@ def main():
     args = parse_args()
     json_mode = bool(args.json_file)
 
+    out(f"LOG FILE: {LOG_PATH}")
+    out(f"{'=' * 60}")
+    out(f"Knowledge Engine -- Rule Validator")
+    out(f"Timestamp : {TS}")
+    if args.batch_id:
+        out(f"Batch ID  : {args.batch_id}")
+    if args.science_id:
+        out(f"Science ID: {args.science_id}")
+    out(f"Dry-run   : {args.dry_run}")
+    out(f"{'=' * 60}")
+
     # --- Set up source / sink ---
     if json_mode:
         client = None
         db = None
-        print(f"\n[PRE-UPLOAD MODE] Reading from: {args.json_file}")
+        out(f"\n[PRE-UPLOAD MODE] Reading from: {args.json_file}")
         rules = fetch_from_json(args.json_file, args.science_id, args.batch_id)
         rules_by_id = {r["rule_id"]: r for r in rules}
         # Determine output path
@@ -258,20 +282,20 @@ def main():
     try:
         validator = RuleValidator(model="claude-haiku-4-5")
 
-        print("\nFetching pending_review rules...")
+        out("\nFetching pending_review rules...")
         if json_mode:
             pass  # already fetched above
         else:
             rules = fetch_pending(db, args.science_id, getattr(args, "batch_id", None))
-        print(f"Found {len(rules)} rules to validate")
+        out(f"Found {len(rules)} rules to validate")
         if not rules:
             if not json_mode:
-                print("Nothing to do.")
-                print("\n  [HINT] If you just uploaded rules, check that:")
-                print("    1. approval_status was set to 'pending_review' (not 'pending_human_review')")
-                print("    2. source.batch_id matches the --batch-id you provided")
+                out("Nothing to do.")
+                out("\n  [HINT] If you just uploaded rules, check that:")
+                out("    1. approval_status was set to 'pending_review' (not 'pending_human_review')")
+                out("    2. source.batch_id matches the --batch-id you provided")
             else:
-                print("Nothing to do.")
+                out("Nothing to do.")
             return
 
         counters: dict[str, int] = {}
@@ -280,7 +304,7 @@ def main():
         rejected_rules: list[dict] = []
         all_contradictions: list[dict] = []
 
-        print("\nStage 1: Structural checks...")
+        out("\nStage 1: Structural checks...")
         structurally_ok: list[dict] = []
         for rule in rules:
             passed, reason = validator.structural_check(rule)
@@ -294,13 +318,13 @@ def main():
                 rejected_rules.append(rule)
             else:
                 structurally_ok.append(rule)
-        print(f"  Structural failures: {len(rejected_rules)} / {len(rules)}")
-        print(f"  Proceeding with: {len(structurally_ok)} rules")
+        out(f"  Structural failures: {len(rejected_rules)} / {len(rules)}")
+        out(f"  Proceeding with: {len(structurally_ok)} rules")
 
         resume_n   = args.resume_from_batch   # batches to skip (0 = no skip)
         skipped_ids: set[str] = set()          # rule_ids skipped due to resume
 
-        print(f"\nStage 2: Claude quality check (batch_size={args.batch_size}"
+        out(f"\nStage 2: Claude quality check (batch_size={args.batch_size}"
               + (f", resuming from batch {resume_n + 1}" if resume_n else "") + ")...")
         total_batches = (len(structurally_ok) + args.batch_size - 1) // args.batch_size
         for i in range(0, len(structurally_ok), args.batch_size):
@@ -318,14 +342,14 @@ def main():
                         "corrected_confidence": current_confidence(rule),
                     }
                     skipped_ids.add(rid)
-                print(f"  Batch {batch_num}/{total_batches} -- skipped (resume mode)")
+                out(f"  Batch {batch_num}/{total_batches} -- skipped (resume mode)")
                 continue
 
-            print(f"  Batch {batch_num}/{total_batches} ({len(batch)} rules)...", end=" ", flush=True)
+            out(f"  Batch {batch_num}/{total_batches} ({len(batch)} rules)...", end=" ", flush=True)
             try:
                 results = validator.validate_batch(batch)
             except Exception as exc:
-                print(f"ERROR: {exc} - marking batch as spot_check")
+                out(f"ERROR: {exc} - marking batch as spot_check")
                 results = [
                     {
                         "rule_id": rule["rule_id"],
@@ -376,11 +400,11 @@ def main():
                             [], "",   # contradictions resolved in Stage 3
                             args.dry_run,
                         )
-            print("done")
+            out("done")
 
-        print("\nStage 3: Contradiction detection...")
+        out("\nStage 3: Contradiction detection...")
         groups = group_for_contradiction(structurally_ok)
-        print(f"  {len(groups)} condition groups with >=2 rules to check")
+        out(f"  {len(groups)} condition groups with >=2 rules to check")
         for _, group_rules in groups.items():
             try:
                 contradictions = validator.detect_contradictions(group_rules)
@@ -392,12 +416,12 @@ def main():
         for contradiction in all_contradictions:
             contra_map[contradiction["rule_id_a"]].append(contradiction["rule_id_b"])
             contra_map[contradiction["rule_id_b"]].append(contradiction["rule_id_a"])
-        print(f"  Contradictions found: {len(all_contradictions)} pair(s)")
+        out(f"  Contradictions found: {len(all_contradictions)} pair(s)")
 
         # Targeted contradiction updates -- downgrade auto_approved → spot_check
         # for any rule involved in a contradiction (streaming already wrote approve).
         if not args.dry_run and all_contradictions:
-            print("  Applying contradiction downgrades...")
+            out("  Applying contradiction downgrades...")
             for contradiction in all_contradictions:
                 for rid in [contradiction["rule_id_a"], contradiction["rule_id_b"]]:
                     contra_ids     = contra_map.get(rid, [])
@@ -422,7 +446,7 @@ def main():
                             }},
                         )
 
-        print(f"\nStage 4: {'[DRY RUN] ' if args.dry_run else ''}Writing skipped-batch verdicts + summary...")
+        out(f"\nStage 4: {'[DRY RUN] ' if args.dry_run else ''}Writing skipped-batch verdicts + summary...")
         for rule in rules:
             rid = rule["rule_id"]
             verdict_info = all_verdicts.get(
@@ -475,14 +499,14 @@ def main():
                 flagged_rules.append(rule)
 
         total = sum(counters.values())
-        print(f"\n{'=' * 55}")
-        print(f"{'[DRY RUN] ' if args.dry_run else ''}VALIDATION COMPLETE")
+        out(f"\n{'=' * 55}")
+        out(f"{'[DRY RUN] ' if args.dry_run else ''}VALIDATION COMPLETE")
         for status, count in sorted(counters.items(), key=lambda item: -item[1]):
             pct = f"{count / total * 100:.0f}%" if total else "0%"
-            print(f"  {status:<28} {count:>4}  ({pct})")
-        print(f"  {'-' * 40}")
-        print(f"  {'Total':<28} {total:>4}")
-        print(f"\n  Contradictions: {len(all_contradictions)} pair(s)")
+            out(f"  {status:<28} {count:>4}  ({pct})")
+        out(f"  {'-' * 40}")
+        out(f"  {'Total':<28} {total:>4}")
+        out(f"\n  Contradictions: {len(all_contradictions)} pair(s)")
 
         # --- Save validated JSON (json-file mode) ---
         if json_mode and not args.dry_run:
@@ -495,25 +519,26 @@ def main():
                 _json.dumps(all_original, indent=2, ensure_ascii=False),
                 encoding="utf-8",
             )
-            print(f"\n  Validated JSON saved to: {output_path}")
-            print("  Next step -- upload validated rules to MongoDB:")
-            print(f"    python3 backend/scripts/ingest_[name].py \\")
-            print(f"      --upload {output_path} \\")
-            print(f"      --mongo-url \"$MONGO_URL\"")
-            print(f"\n  Rules flagged ({counters.get('flagged', 0)}) must be triaged before upload.")
-            print(f"  Review flagged rules in the output JSON and fix or remove them.")
+            out(f"\n  Validated JSON saved to: {output_path}")
+            out("  Next step -- upload validated rules to MongoDB:")
+            out(f"    python3 backend/scripts/ingest_[name].py \\")
+            out(f"      --upload {output_path} \\")
+            out(f"      --mongo-url \"$MONGO_URL\"")
+            out(f"\n  Rules flagged ({counters.get('flagged', 0)}) must be triaged before upload.")
+            out(f"  Review flagged rules in the output JSON and fix or remove them.")
         elif not json_mode and not args.dry_run:
-            print("\n  auto_approved rules have approval_status='auto_approved' in MongoDB.")
-            print("  NOTE: The live backend queries approval_status='approved' only.")
-            print("  No rules reach live users until explicitly promoted to 'approved'")
-            print("  via co-founder sign-off after full Phase 1 validation.")
-            print("  Review flagged rules at /admin/library -> Rules Browser -> filter: flagged")
+            out("\n  auto_approved rules have approval_status='auto_approved' in MongoDB.")
+            out("  NOTE: The live backend queries approval_status='approved' only.")
+            out("  No rules reach live users until explicitly promoted to 'approved'")
+            out("  via co-founder sign-off after full Phase 1 validation.")
+            out("  Review flagged rules at /admin/library -> Rules Browser -> filter: flagged")
 
         if args.report_path:
             write_report(args.report_path, counters, all_contradictions, flagged_rules[:20], rejected_rules)
     finally:
         if client:
             client.close()
+        _write_log(LOG_PATH)
 
 
 if __name__ == "__main__":

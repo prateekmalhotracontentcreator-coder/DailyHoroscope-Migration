@@ -230,6 +230,8 @@ def _card_body(d: dict) -> str:
     return " ".join(filter(None, parts))
 
 def _card_title(d: dict) -> str:
+    if d.get("meta_title"):
+        return d["meta_title"]
     name = d.get("name", d.get("slug", ""))
     arcana = d.get("arcana", "")
     return f"{name} Tarot Card - {arcana} Meaning & Guide"

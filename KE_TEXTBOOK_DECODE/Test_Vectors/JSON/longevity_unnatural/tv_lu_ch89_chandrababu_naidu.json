@@ -1,0 +1,235 @@
+{
+  "vector_id": "tv-lu-ch89",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch89_Chandrababu_Naidu",
+  "pdf_path": "Chapter_Splits/Ch89_Chandrababu_Naidu.pdf",
+  "subject": {
+    "name": "Chandrababu Naidu",
+    "description": "Chief Minister of Andhra Pradesh",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1950-04-20",
+    "time_local": "14:30:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1950-04-20T09:00:00Z",
+    "latitude": 19.4,
+    "longitude": 82.9833,
+    "place": "Chandragiri, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-03-58.77",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 14.2167,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 6.65,
+      "house": 9,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "significations": [
+        1,
+        9,
+        "Ke",
+        2
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 9.45,
+      "house": 10,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "significations": [
+        12,
+        10,
+        1,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 0.0667,
+      "house": 2,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "significations": [
+        4,
+        9,
+        2,
+        1,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 26.3833,
+      "house": 9,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "significations": [
+        2,
+        11,
+        9,
+        7,
+        3,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 7.8333,
+      "house": 7,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        5,
+        8,
+        "Ra",
+        7
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 20.55,
+      "house": 7,
+      "nakshatra": "PBha",
+      "pada": 1,
+      "significations": [
+        3,
+        10,
+        7,
+        5,
+        8
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 20.0333,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "significations": [
+        10,
+        1,
+        6,
+        7,
+        3
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 13.25,
+      "house": 8,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "significations": [
+        8,
+        "Ju",
+        "Ma",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 13.25,
+      "house": 2,
+      "nakshatra": "Hast",
+      "pada": 1,
+      "significations": [
+        2,
+        "Ma",
+        "Me",
+        "Mo"
+      ]
+    }
+  },
+  "life_events": [
+    {
+      "event_id": "ev-001",
+      "event_type": "life_threatening_event",
+      "description": "On 01 Oct 2003 at around 16:00 hours, there was landmine blast at Tirupati, which was believed to be an attempt on the life of then Chief Minister of Andhra Pradesh, planned by an armed separatists.",
+      "date": "2003-10-01",
+      "age_at_event": null,
+      "survived": true,
+      "dasha_at_event": {
+        "mahadasha": "SATURN",
+        "antardasha": "SATURN",
+        "pratyantardasha": "RAHU",
+        "sookshma": "RAHU",
+        "stated_by_author": true,
+        "raw_text": "Saturn Saturn-Rahu-Rahu-Mercury. Saturn signifies 01 and 06 denoting injury for the body. Significations of Rahu have be"
+      }
+    }
+  ],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": "1950-04-20",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "SATURN",
+      "pratyantardasha": "RAHU",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Saturn Saturn-Rahu-Rahu-Mercury. Saturn signifies 01 and 06 denoting injury for the body. Significations of Rahu have be"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "lagna lord Sun star and is aspecting Rahu, who is in 08th.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "escaped with a fractured left collar bone and a hairline fracture to two of his right ribs.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

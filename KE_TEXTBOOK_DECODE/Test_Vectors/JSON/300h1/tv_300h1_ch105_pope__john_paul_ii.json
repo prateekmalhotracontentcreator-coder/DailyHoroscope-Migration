@@ -1,0 +1,237 @@
+{
+  "vector_id": "tv-300h1-ch105",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch105_POPE--JOHN_PAUL_II",
+  "pdf_path": "Split_Chapters/Ch105_POPE--JOHN_PAUL_II.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "John Paul Ii",
+    "description": "Pope John Paul II, born Karol J6zef Wojtyla reigned as Supreme Pontiff of the Roman",
+    "nationality": "Italian"
+  },
+  "birth_data": {
+    "date": "2005-04-02",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 4.0225,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 4.7108,
+      "house": 8,
+      "significations": [
+        8,
+        11
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 9.9997,
+      "house": 8,
+      "significations": [
+        8,
+        10,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 29.7817,
+      "house": 12,
+      "significations": [
+        2,
+        7,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 25.9014,
+      "house": 7,
+      "significations": [
+        1,
+        7,
+        8,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 18.3564,
+      "house": 10,
+      "significations": [
+        3,
+        6,
+        7,
+        9,
+        10,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 22.3911,
+      "house": 1,
+      "significations": [
+        1
+      ]
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 22.3911,
+      "house": 7,
+      "significations": [
+        7
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "Religious Leader",
+    "profession_category": "Spirituality/Religion",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Spirituality/Religion",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "101h lord Moon is in star of Sun, while Sun is in own star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars and Venus are in own star, while Rahu signifies Venus and Jupiter (10).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign 10 1h lord Saturn is in Ketu star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Ketu offers result of Mercury (12), Venus (01, 08), while Saturn in Ketu star offers 04.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "From lagna, Rahu signifies Jupiter (03, 10, 12).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Native got elected as Pope on 16 Oct 1978 during VMD of Saturn-Venus-Sun.",
+      "condition_type_guess": "dasha_planet",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Yogakaraka Saturn played a prominent role with signification of 11 from lagna.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

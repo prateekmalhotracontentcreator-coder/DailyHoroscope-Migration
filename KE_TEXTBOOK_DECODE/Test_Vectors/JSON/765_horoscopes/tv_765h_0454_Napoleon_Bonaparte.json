@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0454",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0454",
+  "source_file": "0454_N-7_Napoleon_Bonaparte.pdf",
+  "subject": {
+    "name": "Napoleon Bonaparte",
+    "name_from_filename": "Napoleon Bonaparte",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "King",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1759-08-15",
+    "time_local": "10:28",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1759-08-15T04:58:00Z",
+    "latitude": 41.9167,
+    "longitude": 8.6667,
+    "place": "8E40 & 41N 55",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 1,
+    "months": 6,
+    "days": 0,
+    "raw_text": "Balance of dasha Sun 1-6-0"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 0.1667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 17.35,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 5.2667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 15.5833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 2.0667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 21.3833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 2.6,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 24.3667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 2.6,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "King",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

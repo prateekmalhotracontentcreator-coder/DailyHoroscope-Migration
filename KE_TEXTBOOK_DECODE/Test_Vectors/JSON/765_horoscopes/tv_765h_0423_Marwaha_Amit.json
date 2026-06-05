@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0423",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0423",
+  "source_file": "0423_M-24_Marwaha_Amit.pdf",
+  "subject": {
+    "name": "Marwaha, Amit",
+    "name_from_filename": "Marwaha, Amit",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1978-06-20",
+    "time_local": "21:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1978-06-20T16:00:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Bhind (MP)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 5,
+    "months": 6,
+    "days": 27,
+    "raw_text": "balance of dasha Ket 5-6-27"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 5.4167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 12.9167,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 19.8333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 11.6333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 2.7,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 10.0833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 2.7167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

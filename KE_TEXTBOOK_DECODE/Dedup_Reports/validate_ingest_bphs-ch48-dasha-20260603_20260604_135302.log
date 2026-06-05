@@ -1,0 +1,46 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/validate_ingest_bphs-ch48-dasha-20260603_20260604_135302.log
+===========================================================================
+
+POST-INGEST STRUCTURAL VALIDATION
+Batch    : bphs-ch48-dasha-20260603
+Database : horoscope_db
+
+import_batches record:
+  batch_id: bphs-ch48-dasha-20260603
+  book: BPHS Vol 2
+  chapter: 48
+  dedup_note: Dedup vs Vol 1 local: 0 genuine duplicates (181 empty-text false positives discarded -- Ch48 rules use interpretation.detailed not full_text; dedup script limitation). Content is quality-principles chapter, not planet-specific effects -- no overlap with existing BPHS Ch47/52-58 dasha batches.
+  description: BPHS Vol 2 Ch.48 -- Distinctive Effects of Vimshottari Dasa Lords. 46 rules: general placement principles, per-house lord dasa effects (1-12), Harsha/Sarala/Vimala yogas, kendra-trikona Raj Yoga principles, unfavourable conditions, Rahu/Ketu trishadaya exceptions.
+  errors: 0
+  rules_inserted: 0
+  rules_updated: 46
+  science_id: vedic_astrology
+  total_rules: 46
+  uploaded_at: 2026-06-04T08:14:14.498800+00:00
+
+Rules found in DB (ingest_batch_id=bphs-ch48-dasha-20260603): 46
+
+────────────────────────────────────────────────────────────
+  Total rules in DB        : 46
+  Reported inserted        : 0
+  Duplicates skipped       : N/A (upsert mode)
+
+  Approval status breakdown:
+    auto_approved: 42
+    pending_human_review: 4
+
+  Structural checks:
+    Missing rule_id         : 0
+    Invalid approval_status : 0
+    Missing source_book     : 0
+    Missing interpretation  : 0
+    source.batch_id missing : 0
+
+────────────────────────────────────────────────────────────
+✅ STRUCTURAL CHECK: CLEAN
+
+NEXT STEP — AI quality validation (if not already run pre-upload):
+  python3 backend/scripts/validate_rules.py \
+    --batch-id bphs-ch48-dasha-20260603 \
+    --mongo-url "$MONGO_URL" --db-name horoscope_db

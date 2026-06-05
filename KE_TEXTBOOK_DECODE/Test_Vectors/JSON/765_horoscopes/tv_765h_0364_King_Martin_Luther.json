@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0364",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0364",
+  "source_file": "0364_K-37_King_Martin_Luther.pdf",
+  "subject": {
+    "name": "King Martin Luther",
+    "name_from_filename": "King Martin Luther",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "King",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1929-01-15",
+    "time_local": "03:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1929-01-15T21:30:00Z",
+    "latitude": 34.1667,
+    "longitude": -82.3667,
+    "place": "82W22 & 34N10",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 14,
+    "months": 5,
+    "days": 1,
+    "raw_text": "Balance of dasha Jup 14-5-1"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 5.3333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 10.8167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 26.1,
+      "retrograde": true
+    },
+    "VENUS": {
+      "degree_in_sign": 17.2167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 21.3167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 1.85,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 18.2667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 2.4333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 10.8167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "King",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

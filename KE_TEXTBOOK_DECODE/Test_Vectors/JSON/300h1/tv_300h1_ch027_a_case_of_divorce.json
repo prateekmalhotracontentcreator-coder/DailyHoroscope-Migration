@@ -1,0 +1,224 @@
+{
+  "vector_id": "tv-300h1-ch027",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch027_A_CASE_OF_DIVORCE",
+  "pdf_path": "Split_Chapters/Ch027_A_CASE_OF_DIVORCE.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "A Case Of Divorce",
+    "description": "The following female is highly qualified. She is divorced from her husband.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 16.0939,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 15.3364,
+      "house": 2,
+      "significations": [
+        2,
+        8
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 3.5061,
+      "house": 3,
+      "significations": [
+        1,
+        2,
+        3,
+        7,
+        8
+      ]
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 6.6592,
+      "house": 2,
+      "significations": [
+        2,
+        4,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 0.46,
+      "house": 3,
+      "significations": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 6.6069,
+      "house": 7,
+      "significations": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 2.2103,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        5,
+        8
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 17.2125,
+      "house": 8,
+      "significations": [
+        1,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 24.6858,
+      "house": 8,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 24.6858,
+      "house": 2,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The VMD at the time of divorce was that of Mercury-Jupiter.",
+      "condition_type_guess": "dasha_planet",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mercury signifies 06th house, while Jupiter signifies 07 and12.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is linked to Saturn, while Ketu is in star \" · of Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "So the role of Saturn-Ketu is confirmed for them to separate the couple.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "As long as Jupiter is in 071h house, one shall get a supervising, sadistic and harassing type husband.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

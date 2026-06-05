@@ -1,0 +1,227 @@
+{
+  "vector_id": "tv-lu-ch90",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch90_Nicolae_Ceausescu",
+  "pdf_path": "Chapter_Splits/Ch90_Nicolae_Ceausescu.pdf",
+  "subject": {
+    "name": "Nicolae Ceausescu",
+    "description": "Communist President of Romania",
+    "nationality": "Romanian"
+  },
+  "birth_data": {
+    "date": "1918-01-26",
+    "time_local": "15:25:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1918-01-26T13:25:00Z",
+    "latitude": 44.57,
+    "longitude": 24.55,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-36-58.34",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Cancer",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 21.35,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 13.1833,
+      "house": 8,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        3,
+        8,
+        2
+      ]
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 6.6833,
+      "house": 2,
+      "nakshatra": "Push",
+      "pada": 2,
+      "significations": [
+        2,
+        8,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 10.0167,
+      "house": 4,
+      "nakshatra": "Hast",
+      "pada": 1,
+      "significations": [
+        11,
+        6,
+        4,
+        2
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 18.5167,
+      "house": 7,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        1,
+        4,
+        7,
+        5,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 8.8333,
+      "house": 12,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "significations": [
+        7,
+        10,
+        12,
+        8,
+        3
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 5.0667,
+      "house": 9,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": [
+        5,
+        12,
+        9,
+        4,
+        6,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 7.0667,
+      "house": 7,
+      "nakshatra": "I",
+      "pada": 3,
+      "significations": [
+        "Me",
+        "Ke",
+        "Ma",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 7.0667,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "significations": [
+        "Ra",
+        "Me"
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 21.2,
+      "house": 7,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        "Venus"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "executed by the Military rulers during the VMD",
+    "death_type": "violent",
+    "death_date": "1918-01-26",
+    "age_at_death": 72,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "SUN",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Rahu, who is occupant of house of maraca and badhaka as per natal chart. Lagna lord Mercury was posited in Sagittarius,"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Bhukti lord Ketu signifies lagna, maraca and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sookshma lord Venus signifies Mars and 06th house (injury, enemy).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna lord Mercury is in maraca and badhaka house, and it is aspected by Mars, lord of 06 (injury and enemy) and is the causative planet for injury and accident.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "lagna lord Mercury, who is in maraca and badhaka house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

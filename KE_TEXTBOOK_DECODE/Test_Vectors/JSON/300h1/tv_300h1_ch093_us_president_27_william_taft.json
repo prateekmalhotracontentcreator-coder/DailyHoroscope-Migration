@@ -1,0 +1,195 @@
+{
+  "vector_id": "tv-300h1-ch093",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch093_US_PRESIDENT_27-WILLIAM_TAFT",
+  "pdf_path": "Split_Chapters/Ch093_US_PRESIDENT_27-WILLIAM_TAFT.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "William Howard Taft",
+    "description": "William Howard Taft (15 Sep 1857-08 Mar 1930) was the 27th US President and later",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1857-09-15",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1930
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1930-03-08",
+    "age_at_death": 73,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus (01, 09-federal) is in 10 and conjunct with Saturn-democracy (05, 10) which is in own star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter (07) (expansion, administration) signifies 101h house through Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars (power) is conjunct with 10111 lord Moon (10, 11 and 12).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun is in 12 indicate opposition from authorities and people from Government.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "~IRS PUBUSHING HOUSE, HYDERABAD Page# 145",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

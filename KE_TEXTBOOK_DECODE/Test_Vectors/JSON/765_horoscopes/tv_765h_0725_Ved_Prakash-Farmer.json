@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0725",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0725",
+  "source_file": "0725_V-6_Ved_Prakash-Farmer.pdf",
+  "subject": {
+    "name": "Ved Prakash-Farmer",
+    "name_from_filename": "Ved Prakash-Farmer",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1933-02-22",
+    "time_local": "03:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1933-02-22T21:50:00Z",
+    "latitude": 27.1167,
+    "longitude": 78.5833,
+    "place": "78E35 & 27N7",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 1,
+    "months": 2,
+    "days": 28,
+    "raw_text": "Balance dasha Sun 1-2-28"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 9.95,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 14.95,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 21.3833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 14.95,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 7.2333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 17.2333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 25.2,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 27.35,
+      "retrograde": true
+    },
+    "LAGNA": {
+      "degree_in_sign": 24.7,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 24.7,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

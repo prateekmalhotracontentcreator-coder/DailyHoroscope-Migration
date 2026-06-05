@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0731",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0731",
+  "source_file": "0731_V-12_Vij_SK-Engr_Civ.pdf",
+  "subject": {
+    "name": "Vij, SK",
+    "name_from_filename": "Vij, SK-Engr (Civ)",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Engr (Civ)",
+    "profession_category": "Other",
+    "profession_subcategory": "Engr (Civ)",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1949-03-12",
+    "time_local": "19:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1949-03-12T14:10:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 12,
+    "months": 10,
+    "days": 1,
+    "raw_text": "balance of dasha Mer 12-10-1"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 19.8,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 3.5833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 18.9333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 28.0333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 29.1833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 2.2167,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 2.9833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Engr (Civ)",
+    "profession_category": "Other",
+    "profession_subcategory": "Engr (Civ)",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

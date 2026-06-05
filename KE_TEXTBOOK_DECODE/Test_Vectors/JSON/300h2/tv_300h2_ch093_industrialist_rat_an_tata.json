@@ -1,0 +1,314 @@
+{
+  "vector_id": "tv-300h2-ch093",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch093_92_Ratan_Tata",
+  "pdf_path": "Chapters/Ch093_92_Ratan_Tata.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Industrialist--Rat An Tata",
+    "description": "Ratan Tala is the current Chairman of Tala Empire which is having variety of business interests for centuries.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Ayanamsa",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": 2.72,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 21.719,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        11,
+        1,
+        2,
+        4
+      ],
+      "significations_raw": "08,11,01 ,02,04"
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 11.878,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5,
+        12,
+        3
+      ],
+      "significations_raw": "05,12,03,Ra"
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 17.854,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        7,
+        6,
+        1,
+        10,
+        11
+      ],
+      "significations_raw": "07,06,01,10,11"
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 8.851,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        2,
+        4,
+        9
+      ],
+      "significations_raw": "01,02,04,09"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 6.063,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        4
+      ],
+      "significations_raw": "02,03,04"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 11.525,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Ma,Sa"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 11.525,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Mo,Ve,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "longevity",
+      "marriage"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Venus are in lagna with Jupiter is in 0200 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is in 03 and aspecting 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is aspecting 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Jupiter is aspecting 10, while Saturn is in 06 and in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Ketu under aspect from Mars and Jupiter offers 10 result from Moon sign.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "These combinations led native to at high level, but Ketu shows sudden exit and lack of interest.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "During saade-saath, native quit job as head the organization.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "071h lord Mercury is in lagna and is in star of Venus who signifies 06.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Ketu offers result of 06 through Venus and 12 through Mars.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "So marriage is denied.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

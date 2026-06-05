@@ -1,0 +1,238 @@
+{
+  "vector_id": "tv-300h2-ch144",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch144_143_President_Pranab_Mukherjee",
+  "pdf_path": "Chapters/Ch144_143_President_Pranab_Mukherjee.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Indian President# 13 -· Pranab Mukherjee",
+    "description": "Mr. Mukhe~ee 1s long-time Congress leader, Parliamentarian, Minister, Political Strategist, who went on to become 131h President.",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "17:23:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "lagna_degree_stated": 18.601,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 18.853,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        7,
+        6,
+        1
+      ],
+      "significations_raw": "02,07,06,01"
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 18.137,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        4,
+        8,
+        1,
+        1
+      ],
+      "significations_raw": "01, 06,04,08,1 1"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 28.118,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3,
+        5,
+        10
+      ],
+      "significations_raw": "03,05,10"
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 7.174,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        12,
+        3,
+        8,
+        7
+      ],
+      "significations_raw": "12,03,08,07,Ra"
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 28.422,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        6,
+        9
+      ],
+      "significations_raw": "04,06,09"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 5.579,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        8,
+        3,
+        5,
+        10
+      ],
+      "significations_raw": "07,08,03,05, 10"
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 7.726,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Su,Sa"
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 7.726,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Mo,Su"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 28.85
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From Moon sign, Mars is in 10th house and it is in own star (strong), while Saturn (democracy) signifies 101 h house through Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From Moon sign 10m lord Mercury is linked to Rahu, who is in star of Sun (Govt.) From lagna Mars is lord of 10th house, while 091h lord (central) Jupiter (from own star) is aspecting 10th house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus is in Aquarius aspected by Jupiter, while Sun is in 121h house from Venus, granting special status.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "All these combinations helped native to reach high level in life after selecting a political line.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

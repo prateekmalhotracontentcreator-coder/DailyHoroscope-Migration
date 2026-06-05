@@ -1,0 +1,268 @@
+{
+  "vector_id": "tv-lu-ch83",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch83_Vincent_Van_Gogh",
+  "pdf_path": "Chapter_Splits/Ch83_Vincent_Van_Gogh.pdf",
+  "subject": {
+    "name": "Vincent Van Gogh",
+    "description": "World Famous Dutch Painter",
+    "nationality": "Dutch"
+  },
+  "birth_data": {
+    "date": "1853-03-30",
+    "time_local": "11:00:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1853-03-30T09:00:00Z",
+    "latitude": 51.4667,
+    "longitude": 4.6667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-42-40.08",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 8.6,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 17.8833,
+      "house": 10,
+      "nakshatra": "Reva",
+      "pada": 1,
+      "significations": [
+        3,
+        10,
+        1,
+        4,
+        11
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 28.0167,
+      "house": 6,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        2,
+        6,
+        1,
+        4,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 4.3667,
+      "house": 10,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "significations": [
+        8,
+        6,
+        10,
+        11,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 3.8833,
+      "house": 11,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "significations": [
+        1,
+        4,
+        11,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 2.55,
+      "house": 7,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        7,
+        10,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 6.2667,
+      "house": 10,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "significations": [
+        5,
+        12,
+        10,
+        8,
+        9,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 24.25,
+      "house": 11,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "significations": [
+        8,
+        9,
+        11,
+        5,
+        12,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 1.7667,
+      "house": 1,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "significations": [
+        "Ma",
+        "Me",
+        "Ju",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 1.7667,
+      "house": 7,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "committed suicide during the kantaka shani",
+    "death_type": "suicide",
+    "death_date": "1853-03-30",
+    "age_at_death": 37,
+    "dasha_at_death": {
+      "mahadasha": "MOON",
+      "antardasha": "RAHU",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Moon Rahu-Jupiter-Mars. Dasha lord Moon is posited in 06th house (injury, enemy, disease or illness). Moon denotes mind"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Moon is posited in 06th house (injury, enemy, disease or illness).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Rahu signifies Jupiter (maraca & badhaka), Saturn (08th, longevity, accidents), Mars (06-injury) and Mercury (lagna, 04th-mind).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Jupiter is maraca & badhaka and is aspecting lagna lord and lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sookshma lord Mars is lord of 06th house and is aspecting lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "lagna lord itself signifies maraca and badhka.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "longevity of the native is gravely under stake.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "survived the impact and managed to walk back a nearby Inn, but died there two days later.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "fortunately, he suffered from anxiety and increasingly frequent bouts of mental illness throughout his life and committed suicide at the age of 37 by shooting himself.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

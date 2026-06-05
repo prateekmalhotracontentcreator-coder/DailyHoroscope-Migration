@@ -1,0 +1,722 @@
+[
+  {
+    "rule_id": "300h2-cdr-001",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch006_05_Alberto_Fujimori",
+    "subject_name": "Peruvian President--Alberto Fujimori",
+    "observation_verbatim": "Ketu in 10 indicates sudden exit and its link with 12 indicate enmity from Governmental positions.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch006"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-002",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch011_10_JD_Tippit",
+    "subject_name": "Dallas Police Officer--J.D. Tippit",
+    "observation_verbatim": "Lagna lord Saturn is in badhaka, while badhaka Venus is in 081h lord Mercury star.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "career",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch011"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-003",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch011_10_JD_Tippit",
+    "subject_name": "Dallas Police Officer--J.D. Tippit",
+    "observation_verbatim": "Mercury signifies 07, 08 and 09 denoting maraca, aayu and badhaka.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "career",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch011"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-004",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch017_16_Vincent_Van_Gogh",
+    "subject_name": "Vincent Van Gogh",
+    "observation_verbatim": "Lagna lord signifies badhaka and maraca.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "career",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch017"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-005",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch017_16_Vincent_Van_Gogh",
+    "subject_name": "Vincent Van Gogh",
+    "observation_verbatim": "Badhaka Jupiter is aspecting Saturn.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "career",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch017"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-006",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch020_19_Medical_Doctor",
+    "subject_name": "Medical Doctor",
+    "observation_verbatim": "Jupiter signifies 03 and 09 through Sun, while 12th lord Mars is in Jupiter star.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch020"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-007",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch021_20_Osho_Rajneesh",
+    "subject_name": "Spiritual Leader Osho Rajneesh",
+    "observation_verbatim": "Ketu is in 10 from Moon sign sudden exit from job or denial any pragmatic materialistic job.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch021"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-008",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch024_23_Sirhan_Sirhan",
+    "subject_name": "Sirhan Sirhan",
+    "observation_verbatim": "Sun (king-power to execute), (04- mind) is in star of Saturn (destruction) (03-action, 06-enmity).",
+    "generalised_condition": {
+      "type": "kp_star_lord",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch024"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-009",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch028_27_Park_Chung_Hee",
+    "subject_name": "South Korean Leader--Park Chung-Hee",
+    "observation_verbatim": "But Ketu is in 10 and it indicates sudden exit and 10111 lord Mercury is in 12 indicate hidden enemies in Government.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch028"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-010",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch031_30_Nicolae_Ceausescu",
+    "subject_name": "Nicolae Ceausescu",
+    "observation_verbatim": "Rahu offers result of Venus (05,09) through Mercury; 07 and 10 through Jupiter; Ketu {sudden exit); and Mars (06,1 1, power).",
+    "generalised_condition": {
+      "type": "kp_signification_chain",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch031"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-011",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch033_32_King_George_I_Greece",
+    "subject_name": "King Of Greece",
+    "observation_verbatim": "But Ketu is in 10 indicate sudden exit.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch033"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-012",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch035_34_King_Carlos_I_Portugal",
+    "subject_name": "Carlos I Of Portugal",
+    "observation_verbatim": "Ketu's link with 10 shows sudden exit.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch035"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-013",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch035_34_King_Carlos_I_Portugal",
+    "subject_name": "Carlos I Of Portugal",
+    "observation_verbatim": "Badhaka Moon is in star of 081h lord Mercury.",
+    "generalised_condition": {
+      "type": "kp_star_lord",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "career",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch035"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-014",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch035_34_King_Carlos_I_Portugal",
+    "subject_name": "Carlos I Of Portugal",
+    "observation_verbatim": "Lagna lord Mars is in star of badhaka Moon.",
+    "generalised_condition": {
+      "type": "kp_star_lord",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "career",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch035"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-015",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch042_41_Gayatri_Devi_Jaipur",
+    "subject_name": "Maharani Gayatri Devi Of Jaipur",
+    "observation_verbatim": "From Moon sign, Ketu is conjunct with Sun (Government) and Mars (power) (but it also indicates sudden exit from power).",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch042"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-016",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch043_42_Osama_Bin_Laden",
+    "subject_name": "Terrorist Leader--Osama Bin Laden",
+    "observation_verbatim": "Jupiter 04 (mind), 05 (intention) is in star of Sun-power to execute (1 0-deeds).",
+    "generalised_condition": {
+      "type": "kp_star_lord",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch043"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-017",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch045_44_Bill_Gates",
+    "subject_name": "Bill Gates Of Microsoft Fame",
+    "observation_verbatim": "Since Jupiter is in Ketu star and from lagna, Ketu signifies 10 through Mars, it indicates sudden exit from job.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch045"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-018",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch047_46_Bruce_Lee",
+    "subject_name": "And Martial Arts Specialist--Bruce Lee",
+    "observation_verbatim": "Rahu is offering result of Moon (badhaka) and Mercury (lord of longevity) has caused longevity issues.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch047"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-019",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch054_53_Herbert_Hoover",
+    "subject_name": "Us President# 31 - Herbert Hoover",
+    "observation_verbatim": "081h lord Jupiter is in 05 (punya house) and not linked to badhaka gave native a life of 90 years.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "career",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch054"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-020",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch056_55_Silvio_Berlusconi",
+    "subject_name": "Italian Prime Minister Silvio Berlusconi",
+    "observation_verbatim": "Mars in star of Ketu, however, indicate sudden exit.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch056"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-021",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch060_59_Harry_S_Truman",
+    "subject_name": "Us President# 33 -· Harry Truman",
+    "observation_verbatim": "12th lord Sun is in 08, which gave power at the cost someone (Roosevelt).",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch060"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-022",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch066_65_Prince_Naruhito",
+    "subject_name": "Japanese Crown Prince Naruhito",
+    "observation_verbatim": "Although 08 lord Saturn signifies badhaka through Venus, Sun and Mercury are in 08 and they are not linked to badhaka, which assures good longevity.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch066"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-023",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch076_75_Sir_Mirza_Ismail_Baig",
+    "subject_name": "Mirza Mohammad Ismail",
+    "observation_verbatim": "But Ketu in 10 indicate sudden exit from job.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch076"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-024",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch082_81_King_Jayachamaraia_Wodeyar",
+    "subject_name": "Mysore King Jayachamaraja Wodeyar",
+    "observation_verbatim": "Saturn is in star of Ketu (exit), in 09 (Kingdom) while Ketu is in star of Sun (Government) and Sun signifies 10 from Moon.",
+    "generalised_condition": {
+      "type": "kp_star_lord",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch082"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-025",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch086_85_Narendra_Modi",
+    "subject_name": "Gujarat Chief Minister--Narendra Modi",
+    "observation_verbatim": "Ketu conjunct with Sun indicate sudden exit.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch086"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-026",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch088_87_NT_Rama_Rao",
+    "subject_name": "Film Icon And Chief Minister--Nt Rama Rao",
+    "observation_verbatim": "From 071h house Mercury is badhaka and maraca, and it signifies 8 through Moon, which shortens the longevity of first spouse.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch088"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-027",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch093_92_Ratan_Tata",
+    "subject_name": "Industrialist--Rat An Tata",
+    "observation_verbatim": "These combinations led native to at high level, but Ketu shows sudden exit and lack of interest.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch093"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-028",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch097_96_Sushma_Swaraj",
+    "subject_name": "Indian Minister--Sushma Swaraj",
+    "observation_verbatim": "These indicate that high post shall elude native and sudden exit.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch097"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-029",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch102_101_Jacqueline_Kennedy",
+    "subject_name": "Jacqueline Kennedy",
+    "observation_verbatim": "But 04 lord (1 0 for spouse) is in star of Ketu in 08 indicate enmity at office and sudden exit from job for spouse.",
+    "generalised_condition": {
+      "type": "kp_star_lord",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch102"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "300h2-cdr-030",
+    "source": "case_study_derived",
+    "source_book": "300 Important Horoscopes Vol 1 Part 2",
+    "source_chapter": "Ch102_101_Jacqueline_Kennedy",
+    "subject_name": "Jacqueline Kennedy",
+    "observation_verbatim": "From 071h house, badhaka Saturn is in 081h house.",
+    "generalised_condition": {
+      "type": "kp_planet_signification",
+      "planet": null,
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "career",
+    "claim_polarity": "neutral",
+    "effect": "Rule generalisation — pending TT/CC review",
+    "confirmed_by_cases": [
+      "tv-300h2-ch102"
+    ],
+    "case_count": 1,
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  }
+]

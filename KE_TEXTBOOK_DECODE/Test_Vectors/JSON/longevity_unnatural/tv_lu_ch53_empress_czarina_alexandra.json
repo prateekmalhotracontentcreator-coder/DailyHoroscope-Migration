@@ -1,0 +1,248 @@
+{
+  "vector_id": "tv-lu-ch53",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch53_Empress_Czarina_Alexandra",
+  "pdf_path": "Chapter_Splits/Ch53_Empress_Czarina_Alexandra.pdf",
+  "subject": {
+    "name": "Empress Czarina Alexandra",
+    "description": "Empress of Russia, wife of Nicholas II",
+    "nationality": "German/Russian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "03:45:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": null,
+    "latitude": 49.8833,
+    "longitude": 8.6667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-58-44.33",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aries",
+      "degree": 18.7667,
+      "house": 1,
+      "nakshatra": "Bhar",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 23.6333,
+      "house": 2,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "significations": [
+        1,
+        5,
+        8,
+        2
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 22.8667,
+      "house": 2,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        2,
+        4
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 18.6667,
+      "house": 2,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        1,
+        2,
+        4,
+        8
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 3.95,
+      "house": 2,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        2,
+        3,
+        6,
+        5
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 6.8833,
+      "house": 4,
+      "nakshatra": "Push",
+      "pada": 2,
+      "significations": [
+        9,
+        12,
+        "04;11",
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 12.65,
+      "house": 2,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "significations": [
+        2,
+        7,
+        4
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 28.25,
+      "house": 9,
+      "nakshatra": "USha",
+      "pada": 1,
+      "significations": [
+        2,
+        9,
+        5,
+        10,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 20.4167,
+      "house": 2,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        "Ve",
+        "Mo",
+        "Su",
+        "Ma",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 20.4167,
+      "house": 8,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "significations": [
+        "Ma",
+        "Me",
+        "Ju",
+        "Su",
+        "Ve",
+        "Mo"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "injury",
+    "death_type": "unknown",
+    "death_date": "1872-06-06",
+    "age_at_death": 46,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "RAHU",
+      "sookshma": "KETU",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Mercury-Rahu-Ketu. Rahu is conjoined with Mars (injury) and Mercury (lord of house of enemy and injury) in Taurus"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "and Mars is quite visible. The age of the Czarina was 46 years and 01 month old, when she was executed by the Bolsheviks during the VMD period of Saturn-Mercury-Rahu-Ketu. Rahu is conjoined with Mars (injury) and Mercury (lord of house of enemy and injury) in Taurus. Hence Rahu will give the results of houses 01 (lagna), 06 (Injury and enemy), 08 (longevity, accidents), 02 (maraca). Badhka Saturn is posited in Sagittarius in the star of Sun, while Sun is in maraca house. Hence Saturn gives the result of badhaka and maraca. Jupiter is in badhaka Saturn star and is aspecting Q8th house. Dasha lo",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Dasha lord Saturn is·maraca and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Bhukti lord Mercury signifies maraca.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Antara lord Rahu signifies Mars (01, 02, 08).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sookshma lord Ketu signifies 01,02,08 through Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "maraca or badhaka, but Saturn in ogth and Jupiter in 04th gave some solace to longevity for the native, as seen in the natal chart.",
+      "condition_type_guess": "maraka_badhaka",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-086"
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

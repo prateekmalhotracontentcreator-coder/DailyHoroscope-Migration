@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0322",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0322",
+  "source_file": "0322_J-29_Dr_Joshi_Murli_Manohar.pdf",
+  "subject": {
+    "name": "Dr Joshi Murli Manohar",
+    "name_from_filename": "Dr Joshi Murli Manohar",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Minister",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1934-01-05",
+    "time_local": "10:17",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1934-01-05T04:47:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 2,
+    "months": 7,
+    "days": 6,
+    "raw_text": "Balance of dasha Ket 2-7-6"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 13.3833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 21.9333,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 26.7833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 28.6667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 1.2167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 12.3667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Minister",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

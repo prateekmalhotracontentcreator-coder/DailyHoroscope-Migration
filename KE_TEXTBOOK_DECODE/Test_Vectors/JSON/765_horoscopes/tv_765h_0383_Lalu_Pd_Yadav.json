@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0383",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0383",
+  "source_file": "0383_L-4_Lalu_Pd_Yadav.pdf",
+  "subject": {
+    "name": "Lalu Prasad",
+    "name_from_filename": "Lalu Pd Yadav",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Minister",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1948-06-11",
+    "time_local": "03:07",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1948-06-11T21:37:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Gopalganj (Bi)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 6,
+    "months": 9,
+    "days": 15,
+    "raw_text": "Balance of dasha Sat 6-9-15"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 20.3667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 14.1167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 24.1667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 16.8,
+      "retrograde": true
+    },
+    "MOON": {
+      "degree_in_sign": 11.9,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 25.1333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 17.25,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 1.4833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 24.1667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Minister",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

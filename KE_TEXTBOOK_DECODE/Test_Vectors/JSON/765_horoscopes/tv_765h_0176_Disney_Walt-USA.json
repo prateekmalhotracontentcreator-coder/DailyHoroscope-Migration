@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0176",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0176",
+  "source_file": "0176_D-31_Disney_Walt-USA.pdf",
+  "subject": {
+    "name": "Disney Walt-USA",
+    "name_from_filename": "Disney Walt-USA",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Entertainment",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1901-12-05",
+    "time_local": "00:35",
+    "timezone_offset_hours": -6.0,
+    "time_utc": "1901-12-05T06:35:00Z",
+    "latitude": 41.878,
+    "longitude": -87.63,
+    "place": "Chicago, Illinois, USA",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 5,
+    "months": 0,
+    "days": 0,
+    "raw_text": "Balance of dasha Mon 5-0-0"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 20.85,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 7.2,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 15.9333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 4.9333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 3.1667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 22.2,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 19.95,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 16.6667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 22.9,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 3.1667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

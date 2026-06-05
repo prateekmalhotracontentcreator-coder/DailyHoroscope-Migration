@@ -1,0 +1,218 @@
+{
+  "vector_id": "tv-lu-ch67",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch67_King_Alexander_I_Yugoslavia",
+  "pdf_path": "Chapter_Splits/Ch67_King_Alexander_I_Yugoslavia.pdf",
+  "subject": {
+    "name": "King Alexander I",
+    "description": "King of Yugoslavia",
+    "nationality": "Yugoslav"
+  },
+  "birth_data": {
+    "date": "1888-12-17",
+    "time_local": null,
+    "timezone_offset_hours": 1.0,
+    "time_utc": null,
+    "latitude": 42.3833,
+    "longitude": 18.9167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-12-35.33",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 7.5167,
+      "house": 1,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 4.3,
+      "house": 4,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        12,
+        4,
+        5,
+        "Ke"
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 28.9667,
+      "house": 9,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "significations": [
+        9,
+        3,
+        8,
+        5,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 20.1333,
+      "house": 5,
+      "nakshatra": "Srav",
+      "pada": 4,
+      "significations": [
+        3,
+        8,
+        5,
+        9,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 28.2167,
+      "house": 3,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        1,
+        10,
+        3
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 27.1833,
+      "house": 3,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        4,
+        7,
+        1,
+        10,
+        3
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 13.4333,
+      "house": 5,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "significations": [
+        5,
+        2,
+        9,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 27.8667,
+      "house": 11,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "significations": [
+        5,
+        6,
+        11,
+        3,
+        1,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 0.4,
+      "house": 11,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "significations": [
+        11,
+        "Ju",
+        "Mo",
+        "Sa",
+        "Ve",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 0.4,
+      "house": 5,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": [
+        5,
+        "Ma",
+        "Ve",
+        "Sa",
+        "Su"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "assassinated",
+    "death_type": "violent",
+    "death_date": "1888-12-16",
+    "age_at_death": 46,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "VENUS",
+      "pratyantardasha": "MARS",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Venus-Mars-Mars. Saturn signifies lagna, 06 and is aspecting 08th lord Mars. Venus is maraca lord (02). Mars sign"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Bhukti lord Venus is lord of 02 and 09th house and is posited in the star of Moon, who is an occupant of 09th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Mars is lord of 08 and 03rd house and is in the star of Moon, who signifies 09th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

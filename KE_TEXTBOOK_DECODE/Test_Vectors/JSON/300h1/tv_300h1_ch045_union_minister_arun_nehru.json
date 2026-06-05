@@ -1,0 +1,175 @@
+{
+  "vector_id": "tv-300h1-ch045",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch045_UNION_MINISTER_ARUN_NEHRU",
+  "pdf_path": "Split_Chapters/Ch045_UNION_MINISTER_ARUN_NEHRU.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Union Minister Arun Nehru",
+    "description": "Mr. Arun Nehru was Minister in the Rajiv Gandhi Government at the Centre and a",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "32:00:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 26.85,
+    "longitude": 80.9167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 7.7694,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 21.4419,
+      "house": 8,
+      "significations": [
+        2,
+        5,
+        8,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 8.7269,
+      "house": 9,
+      "significations": [
+        1,
+        3,
+        4,
+        6,
+        8,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 17.2967,
+      "house": 6,
+      "significations": [
+        1,
+        2,
+        6,
+        7,
+        8,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 26.6789,
+      "house": 9,
+      "significations": [
+        2,
+        5,
+        6,
+        8,
+        9,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 2.3475,
+      "house": 7,
+      "significations": [
+        1,
+        7,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Gemini",
+      "degree": 3.7308,
+      "house": 8,
+      "significations": [
+        1,
+        3,
+        4,
+        6,
+        8,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 7.4969,
+      "house": 9,
+      "significations": []
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

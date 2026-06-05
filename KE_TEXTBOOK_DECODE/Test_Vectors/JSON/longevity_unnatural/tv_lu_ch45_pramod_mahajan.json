@@ -1,0 +1,257 @@
+{
+  "vector_id": "tv-lu-ch45",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch45_Pramod_Mahajan",
+  "pdf_path": "Chapter_Splits/Ch45_Pramod_Mahajan.pdf",
+  "subject": {
+    "name": "Pramod Venkatesh Mahajan",
+    "description": "Indian Union Minister",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1948-10-30",
+    "time_local": "19:56:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1948-10-30T14:26:00Z",
+    "latitude": 16.7333,
+    "longitude": 77.9833,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-02-44.74",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 18.8,
+      "house": 1,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 14.0333,
+      "house": 6,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        4,
+        6,
+        12,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 21.7167,
+      "house": 5,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": [
+        3,
+        5
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 16.6167,
+      "house": 7,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": [
+        7,
+        12,
+        4,
+        9,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Virgo",
+      "degree": 26.95,
+      "house": 5,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "significations": [
+        2,
+        5,
+        7,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 3.85,
+      "house": 8,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        8,
+        11,
+        "Ke",
+        6
+      ]
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 4.95,
+      "house": 5,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "significations": [
+        1,
+        6,
+        5,
+        4
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 11.1667,
+      "house": 4,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        4,
+        6,
+        9,
+        10,
+        "Ke"
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 11.6833,
+      "house": 12,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "significations": [
+        12,
+        "Ke",
+        "Su",
+        "Ma",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 11.6833,
+      "house": 6,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        6,
+        "Su",
+        "Ve",
+        "Ra"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "accident",
+    "death_date": "1949-10-30",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "KETU",
+      "antardasha": "RAHU",
+      "pratyantardasha": "VENUS",
+      "sookshma": "SUN",
+      "stated_by_author": true,
+      "raw_text": "covers injury (06) and maraca (07). Antara lord Ketu is in Rahu star and also signifies Venus and Sun. Ketu itself is in"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Saturn signifies both injury (06) and badhaka (09).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Rahu signifies Mars, Sun and Ketu.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Ketu is in Rahu star and also signifies Venus and Sun.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "longevity of 33 to 66 years.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "injury (06), subsequent hospitalization (12-Rahu) and death 09 (badhaka) are prevailed.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "injury chart, Moon was in badhaka house and was in Mars star, whereas in death chart, Moon was in ostn lord Jupiter star.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Madhya aayu or medium longevity of 33 to 66 years.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

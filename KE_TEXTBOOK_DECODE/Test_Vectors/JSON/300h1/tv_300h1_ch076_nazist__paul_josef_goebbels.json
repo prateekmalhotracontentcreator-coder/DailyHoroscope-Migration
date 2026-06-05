@@ -1,0 +1,226 @@
+{
+  "vector_id": "tv-300h1-ch076",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch076_NAZIST--PAUL_JOSEF_GOEBBELS",
+  "pdf_path": "Split_Chapters/Ch076_NAZIST--PAUL_JOSEF_GOEBBELS.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Paul Joseph Goebbels",
+    "description": "Paul Joseph Goebbels (29 Oct 1897-01 May 1945) was a German politician and Reich",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1897-10-29",
+    "time_local": "23:30:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth; time marked rectified."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 9.3592,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 14.4175,
+      "house": 4,
+      "significations": [
+        2,
+        4
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 9.1722,
+      "house": 6,
+      "significations": [
+        1,
+        6
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 21.2239,
+      "house": 4,
+      "significations": [
+        3,
+        4,
+        5,
+        6,
+        9,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 8.5333,
+      "house": 4,
+      "significations": [
+        3,
+        4,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 8.1094,
+      "house": 3,
+      "significations": [
+        2,
+        3,
+        4,
+        6,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 7.9067,
+      "house": 5,
+      "significations": [
+        5,
+        7,
+        8
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 8.8206,
+      "house": 7,
+      "significations": [
+        7
+      ]
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 8.8206,
+      "house": 1,
+      "significations": [
+        1
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1945
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1945-05-01",
+    "age_at_death": 48,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus Sun and Jupiter are in proximity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is lord of 10 and it is in 04th house and thus it aspects 101h house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Goebbels was head of Germany for one day upon death of Hitler.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Rahu offers result of 1Qih lord Mars through its aspect, while Sun (Government) is in star of Rahu.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

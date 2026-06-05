@@ -1,0 +1,223 @@
+{
+  "vector_id": "tv-300h1-ch133",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch133_INDIAN_PRESIDENT_05_FAKHRUDDIN_All_AHMED",
+  "pdf_path": "Split_Chapters/Ch133_INDIAN_PRESIDENT_05_FAKHRUDDIN_All_AHMED.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Fakhruddin Ali Ahmed",
+    "description": "Fakhruddin Ali Ahmed (13 May 1905-11 Feb 1977) was the fifth President of India from",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1905-05-13",
+    "time_local": "05:31:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 28.6,
+    "longitude": 77.2,
+    "place": "New Delhi",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 12.7553,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 12.7697,
+      "house": 1,
+      "significations": [
+        1,
+        7,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 23.4703,
+      "house": 3,
+      "significations": [
+        3,
+        4,
+        5,
+        8,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 6.1944,
+      "house": 9,
+      "significations": [
+        2,
+        7,
+        9,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 6.4242,
+      "house": 9,
+      "significations": [
+        3,
+        7,
+        9,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 9.6667,
+      "house": 7,
+      "significations": [
+        1,
+        6,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 13.0169,
+      "house": 1,
+      "significations": [
+        1
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 13.0169,
+      "house": 7,
+      "significations": [
+        7
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1977
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1977-02-11",
+    "age_at_death": 72,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter signifies 05, 09 and 10 and it is under aspect from Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "101h lord Venus is under aspect from Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Venus (10) and Mercury (11) are linked to Sun (Government) through Nodes.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Ketu offers Saturn (07) and Sun through Rahu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

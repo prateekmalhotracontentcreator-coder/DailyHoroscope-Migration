@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0112",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0112",
+  "source_file": "0112_C-5_Chandra_Kant-Chem_Engr.pdf",
+  "subject": {
+    "name": "Chandra Kant",
+    "name_from_filename": "Chandra Kant-Chem Engr",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Chem Engr",
+    "profession_category": "Other",
+    "profession_subcategory": "Chem Engr",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1940-02-18",
+    "time_local": "12:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1940-02-18T07:10:00Z",
+    "latitude": 22.573,
+    "longitude": 88.364,
+    "place": "Kolkata, West Bengal, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 5,
+    "months": 4,
+    "days": 5,
+    "raw_text": "Balance of dasha Mar 5-4-5"
+  },
+  "planet_degrees_from_text": {
+    "VENUS": {
+      "degree_in_sign": 14.2333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 16.4,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 26.4833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 28.5,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 5.4667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 19.0667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Chem Engr",
+    "profession_category": "Other",
+    "profession_subcategory": "Chem Engr",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

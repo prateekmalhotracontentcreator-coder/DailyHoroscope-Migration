@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0757",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0757",
+  "source_file": "0757_Y-2_Vassar_Arafat.pdf",
+  "subject": {
+    "name": "Vassar Arafat",
+    "name_from_filename": "Vassar Arafat",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1929-08-29",
+    "time_local": "02:05",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1929-08-29T00:05:00Z",
+    "latitude": 30.044,
+    "longitude": 31.236,
+    "place": "Cairo, Egypt",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 4,
+    "months": 7,
+    "days": 19,
+    "raw_text": "Balance dasha Sun 4-7-19"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 22.7833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 29.7,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 1.9167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.3667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 2.5,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 10.3833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

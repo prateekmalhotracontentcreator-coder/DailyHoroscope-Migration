@@ -1,0 +1,232 @@
+{
+  "vector_id": "tv-lu-ch41",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch41_Benazir_Bhutto",
+  "pdf_path": "Chapter_Splits/Ch41_Benazir_Bhutto.pdf",
+  "subject": {
+    "name": "Benazir Bhutto",
+    "description": "Prime Minister of Pakistan",
+    "nationality": "Pakistani"
+  },
+  "birth_data": {
+    "date": "1953-06-21",
+    "time_local": "16:01:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 24.8667,
+    "longitude": 67.05,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-06-38.04",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 23.0167,
+      "house": 1,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 28.25,
+      "house": 12,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "significations": [
+        10,
+        12,
+        2,
+        7,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 11.75,
+      "house": 9,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "significations": [
+        2,
+        7,
+        9,
+        "Ra",
+        4
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 16.85,
+      "house": 8,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        3,
+        6,
+        8,
+        10,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 20.95,
+      "house": 7,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        1,
+        7,
+        8
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 11.8833,
+      "house": 4,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        4,
+        "Sa",
+        "Mo",
+        "Me",
+        "Ju",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 11.8833,
+      "house": 10,
+      "nakshatra": "Rush",
+      "pada": 3,
+      "significations": [
+        "iOqSa",
+        "Me",
+        "Mo"
+      ]
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 11.4833,
+      "house": 3,
+      "nakshatra": "I",
+      "pada": 4,
+      "significations": [
+        "Ketu"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 17.1667,
+      "house": 3,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        "Venus"
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 14.6333,
+      "house": 11,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        "Venus"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "injury",
+    "death_type": "unknown",
+    "death_date": "1953-06-21",
+    "age_at_death": 54,
+    "dasha_at_death": {
+      "mahadasha": "MARS",
+      "antardasha": "SATURN",
+      "pratyantardasha": "MARS",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Sat-Rah-Mon. For injury and accident, one may consider 01 (body), 06 (cuts and wounds), 08 (accidents) and Mars (planet"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Saturn is in the Mars star and could cause injury, if connected to 06, 08.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Rahu signifies Moon, Mercury and Saturn.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08th lord Venus is iri 07th house, a maraca house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "08th lord are considerably rendered weak or afflicted.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "fortunately Venus is in own star.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

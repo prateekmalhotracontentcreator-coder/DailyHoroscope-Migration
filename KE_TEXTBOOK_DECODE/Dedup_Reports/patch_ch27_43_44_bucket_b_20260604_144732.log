@@ -1,0 +1,48 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_ch27_43_44_bucket_b_20260604_144732.log
+======================================================================
+BPHS Ch27/43/44 — BUCKET B TRIAGE PATCH
+Batch: bphs_ch27_43_44_v2_20260604  |  Dry-run: True
+======================================================================
+
+Group 1 — Bucket B flagged → PHR (15 rules)
+  [DRY] bphs-ch27-018: → PHR
+  [DRY] bphs-ch27-019: → PHR
+  [DRY] bphs-ch27-020: → PHR
+  [DRY] bphs-ch43-031: → PHR
+  [DRY] bphs-ch44-CD01: → PHR
+  [DRY] bphs-ch44-CD03: → PHR
+  [DRY] bphs-ch44-CD04: → PHR
+  [DRY] bphs-ch44-CF06: → PHR
+  [DRY] bphs-ch44-CF07: → PHR
+  [DRY] bphs-ch44-EH03: → PHR
+  [DRY] bphs-ch44-EH04: → PHR
+  [DRY] bphs-ch44-EH05: → PHR
+  [DRY] bphs-ch44-MI06: → PHR
+  [DRY] bphs-ch44-MT04: → PHR
+  [DRY] bphs-ch44-MT06: → PHR
+  Patched: 15/15
+
+Group 2 — Contradiction pairs, Bucket B (2 pairs)
+  [DRY] bphs-ch43-025: contradiction note added
+  [DRY] bphs-ch43-026: contradiction note added
+  [DRY] bphs-ch43-021: contradiction note added
+  [DRY] bphs-ch43-023: contradiction note added
+  Pairs noted: 2/2
+
+Group 3 — PHR truncated interpretation.summary fix
+  Found 7 PHR rules with truncated-summary flag
+  [DRY] bphs-ch27-004: interpretation.summary restored (331 chars)
+  [DRY] bphs-ch27-027: interpretation.summary restored (395 chars)
+  [DRY] bphs-ch27-028: interpretation.summary restored (361 chars)
+  [DRY] bphs-ch27-009: interpretation.summary restored (345 chars)
+  [DRY] bphs-ch27-026: interpretation.summary restored (372 chars)
+  [DRY] bphs-ch27-005: interpretation.summary restored (330 chars)
+  [DRY] bphs-ch27-007: interpretation.summary restored (361 chars)
+  Fixed: 7/7
+
+Bucket C — stay flagged (2 rules, no action)
+  bphs-ch44-MT01 : 'absolute safety buffer' encoding overstatement — TT/GAI review
+  bphs-ch44-RK03 : conflates two BPHS principles — encoding fix needed
+
+── Post-patch counts ─────────────────────────────────────────────────
+  (dry-run — no DB counts)

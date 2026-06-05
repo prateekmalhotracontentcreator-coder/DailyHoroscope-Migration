@@ -1,0 +1,214 @@
+{
+  "vector_id": "tv-300h1-ch056",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch056_BOLL_YWOOD_ACTRESS--WAHEEDA_REHMAN",
+  "pdf_path": "Split_Chapters/Ch056_BOLL_YWOOD_ACTRESS--WAHEEDA_REHMAN.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Waheeda Rahman",
+    "description": "Waheeda Rahman was film heroine of yester-years mainly with Hindi Cinema:",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "08:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 18.1542,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 20.6575,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        7,
+        8
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 19.3264,
+      "house": 2,
+      "significations": [
+        2,
+        7,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 29.2092,
+      "house": 12,
+      "significations": [
+        1,
+        6,
+        8,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 20.3925,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        5,
+        7,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 8.7811,
+      "house": 3,
+      "significations": [
+        1,
+        2,
+        3
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 9.5642,
+      "house": 11,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 9.5642,
+      "house": 5,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Film Actor/Actress",
+    "profession_category": "Entertainment",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Entertainment",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter, Venus (02, 05, 07 and 10) and Sun are in lagna, which awards a special status.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is in 03rd house and aspects 101h house, thus passing power to job.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus (05, 10) is in star of Moon (02, 07) who denotes Rahu (illusion).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Venus-Moon-Rahu connections involving houses 01, 05 (romance) and 07 (marriage) indicate marriage outside community after love affair.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu signifies other castes.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

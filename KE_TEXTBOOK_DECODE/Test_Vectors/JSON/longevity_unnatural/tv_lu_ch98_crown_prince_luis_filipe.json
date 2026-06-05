@@ -1,0 +1,245 @@
+{
+  "vector_id": "tv-lu-ch98",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch98_Crown_Prince_Luis_Filipe_Portugal",
+  "pdf_path": "Chapter_Splits/Ch98_Crown_Prince_Luis_Filipe_Portugal.pdf",
+  "subject": {
+    "name": "Crown Prince Luis Filipe",
+    "description": "Crown Prince of Portugal",
+    "nationality": "Portuguese"
+  },
+  "birth_data": {
+    "date": "1887-03-21",
+    "time_local": "12:00:30",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1887-03-21T11:00:30Z",
+    "latitude": 38.7167,
+    "longitude": -9.1333,
+    "place": "Lisbon,\nPortugal",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-16-55.29",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 3.0333,
+      "house": 1,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 8.25,
+      "house": 10,
+      "nakshatra": "UBha",
+      "pada": 2,
+      "significations": [
+        3,
+        10,
+        1,
+        8,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 3.4833,
+      "house": 9,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": [
+        2,
+        6,
+        11,
+        10,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 16.05,
+      "house": 10,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "significations": [
+        6,
+        10,
+        11,
+        8,
+        9,
+        1
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 12.2333,
+      "house": 5,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        7,
+        10,
+        3,
+        "Ra",
+        "OS"
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 3.95,
+      "house": 11,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "significations": [
+        5,
+        12,
+        11,
+        "Ke"
+      ]
+    },
+    "SATURN": {
+      "sign": "Gemini",
+      "degree": 23.3,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        8,
+        9,
+        1,
+        4,
+        7,
+        5
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 1.65,
+      "house": 9,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "significations": [
+        "Mars"
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 20.3167,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        "Jupiter"
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 20.3167,
+      "house": 7,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        "Venus"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in saade-saath",
+    "death_type": "violent",
+    "death_date": "1887-03-21",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "KETU",
+      "pratyantardasha": "MARS",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "and it aspects lagna. Antara lord Venus is posited in 11th house, but is in the star of Ketu, who signifies Mars, the ca"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Bhukti lord Jupiter signifies maraca and badhaka and it aspects lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Venus is posited in 11th house, but is in the star of Ketu, who signifies Mars, the causative planet for injury and accident.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sookshma lord Rahu is in Leo and is in the star of Ketu.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "fortunately, Prince Luis Filipe, who was the Crown Prince of Portugal Kingdom, was killed along with his father, King Carlos I on 01 Feb 1908.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "fortunately, Mercury is posited in Saturn star, who signifies 01, 08 and maraca & badhaka.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "fortunately, the lagna was falling in the star of maraca and badhaka Jupiter, while Jupiter was posited in the star of 08111 lord Saturn in the transit lagna.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

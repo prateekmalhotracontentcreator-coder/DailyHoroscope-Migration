@@ -1,0 +1,373 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/query_phase_c_validation_20260604_173331.log
+DESTINY NUMEROLOGY PHASE C — VALIDATION QUERY
+Batch: destiny_numerology_phase_c_20260604
+======================================================================
+
+=== DB COUNTS ===
+  auto_approved                  16
+  pending_human_review           6
+  flagged                        63
+  pending_review                 18
+  TOTAL                          103
+
+=== STATUS BY CHAPTER (Ch20-Ch28, core rules) ===
+  Ch20 (3 rules): {'flagged': 3}
+  Ch21 (1 rules): {'flagged': 1}
+  Ch22 (3 rules): {'flagged': 3}
+  Ch23 (5 rules): {'flagged': 5}
+  Ch24 (3 rules): {'flagged': 3}
+  Ch25 (2 rules): {'flagged': 2}
+  Ch26 (6 rules): {'flagged': 6}
+  Ch27 (6 rules): {'flagged': 5, 'pending_human_review': 1}
+  Ch28 (10 rules): {'pending_human_review': 1, 'auto_approved': 9}
+
+=== STATUS BY MODULE (derived rules) ===
+  career_alignment_diagnostic (31 rules): {'pending_review': 18, 'flagged': 13}
+  personal_year_cycle (12 rules): {'auto_approved': 7, 'pending_human_review': 4, 'flagged': 1}
+  case_derived_inference (21 rules): {'flagged': 21}
+
+=== FLAGGED (full list) ===
+
+  rule_id   : num-ch20-001
+  location  : Ch20
+  title     : Primary Planetary Triggers for Cyclones, Tsunamis and Hurricanes — Rah
+  cond.type : engine_specification
+
+  rule_id   : num-ch20-002
+  location  : Ch20
+  title     : Water Disaster Element Dynamics — Origin, Amplification and Land Impac
+  cond.type : engine_specification
+
+  rule_id   : num-ch20-003
+  location  : Ch20
+  title     : Full Moon Amplification of Water-Related Catastrophes
+  cond.type : engine_specification
+
+  rule_id   : num-ch21-001
+  location  : Ch21
+  title     : Pandemic Numerological Analysis Framework — Year + Country + Origin Pl
+  cond.type : engine_specification
+
+  rule_id   : num-ch22-001
+  location  : Ch22
+  title     : Number 26 — Fatality and Catastrophe Pattern for Dates
+  cond.type : compound_number
+
+  rule_id   : num-ch22-002
+  location  : Ch22
+  title     : India's Saturn Affliction — Independence Date Destiny Number 8
+  cond.type : engine_specification
+
+  rule_id   : num-ch22-003
+  location  : Ch22
+  title     : Universal Catastrophe Inference — Wicked Planets Across Name, Place, P
+  cond.type : engine_specification
+
+  rule_id   : num-ch23-001
+  location  : Ch23
+  title     : Universal Scope of Name Numbers — Individuals, Firms, Places and Count
+  cond.type : engine_specification
+
+  rule_id   : num-ch23-002
+  location  : Ch23
+  title     : Country Name-Number Reference Table — 9 Nations
+  cond.type : place_name_number
+
+  rule_id   : num-ch23-003
+  location  : Ch23
+  title     : Country/Geographic Entity Name Change as National Remedy
+  cond.type : place_name_number
+
+  rule_id   : num-ch23-004
+  location  : Ch23
+  title     : Compound Number Dual-Layer Analysis — Compound Has Most Say, Individua
+  cond.type : engine_specification
+
+  rule_id   : num-ch23-005
+  location  : Ch23
+  title     : Name Number Bidirectional Causality — Names Attract Fortunes AND Colle
+  cond.type : engine_specification
+
+  rule_id   : num-ch24-001
+  location  : Ch24
+  title     : City and State Name Numbers Govern Collective Destiny and Resident Cha
+  cond.type : place_name_number
+
+  rule_id   : num-ch24-002
+  location  : Ch24
+  title     : Indian State and City Name-Number Reference Table
+  cond.type : place_name_number
+
+  rule_id   : num-ch24-003
+  location  : Ch24
+  title     : City/State Name Change Remedy — Modern vs Historical Spellings as Natu
+  cond.type : place_name_number
+
+  rule_id   : num-ch25-001
+  location  : Ch25
+  title     : Fire-Element Name Numbers Identify Places Prone to Conflict, Violence 
+  cond.type : place_name_number
+
+  rule_id   : num-ch25-002
+  location  : Ch25
+  title     : Fire-Country and Fire-Region Reference Examples — Conflict-Prone Name 
+  cond.type : place_name_number
+
+  rule_id   : num-ch26-001
+  location  : Ch26
+  title     : Company Name Number Governs Business Destiny — Same Chaldean Principle
+  cond.type : engine_specification
+
+  rule_id   : num-ch26-002
+  location  : Ch26
+  title     : Major Global Company Name-Number Reference Table
+  cond.type : place_name_number
+
+  rule_id   : num-ch26-003
+  location  : Ch26
+  title     : Number 4 (Rahu) — Best Name Number for Technology Companies, Worst for
+  cond.type : engine_specification
+
+  rule_id   : num-ch26-004
+  location  : Ch26
+  title     : Best Company Name Numbers by Business Domain — Sector-Planet Affinity 
+  cond.type : engine_specification
+
+  rule_id   : num-ch26-005
+  location  : Ch26
+  title     : Wicked-Planet Company Name Numbers — Risk Patterns for Businesses
+  cond.type : engine_specification
+
+  rule_id   : num-ch26-006
+  location  : Ch26
+  title     : Company Name Change as Business Remedy — Rebranding to Improve Name Nu
+  cond.type : engine_specification
+
+  rule_id   : num-ch27-001
+  location  : Ch27
+  title     : Company Logo Colour Should Match Name Number Planet Colour
+  cond.type : engine_specification
+
+  rule_id   : num-ch27-003
+  location  : Ch27
+  title     : Major Company Logo Colour Analysis — Alignment and Misalignment Exampl
+  cond.type : engine_specification
+
+  rule_id   : num-ch27-004
+  location  : Ch27
+  title     : Logo Shape Numerology — Geometric Shapes and Their Planetary Associati
+  cond.type : engine_specification
+
+  rule_id   : num-ch27-005
+  location  : Ch27
+  title     : Triple Alignment Principle — Name Number + Logo Colour + Logo Shape Sh
+  cond.type : engine_specification
+
+  rule_id   : num-ch27-006
+  location  : Ch27
+  title     : Logo and Colour Change as Company Remedy — Rebranding Without Full Nam
+  cond.type : engine_specification
+
+  rule_id   : num-cad-010
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Business / Finance / Enterprise: Arrow Alignment Profi
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-011
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Politics / Governance / Strategy: Arrow Alignment Prof
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-012
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Sports / Athletics / Physical Performance: Arrow Align
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-013
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Arts / Cinema / Entertainment: Arrow Alignment Profile
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-014
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Spiritual Teaching / Counselling / Healing: Arrow Alig
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-015
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Military / Defence / Law Enforcement: Arrow Alignment 
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-016
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Media / Journalism / Communication: Arrow Alignment Pr
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-017
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Academia / Research / Analysis: Arrow Alignment Profil
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-018
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Law / Judiciary / Justice: Arrow Alignment Profile
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-019
+  location  : career_alignment_diagnostic
+  title     : Career Domain — Medicine / Healthcare: Arrow Alignment Profile
+  cond.type : domain_arrow_alignment
+
+  rule_id   : num-cad-020
+  location  : career_alignment_diagnostic
+  title     : Universal Override — Will Determination Arrow (9-5-1): Domain-Transcen
+  cond.type : override
+
+  rule_id   : num-cad-021
+  location  : career_alignment_diagnostic
+  title     : Universal Override — Rajayoga (4-5-6 or 2-5-8): EXCEPTIONAL Domain-Agn
+  cond.type : override
+
+  rule_id   : num-cad-022
+  location  : career_alignment_diagnostic
+  title     : CRITICAL CHECK — Fatality Compound + Military/Physical Domain
+  cond.type : fatality_check
+
+  rule_id   : num-pyc-011
+  location  : personal_year_cycle
+  title     : Personal Year Override — Fatality Compound Vibrations Supersede Annual
+  cond.type : override_rule
+
+  rule_id   : num-cdi-001
+  location  : case_derived_inference
+  title     : Basic Number 1 (Sun) → Business/Enterprise Domain — Strong Empirical M
+  cond.type : basic_number_domain_match
+
+  rule_id   : num-cdi-002
+  location  : case_derived_inference
+  title     : Basic Number 5 (Mercury) → Politics + Sports Dual-Domain Affinity
+  cond.type : basic_number_domain_match
+
+  rule_id   : num-cdi-003
+  location  : case_derived_inference
+  title     : Basic Number 6 (Venus) → Cinema/Arts Natural Domain; Creative Dimensio
+  cond.type : basic_number_domain_match
+
+  rule_id   : num-cdi-004
+  location  : case_derived_inference
+  title     : Spiritual Domain — Basic Numbers 3, 4, 7 with Diverse Destiny; ALL car
+  cond.type : domain_specific_pattern
+
+  rule_id   : num-cdi-005
+  location  : case_derived_inference
+  title     : Will Determination Arrow (9-5-1) — Domain-Transcendent Success Predict
+  cond.type : arrow_fires
+
+  rule_id   : num-cdi-006
+  location  : case_derived_inference
+  title     : Will Determination Partial (Missing Digit 5) — Highest Priority Remedi
+  cond.type : arrow_partial_missing_digit
+
+  rule_id   : num-cdi-007
+  location  : case_derived_inference
+  title     : Rajayoga — 14% Prevalence in Top-50 High Achievers; Premium Report Hea
+  cond.type : rajayoga_detected
+
+  rule_id   : num-cdi-008
+  location  : case_derived_inference
+  title     : Rajayoga 2 (2-5-8 — Practical Determination) More Common Than Rajayoga
+  cond.type : rajayoga_type_comparison
+
+  rule_id   : num-cdi-009
+  location  : case_derived_inference
+  title     : Digit 3 (Jupiter) — Most Universally Missing Digit in High Achievers (
+  cond.type : missing_digit_universal
+
+  rule_id   : num-cdi-010
+  location  : case_derived_inference
+  title     : Digit 9 (Mars) — Nearly Universal Presence in High Achievers (94%); Ba
+  cond.type : present_digit_universal
+
+  rule_id   : num-cdi-011
+  location  : case_derived_inference
+  title     : Digit 5 (Mercury) — Missing in 60%; When Present, Activates Will Deter
+  cond.type : high_leverage_digit
+
+  rule_id   : num-cdi-012
+  location  : case_derived_inference
+  title     : Prosperity Arrow (8-1-6) — Primary Business Domain Predictor from DOB-
+  cond.type : arrow_domain_correlation
+
+  rule_id   : num-cdi-013
+  location  : case_derived_inference
+  title     : Sports Domain — Action Arrow (2-7-6) Rarely Fires from DOB Alone; Will
+  cond.type : domain_arrow_mismatch
+
+  rule_id   : num-cdi-014
+  location  : case_derived_inference
+  title     : Politics Domain — Planner Arrow (4-3-8) or Will Determination Required
+  cond.type : domain_arrow_requirement
+
+  rule_id   : num-cdi-015
+  location  : case_derived_inference
+  title     : Basic 1 × Destiny 4 (Sun × Rahu) — Institution Builder; Produces Lasti
+  cond.type : basic_destiny_combination
+
+  rule_id   : num-cdi-016
+  location  : case_derived_inference
+  title     : Basic 6 × Destiny 3 (Venus × Jupiter) — Creative Excellence Combo; Ach
+  cond.type : basic_destiny_combination
+
+  rule_id   : num-cdi-017
+  location  : case_derived_inference
+  title     : Basic 2 × Destiny 7 (Moon × Ketu) — Emotional Depth + Dark Intuition; 
+  cond.type : basic_destiny_combination
+
+  rule_id   : num-cdi-018
+  location  : case_derived_inference
+  title     : Business Domain — Compound Number Range 10–59; Average 32; Lower Compo
+  cond.type : compound_domain_range
+
+  rule_id   : num-cdi-019
+  location  : case_derived_inference
+  title     : Multi-Digit Remediation Priority Order — Derived from Arrow Impact Ana
+  cond.type : remediation_priority_framework
+
+  rule_id   : num-cdi-020
+  location  : case_derived_inference
+  title     : Dual Fatality Compounds (16 + 26) — Maximum Risk Signal; Multi-System 
+  cond.type : dual_fatality_compound
+
+  rule_id   : num-cdi-021
+  location  : case_derived_inference
+  title     : Premium Report Output Hierarchy — Derived from 50-Case Signal Distribu
+  cond.type : report_structure_rule
+
+=== PENDING_REVIEW / structural failures (18) ===
+  num-cad-001                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-002                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-003                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-004                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-005                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-006                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-007                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-008                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-009                    career_alignment_diagnostic         cond.type=basic_number_career_archetype
+  num-cad-023                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+  num-cad-024                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+  num-cad-025                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+  num-cad-026                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+  num-cad-027                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+  num-cad-028                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+  num-cad-029                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+  num-cad-030                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+  num-cad-031                    career_alignment_diagnostic         cond.type=missing_digit_career_impact
+
+=== PENDING_HUMAN_REVIEW (6) ===
+  num-ch27-002                   Ch27
+  num-ch28-001                   Ch28
+  num-pyc-005                    personal_year_cycle
+  num-pyc-008                    personal_year_cycle
+  num-pyc-010                    personal_year_cycle
+  num-pyc-012                    personal_year_cycle

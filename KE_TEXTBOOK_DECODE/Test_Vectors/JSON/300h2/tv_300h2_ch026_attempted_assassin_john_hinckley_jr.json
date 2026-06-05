@@ -1,0 +1,291 @@
+{
+  "vector_id": "tv-300h2-ch026",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch026_25_John_Hinckley_Jr",
+  "pdf_path": "Chapters/Ch026_25_John_Hinckley_Jr.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Attempted Assassin --John Hinckley Jr",
+    "description": "John W. Hinckley, Jr. attempted to assassinate U.S. President Ronald Reagan on 30 Mar 1981, in an effort to impress actress Jodie Foster. He was found not guilty by reason of insanity and has remained under institutional",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1981-03-30",
+    "time_local": "23:42:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "lagna_degree_stated": 17.272,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 14.919,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        9,
+        10,
+        6,
+        8
+      ],
+      "significations_raw": "09,10,06,08"
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 4.543,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        9,
+        6,
+        10,
+        8
+      ],
+      "significations_raw": "09 06,10 08"
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 9.617,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        12,
+        7
+      ],
+      "significations_raw": "05,12,07 Ra"
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 4.848,
+      "house": null,
+      "nakshatra": "MriQ",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        5,
+        12,
+        10
+      ],
+      "significations_raw": "07 05,12,10"
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 4.294,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        4,
+        2,
+        3,
+        8,
+        1,
+        0
+      ],
+      "significations_raw": "01 ,04,02,03,08,1 0"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 4.379,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ma,Me"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Scorpio",
+      "degree": 23.38
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 7.17
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": "Violent death",
+    "death_type": "violent",
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Saturn (destruction) signify 03 (action) through Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars (04-mind) is linked to Rahu (Jupiter, 03).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "04th lord Mars (violence) is in 06-enmity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun (power to execute) is in 05 (intention).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn is in 10 and aspects Rahu (Mars and Jupiter).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "All these combinations led native to shoot at US President Reagan with intention to kill.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "The incident took place during Saade-saath of 1he native.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "041h lord Mars in 06 with Nodes and Mercury indicates violent mental disturbance.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

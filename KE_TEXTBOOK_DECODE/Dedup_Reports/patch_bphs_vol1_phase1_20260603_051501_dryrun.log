@@ -1,0 +1,212 @@
+============================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol1_phase1_20260603_051501_dryrun.log
+============================================================
+
+BPHS Vol 1 Phase 1 -- Positional Conflict Patch (content-based lookup)
+Source: dedup_bphs_vol1_phase2_vs_mongodb_positional.json
+
+Phase 1 polarity conflicts loaded: 29
+(These are Ch12/14/16-18/42 rules from FOLDER_A that are NOT Phase 2)
+
+Unique Phase 1 rule IDs to patch: 27
+
+  [SKIP-NOTEXT] bphs1-ch42-019 -- empty text, cannot search by content
+Searchable targets: 26
+Skipped (no text): ['bphs1-ch42-019']
+
+--- bphs1-ch12-012 (Ch12) ---
+    search: 'endowed royal marks Rajалакшанам 32'
+    [MATCH] R-BPHS12-012
+    text  : Condition: If Mercury, Jupiter or Venus be in the ascendant along with the Moon, or be in angle from
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs kp-ch12-002 on jupiter in house 1 (A=positive, B=negative)
+
+--- bphs1-ch14-015 (Ch14) ---
+    search: 'Sun 3rd destroy preborn Sage'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: The Sun in the 3rd will destroy the preborn. Sage Bhrigu also opines that the Sun in the 3rd house w
+
+--- bphs1-ch16-028 (Ch16) ---
+    search: 'Seven sons born twins occurring'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: Seven sons will be born, with twins occurring twice among them, if Saturn is in the 9th house from t
+
+--- bphs1-ch17-006 (Ch17) ---
+    search: 'Moon ascendant provided that ascendant'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: If the Moon is in the ascendant — provided that ascendant is not Cancer — and is conjunct Rahu, whit
+
+--- bphs1-ch17-007 (Ch17) ---
+    search: 'Saturn place Rahu i e'
+    [MATCH] R-BPHS17-017
+    text  : Condition: Saturn in place of Rahu with Moon in ascendant
+
+Effect: Will cause black leprosy.
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-013 on moon in house 1 (A=negative, B=positive)
+
+--- bphs1-ch17-008 (Ch17) ---
+    search: 'Mars similarly place Rahu Saturn'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: Mars similarly (in place of Rahu or Saturn) conjunct the Moon in the ascendant will afflict the nati
+
+--- bphs1-ch17-011 (Ch17) ---
+    search: 'Mercury so featuring i e'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: Mercury so featuring (i.e. 6th and 8th lords in the ascendant with Mercury) will bring in bilious di
+
+--- bphs1-ch17-012 (Ch17) ---
+    search: 'Jupiter similar case 6th 8th'
+    [MATCH] R-BPHS17-022
+    text  : Condition: Jupiter in similar case with lords of 6th and 8th in ascendant
+
+Effect: Will destroy any 
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs kp-ch12-002 on jupiter in house 1 (A=positive, B=negative)
+
+--- bphs1-ch17-013 (Ch17) ---
+    search: 'Similarly Venus 6th 8th lords'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: Similarly, Venus (with the 6th and 8th lords in the ascendant) will cause diseases through females/s
+
+--- bphs1-ch17-014 (Ch17) ---
+    search: 'Saturn 6th 8th lords ascendant'
+    [MATCH] R-BPHS17-012
+    text  : Condition: Saturn with lordship of 6th or joining the 6th lord or in the 6th/8th house
+
+Effect: Deno
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-074 on saturn in house 1 (A=negative, B=positive)
+
+--- bphs1-ch17-017 (Ch17) ---
+    search: 'Moon 6th 8th lords ascendant'
+    [MATCH] R-BPHS17-007
+    text  : Condition: The Moon with lordship of 6th or joining the 6th lord or in the 6th/8th house
+
+Effect: De
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-013 on moon in house 1 (A=negative, B=positive)
+
+--- bphs1-ch17-019 (Ch17) ---
+    search: 'suffer severe fever at age'
+    [MATCH] R-BPHS17-029
+    text  : Condition: Mars is in the 6th while the 6th lord is in the 8th
+
+Effect: One will suffer from severe 
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-031 on mars in house 6 (A=negative, B=positive)
+
+--- bphs1-ch18-004 (Ch18) ---
+    search: 'Venus debilitated any house horoscope'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: Venus debilitated — in any house of the horoscope — will cause loss of wife (death or separation). V
+
+--- bphs1-ch18-010 (Ch18) ---
+    search: 'Mars placed 7th denote association'
+    [MATCH] R-BPHS18-011
+    text  : Condition: Mars placed in the 7th
+
+Effect: Will denote association with marriageable girls (or those
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs R-ATEXTB-MAR-7H-004 on mars in house 7 (A=negative, B=positive)
+
+--- bphs1-ch18-011 (Ch18) ---
+    search: 'Mercury 7th indicates association harlots'
+    [MATCH] bphs1-ch33-088
+    text  : Mercury in the said house (7th from Karakamsa) indicates a wife versed in arts. Mercury governs arts
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-044 on mercury in house 7 (A=negative, B=positive)
+
+--- bphs1-ch18-012 (Ch18) ---
+    search: 'Wife Brahmin pregnant female s'
+    [MATCH] R-BPHS18-013
+    text  : Condition: Jupiter is in the 7th
+
+Effect: Wife of a Brahmin or a pregnant female will be in the nati
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-056 on jupiter in house 7 (A=negative, B=positive)
+
+--- bphs1-ch18-014 (Ch18) ---
+    search: 'Mars 7th denotes spouse female'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: Mars in the 7th denotes a spouse (or female associate) with attractive breasts. Mars's association w
+
+--- bphs1-ch18-016 (Ch18) ---
+    search: 'Jupiter bring spouse hard prominent'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: Jupiter will bring a spouse with hard and prominent breasts. Jupiter's association with fullness, ex
+
+--- bphs1-ch18-017 (Ch18) ---
+    search: 'Venus bring spouse full excellent'
+    [NOT FOUND] No match in MongoDB for fragment
+    A-text: Venus will bring one (spouse) with full and excellent breasts. Venus's signification of beauty, char
+
+--- bphs1-ch18-018 (Ch18) ---
+    search: 'Malefics 12th 7th while Moon'
+    [MATCH] R-BPHS18-019
+    text  : Condition: Malefics in the 12th and 7th while decreasing Moon is in the 5th
+
+Effect: The native will
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-018 on moon in house 5 (A=negative, B=positive)
+
+--- bphs1-ch18-025 (Ch18) ---
+    search: 'Moon 7th as 7th lord'
+    [MATCH] R-BPHS18-029
+    text  : Condition: If the Moon is in the 7th as the 7th lord is in the 12th and the Karaka (indicator Venus)
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-020 on moon in house 7 (A=negative, B=positive)
+
+--- bphs1-ch18-027 (Ch18) ---
+    search: 'Mars Venus 7th house have'
+    [MATCH] R-BPHS18-032
+    text  : Condition: Mars and Venus are in the 7th
+
+Effect: The native will have 3 wives.
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs R-ATEXTB-MAR-7H-004 on mars in house 7 (A=negative, B=positive)
+
+--- bphs1-ch18-031 (Ch18) ---
+    search: 'Sun 7th while his dispositor'
+    [MATCH] R-BPHS18-036
+    text  : Condition: The Sun is in the 7th house while his dispositor is conjunct Venus
+
+Effect: There will be
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-007 on sun in house 7 (A=positive, B=negative)
+
+--- bphs1-ch18-043 (Ch18) ---
+    search: 'Loss wife occur 18th year'
+    [MATCH] R-BPHS18-049
+    text  : Condition: 7th lord is in fall while Venus is in the 8th
+
+Effect: Loss of wife will occur in the 18t
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-069 on venus in house 8 (A=negative, B=positive)
+
+--- bphs1-ch18-046 (Ch18) ---
+    search: 'Venus 9th while his dispositor'
+    [MATCH] R-BPHS18-046
+    text  : Condition: Venus is in the 9th from the 9th (i.e. in the 5th house), while Rahu is in one of the sai
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-070 on venus in house 9 (A=negative, B=positive)
+
+--- bphs1-ch18-049 (Ch18) ---
+    search: '6th 7th 8th houses their'
+    [MATCH] R-BPHS18-055
+    text  : Condition: If the 6th, 7th and 8th are in their order occupied by Mars, Rahu and Saturn
+
+Effect: the
+    [DRY RUN] Would set pending_review=True
+      → positional_polarity_conflict vs pd-ch08-031 on mars in house 6 (A=negative, B=positive)
+
+============================================================
+[DRY RUN] Would patch: 16
+Not found in MongoDB : 10
+Already patched      : 0
+Skipped (no text)    : 1
+
+NOTE: 'Not found' rules are Phase 1 BPHS rules whose content could not
+be matched in MongoDB. They may have been ingested under significantly
+different wording, or may not exist in MongoDB at all (if the old ingestion
+script skipped or transformed those verses). Manual review recommended.

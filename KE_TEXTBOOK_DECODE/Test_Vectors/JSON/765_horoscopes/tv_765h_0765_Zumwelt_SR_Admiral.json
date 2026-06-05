@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0765",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0765",
+  "source_file": "0765_Z-4_Zumwelt_SR_Admiral.pdf",
+  "subject": {
+    "name": "Zumwelt SR, Admiral",
+    "name_from_filename": "Zumwelt SR, Admiral",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Military",
+    "profession_subcategory": "Admiral",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1920-11-29",
+    "time_local": "14:35",
+    "timezone_offset_hours": -8.0,
+    "time_utc": "1920-11-29T22:35:00Z",
+    "latitude": 37.775,
+    "longitude": -122.419,
+    "place": "San Francisco, California, USA",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 11,
+    "months": 7,
+    "days": 28,
+    "raw_text": "Balance dasha Sat 11-7-28"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 1.1167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 8.4833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 9.0667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 22.1,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 14.6833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 24.8833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 1.1167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Military",
+    "profession_subcategory": "Admiral",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

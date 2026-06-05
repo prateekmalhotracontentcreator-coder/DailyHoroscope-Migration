@@ -1,0 +1,214 @@
+{
+  "vector_id": "tv-lu-ch47",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch47_Yitzhak_Rabin",
+  "pdf_path": "Chapter_Splits/Ch47_Yitzhak_Rabin.pdf",
+  "subject": {
+    "name": "Yitzhak Rabin",
+    "description": "Prime Minister of Israel",
+    "nationality": "Israeli"
+  },
+  "birth_data": {
+    "date": "1922-03-01",
+    "time_local": "15:50:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1922-03-01T13:50:00Z",
+    "latitude": 31.7667,
+    "longitude": 35.2333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-40-24.10",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 25.9167,
+      "house": 1,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 17.7833,
+      "house": 9,
+      "nakshatra": "a",
+      "pada": 1,
+      "significations": [
+        1,
+        12,
+        3,
+        7,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 12.7,
+      "house": 5,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        3,
+        5,
+        7,
+        8,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 22.4833,
+      "house": 8,
+      "nakshatra": "PBha",
+      "pada": 1,
+      "significations": [
+        11,
+        8,
+        3,
+        6,
+        9,
+        4
+      ]
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 13.35,
+      "house": 3,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        3,
+        7,
+        8,
+        1,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 17.8333,
+      "house": 3,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        "Sa",
+        "Ju",
+        "Mo",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 17.8333,
+      "house": 9,
+      "nakshatra": "a",
+      "pada": 1,
+      "significations": [
+        "Me",
+        "Ju",
+        "Sa",
+        "Mo"
+      ]
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 18.2,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": [
+        "Rahu"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 7.0333,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "significations": [
+        "Rahu"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 23.1,
+      "house": 5,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "a weapon",
+    "death_type": "violent",
+    "death_date": "1922-03-01",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "MOON",
+      "stated_by_author": true,
+      "raw_text": "Rahu-Mercury Mercury-Moon. Dasha lord Rahu signifies Jupiter (06-injury), Saturn (07- maraca and 08 - longevity), Moon ("
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Rahu signifies Jupiter (06-injury), Saturn (07- maraca and 08 - longevity), Moon (lagna and maraca), Mercury (Mars and maraca).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Mercury signifies Mars (planet of injury) and 07 (maraca).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sookshma lord Moon signifies lagna and 07th (maraca).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

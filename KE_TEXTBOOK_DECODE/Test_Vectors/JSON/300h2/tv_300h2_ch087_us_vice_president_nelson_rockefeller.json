@@ -1,0 +1,275 @@
+{
+  "vector_id": "tv-300h2-ch087",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch087_86_Nelson_Rockefeller",
+  "pdf_path": "Chapters/Ch087_86_Nelson_Rockefeller.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Us Vice President--Nelson Rockefeller",
+    "description": "Native was US politician and billionaire. He was the Asst. Secretary of State from 1944- 1945, the Governor of New York from 1959-1974 and Vice-President.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 23.614,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1012,
+        1104,
+        7
+      ],
+      "significations_raw": "1012,1104 07"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 15.464,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        11,
+        2,
+        10
+      ],
+      "significations_raw": "11,02,10 Ra"
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 7.884,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3,
+        8,
+        11,
+        5,
+        6,
+        7
+      ],
+      "significations_raw": "03,08,11 ,05,06,07"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 11.949,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        10
+      ],
+      "significations_raw": "10,Me,Ve Su"
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Aquarius",
+      "degree": 27.38
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "marriage"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun (Govt.) is in 10 (prof.) and is conjunct with Venus, while Jupiter is in 02\"d to them.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is in 10 lord Mercury star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn (05, 07, democracy) is in star of Mercury (10).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Jupiter and Mars are in 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "All these combinations helped native to reach high level in life with political posts.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Ketu signifies 04 indicate moody.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Ketu is aspected by lagna lord Mercury shows selfless nature.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Saturn (06) is in 07, while 12 lord Sun signify 07, indicate displeasure in marital life.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "07th lord Jupiter in star of Mercury indicate dual relationships.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

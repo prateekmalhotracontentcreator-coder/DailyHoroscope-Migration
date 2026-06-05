@@ -1,0 +1,45 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_lalkitab_bucket_b_20260605_035020.log
+======================================================================
+LAL KITAB — Bucket B Triage Patch (bulk_write, sync pymongo)
+Batch: lalkitab_all_v2_20260605  |  Dry-run: False
+======================================================================
+
+Group 1 — Bucket B flagged → PHR (27 rules, bulk_write)
+  Matched / Modified: 0 / 0
+
+Group 2 — Structural failure → PHR (1 rule)
+  OK   lalkitab-ch20-yog-07 — modified: 0
+
+Group 3 — Truncated interpretation.summary fix (5 Ch19 rules, bulk_write)
+  Matched / Modified: 5 / 5
+  OK   lalkitab-ch19-001: interpretation.summary restored (379 chars)
+  OK   lalkitab-ch19-002: interpretation.summary restored (383 chars)
+  OK   lalkitab-ch19-003: interpretation.summary restored (363 chars)
+  OK   lalkitab-ch19-004: interpretation.summary restored (309 chars)
+  OK   lalkitab-ch19-005: interpretation.summary restored (283 chars)
+
+Bucket C — stay flagged (17 rules, no action)
+  lalkitab-ch20-yog-01
+  lalkitab-ch20-yog-05
+  lalkitab-ch20-yog-09
+  lalkitab-ch20-gp-interact
+  lalkitab-ch21-gp-05
+  lalkitab-ch23-geoveto-triangle
+  lalkitab-ch24-mortality-north-star
+  lalkitab-ch24-mortality-reflection-organic
+  lalkitab-ch24-mortality-reflection-mirror
+  lalkitab-ch24-mortality-stasis
+  lalkitab-ch24-age-infancy-12d
+  lalkitab-ch24-age-childhood-12m
+  lalkitab-ch24-age-sudden-death
+  lalkitab-ch24-age-long-illness
+  lalkitab-ch24-age-survival-son
+  lalkitab-ch24-age-father-dependency
+  lalkitab-ch24-age-shortlife-2y
+
+── Post-patch counts ─────────────────────────────────────────────────
+  auto_approved        : 287
+  pending_human_review : 163
+  flagged              : 17
+  pending_review       : 0
+  TOTAL                : 467

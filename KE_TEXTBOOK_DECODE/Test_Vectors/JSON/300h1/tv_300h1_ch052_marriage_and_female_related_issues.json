@@ -1,0 +1,225 @@
+{
+  "vector_id": "tv-300h1-ch052",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch052_MARRIAGE_AND_FEMALE_RELATED_ISSUES",
+  "pdf_path": "Split_Chapters/Ch052_MARRIAGE_AND_FEMALE_RELATED_ISSUES.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Marriage And Female Related Issues",
+    "description": "A boy wanted to see the following female for marriage. The author had warned about",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1989-04-11",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 27.3611,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 27.9925,
+      "house": 7,
+      "significations": [
+        7,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 10.6497,
+      "house": 10,
+      "significations": [
+        6,
+        10,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 25.4886,
+      "house": 9,
+      "significations": [
+        3,
+        8,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 5.6258,
+      "house": 8,
+      "significations": [
+        1,
+        8,
+        10,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 11.8725,
+      "house": 9,
+      "significations": [
+        4,
+        7,
+        9,
+        10,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 29.68,
+      "house": 7,
+      "significations": [
+        1,
+        2,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 20.2086,
+      "house": 4,
+      "significations": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Aquarius",
+      "degree": 8.8522,
+      "house": 6,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 8.8522,
+      "house": 12,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Unfortunately, the calculations of girl's mother went wrong and the girl went into the periods at the time when boy wanted to see her.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Saturn is in mutual aspect with Moon (female) and Saturn signifies 071h house through Venus (female).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "It was also predicted that the girl will get married off to a NRI boy.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter (07) is in star of Moon in 09.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sun signifies 07, while Ketu in Leo (12) gets aspect of Mars (03, 09).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

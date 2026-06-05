@@ -1,0 +1,274 @@
+{
+  "vector_id": "tv-lu-ch60",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch60_Nethaji_Subhash_Chandra_Bose",
+  "pdf_path": "Chapter_Splits/Ch60_Nethaji_Subhash_Chandra_Bose.pdf",
+  "subject": {
+    "name": "Nethaji Subhash Chandra Bose",
+    "description": "Indian Independence Freedom Fighter",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1897-01-23",
+    "time_local": "12:00:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1897-01-23T06:30:00Z",
+    "latitude": 20.4667,
+    "longitude": 85.9,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-19-22.44",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aries",
+      "degree": 22.6833,
+      "house": 1,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 11.25,
+      "house": 10,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        5,
+        10,
+        4,
+        6
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 19.5333,
+      "house": 2,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        1,
+        8,
+        2,
+        4,
+        6
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 16.5833,
+      "house": 5,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        2,
+        "07;11",
+        12,
+        9,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 26.4167,
+      "house": 11,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "significations": [
+        2,
+        7,
+        11,
+        12,
+        9,
+        5
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 6.7333,
+      "house": 8,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "significations": [
+        10,
+        11,
+        8
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 23.6333,
+      "house": 10,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        10,
+        "Ma",
+        "Me",
+        "Su",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 23.6333,
+      "house": 4,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "significations": [
+        4,
+        "Me",
+        "Sa",
+        "Mo"
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 25.8,
+      "house": 8,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        "Mercury"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 6.3167,
+      "house": 5,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "significations": [
+        "Ketu"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "an air plane",
+    "death_type": "accident",
+    "death_date": "1897-01-23",
+    "age_at_death": 49,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "MOON",
+      "pratyantardasha": "VENUS",
+      "sookshma": "MOON",
+      "stated_by_author": true,
+      "raw_text": "Jupiter-Moon-Venus-Moon-Mercury. Dasha lord Jupiter is in the star of Venus, who signifies maraca house (02, 07). Jupite"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna and 08th lord is Mars, who is posited in 02nd house (maraca) and is under the aspect of badhka Saturn from 081h house (longevity and accidents). 252 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mutual aspect between Mars and Saturn with houses connected such as 01, 02, 08, 11 viz. lagna, maraca, longevity & accidents, badhka are quite detrimental connections for one's longevity. Mars is in Moon Star, while Moon is an occupant of Q6th house (injury), forcing Mars to give the result of 06th house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Rahu is posited in Mars star in Capricorn and is conjoined with Sun and Mercury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Rahu will thus give the result of Mars (01,08,02,04,06), Saturn (11,10,08) and Mercury (03,06,05,10). Thus Rahu has got very grave connections to cause injury and death.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Venus and Jupiter also signify badhaka (11), while Jupiter aspects lagna. Hence the lagna and 08th are connected to 06 and Mars along with maraca and badhka for one to have got killed by injury. Mr. Bose was presumed to have got killed in an air plane accident in Taiwan on 18 Aug 1945 in his 49th year, during the VMD _ period of Jupiter-Moon-Venus-Moon-Mercury. Dasha lord Jupiter is in the star of Venus, who signifies maraca house (02, 07). Jupiter further aspects lagna. Venus is occupant of badhaka house. Jupiter is under the aspect of Mars. Bhukti and Sookshma lord Moon is lord of 04 (vehicl",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Dasha lord Jupiter is in the star of Venus, who signifies maraca house (02, 07).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Antara lord Venus signifies 02 and 07 (maraca).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Sookshma lord Moon is lord of 04 (vehicle) and is posited in 06th house (injury) in the star of Sun (Government) indicates injury through a government vehicle.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "08th lord is Mars, who is posited in 02nd house (maraca) and is under the aspect of badhka Saturn from 081h house (longevity and accidents).",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

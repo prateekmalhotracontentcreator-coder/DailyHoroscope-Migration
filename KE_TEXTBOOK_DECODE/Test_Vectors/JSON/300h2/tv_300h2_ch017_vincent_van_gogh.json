@@ -1,0 +1,304 @@
+{
+  "vector_id": "tv-300h2-ch017",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch017_16_Vincent_Van_Gogh",
+  "pdf_path": "Chapters/Ch017_16_Vincent_Van_Gogh.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Vincent Van Gogh",
+    "description": "Vincent Willem Van Gogh (30 Mar 1853- 29 Jul 1890) was a world famous painter whose work had a high level influence in the field of art.",
+    "nationality": "Dutch"
+  },
+  "birth_data": {
+    "date": "1853-03-30",
+    "time_local": "11:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "lagna_degree_stated": 8.608,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 28.028,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        6,
+        1,
+        4,
+        11
+      ],
+      "significations_raw": "02,06,01,04,11"
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 4.376,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        6,
+        10,
+        11,
+        9
+      ],
+      "significations_raw": "08,06 10,11, 09"
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 3.888,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        4,
+        11
+      ],
+      "significations_raw": "01,04,11,Ke"
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 6.275,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        12,
+        10,
+        8,
+        9,
+        11
+      ],
+      "significations_raw": "05,12,10 ,08,09,11"
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 24.25,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        8,
+        9,
+        11,
+        5,
+        12,
+        10
+      ],
+      "significations_raw": "08,09,11,05,12,10"
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 1.772,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ma Me,Ju,Sa"
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Unknown",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1853
+      },
+      {
+        "event": "Died",
+        "year": 1890
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1890-07-29",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Unknown",
+    "key_claim_axes": [
+      "career",
+      "health",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus (05-creativity), Sun (03-drawing) and Mars (power) are in 10 in Pisces, a watery sign, which made native a powerful painting and drawing artist.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter, Mars, Venus and Sun signify 10, while Saturn IS in 11, which made native famous.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Rahu denotes 06 and 07 through Jupiter and Mars, besides Ketu is linked to 07, which gave a temporary spouse for native.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Lagna lord Mercury is in star of Ketu (melancholy).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Moon is in 06 in star of Mercury indicate confusion and fickle-mind.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Lagna lord signifies badhaka and maraca.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Badhaka Jupiter is aspecting Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "These caused issue of longevity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

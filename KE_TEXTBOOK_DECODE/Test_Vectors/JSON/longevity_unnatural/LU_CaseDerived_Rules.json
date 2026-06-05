@@ -1,0 +1,4806 @@
+[
+  {
+    "rule_id": "lu-cdr-001",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch07_james_abram_garfield",
+    "subject_name": "James Abram Garfield",
+    "observation_verbatim": "Mars is posited in lagna and is in the star of Rahu, who could cause blast",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch07"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-002",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch07_james_abram_garfield",
+    "subject_name": "James Abram Garfield",
+    "observation_verbatim": "Saturn is posited in the badhaka bhava and aspects Mars who is in lagna, causing destruction under given scenario",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch07"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-003",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch07_james_abram_garfield",
+    "subject_name": "James Abram Garfield",
+    "observation_verbatim": "dictum is that when lagna and 08th are weak and connected to 06th and Mars along with maraca and badhaka, one could die in a battle or through weapon",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch07"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-004",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch07_james_abram_garfield",
+    "subject_name": "James Abram Garfield",
+    "observation_verbatim": "maraca or badhaka I when connected to lagna (self), 06 (injury) and 08th (longevity)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch07"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-005",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch08_osama_bin_laden",
+    "subject_name": "Osama Bin Laden",
+    "observation_verbatim": "Rahu gives the result of 01 and 06 through Venus and 08 through Jupiter",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Venus",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch08"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-006",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch10_william_mckinley",
+    "subject_name": "William McKinley",
+    "observation_verbatim": "IS posited in lagna in the star of Mars, who signifies 03,02,08 houses",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch10"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-007",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch11_john_f_kennedy",
+    "subject_name": "John F. Kennedy",
+    "observation_verbatim": "Saturn on Mercury (01,08) has caused the accident",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mercury",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch11"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-008",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch11_john_f_kennedy",
+    "subject_name": "John F. Kennedy",
+    "observation_verbatim": "Jupiter on lagna, which is falling in Mars star has caused longevity to be cut off at very early",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch11"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-009",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch12_indira_gandhi",
+    "subject_name": "Indira Gandhi",
+    "observation_verbatim": "Jupiter, lord of 08, is in lOth house, has to give good longevity, but it is under aspect of maraca Mercury and that Saturn and Mars proximity to lagna have caused just above middle longevity for Mrs",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Jupiter",
+        "Mercury",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch12"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-010",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch14_robert_f_kennedy",
+    "subject_name": "Robert Francis Kennedy",
+    "observation_verbatim": "Saturn sign (Capricorn) in the star of Mars, who is the causative planet for injury",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch14"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-011",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch14_robert_f_kennedy",
+    "subject_name": "Robert Francis Kennedy",
+    "observation_verbatim": "Mars, who is lord of 01 and 08 and shall cause injury, besides being maraca",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch14"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-012",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch14_robert_f_kennedy",
+    "subject_name": "Robert Francis Kennedy",
+    "observation_verbatim": "Ketu shall offer result of Saturn, Mars, Sun and Moon",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Moon",
+        "Saturn",
+        "Sun",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch14"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-013",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch15_jfk_jr",
+    "subject_name": "John Fitzgerald Kennedy Jr.",
+    "observation_verbatim": "who is posited in 08th lord (accident) Jupiter star in an Airy sign, Gemini has caused air accident, while Mercury itself is in Jupiter star in another airy sign, viz",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch15"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-014",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch15_jfk_jr",
+    "subject_name": "John Fitzgerald Kennedy Jr.",
+    "observation_verbatim": "Mars, who is posited in 08th lord (accident) Jupiter star in an Airy sign, Gemini has caused air accident, while Mercury itself is in Jupiter star in another airy sign, viz",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Jupiter",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch15"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-015",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch15_jfk_jr",
+    "subject_name": "John Fitzgerald Kennedy Jr.",
+    "observation_verbatim": "Mars, Airy sign, badhaka caused an air accident",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch15"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-016",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch17_ronald_reagan",
+    "subject_name": "Ronald Wilson Reagan",
+    "observation_verbatim": "Mars is posited in lagna and is in the star of Ketu, who in turn signifies Venus (06, 11)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch17"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-017",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch17_ronald_reagan",
+    "subject_name": "Ronald Wilson Reagan",
+    "observation_verbatim": "Mars will give result of 01 and 06",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch17"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-018",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch17_ronald_reagan",
+    "subject_name": "Ronald Wilson Reagan",
+    "observation_verbatim": "Saturn and Antara lord Venus favoured for recovery because of OS and 11 significations strongly",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch17"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-019",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch18_sanjay_gandhi",
+    "subject_name": "Sanjay Gandhi",
+    "observation_verbatim": "Saturn is aspected by Mars who could cause injury",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch18"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-020",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch18_sanjay_gandhi",
+    "subject_name": "Sanjay Gandhi",
+    "observation_verbatim": "Venus was retrograde in Taurus, but was in Mars star, who could cause a vehicular injury",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch18"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-021",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch19_john_wilkes_booth",
+    "subject_name": "John Wilkes Booth",
+    "observation_verbatim": "maraca and badhaka and the longevity house is weak, the longevity shall be severely threatened, as evident from this case",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch19"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-022",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch20_lee_harvey_oswald",
+    "subject_name": "Lee Harvey Oswald",
+    "observation_verbatim": "Rahu will give result of 01 (lagna), 06 (enemy and injury), 08 (accidents and longevity)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch20"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-023",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch21_nathuram_godse",
+    "subject_name": "Nathuram Vinayak Godse",
+    "observation_verbatim": "Mars will also give results Sun, Mercury, Jupiter and Venus, since Rahu signifies them",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mars",
+        "Mercury",
+        "Rahu",
+        "Venus",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch21"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-024",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch21_nathuram_godse",
+    "subject_name": "Nathuram Vinayak Godse",
+    "observation_verbatim": "Saturn is linked through Nodes to Jupiter as well as Mars, have caused too lesser longevity of Madhya-aayu",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Jupiter",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch21"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-025",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch22_lord_louis_mountbatten",
+    "subject_name": "Lord Louis Mountbatten",
+    "observation_verbatim": "Sun is posited in lagna a·nd is in the star of Rahu, while Rahu is under aspect of Mars the causative planet for injury and accident",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Rahu",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch22"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-026",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch22_lord_louis_mountbatten",
+    "subject_name": "Lord Louis Mountbatten",
+    "observation_verbatim": "Mars along with maraca and badhaka for the native to be under attack from others, causing injury and death therupon by weapon",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch22"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-027",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch23_sheikh_mujib_ur_rahman",
+    "subject_name": "Sheikh Mujib-ur-Rahman",
+    "observation_verbatim": "Rahu will also give result of Venus, who is maraca and signifies lagna through Mars",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Venus",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch23"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-028",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch24_archduke_franz_ferdinand",
+    "subject_name": "Archduke Franz Ferdinand",
+    "observation_verbatim": "Sun is in the star of Ketu, who gives the result of lagna (body) due to aspect of lagna lord Mars",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch24"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-029",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch24_archduke_franz_ferdinand",
+    "subject_name": "Archduke Franz Ferdinand",
+    "observation_verbatim": "Venus is in Rahu star, who in turn gives the result of 01 and 06",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch24"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-030",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch24_archduke_franz_ferdinand",
+    "subject_name": "Archduke Franz Ferdinand",
+    "observation_verbatim": "Venus will offer those results too",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch24"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-031",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch24_archduke_franz_ferdinand",
+    "subject_name": "Archduke Franz Ferdinand",
+    "observation_verbatim": "Saturn-DK 01 Ge 03' 31 Mrig 3 Mars Rahu-BK 16 Aq 23' 11 Sata 3 Rahu Ketu 16 Le 23' 11 PPha 1 Venus Ketu signifies 01, 06, 07 and Mars, who could alone cause death in un-natural way through injury",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Rahu",
+        "Saturn",
+        "Venus",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch24"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-032",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch25_napoleon_bonaparte_iv",
+    "subject_name": "Napoleon Bonaparte IV",
+    "observation_verbatim": "Mars star Mrigashira in OJih house (badhaka' and-maraca) and aspects - lagna, thereby causing injury to-body -a~-weli as reduc[ng t e longevity aspect to Fie native",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch25"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-033",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch25_napoleon_bonaparte_iv",
+    "subject_name": "Napoleon Bonaparte IV",
+    "observation_verbatim": "Mars,· the causative planet for injury, Is aspecti g lagna, which Increases t",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch25"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-034",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch27_gianni_versace",
+    "subject_name": "Gianni Versace",
+    "observation_verbatim": "Ketu will also give the result of Mars and Sun",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch27"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-035",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch27_gianni_versace",
+    "subject_name": "Gianni Versace",
+    "observation_verbatim": "Moon gives result of 04, badhaka, 01,06,07,08 house~",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch27"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-036",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch28_zulfikar_ali_bhutto",
+    "subject_name": "Zulfikar Ali Bhutto",
+    "observation_verbatim": "Saturn signifies 01 (body), 06 (injury) and 08 (longevity) is conjoined with Mars, the causative planet for injury, especially when Mars is in Q6th house",
+    "generalised_condition": {
+      "type": "planet_conjunction",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch28"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-037",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch30_louis_xvi",
+    "subject_name": "Louis XVI",
+    "observation_verbatim": "Jupiter was conjoined with Sun (Government) and Sookshma lord Mars ·is under aspect of Saturn (general mass) gave indication to the involvement of Revolutionary Government",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Jupiter",
+        "Saturn",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch30"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-038",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch31_marie_antoinette",
+    "subject_name": "Marie Antoinette",
+    "observation_verbatim": "is posited in lagna (body) threatening to cause injury to body",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch31"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-039",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch31_marie_antoinette",
+    "subject_name": "Marie Antoinette",
+    "observation_verbatim": "Mars, who is lord of 06th house (injury) and also the planet of injury, is posited in lagna (body) threatening to cause injury to body",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch31"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-040",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch32_steve_irwin",
+    "subject_name": "Steve Irwin",
+    "observation_verbatim": "Rahu will give result of all these planets, besides badhaka house",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch32"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-041",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch32_steve_irwin",
+    "subject_name": "Steve Irwin",
+    "observation_verbatim": "Sun is Rahu, who is posited in a watery sign has caused death in water",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Rahu",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch32"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-042",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch32_steve_irwin",
+    "subject_name": "Steve Irwin",
+    "observation_verbatim": "Mars in Virgo shall offer the natal result of 01, 06, 08 and Mars",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch32"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-043",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch33_benito_mussolini",
+    "subject_name": "Benito Mussolini",
+    "observation_verbatim": "conjunction of Saturn and Mars in 08th house is a point to be noted, especially when Mars signify 02, 07 houses",
+    "generalised_condition": {
+      "type": "planet_conjunction",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch33"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-044",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch33_benito_mussolini",
+    "subject_name": "Benito Mussolini",
+    "observation_verbatim": "Marshal of the Empire along with King Victor Emmanuel III of Italy, which gave him and the King joint supreme control over the military of Italy",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch33"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-045",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch33_benito_mussolini",
+    "subject_name": "Benito Mussolini",
+    "observation_verbatim": "Mars, Venus, Saturn, Ketu and Jupiter all put together resulted in injury and unnatural death by weapon",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mars",
+        "Saturn",
+        "Venus",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch33"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-046",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch33_benito_mussolini",
+    "subject_name": "Benito Mussolini",
+    "observation_verbatim": "Rahu (01,08 -lagna), Venus (01,08,06-body, accidents & longevity, injury) and Sun (10, 11 and Saturn - profession, Government, badhaka) resulted in his killing",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Saturn",
+        "Venus",
+        "Rahu",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch33"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-047",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch34_adolf_hitler",
+    "subject_name": "Adolf Hitler",
+    "observation_verbatim": "Rahu will give result of Jupiter (06), who also signifies 01 (self), 07 (maraca), 08 (longevity)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch34"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-048",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch35_eva_braun",
+    "subject_name": "Eva Braun",
+    "observation_verbatim": "Mars is in 08th house (longevity) and is in the star of Sun, who signifies badhaka",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch35"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-049",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch35_eva_braun",
+    "subject_name": "Eva Braun",
+    "observation_verbatim": "Ketu also gives the result of Saturn, who signifies 01,07,08 prominent houses due to its occupation in Venus star Bharani",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Venus",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch35"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-050",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch35_eva_braun",
+    "subject_name": "Eva Braun",
+    "observation_verbatim": "Saturn and Mars, which has to be brought under one's perusal",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch35"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-051",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch35_eva_braun",
+    "subject_name": "Eva Braun",
+    "observation_verbatim": "badhaka and maraca houses without getting connected to 01,05,09,10 or 08, then the question of longevity shall be under threat",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch35"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-052",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch36_vijaya_kumaratunga",
+    "subject_name": "Vijaya Kumaratunga",
+    "observation_verbatim": "Mars is posited in lagna in the star of maraca & badhka Jupiter and signify 01,06 houses, besides aspecting oath house",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch36"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-053",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch36_vijaya_kumaratunga",
+    "subject_name": "Vijaya Kumaratunga",
+    "observation_verbatim": "Mercury is in 04th house and signifying lagna and 11 through Mars gave some solace to longevity issue",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch36"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-054",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch36_vijaya_kumaratunga",
+    "subject_name": "Vijaya Kumaratunga",
+    "observation_verbatim": "Maraca) Moon is posited in 06th house (injury) and _is in the star of maraca and badhka Jupiter",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch36"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-055",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch37_olof_palme",
+    "subject_name": "Olaf Joachim Palme",
+    "observation_verbatim": "Maraca and badhaka Mercury is in 08th lord Moon star in 2nd house, while R,ahu gives result of Moon (08) and Mercury (07)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mercury",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch37"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-056",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch37_olof_palme",
+    "subject_name": "Olaf Joachim Palme",
+    "observation_verbatim": "Mercury is in 08th lord Moon star in 2nd house, while R,ahu gives result of Moon (08) and Mercury (07)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mercury",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch37"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-057",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch38_paul_goebbels",
+    "subject_name": "Paul Josef Goebbels",
+    "observation_verbatim": "Rahu gives the result of 06th house through Jupiter, 07 (maraca) & 08th house through Saturn, 02nd house (maraca) through Sun",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Rahu",
+        "Sun",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch38"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-058",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch38_paul_goebbels",
+    "subject_name": "Paul Josef Goebbels",
+    "observation_verbatim": "Moon, who is also the causative planet for mind, is in the house of disease, causing a conflict of mind and is posited in the star of moksha karaka (planet who",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch38"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-059",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch39_pope_john_paul_ii",
+    "subject_name": "Pope John Paul II",
+    "observation_verbatim": "Saturn will give result of Ketu, wherever it gives",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch39"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-060",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch39_pope_john_paul_ii",
+    "subject_name": "Pope John Paul II",
+    "observation_verbatim": "Ketu who offered the result of Mars (injury), Venus (08) (accident) ~iz- Mars is aspecting 06th house (injury) from own star",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch39"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-061",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch39_pope_john_paul_ii",
+    "subject_name": "Pope John Paul II",
+    "observation_verbatim": "Sun operated in the previous assassination attempt, here the bhukti and Antara lord Moon is aiso an occupant of 08th house (accidents) caused attempt on life in the rnain :period of Satum",
+    "generalised_condition": {
+      "type": "dasha_planet",
+      "planets_involved": [
+        "Moon",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch39"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-062",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch39_pope_john_paul_ii",
+    "subject_name": "Pope John Paul II",
+    "observation_verbatim": "Sun Saturn (R)-PK 09 Vi 55' 53 UPha 4 Sun Rahu-MK· 12 Cn 00' 39 Push 3 Saturn Ketu 12 Cp 00139 Srav 1 Moon In the transit chart, Mars (causative planet for injury) was aspecting Venus (01, 07, 08)",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Rahu",
+        "Moon",
+        "Saturn",
+        "Venus",
+        "Sun",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch39"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-063",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch40_solomon_bandaranaike",
+    "subject_name": "Solomon Bandaranaike",
+    "observation_verbatim": "08th lord Sun is posited in lagna, and 03rct lord Jupiter is in lOth house gave some solace for longevity",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch40"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-064",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch40_solomon_bandaranaike",
+    "subject_name": "Solomon Bandaranaike",
+    "observation_verbatim": "Ketu is giving the result of 06 and 08 through Sun and Mercury",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Mercury",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch40"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-065",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch40_solomon_bandaranaike",
+    "subject_name": "Solomon Bandaranaike",
+    "observation_verbatim": "Saturn signifies badhaka, but 08th lord Sun is posited in lagna, and 03rct lord Jupiter is in lOth house gave some solace for longevity",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Sun",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch40"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-066",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch41_benazir_bhutto",
+    "subject_name": "Benazir Bhutto",
+    "observation_verbatim": "Saturn is in the Mars star and could cause injury, if connected to 06, 08",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch41"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-067",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch41_benazir_bhutto",
+    "subject_name": "Benazir Bhutto",
+    "observation_verbatim": "Rahu will give result of Mars (through Saturn and Moon)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Rahu",
+        "Moon",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch41"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-068",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch42_anwar_sadat",
+    "subject_name": "Anwar Sadat",
+    "observation_verbatim": "Venus signifies 01, 03 and 08 only as it is in own star gave 62 years of life",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch42"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-069",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch44_che_guevara",
+    "subject_name": "Ernesto Che Guevara",
+    "observation_verbatim": "Ketu will offer its result, Jupiter will follow the same",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch44"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-070",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch45_pramod_mahajan",
+    "subject_name": "Pramod Venkatesh Mahajan",
+    "observation_verbatim": "Rahu will give result wherever Ketu signifies",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch45"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-071",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch45_pramod_mahajan",
+    "subject_name": "Pramod Venkatesh Mahajan",
+    "observation_verbatim": "Ketu will also give similar result that of Rahu",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch45"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-072",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch45_pramod_mahajan",
+    "subject_name": "Pramod Venkatesh Mahajan",
+    "observation_verbatim": "Ketu itself is in 06th house (injury) and gives result of Rahu (maraca) and Venus (lagna)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Venus",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch45"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-073",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch46_vladimir_lenin",
+    "subject_name": "Vladimir Lenin",
+    "observation_verbatim": "Rahu is aspected by Mars, who could cause injury",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch46"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-074",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch46_vladimir_lenin",
+    "subject_name": "Vladimir Lenin",
+    "observation_verbatim": "Moon was in Mars star in Gemini, which can cause accidents, but was in Qgth house, a punya house",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch46"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-075",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch47_yitzhak_rabin",
+    "subject_name": "Yitzhak Rabin",
+    "observation_verbatim": "Rahu will give result of Mercury (07 -maraca), Jupiter (06-enemy, injury) and Saturn (maraca)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mercury",
+        "Rahu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch47"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-076",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch50_saddam_hussein",
+    "subject_name": "Saddam Hussein",
+    "observation_verbatim": "Sun getting maraca and badhka connection has reduced the longevity, but Mars posited in own house had brought in some relief",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch50"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-077",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch50_saddam_hussein",
+    "subject_name": "Saddam Hussein",
+    "observation_verbatim": "maraca and badhka connection has reduced the longevity, but Mars posited in own house had brought in some relief",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch50"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-078",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch51_emperor_alexander_ii",
+    "subject_name": "Emperor Alexander II",
+    "observation_verbatim": "Jupiter is in the star of Venus, who is the causative planet for vehicle",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch51"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-079",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch52_emperor_nicholas_ii",
+    "subject_name": "Emperor Nicholas II",
+    "observation_verbatim": "Rahu and Saturn give their results, a Node, Ketu will follow",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Rahu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch52"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-080",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch52_emperor_nicholas_ii",
+    "subject_name": "Emperor Nicholas II",
+    "observation_verbatim": "Rahu gives Sun's result and hence Ketu and planets posited in Rahu's or Ketu's star will follow the suit",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Rahu",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch52"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-081",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch52_emperor_nicholas_ii",
+    "subject_name": "Emperor Nicholas II",
+    "observation_verbatim": "Mars will give the result of maraca, since Sun is in Taurus",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch52"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-082",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch52_emperor_nicholas_ii",
+    "subject_name": "Emperor Nicholas II",
+    "observation_verbatim": "Mars gives the result of 01, 06, 07 houses, while OSth and badhaka Mercury is aspecting lagna",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch52"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-083",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch52_emperor_nicholas_ii",
+    "subject_name": "Emperor Nicholas II",
+    "observation_verbatim": "Rahu and as explained above Mars gives result of Ketu through Rahu",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch52"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-084",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch52_emperor_nicholas_ii",
+    "subject_name": "Emperor Nicholas II",
+    "observation_verbatim": "Mars posited in Ketu star in a fiery sign, gave way for killing by gun shot, injury and bleeding",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch52"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-085",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch52_emperor_nicholas_ii",
+    "subject_name": "Emperor Nicholas II",
+    "observation_verbatim": "Moon is in OSth lord Mercury star, while OSth lord Mercury is in Moon star in Taurus, have caused problems for longevity",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mercury",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch52"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-086",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch53_empress_czarina_alexandra",
+    "subject_name": "Empress Czarina Alexandra",
+    "observation_verbatim": "Ketu is the spoiler of longevity and causer for death by injury",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch53"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-087",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch53_empress_czarina_alexandra",
+    "subject_name": "Empress Czarina Alexandra",
+    "observation_verbatim": "Rahu will give the results of houses 01 (lagna), 06 (Injury and enemy), 08 (longevity, accidents), 02 (maraca)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch53"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-088",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch53_empress_czarina_alexandra",
+    "subject_name": "Empress Czarina Alexandra",
+    "observation_verbatim": "Saturn gives the result of badhaka and maraca",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch53"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-089",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch53_empress_czarina_alexandra",
+    "subject_name": "Empress Czarina Alexandra",
+    "observation_verbatim": "Sun to Ketu signify either maraca or badhaka, but Saturn in ogth and Jupiter in 04th gave some solace to longevity for the native, as seen in the natal chart",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Jupiter",
+        "Saturn",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch53"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-090",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch54_grand_duchess_maria",
+    "subject_name": "Grand Duchess Maria Nikolaevna",
+    "observation_verbatim": "Mars is in lagna and aspecting 06111 lord and 08111 house indicate injury through weapon",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch54"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-091",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch54_grand_duchess_maria",
+    "subject_name": "Grand Duchess Maria Nikolaevna",
+    "observation_verbatim": "Rahu gives the result of Jupiter (maraca, 08th), Ketu, Mercury (02nd house, 08111) and Sun (lagna)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mercury",
+        "Rahu",
+        "Sun",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch54"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-092",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch54_grand_duchess_maria",
+    "subject_name": "Grand Duchess Maria Nikolaevna",
+    "observation_verbatim": "Ketu gives the result of Sun (lagna or body), Mercury (02nd maraca and 08111 longevity or accidents)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Mercury",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch54"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-093",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch55_grand_duchess_olga",
+    "subject_name": "Grand Duchess Olga Nikolaevna",
+    "observation_verbatim": "Rahu is posited in badhaka house is giving the result of Sun, Venus who are maraca and badhaka respectively",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus",
+        "Rahu",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch55"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-094",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch55_grand_duchess_olga",
+    "subject_name": "Grand Duchess Olga Nikolaevna",
+    "observation_verbatim": "Ketu is posited in Scorpio shall offer the result of Saturn (02, 07, 08), Mars (injury), Sun (02, 06, 08), Venus (badhka, 07,08) and Mercury (07,08), whereas lagna star lord is Saturn",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Mercury",
+        "Saturn",
+        "Venus",
+        "Sun",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch55"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-095",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch56_grand_duchess_tatiana",
+    "subject_name": "Grand Duchess Tatiana Nikolaevna",
+    "observation_verbatim": "Jupiter is quite detrimentally placed by offering the result of Ketu as specified above, besides Q6th house (enemy and injury)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch56"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-096",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch56_grand_duchess_tatiana",
+    "subject_name": "Grand Duchess Tatiana Nikolaevna",
+    "observation_verbatim": "Rahu, who is posited in Capricorn in the star of Moon shall offer the results of Mars (lagna and badhaka), Moon (lagna) and Saturn (maraca and longevity)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Rahu",
+        "Moon",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch56"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-097",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch57_alexei_nikolaevich",
+    "subject_name": "Alexei Nikolaevich",
+    "observation_verbatim": "Ketu, whereas Ketu shall offer the result of Mercury due to its aspect",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Ketu",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch57"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-098",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch57_alexei_nikolaevich",
+    "subject_name": "Alexei Nikolaevich",
+    "observation_verbatim": "Jupiter also offers result of Ketu (06,08,01), Badhaka, maraca and longevity",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch57"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-099",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch57_alexei_nikolaevich",
+    "subject_name": "Alexei Nikolaevich",
+    "observation_verbatim": "Moon sign are afflicted by their connection to·badhaka house caused severe reduction of longevity as per natal chart",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch57"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-100",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch57_alexei_nikolaevich",
+    "subject_name": "Alexei Nikolaevich",
+    "observation_verbatim": "Badhaka Jupiter is posited in QSth house (longevity), which will reduce the longevity",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch57"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-101",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch58_grand_duchess_anastasia",
+    "subject_name": "Grand Duchess Anastasia Nikolaevna",
+    "observation_verbatim": "The opposition of planets in lagna and O?th involving lagna, maraca, badhaka and 08th have caused cutting short of longevity at the age of 17 years, as per natal chart",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch58"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-102",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch59_ranasinghe_premadasa",
+    "subject_name": "Ranasinghe Premadasa",
+    "observation_verbatim": "Mars, who is maraca and badhaka, besides the causative planet for injury is aspecting Mercury who occupies OSth house",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch59"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-103",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch59_ranasinghe_premadasa",
+    "subject_name": "Ranasinghe Premadasa",
+    "observation_verbatim": "Jupiter who could cause injury is posited in 02nd house (maraca) and is aspecting Mercury in OSth house",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Jupiter",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch59"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-104",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch60_subhash_chandra_bose",
+    "subject_name": "Nethaji Subhash Chandra Bose",
+    "observation_verbatim": "Mars is in Moon Star, while Moon is an occupant of Q6th house (injury), forcing Mars to give the result of 06th house",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch60"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-105",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch60_subhash_chandra_bose",
+    "subject_name": "Nethaji Subhash Chandra Bose",
+    "observation_verbatim": "Rahu will thus give the result of Mars (01,08,02,04,06), Saturn (11,10,08) and Mercury (03,06,05,10)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Mercury",
+        "Rahu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch60"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-106",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch60_subhash_chandra_bose",
+    "subject_name": "Nethaji Subhash Chandra Bose",
+    "observation_verbatim": "Rahu has got very grave connections to cause injury and death",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch60"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-107",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch60_subhash_chandra_bose",
+    "subject_name": "Nethaji Subhash Chandra Bose",
+    "observation_verbatim": "maraca and badhaka: 1) Lagna and 08th lord is Mars, who is posited in 02nd house (maraca) and is under the aspect of badhka Saturn from 081h house (longevity and accidents)",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch60"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-108",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch61_deendayal_upadhyaya",
+    "subject_name": "Pandit Deendayal Upadhyaya",
+    "observation_verbatim": "Ketu being an agent of Saturn, Venus and Moon along with Jupiter, it will give result of all these detrimental houses signified by them",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Moon",
+        "Saturn",
+        "Venus",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch61"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-109",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch62_madhavrao_scindia",
+    "subject_name": "Madhavrao Scindia",
+    "observation_verbatim": "Ketu is in Sagittarius and gives the result of Jupiter",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch62"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-110",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch62_madhavrao_scindia",
+    "subject_name": "Madhavrao Scindia",
+    "observation_verbatim": "Mercury, who signifies air plane was posited in Chitra star ruled by Mars, the planet who could cause injury and accidents",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch62"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-111",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch63_pravir_chandra_banj_deo",
+    "subject_name": "Pravir Chandra Banj Deo",
+    "observation_verbatim": "Venus is conjqined with Rahu, who will give the result of Venus and Mars",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Venus",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch63"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-112",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch63_pravir_chandra_banj_deo",
+    "subject_name": "Pravir Chandra Banj Deo",
+    "observation_verbatim": "Ketu will give the result of Jupiter and Venus",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Jupiter",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch63"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-113",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch63_pravir_chandra_banj_deo",
+    "subject_name": "Pravir Chandra Banj Deo",
+    "observation_verbatim": "Saturn and Mars are in Ketu star, and they offer result given by Ketu",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch63"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-114",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch63_pravir_chandra_banj_deo",
+    "subject_name": "Pravir Chandra Banj Deo",
+    "observation_verbatim": "Ketu could cause sudden exit from the job",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch63"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-115",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch64_bahia_bakari",
+    "subject_name": "Bahia Bakari",
+    "observation_verbatim": "Mars (vehicle) and is conjoined with Venus, who is the causative planet for vehicle in 06lh house, an airy sign, denoting air vehicle",
+    "generalised_condition": {
+      "type": "planet_conjunction",
+      "planets_involved": [
+        "Mars",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch64"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-116",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch64_bahia_bakari",
+    "subject_name": "Bahia Bakari",
+    "observation_verbatim": "Mercury is the causative planet for air plane",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch64"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-117",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch64_bahia_bakari",
+    "subject_name": "Bahia Bakari",
+    "observation_verbatim": "Jupiter was in Mars star, who could cause injury",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch64"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-118",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch65_pablo_escobar",
+    "subject_name": "Pablo Escobar",
+    "observation_verbatim": "Moon gives result of 06 and 08 houses",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch65"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-119",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch65_pablo_escobar",
+    "subject_name": "Pablo Escobar",
+    "observation_verbatim": "Mercury is in own star in the 10th house gave some longevity to the native, but Mercury is under aspect of Mars (maraca) and badhaka, gave Madhya aayu",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch65"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-120",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch65_pablo_escobar",
+    "subject_name": "Pablo Escobar",
+    "observation_verbatim": "Rahu, who could signify cause blast, is conjoined with Mars in Scorpio",
+    "generalised_condition": {
+      "type": "planet_conjunction",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch65"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-121",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch65_pablo_escobar",
+    "subject_name": "Pablo Escobar",
+    "observation_verbatim": "Rahu thus shall signify Mars and Jupiter (causative planet for wealth) along with 02nd house",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Jupiter",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch65"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-122",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch66_pierre_laval",
+    "subject_name": "Pierre Laval",
+    "observation_verbatim": "Rahu-Rahu-Jupiter-Moon in his 63rd year, which gave him medium longevity",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Rahu",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch66"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-123",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch66_pierre_laval",
+    "subject_name": "Pierre Laval",
+    "observation_verbatim": "Sun signifies 06th bhava star to cause injury and enmity",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch66"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-124",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch68_cpn_singh",
+    "subject_name": "CPN Singh",
+    "observation_verbatim": "Sun is posited in Lagna lord Saturn star and hence Sun becomes a significator of lagna",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Saturn",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch68"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-125",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch69_tipu_sultan",
+    "subject_name": "Tipu Sultan",
+    "observation_verbatim": "Rahu-MK 12 Sc 58' 29 Anu 3 Sa,Me,Ma,Su,Ju Ketu 12 Ta 58' 29 Rohi 1 Ju,Ve,Mo,Me,Su,Sa In this chart, the position of Rahu who is linked to Mars (causative planet for injury), Jupiter (lord of lagna and occupant of Q6th house-injury & enemy) is in Q8th lord Moon star",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mars",
+        "Rahu",
+        "Moon",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch69"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-126",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch69_tipu_sultan",
+    "subject_name": "Tipu Sultan",
+    "observation_verbatim": "Venus is under aspect of Mars to cause injury",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch69"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-127",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch69_tipu_sultan",
+    "subject_name": "Tipu Sultan",
+    "observation_verbatim": "Rahu is posited in Scorpio gives the result of Mars (injury), Jupiter (lagna and 06lh), Saturn (02 maraca, 08th bhava star lord) and Mercury (badhaka)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mars",
+        "Mercury",
+        "Rahu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch69"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-128",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch70_theodore_roosevelt",
+    "subject_name": "Theodore Roosevelt",
+    "observation_verbatim": "Venus-AmK 25 Li 39' 22 Visa 2 Saturn(R)-PiK 10 Ta 50' 10 Rohi 1 Rahu-PK 19 Pi 18' 47 Rev a 1 Ketu 19 Vi 18' 47 Hast 3 In transit chart Mars, causative planet of injury, was in Libra, the natal 061h house (injury), and was in own star",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Rahu",
+        "Saturn",
+        "Venus",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch70"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-129",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch71_diana_princess_of_wales",
+    "subject_name": "Diana, Princess of Wales",
+    "observation_verbatim": "who is posited in 08th house, is in the star of Rahu, who signifies badhaka through aspect of Moon",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Rahu",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch71"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-130",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch71_diana_princess_of_wales",
+    "subject_name": "Diana, Princess of Wales",
+    "observation_verbatim": "Mars is posited in the star of Ketu (Makha), while Ketu, being a node, will offer the result of planet conjoined with first",
+    "generalised_condition": {
+      "type": "planet_conjunction",
+      "planets_involved": [
+        "Mars",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch71"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-131",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch71_diana_princess_of_wales",
+    "subject_name": "Diana, Princess of Wales",
+    "observation_verbatim": "Venus gives result of maraca and longevity, which makes 08th further weak",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch71"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-132",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch71_diana_princess_of_wales",
+    "subject_name": "Diana, Princess of Wales",
+    "observation_verbatim": "Rahu has got link between Sun, Mercury, Mars and Moon and thus gives result of 01, 06, 08, 09 houses",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Mercury",
+        "Rahu",
+        "Moon",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch71"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-133",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch71_diana_princess_of_wales",
+    "subject_name": "Diana, Princess of Wales",
+    "observation_verbatim": "Venus and Sun shall offer the result of Rahu",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus",
+        "Rahu",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch71"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-134",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch72_anton_cermak",
+    "subject_name": "Anton Cermak",
+    "observation_verbatim": "Mars, 06 and badhaka & maraca for one to sustain injury by weapon and to cause death by it",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch72"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-135",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch72_anton_cermak",
+    "subject_name": "Anton Cermak",
+    "observation_verbatim": "Saturn (lagna, 07 and 08) and Rahu (badhaka) are under aspect of Mars (causative planet for injury)",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Rahu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch72"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-136",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch72_anton_cermak",
+    "subject_name": "Anton Cermak",
+    "observation_verbatim": "Ketu and Jupiter (06) will give result of Mars (injury) Sun signifies maraca and is under aspect of Jupiter (maraca, enemy and injury)",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Jupiter",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch72"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-137",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch73_james_brady",
+    "subject_name": "James Brady",
+    "observation_verbatim": "and sookshma lord Ketu is in lagna (body) and signifies Mercury, being in R-evati star",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch73"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-138",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch73_james_brady",
+    "subject_name": "James Brady",
+    "observation_verbatim": "while Ketu is in lagna (brain), has caused injury to brain",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch73"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-139",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch73_james_brady",
+    "subject_name": "James Brady",
+    "observation_verbatim": "Ketu also gives the result of Mars at 01 and 06tll linking body and 06tll house (injury)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch73"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-140",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch73_james_brady",
+    "subject_name": "James Brady",
+    "observation_verbatim": "Mercury is in Ketu star, it will give the result of Jupiter too",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Mercury",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch73"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-141",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch73_james_brady",
+    "subject_name": "James Brady",
+    "observation_verbatim": "Sun and Mercury predominantly give the result of 06t11 house, it should be concluded that Brady did not succumb to the injury",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mercury",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch73"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-142",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch73_james_brady",
+    "subject_name": "James Brady",
+    "observation_verbatim": "Mercury is in Ketu star in 06tll house (injury) while Ketu is in lagna (brain), has caused injury to brain",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch73"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-143",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch74_benigno_aquino",
+    "subject_name": "Benigno Aquino",
+    "observation_verbatim": "Sun is further aspected by Mars causative planet for injury and is the badhaka lord",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch74"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-144",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch74_benigno_aquino",
+    "subject_name": "Benigno Aquino",
+    "observation_verbatim": "Rahu also gives the result of 06 (enemy & injury) through Saturn",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Rahu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch74"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-145",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch74_benigno_aquino",
+    "subject_name": "Benigno Aquino",
+    "observation_verbatim": "Ketu gives the result of lagna, 08th, Mars who signifies body, longevity or accidents, causative planet for injury & badhaka respectively",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch74"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-146",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch74_benigno_aquino",
+    "subject_name": "Benigno Aquino",
+    "observation_verbatim": "Jupiter is in the star of lagna lord Sun and signifies 04,01,05,08 gave some good longevity of 51 years",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Sun"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch74"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-147",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch79_jd_tippit",
+    "subject_name": "J.D. Tippit",
+    "observation_verbatim": "Mars and 06 along with maraca and badhka to cause injury and death by weapon",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch79"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-148",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch79_jd_tippit",
+    "subject_name": "J.D. Tippit",
+    "observation_verbatim": "Badhaka Venus is posited in 08th lord Mercury star, making longevity weak",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mercury",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch79"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-149",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch80_lech_kaczynski",
+    "subject_name": "Lech Kaczynski",
+    "observation_verbatim": "Venus is in the star of Rahu, a node, shall offer the result of Rahu",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch80"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-150",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch81_giorgia_padoan",
+    "subject_name": "Giorgia Padoan",
+    "observation_verbatim": "Ketu will give result of Mars (maraca) and Venus (badhaka)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch81"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-151",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch81_giorgia_padoan",
+    "subject_name": "Giorgia Padoan",
+    "observation_verbatim": "Moon will therefore give the result of Ketu",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Ketu",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch81"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-152",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch81_giorgia_padoan",
+    "subject_name": "Giorgia Padoan",
+    "observation_verbatim": "Moon, who is lagna lord, has caused longevity problem for the native",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch81"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-153",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch82_chiranjeevi",
+    "subject_name": "Chiranjeevi",
+    "observation_verbatim": "Ketu is in Mars star, who is the causative planet for accident and signifies 11 (badhaka) too",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch82"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-154",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch85_gulshan_kumar",
+    "subject_name": "Gulshan Kumar",
+    "observation_verbatim": "Antara lord Venus is posited in lagna in the star of Mars, who signifies 06 and 08 houses",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch85"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-155",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch86_sirhan_sirhan",
+    "subject_name": "Sirhan Sirhan",
+    "observation_verbatim": "Moon gave 01, 03, 08 significations along with Venus, and Venus gave Rahu and 08111 results",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus",
+        "Rahu",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch86"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-156",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch86_sirhan_sirhan",
+    "subject_name": "Sirhan Sirhan",
+    "observation_verbatim": "Moon is under aspect of Mars, because of its significations of 10, 08, 03, 06 and 11 helped SirhaR to escape the capital punishment and live long",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch86"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-157",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch87_park_chung_hee",
+    "subject_name": "Park Chung-hee",
+    "observation_verbatim": "Venus is further aspected by Mars, the causative planet signifies injury",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch87"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-158",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch88_amitabh_bachchan",
+    "subject_name": "Amitabh Bachchan",
+    "observation_verbatim": "Mars is connected to 01, 06 and 08 in order to cause injury",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch88"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-159",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch89_chandrababu_naidu",
+    "subject_name": "Chandrababu Naidu",
+    "observation_verbatim": "who is in 08th house (accidents, longevity) in the natal chart and is under aspect of Mars, who can cause injury and accidents",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch89"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-160",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch89_chandrababu_naidu",
+    "subject_name": "Chandrababu Naidu",
+    "observation_verbatim": "Rahu in Pisces will give result of Mars, Saturn and Jupiter",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Jupiter",
+        "Rahu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch89"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-161",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch89_chandrababu_naidu",
+    "subject_name": "Chandrababu Naidu",
+    "observation_verbatim": "Mars is the causative planet for accident and injuries",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch89"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-162",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch89_chandrababu_naidu",
+    "subject_name": "Chandrababu Naidu",
+    "observation_verbatim": "Rahu signifies 01, 06, 08 and Mars in order to cause injury and accidents",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch89"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-163",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch89_chandrababu_naidu",
+    "subject_name": "Chandrababu Naidu",
+    "observation_verbatim": "Rahu, who is in 08th house (accidents, longevity) in the natal chart and is under aspect of Mars, who can cause injury and accidents",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch89"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-164",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch90_nicolae_ceausescu",
+    "subject_name": "Nicolae Ceausescu",
+    "observation_verbatim": "Mercury is in maraca and badhaka house, and it is aspected by Mars, lord of 06 (injury and enemy) and is the causative planet for injury and accident",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch90"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-165",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch90_nicolae_ceausescu",
+    "subject_name": "Nicolae Ceausescu",
+    "observation_verbatim": "Saturn was posited in the star of Venus, who has got power to cause injury due to occupancy in Mars star in natal chart",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Venus",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch90"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-166",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch92_mohd_najib",
+    "subject_name": "Mohd. Najib",
+    "observation_verbatim": "Ketu, who is posited in Scorpio in Saturn star Anuradha, shall offer the result of 01,03,08,10 through Mars and 01, 05, 06, 10 and 11 through Saturn",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch92"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-167",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch92_mohd_najib",
+    "subject_name": "Mohd. Najib",
+    "observation_verbatim": "Ketu, who offers the result of Mars in one hand and Saturn in other hand, strongly projects destruction",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch92"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-168",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch93_king_carlos_i_portugal",
+    "subject_name": "King Carlos I",
+    "observation_verbatim": "Mars, being the causative planet for injury accidents, is signifying 01 (body) and 06 (enemy and injury) by lordship",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch93"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-169",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch95_ahmed_shah_massoud",
+    "subject_name": "Ahmed Shah Massoud",
+    "observation_verbatim": "OSth Lord Jupiter posited in 08th house and 08th lord Mercury in lOth house gave some solace to the longevity issues",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch95"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-170",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch95_ahmed_shah_massoud",
+    "subject_name": "Ahmed Shah Massoud",
+    "observation_verbatim": "Jupiter alone gives the result of 01, 06, 08 and Mars for the native to suffer from enemy, injury, acddent and die of weapon",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Jupiter"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch95"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-171",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch95_ahmed_shah_massoud",
+    "subject_name": "Ahmed Shah Massoud",
+    "observation_verbatim": "Moon is posited in the star of Rahu, who gives the result of Mercury through Mars",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Mercury",
+        "Rahu",
+        "Moon"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch95"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-172",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch95_ahmed_shah_massoud",
+    "subject_name": "Ahmed Shah Massoud",
+    "observation_verbatim": "Jupiter posited in 08th house and 08th lord Mercury in lOth house gave some solace to the longevity issues",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch95"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-173",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch96_virginia_woolf",
+    "subject_name": "Virginia Woolf",
+    "observation_verbatim": "Saturn is in Venus star, Rahu will give the result of 01, 09 and 12th house too",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Venus",
+        "Rahu",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch96"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-174",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch97_jeffrey_coombs",
+    "subject_name": "Jeffrey Coombs",
+    "observation_verbatim": "Jupiter is posited in lagna and is in the star of Rahu and will offer the result of Rahu too",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch97"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-175",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch97_jeffrey_coombs",
+    "subject_name": "Jeffrey Coombs",
+    "observation_verbatim": "Mars, the planet who causes injury and accident, is posited in 08th house, the longevity house",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch97"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-176",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch97_jeffrey_coombs",
+    "subject_name": "Jeffrey Coombs",
+    "observation_verbatim": "Rahu will give the result of Venus (01,08,11), Mars (02,07,08) and Jupiter (01,03,06)",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Jupiter",
+        "Venus",
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch97"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-177",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch98_crown_prince_luis_filipe",
+    "subject_name": "Crown Prince Luis Filipe",
+    "observation_verbatim": "Mars, who could cause injury and accidents, is definitely lord of Q6th house",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch98"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-178",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch98_crown_prince_luis_filipe",
+    "subject_name": "Crown Prince Luis Filipe",
+    "observation_verbatim": "Venus is posited in 11th house, but is in the star of Ketu, who signifies Mars, the causative planet for injury and accident",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu",
+        "Venus"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch98"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-179",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch99_john_lennon",
+    "subject_name": "John Lennon",
+    "observation_verbatim": "Venus, is posited in Ketu star in 06tn house, who gives the result of Mars, Sun, Mercury and Jupiter",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Jupiter",
+        "Mars",
+        "Mercury",
+        "Venus",
+        "Sun",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch99"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-180",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch99_john_lennon",
+    "subject_name": "John Lennon",
+    "observation_verbatim": "Mars can cause injury and accident and it aspects Saturn",
+    "generalised_condition": {
+      "type": "planet_aspect",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch99"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-181",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch99_john_lennon",
+    "subject_name": "John Lennon",
+    "observation_verbatim": "Ketu alone gives result of 01, 06, 08, 07 and Mars",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mars",
+        "Ketu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch99"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-182",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch99_john_lennon",
+    "subject_name": "John Lennon",
+    "observation_verbatim": "Rahu is in 07th house, and it could cause blast",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch99"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  },
+  {
+    "rule_id": "lu-cdr-183",
+    "source": "case_study_derived",
+    "source_book": "Longevity and Unnatural Deaths",
+    "source_chapter": "Ch99_john_lennon",
+    "subject_name": "John Lennon",
+    "observation_verbatim": "maraca and badhaka Mercury is seriously connected to lagna and OSth house These combinations will make the longevity under threat",
+    "generalised_condition": {
+      "type": "planet_in_house",
+      "planets_involved": [
+        "Mercury"
+      ],
+      "house": null,
+      "additional_factors": []
+    },
+    "claim_axis": "longevity",
+    "claim_polarity": "negative",
+    "effect": "See observation_verbatim — generalised rule pending human review",
+    "confirmed_by_cases": [
+      "tv-lu-ch99"
+    ],
+    "science_id": "kp_jyotish",
+    "approval_status": "pending_human_review",
+    "gap_in_existing_ke": true
+  }
+]

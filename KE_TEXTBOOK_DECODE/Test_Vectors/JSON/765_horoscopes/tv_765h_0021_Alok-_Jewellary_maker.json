@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0021",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0021",
+  "source_file": "0021_A-12_Alok-_Jewellary_maker.pdf",
+  "subject": {
+    "name": "Alok",
+    "name_from_filename": "Alok- Jewellary maker",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Jewellary maker",
+    "profession_category": "Business",
+    "profession_subcategory": "Jewellary maker",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1970-11-23",
+    "time_local": "02:56",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1970-11-23T21:26:00Z",
+    "latitude": 26.912,
+    "longitude": 75.787,
+    "place": "Jaipur, Rajasthan, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 5,
+    "months": 7,
+    "days": 23,
+    "raw_text": "Balance of dasha Sun 5-7-23"
+  },
+  "planet_degrees_from_text": {
+    "SATURN": {
+      "degree_in_sign": 24.7833,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 4.4833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 4.4833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 27.4833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 26.0167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 27.7833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Jewellary maker",
+    "profession_category": "Business",
+    "profession_subcategory": "Jewellary maker",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

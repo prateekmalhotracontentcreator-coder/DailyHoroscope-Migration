@@ -1,0 +1,142 @@
+{
+  "vector_id": "tv-lasys-ch32",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch32",
+  "chapter_title": "Longevity Upto 29th Year",
+  "pdf_path": "Text Books/LongevityAstroSystem/32_Longevity upto 29th year.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Ruby Karan (CS-07A) / Male Nativity anonymous (CS-07B)",
+    "description": "Chapter contains two case studies: Ruby Karan (male, died 2013, age ~29, Cancer lagna) and an anonymous male nativity (died ~1964 age ~29, Libra lagna). Primary subject is Ruby Karan.",
+    "nationality": "Indian"
+  },
+
+  "birth_data": {
+    "date": "1984-04-07",
+    "time_local": "14:00:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "08:30:30",
+    "latitude": 16.9833,
+    "longitude": 81.7833,
+    "place": "Rajahmondry, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "KP 23° 32' 26.45\"",
+    "notes": "Primary case: Ruby Karan. Second case (CS-07B): Male Nativity, 02 Nov 1935, 5:30 AM, Bangalore (77E38, 12N58), Ayanamsa KP 22°51'55\", Libra lagna. Both cases documented in single chapter."
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Primary (CS-07A): Lagna at 24° Cn 05'43\" Aslesha (Me-Ma). Moon at 01° Ge 16'23\" Mrigasira (Ma-Me). CS-07B: Lagna at 04° Li 36' Chitra (Ve-Ma-Ve), Libra lagna."
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "MARS",
+    "8th_csl": "JUPITER",
+    "badhaka_house": 11,
+    "badhaka_house_rationale": "Cancer = moveable lagna → 11th house is badhaka; badhaka lord = Venus (Taurus/11th sign lord); 11th CSL = Rahu",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "alpa",
+
+  "aayu_bucket_computed": null,
+
+  "planet_positions_from_table": {
+    "LAGNA":   { "sign": "Cancer",      "degree": "24°05'", "house": 1,  "significations": [1] },
+    "SUN":     { "sign": "Pisces",      "degree": "24°10'", "house": 9,  "significations": [] },
+    "MOON":    { "sign": "Gemini",      "degree": "01°16'", "house": 12, "significations": [] },
+    "MARS":    { "sign": "Scorpio",     "degree": "04°47'", "house": 5,  "significations": [], "notes": "retrograde" },
+    "MERCURY": { "sign": "Aries",       "degree": "12°02'", "house": 10, "significations": [] },
+    "JUPITER": { "sign": "Sagittarius", "degree": "18°38'", "house": 6,  "significations": [] },
+    "VENUS":   { "sign": "Pisces",      "degree": "05°52'", "house": 9,  "significations": [] },
+    "SATURN":  { "sign": "Libra",       "degree": "21°23'", "house": 4,  "significations": [], "notes": "retrograde" },
+    "RAHU":    { "sign": "Taurus",      "degree": "14°07'", "house": 11, "significations": [] },
+    "KETU":    { "sign": "Scorpio",     "degree": "14°07'", "house": 5,  "significations": [] }
+  },
+
+  "death_data": {
+    "cause_of_death": "Unknown (fate's long hands — no specific cause stated for CS-07A; CS-07B cause also unstated)",
+    "death_type": "unknown",
+    "death_date": null,
+    "age_at_death": 29,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "VENUS",
+      "pratyantardasha": "MOON",
+      "sookshma": null,
+      "kp_significations": [1, 6, 8, 11],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "Unfortunately, the native died in 2013 during the VMD of Jupiter-Venus-Moon. Dasha lord Jupiter signifies 06 and badhaka as it is in the star of Venus. Bhukti lord Venus signifies 08 and badhaka as it is in the star of Saturn. Antara lord Moon denotes lagna."
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna cusp is in Cancer and sub lord is Mars. 08th cusp is in Aquarius and sub lord is Jupiter. Badhaka cusp is in Taurus and sub lord is Rahu. There is a link between these planets. Rahu denotes Mars Venus. Jupiter is in the star of Venus. Badhaka lord Venus is in star of 08th lord Saturn and occupies 08th cusp. These are quite detrimental, except that 08th lord Saturn signifies 04th house. Rahu signifies 05 and 08 through Mars and Saturn. Thus these types of combinations offer alpa-aayu.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "CS-07B (Libra lagna): The lagna cusp sub lord is Venus. Venus is lord of lagna and 08th cusp. Badhaka cusp falls in Leo at 03 deg. 52 minutes. Venus is in badhaka cusp and it is in the star of badhaka lord Sun. This is dangerous for longevity. Conclusion is that Venus and Sun have spoiled the longevity aspect of the native. Since the native got Moon signifies 01, 03, 08 and 10, the life of around 30 years were awarded.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null,
+      "extraction_note": "This observation applies to the second case study CS-07B (Male Nativity, Libra lagna, born 02 Nov 1935)"
+    }
+  ],
+
+  "secondary_case": {
+    "name": "Male Nativity (anonymous)",
+    "birth_date": "1935-11-02",
+    "birth_time": "05:30:00",
+    "place": "Bangalore, India",
+    "ayanamsha_stated": "KP 22° 51' 55\"",
+    "lagna_sign": "Libra",
+    "lagna_degree": "04° Li 36'",
+    "lagna_csl": "VENUS",
+    "9th_csl": "VENUS",
+    "8th_csl": "SATURN",
+    "badhaka_house": 11,
+    "badhaka_csl": "MOON",
+    "death_year": "~1964",
+    "age_at_death": 29,
+    "aayu_bucket": "alpa"
+  },
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": "Chapter contains two distinct chart cases; primary JSON fields pertain to CS-07A (Ruby Karan, Cancer lagna). CS-07B data captured in secondary_case field."
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

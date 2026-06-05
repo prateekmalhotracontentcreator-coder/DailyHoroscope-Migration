@@ -1,0 +1,245 @@
+{
+  "vector_id": "tv-300h1-ch109",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch109_FRENCH_SCIENTIST--PIERRE_CURIE",
+  "pdf_path": "Split_Chapters/Ch109_FRENCH_SCIENTIST--PIERRE_CURIE.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Pierre Curie",
+    "description": "magnetism,",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": null,
+      "degree": null,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 28.1986,
+      "house": 4,
+      "significations": [
+        4,
+        8
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 26.1428,
+      "house": 3,
+      "significations": [
+        3,
+        5,
+        6,
+        7,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 4.8981,
+      "house": 11,
+      "significations": [
+        1,
+        2,
+        4,
+        7,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 0.0292,
+      "house": 5,
+      "significations": [
+        4,
+        5,
+        6,
+        8,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 4.7672,
+      "house": 5,
+      "significations": [
+        3,
+        4,
+        5,
+        8,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 1.6817,
+      "house": 7,
+      "significations": [
+        1,
+        2,
+        5,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Aquarius",
+      "degree": 22.8028,
+      "house": 2,
+      "significations": [
+        2
+      ]
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 22.8028,
+      "house": 8,
+      "significations": [
+        8
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "Scientist",
+    "profession_category": "Science",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Science",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus, Jupiter and Sun are in proximity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "10th lord Venus is under aspect from Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, Jupiter (10) is under aspect of Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "These helped native to gain ever lasting name and fame.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn signifies 01,02,05,07 through self and Jupiter, while 11th lord Mars is in star of Saturn.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "This helped native to love and marry Madam Curie.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "08 lord (searching) is Sun (04-study, medicine), while 09 (research) Mercury is in 05 (experiment, creativity) is in Sun star, which made native a chemical (Venus-1 0) scientist.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

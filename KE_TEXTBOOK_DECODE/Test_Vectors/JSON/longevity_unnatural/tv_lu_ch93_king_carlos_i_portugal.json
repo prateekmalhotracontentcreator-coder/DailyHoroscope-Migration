@@ -1,0 +1,212 @@
+{
+  "vector_id": "tv-lu-ch93",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch93_King_Carlos_I_Portugal",
+  "pdf_path": "Chapter_Splits/Ch93_King_Carlos_I_Portugal.pdf",
+  "subject": {
+    "name": "King Carlos I",
+    "description": "King of Portugal",
+    "nationality": "Portuguese"
+  },
+  "birth_data": {
+    "date": "1863-09-28",
+    "time_local": null,
+    "timezone_offset_hours": 2.0,
+    "time_utc": null,
+    "latitude": 38.7167,
+    "longitude": -9.1333,
+    "place": "Lisbon, Portugal",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-57-15.33",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 13.2333,
+      "house": 1,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 12.8667,
+      "house": 11,
+      "nakshatra": "Hast",
+      "pada": 1,
+      "significations": [
+        10,
+        11,
+        9,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 28.9333,
+      "house": 5,
+      "nakshatra": "a",
+      "pada": 4,
+      "significations": [
+        9,
+        8,
+        12,
+        11,
+        5
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 14.35,
+      "house": 11,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        1,
+        6,
+        9,
+        "1.1",
+        5
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 4.5333,
+      "house": 12,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "significations": [
+        8,
+        11,
+        12,
+        1,
+        6
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 8.7,
+      "house": 12,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "significations": [
+        2,
+        5,
+        12,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 13.4833,
+      "house": 11,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        7,
+        11,
+        12,
+        9,
+        5
+      ]
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 16.1833,
+      "house": 11,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        3,
+        4,
+        11,
+        9,
+        5
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 8.4833,
+      "house": 1,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "significations": [
+        "Sa",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 8.4833,
+      "house": 7,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "significations": [
+        "Ve",
+        "Su"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in his 45th year during the VMD period",
+    "death_type": "violent",
+    "death_date": "1863-09-28",
+    "age_at_death": 46,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "SUN",
+      "sookshma": "MOON",
+      "stated_by_author": true,
+      "raw_text": "transiting in Jupiter star in cancer, which becomes badhaka house for Scorpio born persons. Jupiter is also antara lord."
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "lagna lord, is dangerously connected to badhaka Moon.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "longevity of the King is too short and 01 and 08 are weak and death was imminent through injury and weapon.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

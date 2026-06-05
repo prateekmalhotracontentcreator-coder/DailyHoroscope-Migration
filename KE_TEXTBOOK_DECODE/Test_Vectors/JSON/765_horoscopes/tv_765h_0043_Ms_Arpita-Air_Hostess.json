@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0043",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0043",
+  "source_file": "0043_A-34_Ms_Arpita-Air_Hostess.pdf",
+  "subject": {
+    "name": "Ms Arpita",
+    "name_from_filename": "Ms Arpita-Air Hostess",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Air Hostess",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Air Hostess",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1976-04-14",
+    "time_local": "11:55",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1976-04-14T06:25:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 4,
+    "months": 8,
+    "days": 15,
+    "raw_text": "Balance of dasha Mar 4-8-15"
+  },
+  "planet_degrees_from_text": {
+    "VENUS": {
+      "degree_in_sign": 13.7333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 10.8833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 19.2167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 14.1833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 19.05,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 2.55,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 2.7833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 19.05,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 27.7,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 2.55,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Air Hostess",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Air Hostess",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

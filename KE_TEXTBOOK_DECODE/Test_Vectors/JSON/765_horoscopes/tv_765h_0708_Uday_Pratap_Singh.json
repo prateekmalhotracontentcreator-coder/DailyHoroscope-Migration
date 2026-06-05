@@ -1,0 +1,85 @@
+{
+  "vector_id": "tv-765h-0708",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0708",
+  "source_file": "0708_U-1_Uday_Pratap_Singh.pdf",
+  "subject": {
+    "name": "Uday Pratap Singh",
+    "name_from_filename": "Uday Pratap Singh",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1936-08-23",
+    "time_local": "21:52",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1936-08-23T16:22:00Z",
+    "latitude": 26.5,
+    "longitude": 86.8333,
+    "place": "86E50 & 26N30",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 3,
+    "months": 9,
+    "days": 4,
+    "raw_text": "Balance of dasha Jup 3-9-4"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 17.6833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 27.6833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 7.4333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 22.6333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 8.6833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

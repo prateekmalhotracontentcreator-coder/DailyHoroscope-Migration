@@ -1,0 +1,307 @@
+{
+  "vector_id": "tv-300h2-ch064",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch064_63_Robert_Turner_CNN",
+  "pdf_path": "Chapters/Ch064_63_Robert_Turner_CNN.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Robert Edward Turner Ill-Founder Of Cnn",
+    "description": "Robert Turner Ill is a US media mogul and philanthropist. He is the founder of CNN, and is owner 2 Million acres of land.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1838-11-19",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Chitra",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 3.674,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        10,
+        1,
+        3,
+        4,
+        5
+      ],
+      "significations_raw": "10,01, 03,04,05"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 5.143,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        12,
+        1,
+        6,
+        11
+      ],
+      "significations_raw": "09,12,01,06,11"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 23.043,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        11,
+        12,
+        9
+      ],
+      "significations_raw": "01,06,11,12,09"
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 24.524,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        8,
+        11,
+        1
+      ],
+      "significations_raw": "08,11,01"
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 1.096,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        4,
+        5,
+        1,
+        6,
+        11
+      ],
+      "significations_raw": "02,04,05,01,06,11"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 24.221,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Mo Ju Ve"
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 24.221,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve Ma,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Unknown",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Unknown",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Venus are conjunct in lagna, while Rahu is in star of Jupiter in 12 and them, while it is getting aspect of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From lagna, Jupiter is in 04 house and is aspecting 101h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, Ketu offers result of 07 (business), 10 (profession), Moon and Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter is in 04 ins ar of Mars (11) and Saturn (estate) in dual sign signifying 01,11 and in star of Mercury gave plenty of land to the native.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter signifies 02 and 11 through Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu signifies 0200 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mars, Moon and Nodes signify 061h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Sun signifies 10th house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Mercury, Sun, Venus, Ketu, Saturn, Mars, Moon and Rahu signify 11th house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Sun and Venus (screen) signify 03'd house (comm.), while its lord Saturn is in star of Mercury (business).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "All these led native to become a businessman and land owner.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

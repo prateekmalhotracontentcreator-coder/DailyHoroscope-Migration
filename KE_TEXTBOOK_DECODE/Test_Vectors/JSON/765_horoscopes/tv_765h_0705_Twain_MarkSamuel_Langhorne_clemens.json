@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0705",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0705",
+  "source_file": "0705_T-34_Twain_MarkSamuel_Langhorne_clemens.pdf",
+  "subject": {
+    "name": "Twain Mark/Samuel Langhorne clemens",
+    "name_from_filename": "Twain Mark/Samuel Langhorne clemens",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Arts_Literature",
+    "profession_subcategory": "Writer",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1835-11-30",
+    "time_local": "04:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1835-11-30T23:15:00Z",
+    "latitude": 39.4833,
+    "longitude": -91.85,
+    "place": "91 W51 & 39N29",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 7,
+    "months": 7,
+    "days": 24,
+    "raw_text": "Balance of dasha Mer\n7-7-24"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 24.0,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 7.7,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 15.9833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 16.7,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 21.4,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 27.2,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 16.7,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Arts_Literature",
+    "profession_subcategory": "Writer",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

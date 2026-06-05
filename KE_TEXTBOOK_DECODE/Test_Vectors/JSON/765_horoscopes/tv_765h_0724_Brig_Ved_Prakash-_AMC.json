@@ -1,0 +1,85 @@
+{
+  "vector_id": "tv-765h-0724",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0724",
+  "source_file": "0724_V-5_Brig_Ved_Prakash-_AMC.pdf",
+  "subject": {
+    "name": "Brig Ved Prakash",
+    "name_from_filename": "Brig Ved Prakash- AMC",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "AMC",
+    "profession_category": "Other",
+    "profession_subcategory": "AMC",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1947-11-17",
+    "time_local": "12:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1947-11-17T07:00:00Z",
+    "latitude": 31.45,
+    "longitude": 76.3167,
+    "place": "76E19 & 31N 27",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 7,
+    "months": 0,
+    "days": 27,
+    "raw_text": "Balance of dasha Ven 7-0-27"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 29.9833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 29.2667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 20.6333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 21.95,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 29.9833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "AMC",
+    "profession_category": "Other",
+    "profession_subcategory": "AMC",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "vector_id": "tv-300h1-ch082",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch082_JOSEPH_KENNEDY_JR",
+  "pdf_path": "Split_Chapters/Ch082_JOSEPH_KENNEDY_JR.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Joseph Kennedy Jr",
+    "description": "Joseph Kennedy Jr., son of Joseph Patrick Kennedy and elder brother of President",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 8.4461,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 8.9814,
+      "house": 11,
+      "significations": [
+        5,
+        6,
+        10,
+        11,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 26.7992,
+      "house": 4,
+      "significations": [
+        4,
+        11,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 20.8875,
+      "house": 9,
+      "significations": [
+        3,
+        4,
+        8,
+        9,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 25.6103,
+      "house": 10,
+      "significations": [
+        2,
+        4,
+        7,
+        9,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 25.6058,
+      "house": 5,
+      "significations": [
+        5
+      ]
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 25.6058,
+      "house": 11,
+      "significations": [
+        11
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter signifies 07 (war) and 10 (profession) through Saturn, while Saturn is in star of Jupiter in an airy sign.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars signifies 091h house (federal).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sun (Government) is in star of Saturn (10).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn is in star of Rahu, while Rahu signifies Mars (war, weapons).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mercury signifies air plane is in an airy sign and it is in 101h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Venus which signifies vehicle is in star of Jupiter (07) and it is in an airy sign, Gemini.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

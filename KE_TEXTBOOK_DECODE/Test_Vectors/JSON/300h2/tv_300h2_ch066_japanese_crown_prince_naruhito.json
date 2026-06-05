@@ -1,0 +1,298 @@
+{
+  "vector_id": "tv-300h2-ch066",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch066_65_Prince_Naruhito",
+  "pdf_path": "Chapters/Ch066_65_Prince_Naruhito.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Japanese Crown Prince Naruhito",
+    "description": "Crown Prince Naruhito is the eldest son of Emperor Akihito and Empress Michiko, which makes him the heir apparent to the Chrysanthemum Throne of Japan. • GL Su Ras; Prince Naruhito",
+    "nationality": "Japanese"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "lagna_degree_stated": 26.02,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 10.489,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        8
+      ],
+      "significations_raw": "02,03,08,Ra"
+    },
+    "MOON": {
+      "sign": null,
+      "degree": 24.594,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        4,
+        11,
+        7
+      ],
+      "significations_raw": "01,06,04,11 07"
+    },
+    "MARS": {
+      "sign": null,
+      "degree": 6.903,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        2,
+        510,
+        8
+      ],
+      "significations_raw": "07,02,0510,08"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": 10.005,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        7,
+        1,
+        6
+      ],
+      "significations_raw": "04 11,07,01,06"
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 22.072,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        6,
+        7,
+        8,
+        4,
+        11
+      ],
+      "significations_raw": "06,07,08,04,11"
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 2.699,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3,
+        2,
+        8
+      ],
+      "significations_raw": "03,02,08,Me Su,Sa"
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 2.699,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        6,
+        9
+      ],
+      "significations_raw": "06,09 Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun is in Aquarius and Venus is in 12 to it, while Ketu is in Pisces denotes Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Indeed Mercury is in star of Jupiter in Aquarius.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars 1s in 07 in star of Sun (Government) and it is lord of 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter is in 06 and aspects 10.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign, Rahu signifies 10 (prof.) and 09 (kingdom) along with Sun (Govt.).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Indeed sign lord of Rahu is Mercury, which is in star of Jupiter (admn.).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "All these combinations make native to' be the emperor.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Although 08 lord Saturn signifies badhaka through Venus, Sun and Mercury are in 08 and they are not linked to badhaka, which assures good longevity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

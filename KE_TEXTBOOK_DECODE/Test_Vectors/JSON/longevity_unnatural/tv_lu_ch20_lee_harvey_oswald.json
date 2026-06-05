@@ -1,0 +1,271 @@
+{
+  "vector_id": "tv-lu-ch20",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch20_Lee_Harvey_Oswald",
+  "pdf_path": "Chapter_Splits/Ch20_Lee_Harvey_Oswald.pdf",
+  "subject": {
+    "name": "Lee Harvey Oswald",
+    "description": "Alleged assassin of John F. Kennedy",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1939-10-18",
+    "time_local": "21:55:00",
+    "timezone_offset_hours": -6.0,
+    "time_utc": "1939-10-19T03:55:00Z",
+    "latitude": 29.9544,
+    "longitude": -90.075,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-55-10.58",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 15.95,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 1.95,
+      "house": 5,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "significations": [
+        6,
+        3,
+        5,
+        8,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 18.5333,
+      "house": 8,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "significations": [
+        2,
+        7,
+        6,
+        11,
+        8
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 19.0667,
+      "house": 5,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": [
+        1,
+        5,
+        4,
+        "Ra"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 8.1333,
+      "house": 10,
+      "nakshatra": "UBha",
+      "pada": 2,
+      "significations": [
+        7,
+        10,
+        8,
+        9,
+        11
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 14.2333,
+      "house": 9,
+      "nakshatra": "Sata",
+      "pada": 3,
+      "significations": [
+        "Rahu"
+      ]
+    },
+    "VENUS": {
+      "sign": "Sagittarius",
+      "degree": 0.7167,
+      "house": 7,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        "Ketu"
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 24.1667,
+      "house": 8,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        "Mars"
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 20.0667,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        "Jupiter"
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 20.0667,
+      "house": 7,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        "Venus"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "shot dead on a Dallas street approx",
+    "death_type": "violent",
+    "death_date": "1939-10-08",
+    "age_at_death": 24,
+    "dasha_at_death": {
+      "mahadasha": "MOON",
+      "antardasha": "SUN",
+      "pratyantardasha": "SUN",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Moon Sun-Sun-Saturn. Qasha lord Moon is lord of 02 (maraca) and is posited in Sagittarius, which becomes badhaka and mar"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "There is strong mutual aspect between Mars and Saturn under the context when they are having lordship of 06 and 08.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord Mercury is in 05th house, a punya house. It is conjoined with Rahu, who is in Mars star. Mars signifies 06 and 08. Hence Rahu will give result of 01 (lagna), 06 (enemy and injury), 08 (accidents and longevity).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Badhaka and maraca Jupiter is in Saturn star, while Saturn is lord of 08 (longevity).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars, who is posited in 08th house (longevity), is in the star of Moon, who is maraca and badhaka (02 and 07).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn, who is lord of 08 (longevity) is in 11th house, which normally treated as good house (upachaya), but is in the star of Ketu. Ketu signifies Mars who is maraca and badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Except Sun, all the planets are either linked to maraca or badhaka positions. ·",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Point nos. (3), (4), (5) and (6) above are detrimental fer good longevity. Hence lagna and 08th have become weak and are connected to 06 along with badhaka and maraca and Mars.' This has caused the native to be killed by others by gun shot. At the time of death, Oswald was running the VMD of Moon Sun-Sun-Saturn. Qasha lord Moon is lord of 02 (maraca) and is posited in Sagittarius, which becomes badhaka and maraca. Sun is conjoined with Rahu, in whose star lagna falls. Rahu will give result of Sun. Sun is in Mars star signifying 06,07,08 (injury too). Sookshma lord Saturn signifies 08 (longevit",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Sookshma lord Saturn signifies 08 (longevity) and aspects lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "lagna and 08th have become weak and are connected to 06 along with badhaka and maraca and Mars.",
+      "condition_type_guess": "lagna_8th_weakness",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-022"
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "08th lord is Saturn, while Jupiter is maraca and badhaka, who signifies 08th house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

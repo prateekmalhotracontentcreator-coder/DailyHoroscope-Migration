@@ -1,0 +1,260 @@
+{
+  "vector_id": "tv-300h2-ch049",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch049_48_Christina_Onassis",
+  "pdf_path": "Chapters/Ch049_48_Christina_Onassis.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Billionaire--Christina Onasis",
+    "description": "Christina is the daughter of Greek tycoon, Aristotle Onass1s. When her father d1ed on 15 Mar 1975, she became the world's richest woman with wealth around $400M.",
+    "nationality": "Greek"
+  },
+  "birth_data": {
+    "date": "1975-03-15",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "lagna_degree_stated": 2.645,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 26.15,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        7,
+        2,
+        5,
+        8
+      ],
+      "significations_raw": "04,07,02 05,08"
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 0.499,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        9,
+        3,
+        4,
+        7
+      ],
+      "significations_raw": "09,03,04,07"
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 4.172,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7,
+        12,
+        9,
+        4
+      ],
+      "significations_raw": "07,12,09,04"
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 16.066,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        5,
+        8,
+        1,
+        6
+      ],
+      "significations_raw": "02,05,08,01,06"
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 8.258,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        10,
+        11
+      ],
+      "significations_raw": "08,10,11,Ra"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 8.418,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        10,
+        4,
+        5,
+        7
+      ],
+      "significations_raw": "09 10 04,05 07"
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 0.778,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ju,Sa"
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 0.778,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Su"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "02nd house is signified by Mercury, Sun and Ketu along with Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "061h house is signified by Venus, Ketu and Mercury.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "10th house is signified by Saturn, Nodes, Jupiter and Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "11u• is signified by Rahu and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter is in 02nd house from Moon and 10111 from lagna.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "091h lord (father) Saturn is conjunct l<etu (02) indicate source of wealth from father, especially when lagna lord Venus signifies 02nd house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

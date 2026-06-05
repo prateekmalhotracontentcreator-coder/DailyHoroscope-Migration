@@ -1,0 +1,130 @@
+{
+  "vector_id": "tv-lu-ch28",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch28_Zulfikar_Ali_Bhutto",
+  "pdf_path": "Chapter_Splits/Ch28_Zulfikar_Ali_Bhutto.pdf",
+  "subject": {
+    "name": "Zulfikar Ali Bhutto",
+    "description": "Prime Minister of Pakistan",
+    "nationality": "Pakistani"
+  },
+  "birth_data": {
+    "date": "1928-01-05",
+    "time_local": "17:30:00",
+    "timezone_offset_hours": 5.0,
+    "time_utc": "1928-01-05T12:30:00Z",
+    "latitude": 27.55,
+    "longitude": 68.25,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-45-18.08",
+    "notes": " Birth chart shown as South Indian grid image only — KP body table not present in OCR output; planet positions cannot be extracted via pdfplumber."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {},
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": "1979-04-04",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "and injury). Antara lord Jupiter is badhaka and maraca and signifies QSth house (longevity). Jupiter is posited in lOth"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord Mercu,Y is posited in 07111 . house, which becomes mara·ea and tiadhaka. · ·",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "S.un is posit~d in badhaka and maraca :hOus~ and is a~pecting . lagria. ... ~ ·:·. ·. •·... · .. . .. · .: . ·. : . :. . ···. .",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Dasha lord Saturn signifies 01 (body), 06 (injury) and 08 (longevity) is conjoined with Mars, the causative planet for injury, especially when Mars is in Q6th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Bhukti lord itself is Mars, who signifies lagna (01), 06 (enemy and injury).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Antara lord Jupiter is badhaka and maraca and signifies QSth house (longevity).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Sookshma lord Rahu signifies Moon, Mars, Saturn, venus and is an occupant of 12th house (imprisonment) indicates that the death took place in Jail.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "madhya aayu or medium longeVity.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

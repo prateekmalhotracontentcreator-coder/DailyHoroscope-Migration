@@ -1,0 +1,233 @@
+{
+  "vector_id": "tv-lu-ch43",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch43_Pierre_Curie",
+  "pdf_path": "Chapter_Splits/Ch43_Pierre_Curie.pdf",
+  "subject": {
+    "name": "Pierre Curie",
+    "description": "Nobel Laureate Scientist",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": "1858-05-11",
+    "time_local": "02:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 45.6333,
+    "longitude": 5.7333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-46-57.05",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 8.1833,
+      "house": 1,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 28.1833,
+      "house": 4,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "significations": [
+        8,
+        4
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 26.1333,
+      "house": 3,
+      "nakshatra": "a",
+      "pada": 3,
+      "significations": [
+        7,
+        3,
+        6,
+        9,
+        5
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 4.8833,
+      "house": 11,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "significations": [
+        4,
+        11,
+        1,
+        2,
+        7
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 4.7667,
+      "house": 5,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        5,
+        12,
+        3,
+        4,
+        8
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 16.35,
+      "house": 5,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "significations": [
+        5,
+        10,
+        7,
+        3
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 1.6667,
+      "house": 7,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "significations": [
+        7,
+        1,
+        2,
+        5,
+        3,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Aquarius",
+      "degree": 22.8,
+      "house": 2,
+      "nakshatra": "PBha",
+      "pada": 1,
+      "significations": [
+        2,
+        "Ju",
+        "Sa",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 22.8,
+      "house": 8,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "significations": [
+        "OS",
+        "Su",
+        "Ve"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 15.1167,
+      "house": 3,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "significations": [
+        "Sat",
+        1,
+        2,
+        7
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in a street accident in Paris on April 19",
+    "death_type": "violent",
+    "death_date": "1859-05-15",
+    "age_at_death": 48,
+    "dasha_at_death": {
+      "mahadasha": "MARS",
+      "antardasha": "SUN",
+      "pratyantardasha": "VENUS",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "death were Mars and Sun. Venus signifies vehicle while Jupiter signifies horses. Mars is under aspect of Jupiter and Ven"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord is Saturn, who is Jupiter star in Cancer, which is a maraca house, besides Saturn himself is a maraca, being lord of 02nd house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "08th lord Sun star Krithika and they are under the aspect of dreaded Mars.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "longevity of the native.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "fortunately, Nobel laureate Pierre Curie was killed in Saade saath, when transit Saturn was in 12th from natal Moon.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

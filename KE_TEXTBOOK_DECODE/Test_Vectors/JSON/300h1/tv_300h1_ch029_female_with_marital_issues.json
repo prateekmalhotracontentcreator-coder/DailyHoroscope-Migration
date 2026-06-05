@@ -1,0 +1,221 @@
+{
+  "vector_id": "tv-300h1-ch029",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch029_FEMALE_WITH_MARITAL_ISSUES",
+  "pdf_path": "Split_Chapters/Ch029_FEMALE_WITH_MARITAL_ISSUES.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Female With Marital Issues",
+    "description": "The following female has got marital issues:",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1980-10-27",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 24.5303,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 10.9558,
+      "house": 5,
+      "significations": [
+        2,
+        3,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 4.2736,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        6,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 17.6561,
+      "house": 6,
+      "significations": [
+        1,
+        4,
+        5,
+        6,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 24.8931,
+      "house": 5,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 6.5753,
+      "house": 4,
+      "significations": [
+        3,
+        4,
+        5,
+        7,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 3.2461,
+      "house": 4,
+      "significations": [
+        3,
+        4,
+        5,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 10.8931,
+      "house": 4,
+      "significations": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 22.4817,
+      "house": 2,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 22.4817,
+      "house": 8,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The marital life has been filled with lot of disharmony.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Moon is in the star of Mars (06) and is aspecting 071h house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "There have been quarrels (Mars) in marital life.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "At the time of honey-moon, immediately after marriage, the bride got into her monthly periods.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "As seen in other cases, Saturn is aspecting Moon (female}, while Saturn is conjunct with 071h lord Jupiter and Venus (female).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

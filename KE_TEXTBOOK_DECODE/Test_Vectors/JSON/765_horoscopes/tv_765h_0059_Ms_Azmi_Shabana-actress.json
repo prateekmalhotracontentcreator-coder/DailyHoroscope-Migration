@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0059",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0059",
+  "source_file": "0059_A-50_Ms_Azmi_Shabana-actress.pdf",
+  "subject": {
+    "name": "Ms Azmi, Shabana",
+    "name_from_filename": "Ms Azmi, Shabana-actress",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "actress",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1949-09-18",
+    "time_local": "18:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1949-09-18T12:50:00Z",
+    "latitude": 17.385,
+    "longitude": 78.487,
+    "place": "Hyderabad, Telangana, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 12,
+    "months": 6,
+    "days": 14,
+    "raw_text": "Balance of dasha Sat 12-6-14"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 4.3833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 23.6833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 7.8667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 13.9333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 18.4833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 2.1167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 11.3667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 23.6833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 25.6167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 4.3833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "actress",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

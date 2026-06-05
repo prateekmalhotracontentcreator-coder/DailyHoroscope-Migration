@@ -1,0 +1,328 @@
+{
+  "vector_id": "tv-lu-ch23",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch23_Sheikh_Mujib_ur_Rahman",
+  "pdf_path": "Chapter_Splits/Ch23_Sheikh_Mujib_ur_Rahman.pdf",
+  "subject": {
+    "name": "Sheikh Mujib-ur-Rahman",
+    "description": "First President of Bangladesh",
+    "nationality": "Bangladeshi"
+  },
+  "birth_data": {
+    "date": "1920-03-17",
+    "time_local": "23:43:00",
+    "timezone_offset_hours": 6.0,
+    "time_utc": "1920-03-17T17:43:00Z",
+    "latitude": 23.1667,
+    "longitude": 89.9167,
+    "place": "Gopalganj",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-38-45.85",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 19.4167,
+      "house": 1,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 4.1833,
+      "house": 5,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "significations": [
+        3,
+        4,
+        5,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 0.4333,
+      "house": 4,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "significations": [
+        1,
+        4,
+        6,
+        9,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 16.4,
+      "house": 12,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        1,
+        6,
+        12,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 6.2333,
+      "house": 4,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": [
+        7,
+        12,
+        4,
+        1,
+        6
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 14.1833,
+      "house": 10,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        3,
+        4,
+        10,
+        7,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 25.6667,
+      "house": 12,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "significations": [
+        "Ma",
+        "Ju",
+        "Ve",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 25.6667,
+      "house": 6,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 1.2667,
+      "house": 6,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "significations": [
+        "Ketu"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in his 56th year indicate Madhya-aayu",
+    "death_type": "violent",
+    "death_date": "1920-03-17",
+    "age_at_death": 56,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "VENUS",
+      "sookshma": "KETU",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Jupiter-Venus-Ketu. 98 Longevity and Unnatural Deaths 1) Lagna lord Mars is posited in Libra in the star of Rahu,"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "was born in Tungipara, in Gopalganj District of Bangladesh. He was a Bengladesh politician and the founding leader of the People's Republic of Bangladesh, generally considered in the country as the father of the Bangladeshi nation. He served as the first President of Bangladesh and later became its Prime Minister. Date: March 17, 1920 Time: 11:43:00 pm Time Zone: 6:00 (E of GMT) Place: 89 E 55', 23 N 10' Gopalganj, Bangladesh Lunar Yr-Mo: Siddarthi - Phalguna Tithi: Krishna Trayodasi Sheikh Vedic Weekday: Wednesday Mujib-Ur-Rahman Nakshatra: Dhanishtha Yoga: ·Siddha (Ke) Hora Lord: Jupiter Sun",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord Mars is posited in Libra in the star of Rahu, while Rahu is in Libra in the Visakha star ruled by Jupiter.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Rahu will also give result of Venus, who is maraca and signifies lagna through Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Hence lagna lord and 06th lord Mars is connected to maraca houses.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter is lord of 02 (maraca) and is in 09th house, which is badhaka for Scorpio Asc. .",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "08th lord Mercury is in Saturn star and is punya house, but the Saturn is under aspect from badhka Moon.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Saturn is posited in the star of Venus, who is maraca.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Saturn is under the aspect of Venus and Moon, who are in Mars star (injury). Saturn aspects Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Badhaka Moon is in Dhanishta star ruled by Mars, who is lagna lord. Hence Badhaka becomes significator of lagna.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "08th lord Mercury is under the aspect of badhaka and maraca Jupiter. Hence lagna and 08 have become weak and they are connected to 06, Mars and badhaka and maraca, for Mr. Rahman to be killed by gunshots in his 56th year. Dasha lord Saturn signifies maraca (Venus) and is under aspect of badhaka and maraca Moon and Venus respectively. Both Moon · and Venus signifies 01, 06 and Mars denoting military lagna and injury including enemies. Bhukti lord Jupiter is maraca and badhka. Antara lord Venus signifies lagna, maraca and badhaka. Sookshma lord Ketu signifies Mars The transit chart (approx) take",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Dasha lord Saturn signifies maraca (Venus) and is under aspect of badhaka and maraca Moon and Venus respectively.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Bhukti lord Jupiter is maraca and badhka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Antara lord Venus signifies lagna, maraca and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-014",
+      "verbatim": "Sookshma lord Ketu signifies Mars The transit chart (approx) taken for the time of killing of Rahman is appended below: Sheikh Mujib-Ur-Rahman 99 Body Longitude Star I p Star lord Lagna 26 Cn 28' 46 Asre ·3 Mercury · Sun-AK 28 Cn 07' 44 Asre 4 Mercury Moon-PiK 09 Sc 04' 33 Anu 2 Saturn Mars-PK .",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-015",
+      "verbatim": "lagna lord and 06th lord Mars is connected to maraca houses.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-017",
+      "verbatim": "08th lord Mercury is under the aspect of badhaka and maraca Jupiter.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-018",
+      "verbatim": "Lagna lord Mars was under the aspect of badhaka Moon.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

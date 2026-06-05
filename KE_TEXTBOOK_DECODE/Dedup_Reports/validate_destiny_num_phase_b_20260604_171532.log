@@ -1,0 +1,37 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/validate_destiny_num_phase_b_20260604_171532.log
+DESTINY NUMEROLOGY PHASE B -- VALIDATION QUERY
+Batch: destiny_numerology_phase_b_20260604
+======================================================================
+
+=== DB COUNTS ===
+  auto_approved                  27
+  pending_human_review           5
+  flagged                        2
+  pending_review                 0
+  TOTAL                          34
+
+=== FLAGGED (2) ===
+
+  rule_id   : num-ch18-014
+  title     : Water Element Remedy — Lo Shu Number 1 (BN-8 / DN-8 Exception)
+  ch        : 18
+  condition : {'type': 'lo_shu_element_remedy', 'numerology_layer': 'remedy', 'number_type': 'lo_shu_missing_number', 'numbers_involved': [1], 'lagna_modality': None, 'badhaka_house': None, 'maraka_houses': None}
+  polarity  : positive
+  summary   : When number 1 is missing in the Lo Shu Grid (Water Element), increase water intake and worship the Sun by watering plant
+  _id: 6a21614877cbb2b5ce1ead14
+
+  rule_id   : num-ch19-005
+  title     : War Inference Principles — Wicked Planets, Country Groupings and Dharma War Exce
+  ch        : 19
+  condition : {'type': 'engine_specification', 'numerology_layer': 'foundation', 'number_type': 'event_analysis', 'numbers_involved': [], 'lagna_modality': None, 'badhaka_house': None, 'maraka_houses': None}
+  polarity  : negative
+  summary   : Five inference principles for war analysis: (1) Wicked planets predominantly instigate wars; (2) People governed by wick
+  _id: 6a21614877cbb2b5ce1ead1b
+
+=== PENDING_HUMAN_REVIEW (5) ===
+  Ch17  num-ch17-006                        _id=6a21614877cbb2b5ce1eacff
+  Ch17  num-ch17-009                        _id=6a21614877cbb2b5ce1ead02
+  Ch18  num-ch18-008                        _id=6a21614877cbb2b5ce1ead0e
+  Ch19  num-ch19-001                        _id=6a21614877cbb2b5ce1ead17
+  Ch19  num-ch19-004                        _id=6a21614877cbb2b5ce1ead1a

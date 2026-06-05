@@ -1,0 +1,235 @@
+{
+  "vector_id": "tv-lu-ch50",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch50_Saddam_Hussein",
+  "pdf_path": "Chapter_Splits/Ch50_Saddam_Hussein.pdf",
+  "subject": {
+    "name": "Saddam Hussein",
+    "description": "President of Iraq",
+    "nationality": "Iraqi"
+  },
+  "birth_data": {
+    "date": "1937-04-28",
+    "time_local": "18:00:00",
+    "timezone_offset_hours": 4.0,
+    "time_utc": "1937-04-28T14:00:00Z",
+    "latitude": 34.5331,
+    "longitude": 43.7331,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-53-06.21",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 23.75,
+      "house": 1,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 14.9667,
+      "house": 8,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "significations": [
+        12,
+        2,
+        9,
+        8,
+        7
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 16.8833,
+      "house": 3,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        11,
+        3,
+        1,
+        10,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 11.4167,
+      "house": 3,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        3,
+        8,
+        5,
+        6,
+        7
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 1.4,
+      "house": 9,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": [
+        1,
+        10,
+        9,
+        12,
+        8
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 3.9667,
+      "house": 5,
+      "nakshatra": "USha",
+      "pada": 3,
+      "significations": [
+        5,
+        4,
+        7,
+        8,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 28.8167,
+      "house": 7,
+      "nakshatra": "a",
+      "pada": 4,
+      "significations": [
+        2,
+        7,
+        9,
+        1,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 7.4667,
+      "house": 7,
+      "nakshatra": "UBha",
+      "pada": 2,
+      "significations": [
+        5,
+        6,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 24.4167,
+      "house": 3,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        "Ma",
+        "Mo",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 24.4167,
+      "house": 9,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "significations": [
+        "Me",
+        "Ma.Mo",
+        "Ve",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "executed by hanging on the first day of Eid ui-A",
+    "death_type": "violent",
+    "death_date": "1937-04-28",
+    "age_at_death": 69,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Rahu-Jupiter-Jupiter-.Mars. Dasha lord Rahu is conjoined with Mars, lord of QSth house, signifying longevity. Mars is fu"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Rahu is conjoined with Mars, lord of QSth house, signifying longevity.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Jupiter is the owner of maraca and badhaka houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sookshma lord Mars signifies QSth house (longevity, accidents, etc.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "8th lord was in natallagna lord Mercury star and was conjoined with maraca and badhaka Jupiter.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

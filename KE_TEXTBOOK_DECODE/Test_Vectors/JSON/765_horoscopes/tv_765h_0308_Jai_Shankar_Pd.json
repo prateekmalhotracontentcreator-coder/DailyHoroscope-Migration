@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0308",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0308",
+  "source_file": "0308_J-15_Jai_Shankar_Pd.pdf",
+  "subject": {
+    "name": "Jai Shankar Pd",
+    "name_from_filename": "Jai Shankar Pd",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Arts_Literature",
+    "profession_subcategory": "Poet",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1890-01-30",
+    "time_local": "08:23",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1890-01-30T02:53:00Z",
+    "latitude": 25.317,
+    "longitude": 82.974,
+    "place": "Varanasi, Uttar Pradesh, India",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 7,
+    "months": 3,
+    "days": 9,
+    "raw_text": "Balance of dasha Mon 7-3-9"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 13.6333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 18.95,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 13.2167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 17.0333,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 17.9,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 10.1833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 18.95,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Arts_Literature",
+    "profession_subcategory": "Poet",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

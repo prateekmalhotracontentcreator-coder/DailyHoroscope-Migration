@@ -1,0 +1,214 @@
+{
+  "vector_id": "tv-300h1-ch012",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch012_ENGINEERING-COMPUTER_SCIENCE",
+  "pdf_path": "Split_Chapters/Ch012_ENGINEERING-COMPUTER_SCIENCE.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Engineering-Computer Science",
+    "description": "The author had the opportunity to predict to a friend that his daughter shall join B. Tech",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1990-08-18",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-37-46.37",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 16.9111,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Leo",
+      "degree": 1.3214,
+      "house": 12,
+      "significations": [
+        11,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 29.2631,
+      "house": 8,
+      "significations": [
+        3,
+        8,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 27.5717,
+      "house": 12,
+      "significations": [
+        1,
+        10,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 6.3383,
+      "house": 11,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 11.5403,
+      "house": 11,
+      "significations": [
+        2,
+        4,
+        5,
+        6,
+        9,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 26.0806,
+      "house": 4,
+      "significations": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 12.6944,
+      "house": 5,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 12.6944,
+      "house": 11,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Engineer",
+    "profession_category": "Technology",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Technology",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Moon (11) signifies 41h house through Jupiter star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "The native was running Saturn VMD upto 08-0ct-2012, Mars Bhukti upto end May-2007, and Rahu Bhukti upto April-2010 and Rahu Antara upto Nov-2007.",
+      "condition_type_guess": "dasha_planet",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Entrance test for Graduate Engineering course was to begin March onwards upto July 2007, the above Dasha, Bhukti, Antara have been taken into consideration.",
+      "condition_type_guess": "dasha_planet",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn, Mars, Rahu are significators of either 4 or 11.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars aspect Moon strongly and since Mercury becomes a significator of 11th house along with Mars, it was predicted that the native will go in for B.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

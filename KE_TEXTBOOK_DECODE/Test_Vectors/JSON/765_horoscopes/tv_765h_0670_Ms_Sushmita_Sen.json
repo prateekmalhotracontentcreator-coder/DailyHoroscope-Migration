@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0670",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0670",
+  "source_file": "0670_S-73_Ms_Sushmita_Sen.pdf",
+  "subject": {
+    "name": "Ms Susmita Sen",
+    "name_from_filename": "Ms Sushmita Sen",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Entertainment",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1975-11-19",
+    "time_local": "07:05",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1975-11-19T01:35:00Z",
+    "latitude": 17.385,
+    "longitude": 78.487,
+    "place": "Hyderabad, Telangana, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 4,
+    "months": 8,
+    "days": 2,
+    "raw_text": "Balance of dasha Mar 4-8-2"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 12.5833,
+      "retrograde": true
+    },
+    "SATURN": {
+      "degree_in_sign": 25.1333,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 4.0833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 5.8167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 11.2833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 27.9833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 11.2833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "vector_id": "tv-lu-ch85",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch85_Gulshan_Kumar",
+  "pdf_path": "Chapter_Splits/Ch85_Gulshan_Kumar.pdf",
+  "subject": {
+    "name": "Gulshan Kumar",
+    "description": "Music Baron, Founder of T-Series",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1956-05-05",
+    "time_local": "10:00:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1956-05-05T04:30:00Z",
+    "latitude": 28.6,
+    "longitude": 77.2,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-09-02.40",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 25.7833,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 21.5,
+      "house": 11,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        3,
+        11,
+        12,
+        5,
+        1
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 14.7,
+      "house": 9,
+      "nakshatra": "Sata",
+      "pada": 3,
+      "significations": [
+        2,
+        9,
+        6,
+        "Ra"
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 19.5833,
+      "house": 8,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "significations": [
+        2,
+        8,
+        6,
+        11,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 12.0667,
+      "house": 12,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "significations": [
+        1,
+        4,
+        12,
+        9,
+        2
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 28.8,
+      "house": 2,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "significations": [
+        2,
+        1,
+        4,
+        12,
+        7,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 4.8,
+      "house": 1,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "significations": [
+        12,
+        5,
+        1,
+        8,
+        6,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 7.4833,
+      "house": 6,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "significations": [
+        6,
+        8,
+        9
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 16.3,
+      "house": 12,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "significations": [
+        "Mo",
+        "Ve",
+        "Me",
+        "Sa"
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 27.5,
+      "house": 3,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "significations": [
+        "Sun"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon for the native",
+    "death_type": "violent",
+    "death_date": "1956-05-05",
+    "age_at_death": 41,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "VENUS",
+      "sookshma": "KETU",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Jupiter-Venus- Ketu. Dasha lord Saturn is lord of 08 (longevity, accidents) and is posited in 06th house (injury"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Saturn is lord of 08 (longevity, accidents) and is posited in 06th house (injury or enemy).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Jupiter is lord of maraca & badhaka and is posited in maraca house, in the star of Mercury, who is lagna lord.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Venus is posited in lagna in the star of Mars, who signifies 06 and 08 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sookshma lord Ketu signifies Moon, Venus, Mercury and Saturn.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Lagna lord is Mercury, who is posited in the star of Moon, who is maraca, being lord of 02nd house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "fortunately, on 12 August 1997, he was killed outside a Hindu temple in the suburb of Mumbai in his 41st year.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

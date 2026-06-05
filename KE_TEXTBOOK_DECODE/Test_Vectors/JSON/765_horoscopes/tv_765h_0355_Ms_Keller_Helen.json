@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0355",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0355",
+  "source_file": "0355_K-28_Ms_Keller_Helen.pdf",
+  "subject": {
+    "name": "Ms Keller, Helen",
+    "name_from_filename": "Ms Keller, Helen",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1880-06-27",
+    "time_local": "03:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1880-06-27T22:00:00Z",
+    "latitude": 34.7167,
+    "longitude": -87.7,
+    "place": "87W42 & 34N43",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "RAHU",
+    "years": 1,
+    "months": 0,
+    "days": 0,
+    "raw_text": "Balance of dasha Rah 1-0-0"
+  },
+  "planet_degrees_from_text": {
+    "VENUS": {
+      "degree_in_sign": 9.2667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 13.85,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 14.35,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 7.3333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 23.2667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 14.35,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

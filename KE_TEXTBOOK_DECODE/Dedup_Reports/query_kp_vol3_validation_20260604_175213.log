@@ -1,0 +1,279 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/query_kp_vol3_validation_20260604_175213.log
+KP VOL 3 — VALIDATION QUERY
+Batch: kp_vol3_v1_20260604
+======================================================================
+
+=== DB COUNTS ===
+  auto_approved                  158
+  pending_human_review           69
+  flagged                        29
+  pending_review                 0
+  TOTAL                          256
+
+=== FLAGGED (29) ===
+
+  rule_id         : kp3-chP07-003
+  chapter         : P07
+  title           : Reason for Debt: Sub-Lord of 6th Cusp Signifying 12th + Connected with
+  cond.type       : kp_sub_lord
+  claim_axis      : finance
+  claim_polarity  : negative
+  contradiction_flag: False
+
+  rule_id         : kp3-chP08-001
+  chapter         : P08
+  title           : Borrowing → Conjoined Period of Significators of 2+6; Repayment/Cleari
+  cond.type       : kp_significator
+  claim_axis      : career_finance
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP09-003
+  chapter         : P09
+  title           : Thief Description → 7th House Sign + Lord + Occupants in Horary Chart 
+  cond.type       : planet_in_house
+  claim_axis      : legal
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP10-005
+  chapter         : P10
+  title           : Gain by Theft Successfully → Significators of 2 + 6 + 11 Operating (NO
+  cond.type       : kp_significator
+  claim_axis      : financial_security
+  claim_polarity  : negative
+  contradiction_flag: False
+
+  rule_id         : kp3-chP13-001
+  chapter         : P13
+  title           : KP 4th House Discriminator: 4th + Mars Connection = Buildings; 4th + V
+  cond.type       : kp_significator
+  claim_axis      : property
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP20-001
+  chapter         : P20
+  title           : KP Blindness Rule → Period of Sun, Moon, or Venus (or Planets in Their
+  cond.type       : kp_significator
+  claim_axis      : health_vitality
+  claim_polarity  : negative
+  contradiction_flag: False
+
+  rule_id         : kp3-chP27-002
+  chapter         : P27-28
+  title           : Entry into Service / Job → Significators of Houses 2, 6, and 10 Must O
+  cond.type       : kp_significator
+  claim_axis      : career_growth
+  claim_polarity  : positive
+  contradiction_flag: False
+
+  rule_id         : kp3-chP35-001
+  chapter         : P35
+  title           : Photography as Profession → 10th Cusp in Venus Star = Photography (Ven
+  cond.type       : kp_sub_lord
+  claim_axis      : career_finance
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP39-001
+  chapter         : P39
+  title           : Regaining Lost Position → Houses 10+11; Ruling Planets at Consultation
+  cond.type       : kp_significator
+  claim_axis      : career_finance
+  claim_polarity  : positive
+  contradiction_flag: False
+
+  rule_id         : kp3-chP40-001
+  chapter         : P40
+  title           : Pension/Account Settlement → Houses 2+11 (+ 10 for Service Pension); S
+  cond.type       : kp_significator
+  claim_axis      : career_finance
+  claim_polarity  : positive
+  contradiction_flag: False
+
+  rule_id         : kp3-chP41-001
+  chapter         : P41
+  title           : Political Success → Cusps of Houses 1+6+9+10 Receive Benefic Aspects; 
+  cond.type       : kp_significator
+  claim_axis      : career_finance
+  claim_polarity  : positive
+  contradiction_flag: False
+
+  rule_id         : kp3-chP42-001
+  chapter         : P42
+  title           : Politics Success Indicators → Jupiter+Mercury+Mars+Saturn Signifying H
+  cond.type       : kp_significator
+  claim_axis      : career_finance
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP44-001
+  chapter         : P44
+  title           : Helpful Friends → Lord of 11th in Constellation of Lord of 1/2/3/6/10/
+  cond.type       : kp_significator
+  claim_axis      : social_relationships
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP44-002
+  chapter         : P44
+  title           : Friend/Enemy Power Comparison → If Lord of 12 Stronger than Lord of 1/
+  cond.type       : kp_significator
+  claim_axis      : social_relationships
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP45-001
+  chapter         : P45
+  title           : Receiving Gifts/Benefits → Houses 2+3+6+11; Giving Gifts → Houses 8+9+
+  cond.type       : kp_significator
+  claim_axis      : career_finance
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP47-001
+  chapter         : P47
+  title           : Imprisonment → Houses 2+12; Release → Houses 2+11; Rahu = Chief Signif
+  cond.type       : kp_significator
+  claim_axis      : legal_status
+  claim_polarity  : negative
+  contradiction_flag: False
+
+  rule_id         : kp3-chP49-001
+  chapter         : P49
+  title           : Arrogance/Egoism → Mars Connected with Ascendant or Lord of Ascendant;
+  cond.type       : planet_in_house
+  claim_axis      : spirituality
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP51-001
+  chapter         : P51
+  title           : Gem/Colour Selection → Sub-Lord of Ascendant + Sub-Lord of 11th Cusp: 
+  cond.type       : kp_sub_lord
+  claim_axis      : health_vitality
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP66-002
+  chapter         : P66-67
+  title           : Horary: Whether Querist Is the Other Person's First Love — Lagna vs. 8
+  cond.type       : kp_sub_lord
+  claim_axis      : romance
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP73-002
+  chapter         : P73
+  title           : Water Quality from Planetary Combination: Moon+Jupiter=Copious; Moon+V
+  cond.type       : kp_significator
+  claim_axis      : property
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP75-003
+  chapter         : P75
+  title           : Marriage Prevented: Sub-Lord of 7th Cusp = Significator of 1, 6, 10, o
+  cond.type       : kp_sub_lord
+  claim_axis      : marriage_timing
+  claim_polarity  : negative
+  contradiction_flag: False
+
+  rule_id         : kp3-chP77-001
+  chapter         : P77
+  title           : Road to Success: Sign Occupied by Constellation Lord of Lagna Sub-Lord
+  cond.type       : kp_sub_lord
+  claim_axis      : career_growth
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP78-001
+  chapter         : P78
+  title           : Dasa Interpretation Framework → (a) Planet Nature = How Result Comes; 
+  cond.type       : engine_specification
+  claim_axis      : general
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP81-003
+  chapter         : P81
+  title           : Planet Results Hierarchy → Occupant of a House Stronger Than Owner; Pl
+  cond.type       : engine_specification
+  claim_axis      : general
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP85-001
+  chapter         : P85
+  title           : Horary Astrology → Chart Erected at Moment Astrologer Has Urge to Answ
+  cond.type       : engine_specification
+  claim_axis      : general
+  claim_polarity  : conditional
+  contradiction_flag: True
+
+  rule_id         : kp3-chP86-001
+  chapter         : P86
+  title           : Rain Prediction via Horary → Moon = Watery Planet (Nature of Query); R
+  cond.type       : engine_specification
+  claim_axis      : general
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chP88-002
+  chapter         : P88
+  title           : Planet Hora Applications → Sun=Authority/Surgery/Documents; Moon=Appro
+  cond.type       : engine_specification
+  claim_axis      : general
+  claim_polarity  : conditional
+  contradiction_flag: False
+
+  rule_id         : kp3-chT08-001
+  chapter         : T08
+  title           : Lords of 3rd, 6th, 8th, 11th are Malefic for Health and Longevity Only
+  cond.type       : engine_specification
+  claim_axis      : longevity
+  claim_polarity  : neutral
+  contradiction_flag: False
+
+  rule_id         : kp3-chT10-020
+  chapter         : T10
+  title           : To Assess Longevity of a Relative: Identify Badhaka Lord for That Rela
+  cond.type       : kp_badhaka
+  claim_axis      : longevity
+  claim_polarity  : negative
+  contradiction_flag: False
+
+=== CONTRADICTION PAIRS (3) ===
+  (no contradiction metadata fields found on batch rules)
+  Checking PHR rules with contradiction_flag=True:
+  kp3-chP01-007                  auto_approved             Ch=P01
+  kp3-chP12-001                  auto_approved             Ch=P12
+  kp3-chP20-003                  auto_approved             Ch=P20
+  kp3-chP31-002                  auto_approved             Ch=P31
+  kp3-chP38-002                  auto_approved             Ch=P38
+  kp3-chP79-001                  auto_approved             Ch=P79
+  kp3-chP80-001                  auto_approved             Ch=P80
+  kp3-chP81-001                  auto_approved             Ch=P81
+  kp3-chP85-001                  flagged                   Ch=P85
+
+=== PHR BY CHAPTER (top chapters) ===
+  ChT09: 7
+  ChT10: 6
+  ChP19: 4
+  ChT07: 4
+  ChP01: 3
+  ChP13: 3
+  ChP29: 3
+  ChT04: 3
+  ChT06: 3
+  ChT08: 3
+  ChP02: 2
+  ChP23: 2
+  ChP27-28: 2
+  ChP34: 2
+  ChP03: 1
+
+Total PHR: 69
+Already Bucket B (validator_error=True): 0

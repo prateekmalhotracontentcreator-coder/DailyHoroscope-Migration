@@ -1,0 +1,195 @@
+{
+  "vector_id": "tv-lu-ch46",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch46_Vladimir_Lenin",
+  "pdf_path": "Chapter_Splits/Ch46_Vladimir_Lenin.pdf",
+  "subject": {
+    "name": "Vladimir Lenin",
+    "description": "Leader of Soviet Russia",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1870-04-22",
+    "time_local": "21:42:00",
+    "timezone_offset_hours": 4.0,
+    "time_utc": "1870-04-22T17:42:00Z",
+    "latitude": 54.3333,
+    "longitude": 48.4,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-56-57.64",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Capricorn",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 28.3333,
+      "house": 1,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 10.4167,
+      "house": 7,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "significations": [
+        11,
+        7,
+        "Ke"
+      ]
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 11.0333,
+      "house": 4,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        10,
+        4
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 1.6333,
+      "house": 7,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "significations": [
+        2,
+        7,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 4.1833,
+      "house": 8,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        "03/06/08/07)1"
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 24.9,
+      "house": 5,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "significations": [
+        "01/08/05",
+        "03/06"
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 6.4,
+      "house": 3,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        4,
+        5,
+        3,
+        "Ke"
+      ]
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 1.5,
+      "house": 4,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": [
+        "Sa",
+        "M0",
+        "Su)u"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 18.6167,
+      "house": 11,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        "Venus"
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 25.6167,
+      "house": 2,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        "Mercury"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "violent",
+    "death_date": "1870-04-22",
+    "age_at_death": 54,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "RAHU",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Jupiter-Rahu-Jupiter-Venus. Dasha lord Jupiter signifies 06 and 08 (injury and accident). Rahu signifies Jupiter and bla"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Jupiter signifies 06 and 08 (injury and accident).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "survived the assassination but was injured with his wounds.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

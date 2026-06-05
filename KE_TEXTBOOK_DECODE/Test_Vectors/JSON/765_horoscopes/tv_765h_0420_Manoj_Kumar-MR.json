@@ -1,0 +1,64 @@
+{
+  "vector_id": "tv-765h-0420",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0420",
+  "source_file": "0420_M-21_Manoj_Kumar-MR.pdf",
+  "subject": {
+    "name": "Manoj Kumar",
+    "name_from_filename": "Manoj Kumar-MR",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1964-09-28",
+    "time_local": null,
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 26.218,
+    "longitude": 78.182,
+    "place": "Gwalior, Madhya Pradesh, India",
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 3,
+    "months": 5,
+    "days": 8,
+    "raw_text": "balance of dasha Mar 3-5-8"
+  },
+  "planet_degrees_from_text": {},
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "vector_id": "tv-lu-ch61",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch61_Pandit_Deendayal_Upadhyaya",
+  "pdf_path": "Chapter_Splits/Ch61_Pandit_Deendayal_Upadhyaya.pdf",
+  "subject": {
+    "name": "Pandit Deendayal Upadhyaya",
+    "description": "Indian Social and Political Leader",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1916-09-25",
+    "time_local": "14:17:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 27.4667,
+    "longitude": 77.7,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-35-51.15",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Sagittarius",
+      "degree": 26.9333,
+      "house": 1,
+      "nakshatra": "USha",
+      "pada": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 9.3333,
+      "house": 10,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "significations": [
+        "09)0"
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 16.6167,
+      "house": 9,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        8,
+        9,
+        6,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 18.6167,
+      "house": 11,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": [
+        5,
+        12,
+        11,
+        "Ra"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 11.25,
+      "house": 5,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "significations": [
+        1,
+        4,
+        5,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 23.8333,
+      "house": 8,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "significations": [
+        6,
+        11,
+        8,
+        7,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 2.9333,
+      "house": 2,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": [
+        "Sa",
+        "Su",
+        "Ve",
+        "Ma"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 7.1,
+      "house": 3,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        "Rahu"
+      ]
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 15.75,
+      "house": 4,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "significations": [
+        "Saturn"
+      ]
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 28.4833,
+      "house": 10,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "significations": [
+        "Mars"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "\\:'Veapon",
+    "death_type": "unknown",
+    "death_date": "1916-09-25",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "VENUS",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Rahu Venus-Jupiter-Venus. Dasha lord Rahu signifies Venus (06, 08), Saturn (02, 08) and Mars (Accident and Injury). Bhuk"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord Jupiter is posited in Aries in the star of Ketu, Who signifies 08, Saturn (02,03,08) and Venus(06,07,08,11).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Saturn is lord of 02 (maraca) and occupant of 081h house (accident, longevity). 256 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus is lord of 06th house (injury and enemy) and occupant of 08th house (longevity) also signifies Mercury (maraca and badhaka). This is quite detrimental for good longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mercury is in the star of Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Rahu, who is posited in 02nd house (maraca and badhka) shall . give result of Venus (06,07,08,11), Mars (05,11,12,Ra) and Saturn (02,03,08).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Since lagna lord Jupiter is posited in Ketu star and Ketu is connected to Saturn and Venus, who signifies maraca and badhka along with 06 and 08th houses, the lagna ·and 08th become weak.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Indeed 08th lord Moon is in Venus star Purva. Star lord Venus signifies maraca and badhka, besides 06 and 08 houses.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Ketu being an agent of Saturn, Venus and Moon along with Jupiter, it will give result of all these detrimental houses signified by them. It could be concluded easily that lagna and 08th are connected to Mars and 06th house along with maraca and badhka for one to undergo injury, accident, death by \\:'Veapon. The death occurred in his S2nd year, during th·e VMD of Rahu Venus-Jupiter-Venus. Dasha lord Rahu signifies Venus (06, 08), Saturn (02, 08) and Mars (Accident and Injury). Bhukti and sookshma lord Venus signifies 06 (enemy, injury), 08 (accident, longevity) and is posited in Mercury star, w",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Dasha lord Rahu signifies Venus (06, 08), Saturn (02, 08) and Mars (Accident and Injury).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "sookshma lord Venus signifies 06 (enemy, injury), 08 (accident, longevity) and is posited in Mercury star, whereas Mercury is in the star of Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "lagna lord Jupiter is posited in Ketu star and Ketu is connected to Saturn and Venus, who signifies maraca and badhka along with 06 and 08th houses, the lagna ·and 08th become weak.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "longevity is Madhya-aayu, as it got afflicted ·due to position of Venus in Mercury star along with Ketu in 081h house and that 081h lord Moon is in Ven·us star, as per natal chart.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "injury, accident, death by \\:'Veapon.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

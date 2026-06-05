@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0517",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0517",
+  "source_file": "0517_P-28_Picaso_Peblo.pdf",
+  "subject": {
+    "name": "Picaso, Peblo",
+    "name_from_filename": "Picaso, Peblo",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1881-10-25",
+    "time_local": "23:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1881-10-25T17:45:00Z",
+    "latitude": 36.7167,
+    "longitude": 4.3833,
+    "place": "4E23 & 36N43",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 16,
+    "months": 2,
+    "days": 25,
+    "raw_text": "Balance of dasha Mer 16-2-25"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 1.3167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 17.25,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 17.2167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 4.7333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 2.0,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 17.2667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 17.2167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 4.7333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

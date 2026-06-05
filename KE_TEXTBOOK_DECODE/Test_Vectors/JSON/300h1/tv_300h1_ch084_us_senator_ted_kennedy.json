@@ -1,0 +1,292 @@
+{
+  "vector_id": "tv-300h1-ch084",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch084_US_SENATOR_TED_KENNEDY",
+  "pdf_path": "Split_Chapters/Ch084_US_SENATOR_TED_KENNEDY.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Ted Kennedy",
+    "description": "-",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Sagittarius",
+      "degree": 18.1172,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 13.6111,
+      "house": 9,
+      "significations": [
+        4,
+        6,
+        8,
+        9,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 5.0381,
+      "house": 3,
+      "significations": [
+        3,
+        5,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 6.0111,
+      "house": 3,
+      "significations": [
+        3,
+        5,
+        7,
+        10,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 22.9228,
+      "house": 8,
+      "significations": [
+        1,
+        3,
+        4,
+        7,
+        8,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 18.7606,
+      "house": 4,
+      "significations": [
+        3,
+        4,
+        6,
+        7,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 7.0092,
+      "house": 2,
+      "significations": [
+        2,
+        3,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 4.6983,
+      "house": 4,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 4.6983,
+      "house": 10,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Venus are in proximity, while Rahu is conjunct with Venus and signifies Jupiter, which gave some status.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is aspecting 10111 house, while Jupiter signifies 101h house, but with 03 and 081h significations.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Native is quite famous and belongs to the American wealthy Kennedy clan.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "But 10th lord Mercury is in 03'd house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Ketu {exit) is in 10111 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Jupiter is in 08th house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "From Moon sign, 10th lord Venus is in 081h house, who is also lord of 3.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Native failed in his efforts to b~come President of his country.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Ketu is in Sun {Govt., 09-Federal) star in 10 Gob).",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Mercury signifies 07 and 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Venus signifies 10 and 11 (Senate).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-014",
+      "verbatim": "NAIRS !PUBLISHING HOUSE, HYOERABAO Page# 135",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

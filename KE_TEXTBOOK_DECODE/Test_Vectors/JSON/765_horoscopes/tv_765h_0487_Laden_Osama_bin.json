@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0487",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0487",
+  "source_file": "0487_O-8_Laden_Osama_bin.pdf",
+  "subject": {
+    "name": "Laden Osama bin",
+    "name_from_filename": "Laden Osama bin",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1957-05-13",
+    "time_local": "19:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1957-05-13T14:00:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Riyad",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 8,
+    "months": 7,
+    "days": 13,
+    "raw_text": "Balance of dasha Jup 8-7-13"
+  },
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 17.7833,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 26.4333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 29.3833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 28.6,
+      "retrograde": true
+    },
+    "LAGNA": {
+      "degree_in_sign": 13.5167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 26.15,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 19.1,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 26.4333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 13.5167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

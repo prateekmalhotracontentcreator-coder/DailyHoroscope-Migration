@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0225",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0225",
+  "source_file": "0225_G-18_Gaurav_GM_Hotel_Gp.pdf",
+  "subject": {
+    "name": "Gaurav",
+    "name_from_filename": "Gaurav, GM Hotel Gp",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1967-06-13",
+    "time_local": "23:50",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1967-06-13T18:20:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Mathura",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 2,
+    "months": 5,
+    "days": 26,
+    "raw_text": "Balance of dasha Sun 2-5-26"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 0.5667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 24.4833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 10.75,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 15.8333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 4.4667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 24.0833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

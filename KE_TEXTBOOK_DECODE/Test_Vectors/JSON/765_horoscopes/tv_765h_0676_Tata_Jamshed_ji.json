@@ -1,0 +1,81 @@
+{
+  "vector_id": "tv-765h-0676",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0676",
+  "source_file": "0676_T-5_Tata_Jamshed_ji.pdf",
+  "subject": {
+    "name": "Tata Jamshedji",
+    "name_from_filename": "Tata Jamshed ji",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Business",
+    "profession_subcategory": "Business",
+    "profession_compound": false,
+    "profession_secondary": "Royalty_Nobility",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1839-03-03",
+    "time_local": "20:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1839-03-03T14:30:00Z",
+    "latitude": 20.9667,
+    "longitude": 73.0167,
+    "place": "73E1 & 20N58",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 6,
+    "months": 6,
+    "days": 10,
+    "raw_text": "Balance dasha Mar 6-6-10"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 3.2333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 8.45,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 11.7833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 20.5667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Business",
+    "profession_subcategory": "Business",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

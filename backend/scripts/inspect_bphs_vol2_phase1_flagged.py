@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 """inspect_bphs_vol2_phase1_flagged.py
 
-Inspects and triages BPHS Vol 2 Phase 1 rules (Ch47-48, Ch52-60) that were
-ingested without batch tracking (no source.batch_id). Estimated ~2,227 rules
-total, ~190 flagged -- these were never triaged.
+Inspects and triages BPHS Vol 2 Phase 1 rules (Ch47, Ch53-58).
+These rules were migrated from EverydayHoroscope → horoscope_db and have
+confirmed batch IDs. Rule IDs use the R-BPHS[chapter]-* scheme.
 
-Identification strategy (no batch_id available):
-  Primary  : rule_id matches ^bphs2-  AND source.batch_id is null/missing/empty
-  Secondary: rule_id matches ^R-BPHS2 AND source.batch_id is null/missing/empty
-  Excludes : batch bphs-vol2-ch49-51-v1 (already triaged Ch49-51)
+  Ch47  bphs-ch47-dasha-20260416   R-BPHS47-*   (Sun MD + Antardasas)
+  Ch53  bphs-ch53-dasha-20260417   R-BPHS53-*   (Moon MD + Antardasas)
+  Ch54  bphs-ch54-dasha-20260417   R-BPHS54-*   (Mars MD + Antardasas)
+  Ch55  bphs-ch55-dasha-20260417   R-BPHS55-*   (Rahu MD + Antardasas)
+  Ch56  bphs-ch56-dasha-20260418   R-BPHS56-*   (Jupiter MD + Antardasas)
+  Ch57  bphs-ch57-dasha-20260419   R-BPHS57-*   (Saturn MD + Antardasas)
+  Ch58  bphs-ch58-dasha-20260419   R-BPHS58-*   (Mercury MD + Antardasas)
+
+Excludes: deprecated rules (superseded by re-ingest passes).
+Total active: ~1,400 rules.
 
 Three-bucket triage:
   Bucket A -- Truncation artifact only (summary short, detailed OK)
@@ -26,16 +32,19 @@ Optional API validator re-run on Bucket C (--validate-bucket-c):
 
 Usage:
   # Inspect only (no API calls):
-  python3 backend/scripts/inspect_bphs_vol2_phase1_flagged.py \\
-    --mongo-url "$MONGO_URL"
+  MONGO_URL=<url> python3 backend/scripts/inspect_bphs_vol2_phase1_flagged.py
 
   # Inspect + API validator on Bucket C:
-  python3 backend/scripts/inspect_bphs_vol2_phase1_flagged.py \\
-    --mongo-url "$MONGO_URL" --validate-bucket-c
+  MONGO_URL=<url> python3 backend/scripts/inspect_bphs_vol2_phase1_flagged.py \\
+    --validate-bucket-c
 
   # Limit API validation to first N Bucket C rules (cost control):
+  MONGO_URL=<url> python3 backend/scripts/inspect_bphs_vol2_phase1_flagged.py \\
+    --validate-bucket-c --validate-limit 30
+
+  # Override mongo url via CLI (optional, env var preferred):
   python3 backend/scripts/inspect_bphs_vol2_phase1_flagged.py \\
-    --mongo-url "$MONGO_URL" --validate-bucket-c --validate-limit 30
+    --mongo-url "$MONGO_URL"
 """
 from __future__ import annotations
 
@@ -47,8 +56,28 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-BATCH_ID_TRACKED   = "bphs-vol2-ch49-51-v1"   # already done, exclude
-LOG_DIR            = Path("KE_TEXTBOOK_DECODE/Dedup_Reports")
+# ── Target batches (migrated from EverydayHoroscope → horoscope_db) ──────────
+BATCH_IDS = [
+    "bphs-ch47-dasha-20260416",
+    "bphs-ch53-dasha-20260417",
+    "bphs-ch54-dasha-20260417",
+    "bphs-ch55-dasha-20260417",
+    "bphs-ch56-dasha-20260418",
+    "bphs-ch57-dasha-20260419",
+    "bphs-ch58-dasha-20260419",
+]
+
+CHAPTER_LABELS = {
+    "bphs-ch47-dasha-20260416": "Ch47 (Sun MD)",
+    "bphs-ch53-dasha-20260417": "Ch53 (Moon MD)",
+    "bphs-ch54-dasha-20260417": "Ch54 (Mars MD)",
+    "bphs-ch55-dasha-20260417": "Ch55 (Rahu MD)",
+    "bphs-ch56-dasha-20260418": "Ch56 (Jupiter MD)",
+    "bphs-ch57-dasha-20260419": "Ch57 (Saturn MD)",
+    "bphs-ch58-dasha-20260419": "Ch58 (Mercury MD)",
+}
+
+LOG_DIR = Path("KE_TEXTBOOK_DECODE/Dedup_Reports")
 
 # ── Bucket B patterns (known validator doctrinal errors) ──────────────────────
 BUCKET_B_PATTERNS = [
@@ -205,7 +234,8 @@ def call_validator(client, rule: dict) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mongo-url",        required=True)
+    parser.add_argument("--mongo-url",        default=os.environ.get("MONGO_URL", ""),
+                        help="MongoDB URL (default: MONGO_URL env var)")
     parser.add_argument("--db-name",          default="horoscope_db")
     parser.add_argument("--validate-bucket-c", action="store_true",
                         help="Run API validator on Bucket C rules")
@@ -213,6 +243,10 @@ def main() -> None:
                         help="Max Bucket C rules to validate (0=all)")
     parser.add_argument("--api-key",          default=os.environ.get("ANTHROPIC_API_KEY", ""))
     args = parser.parse_args()
+
+    if not args.mongo_url:
+        print("ERROR: MONGO_URL env var not set and --mongo-url not provided.")
+        raise SystemExit(1)
 
     ts       = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_path = LOG_DIR / f"inspect_bphs_vol2_phase1_flagged_{ts}.log"
@@ -224,8 +258,8 @@ def main() -> None:
     print("=" * 70)
     print()
     print("BPHS Vol 2 Phase 1 -- Flagged Rules Inspect & Triage")
-    print(f"Target  : bphs2-* and R-BPHS2* rules with no source.batch_id")
-    print(f"Excludes: {BATCH_ID_TRACKED} (Ch49-51, already triaged)")
+    print(f"Target  : {len(BATCH_IDS)} batches (Ch47, Ch53-58) in horoscope_db")
+    print(f"Excludes: deprecated rules (superseded by re-ingest passes)")
     print(f"API val : {'YES (Bucket C)' if args.validate_bucket_c else 'NO'}")
     print()
 
@@ -237,31 +271,42 @@ def main() -> None:
     client_mongo = MongoClient(args.mongo_url, serverSelectionTimeoutMS=10_000)
     col = client_mongo[args.db_name]["interpretation_rules"]
 
-    # ── Build query: bphs2-* or R-BPHS2* rules with no batch_id ──────────────
-    no_batch_filter = {
-        "$or": [
-            {"source.batch_id": {"$exists": False}},
-            {"source.batch_id": None},
-            {"source.batch_id": ""},
-        ]
+    # ── Base query: known batch IDs, excluding deprecated ─────────────────────
+    base_query = {
+        "source.batch_id": {"$in": BATCH_IDS},
+        "approval_status": {"$ne": "deprecated"},
     }
-    bphs2_id_filter = {
-        "$or": [
-            {"rule_id": {"$regex": "^bphs2-"}},
-            {"rule_id": {"$regex": "^R-BPHS2"}},
-        ]
-    }
-    base_query = {"$and": [no_batch_filter, bphs2_id_filter]}
 
-    # ── Batch-level summary ───────────────────────────────────────────────────
-    print("── BPHS Vol 2 Phase 1 (untracked) -- All Rules ──────────────────────")
-    total_untracked = col.count_documents(base_query)
-    print(f"  Total untracked bphs2 rules : {total_untracked}")
+    # ── Overall status breakdown ──────────────────────────────────────────────
+    print("── BPHS Vol 2 Phase 1 -- Active Rules by Status ─────────────────────")
+    total_active = col.count_documents(base_query)
+    print(f"  Total active rules (excl. deprecated) : {total_active}")
     print()
     for status in ["auto_approved", "pending_human_review", "pending_review",
                    "flagged", "rejected"]:
         n = col.count_documents({**base_query, "approval_status": status})
-        print(f"  {status:<30} {n}")
+        marker = "  ← triage target" if status == "flagged" and n > 0 else ""
+        print(f"  {status:<30} {n}{marker}")
+
+    # Deprecated count (info only)
+    depr_total = col.count_documents({"source.batch_id": {"$in": BATCH_IDS},
+                                      "approval_status": "deprecated"})
+    print(f"  {'deprecated (excl.)':<30} {depr_total}  (not triaged)")
+    print()
+
+    # ── Per-batch breakdown ────────────────────────────────────────────────────
+    print("── Per-Batch Active Breakdown ────────────────────────────────────────")
+    print(f"  {'Batch':<40} {'Active':<7} {'AA':<6} {'PHR':<6} {'FLAG':<6}")
+    print("  " + "─" * 60)
+    for bid in BATCH_IDS:
+        q_bid = {"source.batch_id": bid, "approval_status": {"$ne": "deprecated"}}
+        tot   = col.count_documents(q_bid)
+        aa    = col.count_documents({**q_bid, "approval_status": "auto_approved"})
+        phr   = col.count_documents({**q_bid, "approval_status": "pending_human_review"})
+        fl    = col.count_documents({**q_bid, "approval_status": "flagged"})
+        label = CHAPTER_LABELS.get(bid, bid)
+        marker = " ⚠️" if fl > 0 else ""
+        print(f"  {label:<40} {tot:<7} {aa:<6} {phr:<6} {fl:<6}{marker}")
     print()
 
     # ── Chapter breakdown ─────────────────────────────────────────────────────
@@ -269,7 +314,7 @@ def main() -> None:
     flagged_query = {**base_query, "approval_status": "flagged"}
     flagged_all   = list(col.find(
         flagged_query,
-        {"rule_id": 1, "source_chapter": 1, "validation": 1,
+        {"rule_id": 1, "source_chapter": 1, "source": 1, "validation": 1,
          "flag_reason": 1, "flag_note": 1,
          "interpretation.detailed": 1, "interpretation.summary": 1,
          "interpretation.tags": 1, "condition": 1, "_id": 0},
@@ -278,18 +323,14 @@ def main() -> None:
     print(f"  Total flagged : {len(flagged_all)}")
     print()
 
-    # Chapter distribution
+    # Chapter distribution (use batch_id → label)
     chapter_counts: dict[str, int] = {}
     for r in flagged_all:
-        ch = r.get("source_chapter", "")
-        if not ch:
-            # infer from rule_id
-            rid = r.get("rule_id", "")
-            parts = rid.split("-")
-            ch = parts[1] if len(parts) >= 2 else "unknown"
+        bid = (r.get("source") or {}).get("batch_id", "") or r.get("source_chapter", "unknown")
+        ch  = CHAPTER_LABELS.get(bid, bid)
         chapter_counts[ch] = chapter_counts.get(ch, 0) + 1
     for ch, n in sorted(chapter_counts.items()):
-        print(f"    {ch:<12} {n} flagged")
+        print(f"    {ch:<35} {n} flagged")
     print()
 
     # ── Triage classification ─────────────────────────────────────────────────

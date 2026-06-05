@@ -1,0 +1,27 @@
+======================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_c_empty_reject_20260603_102846_dryrun.log
+======================================================================
+
+BPHS Vol 2 Phase 1 — C_empty Reject
+Mode    : 🟡 DRY RUN — no changes
+Rules   : 6
+Action  : flagged → rejected  (gap_fill_direct, empty detailed, malformed condition)
+
+#    Rule ID                                  Pre-status             Result
+─────────────────────────────────────────────────────────────────────────────────────
+  1    R-BPHS57-PATCH-4B17E8-GF                 flagged                🟡 DRY RUN → rejected
+  2    R-BPHS57-PATCH-5F5F3B-GF                 flagged                🟡 DRY RUN → rejected
+  3    R-BPHS57-PATCH-60E6E0-GF                 flagged                🟡 DRY RUN → rejected
+  4    R-BPHS57-PATCH-92F798-GF                 flagged                🟡 DRY RUN → rejected
+  5    R-BPHS57-PATCH-DE1D14-GF                 flagged                🟡 DRY RUN → rejected
+  6    R-BPHS57-PATCH-F0541B-GF                 flagged                🟡 DRY RUN → rejected
+
+======================================================================
+Summary
+  Mode     : DRY RUN
+  Rejected : 6 / 6
+  Skipped  : 0
+
+  Re-run with --live to apply.
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_c_empty_reject_20260603_102846_dryrun.log

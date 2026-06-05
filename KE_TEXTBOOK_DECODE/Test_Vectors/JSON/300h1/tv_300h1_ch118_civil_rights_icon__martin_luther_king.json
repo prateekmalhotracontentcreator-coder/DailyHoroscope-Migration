@@ -1,0 +1,240 @@
+{
+  "vector_id": "tv-300h1-ch118",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch118_CIVIL_RIGHTS_ICON--MARTIN_LUTHER_KING",
+  "pdf_path": "Split_Chapters/Ch118_CIVIL_RIGHTS_ICON--MARTIN_LUTHER_KING.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Martin Luther King",
+    "description": "Martin Luther King, Jr. (15 Jan 1929- 04 Apr 1968) was an American clergyman,",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1929-01-15",
+    "time_local": "13:01:00",
+    "timezone_offset_hours": 5.6167,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 2.9886,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 2.4017,
+      "house": 9,
+      "significations": [
+        4,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 27.1686,
+      "house": 10,
+      "significations": [
+        3,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 29.1267,
+      "house": 1,
+      "significations": [
+        1,
+        7,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 19.0394,
+      "house": 9,
+      "significations": [
+        1,
+        2,
+        3,
+        5,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 17.8225,
+      "house": 10,
+      "significations": [
+        1
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 2.5958,
+      "house": 8,
+      "significations": [
+        1,
+        8,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 4.7172,
+      "house": 1,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 4.7172,
+      "house": 7,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Spiritual/Activist Leader",
+    "profession_category": "Spirituality/Religion",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1968
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1968-04-04",
+    "age_at_death": 39,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Spirituality/Religion",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "1011l lord Saturn is aspected by Mars and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From Moon sign, Mars is in own star and is in 04 being lord of 10.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "These made the ·native famous.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "03'd lord Moon is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign, Jupiter is in 03rd house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "These make the person an articulate communicator with clarity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Sun is in 09 in own star indicate connection with Federal Government.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

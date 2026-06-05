@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0703",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0703",
+  "source_file": "0703_T-32_Tulsi_Das-Saint_Poet.pdf",
+  "subject": {
+    "name": "Tulsi Das",
+    "name_from_filename": "Tulsi Das-Saint Poet",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Saint Poet",
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Saint",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1543-08-07",
+    "time_local": "10:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1543-08-07T05:00:00Z",
+    "latitude": 25.3833,
+    "longitude": 81.15,
+    "place": "81E9 & 25N23",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "RAHU",
+    "years": 7,
+    "months": 3,
+    "days": 14,
+    "raw_text": "Balance of dasha Rah 7-3-14"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 14.6,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 17.1,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 24.9,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 26.0167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 24.9,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 1.35,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 6.55,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 26.6833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 1.35,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Saint Poet",
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Saint",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "vector_id": "tv-300h2-ch150",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch150_149_Dr_Subramanian_Swamy",
+  "pdf_path": "Chapters/Ch150_149_Dr_Subramanian_Swamy.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Janata Party Leader--Dr Subramanyan Swamy",
+    "description": "Dr. Subramanyan Swamy is known as an academician, Economist, Politician, Member of Planning Commission, and Cabinet Minister, etc.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 19.098,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        12,
+        2
+      ],
+      "significations_raw": "12,02"
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 4.154,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        6,
+        9,
+        1
+      ],
+      "significations_raw": "04,06,09,01"
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 21.527,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        11,
+        2,
+        1,
+        0,
+        3
+      ],
+      "significations_raw": "11 ,02,1 0,03"
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 12.533,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        5,
+        8,
+        9,
+        6,
+        7
+      ],
+      "significations_raw": "05,08,09,06,07"
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 0.766,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        1,
+        10
+      ],
+      "significations_raw": "02,03,01,10"
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 7.491,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        6,
+        7,
+        9
+      ],
+      "significations_raw": "06,07,09,Ke"
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 8.359,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve,Sa"
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 8.359,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Ma"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Cancer",
+      "degree": 11.75
+    },
+    "ghati_lagna": {
+      "sign": "Taurus",
+      "degree": 3.28
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "marriage"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Saturn signifies 05 and 07, while it is aspecting Rahu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "These made marriage outside the caste of native.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is lord of 081h house from Moon gives argumentative nature.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun and Venus are in 02/12.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Moon is conjunct Venus and gets aspect of Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "These combinations made native famous.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "10th lord Venus is in Sun star indicate job connected to Government too.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

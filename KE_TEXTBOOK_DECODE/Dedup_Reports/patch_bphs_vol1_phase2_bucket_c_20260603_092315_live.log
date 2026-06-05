@@ -1,0 +1,55 @@
+======================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol1_phase2_bucket_c_20260603_092315_live.log
+======================================================================
+
+BPHS Vol 1 Phase 2 -- Bucket C PDF-Resolved Rules Patch
+Batch : bphs-vol1-phase2-v1-20260601
+Rules : 19 rules (19 PDF-confirmed validator errors)
+Mode  : LIVE
+
+Action: flagged → pending_human_review + validator_error:true
+        Interpretation text NOT changed (content confirmed correct from PDF)
+
+── CH04 ──────────────────────────────────────────────
+  [OK]    bphs1-ch04-020  → pending_human_review  (Ch04 Adhana nocturnal/diurnal classification)
+── CH30 ──────────────────────────────────────────────
+  [OK]    bphs1-ch30-026  → pending_human_review  (Ch30 Benefic rescue principle for Upa Pada malefic conditions)
+── CH26 ──────────────────────────────────────────────
+  [OK]    bphs1-ch26-004  → pending_human_review  (Ch26 Drishti degree-range formula)
+  [OK]    bphs1-ch26-005  → pending_human_review  (Ch26 Drishti degree-range formula)
+  [OK]    bphs1-ch26-017  → pending_human_review  (Ch26 Special planetary aspect addition)
+  [OK]    bphs1-ch26-018  → pending_human_review  (Ch26 Special planetary aspect addition)
+── CH32 ──────────────────────────────────────────────
+  [OK]    bphs1-ch32-003  → pending_human_review  (Ch32 Atmakarka definition (max degrees in sign))
+  [OK]    bphs1-ch32-004  → pending_human_review  (Ch32 Rahu longitude = 30 - sign degrees)
+  [OK]    bphs1-ch32-011  → pending_human_review  (Ch32 8 Chara Karakas list)
+  [OK]    bphs1-ch32-012  → pending_human_review  (Ch32 7-karaka variant (Matru=Putra))
+  [OK]    bphs1-ch32-018  → pending_human_review  (Ch32 Jupiter = 2nd house karaka (family/finance/wife))
+  [OK]    bphs1-ch32-041  → pending_human_review  (Ch32 Tiebreaker terms (Anthyakaraka/Madhyakaraka/Upakheta))
+── CH33 ──────────────────────────────────────────────
+  [OK]    bphs1-ch33-035  → pending_human_review  (Ch33 Karakamsa extreme outcome)
+  [OK]    bphs1-ch33-038  → pending_human_review  (Ch33 Karakamsa extreme outcome)
+  [OK]    bphs1-ch33-039  → pending_human_review  (Ch33 Karakamsa extreme outcome)
+  [OK]    bphs1-ch33-043  → pending_human_review  (Ch33 Karakamsa extreme outcome)
+  [OK]    bphs1-ch33-049  → pending_human_review  (Ch33 Karakamsa extreme outcome)
+  [OK]    bphs1-ch33-079  → pending_human_review  (Ch33 Karakamsa extreme outcome)
+  [OK]    bphs1-ch33-098  → pending_human_review  (Ch33 Karakamsa extreme outcome)
+
+======================================================================
+Patch complete:
+  Patched   : 19
+  Skipped   : 0
+  Not found : 0
+  Errors    : 0
+
+Batch status after patch:
+  auto_approved                  491
+  pending_human_review           205
+  flagged                        0
+  rejected                       0
+
+Remaining flagged: 0 -- all Bucket C rules cleared!
+
+──────────────────────────────────────────────────────────────────────
+All 19 Bucket C rules addressed via direct PDF reading.
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol1_phase2_bucket_c_20260603_092315_live.log

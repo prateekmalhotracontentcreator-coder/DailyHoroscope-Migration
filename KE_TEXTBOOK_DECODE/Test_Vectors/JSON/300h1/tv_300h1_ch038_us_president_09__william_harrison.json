@@ -1,0 +1,211 @@
+{
+  "vector_id": "tv-300h1-ch038",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch038_US_PRESIDENT_09_-WILLIAM_HARRISON",
+  "pdf_path": "Split_Chapters/Ch038_US_PRESIDENT_09_-WILLIAM_HARRISON.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "William Henry Harrison",
+    "description": "William Henry Harrison was 9th US President. American military officer and politician,",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aries",
+      "degree": 25.1286,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 0.7189,
+      "house": 11,
+      "significations": [
+        1,
+        4,
+        5,
+        8,
+        11
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 29.6161,
+      "house": 5,
+      "significations": [
+        4,
+        5,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 3.6089,
+      "house": 4,
+      "significations": [
+        1,
+        4,
+        5,
+        8,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 19.1264,
+      "house": 11,
+      "significations": [
+        1,
+        2,
+        6,
+        9,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 1.7697,
+      "house": 10,
+      "significations": [
+        2,
+        5,
+        7,
+        10,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 20.5492,
+      "house": 5,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 22.7322,
+      "house": 6,
+      "significations": [
+        6
+      ]
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 22.7322,
+      "house": 12,
+      "significations": [
+        12
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mercury is in star of Sun (Government) in 101h house, duly aspected by Mars (power) from the star of Saturn (10, 11).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is aspecting 101h lord Saturn making expansion and administratie abilities to 1Oth house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Rahu071h lord Venus is in 10 1h house and it is in star of Sun (05).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter, Sun and Venus have got proximity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

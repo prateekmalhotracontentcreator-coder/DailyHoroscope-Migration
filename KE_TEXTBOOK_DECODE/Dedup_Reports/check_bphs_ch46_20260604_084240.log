@@ -1,0 +1,47 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/check_bphs_ch46_20260604_084240.log
+===========================================================================
+
+BPHS VOL 2 CH.46 STATUS CHECK
+Database : horoscope_db
+Timestamp: 20260604_084240
+
+✅ MongoDB connection OK
+
+────────────────────────────────────────────────────────────
+1. IMPORT_BATCHES — searching for 'ch46' / chapter 46 records
+────────────────────────────────────────────────────────────
+  Batch IDs containing 'ch46': 0
+    → None found
+
+  Batches with chapter == 46: 0
+    → None found
+
+────────────────────────────────────────────────────────────
+2. INTERPRETATION_RULES — searching for Ch.46 content
+────────────────────────────────────────────────────────────
+  Rules with rule_id matching 'bphs*ch*46': 32
+  Rules with ingest_batch_id containing 'ch46': 0
+  Rules with source_book=BPHS and source.chapter==46: 0
+
+  Sample rules found:
+    rule_id=R-BPHS53-PATCH-F4678B  batch=None  status=pending_human_review
+    rule_id=R-BPHS53-PATCH-346436  batch=None  status=pending_human_review
+    rule_id=R-BPHS53-PATCH-A460E9  batch=None  status=pending_human_review
+    rule_id=R-BPHS54-PATCH-FD3E46  batch=None  status=auto_approved
+    rule_id=R-BPHS54-PATCH-C9E446  batch=None  status=auto_approved
+
+────────────────────────────────────────────────────────────
+3. ALL BPHS VOL 2 BATCHES IN MONGODB
+────────────────────────────────────────────────────────────
+  Found 2 BPHS Vol 2 batch(es):
+    Ch48  bphs-ch48-dasha-20260603                       46 rules
+    Ch ?  bphs-vol2-ch49-51-v1                           ? rules
+
+────────────────────────────────────────────────────────────
+VERDICT
+────────────────────────────────────────────────────────────
+  ⚠️  Ch.46 content DETECTED in horoscope_db.
+  → Review batch details above and confirm triage status.
+
+===========================================================================

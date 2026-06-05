@@ -1,0 +1,19 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_destiny_num_phase_b_20260604_165806.log
+DESTINY NUMEROLOGY PHASE B INGEST  |  batch: destiny_numerology_phase_b_20260604
+Scope: Ch17-Ch19 (34 rules, 3 files)
+======================================================================
+
+Loaded 34 rules from backend/scripts/destiny_numerology_phase_b_rules.json
+Running final structural check before upload...
+Issues found: 0
+
+  ✓  Inserted 34 rules into horoscope_db.interpretation_rules
+  ✓  import_batches record upserted  (batch_id: destiny_numerology_phase_b_20260604)
+     chapters: [17, 18, 19]
+
+  Verification: count = 34
+  ✓  Count matches expected 34.
+
+✓ Upload complete.
+  Next: python3 backend/scripts/validate_rules.py --batch-id destiny_numerology_phase_b_20260604 --mongo-url "$MONGO_URL" --db-name horoscope_db

@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0761",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0761",
+  "source_file": "0761_Y-6_Yogendra_Prasad.pdf",
+  "subject": {
+    "name": "Yogendra Prasad",
+    "name_from_filename": "Yogendra Prasad",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1942-07-24",
+    "time_local": "16:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1942-07-24T10:45:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Bettiah (Bi)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 11,
+    "months": 8,
+    "days": 0,
+    "raw_text": "Balance dasha Mer 11-8-0"
+  },
+  "planet_degrees_from_text": {
+    "VENUS": {
+      "degree_in_sign": 8.3667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 16.8833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 27.1333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 11.6333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 1.9833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 11.6333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 2.05,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

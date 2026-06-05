@@ -1,0 +1,224 @@
+{
+  "vector_id": "tv-300h1-ch002",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch002_A_GIRL_MARRIED_THROUGH_LOVE_AFFAIR",
+  "pdf_path": "Split_Chapters/Ch002_A_GIRL_MARRIED_THROUGH_LOVE_AFFAIR.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "A Girl Married Through Love Affair",
+    "description": "The following native married a person other than from her caste after a love affair.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": null,
+      "degree": null,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 23.3969,
+      "house": 4,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 21.0544,
+      "house": 5,
+      "significations": [
+        4,
+        5,
+        6,
+        8,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 22.4847,
+      "house": 4,
+      "significations": [
+        4,
+        5,
+        7,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 3.8594,
+      "house": 4,
+      "significations": [
+        1,
+        2,
+        3,
+        4,
+        7
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 10.5183,
+      "house": 10,
+      "significations": [
+        1,
+        4,
+        5,
+        8,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 23.2508,
+      "house": 4,
+      "significations": [
+        4,
+        6,
+        7,
+        10,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 12.1164,
+      "house": 10,
+      "significations": [
+        2,
+        3,
+        5,
+        8,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 13.9458,
+      "house": 8,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 13.9458,
+      "house": 2,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is falling in the star of Venus in Sagittarius, while Venus is posited in 04111 house (mind).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Moon (mind) is posited in 051h house (romance) and it is in the star of Venus (romance).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "051h lord Mars is posited in the star of 071h lord Mercury, while 11th lord Venus is in the star of Mercury.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Rahu (other caste) is in Cancer and thus signifies Moon and 051h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations led the native to marry after a love affair with a person from other caste.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0546",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0546",
+  "source_file": "0546_R-5_Rajendra_Prasad.pdf",
+  "subject": {
+    "name": "Rajendra Prasad",
+    "name_from_filename": "Rajendra Prasad",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "President",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1884-12-03",
+    "time_local": "08:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1884-12-03T03:15:00Z",
+    "latitude": 25.6,
+    "longitude": 85.1667,
+    "place": "85E10 & 25N36",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 6,
+    "months": 8,
+    "days": 10,
+    "raw_text": "Balance of Dasha Mar 6-8-10"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 24.0833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 20.0167,
+      "retrograde": true
+    },
+    "JUPITER": {
+      "degree_in_sign": 13.0833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 4.45,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 5.95,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 21.25,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 21.25,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "President",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

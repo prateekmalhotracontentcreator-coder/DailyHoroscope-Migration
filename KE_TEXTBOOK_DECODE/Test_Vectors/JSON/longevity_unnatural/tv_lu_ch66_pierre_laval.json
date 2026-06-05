@@ -1,0 +1,294 @@
+{
+  "vector_id": "tv-lu-ch66",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch66_Pierre_Laval",
+  "pdf_path": "Chapter_Splits/Ch66_Pierre_Laval.pdf",
+  "subject": {
+    "name": "Pierre Laval",
+    "description": "French Politician, Nazi Collaborator",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": "1883-06-28",
+    "time_local": "10:00:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1883-06-28T08:00:00Z",
+    "latitude": 45.8167,
+    "longitude": 3.5167,
+    "place": "Chateldon, France",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-08-00.16",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 14.1,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        1,
+        11,
+        3,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 20.8833,
+      "house": null,
+      "nakshatra": "a",
+      "pada": 2,
+      "significations": [
+        12,
+        11,
+        2,
+        8,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 29.2,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "significations": [
+        9,
+        1,
+        11,
+        4
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 23.2833,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        11,
+        2,
+        8,
+        10,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 19.4167,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 4,
+      "significations": [
+        5,
+        8,
+        11,
+        3,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 21.4,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        3,
+        10,
+        8,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 12.2,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "significations": [
+        6,
+        7,
+        12,
+        8,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 16.3667,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        "Ma",
+        "Ju",
+        "Ve"
+      ]
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 16.3667,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "significations": [
+        "Ma",
+        "Ve"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "executed",
+    "death_type": "violent",
+    "death_date": "1883-06-28",
+    "age_at_death": 63,
+    "dasha_at_death": {
+      "mahadasha": "MARS",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "MARS",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Mars. Transit Jupiter was in Q6th house (injury). Mars and Saturn were in close proximity, i.e., Mars was in Gemini at 2"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is rising in the star of Makha ruled by Ketu in Leo.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars, badhaka lord and occupant, is posited in Sun star. 276 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is conjoined with lagna star lord Ketu. Mars is also aspecting Rahu. Hence both the Nodes will give the result of Mars too.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Lagna lord Sun is posited in Arudra star ruled by Rahu, whire Rahu signifies badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter, being lord of 8th house (longevity) is posited in the star of Rahu in Gemini, while Rahu signifies badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "06th bhava falls in Capricorn in the star of Uthara Ashada ruled by Sun, who is connected to badhaka. ·",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "07th bhava falls in Aquarius in the star of Dhanishta ruled by Mars, who is badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "08th bhava falls in Pisces in the star of Purva Bhadra ruled by Jupiter, who is connected to badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Hence lagna, 06, 07, 08 are linked to Mars by Ketu, Sun, Jupiter and Rahu.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Saturn and Mars are in close conjunction i.e., Mars is around · 13 deg. away from Saturn. · These combinations make the lagna and 08th weak and they are exposed to Mars, 06, maraca and badhaka for the native to sustain injury, and was killed by weapon. Laval was executed by the firing squad during the VMD period of Rahu-Rahu-Jupiter-Moon in his 63rd year, which gave him medium longevity. . Dasha and bhukti lord Rahu signifies badhaka. Rahu signifies Mars, who is 07th bhava star lord. Sun, who is lagna lord is in Rahu star and signifies Government. Sun signifies 06th bhava star to cause injury ",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "bhukti lord Rahu signifies badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "sookshma lord Moon signifies 08th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

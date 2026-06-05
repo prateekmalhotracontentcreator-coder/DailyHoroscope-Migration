@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0547",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0547",
+  "source_file": "0547_R-6_Rajesh_Agrawal.pdf",
+  "subject": {
+    "name": "Rajesh Agrawal",
+    "name_from_filename": "Rajesh Agrawal",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actor",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1959-06-17",
+    "time_local": "14:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1959-06-17T08:30:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 5,
+    "months": 2,
+    "days": 24,
+    "raw_text": "Balance dasha Mar5-2-24"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 2.4833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 2.1,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 23.4833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 7.5167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 26.7,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 13.0,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 7.5167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actor",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

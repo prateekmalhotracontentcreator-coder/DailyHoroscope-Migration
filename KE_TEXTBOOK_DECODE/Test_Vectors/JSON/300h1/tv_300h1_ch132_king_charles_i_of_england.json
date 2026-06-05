@@ -1,0 +1,138 @@
+{
+  "vector_id": "tv-300h1-ch132",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch132_KING_CHARLES_I_OF_ENGLAND",
+  "pdf_path": "Split_Chapters/Ch132_KING_CHARLES_I_OF_ENGLAND.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Charles I",
+    "description": "Charles I (19 Nov 1600-.30 Jan 1649) was King of Britain from 27 March 1625.until his",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": "1600-11-19",
+    "time_local": "23:00:00",
+    "timezone_offset_hours": 0.0,
+    "time_utc": null,
+    "latitude": 54.5167,
+    "longitude": -3.45,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth; time marked rectified."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

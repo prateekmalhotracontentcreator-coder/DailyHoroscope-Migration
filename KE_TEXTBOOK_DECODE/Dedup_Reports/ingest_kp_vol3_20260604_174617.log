@@ -1,0 +1,145 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_kp_vol3_20260604_174617.log
+KP ASTROLOGY VOL 3 INGEST  |  batch: kp_vol3_v1_20260604
+Scope: 256 rules · 77 files · science_id: kp_jyotish
+======================================================================
+
+Discovering and building rules...
+
+──────────────────────────────────────────────────────────────────────
+  File                                                        Rules
+──────────────────────────────────────────────────────────────────────
+  KP3_ChP01_Physical_Features_Rules.json                          7
+  KP3_ChP02_Mode_of_Death_Rules.json                              5
+  KP3_ChP03_Finance_and_Fortune_Rules.json                        4
+  KP3_ChP04_Retirement_Rules.json                                 1
+  KP3_ChP05_Gain_by_Lottery_Rules.json                            1
+  KP3_ChP06_Luck_by_Races_Rules.json                              1
+  KP3_ChP07_Finance_by_Borrowing_Rules.json                       4
+  KP3_ChP08_Free_from_Debts_Rules.json                            1
+  KP3_ChP09_Theft_and_Recovery_Rules.json                         4
+  KP3_ChP10_Brothers_Sisters_Rules.json                           5
+  KP3_ChP11_Sorrow_Brothers_Rules.json                            4
+  KP3_ChP12_Mother_Rules.json                                     2
+  KP3_ChP13_House_to_Dwell_In_Rules.json                          4
+  KP3_ChP14_Conveyance_Rules.json                                 3
+  KP3_ChP15_Education_Rules.json                                  8
+  KP3_ChP16_Farm_and_Future_Rules.json                            1
+  KP3_ChP17_Cinema_Theatre_Rules.json                             1
+  KP3_ChP18_Clear_Off_Loan_Rules.json                             1
+  KP3_ChP19_Disease_Rules.json                                    7
+  KP3_ChP20_Blindness_Rules.json                                  3
+  KP3_ChP21_Health_Heart_Rules.json                               2
+  KP3_ChP22_Stammering_Rules.json                                 2
+  KP3_ChP23_Time_of_Marriage_Rules.json                           4
+  KP3_ChP24_Overseas_Rules.json                                   2
+  KP3_ChP25_Scholarship_Rules.json                                1
+  KP3_ChP26_Higher_Studies_Foreign_Rules.json                     2
+  KP3_ChP27-28_Profession_Change_Rules.json                       6
+  KP3_ChP29_Business_Rules.json                                   4
+  KP3_ChP30_Profession_Principle_Rules.json                       3
+  KP3_ChP31_Independent_Business_Rules.json                       2
+  KP3_ChP32_Music_Rules.json                                      1
+  KP3_ChP33_First_Salary_Rules.json                               2
+  KP3_ChP34_Reinstatement_Rules.json                              2
+  KP3_ChP35_Photography_Rules.json                                1
+  KP3_ChP36_Transfer_Rules.json                                   2
+  KP3_ChP37_Termination_Rules.json                                1
+  KP3_ChP38_Retirement_Rules.json                                 2
+  KP3_ChP39_Regaining_Position_Rules.json                         1
+  KP3_ChP40_Pension_Rules.json                                    1
+  KP3_ChP41_Politics_Rules.json                                   1
+  KP3_ChP42_Will_Politics_Suit_Me_Rules.json                      1
+  KP3_ChP43_Minister_Rules.json                                   1
+  KP3_ChP44_Choice_of_Friends_Rules.json                          2
+  KP3_ChP45_Giving_Receiving_Rules.json                           1
+  KP3_ChP47_Imprisonment_Rules.json                               1
+  KP3_ChP48_Spiritual_Life_Rules.json                             1
+  KP3_ChP49_Arrogant_Rules.json                                   1
+  KP3_ChP51_Which_Gem_Rules.json                                  1
+  KP3_ChP52-54_Houses_for_Engagement_Deputation_Selection_Rules.json      3
+  KP3_ChP55-58_Confirmation_CBI_Desire_Truth_Rules.json           5
+  KP3_ChP59-61_Spendthrift_Bold_Content_Rules.json                3
+  KP3_ChP62-65_Separation_Accident_Tenant_Rules.json              3
+  KP3_ChP66-67_Get_Tenant_First_Love_Rules.json                   2
+  KP3_ChP68-69_8thHouse_Imprisonment_Rules.json                   2
+  KP3_ChP70-72_PhD_Speculation_Child_Book_Rules.json              4
+  KP3_ChP73_Tap_Water_Rules.json                                  3
+  KP3_ChP74_Which_Child_Helps_Rules.json                          1
+  KP3_ChP75_Vote_Marriage_Match_Prevention_Rules.json             3
+  KP3_ChP76_Lagna_Only_Not_Moon_Sign_Rules.json                   1
+  KP3_ChP77_Road_to_Success_Rules.json                            1
+  KP3_ChP78_Vimshothari_Dasa_Rules.json                           1
+  KP3_ChP79_Dasa_Retrogression_Exaltation_Rules.json              1
+  KP3_ChP80_Dasa_Inimical_Debilitation_Rules.json                 1
+  KP3_ChP81_Kendra_Adhipathya_Rules.json                          3
+  KP3_ChP82_Progression_Rules.json                                1
+  KP3_ChP85_Horary_Astrology_Rules.json                           1
+  KP3_ChP86_Rains_Electric_Supply_Rules.json                      1
+  KP3_ChP87_Rectification_of_Birth_Time_Rules.json                1
+  KP3_ChP88_Hora_and_Its_Use_Rules.json                           2
+  KP3_ChT04_Role_of_Sub_Rules.json                               14
+  KP3_ChT06_Sub_Useful_for_Detailed_Reading_Rules.json            9
+  KP3_ChT07_Behaviour_of_Planets_Rules.json                      12
+  KP3_ChT08_How_to_Judge_Benefic_or_Malefic_Rules.json           12
+  KP3_ChT09_Cusps_and_Subs_How_to_Judge_Rules.json               24
+  KP3_ChT10_Constellation_and_Sub_Rules.json                     24
+──────────────────────────────────────────────────────────────────────
+  TOTAL                                                         256
+
+Zero-rule files (by design):
+  KP3_ChP46_Accepting_Gifts_Rules.json
+  KP3_ChP50_About_Dress_Rules.json
+──────────────────────────────────────────────────────────────────────
+
+Running local structural check...
+Issues found: 0
+  ✓  All rules pass structural check.
+
+Spot-check first rule (kp3-chP01-001):
+  approval_status  : pending_review
+  ingest_batch_id  : kp_vol3_v1_20260604
+  source.book      : KP Astrology Vol 3
+  source.batch_id  : kp_vol3_v1_20260604
+  science_id       : kp_jyotish
+  claim_axis       : physical_appearance
+  claim_polarity   : conditional
+  cond.type        : kp_sub_lord
+  interp.detailed  : 'KP rule for physical features: (1) Find the sub-lord of the Lagna (ascendant) cu'
+
+tba_needs_trigger rules (P79/P80) — status after injection:
+  kp3-chP79-001: approval_status=pending_review contradiction_flag=True
+  kp3-chP80-001: approval_status=pending_review contradiction_flag=True
+
+KP-specific field preservation (first rule):
+  claim_axis                : physical_appearance
+  claim_polarity            : conditional
+  claim_scope               : natal_trait
+  timing_bias               : sustained
+  strength_band             : high
+  subject_scope             : self
+  contradiction_flag        : False
+  duplicate_candidate       : False
+
+claim_axis distribution:
+  general                        54
+  career_finance                 24
+  longevity                      23
+  financial_security             21
+  career_growth                  17
+  career                         17
+  health_vitality                14
+  property                       13
+  marriage_timing                13
+  health                         11
+
+contradiction_flag=True : 9 rules
+
+  ✓  Rule count matches expected 256.
+
+Saved 256 rules → backend/scripts/kp_vol3_rules.json
+
+✓ Dry run complete.
+  Next: python3 backend/scripts/ingest_kp_vol3.py \
+    --upload backend/scripts/kp_vol3_rules.json \
+    --mongo-url "$MONGO_URL" --db-name horoscope_db

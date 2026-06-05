@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0281",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0281",
+  "source_file": "0281_H-18_Hitler_Adolf.pdf",
+  "subject": {
+    "name": "Hitler, Adolf",
+    "name_from_filename": "Hitler, Adolf",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1889-04-20",
+    "time_local": "18:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1889-04-20T12:50:00Z",
+    "latitude": 48.1,
+    "longitude": 13.0333,
+    "place": "13E2 & 48N6",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 15,
+    "months": 6,
+    "days": 18,
+    "raw_text": "Balance of dasha Ven 15-6-18"
+  },
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 3.4167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 8.4833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 24.0667,
+      "retrograde": true
+    },
+    "VENUS": {
+      "degree_in_sign": 24.3833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 21.15,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 15.9333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 16.3,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 22.7833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

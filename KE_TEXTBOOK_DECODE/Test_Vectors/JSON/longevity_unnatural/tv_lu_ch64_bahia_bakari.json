@@ -1,0 +1,264 @@
+{
+  "vector_id": "tv-lu-ch64",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch64_Bahia_Bakari",
+  "pdf_path": "Chapter_Splits/Ch64_Bahia_Bakari.pdf",
+  "subject": {
+    "name": "Bahia Bakari",
+    "description": "French School Girl, Yemenia Flight 626 survivor",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": "1996-08-15",
+    "time_local": "19:50:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1996-08-15T17:50:00Z",
+    "latitude": 48.6333,
+    "longitude": 2.45,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-42-47.83",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 3.05,
+      "house": 1,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 29.45,
+      "house": 7,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "significations": [
+        8,
+        7,
+        6,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 15.1,
+      "house": 8,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        7,
+        8,
+        5,
+        10,
+        6
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 20.2167,
+      "house": 6,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        11,
+        4,
+        6,
+        12,
+        3
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 26.1,
+      "house": 8,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "significations": [
+        6,
+        5,
+        8,
+        9,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 14.65,
+      "house": 12,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "significations": [
+        12,
+        3,
+        5,
+        10,
+        6
+      ]
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 13.7833,
+      "house": 6,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        5,
+        10,
+        6,
+        "Ra"
+      ]
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 16.65,
+      "house": 9,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        "Mo",
+        "Ma",
+        "Sa",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 16.65,
+      "house": 3,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "significations": [
+        "Sa",
+        "Ju"
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 22.65,
+      "house": 8,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "significations": [
+        "Venus"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": "2009-06-30",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "RAHU",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "MERCURY",
+      "stated_by_author": true,
+      "raw_text": "Venus. Antara lord Rahu signifies Mercury, posited in Q8th house (longevity, accidents) being lord of Q6th house (injury"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Capricorn rising and 06tl1 bhava (injury) falls in Gemini, an airy sign, where Mars (injury) is posited. 268 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Rahu, a significator of 08lh house due to its occupancy in Hasta star become a significator of 07 and 08, is under aspect of Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lord of 04th is Mars (vehicle) and is conjoined with Venus, who is the causative planet for vehicle in 06lh house, an airy sign, denoting air vehicle.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "But Saturn, lord of the lagna, is in own star in 03rd house. It is not connected to 06, 08 or maraca and badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "06lh lord Mercury (air plane) is in 08lh house signifying injury and accident, but it is not connected to badhka (Mars). Under these conditions accident and injury are seen but not death. The VMD operated at the time of air accident was that of Venus-Saturn-Rahu-Moon. Dasha lord Venus signifies Vehicle in general and is in the house of injury. It is lord of OS & 10 and in the star of Rahu who signifies 09 (punya) and 07 (maraca) too. Venus is posited in an airy sign ruled by Mercury. Bhukti lord Saturn signifies maraca. Moon is in the star of Venus. Antara lord Rahu signifies Mercury, posited ",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Dasha lord Venus signifies Vehicle in general and is in the house of injury.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Bhukti lord Saturn signifies maraca.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Antara lord Rahu signifies Mercury, posited in Q8th house (longevity, accidents) being lord of Q6th house (injury).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "vector_id": "tv-300h1-ch107",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch107_TELUGU_FILM_ACTOR-AKKINENI_NAGARJUNA",
+  "pdf_path": "Split_Chapters/Ch107_TELUGU_FILM_ACTOR-AKKINENI_NAGARJUNA.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Akkineni Nagarjuna",
+    "description": "Nagarjuna is famous film actor, who mainly works in Te lugu film, is the son of legendary",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": "Chennai,lndia Sidereal Time 22:43:",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 24.29,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Leo",
+      "degree": 11.5211,
+      "house": 4,
+      "significations": [
+        4,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 8.5183,
+      "house": 2,
+      "significations": [
+        2,
+        3,
+        5
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 1.5669,
+      "house": 5,
+      "significations": [
+        4,
+        5,
+        7,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 24.4083,
+      "house": 3,
+      "significations": [
+        2,
+        3,
+        5
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 7.3025,
+      "house": 8,
+      "significations": [
+        1,
+        8,
+        9,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 12.1592,
+      "house": 5,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 12.1592,
+      "house": 11,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Film Actor/Actress",
+    "profession_category": "Entertainment",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Entertainment",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter, Venus and Mercury are in own star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Rahu (illusion) is signifying 05 (creativity) and 07 (Audience) through Mars, while 10 (profession) through Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, Venus becomes lord of 05 (creativity}.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Moon is in star of Rahu (illusion) and it is in 2nd house (dialogues}.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "1•1 marriage took place in 1984 during Jupiter-Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Venus is lord of 06, which can negate marriage.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Jupiter is in 07, but 61h bhava is falling Jupiter star Visakha.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "In Jupiter-Rahu native divorced from 1•1 wife.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Rahu is in 05, but in barren sign and is under aspect from Saturn.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "In 1992 during Saturn-Saturn married for 2nd time.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Oasha lord Saturn is aspecting Rahu (other caste} ensured wife from other caste.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

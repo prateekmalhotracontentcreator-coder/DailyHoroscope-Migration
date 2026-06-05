@@ -1,0 +1,229 @@
+{
+  "vector_id": "tv-300h1-ch018",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch018_INDIAN_PRIME_MINISTER_--INDER_KUMAR_GUJRAL",
+  "pdf_path": "Split_Chapters/Ch018_INDIAN_PRIME_MINISTER_--INDER_KUMAR_GUJRAL.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Inder Kumar Gujral",
+    "description": "lnder Kumar Gujral served as the 12th Prime Minister of India. Gujral was the second",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 26.3969,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 18.7697,
+      "house": 5,
+      "significations": [
+        2,
+        3,
+        5,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 10.6111,
+      "house": 10,
+      "significations": [
+        1,
+        10,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 14.6394,
+      "house": 5,
+      "significations": [
+        2,
+        3,
+        5,
+        7,
+        8,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 2.4339,
+      "house": 4,
+      "significations": [
+        3,
+        4,
+        5,
+        10,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 18.6194,
+      "house": 2,
+      "significations": [
+        2,
+        4,
+        7,
+        8,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 1.0878,
+      "house": 5,
+      "significations": [
+        5
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 1.0878,
+      "house": 11,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Prime Minister",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is in lagna (Cancer) and Saturn is in the star of Venus in Q2nd house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun (05) is in Scorpio conjoined by Rahu in star of Jupiter and aspected by Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus is in 12111 from Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Venus (11) is in star of Mars and aspects 10 1h house, which is ruled by Mars.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars is in star of Sun (Government).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "But Moon in star of Ketu in 10th house indicates self-driven attitude and sudden exit from job.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

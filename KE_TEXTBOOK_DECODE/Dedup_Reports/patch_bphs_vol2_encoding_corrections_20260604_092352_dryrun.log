@@ -1,0 +1,39 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_encoding_corrections_20260604_092352_dryrun.log
+
+BPHS Vol 2 Encoding Corrections
+Mode    : DRY RUN
+Rules   : 10
+
+  1    R-BPHS47-PATCH-CC30B7               Ch.47    dasha_lord                DRY RUN  [Ch.47 slokas 49-51]
+         Ch.47 is Jupiter Mahadasha chapter. Batch script incorrectly set dasha_lord=Sun. PDF confirms Jupiter MD throughout Ch.47.
+
+  2    R-BPHS52-040                        Ch.52    condition.description     DRY RUN  [Ch.52 slokas 21-22]
+         Condition text decoded as 'own sign' but PDF sloka 21-22 clearly says 'sign of debilitation or be weak'. Corrected via string replacement in condition.description.
+
+  3    R-BPHS53-PATCH-094A74               Ch.53    dasha_lord                DRY RUN  [Ch.53 slokas 1-2]
+         Ch.53 is Moon Mahadasha chapter. Batch script incorrectly set dasha_lord=Venus.
+
+  4    R-BPHS53-PATCH-A460E9               Ch.53    dasha_lord                DRY RUN  [Ch.53 slokas 36-38]
+         Ch.53 is Moon Mahadasha chapter. Batch script incorrectly set dasha_lord=Venus.
+
+  5    R-BPHS53-PATCH-E77E96               Ch.53    dasha_lord                DRY RUN  [Ch.53 sloka 35]
+         Ch.53 is Moon Mahadasha chapter. Batch script incorrectly set dasha_lord=Venus.
+
+  6    R-BPHS53-PATCH-37CB8C               Ch.53    houses_involved           DRY RUN  [Ch.53 sloka 51]
+         Sloka 51 refers to maraka houses (2nd AND 7th). houses_involved was set to [7] only. Corrected to [2, 7].
+
+  7    R-BPHS54-PATCH-3E2164               Ch.54    antardasha_planet         DRY RUN  [Ch.54 slokas 70-73]
+         Ch.54 batch script set antardasha_planet=Mars for multiple rules. Slokas 70-73 cover Moon antardasha in Mars Mahadasha.
+
+  8    R-BPHS54-PATCH-3E8999               Ch.54    antardasha_planet         DRY RUN  [Ch.54 slokas 9-10]
+         Ch.54 batch script set antardasha_planet=Mars. Slokas 9-10 cover Rahu antardasha in Mars Mahadasha.
+
+  9    R-BPHS54-PATCH-6592D5               Ch.54    antardasha_planet         DRY RUN  [Ch.54 slokas 20-22]
+         Ch.54 batch script set antardasha_planet=Mars. Slokas 20-22 cover Jupiter antardasha in Mars Mahadasha.
+
+  10   R-BPHS57-PATCH-0727F5               Ch.57    condition.description     DRY RUN  [Ch.57 slokas 32-34]
+         Condition reference point decoded as 'from Ascendant' but Ch.57 is Saturn MD; slokas 32-34 measure house positions from the Dasa lord (Saturn), not the Ascendant. Corrected via string replacement in condition.description.
+
+
+SUMMARY
+  Patched : 10 / 10

@@ -1,0 +1,56 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/query_ch27_43_44_validation_20260604_144425.log
+======================================================================
+BPHS Ch27/43/44 — VALIDATION QUERY
+Batch: bphs_ch27_43_44_v2_20260604
+======================================================================
+
+=== DB COUNTS ===
+  auto_approved                 : 49
+  pending_human_review          : 37
+  flagged                       : 17
+
+=== BY CHAPTER ===
+  Ch27 — Shadbala               : AA= 14  PHR= 11  flagged=  3
+  Ch43 — Longevity              : AA= 20  PHR= 14  flagged=  1
+  Ch44 — Marakas                : AA= 15  PHR= 12  flagged= 13
+
+=== FLAGGED (17) ===
+  bphs-ch27-018          | engine_specification                | Bhava Bala engine is not implemented (blocker 'B'); the detailed description mix
+  bphs-ch27-019          | engine_specification                | Occupancy modifiers (Jupiter/Mercury +60, Saturn/Mars/Sun −60) and sign-type cla
+  bphs-ch27-020          | engine_specification                | Sign-specific nil-strength reference points for Bhava Cusp Strength are not foun
+  bphs-ch43-031          | planetary_combination               | Varga tier names (Simhasanamsa, Devalokamsa, Paaravatamsa) and their numeric pos
+  bphs-ch44-CD01         | planet_in_house                     | Specific cause-of-death mappings (e.g., Sun→cardiac problems, Moon→tuberculosis)
+  bphs-ch44-CD03         | planet_in_house                     | Gender-specific death causes (leucorrhea for females) are not documented in clas
+  bphs-ch44-CD04         | planet_in_house                     | The concept of 'mixed H3 occupation' causing 'various reasons' is vague and not 
+  bphs-ch44-CF06         | general_principle                   | The priority ordering (Asterism Marakas > 22nd decanate > Sub-period Triad > Gra
+  bphs-ch44-CF07         | general_principle                   | The 'Corpse Consciousness Diagnostic' with three parallel axes (H3 consciousness
+  bphs-ch44-EH03         | general_principle                   | The 22nd decanate counting methodology and its application to corpse fate is not
+  bphs-ch44-EH04         | general_principle                   | The specific decanate positions (Cancer 2nd/3rd, Scorpio 1st, Pisces 3rd) as 'Se
+  bphs-ch44-EH05         | general_principle                   | The 'post-death world' classification by decanate lords (Jupiter→Gods, Venus/Moo
+  bphs-ch44-MI06         | general_principle                   | The claim that 'when a planet is Maraka from Moon but benefic from Ascendant, th
+  bphs-ch44-MT01         | general_principle                   | The claim that a benefic Antar-dasa acts as an absolute 'safety buffer' preventi
+  bphs-ch44-MT04         | general_principle                   | The assignment of Vipat (3rd), Pratyak (5th), and Vadha (7th) asterisms to speci
+  bphs-ch44-MT06         | planetary_combination               | The specific combination of 6th lord Maha-dasa with 6th/8th/12th lord Antar-dasa
+  bphs-ch44-RK03         | planetary_combination               | The rule conflates two distinct classical principles: (1) benefic aspect mitigat
+
+=== CONTRADICTION PAIRS (2) ===
+  bphs-ch43-025          | pending_human_review | pairs: ['bphs-ch43-026'] | Saturn Class Decline downgrades longevity class when Saturn 
+  bphs-ch43-021          | pending_human_review | pairs: ['bphs-ch43-023'] | Rule 021 classifies longevity span based on sign modality (M
+  bphs-ch43-026          | pending_human_review | pairs: ['bphs-ch43-025'] | Saturn Class Decline downgrades longevity class when Saturn 
+
+=== PHR FLAG REASONS ===
+    1  Summary text is truncated ('Contributes to Sthan' instead of 'Sthana B
+    1  Eight motion types and Virupa awards are classical, but the exact nume
+    1  Mercury and Saturn 'always score 30' claim needs verification against 
+    1  Summary text is truncated ('The current engine approximates Varsha'); 
+    1  Summary text is truncated ('Sun i'); detailed text is coherent and the
+    1  Summary text is truncated ('Only one planet (plus Jupiter' incomplete)
+    1  Ayana Bala formula and declination thresholds (24°) are not explicitly
+    1  Summary text is truncated ('A house with a str'); detailed text is coh
+    1  Summary text is truncated ('Contributes to' incomplete); detailed text
+    1  Summary text is truncated ('empowers Moon, Mars, and Saturn. Mercury i
+    1  Drig Bala formula (1/4 deduction for malefics, full value for Mercury/
+    1  The rule states 'one-third reduction (×0.667)' for enemy sign, and ret
+    1  Lifespan catalog values (especially 1000 years for eagles/owls/parrots
+    1  Contradicts rule(s): bphs-ch43-026
+    1  Amitayu Yoga condition specifies 'other planets in 3rd, 6th, and 11th 

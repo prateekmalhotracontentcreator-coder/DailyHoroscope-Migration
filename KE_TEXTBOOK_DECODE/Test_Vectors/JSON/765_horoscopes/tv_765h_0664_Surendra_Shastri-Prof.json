@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0664",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0664",
+  "source_file": "0664_S-67_Surendra_Shastri-Prof.pdf",
+  "subject": {
+    "name": "Surendra Shastri-Prof",
+    "name_from_filename": "Surendra Shastri-Prof",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1945-12-23",
+    "time_local": "08:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1945-12-23T02:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Jammu",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 6,
+    "months": 9,
+    "days": 12,
+    "raw_text": "Balance of dasha Ket 6-9-12"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 6.8333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 29.95,
+      "retrograde": true
+    },
+    "MARS": {
+      "degree_in_sign": 7.85,
+      "retrograde": true
+    },
+    "MOON": {
+      "degree_in_sign": 0.2,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 6.8333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 16.15,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 7.8167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 13.8833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 28.1333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 13.8833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

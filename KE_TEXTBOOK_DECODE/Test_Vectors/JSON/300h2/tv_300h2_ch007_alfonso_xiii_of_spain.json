@@ -1,0 +1,249 @@
+{
+  "vector_id": "tv-300h2-ch007",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch007_06_King_Alfonso_XIII",
+  "pdf_path": "Chapters/Ch007_06_King_Alfonso_XIII.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Alfonso Xiii Of Spain",
+    "description": "Alfonso XIII (17 May 1886- 28 February 1941}, King of Spain, posthumous son of Alfonso XII of Spain, was proclaimed King at his birth. He reigned from 1886-1931. Ve Me Ke SL Ma d Gl<",
+    "nationality": "Spanish"
+  },
+  "birth_data": {
+    "date": "1886-05-17",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "lagna_degree_stated": 19.572,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 4.236,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        11
+      ],
+      "significations_raw": "02,11"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 26.317,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3,
+        9
+      ],
+      "significations_raw": "01.06,03 09"
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 18.699,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5,
+        10,
+        2,
+        9,
+        11,
+        4
+      ],
+      "significations_raw": "05,10 ,02,09,11 04"
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 10.467,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12,
+        3
+      ],
+      "significations_raw": "12,03,1O ,Ke"
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": "Gemini",
+      "degree": 13.939,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7,
+        8,
+        1,
+        2
+      ],
+      "significations_raw": "07,08,1 2,Ra"
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 20.511,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve,Su.Ma,Sa"
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 20.511,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ma,Ju,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": 18.25
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Ketu offers result of Saturn, Jupiter and Mars with houses such as 07, 09, 10, 11, etc.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Venus, who signifies 10, is under aspect from Mars and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter signifies 02, 06, 09 and 11.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "10111 lord Mars is in 02nct house and signifies 09 and 11.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "All these combinations made native a King and a rich person.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu and Mars in 02 with significations of 10 indicate fraudulent way of earnings through one's profession.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

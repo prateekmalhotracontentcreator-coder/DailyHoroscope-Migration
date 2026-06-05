@@ -1,0 +1,243 @@
+{
+  "vector_id": "tv-lu-ch51",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch51_Emperor_Alexander_II",
+  "pdf_path": "Chapter_Splits/Ch51_Emperor_Alexander_II.pdf",
+  "subject": {
+    "name": "Emperor Alexander II",
+    "description": "Czar of Russia",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1818-04-29",
+    "time_local": "10:00:00",
+    "timezone_offset_hours": 5.0,
+    "time_utc": "1818-04-29T05:00:00Z",
+    "latitude": 55.75,
+    "longitude": 37.6,
+    "place": "Moscow, Russia",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-13-25.34",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 16.3667,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 17.0333,
+      "house": 11,
+      "nakshatra": "Bhar",
+      "pada": 2,
+      "significations": [
+        3,
+        11,
+        12,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 6.8,
+      "house": 9,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        2,
+        9,
+        11,
+        "Ra"
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 26.3333,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        1,
+        7,
+        10,
+        6,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 7.6833,
+      "house": 12,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "significations": [
+        1,
+        4,
+        12,
+        3,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 21.75,
+      "house": 7,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        7,
+        10,
+        11,
+        12,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 29.1,
+      "house": 11,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "significations": [
+        5,
+        11,
+        12,
+        3
+      ]
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 24.0667,
+      "house": 9,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "significations": [
+        8,
+        9,
+        7,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 17.6333,
+      "house": 11,
+      "nakshatra": "Bhar",
+      "pada": 2,
+      "significations": [
+        "Ve",
+        "Su",
+        "Ju",
+        "Ma",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 17.6333,
+      "house": 5,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": [
+        "Ve",
+        "Su",
+        "Ra"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "assassinated",
+    "death_type": "violent",
+    "death_date": "1818-04-29",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "MERCURY",
+      "antardasha": "RAHU",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Mercury-Rahu Jupiter-Venus period. Dasha lord Mercury is lord of 01 (lagna) and 04 (Vehicle, especially four wheeled sin"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Mercury is lord of 01 (lagna) and 04 (Vehicle, especially four wheeled since owner of Virgo-a dual sign).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Rahu signifies Mars (06) and Jupiter (maraca and badhka).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Jupiter signifies maraca and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sookshma lord Venus is lord of 05 and 12 (moksha) and is posited in 11th house, who in general signifies vehicle.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "longevity of 63 years for King Alexander.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

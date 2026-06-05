@@ -1,0 +1,251 @@
+{
+  "vector_id": "tv-lu-ch17",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch17_Ronald_Reagan",
+  "pdf_path": "Chapter_Splits/Ch17_Ronald_Reagan.pdf",
+  "subject": {
+    "name": "Ronald Wilson Reagan",
+    "description": "40th US President",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1911-02-06",
+    "time_local": "04:16:00",
+    "timezone_offset_hours": -6.0,
+    "time_utc": "1911-02-06T10:16:00Z",
+    "latitude": 41.6167,
+    "longitude": -89.7833,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-31-07.92",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Sagittarius",
+      "degree": 4.7333,
+      "house": 1,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 24.0,
+      "house": 2,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        9,
+        2,
+        12,
+        "OS",
+        1
+      ]
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 21.2,
+      "house": 5,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        8,
+        "OS",
+        6,
+        3,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Sagittarius",
+      "degree": 11.4667,
+      "house": 1,
+      "nakshatra": "I",
+      "pada": 4,
+      "significations": [
+        1,
+        "OS",
+        12,
+        11,
+        "Ke"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 29.0167,
+      "house": 1,
+      "nakshatra": "USha",
+      "pada": 1,
+      "significations": [
+        7,
+        10,
+        1,
+        2,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 21.2167,
+      "house": 11,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        1,
+        4,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 11.15,
+      "house": 3,
+      "nakshatra": "Sata",
+      "pada": 2,
+      "significations": [
+        3,
+        6,
+        11,
+        "OS",
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 8.3,
+      "house": 5,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "significations": [
+        "OS",
+        2,
+        3,
+        11,
+        "Ke"
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 21.9833,
+      "house": 5,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        "OS",
+        "Mo",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 21.9833,
+      "house": 11,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        11,
+        "Ju",
+        "Mo",
+        "Sa",
+        "Ve"
+      ]
+    }
+  },
+  "life_events": [
+    {
+      "event_id": "ev-001",
+      "event_type": "life_threatening_event",
+      "description": "On March 30, 1981, Reagan, along with his press secretary James Brady and two others were shot by John Hinckley, Jr.",
+      "date": "1981-03-30",
+      "age_at_event": null,
+      "survived": true,
+      "dasha_at_event": {
+        "mahadasha": "SATURN",
+        "antardasha": "MERCURY",
+        "pratyantardasha": "JUPITER",
+        "sookshma": "JUPITER",
+        "stated_by_author": true,
+        "raw_text": "Saturn-Mercury-Jupiter-Jupiter. Dasha lord Saturn is in OSth house, but signifies 06th through Ketu. Bhukti lord Mercury"
+      }
+    }
+  ],
+  "death_data": {
+    "cause_of_death": "pneumonia",
+    "death_type": "disease",
+    "death_date": "1911-02-06",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Mercury-Jupiter-Jupiter. Dasha lord Saturn is in OSth house, but signifies 06th through Ketu. Bhukti lord Mercury"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Saturn is in OSth house, but signifies 06th through Ketu.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Mercury is conjoined with Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "lagna lord Jupiter and was in mutual aspect with 06th lord Venus.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "lagna lord, except that it aspects Saturn and Mars who are in Hasta star.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

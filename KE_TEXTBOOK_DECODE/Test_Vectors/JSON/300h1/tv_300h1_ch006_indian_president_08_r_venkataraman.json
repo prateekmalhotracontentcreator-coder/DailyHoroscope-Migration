@@ -1,0 +1,226 @@
+{
+  "vector_id": "tv-300h1-ch006",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch006_INDIAN_PRESIDENT_08_R_VENKATARAMAN",
+  "pdf_path": "Split_Chapters/Ch006_INDIAN_PRESIDENT_08_R_VENKATARAMAN.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Ramaswamy Venkataraman",
+    "description": "Ramaswamy Venkataraman was an Indian lawyer, Indian independence activist and",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1910-12-04",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": "Tanjore,lndia",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-30-59.09",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aquarius",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aquarius",
+      "degree": 20.4833,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 14.9903,
+      "house": 11,
+      "significations": [
+        4,
+        6,
+        9,
+        10,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 26.2928,
+      "house": 9,
+      "significations": [
+        2,
+        9,
+        10,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 0.6661,
+      "house": 11,
+      "significations": [
+        5,
+        8,
+        9,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 12.1153,
+      "house": 9,
+      "significations": [
+        2,
+        3,
+        9,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 20.6425,
+      "house": 10,
+      "significations": [
+        4,
+        5,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 7.9314,
+      "house": 3,
+      "significations": [
+        1,
+        2,
+        3,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 25.3917,
+      "house": 3,
+      "significations": [
+        3
+      ]
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 25.3917,
+      "house": 9,
+      "significations": [
+        9
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun, Government, signifies 05, 10 and 11.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Venus signifies 09 (Central) and 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars (power) is lord of 10111 house, while Jupiter (expansion) (11-Parliament) signifies 101h house (profession) through Rahu, while Rahu is linked to Saturn (democracy).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars (power) is in 091h house (Central) and it is in star of Jupiter (Minister, expansion).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations made the native to be at the highest post in politics and made him a statesman.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

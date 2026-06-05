@@ -1,0 +1,253 @@
+{
+  "vector_id": "tv-lu-ch27",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch27_Gianni_Versace",
+  "pdf_path": "Chapter_Splits/Ch27_Gianni_Versace.pdf",
+  "subject": {
+    "name": "Gianni Versace",
+    "description": "World Famous Fashion Designer",
+    "nationality": "Italian"
+  },
+  "birth_data": {
+    "date": "1946-12-02",
+    "time_local": "06:00:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1946-12-02T05:00:00Z",
+    "latitude": 38.1,
+    "longitude": 15.65,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-01-08.60",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 9.45,
+      "house": 1,
+      "nakshatra": "Push",
+      "pada": 2,
+      "significations": [
+        "Saturn"
+      ]
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 29.2833,
+      "house": 12,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 19.0333,
+      "house": 3,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        "Moon"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 19.2167,
+      "house": 1,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "significations": [
+        "Mercury"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 26.2833,
+      "house": 7,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        "Mars"
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 26.5333,
+      "house": 1,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "significations": [
+        "Mercury"
+      ]
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 26.3667,
+      "house": 9,
+      "nakshatra": "a",
+      "pada": 3,
+      "significations": [
+        "Mercury"
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 28.9667,
+      "house": 2,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 28.9667,
+      "house": 8,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "significations": [
+        "Jupiter"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "shot dead",
+    "death_type": "violent",
+    "death_date": "1997-07-15",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "JUPITER",
+      "pratyantardasha": null,
+      "sookshma": null,
+      "stated_by_author": true,
+      "raw_text": "star. Antara lord Venus is maraca (07 and O?). Sooks!)ma lord Jupiter is maraca, being lord of 02nd house. · · - ·Hence"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "l,..agna ·is rising in scorpio and it is occupied by Sun, Mars and Ketu.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Ketu is posited in the star ofMe~cury, who is 08tll lord denoting longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Ketu will also give the result of Mars and Sun.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars is lord of 01 (body) and 06 (enemy. and injury), who is posited in 08tll lord Mercury. star.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Moon is badhaka and is posited in Rahu star, while Rahu (07) also signify Mars (01, 08, 06). Hence Moon gives result of 04, badhaka, 01,06,07,08 house~.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Sun is posited in lagria in the star of Saturn, who is badhaka. .",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Hence there is link between 01 (body), 06 (injury and enemy), Mars (causative planet for·injury), 08 (longevity or·a ccidents) and 09 (badhaka) in the :lagna itself, which is fatal.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "· -081:1\\.lord Mercury-is in 12th house ,(lo~s) a!lq is-in th~--stpr of ~upiter, wha··is\"rnaraca. : . ·. :~· . - ; ....",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "· Moon, Saturn, Jupiter, -Me;cury; Ra!)tJi ketu, Sun, Venus··~r~ either maraca or badhaka.' · · · But lagna lord. :Mars ·s ·ignify. 08tll house_( longevityY through: M_erc~,Jry, ~while: Mercury too .signifies OS~·-house,·a puny~: h_9(!S~ through JupiteG :has given sorne;solace.f or tb,e na~ive with ref€!r~nce to longevity. . Otf)er-Wise; the--chart does·n ot_w .arr.ant longevity. . · On July -lS,-1997 Versac;e-\\yas killed iri his 5Ist year dyr.ing the VMD period :of ·M~rcury-SaturnNenus-Jupiter, · . ' ·· .. . . :_.: :.· . . : . ... . . . . ' . .~ ' Dasha lord Mercury signifies 08 (longevity) a",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Dasha lord Mercury signifies 08 (longevity) and maraca· (02) house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Antara lord Venus is maraca (07 and O?",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

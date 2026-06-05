@@ -1,0 +1,105 @@
+{
+  "vector_id": "tv-765h-0038",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0038",
+  "source_file": "0038_A-29_Ms_Annoinette_Marie.pdf",
+  "subject": {
+    "name": "Ms Antoinette Marie",
+    "name_from_filename": "Ms Annoinette Marie",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1755-11-02",
+    "time_local": "20:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1755-11-02T14:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "30EO & 745N30",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 2,
+    "months": 11,
+    "days": 2,
+    "raw_text": "Balance of dasha Mar 2-11-2"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 5.4,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 27.0,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 4.9333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 1.1,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 5.4,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 14.2667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 21.15,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 19.1,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 22.1,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 20.1833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 20.1833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

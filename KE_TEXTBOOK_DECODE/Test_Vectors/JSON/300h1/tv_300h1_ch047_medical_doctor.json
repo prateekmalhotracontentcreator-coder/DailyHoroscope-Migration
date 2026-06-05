@@ -1,0 +1,208 @@
+{
+  "vector_id": "tv-300h1-ch047",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch047_MEDICAL_DOCTOR",
+  "pdf_path": "Split_Chapters/Ch047_MEDICAL_DOCTOR.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Medical Doctor",
+    "description": "The following person is a professional qualified medical doctor:",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": "Cancer",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": null,
+      "degree": null,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 12.0361,
+      "house": 12,
+      "significations": [
+        5,
+        10,
+        11,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 11.9769,
+      "house": 4,
+      "significations": [
+        4,
+        5,
+        10,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 3.0883,
+      "house": 5,
+      "significations": [
+        1,
+        5,
+        8,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 15.7544,
+      "house": 11,
+      "significations": [
+        3,
+        5,
+        6,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 8.1369,
+      "house": 5,
+      "significations": [
+        5,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 27.5336,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        5,
+        7,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 3.8097,
+      "house": 5,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 3.8097,
+      "house": 11,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Medical Doctor",
+    "profession_category": "Medicine",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Medicine",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is in Aries, while Sun becomes 051h lord (cure).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "It is in 121h house (hospital) and signifies Saturn 10 Qob).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "07111 lord (patients) is in star of Sun (doctor).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "041 h lord Moon and 091h lord Jupiter are in 051n house (cure), while Rahu signifies Jupiter (09-education), Saturn (10-job), Mars (08-Surgery, blood}, Mercury (06-illness, 11-recovery of patients) and Sun (05-12-cure and hospital).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

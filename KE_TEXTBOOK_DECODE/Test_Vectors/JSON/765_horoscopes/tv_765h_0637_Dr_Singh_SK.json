@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0637",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0637",
+  "source_file": "0637_S-40_Dr_Singh_SK.pdf",
+  "subject": {
+    "name": "Dr Singh SK",
+    "name_from_filename": "Dr Singh SK",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1943-12-14",
+    "time_local": "16:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1943-12-14T10:45:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Saharsa (Bi)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 4,
+    "months": 5,
+    "days": 8,
+    "raw_text": "Balance of dasha Jup 4-5-8"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 4.35,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 16.7667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 29.6333,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 14.3333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 14.3333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 16.25,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 4.35,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

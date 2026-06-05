@@ -1,0 +1,45 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/validate_ingest_medical_astrology_v1_20260604_131710.log
+===========================================================================
+
+POST-INGEST STRUCTURAL VALIDATION
+Batch    : medical_astrology_v1
+Database : horoscope_db
+
+import_batches record:
+  batch_id: medical_astrology_v1
+  book: Medical Astrology
+  errors: 0
+  notes: Medical Astrology by Dr. S. Krishna Kumar. 270 rules (vedic_astrology). Two source schemas: A (239 rules) + B (31 rules). ma-ch03-005 flagged gai_citation_unverified (B-11 Rigveda quote). Grade C items are benchmark data quality issues only -- no rule flags needed.
+  rules_inserted: 270
+  rules_updated: 0
+  science_id: vedic_astrology
+  total_rules: 270
+  uploaded_at: 2026-06-04T07:36:12.879820+00:00
+
+Rules found in DB (ingest_batch_id=medical_astrology_v1): 270
+
+────────────────────────────────────────────────────────────
+  Total rules in DB        : 270
+  Reported inserted        : 270
+  Duplicates skipped       : N/A (upsert mode)
+
+  Approval status breakdown:
+    auto_approved: 53
+    flagged: 21
+    pending_human_review: 196
+
+  Structural checks:
+    Missing rule_id         : 0
+    Invalid approval_status : 0
+    Missing source_book     : 0
+    Missing interpretation  : 0
+    source.batch_id missing : 0
+
+────────────────────────────────────────────────────────────
+✅ STRUCTURAL CHECK: CLEAN
+
+NEXT STEP — AI quality validation (if not already run pre-upload):
+  python3 backend/scripts/validate_rules.py \
+    --batch-id medical_astrology_v1 \
+    --mongo-url "$MONGO_URL" --db-name horoscope_db

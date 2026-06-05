@@ -1,0 +1,231 @@
+{
+  "vector_id": "tv-300h1-ch124",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch124_JANSANGH_LEADER--DO_UPADYAYA",
+  "pdf_path": "Split_Chapters/Ch124_JANSANGH_LEADER--DO_UPADYAYA.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Pandit Deendayal Upadyaya",
+    "description": "Pandit Deendayal Upadyaya (25 Sep 1916-11 Feb 1968) was an important leader of",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1916-09-25",
+    "time_local": "04:17:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Sagittarius",
+      "degree": 26.9414,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 9.3456,
+      "house": 10,
+      "significations": [
+        9,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 16.6244,
+      "house": 9,
+      "significations": [
+        6,
+        8,
+        9,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 18.6286,
+      "house": 11,
+      "significations": [
+        5,
+        11,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 11.2506,
+      "house": 5,
+      "significations": [
+        1,
+        4,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 23.8344,
+      "house": 8,
+      "significations": [
+        6,
+        7,
+        8,
+        10,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 5.9739,
+      "house": 8,
+      "significations": [
+        2,
+        3,
+        8
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 2.9383,
+      "house": 2,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 2.9383,
+      "house": 8,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1968
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1968-02-11",
+    "age_at_death": 52,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mercury is in 10 in star of Mars in 11, while Mars is under aspect of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun is in own star of 10.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Ketu and Jupiter have exchanged their stars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These compositions made native famous.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Connection of Jupiter to 10 through Ketu made him not interested in Governmental position, after passing Civil Services exam, instead continued charity and organizational work.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mars in 03 from Moon sign made native courageous.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

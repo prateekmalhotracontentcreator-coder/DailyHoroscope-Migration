@@ -1,0 +1,162 @@
+{
+  "vector_id": "tv-lasys-ch22",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch22",
+  "chapter_title": "Balarishta or Infant Mortality Chart-II",
+  "pdf_path": "Text Books/LongevityAstroSystem/22_Balarishta or Infant Mortality Chart-II.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Unnamed Balarishta Case II (Female Child)",
+    "description": "Female infant born at primary health centre in Banda, Sagar district, Madhya Pradesh. Died 25 minutes after birth on same day.",
+    "nationality": "Indian"
+  },
+
+  "birth_data": {
+    "date": "2012-04-22",
+    "time_local": "06:15:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "00:45:00",
+    "latitude": 24.0167,
+    "longitude": 78.9833,
+    "place": "Banda, Sagar District, Madhya Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-55",
+    "notes": "Reported TOB 06:15:00 AM. Lagna CSL = Sun, 9th CSL = Jupiter. Sun conjunct with Jupiter — time taken as accurate. Sidereal time 20h 02m 53s. Death at 06:40 AM same day."
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Lagna at 15° Ar 57' Bharani (Ma-Ve-Su). Moon at 16° Ar 15' Bharani (Ma-Ve-Mo)."
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "SUN",
+    "8th_csl": "JUPITER",
+    "badhaka_house": 11,
+    "badhaka_house_rationale": "Aries = moveable sign → 11th house is badhaka",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "balarishta",
+  "aayu_bucket_computed": null,
+
+  "planet_positions_from_table": {
+    "LAGNA": { "sign": "Aries", "degree": "15°57'", "house": 1, "significations": [1] },
+    "SUN":   { "sign": "Aries", "degree": "8°22'", "house": 1, "significations": [1, 5] },
+    "MOON":  { "sign": "Aries", "degree": "16°15'", "house": 1, "significations": [1, 2, 4, 7] },
+    "MARS":  { "sign": "Leo", "degree": "10°07'", "house": 5, "significations": [1, 8] },
+    "MERCURY": { "sign": "Pisces", "degree": "11°14'", "house": 12, "significations": [3, 6] },
+    "JUPITER": { "sign": "Aries", "degree": "24°00'", "house": 1, "significations": [1, 9, 12] },
+    "VENUS":   { "sign": "Taurus", "degree": "21°02'", "house": 2, "significations": [2, 7] },
+    "SATURN":  { "sign": "Libra", "degree": "01°46'", "house": 7, "significations": [6, 7] },
+    "RAHU":    { "sign": "Scorpio", "degree": "13°06'", "house": 8, "significations": [1, 8, 11] },
+    "KETU":    { "sign": "Taurus", "degree": "13°06'", "house": 2, "significations": [2] }
+  },
+
+  "death_data": {
+    "cause_of_death": "Unknown — infant mortality; born and died in maraka and badhaka period",
+    "death_type": "unknown",
+    "death_date": "2012-04-22",
+    "age_at_death": 0,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "MOON",
+      "pratyantardasha": "MOON",
+      "sookshma": "JUPITER",
+      "kp_significations": [2, 7, 1, 4, 9, 12],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "The birth occurred in the VMD of Venus-Moon-Moon-Jupiter-Jupiter-Rahu. Death occurred on the same day of birth at 6-40 a.m., during the VMD of Venus-Moon-Moon-Jupiter."
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sub lord of the lagna (body) is Sun. Sun denotes 01 and 05 by itself. It is in the star of Ketu. Ketu denotes Venus and Moon. Moon denotes cusps 01, 02, 04 and 07. Venus denotes cusps 01, 02, 04 and 07.",
+      "aayu_gate": "gate_1",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "mixed",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "08th cusp sub lord (longevity) is Jupiter. It signifies 01, 09 and 12 cusps. It is in the star of Venus (02, 07).",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "11th cusp sub lord is Ketu. Mars, who signifies 01 & 08 and is in the star of Ketu. Besides, Rahu denotes 01, 08 and 11 through Saturn (Badhaka lord) and Mars.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Badhaka lord Saturn is occupying 06th cusp and is in the star of Mars (01 and 08).",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "badhaka_rule",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Dasha lord Venus signifies 02 and 07, which are maraca houses. Bhukti and Antara lord Moon denotes Venus, who is maraca lord. Moon is in lagna. Sookshma and prana lord is Jupiter, who denotes maraca through Venus. Deha lord is Rahu, who denotes 01 (self), 11 (badhaka) and 08th house (longevity) through Mars and Saturn as Rahu is in Scorpio in the star of Saturn.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "dasha_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "The birth chart indicates 08th house is afflicted by maraca and badhaka. The Dasha period also operated detrimentally. So the birth and death took place in maraca and badhaka period causing instantaneous death, which is the essence of this article.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "dasha_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": ""
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

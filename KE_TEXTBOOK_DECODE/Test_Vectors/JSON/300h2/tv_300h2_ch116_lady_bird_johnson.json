@@ -1,0 +1,238 @@
+{
+  "vector_id": "tv-300h2-ch116",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch116_115_Lady_Bird_Johnson",
+  "pdf_path": "Chapters/Ch116_115_Lady_Bird_Johnson.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Lady Bird Johnson",
+    "description": "Lady Bird Johnson was the wife of 36111 US President Lyndon B Johnson and the first lady. SL Ra Rasi Lady Bird Johnson",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1912-12-22",
+    "time_local": "05:32:00",
+    "timezone_offset_hours": -6.0,
+    "time_utc": "1912-12-22T11:32:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "lagna_degree_stated": 14.2,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 14.854,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        9,
+        7
+      ],
+      "significations_raw": "09 07"
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 23.423,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        8,
+        11
+      ],
+      "significations_raw": "01 ,06,08, 11"
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 16.803,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        11,
+        1
+      ],
+      "significations_raw": "08,11,01"
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 18.904,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7,
+        9,
+        12,
+        3
+      ],
+      "significations_raw": "07,09,12,03"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 15.69,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05 Sa Ju"
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 15.69,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11,Ke,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": 13.07
+    },
+    "ghati_lagna": {
+      "sign": "Cancer",
+      "degree": 22.47
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is conjunct with Sun, while Venus is in 02nd to it.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "041h lord is 10 for spouse, which is Saturn (democracy).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "It is under aspect from Mars (power).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn is in star of Sun (07) (Government).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations show high status for spouse.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

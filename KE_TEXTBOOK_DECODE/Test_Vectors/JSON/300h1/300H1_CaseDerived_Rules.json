@@ -1,0 +1,63 @@
+{
+  "batch_id": "tv_300h1_decode_v1",
+  "generated_at": "2026-06-05T11:26:09.542395",
+  "rule_candidates": [
+    {
+      "candidate_rule_id": "300h1_kp_star_lord_career",
+      "condition_type": "kp_star_lord",
+      "claim_axis": "career",
+      "science_id": "kp_jyotish",
+      "case_count": 150,
+      "gap_flag": true,
+      "status": "candidate",
+      "description": "Pattern 'kp_star_lord' observed for axis 'career' across 150 chapters — absent from current KE rule set.",
+      "example_verbatims": [
+        "It may be noted that Saturn, Jupiter are Mars are posited in own star.",
+        "Lagna is falling in the star of Venus in Sagittarius, while Venus is posited in 04111 house (mind).",
+        "Moon (mind) is posited in 051h house (romance) and it is in the star of Venus (romance)."
+      ]
+    },
+    {
+      "candidate_rule_id": "300h1_kp_signification_chain_career",
+      "condition_type": "kp_signification_chain",
+      "claim_axis": "career",
+      "science_id": "kp_jyotish",
+      "case_count": 10,
+      "gap_flag": true,
+      "status": "candidate",
+      "description": "Pattern 'kp_signification_chain' observed for axis 'career' across 10 chapters — absent from current KE rule set.",
+      "example_verbatims": [
+        "Ketu offers result of Sun (Govt., 09-Central) and 10 (proD.",
+        "Rahu offers result of Jupiter (09) and 10 Oob) along with Mars (power).",
+        "Rahu in Leo offers result of Sun (Government) and Mars (101h lord)."
+      ]
+    },
+    {
+      "candidate_rule_id": "300h1_kp_star_lord_marriage",
+      "condition_type": "kp_star_lord",
+      "claim_axis": "marriage",
+      "science_id": "kp_jyotish",
+      "case_count": 2,
+      "gap_flag": true,
+      "status": "candidate",
+      "description": "Pattern 'kp_star_lord' observed for axis 'marriage' across 2 chapters — absent from current KE rule set.",
+      "example_verbatims": [
+        "Jupiter (05) is in 07 in the star of Rahu indicates marriage through love with a person from outside caste.",
+        "051h lord Venus (romance) is in star of 071h lord Moon gave a love marriage."
+      ]
+    },
+    {
+      "candidate_rule_id": "300h1_kp_star_lord_longevity",
+      "condition_type": "kp_star_lord",
+      "claim_axis": "longevity",
+      "science_id": "kp_jyotish",
+      "case_count": 1,
+      "gap_flag": true,
+      "status": "candidate",
+      "description": "Pattern 'kp_star_lord' observed for axis 'longevity' across 1 chapters — absent from current KE rule set.",
+      "example_verbatims": [
+        "But Venus being lord of 05 and 10, is posited in 081h house and it is in own star rendered and offered good longevity fo"
+      ]
+    }
+  ]
+}

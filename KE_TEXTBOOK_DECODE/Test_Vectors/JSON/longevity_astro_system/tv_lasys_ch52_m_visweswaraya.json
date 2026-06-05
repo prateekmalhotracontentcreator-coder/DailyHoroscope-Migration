@@ -1,0 +1,142 @@
+{
+  "vector_id": "tv-lasys-ch52",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch52",
+  "chapter_title": "M. Visweswaraya - Purna Aayu",
+  "pdf_path": "Text Books/LongevityAstroSystem/52_M Visweswarayya - Purna Aayu.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "M. Visweswaraya",
+    "description": "Pre-independence Engineer and Diwan of Mysore Princely Kingdom; lived 102 years; died 14 Apr 1962",
+    "nationality": "Indian"
+  },
+
+  "birth_data": {
+    "date": "1860-09-15",
+    "time_local": "12:47:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 13.55,
+    "longitude": 76.2,
+    "place": "Muddanahalle, Karnataka, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-48-59",
+    "notes": "Coordinates stated as 76-12-00 E, 13-33 N. Sidereal Time: 11-59-57. Cusp System: Placidus."
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Cuspal chart shows Lagna I = 02 Sa 41 (Sagittarius). Moon at 01 Vi 29 (Virgo)."
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "VENUS",
+    "8th_csl": "RAHU",
+    "badhaka_house": 7,
+    "badhaka_house_rationale": "Sagittarius lagna is a dual sign; badhaka = 7th house (Gemini). Author states: 'the maraca and badhaka cusp falls in Gemini, which is 07th cusp.'",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "purna",
+  "aayu_bucket_computed": null,
+
+  "planet_positions_from_table": {
+    "LAGNA":   { "sign": "Sagittarius", "degree": "02-41", "house": 1,  "significations": [1] },
+    "SUN":     { "sign": "Virgo",       "degree": "00-49", "house": 9,  "significations": [] },
+    "MOON":    { "sign": "Virgo",       "degree": "01-29", "house": 9,  "significations": [] },
+    "MARS":    { "sign": "Capricorn",   "degree": "02-52", "house": 2,  "significations": [] },
+    "MERCURY": { "sign": "Leo",         "degree": "24-52", "house": 9,  "significations": [] },
+    "JUPITER": { "sign": "Cancer",      "degree": "24-52", "house": 8,  "significations": [] },
+    "VENUS":   { "sign": "Cancer",      "degree": "15-22", "house": 8,  "significations": [] },
+    "SATURN":  { "sign": "Leo",         "degree": "10-42", "house": 9,  "significations": [] },
+    "RAHU":    { "sign": "Capricorn",   "degree": "07-18", "house": 2,  "significations": [] },
+    "KETU":    { "sign": "Cancer",      "degree": "07-18", "house": 8,  "significations": [] }
+  },
+
+  "death_data": {
+    "cause_of_death": "natural (old age)",
+    "death_type": "natural",
+    "death_date": "1962-04-14",
+    "age_at_death": 102,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": "Author provides transit chart for date of death (14 Apr 1962) but does not explicitly state the VMD operating at death. Analysis focuses on lagna CSL and 8th CSL significations to establish Purna Aayu."
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna cuspal sub lord is Venus. It signifies cusps 06, 11 and 08 by itself. It is in the star of Saturn, who denotes cusps 02, 03, 09. With these significations, it should be concluded that Venus, being lagna cuspal sub lord, is quite safe.",
+      "aayu_gate": "gate_1",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "The cuspal sub lord of eighth house is Rahu. Rahu offers result of Jupiter (01, 04, 07, 08, 09, and 10). Only Jupiter gets common significations between the 07th (maraca/badhaka) and 08th cusps.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "These combinations are good for longevity. Significant relationship of planets signifying cusps 01, 05, 09 and 08.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "house_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Lagna cusp sub lord is Venus, while the 09th cusp sub lord is Mars. They are aspecting each other. Nodes are linked to them. Hence the time of birth should be accurate. (Birth time rectification)",
+      "aayu_gate": "gate_0",
+      "condition_type_guess": "birth_time_rectification",
+      "claim_axis": "birth_time",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": "Author classifies as Purna Aayu (lived 102 years). Note: historically, Visweswaraya lived to 102, which crosses the Purna/Aparimita boundary. Author classifies as Purna. 8th CSL = Rahu (not a clean purna signal per benchmark); lagna CSL = Venus signifying 06, 08, 11."
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

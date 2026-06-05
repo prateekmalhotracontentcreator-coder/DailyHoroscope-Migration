@@ -1,0 +1,10 @@
+======================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/inspect_bphs_vol2_phase1_flagged_20260603_100531.log
+======================================================================
+
+BPHS Vol 2 Phase 1 -- Flagged Rules Inspect & Triage
+Target  : 7 batches (Ch47, Ch53-58) in horoscope_db
+Excludes: deprecated rules (superseded by re-ingest passes)
+API val : NO
+
+── BPHS Vol 2 Phase 1 -- Active Rules by Status ─────────────────────

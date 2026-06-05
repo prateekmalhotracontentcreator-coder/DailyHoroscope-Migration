@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0082",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0082",
+  "source_file": "0082_B-23_Bhagat_Singh-Shaheed.pdf",
+  "subject": {
+    "name": "Bhagat Singh-Shaheed",
+    "name_from_filename": "Bhagat Singh-Shaheed",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1909-09-28",
+    "time_local": "16:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1909-09-28T10:30:00Z",
+    "latitude": 29.6,
+    "longitude": 71.8,
+    "place": "71E 48 & 29N36",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 8,
+    "months": 5,
+    "days": 8,
+    "raw_text": "Balance of dasha Jup 8-5-8"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 7.0,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 17.15,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 26.3,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 24.0167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 4.7833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 4.5167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 21.0,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 12.0833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 24.0167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

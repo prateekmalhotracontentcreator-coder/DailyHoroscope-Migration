@@ -1,0 +1,32 @@
+===========================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_encoding_corrections_20260604_092813_dryrun.log
+===========================================================================
+
+BPHS Vol 2 -- Encoding Corrections
+Mode        : 🟡 DRY RUN — no changes
+Corrections : 10 field-level encoding errors → corrected in-place
+Source      : Santhanam BPHS Vol 2 PDF, confirmed session 2026-06-03
+
+───────────────────────────────────────────────────────────────────────────
+#    Rule ID                             Ch     Field                        Result
+───────────────────────────────────────────────────────────────────────────
+  1   R-BPHS47-PATCH-CC30B7               Ch.47  dasha_lord                   🟡 DRY RUN  [Ch.47 slokas 49-51]
+  2   R-BPHS52-040                        Ch.52  condition.description (text sub) 🟡 DRY RUN  [Ch.52 slokas 21-22]
+  3   R-BPHS53-PATCH-094A74               Ch.53  dasha_lord                   🟡 DRY RUN  [Ch.53 slokas 1-2]
+  4   R-BPHS53-PATCH-A460E9               Ch.53  dasha_lord                   🟡 DRY RUN  [Ch.53 slokas 36-38]
+  5   R-BPHS53-PATCH-E77E96               Ch.53  dasha_lord                   🟡 DRY RUN  [Ch.53 sloka 35]
+  6   R-BPHS53-PATCH-37CB8C               Ch.53  houses_involved              🟡 DRY RUN  [Ch.53 sloka 51]
+  7   R-BPHS54-PATCH-3E2164               Ch.54  antardasha_planet            🟡 DRY RUN  [Ch.54 slokas 70-73]
+  8   R-BPHS54-PATCH-3E8999               Ch.54  antardasha_planet            🟡 DRY RUN  [Ch.54 slokas 9-10]
+  9   R-BPHS54-PATCH-6592D5               Ch.54  antardasha_planet            🟡 DRY RUN  [Ch.54 slokas 20-22]
+  10  R-BPHS57-PATCH-0727F5               Ch.57  condition.description (text sub) 🟡 DRY RUN  [Ch.57 slokas 32-34]
+
+===========================================================================
+SUMMARY
+  Mode        : DRY RUN
+  Total       : 10
+  Patched     : 10 / 10
+
+Re-run with --live to apply.
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_encoding_corrections_20260604_092813_dryrun.log

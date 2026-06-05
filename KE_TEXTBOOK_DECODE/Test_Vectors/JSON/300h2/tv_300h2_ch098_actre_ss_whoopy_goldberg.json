@@ -1,0 +1,222 @@
+{
+  "vector_id": "tv-300h2-ch098",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch098_97_Whoopi_Goldberg",
+  "pdf_path": "Chapters/Ch098_97_Whoopi_Goldberg.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Actre-Ss--Whoopy Goldberg",
+    "description": "Rasi Whoopi Goldberg As SL 26Cp 07 su: 27U26-Ai~ Mo: 18U57·BK Ma: 26\\1157·AmK 15 U26-PIK Ju: 6 Le 31· PK Ve: 16 Sc; 25-MK Sa: 0Sc:17·0K",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "lagna_degree_stated": 26.115,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Libra",
+      "degree": 27.432,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        8,
+        10,
+        12,
+        3
+      ],
+      "significations_raw": "08,10,12,03"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 18.957,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        6,
+        9,
+        10
+      ],
+      "significations_raw": "07,06,09,10"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 26.954,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11,
+        4,
+        9
+      ],
+      "significations_raw": "11,04,09"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 6.518,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        8,
+        12,
+        3,
+        5
+      ],
+      "significations_raw": "08,12,03 05,Ke"
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 16.41,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5,
+        1,
+        0,
+        11,
+        2,
+        1
+      ],
+      "significations_raw": "05,1 0,11,02,01"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 0.279,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        8,
+        2,
+        120311
+      ],
+      "significations_raw": "08,02,120311"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 25.503,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11,Sa Ve,Me Ma"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 25.503,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05,Ma,Ve,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": "Aquarius",
+      "degree": 1.03
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Unknown",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Unknown",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus is in 02nd house to Sun, while Sun is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is in own star, Jupiter signifies 10111 house through Ketu, Rahu is in Scorpio and signifies Mars and it is conjunct with 10111 lord Venus, Venus (creativity) is conjunct Rahu (illusion) is lord of 05 (creativity) and 10 (profession), Ketu is star of Mars (power) is linked to Venus (10), Moon (07-audience) is in star of Rahu (illusion) and is in 10 along with Mercury, 02 lord Saturn is in 11th house and is in star of Jupter, Venus signifies 10,11 and 02 through self and Saturn, Ketu offers result of 02,10,11 and thus Jupiter too, All these combinations made native to take up career related to Television, Cinema, become famous and accumulate wealth, NAIRS PUBUSHING HOUSE, HYDERABAD Page# 133",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

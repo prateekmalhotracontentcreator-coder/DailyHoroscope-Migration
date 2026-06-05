@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0630",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0630",
+  "source_file": "0630_S-33_Singhal_Anish.pdf",
+  "subject": {
+    "name": "Singhal, Anish",
+    "name_from_filename": "Singhal, Anish",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1983-05-08",
+    "time_local": "15:37",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1983-05-08T10:07:00Z",
+    "latitude": 30.733,
+    "longitude": 76.779,
+    "place": "Chandigarh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 3,
+    "months": 11,
+    "days": 23,
+    "raw_text": "Balance of dasha Jup 3-11-23"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 0.0167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 18.3167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 19.3167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 9.0833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 19.7,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 23.3667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 23.0333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 24.8,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 0.0167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

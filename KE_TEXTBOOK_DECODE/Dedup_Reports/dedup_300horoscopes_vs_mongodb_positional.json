@@ -1,0 +1,16 @@
+{
+  "run_timestamp": "2026-06-02T22:55:34Z",
+  "folder_a": "/Users/apple/Documents/Knowledge Engine_eBooks/ThreeHundredHoroscopes_CC_Decode",
+  "folder_b": "/private/tmp/mongo_existing_rules_dedup",
+  "threshold_used": 0.82,
+  "rules_in_a": 57,
+  "rules_in_b": 10607,
+  "pairs_evaluated": 604599,
+  "duplicate_candidates": 0,
+  "contradiction_pairs": 0,
+  "positional_conflicts": 0,
+  "positional_conflict_skipped": false,
+  "matches": [],
+  "contradictions": [],
+  "positional_conflicts_detail": []
+}

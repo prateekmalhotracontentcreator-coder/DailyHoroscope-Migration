@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0400",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0400",
+  "source_file": "0400_M-1_Madanmohan_Malviya.pdf",
+  "subject": {
+    "name": "Madanmohan Malviya",
+    "name_from_filename": "Madanmohan Malviya",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "President",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1861-12-25",
+    "time_local": "19:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1861-12-25T13:30:00Z",
+    "latitude": 25.447,
+    "longitude": 81.842,
+    "place": "Allahabad, Uttar Pradesh, India",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 2,
+    "months": 4,
+    "days": 24,
+    "raw_text": "Balance dasha Man 2-4-24"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 12.4,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 5.0333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 28.8,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 1.7833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 0.6667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 11.8667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 5.0333,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 12.4,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 20.1333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 5.0333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "President",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "vector_id": "tv-300h2-ch028",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch028_27_Park_Chung_Hee",
+  "pdf_path": "Chapters/Ch028_27_Park_Chung_Hee.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "South Korean Leader--Park Chung-Hee",
+    "description": "Park Chung-hee (30 Sept 1917 - 26 Oct 1979) was a Republic of Korea Army general and the President of South Korea from 1961 to 1979.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1917-09-30",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Ayanamsa",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "lagna_degree_stated": 15.711,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 13.543,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1106
+      ],
+      "significations_raw": "12.01,1106"
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 29.984,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        6,
+        7,
+        11,
+        9
+      ],
+      "significations_raw": "04,06,07,11 ,09"
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 18.075,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        1,
+        8,
+        10,
+        1211
+      ],
+      "significations_raw": "03,01,08,10,1211"
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 27.15,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        10
+      ],
+      "significations_raw": "01,10,12.Su"
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 18.902,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        7,
+        9,
+        6,
+        11
+      ],
+      "significations_raw": "04,07 ,09,06, 11"
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 23.222,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        4,
+        7
+      ],
+      "significations_raw": "02,09 04,07"
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 19.075,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        611,
+        1,
+        1210
+      ],
+      "significations_raw": "05 0611,01,1210"
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 13.356,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve,Ju"
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 13.356,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Me,Ra"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1917
+      },
+      {
+        "event": "Died",
+        "year": 1979
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1979-10-26",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From lagna, Mars signifies 10111 house through Mercury.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun, who signifies Government, is under aspect from Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus signifies 07 and 09 and it is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Ketu is in and it offers result of Jupiter through Rahu.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "10111 lord Mercury is in 12 and it is in star of Sun (Government).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Saturn signifies 05, 10 and 11.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "From Moon sign, Mars is lord of 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "These combinations made native a politician and a statesman.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "But Ketu is in 10 and it indicates sudden exit and 10111 lord Mercury is in 12 indicate hidden enemies in Government.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0072",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0072",
+  "source_file": "0072_B-13_Bansal_Arun.pdf",
+  "subject": {
+    "name": "Bansal, Arun",
+    "name_from_filename": "Bansal, Arun",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1956-12-13",
+    "time_local": "23:10",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1956-12-13T17:40:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 3,
+    "months": 10,
+    "days": 12,
+    "raw_text": "Balance of dasha Ket 3-10-12"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 10.5333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 5.9667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 5.7833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 5.7833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 14.0833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 6.9,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 28.55,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

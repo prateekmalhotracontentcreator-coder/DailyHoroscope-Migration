@@ -1,0 +1,225 @@
+{
+  "vector_id": "tv-lu-ch73",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch73_James_Brady",
+  "pdf_path": "Chapter_Splits/Ch73_James_Brady.pdf",
+  "subject": {
+    "name": "James Brady",
+    "description": "Press Secretary to President Ronald Reagan",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1940-08-29",
+    "time_local": "19:12:00",
+    "timezone_offset_hours": -6.0,
+    "time_utc": "1940-08-30T01:12:00Z",
+    "latitude": 38.1333,
+    "longitude": -89.5333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-55-54.06",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Pisces",
+    "moon_sign_stated_in_book": "Cancer",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Pisces",
+      "degree": 1.3667,
+      "house": 1,
+      "nakshatra": "PBha",
+      "pada": 4,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Leo",
+      "degree": 13.5667,
+      "house": 6,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        6,
+        3,
+        8,
+        4
+      ]
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 1.0,
+      "house": 5,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "significations": [
+        5,
+        1,
+        2,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 13.6833,
+      "house": 6,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        2,
+        9,
+        6,
+        4,
+        3,
+        8
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 8.2333,
+      "house": 6,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        4,
+        6,
+        7,
+        1,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 22.6833,
+      "house": 2,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        1,
+        10,
+        2,
+        3,
+        4,
+        8
+      ]
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 21.8333,
+      "house": 2,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        2,
+        12,
+        11,
+        3,
+        4,
+        8
+      ]
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 19.8,
+      "house": 7,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        7,
+        "Mo",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 19.8,
+      "house": 1,
+      "nakshatra": "a",
+      "pada": 1,
+      "significations": [
+        1,
+        "Ma",
+        "Me",
+        "Ju"
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 14.5833,
+      "house": 1,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "significations": [
+        "Saturn"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "violent",
+    "death_date": "1940-08-29",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "KETU",
+      "antardasha": "SUN",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "KETU",
+      "stated_by_author": true,
+      "raw_text": "Ketu Sun-Mercury-Ketu. Dasha and sookshma lord Ketu is in lagna (body) and signifies Mercury, being in R-evati star. Mer"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Bhukti lord Sun is the lord of 06tll house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "sookshma lord Ketu is in lagna (body) and signifies Mercury, being in R-evati star.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "survived, the wound, thus left him partially paralyzed for life; he requires the full-time use of a wheelchair.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

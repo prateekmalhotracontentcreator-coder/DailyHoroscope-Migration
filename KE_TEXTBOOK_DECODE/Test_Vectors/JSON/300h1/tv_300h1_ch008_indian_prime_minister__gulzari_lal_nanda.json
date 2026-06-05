@@ -1,0 +1,230 @@
+{
+  "vector_id": "tv-300h1-ch008",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch008_INDIAN_PRIME_MINISTER--GULZARI_LAL_NANDA",
+  "pdf_path": "Split_Chapters/Ch008_INDIAN_PRIME_MINISTER--GULZARI_LAL_NANDA.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Bharat Ratna Gulzarilal Nanda",
+    "description": "Bharat Ratna Gulzarilal Nanda was an politician and an economist with specialization in",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aries",
+      "degree": 5.9144,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 19.3767,
+      "house": 3,
+      "significations": [
+        3,
+        5,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 18.3786,
+      "house": 9,
+      "significations": [
+        2,
+        4,
+        7,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 26.8136,
+      "house": 1,
+      "significations": [
+        1,
+        3,
+        5,
+        8
+      ]
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 23.5858,
+      "house": 3,
+      "significations": [
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 9.8861,
+      "house": 6,
+      "significations": [
+        3,
+        5,
+        6,
+        9,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 14.2378,
+      "house": 8,
+      "significations": [
+        8,
+        10,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 25.6394,
+      "house": 9,
+      "significations": [
+        9
+      ]
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Prime Minister",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus is in 0200 house from Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "101h lord Saturn is in 08th house, but it is aspected by Mars giving power to Saturn (democracy).",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Jupiter is posited in 101h house and it is in the star of Sun (Government).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mercury (07) signifies 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Ketu offers result of Sun (Govt., 09-Central) and 10 (proD.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Ketu signifies sudden exit.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

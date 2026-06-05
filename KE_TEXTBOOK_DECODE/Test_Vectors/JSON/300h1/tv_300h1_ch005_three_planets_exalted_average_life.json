@@ -1,0 +1,260 @@
+{
+  "vector_id": "tv-300h1-ch005",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch005_THREE_PLANETS_EXALTED-AVERAGE_LIFE",
+  "pdf_path": "Split_Chapters/Ch005_THREE_PLANETS_EXALTED-AVERAGE_LIFE.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Three Planets Exalted-Average Life",
+    "description": "The following native has got Jupiter, Venus and Sun exalted in the chart, but leads a",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "00:25:28",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 17.3833,
+    "longitude": 78.4667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 9.3044,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 17.3397,
+      "house": 4,
+      "significations": [
+        3,
+        4,
+        5,
+        8,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 20.8872,
+      "house": 6,
+      "significations": [
+        3,
+        6,
+        7,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 25.63,
+      "house": 3,
+      "significations": [
+        3,
+        4,
+        6,
+        9,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 22.38,
+      "house": 3,
+      "significations": [
+        3,
+        6,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 7.5786,
+      "house": 7,
+      "significations": [
+        1,
+        2,
+        3,
+        7,
+        8,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 16.9297,
+      "house": 3,
+      "significations": [
+        1,
+        3,
+        5,
+        6,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 13.6583,
+      "house": 8,
+      "significations": [
+        1,
+        2,
+        3,
+        5,
+        8,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 21.3583,
+      "house": 8,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 21.3583,
+      "house": 2,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The native is lowly educated, is having marital disharmony and complaints that the wealth factors are low and asks why the exalted planets could not help.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "The education is seen from houses 04/09, while wealth is seen from 02nd house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "03, 05, 08 are linked to 4/9 houses.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Education was broken during Saturn-Saturn (05, 03, 08) in teens.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Marriage is seen from 07 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "071h lord is in 06, while 121h lord Jupiter is in 071h house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Jupiter in 07 in female chart indicates sadistic husband, when 07 is weak as seen above.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Despite exalted planets, if these houses are negatively afflicted, as seen from above chart, these portfolios shall suffer.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "vector_id": "tv-lu-ch71",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch71_Diana_Princess_of_Wales",
+  "pdf_path": "Chapter_Splits/Ch71_Diana_Princess_of_Wales.pdf",
+  "subject": {
+    "name": "Diana, Princess of Wales",
+    "description": "Princess of Wales",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": "1961-07-01",
+    "time_local": "19:45:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1961-07-01T18:45:00Z",
+    "latitude": 52.8333,
+    "longitude": -0.5,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-13-21.69",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 24.3833,
+      "house": 1,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 16.4333,
+      "house": 8,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        8,
+        10,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 1.8167,
+      "house": 4,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "significations": [
+        4,
+        9,
+        1,
+        6,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 8.4167,
+      "house": 10,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        1,
+        6,
+        10,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 11.8667,
+      "house": 3,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        2,
+        3,
+        5,
+        4,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 1.1833,
+      "house": 7,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": [
+        7,
+        12,
+        10,
+        8
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 4.5833,
+      "house": 3,
+      "nakshatra": "USha",
+      "pada": 3,
+      "significations": [
+        3,
+        4,
+        8,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 6.4833,
+      "house": 10,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "significations": [
+        "Ma",
+        "Mo",
+        "Su",
+        "Ke"
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 6.4833,
+      "house": 4,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": [
+        "Mo",
+        "Ma",
+        "Sa"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in road accident during the VMD period",
+    "death_type": "violent",
+    "death_date": "1997-08-31",
+    "age_at_death": 35,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "SUN",
+      "pratyantardasha": "SUN",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "each planet. Venus is posited in the star of Sun (Krithika), whereas Sun 296 Longevity and Unnatural Deaths is in a dual"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "lagna 'is falling in the star Jyeshta ruled by Mercury, who is lord and ocrupant of ostn house, which should say undoubtedly that the longevity of the native is good. 294 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "But Mercury is posited in the star of Rahu. Rahu is aspected by Moon, who is badhaka lord. Hence Mercury gets weakened.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna lord is Mars, who is aspected by badhaka lord Moon. · 4) Mars is posited in the star of Ketu (Makha), while Ketu, being a node, will offer the result of planet conjoined with first. Ketu is conjoined with Moon, who is badhaka lord. Hence lagna lord too gets weakened.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Badhaka Moon is in the star of lagna lord Mars. Hence Moon becomes significator of lagna, which is dangerous for longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Venus, who is maraca, is aspecting lagna.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Venus, maraca, is posited in the star of Sun, who signifies 08th house (longevity). Hence Venus gives result of maraca and longevity, which makes 08th further weak.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Jupiter, being lord of 02nd house, is posited in 03rd house, but is in the star of Moon, who is badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Badhaka house significator Jupiter aspects maraca Venus.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Sun, who is posited in 08th house, is in the star of Rahu, who signifies badhaka through aspect of Moon.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Ketu is in Aquarius and shall signify Saturn and is aspected by Mars, who is also in Ketu star. Hence it is a link between Mars and Saturn through Ketu. This is prominent since Mars signifies 01, 06, Badhaka houses, while Saturn signifies 08th through Sun The chart does not promise good longevity. Lagna and 06 are ruled by Mars, while 08 is ruled by Mercury. Badhaka Moon is aspecting Mars and it is also in Mars star. Rahu has got link between Sun, Mercury, Mars and Moon and thus gives result of 01, 06, 08, 09 houses. The Princess was killed in road accident during the VMD period of .Jupiter-Ra",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Dasha lord Jupiter signifies maraca (02) and badhaka (09).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Bhukti lord Rahu signifies Mars (01, 06,) and Moon (09).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Antara lord Sun signifies longevity and sookshma lord Saturn signifies 08th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-014",
+      "verbatim": "sookshma lord Saturn signifies 08th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-015",
+      "verbatim": "Lagna lord is Mars, who is aspected by badhaka lord Moon.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-016",
+      "verbatim": "longevity of the native is good.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

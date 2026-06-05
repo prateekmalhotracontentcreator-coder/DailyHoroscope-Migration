@@ -1,0 +1,216 @@
+{
+  "vector_id": "tv-lu-ch84",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch84_Joseph_Smith_Jr",
+  "pdf_path": "Chapter_Splits/Ch84_Joseph_Smith_Jr.pdf",
+  "subject": {
+    "name": "Joseph Smith Jr.",
+    "description": "Founder of Mormonism",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1805-12-23",
+    "time_local": "18:00:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": "1805-12-23T23:00:00Z",
+    "latitude": 43.4403,
+    "longitude": -72.4767,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-03-05.02",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Capricorn",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 3.2333,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 10.7167,
+      "house": 6,
+      "nakshatra": "I",
+      "pada": 4,
+      "significations": [
+        2,
+        6,
+        12,
+        "Ke"
+      ]
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 12.5667,
+      "house": 7,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        7,
+        1
+      ]
+    },
+    "MARS": {
+      "sign": "Sagittarius",
+      "degree": 21.4667,
+      "house": 6,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        5,
+        10,
+        6,
+        4,
+        11,
+        7
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 29.7667,
+      "house": 6,
+      "nakshatra": "USha",
+      "pada": 1,
+      "significations": [
+        12,
+        3,
+        6,
+        2
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 29.4667,
+      "house": 5,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        12,
+        3,
+        5,
+        6,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 27.6667,
+      "house": 7,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "significations": [
+        4,
+        11,
+        6,
+        7,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 5.6833,
+      "house": 4,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "significations": [
+        7,
+        8,
+        6,
+        10,
+        4,
+        5
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 16.5833,
+      "house": 6,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "significations": [
+        "Me",
+        "Ma",
+        "Su",
+        "Ju",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 16.5833,
+      "house": 12,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        "Ra",
+        "Me",
+        "Ma",
+        "Su"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in Saade-saath since transit Saturn was",
+    "death_type": "violent",
+    "death_date": "1805-12-23",
+    "age_at_death": 38,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "VENUS",
+      "sookshma": "MERCURY",
+      "stated_by_author": true,
+      "raw_text": "Jupiter-Mercury-Venus-Mercury. Jupiter signifies 061h house (injury and enemy). Rahu signifies Jupiter. Jupiter i~ aspec"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "08th lord Saturn is posited in Mars star in Libra and aspects lagna.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord Moon is in own star, but is in maraca house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

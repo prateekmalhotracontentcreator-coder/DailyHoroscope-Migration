@@ -1,0 +1,293 @@
+{
+  "vector_id": "tv-300h2-ch012",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch012_11_John_Quincy_Adams",
+  "pdf_path": "Chapters/Ch012_11_John_Quincy_Adams.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Us President# 06-John Quincy Adams",
+    "description": "John Quincy Adams (11 Jul 1767 - 23 Feb 1848) was the sixth US President from 04 Mar 1825 to 04 Mar 1829. Adams was the son of 200 US President John Adams.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1767-07-11",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "20-30-53.55",
+    "nakshatra_stated": "Utharashada",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "lagna_degree_stated": 12.849,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 28.448,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        12,
+        10,
+        4,
+        7
+      ],
+      "significations_raw": "12,10,04,07"
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 28.145,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        11,
+        4,
+        12,
+        10
+      ],
+      "significations_raw": "11,04,12,10"
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 17.26,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        8,
+        11
+      ],
+      "significations_raw": "03,08,11"
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 19.238,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        10,
+        11
+      ],
+      "significations_raw": "01,10,11"
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 27.727,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        7,
+        12,
+        10
+      ],
+      "significations_raw": "04,07,12,10"
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 10.893,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        1,
+        2,
+        11
+      ],
+      "significations_raw": "02,09,1 2,11 ,Ke"
+    },
+    "SATURN": {
+      "sign": "Gemini",
+      "degree": 6.322,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5,
+        6,
+        1,
+        0,
+        11,
+        3,
+        8
+      ],
+      "significations_raw": "05,06,1 0,11 ,03,08"
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 10.837,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05,Sa,Mo,Ma, Me"
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 10.837,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11 ,Ma,Me,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Capricorn",
+      "degree": 9.12
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 25.5
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1767
+      },
+      {
+        "event": "Died",
+        "year": 1848
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1848-02-23",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From Moon sign, Jupiter is posited in 09ih house and it is in the star of Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From lagna, Sun is posited in 10ih house along with Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn (5) is in star of Mars, while Jupiter signifies 1Oth house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars is in star of 1O lll lord Mercury.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter and Venus (09) are conjunct while Jupiter (07) is in star of Sun.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "All these combinations led native to high level.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

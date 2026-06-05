@@ -1,0 +1,64 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_medical_astrology_v1_20260604_101936_dryrun.log
+===========================================================================
+
+MEDICAL ASTROLOGY INGEST  |  DRY RUN
+Batch ID  : medical_astrology_v1
+Science   : vedic_astrology
+Target    : horoscope_db.interpretation_rules
+
+Loading source files...
+  Ch01 A (MedAstro_Ch01_DefinitionsYogas_Rules_Part1.json): 25 rules
+  Ch01 A (MedAstro_Ch01_DefinitionsYogas_Rules_Part2.json): 25 rules
+  Ch01 A (MedAstro_Ch01_DefinitionsYogas_Rules_Part3.json): 25 rules
+  Ch01 A (MedAstro_Ch01_DefinitionsYogas_Rules_Part4.json): 25 rules
+  Ch01 A (MedAstro_Ch01_DefinitionsYogas_Rules_Part5.json): 25 rules
+  Ch01 A (MedAstro_Ch01_DefinitionsYogas_Rules_Part6.json): 2 rules
+  Ch02 A (MedAstro_Ch02_ProgenyAndCurses_Rules_Part1.json): 25 rules
+  Ch02 A (MedAstro_Ch02_ProgenyAndCurses_Rules_Part2.json): 25 rules
+  Ch02 A (MedAstro_Ch02_ProgenyAndCurses_Rules_Part3.json): 25 rules
+  Ch03 A (MedAstro_Ch03_MokshaAndSon_Rules.json): 6 rules
+  Ch05 A (MedAstro_Ch05_FemaleHoroscopy_Rules.json): 19 rules
+  Ch09 A (MedAstro_Ch09_DurationStars_Rules.json): 10 rules
+  Ch10 A (MedAstro_Ch10_PediatricRemedies_Rules.json): 2 rules
+  Ch02 B (MedAstro_Ch02_ProgenyAndCurses_Rules_Part4.json): 4 rules
+  Ch04 B (MedAstro_Ch04_SexualWeakness_Rules.json): 8 rules
+  Ch06 B (MedAstro_Ch06_VariousDiseases_Rules.json): 17 rules
+  Ch11 B (MedAstro_Ch11_Drekkana_Rules.json): 2 rules
+
+  Chapter     Rules
+  ---------- ------
+  Ch1           127
+  Ch2            79
+  Ch3             6
+  Ch4             8
+  Ch5            19
+  Ch6            17
+  Ch9            10
+  Ch10            2
+  Ch11            2
+  TOTAL         270
+
+  Schema A (source block)  : 239
+  Schema B (outcome-based) : 31
+  gai_citation_unverified  : 1
+  pending_review           : 1
+  Issues                   : 0
+  Saved: /tmp/medical_astrology_rules/medical_astrology_v1_DRY_RUN.json
+
+NEXT STEPS:
+  Step 2 -- Dedup vs MongoDB export:
+    python3 backend/ke_dedup_script.py \
+      --folder-a "/Users/apple/Documents/Knowledge Engine_eBooks/MedicalAstrology_CC_Decode/" \
+      --folder-b /tmp/mongo_existing_rules_dedup/ \
+      --output-report KE_TEXTBOOK_DECODE/Dedup_Reports/dedup_medastro_vs_mongodb.md \
+      --threshold 0.82
+
+  Step 2B -- AI Validate (pre-upload):
+    python3 backend/scripts/validate_rules.py \
+      --json-file /tmp/medical_astrology_rules/medical_astrology_v1_DRY_RUN.json \
+      --batch-id medical_astrology_v1
+
+  Step 3 -- Upload validated JSON:
+    python3 backend/scripts/ingest_medical_astrology_v1.py \
+      --upload /tmp/medical_astrology_rules/medical_astrology_v1_DRY_RUN_VALIDATED.json

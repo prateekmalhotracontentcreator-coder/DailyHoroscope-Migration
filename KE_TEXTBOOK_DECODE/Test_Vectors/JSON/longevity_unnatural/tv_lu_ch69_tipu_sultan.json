@@ -1,0 +1,217 @@
+{
+  "vector_id": "tv-lu-ch69",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch69_Tipu_Sultan",
+  "pdf_path": "Chapter_Splits/Ch69_Tipu_Sultan.pdf",
+  "subject": {
+    "name": "Tipu Sultan",
+    "description": "Defacto King of Mysore",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1751-12-01",
+    "time_local": "08:00:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1751-12-01T02:30:00Z",
+    "latitude": 12.9833,
+    "longitude": 77.5833,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "20-17-49.03",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Sagittarius",
+      "degree": 8.7,
+      "house": 1,
+      "nakshatra": "I",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 18.3333,
+      "house": 12,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        9,
+        12,
+        7,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 22.9333,
+      "house": 5,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        8,
+        5,
+        6,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 8.4,
+      "house": 4,
+      "nakshatra": "UBha",
+      "pada": 2,
+      "significations": [
+        5,
+        12,
+        4,
+        2,
+        3
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 16.1333,
+      "house": 12,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": [
+        7,
+        10,
+        12,
+        3,
+        2
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 15.9167,
+      "house": 6,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "significations": [
+        1,
+        4,
+        6,
+        8,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 11.8,
+      "house": 11,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        6,
+        11,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 24.8167,
+      "house": 12,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        2,
+        3,
+        12,
+        7,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 12.9667,
+      "house": 12,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        "Sa",
+        "Me",
+        "Ma",
+        "Su",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 12.9667,
+      "house": 6,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "significations": [
+        "Ju",
+        "Ve",
+        "Mo",
+        "Me",
+        "Su",
+        "Sa"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon",
+    "death_type": "violent",
+    "death_date": "1799-05-04",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Jupiter-Jupiter Mercury-Rahu-Sun. Jupiter signifies lagna (body) and 06 (enemy & injury). Mercury is lord of 07 (maraca"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "8th lord Moon is under aspect of Venus, who signifies 06 and Rahu.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "08th lord in OSth house and its star lord Venus is aspecting Moon helped the native to gain some good longevity.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

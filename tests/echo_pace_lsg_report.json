@@ -29,6 +29,36 @@
       "sample": []
     }
   },
+  "problem_pages": {
+    "L1": {
+      "blocked_pairs": 0,
+      "flagged_pairs": 0,
+      "peak": 0.431
+    },
+    "L2": {
+      "flagged_phrases": 0,
+      "top_5": []
+    },
+    "L3": {
+      "matched_headings": 0,
+      "sample": []
+    }
+  },
+  "personal_year_pages": {
+    "L1": {
+      "blocked_pairs": 0,
+      "flagged_pairs": 0,
+      "peak": 0.199
+    },
+    "L2": {
+      "flagged_phrases": 0,
+      "top_5": []
+    },
+    "L3": {
+      "matched_headings": 0,
+      "sample": []
+    }
+  },
   "layer_g": {
     "blueprint_prose": {
       "avg_dup_rate": 0.0,
@@ -67,7 +97,33 @@
           "dup_rate": 0.0
         }
       ]
+    },
+    "problem_pages": {
+      "avg_dup_rate": 0.0,
+      "peak_dup_rate": 0.0,
+      "samples_checked": 1,
+      "results": [
+        {
+          "name": "career-growth",
+          "phrase": "long range discipline reinforcing source material repeatedly ties",
+          "hits": 0,
+          "dup_rate": 0.0
+        }
+      ]
+    },
+    "personal_year_pages": {
+      "avg_dup_rate": 0.0,
+      "peak_dup_rate": 0.0,
+      "samples_checked": 1,
+      "results": [
+        {
+          "name": "PY1",
+          "phrase": "style yearly reading year initiative self definition beginning",
+          "hits": 0,
+          "dup_rate": 0.0
+        }
+      ]
     }
   },
-  "verdict": "\u2705  PASS -- All layers clear. LSG-1 safe to integrate."
+  "verdict": "\u2705  PASS -- All layers clear. LSG-2 safe to integrate."
 }

@@ -1,0 +1,68 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_destiny_num_phase_c_20260604_172654.log
+DESTINY NUMEROLOGY PHASE C INGEST  |  batch: destiny_numerology_phase_c_20260604
+Scope: Ch20-Ch28 (39 rules) + Derived (64 rules) = 103 total
+======================================================================
+
+Building rules...
+
+──────────────────────────────────────────────────────────────────────
+  File                                                   Ch   Rules
+──────────────────────────────────────────────────────────────────────
+  Numerology_Ch20_CyclonesTsunamis_Rules.json            20       3   Cyclones, Tsunamis & Hurricanes
+  Numerology_Ch21_ChineseVirus_Rules.json                21       1   Pandemic Framework
+  Numerology_Ch22_MajorEarthquakes_Rules.json            22       3   Major Earthquakes
+  Numerology_Ch23_NationNameNumbers_Rules.json           23       5   Nation Name Numbers
+  Numerology_Ch24_CityStateNumbers_Rules.json            24       3   City / State Numbers
+  Numerology_Ch25_FireCountries_Rules.json               25       2   Fire Countries
+  Numerology_Ch26_CompanyNumbers_Rules.json              26       6   Company Numbers
+  Numerology_Ch27_CompanyLogos_Rules.json                27       6   Company Logos
+  Numerology_Ch28_Remarriage_Rules.json                  28      10   Remarriage / Marumangalya
+  Numerology_CareerAlignment_Rules.json                   —      31   Career Alignment (derived)
+  Numerology_PersonalYearCycle_Rules.json                 —      12   Personal Year Cycle (derived)
+  Numerology_CaseDerivedInference_Rules.json              —      21   Case Derived Inference (derived)
+──────────────────────────────────────────────────────────────────────
+  Core subtotal (Ch20-Ch28)                                      39
+  Derived subtotal                                               64
+  TOTAL                                                         103
+──────────────────────────────────────────────────────────────────────
+
+Running local structural check...
+Issues found: 0
+  ✓  All rules pass structural check.
+
+Spot-check first rule (num-ch20-001):
+  approval_status : pending_review
+  ingest_batch_id : destiny_numerology_phase_c_20260604
+  source.book     : Destiny Numerology
+  source.batch_id : destiny_numerology_phase_c_20260604
+  interp.detailed : 'Inferences from Cyclones, Tsunamis & Hurricanes Section: Water is the main eleme'
+
+Spot-check CDI rule (num-cdi-001):
+  source.book     : Destiny Numerology
+  interp.detailed : 'Basic 1 (Sun) in business is the most statistically reliable career alignment si'
+  interp.summary  : '8 of 10 Basic 1 subjects in this dataset are in business/entrepreneurship (80%).'
+
+Spot-check PYC rule (num-pyc-001):
+  source keys     : ['book', 'book_id', 'content_source', 'content_path', 'planet_framework', 'note', 'batch_id']
+  source.book     : Destiny Numerology
+  interp.detailed : 'Personal Year = sum of all digits of (DOB day + DOB month + current calendar yea'
+
+Spot-check last rule (num-cdi-021):
+  approval_status : pending_review
+  source.book     : Destiny Numerology
+  interp.detailed : 'The 50-case signal distribution defines the correct output hierarchy for premium'
+
+Interpretation source breakdown:
+  result.interpretation → detailed : 19
+  full_text → detailed             : 39
+  summary → detailed               : 45
+
+  ✓  Rule count matches expected 103.
+
+Saved 103 rules → backend/scripts/destiny_numerology_phase_c_rules.json
+
+✓ Dry run complete.
+  Next: python3 backend/scripts/ingest_destiny_numerology_phase_c.py \
+    --upload backend/scripts/destiny_numerology_phase_c_rules.json \
+    --mongo-url "$MONGO_URL" --db-name horoscope_db

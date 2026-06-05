@@ -1,0 +1,105 @@
+{
+  "vector_id": "tv-765h-0030",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0030",
+  "source_file": "0030_A-21_Ma_Amritanand_Devi_sudhamani_of_Kerala.pdf",
+  "subject": {
+    "name": "Ma Amritanand Devi (sudhamani) of Kerala",
+    "name_from_filename": "Ma Amritanand Devi (sudhamani) of Kerala",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Saint",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1953-08-27",
+    "time_local": "10:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1953-08-27T04:30:00Z",
+    "latitude": 8.5,
+    "longitude": 76.95,
+    "place": "76E 57 & 8N30",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 4,
+    "months": 5,
+    "days": 26,
+    "raw_text": "Balance of dasha Sat\n4-5-26"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 13.5167,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 29.5833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 3.4167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 9.7667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 25.0,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 29.45,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 9.7667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.4,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 0.5333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 6.0333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 6.0333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Saint",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

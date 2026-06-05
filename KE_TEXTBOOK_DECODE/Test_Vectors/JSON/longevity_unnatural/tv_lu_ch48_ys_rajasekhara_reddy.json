@@ -1,0 +1,219 @@
+{
+  "vector_id": "tv-lu-ch48",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch48_YS_Rajasekhara_Reddy",
+  "pdf_path": "Chapter_Splits/Ch48_YS_Rajasekhara_Reddy.pdf",
+  "subject": {
+    "name": "Y.S. Rajasekhara Reddy",
+    "description": "Chief Minister of Andhra Pradesh",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1949-07-08",
+    "time_local": "19:50:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1949-07-08T14:20:00Z",
+    "latitude": 14.4667,
+    "longitude": 78.8667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-03-19.29",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 9.45,
+      "house": 1,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 23.0,
+      "house": 6,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        8,
+        6,
+        1,
+        3,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 1.4333,
+      "house": 12,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        7,
+        12,
+        "Ketu"
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 26.9667,
+      "house": 5,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "significations": [
+        4,
+        11,
+        5
+      ]
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 4.4167,
+      "house": 6,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "significations": [
+        6,
+        9,
+        5,
+        4,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 5.6833,
+      "house": 1,
+      "nakshatra": "USha",
+      "pada": 3,
+      "significations": [
+        3,
+        1,
+        12,
+        6,
+        8
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 15.0,
+      "house": 7,
+      "nakshatra": "Push",
+      "pada": 4,
+      "significations": [
+        5,
+        10,
+        1,
+        2,
+        8
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 9.9667,
+      "house": 8,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        1,
+        2,
+        8,
+        "Ke"
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 28.3833,
+      "house": 3,
+      "nakshatra": "a",
+      "pada": 4,
+      "significations": [
+        "Me",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 28.3833,
+      "house": 9,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "significations": [
+        "Me",
+        "Ma",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "his 61 st year",
+    "death_type": "unknown",
+    "death_date": "1949-07-08",
+    "age_at_death": 61,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "KETU",
+      "pratyantardasha": "MARS",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "RAHU KETU-MARS-SAT. Dasha lord Rahu is in Pisces and signifies Jupiter and Mercury. Jupiter signifies 01, 03, 12, 08, 06"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Rahu is in Pisces and signifies Jupiter and Mercury.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Ketu is in Virgo and signifies Mars, Jupiter and Mercury.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "longevity of 33-66 years.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "vector_id": "tv-300h2-ch137",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch137_136_Giorgio_Armani",
+  "pdf_path": "Chapters/Ch137_136_Giorgio_Armani.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Giorgio Arman I--Billionaire",
+    "description": "Giorgio Armani is an Italian fashion designer. He formed his company, Armani, in 1975, with an annual turnover of $1.68 and a personal fortune of $78. (Sa) Ra",
+    "nationality": "Italian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "lagna_degree_stated": 13.813,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 25.375,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        12,
+        3,
+        6,
+        9
+      ],
+      "significations_raw": "02,12,03,06,09"
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 20.075,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        12,
+        3,
+        6,
+        9
+      ],
+      "significations_raw": "01,12,03,06 09"
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 3.994,
+      "house": null,
+      "nakshatra": "MriQ",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        10,
+        5,
+        12
+      ],
+      "significations_raw": "10,05,12"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 21.788,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        3,
+        1,
+        12,
+        6,
+        9
+      ],
+      "significations_raw": "03,01 ,12,06,09"
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 22.253,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        11,
+        12,
+        1,
+        4
+      ],
+      "significations_raw": "11,12,01,04"
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 4.502,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        8,
+        5,
+        1012
+      ],
+      "significations_raw": "08,05,1012"
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 18.603,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Mo Sa Ju Ma"
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 18.603,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01,Me,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Leo",
+      "degree": 12.78
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 24.0
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mercury is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun is in star of Jupiter, while Venus is in 12111 to it grating special status to native.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is in 04111 house from Moon, while it is lord of 07 (business) and 10 Gob).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars is aspecting Jupiter, making 10111 house strong.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars is in own star, while Mercury (business) is in star of Jupiter (10).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Chart is strong from Moon sign on matters of profession.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "From Moon sign, Moon, Jupiter, Nodes and Venus signify 02nd house; while Mars, Rahu, Saturn signify 061h and 11th houses.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Jupiter, Rahu, Sun, Mercury, Moon and Ketu signify 07111 house (business) and 10 (profession).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Native is billionaire.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

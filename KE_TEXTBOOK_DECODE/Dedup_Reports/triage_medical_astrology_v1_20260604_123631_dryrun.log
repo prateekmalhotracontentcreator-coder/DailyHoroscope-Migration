@@ -1,0 +1,137 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/triage_medical_astrology_v1_20260604_123631_dryrun.log
+===========================================================================
+
+MEDICAL ASTROLOGY TRIAGE  |  DRY RUN
+Batch     : medical_astrology_v1
+Input     : /tmp/medical_astrology_rules/medical_astrology_v1_DRY_RUN_VALIDATED.json
+Output    : /tmp/medical_astrology_rules/medical_astrology_v1_TRIAGED.json
+
+Loaded 270 rules from input
+
+───────────────────────────────────────────────────────────────────────────
+Triage decisions:
+───────────────────────────────────────────────────────────────────────────
+  Flagged rules in input : 103
+  Bucket A (truncation → PHR)       : 3
+  Bucket B (validator error → PHR)  : 79
+  Bucket C (genuine → stay flagged) : 21
+  Total accounted                   : 103
+  [B] ma-ch01-001 → PHR (validator_error)
+  [B] ma-ch01-004 → PHR (validator_error)
+  [C] ma-ch01-005 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-010 → PHR (validator_error)
+  [B] ma-ch01-011 → PHR (validator_error)
+  [C] ma-ch01-015 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-021 → PHR (validator_error)
+  [B] ma-ch01-023 → PHR (validator_error)
+  [C] ma-ch01-024 → STAYS FLAGGED (genuine issue)
+  [C] ma-ch01-027 → STAYS FLAGGED (genuine issue)
+  [C] ma-ch01-031 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-032 → PHR (validator_error)
+  [B] ma-ch01-033 → PHR (validator_error)
+  [B] ma-ch01-037 → PHR (validator_error)
+  [B] ma-ch01-041 → PHR (validator_error)
+  [B] ma-ch01-042 → PHR (validator_error)
+  [C] ma-ch01-043 → STAYS FLAGGED (genuine issue)
+  [C] ma-ch01-044 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-046 → PHR (validator_error)
+  [B] ma-ch01-049 → PHR (validator_error)
+  [B] ma-ch01-052 → PHR (validator_error)
+  [B] ma-ch01-054 → PHR (validator_error)
+  [B] ma-ch01-058 → PHR (validator_error)
+  [B] ma-ch01-060 → PHR (validator_error)
+  [B] ma-ch01-061 → PHR (validator_error)
+  [C] ma-ch01-063 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-064 → PHR (validator_error)
+  [C] ma-ch01-065 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-066 → PHR (validator_error)
+  [B] ma-ch01-067 → PHR (validator_error)
+  [B] ma-ch01-069 → PHR (validator_error)
+  [B] ma-ch01-070 → PHR (validator_error)
+  [C] ma-ch01-071 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-077 → PHR (validator_error)
+  [C] ma-ch01-081 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-086 → PHR (validator_error)
+  [B] ma-ch01-087 → PHR (validator_error)
+  [C] ma-ch01-096 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-098 → PHR (validator_error)
+  [B] ma-ch01-100 → PHR (validator_error)
+  [B] ma-ch01-101 → PHR (validator_error)
+  [B] ma-ch01-102 → PHR (validator_error)
+  [B] ma-ch01-103 → PHR (validator_error)
+  [C] ma-ch01-105 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-106 → PHR (validator_error)
+  [C] ma-ch01-107 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-108 → PHR (validator_error)
+  [B] ma-ch01-109 → PHR (validator_error)
+  [B] ma-ch01-111 → PHR (validator_error)
+  [B] ma-ch01-112 → PHR (validator_error)
+  [C] ma-ch01-115 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch01-118 → PHR (validator_error)
+  [A] ma-ch01-124 → PHR (truncation_artifact)
+  [B] ma-ch02-014 → PHR (validator_error)
+  [B] ma-ch02-015 → PHR (validator_error)
+  [B] ma-ch02-016 → PHR (validator_error)
+  [B] ma-ch02-017 → PHR (validator_error)
+  [B] ma-ch02-018 → PHR (validator_error)
+  [B] ma-ch02-019 → PHR (validator_error)
+  [B] ma-ch02-020 → PHR (validator_error)
+  [B] ma-ch02-021 → PHR (validator_error)
+  [B] ma-ch02-022 → PHR (validator_error)
+  [B] ma-ch02-023 → PHR (validator_error)
+  [B] ma-ch02-024 → PHR (validator_error)
+  [B] ma-ch02-025 → PHR (validator_error)
+  [B] ma-ch02-026 → PHR (validator_error)
+  [B] ma-ch02-027 → PHR (validator_error)
+  [B] ma-ch02-028 → PHR (validator_error)
+  [B] ma-ch02-029 → PHR (validator_error)
+  [B] ma-ch02-030 → PHR (validator_error)
+  [B] ma-ch02-031 → PHR (validator_error)
+  [B] ma-ch02-032 → PHR (validator_error)
+  [B] ma-ch02-033 → PHR (validator_error)
+  [B] ma-ch02-034 → PHR (validator_error)
+  [B] ma-ch02-035 → PHR (validator_error)
+  [B] ma-ch02-038 → PHR (validator_error)
+  [C] ma-ch02-040 → STAYS FLAGGED (genuine issue)
+  [C] ma-ch02-044 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch02-054 → PHR (validator_error)
+  [B] ma-ch02-055 → PHR (validator_error)
+  [B] ma-ch02-056 → PHR (validator_error)
+  [C] ma-ch02-057 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch02-058 → PHR (validator_error)
+  [B] ma-ch02-063 → PHR (validator_error)
+  [B] ma-ch02-068 → PHR (validator_error)
+  [B] ma-ch02-069 → PHR (validator_error)
+  [B] ma-ch02-070 → PHR (validator_error)
+  [B] ma-ch02-071 → PHR (validator_error)
+  [C] ma-ch02-072 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch02-073 → PHR (validator_error)
+  [B] ma-ch02-074 → PHR (validator_error)
+  [B] ma-ch03-005 → PHR (validator_error)
+  [B] ma-ch05-003 → PHR (validator_error)
+  [B] ma-ch05-009 → PHR (validator_error)
+  [B] ma-ch05-010 → PHR (validator_error)
+  [B] ma-ch05-013 → PHR (validator_error)
+  [B] ma-ch05-014 → PHR (validator_error)
+  [B] ma-ch05-017 → PHR (validator_error)
+  [C] ma-ch05-019 → STAYS FLAGGED (genuine issue)
+  [B] ma-ch09-006 → PHR (validator_error)
+  [A] ma-ch09-007 → PHR (truncation_artifact)
+  [C] ma-ch02-077 → STAYS FLAGGED (genuine issue)
+  [A] ma-ch06-009 → PHR (truncation_artifact)
+  [CONTRA] ma-ch01-003 ↔ ma-ch01-004 → cross_reference noted (Bucket B, both PHR)
+  [CONTRA] ma-ch01-056 ↔ ma-ch01-057 → cross_reference noted (Bucket B, both PHR)
+
+───────────────────────────────────────────────────────────────────────────
+SUMMARY
+───────────────────────────────────────────────────────────────────────────
+  Mode                    : DRY RUN -- no changes written
+  Bucket A → PHR          : 3 (truncation artifacts)
+  Bucket B → PHR          : 79 (validator framework errors)
+  Bucket C → flagged      : 21 (genuine issues, TT/GAI queue)
+  Contradiction pairs     : 2 noted (both already PHR)
+  Already PHR (unchanged) : 117
+  Auto_approved (unchanged): 50
+
+Re-run with --apply to write the triaged JSON.

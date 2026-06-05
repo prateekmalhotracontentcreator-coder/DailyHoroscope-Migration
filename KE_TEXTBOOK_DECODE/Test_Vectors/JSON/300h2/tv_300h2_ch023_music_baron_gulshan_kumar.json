@@ -1,0 +1,274 @@
+{
+  "vector_id": "tv-300h2-ch023",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch023_22_Gulshan_Kumar",
+  "pdf_path": "Chapters/Ch023_22_Gulshan_Kumar.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Music Baron--Gulshan Kumar",
+    "description": "Gulshan Kumar (5 May 1956 • 12 Aug 1997) was the founder of the T-Series music cassettes and a movie producer, was risen from a middle class family.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1956-05-05",
+    "time_local": "10:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 28.05,
+    "longitude": 77.2,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "lagna_degree_stated": 25.798,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aries",
+      "degree": 21.501,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        11
+      ],
+      "significations_raw": "03,11"
+    },
+    "MOON": {
+      "sign": null,
+      "degree": 14.712,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        6
+      ],
+      "significations_raw": "02 09,06,Ra"
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 19.584,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        8,
+        6,
+        11,
+        9
+      ],
+      "significations_raw": "02,08 06 11,09"
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 12.074,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        4,
+        12,
+        9,
+        2
+      ],
+      "significations_raw": "01,04,12,09,02"
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 28.806,
+      "house": null,
+      "nakshatra": "Asr",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        1,
+        412,
+        7,
+        10
+      ],
+      "significations_raw": "02,01,0412 07,10"
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 4.809,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12,
+        5,
+        1,
+        8,
+        6,
+        11
+      ],
+      "significations_raw": "12,05,01,08,06,11"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 7.489,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        6,
+        8,
+        9
+      ],
+      "significations_raw": "06,08,09"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 16.311,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Ma,Me,Ju"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 16.311,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Mo,Ve Me,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": 0.6
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 14.5
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Unknown",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Unknown",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is lord of 07 (business) and 10 (profession).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "It is in 02nd house (wealth).",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "It is in star of Mercury (business).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Saturn is in 10 1h house and it is in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "It is conjunct with Rahu, who signifies Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "They are under aspect from Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Jupiter is aspected by Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

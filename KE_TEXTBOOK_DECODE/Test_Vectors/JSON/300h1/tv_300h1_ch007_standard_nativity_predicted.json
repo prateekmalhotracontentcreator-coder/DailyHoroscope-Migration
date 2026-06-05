@@ -1,0 +1,210 @@
+{
+  "vector_id": "tv-300h1-ch007",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch007_STANDARD_NATIVITY-PREDICTED",
+  "pdf_path": "Split_Chapters/Ch007_STANDARD_NATIVITY-PREDICTED.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Standard Nativity-Predicted",
+    "description": "HIGH JOB AND WEALTH",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "2001-11-05",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": "Nellore, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-47-10.50",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 27.8886,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 19.4708,
+      "house": 6,
+      "significations": [
+        2,
+        4,
+        6
+      ]
+    },
+    "MOON": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 12.3678,
+      "house": 9,
+      "significations": [
+        2,
+        3,
+        7,
+        8,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 2.915,
+      "house": 6,
+      "significations": [
+        2,
+        5,
+        6,
+        7,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 21.8956,
+      "house": 2,
+      "significations": [
+        2,
+        8,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 2.5386,
+      "house": 6,
+      "significations": [
+        1,
+        2,
+        6,
+        7,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 19.8261,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        3
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 5.5614,
+      "house": 2,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 5.5614,
+      "house": 8,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The boy is 12 years old as on 2013.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "But it was predicted high job and very good wealth factors due to significations of planets: 02nd house are Jupiter, Saturn, Nodes, Sun, Moon and Mars, while 061h house are signified by Sun, Venus and Mercury.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "11111 house is signified by Jupiter, Nodes, Moon and Sun, while Saturn signifies 101h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Hence these ardha I Kama houses are well signified by these planets take native to high level in life.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "vector_id": "tv-300h1-ch037",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch037_BUSINESSMAN",
+  "pdf_path": "Split_Chapters/Ch037_BUSINESSMAN.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Businessman",
+    "description": "The following person is doing business as his profession:",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "49:00:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": null,
+      "degree": null,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 7.4128,
+      "house": null,
+      "significations": [
+        6,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 21.1997,
+      "house": null,
+      "significations": [
+        1,
+        4,
+        7,
+        8,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 15.1697,
+      "house": null,
+      "significations": [
+        2,
+        3,
+        5,
+        7,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 18.4886,
+      "house": null,
+      "significations": [
+        1,
+        3,
+        4,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Sagittarius",
+      "degree": 18.7506,
+      "house": null,
+      "significations": [
+        1,
+        6,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 15.6547,
+      "house": null,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 15.6547,
+      "house": null,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The business is offered by 07 and 10 houses.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mercury and Venus function as causative planets.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn (02,07) is aspecting Mercury (07,10).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Venus is in mutual aspect with Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign, 07111 lord Mercury is in 1Qih house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "0200 house (wealth) is signified by Saturn, Mars and the Nodes, whereas planets posited in stars of Nodes are Mercury, Sun and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "These significations make the native comparatively richer.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

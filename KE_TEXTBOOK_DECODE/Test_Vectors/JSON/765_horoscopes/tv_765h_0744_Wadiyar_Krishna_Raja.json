@@ -1,0 +1,91 @@
+{
+  "vector_id": "tv-765h-0744",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0744",
+  "source_file": "0744_W-3_Wadiyar_Krishna_Raja.pdf",
+  "subject": {
+    "name": "Wadiyar, Krishna Raja",
+    "name_from_filename": "Wadiyar, Krishna Raja",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Royalty_Nobility",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1844-06-04",
+    "time_local": "10:18",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1844-06-04T04:48:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Mysore",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 1.2667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 22.0167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 26.6833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 1.45,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 9.9667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 26.2,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 7.45,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 1.5833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 26.2,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Royalty_Nobility",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

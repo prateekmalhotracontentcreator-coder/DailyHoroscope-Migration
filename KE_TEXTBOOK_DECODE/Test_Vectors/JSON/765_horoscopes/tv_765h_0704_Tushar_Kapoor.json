@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0704",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0704",
+  "source_file": "0704_T-33_Tushar_Kapoor.pdf",
+  "subject": {
+    "name": "Tushar Kapoor",
+    "name_from_filename": "Tushar Kapoor",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actor",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1976-11-20",
+    "time_local": "15:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1976-11-20T09:50:00Z",
+    "latitude": 19.076,
+    "longitude": 72.877,
+    "place": "Mumbai, Maharashtra, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "RAHU",
+    "years": 3,
+    "months": 7,
+    "days": 6,
+    "raw_text": "Balance of dasha Rah 3-7-6"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 19.0667,
+      "retrograde": true
+    },
+    "SATURN": {
+      "degree_in_sign": 23.2833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 4.6667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 17.3333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 6.05,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 18.55,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 12.1,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actor",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

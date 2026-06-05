@@ -1,0 +1,280 @@
+{
+  "vector_id": "tv-lu-ch09",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch09_Rajiv_Gandhi",
+  "pdf_path": "Chapter_Splits/Ch09_Rajiv_Gandhi.pdf",
+  "subject": {
+    "name": "Rajiv Gandhi",
+    "description": "7th Prime Minister of India",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1944-08-20",
+    "time_local": null,
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 18.9667,
+    "longitude": 72.8333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-59-13.79",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 28.85,
+      "house": 1,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Leo",
+      "degree": 3.9667,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "significations": [
+        1,
+        6,
+        "Ke"
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 17.7333,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        1,
+        12,
+        10,
+        3
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 1.3167,
+      "house": 2,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "significations": [
+        4,
+        9,
+        2,
+        1
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 28.6833,
+      "house": 1,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "significations": [
+        11,
+        1,
+        2
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 12.3167,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        1,
+        5,
+        8,
+        6,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 18.8167,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        1,
+        3,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Gemini",
+      "degree": 14.3167,
+      "house": 11,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        11,
+        6,
+        7,
+        12,
+        "Ra"
+      ]
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 2.9,
+      "house": 12,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "significations": [
+        12,
+        "Mo",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 2.9,
+      "house": 6,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": [
+        6,
+        "Su",
+        "Sa"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "Prime Minister",
+    "death_type": "unknown",
+    "death_date": "1944-08-20",
+    "age_at_death": 40,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "SATURN",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Rahu~Mercury-Saturn-Mars. Dasha lord Rahu signifies Moon and Jupiter. Jupiter signifies Ketu (06-€nemy, injury) and 08 ("
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mars is the badhaka lord and is posited in maraca (02) house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is in Sun star, while Sun is the lord of lagna. Hence Mars gives lagna, maraca and badhaka results.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars aspects OSth house {longevity, accidents). Indeed Mars is in close proximity to lagna, though it is in 2nd house. Rajiv Gandhi 41",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun is the lord of lagna and is posited in the lagna. But it is in the star of Ketu, who is an occupant of 061h house (enemy, injury).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Ketu also is posited Sun star and hence become a significator of lagna (body).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Saturn is the lord of the maraca house (07) and is aspecting lagna.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Since Saturn is in Rahu star, it signifies 081h house through Jupiter (Rahu is in Jupiter star) Rahu could case blast.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Jupiter signifies 01,06,08 houses, since its position in Ketu star, while Ketu is an occupant of 061h house. All these combinations of lagna and 08 getting connected to 06 and Mars including badhaka and maraca are detrimental for good longevity, besides one could be vulnerable to physical attack by enemies. Mr. Gandhi was killed in 47th year in a powerful bomb explosion triggered by the activists of Tamil Ethnic Group LTTE of Sri Lanka at around 10-10 p.m. on 21 May 1991 near Chennai, Southern India, during the VMD of Rahu~Mercury-Saturn-Mars. Dasha lord Rahu signifies Moon and Jupiter. Jupite",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Dasha lord Rahu signifies Moon and Jupiter.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Bhukti lord Mercury signifies maraca and is posited in lagna (body).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

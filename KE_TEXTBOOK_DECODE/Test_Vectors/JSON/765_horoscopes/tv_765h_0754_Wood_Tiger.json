@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0754",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0754",
+  "source_file": "0754_W-13_Wood_Tiger.pdf",
+  "subject": {
+    "name": "Wood Tiger",
+    "name_from_filename": "Wood Tiger",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": "Arts_Literature",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1975-12-30",
+    "time_local": "22:50",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1975-12-30T17:20:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Cypress-California",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 1,
+    "months": 5,
+    "days": 18,
+    "raw_text": "Balance dasha Mer 1-5-18"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 21.9333,
+      "retrograde": true
+    },
+    "SATURN": {
+      "degree_in_sign": 7.5833,
+      "retrograde": true
+    },
+    "MERCURY": {
+      "degree_in_sign": 2.9167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 5.0,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 15.4333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 28.85,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 15.4333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

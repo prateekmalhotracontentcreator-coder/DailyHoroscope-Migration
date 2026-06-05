@@ -1,0 +1,153 @@
+{
+  "vector_id": "tv-lasys-ch30",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch30",
+  "chapter_title": "Young Man Fell Into River",
+  "pdf_path": "Text Books/LongevityAstroSystem/30_Young man fell into river.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Standard Nativity (anonymous)",
+    "description": "Young man who fell into river and drowned, died at age ~29",
+    "nationality": "Indian"
+  },
+
+  "birth_data": {
+    "date": "1982-06-19",
+    "time_local": "16:55:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "11:25:00",
+    "latitude": 17.4333,
+    "longitude": 78.45,
+    "place": "Hyderabad, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23° 30' 26\"",
+    "notes": "Coordinates stated as 78E27, 17N26. Lagna CSL = 9th CSL = Venus confirming time."
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Lagna at 08° Sc 50' Anuradha (Ma-Sa-Ve). Moon at 5° Ta 46' Krittika (Ve-Su-Me)."
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "VENUS",
+    "8th_csl": "RAHU",
+    "badhaka_house": 9,
+    "badhaka_house_rationale": "Scorpio = fixed lagna → 9th house is badhaka",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "alpa",
+
+  "aayu_bucket_computed": null,
+
+  "planet_positions_from_table": {
+    "LAGNA":   { "sign": "Scorpio",     "degree": "08°50'", "house": 1,  "significations": [1] },
+    "SUN":     { "sign": "Gemini",      "degree": "04°20'", "house": 8,  "significations": [] },
+    "MOON":    { "sign": "Taurus",      "degree": "05°46'", "house": 7,  "significations": [] },
+    "MARS":    { "sign": "Virgo",       "degree": "14°48'", "house": 11, "significations": [] },
+    "MERCURY": { "sign": "Taurus",      "degree": "14°15'", "house": 7,  "significations": [] },
+    "JUPITER": { "sign": "Libra",       "degree": "07°01'", "house": 12, "significations": [], "notes": "retrograde" },
+    "VENUS":   { "sign": "Aries",       "degree": "29°22'", "house": 6,  "significations": [] },
+    "SATURN":  { "sign": "Virgo",       "degree": "21°59'", "house": 11, "significations": [] },
+    "RAHU":    { "sign": "Gemini",      "degree": "20°42'", "house": 8,  "significations": [] },
+    "KETU":    { "sign": "Sagittarius", "degree": "20°42'", "house": 2,  "significations": [] }
+  },
+
+  "death_data": {
+    "cause_of_death": "Drowned — fell into river",
+    "death_type": "accident",
+    "death_date": "2011-05-23",
+    "age_at_death": 28,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "MARS",
+      "kp_significations": [1, 8, 9],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "on 23 May 2011 (Monday) at 8-45 a.m. during VMD (DBASPD) of Rahu-Mercury-Jupiter-Mars-Rahu-Mercury"
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The chart falls in the category of alpa-aayu or short life span category, as the young man had a life of 29 years only.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna cusp sub lord and 09th cusp lord is Venus. Hence the reported time of birth should be alright.",
+      "aayu_gate": "gate_1",
+      "condition_type_guess": "birth_time_verification",
+      "claim_axis": "birth_time",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08th cusp sub lord Rahu offers result of 01, 08 and 09th cusps — quite detrimental and dangerous for longevity. Rahu is in the star of Jupiter. Jupiter denotes 02, 05, 11 cusps and is in the star of Rahu. Rahu denotes Mercury as sign lord and is getting the aspect of Saturn. Both Saturn and Mercury are in the star of badhaka Moon. Rahu is conjunct with Sun, who is in the star of Mars.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Planets posited in the star of badhaka Moon are Mercury, Mars and Saturn. Mars is lord of lagna and it signifies badhaka house. Hence lagna lord Mars is quite detrimental. Mercury signifies cusps 08 (longevity) and 09 (badhaka). This is also detrimental for longevity.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "stellar_badhaka",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "DBASPD signifying planets have portrayed themselves with the significators of cusps 01, 08 and 09 denoting lagna, longevity and badhaka. Transit Moon was in Shravana star in Capricorn and was in the sub of Mercury (natal 08th signifying planet). Moon denotes water. Transit Lagna reached in Gemini in the star of Jupiter (Punarvasu) and sub of Jupiter. Lagna was in the natal 08th cusp.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "transit_confirmation",
+      "claim_axis": "timing",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": ""
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

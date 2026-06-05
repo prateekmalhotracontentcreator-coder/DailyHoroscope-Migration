@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0745",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0745",
+  "source_file": "0745_W-4_Wagner_Richard.pdf",
+  "subject": {
+    "name": "Wagner, Richard",
+    "name_from_filename": "Wagner, Richard",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Musician",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1813-05-22",
+    "time_local": "03:58",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1813-05-22T22:28:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Leipzig",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 6,
+    "months": 5,
+    "days": 8,
+    "raw_text": "Balance of dasha Mar 6-5-8"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 2.4,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 8.4667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 9.3667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 12.6167,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 22.1167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 12.6167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 22.1167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 24.4,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 27.7,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 2.4,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Musician",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

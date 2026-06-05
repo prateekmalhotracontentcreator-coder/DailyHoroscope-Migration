@@ -1,0 +1,258 @@
+{
+  "vector_id": "tv-300h2-ch043",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch043_42_Osama_Bin_Laden",
+  "pdf_path": "Chapters/Ch043_42_Osama_Bin_Laden.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Terrorist Leader--Osama Bin Laden",
+    "description": "Osar:na bin Laden was the founder of AI-Oaeda, the terrorist organization responsible for the 09 I 11 attacks on the United States and numerous other mass-casualty attacks against civilian and military targets.",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1957-03-10",
+    "time_local": "10:36:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 24.6333,
+    "longitude": 46.7667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-09-14.95",
+    "nakshatra_stated": "Aridra",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "lagna_degree_stated": 17.619,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 26.316,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4,
+        1,
+        0,
+        11,
+        8,
+        5
+      ],
+      "significations_raw": "04,1 0,11 ,08,05"
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 6.749,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        2,
+        6
+      ],
+      "significations_raw": "03,02,06,Ra"
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 2.082,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        12,
+        7,
+        4,
+        10
+      ],
+      "significations_raw": "01,12,07,04,10"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 4.672,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        5,
+        8,
+        11,
+        4,
+        10
+      ],
+      "significations_raw": "05,08,11,04,10"
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 17.391,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        10
+      ],
+      "significations_raw": "01,06,10,Ra"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 20.986,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        9,
+        1,
+        0,
+        7,
+        5,
+        2
+      ],
+      "significations_raw": "09,1 0,07,05,02"
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 29.93,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ju Ve"
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 29.93,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ma,Su"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Cancer",
+      "degree": 8.05
+    },
+    "ghati_lagna": {
+      "sign": "Capricorn",
+      "degree": 27.0
+    }
+  },
+  "life_outcomes": {
+    "profession": "Military",
+    "profession_category": "Military",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Military",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "101h lord (deeds) Saturn (destruction) is under aspect from Mars from lagna.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter 04 (mind), 05 (intention) is in star of Sun-power to execute (1 0-deeds).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Moon (3-action) is in star of Mars.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "These combinations made native a murderer.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

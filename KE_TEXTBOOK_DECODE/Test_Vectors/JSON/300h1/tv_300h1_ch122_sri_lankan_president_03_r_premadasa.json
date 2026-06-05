@@ -1,0 +1,226 @@
+{
+  "vector_id": "tv-300h1-ch122",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch122_SRI_LANKAN_PRESIDENT_03-R_PREMADASA",
+  "pdf_path": "Split_Chapters/Ch122_SRI_LANKAN_PRESIDENT_03-R_PREMADASA.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Ranasinghe Premadasa",
+    "description": "Ranasinghe Premadasa was the 3rd President of Sri Lanka from 02 Jan 1989 to 01 May",
+    "nationality": "Sri Lankan"
+  },
+  "birth_data": {
+    "date": "1824-06-23",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 27.8636,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 8.9303,
+      "house": 9,
+      "significations": [
+        9,
+        11
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 0.9483,
+      "house": 6,
+      "significations": [
+        2,
+        3,
+        6,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 6.87,
+      "house": 5,
+      "significations": [
+        2,
+        5,
+        7,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 24.7889,
+      "house": 8,
+      "significations": [
+        2,
+        5,
+        7,
+        8,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 20.1839,
+      "house": 2,
+      "significations": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 2.9394,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        4,
+        5,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 3.0742,
+      "house": 11,
+      "significations": [
+        11
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 3.0742,
+      "house": 5,
+      "significations": [
+        5
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Sun are conjoined, while Venus is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is in 02 house and aspects 101h.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is in star of 091h lord Mercury.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn is in lagna and aspects 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign, Jupiter is lord of 10 and Sun is aspecting 10th.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

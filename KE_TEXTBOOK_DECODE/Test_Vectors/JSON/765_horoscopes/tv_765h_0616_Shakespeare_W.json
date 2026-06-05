@@ -1,0 +1,85 @@
+{
+  "vector_id": "tv-765h-0616",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0616",
+  "source_file": "0616_S-19_Shakespeare_W.pdf",
+  "subject": {
+    "name": "Shakespeare, W",
+    "name_from_filename": "Shakespeare, W",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1564-04-16",
+    "time_local": "12:25",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1564-04-16T06:55:00Z",
+    "latitude": 52.2167,
+    "longitude": -1.75,
+    "place": "1W45 & 52N13",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 1,
+    "months": 6,
+    "days": 5,
+    "raw_text": "Balance of dasha Mar 1-6-5"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 9.8667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 13.4,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 9.0833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 1.1,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 13.4,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 1.1,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

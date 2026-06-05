@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0189",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0189",
+  "source_file": "0189_E-8_Ms_Elizabeth_II_Queen.pdf",
+  "subject": {
+    "name": "Elizbeth II",
+    "name_from_filename": "Ms Elizabeth II Queen",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Queen",
+    "profession_compound": false,
+    "profession_secondary": "Politics",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1926-04-21",
+    "time_local": "01:26",
+    "timezone_offset_hours": 0.0,
+    "time_utc": "1926-04-21T01:26:00Z",
+    "latitude": 51.507,
+    "longitude": -0.128,
+    "place": "London, United Kingdom",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 13,
+    "months": 7,
+    "days": 6,
+    "raw_text": "Balance of dasha Mer 13-7-6"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 11.85,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 21.1667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 0.0167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 0.35,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 28.05,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 21.1667,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 0.35,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Queen",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

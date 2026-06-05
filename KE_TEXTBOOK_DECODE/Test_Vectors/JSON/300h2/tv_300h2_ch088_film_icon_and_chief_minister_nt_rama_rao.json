@@ -1,0 +1,338 @@
+{
+  "vector_id": "tv-300h2-ch088",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch088_87_NT_Rama_Rao",
+  "pdf_path": "Chapters/Ch088_87_NT_Rama_Rao.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Film Icon And Chief Minister--Nt Rama Rao",
+    "description": "Padmashri Nandamuri Ta raka Ram a Rao was an iconic actor in Te lugu Films. He was Chief Minister of A.P. for three terms between 1983 and 1994.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "lagna_degree_stated": 29.793,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 13.361,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        12,
+        9,
+        2,
+        11
+      ],
+      "significations_raw": "12 09,02,11"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 18.061,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        11,
+        12
+      ],
+      "significations_raw": "02,11,12,Ra"
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 5.687,
+      "house": null,
+      "nakshatra": "Mriq",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        10,
+        3,
+        8
+      ],
+      "significations_raw": "10,03,08"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 18.638,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        4,
+        7,
+        2,
+        12
+      ],
+      "significations_raw": "04,07,02,12,Ra"
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 15.492,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        8
+      ],
+      "significations_raw": "02,09,08"
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 20.978,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        5,
+        6,
+        1,
+        2,
+        11
+      ],
+      "significations_raw": "05,06,01 ,02, 11"
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 23.847,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Ve,Su"
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 23.847,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Ju,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity",
+      "wealth",
+      "marriage"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Rahu (illusion) is in star of Venus (creativity), while Venus is in own star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Moon (mind) is in star of Rahu.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is in own star in 10, and is under aspect of Jupiter gave expansion and power to career.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mercury (duality and speech) is lord of 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn (05-creativity) is aspecting 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "From Moon sign, Moon (10) is in star of Rahu, while Rahu (illusion) signifies Venus.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "051h lord Saturn is in Moon star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "These combinations made native a powerful film actor.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Except Mars, all planets signify 02nd house, which makes native quite rich.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Jupiter (07) signifies 09 through Rahu caused two marriages.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "From 071h house Mercury is badhaka and maraca, and it signifies 8 through Moon, which shortens the longevity of first spouse.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Rahu in 12 is prone to blames, scandals and sudden death.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

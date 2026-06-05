@@ -1,0 +1,180 @@
+{
+  "vector_id": "tv-lasys-ch37",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch37",
+  "chapter_title": "Longevity Upto 44 Years",
+  "pdf_path": "Text Books/LongevityAstroSystem/37_Longevity upto 44 years.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Female Nativity (unnamed)",
+    "description": "Anonymous female nativity from Vasai, India. Lived upto 44 years and died in May 2013.",
+    "nationality": "Indian"
+  },
+
+  "birth_data": {
+    "date": "1968-01-16",
+    "time_local": "17:41:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "12:11:00",
+    "latitude": 19.466667,
+    "longitude": 72.8,
+    "place": "Vasai, Maharashtra, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23° 18' 32\"",
+    "notes": "Place noted as 'Vasal' in PDF; 72-48-0E, 19-28-0N; Placidus cusp system; birth time confirmed via lagna CSL Mercury in star of 9th CSL Venus (Venus in star of Mercury in Scorpio/Jyeshtha)"
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Cancer",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Lagna: 24° Ge 07' Punarvasu (Me-Ju-Me); Moon: 12° Cn 10' Pushya (Mo-Sa-Ma)"
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "MERCURY",
+    "8th_csl": "MERCURY",
+    "7th_csl": "MERCURY",
+    "badhaka_house": 7,
+    "badhaka_house_rationale": "Gemini is dual lagna; 7th house (Sagittarius) = maraka AND badhaka simultaneously",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "madhya",
+  "aayu_bucket_computed": null,
+  "aayu_boundary_note": "Died at ~44 years (May 2013); just above Alpa ceiling of 33; Saturn as cusp lord of 8th and 9th occupying 9th cusp saved longevity from being shorter",
+
+  "planet_positions_from_table": {
+    "LAGNA": { "sign": "Gemini",      "degree": "24°07'", "house": 1,  "nakshatra": "Punarvasu",  "sss_lord": "Me-Ju-Me", "significations": [1] },
+    "SUN":   { "sign": "Capricorn",   "degree": "02°07'", "house": 8,  "nakshatra": "Uttarashada","sss_lord": "Sa-Su-Ju", "significations": [8] },
+    "MOON":  { "sign": "Cancer",      "degree": "12°10'", "house": 2,  "nakshatra": "Pushya",     "sss_lord": "Mo-Sa-Ma", "significations": [2] },
+    "MARS":  { "sign": "Aquarius",    "degree": "12°13'", "house": 9,  "nakshatra": "Satabhi",    "sss_lord": "Sa-Ra-Sa", "significations": [9] },
+    "MERCURY":{ "sign": "Capricorn",  "degree": "13°43'", "house": 8,  "nakshatra": "Shravana",   "sss_lord": "Sa-Mo-Ra", "significations": [8] },
+    "JUPITER":{ "sign": "Leo",        "degree": "11°31'", "house": 3,  "nakshatra": "Makha",      "sss_lord": "Su-Ke-Me", "retrograde": true, "significations": [3] },
+    "VENUS": { "sign": "Scorpio",     "degree": "24°14'", "house": 6,  "nakshatra": "Jyeshtha",   "sss_lord": "Ma-Me-Ra", "significations": [6] },
+    "SATURN":{ "sign": "Pisces",      "degree": "13°37'", "house": 10, "nakshatra": "UtrBhadra",  "sss_lord": "Ju-Sa-Ra", "significations": [10] },
+    "RAHU":  { "sign": "Pisces",      "degree": "29°51'", "house": 10, "nakshatra": "Revati",     "sss_lord": "Ju-Me-Sa", "significations": [10] },
+    "KETU":  { "sign": "Virgo",       "degree": "29°51'", "house": 4,  "nakshatra": "Chitra",     "sss_lord": "Me-Ma-Sa", "significations": [4] }
+  },
+
+  "cuspal_data_from_table": {
+    "I":   { "longitude": "24° Ge 07'", "nakshatra": "Punarvasu",  "sss_lord": "Me-Ju-Me" },
+    "II":  { "longitude": "18° Cn 57'", "nakshatra": "Aslesha",    "sss_lord": "Mo-Me-Ke" },
+    "III": { "longitude": "16° Le 38'", "nakshatra": "PrvPhalg",   "sss_lord": "Su-Ve-Mo" },
+    "IV":  { "longitude": "18° Vi 10'", "nakshatra": "Hastha",     "sss_lord": "Me-Mo-Me" },
+    "V":   { "longitude": "21° Li 41'", "nakshatra": "Vishakha",   "sss_lord": "Ve-Ju-Ju" },
+    "VI":  { "longitude": "24° Sc 03'", "nakshatra": "Jyeshtha",   "sss_lord": "Ma-Me-Ma" },
+    "VII": { "longitude": "24° Sa 07'", "nakshatra": "Poorvashada","sss_lord": "Ju-Ve-Me" },
+    "VIII":{ "longitude": "18° Cp 57'", "nakshatra": "Shravana",   "sss_lord": "Sa-Mo-Me" },
+    "IX":  { "longitude": "16° Aq 38'", "nakshatra": "Satabhi",    "sss_lord": "Sa-Ra-Ve" },
+    "X":   { "longitude": "18° Pi 10'", "nakshatra": "Revati",     "sss_lord": "Ju-Me-Me" },
+    "XI":  { "longitude": "21° Ar 41'", "nakshatra": "Bharani",    "sss_lord": "Ma-Ve-Ju" },
+    "XII": { "longitude": "24° Ta 03'", "nakshatra": "Mrigasiras", "sss_lord": "Ve-Ma-Ma" }
+  },
+
+  "death_data": {
+    "cause_of_death": "Unspecified (chapter does not state cause)",
+    "death_type": "unknown",
+    "death_date": "2013-05-01",
+    "death_date_precision": "month_only",
+    "age_at_death": 44,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "SATURN",
+      "pratyantardasha": "KETU",
+      "sookshma": null,
+      "kp_significations": [1, 7, 8, 9],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "The native died in May 2013 during the VMD of Venus-Saturn-Ketu."
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The lagna cusp sub lord is Mercury. It is in the star of Moon (Shravana) in Capricorn. It denotes cusps 01, 04 and 07. So there is a link between self and maraca (02 and 07) & badhaka (07), which is dangerous for longevity.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl_stellar_chain",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Indeed 08th cusp sub lord is also Mercury. This makes the situation more complicated.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_8th_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "As regards the 07th cusp sub lord, it is also Mercury. So Mercury is the cusp sub lord of 01, 07 and 08. This will reduce the longevity to a drastic level.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "triple_csl_loading",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Considering all the above points from (A) to (G), it should be concluded that the longevity shall be Madhya-aayu or medium longevity as Saturn is strong, else longevity should have been much lesser.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "protective_floor",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Antara lord Ketu offers result of Mercury. Jupiter is the badhaka and maraca lord, who is posited in Ketu star. So Nodes have got the power to inflict death in the periods of planets they are linked to.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "node_as_proxy",
+      "claim_axis": "timing",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "So Jupiter is the real culprit to destroy the longevity, when the antara of its star lord arrived. Saturn is the cusp lord of 8 and 09th and occupies 09th cusp. Or else under the combinations mentioned above, the longevity would have been too short.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "protective_floor",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": ""
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

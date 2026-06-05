@@ -1,0 +1,171 @@
+{
+  "vector_id": "tv-300h1-ch044",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch044_JOSEPH_RATZINGER_OR_POPE_BENEDICT_XVI",
+  "pdf_path": "Split_Chapters/Ch044_JOSEPH_RATZINGER_OR_POPE_BENEDICT_XVI.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Pope Benedict XVI",
+    "description": "Pope Benedict XVI is previously known as Cardinal Joseph Alloys Ratzinger, is a",
+    "nationality": "Italian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 26.5419,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 2.3689,
+      "house": 4,
+      "significations": [
+        4,
+        8,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 20.7836,
+      "house": 9,
+      "significations": [
+        7,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 6.7019,
+      "house": 6,
+      "significations": [
+        4
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 5.48,
+      "house": 3,
+      "significations": [
+        1,
+        2,
+        3,
+        6,
+        9,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 27.8158,
+      "house": 2,
+      "significations": [
+        2,
+        3,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 6.4131,
+      "house": 5,
+      "significations": [
+        4,
+        5,
+        8,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 14.2433,
+      "house": 11,
+      "significations": [
+        1,
+        2,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 8.6683,
+      "house": 6,
+      "significations": [
+        6
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 8.6683,
+      "house": 12,
+      "significations": [
+        12
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "Religious Leader",
+    "profession_category": "Spirituality/Religion",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Spirituality/Religion",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

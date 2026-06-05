@@ -1,0 +1,238 @@
+{
+  "vector_id": "tv-lu-ch97",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch97_Jeffrey_W_Coombs",
+  "pdf_path": "Chapter_Splits/Ch97_Jeffrey_W_Coombs.pdf",
+  "subject": {
+    "name": "Jeffrey Coombs",
+    "description": "9/11 Terrorist Attack Victim",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1958-09-18",
+    "time_local": "10:25:00",
+    "timezone_offset_hours": -4.0,
+    "time_utc": "1958-09-18T14:25:00Z",
+    "latitude": 42.3583,
+    "longitude": -71.05,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-16-49.36",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 17.2,
+      "house": 1,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 1.8833,
+      "house": 12,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "significations": [
+        11,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 12.1167,
+      "house": 2,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        4,
+        5,
+        2,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 6.0167,
+      "house": 8,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        2,
+        7,
+        8,
+        11,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 17.9833,
+      "house": 11,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        1,
+        8,
+        11,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 8.8333,
+      "house": 1,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "significations": [
+        3,
+        6,
+        1,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 17.95,
+      "house": 11,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        1,
+        8,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 26.3333,
+      "house": 2,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        2,
+        4,
+        5,
+        9,
+        11,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 0.3,
+      "house": 1,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "significations": [
+        "Ol",
+        "Ma",
+        "Ve",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 0.3,
+      "house": 7,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "significations": [
+        7,
+        "Ma",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon",
+    "death_type": "violent",
+    "death_date": "2001-09-11",
+    "age_at_death": 42,
+    "dasha_at_death": {
+      "mahadasha": "MARS",
+      "antardasha": "SUN",
+      "pratyantardasha": "VENUS",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "Mars. Transit Sun was in natal badhaka house and was in lagna lord Venus star. A significator of lagna, Jupiter was in R"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Venus signifies 01, 08 and 11 (badhaka) and is under aspect of Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Rahu is in Libra and signifies Venus, Mars and Jupiter and the significations of these planets are discussed ·earlier.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "sookshma lord Jupiter signifies 03 and 06 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "08th lord Venus is in own star, which is good, but is in the badhaka house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "survived by his wife and three children.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

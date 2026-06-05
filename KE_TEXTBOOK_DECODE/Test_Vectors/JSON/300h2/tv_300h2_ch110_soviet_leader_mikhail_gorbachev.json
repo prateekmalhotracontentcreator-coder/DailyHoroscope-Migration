@@ -1,0 +1,286 @@
+{
+  "vector_id": "tv-300h2-ch110",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch110_109_Mikhail_Gorbachev",
+  "pdf_path": "Chapters/Ch110_109_Mikhail_Gorbachev.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Soviet Leader--Mikhail Gorbachev",
+    "description": "Mikhail Gorbachev is a former Soviet statesman, having served as General Secretary of the Communist Party of the Soviet Union from 1985 until 1991, and as the last head of state of the USSR, having served from 1988 until",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 18.388,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12,
+        6,
+        7
+      ],
+      "significations_raw": "12,06,07 ,Ra"
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 24.019,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        11,
+        1,
+        10,
+        6
+      ],
+      "significations_raw": "11,01,10,06"
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 4.845,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 1,
+      "retrograde": true,
+      "significations": [
+        3,
+        8,
+        11,
+        5,
+        4,
+        6
+      ],
+      "significations_raw": "03,08 11 05,04,06"
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 7.218,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        10,
+        6,
+        7
+      ],
+      "significations_raw": "01,10,06,07,Ra"
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 17.686,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        4,
+        7,
+        10,
+        7
+      ],
+      "significations_raw": "04,07,10,07,Ra"
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 3.608,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        5,
+        12,
+        6
+      ],
+      "significations_raw": "02,09,05,12,06"
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 27.547,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        5,
+        6,
+        12
+      ],
+      "significations_raw": "04,05,06,12"
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 23.598,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01, Me,Ma,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Military",
+    "profession_category": "Military",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Military",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Sun are in posited in 02/12, while Rahu signifies Jupiter, is in Pisces in 0200 house from Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From lagna, Jupiter is in 10 1h house and it is in the star of Rahu, while Rahu signifies Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter is lord of 07 and is aspected by Saturn from the star of Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun signifies 101h house through Rahu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Ketu signifies Saturn, Mars and Mercury.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Hence it signifies 101h house through Mercury.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "It offers \"giving up\" tendencies in profession.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "NAIRS PUBLISH1NG HOUSE, HYDERABAD Page# 147",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

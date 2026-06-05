@@ -1,0 +1,265 @@
+{
+  "vector_id": "tv-300h2-ch050",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch050_49_Dhirubhai_Ambani",
+  "pdf_path": "Chapters/Ch050_49_Dhirubhai_Ambani.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Dhirubhai Am Bani",
+    "description": "Dhirubhai Ambani was an Industrialist and the founder of the Reliance Business Empire in India.",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "05:56:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 21.0167,
+    "longitude": 70.2333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "lagna_degree_stated": 22.244,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 20.791,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        1,
+        7,
+        1,
+        2
+      ],
+      "significations_raw": "02,09,01, 07,1 2"
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 24.24,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        10,
+        7,
+        12
+      ],
+      "significations_raw": "01,06,10,07,12"
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 21.8,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        8,
+        11,
+        1
+      ],
+      "significations_raw": "08,11,01"
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 0.246,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        11,
+        10,
+        5
+      ],
+      "significations_raw": "02,11,10,05"
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 15.507,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        1,
+        12,
+        3,
+        4
+      ],
+      "significations_raw": "07,01,12,03,04"
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 10.773,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        4,
+        2,
+        9
+      ],
+      "significations_raw": "03,04,02,09"
+    },
+    "RAHU": {
+      "sign": "Aquarius",
+      "degree": 18.29,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        4
+      ],
+      "significations_raw": "04,Sa,Ma"
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 18.29,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        10
+      ],
+      "significations_raw": "10,Ve Ma,Su"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": "Leo",
+      "degree": 17.02
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Planets signify 02nd house are Sun, Moon, Ketu and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "061h house is signified by Mars and Nodes.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "07 house is signified by Venus, Mars and Moon.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "101h house is signified by Mars, Nodes, Sun and Jupiter, while 111h is signified by Mercury and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Indeed Jupiter signifies 02,10 and 11.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "These combinations helped native to become a highly successful businessman.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

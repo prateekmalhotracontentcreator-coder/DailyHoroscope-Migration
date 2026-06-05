@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0110",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0110",
+  "source_file": "0110_C-3_Ms_Catherene_Zeta_Jones.pdf",
+  "subject": {
+    "name": "Catherene Zeta Jones",
+    "name_from_filename": "Ms Catherene Zeta Jones",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1969-09-25",
+    "time_local": "14:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1969-09-25T09:10:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Swansea, Wales",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 16,
+    "months": 3,
+    "days": 15,
+    "raw_text": "Balance of dasha Sat 16-3-15"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 5.2333,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 27.7,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 9.5,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 27.7,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 8.8667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 9.2333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 19.8833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

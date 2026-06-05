@@ -1,0 +1,87 @@
+{
+  "vector_id": "tv-765h-0379",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0379",
+  "source_file": "0379_K-52_Kutty_Krishnan-Mech_Engr_AGM-SAIL.pdf",
+  "subject": {
+    "name": "Kutty Krishnan-Mech Engr, AGM",
+    "name_from_filename": "Kutty Krishnan-Mech Engr, AGM-SAIL",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "SAIL",
+    "profession_category": "Other",
+    "profession_subcategory": "SAIL",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1929-03-03",
+    "time_local": "04:10",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1929-03-03T22:40:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Calicut: BE-Mech-'54: Retd as AGM, SAIL in Mar 87: Married- May '61: elder son died-'01 ~--------\"--------~ Ve3:20 Ra Ma Ju14:25 1:19 4:22 Su 19:1",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "VENUS": {
+      "degree_in_sign": 3.3333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 14.4167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 19.0167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 11.9,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 21.8833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 1.3167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 13.3833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 11.9,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "SAIL",
+    "profession_category": "Other",
+    "profession_subcategory": "SAIL",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

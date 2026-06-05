@@ -1,0 +1,333 @@
+{
+  "vector_id": "tv-lu-ch07",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch07_James_Abram_Garfield",
+  "pdf_path": "Chapter_Splits/Ch07_James_Abram_Garfield.pdf",
+  "subject": {
+    "name": "James Abram Garfield",
+    "description": "20th US President",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1831-11-19",
+    "time_local": "06:28:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": null,
+    "latitude": 41.3333,
+    "longitude": -80.5167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "notes": "Chapter title page (book p.30) missing from scan. Birth data sourced from chart header and inline text."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 24.9333,
+      "house": 1,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 5.0167,
+      "house": 2,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "significations": [
+        2,
+        11,
+        4,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 0.7333,
+      "house": 8,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": [
+        8,
+        10,
+        11,
+        2
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 16.3833,
+      "house": 1,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        1,
+        2,
+        7,
+        "Ra"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 8.4833,
+      "house": 2,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "significations": [
+        9,
+        12,
+        2,
+        11,
+        4,
+        5
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 23.7667,
+      "house": 4,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        3,
+        6,
+        4,
+        2,
+        7,
+        1
+      ]
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 22.5833,
+      "house": 12,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": [
+        10,
+        8,
+        1,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 22.45,
+      "house": 11,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "significations": [
+        11,
+        1,
+        8,
+        12,
+        4,
+        5
+      ]
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 25.2,
+      "house": 4,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        "Sa",
+        "Ju",
+        "Ma"
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 24.8167,
+      "house": 2,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        "Mercury",
+        2,
+        11,
+        12
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "a weapon took place",
+    "death_type": "violent",
+    "death_date": "1881-07-02",
+    "age_at_death": 50,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "SUN",
+      "pratyantardasha": "MARS",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Jupiter Sun-Mars in his 50th year. First of all, does the chart warrant a violent death? The dictum is that when lagna a"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is occupied by maraca Mars and aspects 08th house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "06th lord Jupiter is in Mars star, Dhanishta, and hence signify lagna and injury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna and 08th lord is Venus, who is in Moon star, Hastha.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Moon is definitely lord of lOth house, but is an occupant of 08th house (longevity) and is in the star of badhaka lord Sun.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Moon is further aspected by Mars, who signifies 02, 07 (both maraca). It is further aspected by Jupiter.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Sun is badhka for Libra lagna. Hence Venus (01, 08) has become weak to give good longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Saturn is posited in the badhaka bhava and aspects Mars who is in lagna, causing destruction under given scenario.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Mars is posited in lagna and is in the star of Rahu, who could cause blast. The lagn·a and 08th have become weak and they are connected to 06th and Mars who are also connected to maraca and badhaka. Under these conditions injury and death by a weapon took place for President Garfield. The period of Jup-Sun-Mars should signify maraca or badhaka I when connected to lagna (self), 06 (injury) and 08th (longevity). Dasha lord Jupiter is in Mars star and hence totally signifies 01 (body), 02 (maraca), 06 (enemy and injury), 07 (maraca) houses. James Abram Garfield 33 Bhukti lord Sun is in 2nd house,",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Dasha lord Jupiter is in Mars star and hence totally signifies 01 (body), 02 (maraca), 06 (enemy and injury), 07 (maraca) houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Bhukti lord Sun is in 2nd house, being lord of 11th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Antara lord Mars is lord of 02, and 07 (maraca), posited in lagna and aspects 081h house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "lagna and 08th are weak and connected to 06th and Mars along with maraca and badhaka, one could die in a battle or through weapon.",
+      "condition_type_guess": "lagna_8th_weakness",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-001"
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Lagna lord and 8th lord Venus is under aspect of Jupiter.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-014",
+      "verbatim": "dictum is that when lagna and 08th are weak and connected to 06th and Mars along with maraca and badhaka, one could die in a battle or through weapon.",
+      "condition_type_guess": "author_dictum",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-001"
+    },
+    {
+      "obs_id": "obs-015",
+      "verbatim": "fortunately, the President was shot at on July 2, 1881, at 9:30a.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

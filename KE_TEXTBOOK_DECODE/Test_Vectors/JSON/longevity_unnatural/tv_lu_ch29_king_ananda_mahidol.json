@@ -1,0 +1,246 @@
+{
+  "vector_id": "tv-lu-ch29",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch29_King_Ananda_Mahidol",
+  "pdf_path": "Chapter_Splits/Ch29_King_Ananda_Mahidol.pdf",
+  "subject": {
+    "name": "King Ananda Mahidol",
+    "description": "King of Thailand",
+    "nationality": "Thai"
+  },
+  "birth_data": {
+    "date": "1925-09-20",
+    "time_local": "01:45:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1925-09-19T23:45:00Z",
+    "latitude": 49.4167,
+    "longitude": 8.7167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-43-22.81",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 4.6833,
+      "house": 1,
+      "nakshatra": "Push",
+      "pada": 1,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 3.7667,
+      "house": 3,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "significations": [
+        2,
+        3
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 25.05,
+      "house": 3,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "significations": [
+        1,
+        3,
+        5,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 1.6,
+      "house": 3,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "significations": [
+        3,
+        5,
+        10,
+        2
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 19.7167,
+      "house": 2,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        12,
+        3,
+        2,
+        4,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 20.1333,
+      "house": 6,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        6,
+        9,
+        4,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 11.9167,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        4,
+        11,
+        1,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 18.5833,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": [
+        7,
+        8,
+        4,
+        "Ra"
+      ]
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 9.0333,
+      "house": 1,
+      "nakshatra": "Push",
+      "pada": 2,
+      "significations": [
+        1,
+        "Sa",
+        "Mo"
+      ]
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 9.0333,
+      "house": 7,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        7,
+        "Sa",
+        "Su"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "injury",
+    "death_type": "unknown",
+    "death_date": "1946-06-09",
+    "age_at_death": 21,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "SUN",
+      "pratyantardasha": "MOON",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Rahu-Sun-Moon-Saturn. Rahu signifies Mars (due to Moon's connection) and Saturn (Pushya). Hence 01, 08 have come into th"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is falling in the star of maraca Saturn. .",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna is occupied by Rahu, who is in maraca Saturn star, Pushya.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Badhka Venus is posited in Rahu star Swati, while Rahu is an occupant of lagna. Hence Venus becomes a significator of badhka and lagna, making the lagna weak.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Of the 09 planets, Sun, ·Mercury, Venus, Mars, Jupiter, Saturn, Rahu and Ketu do signify either maraca or badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "081h bhava star lord is Mars. Mars is in 03rd house, but is strongly signifies 02 (in Sun's star) due to the fact is that star lord Sun is in own star.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "081h lord Saturn signifies lagna, O?lh and is conjoined with badhaka Venus. .~ Lagna lord Moon is in Mars star Chitra and is conjoined with Mars. Mars is aspecting 061h house and its lord Jupiter. 081h bhava falls in Dhanishta and its lord is Mars. Hence Mars is connected to 01, 06, 08 hquses. The proximity between Mars and Saturn are to be considered as a point, especially when star lord of Saturn is Rahu, who signifies Moon, while Moon is.in Mars star. Hence the lagna and 081h became weak and Mars is connected to 01, 06 and 08 houses. All these combinations proved very much negative for good",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

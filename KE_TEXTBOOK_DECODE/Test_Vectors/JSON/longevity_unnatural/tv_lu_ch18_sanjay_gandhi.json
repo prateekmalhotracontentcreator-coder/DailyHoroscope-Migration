@@ -1,0 +1,232 @@
+{
+  "vector_id": "tv-lu-ch18",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch18_Sanjay_Gandhi",
+  "pdf_path": "Chapter_Splits/Ch18_Sanjay_Gandhi.pdf",
+  "subject": {
+    "name": "Sanjay Gandhi",
+    "description": "Indian Parliamentarian, son of Indira Gandhi",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1946-12-14",
+    "time_local": "09:27:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 18.9667,
+    "longitude": 72.8333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-01-10.25",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 1.7,
+      "house": 1,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 28.55,
+      "house": 11,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        8,
+        11,
+        6,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 12.5833,
+      "house": 8,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        7,
+        8,
+        11,
+        "Ke"
+      ]
+    },
+    "MARS": {
+      "sign": "Sagittarius",
+      "degree": 4.5,
+      "house": 12,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        11,
+        12,
+        4,
+        "Ke"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 8.4167,
+      "house": 11,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "significations": [
+        6,
+        9,
+        11,
+        1,
+        2,
+        7
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 23.9833,
+      "house": 10,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "significations": [
+        3,
+        12,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 24.75,
+      "house": 10,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "significations": [
+        5,
+        10,
+        12,
+        3
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 15.35,
+      "house": 7,
+      "nakshatra": "Push",
+      "pada": 4,
+      "significations": [
+        1,
+        2,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 18.0667,
+      "house": 5,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        "OS",
+        "Mo",
+        "Me",
+        "Su",
+        "Ve"
+      ]
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 18.0667,
+      "house": 11,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        11,
+        "Me",
+        "Su",
+        "Ma"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in an air accident on 23 June 1980",
+    "death_type": "violent",
+    "death_date": "1980-06-23",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "MOON",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "SATURN",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Moon Mercury-Saturn-Venus. Dasha lord Moon signifies maraca, longevity and badhaka. Hence Moon is very dangerous who got"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Moon signifies maraca, longevity and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Mercury signifies 06 (injury), badhaka and lagna, besides air flights.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Saturn signifies lagna and maraca.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sookshma lord Venus signifies vehicles in general, is in an airy sign, Libra.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

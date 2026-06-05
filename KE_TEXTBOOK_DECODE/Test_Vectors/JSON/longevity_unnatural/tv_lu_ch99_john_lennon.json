@@ -1,0 +1,220 @@
+{
+  "vector_id": "tv-lu-ch99",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch99_John_Lennon",
+  "pdf_path": "Chapter_Splits/Ch99_John_Lennon.pdf",
+  "subject": {
+    "name": "John Lennon",
+    "description": "Musician, Co-founder of The Beatles",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": "1940-10-09",
+    "time_local": "18:30:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1940-10-09T17:30:00Z",
+    "latitude": 53.4167,
+    "longitude": -3.0,
+    "place": "Liverpool, UK",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-55-59.66",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Pisces",
+    "moon_sign_stated_in_book": "Capricorn",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Pisces",
+      "degree": 26.75,
+      "house": 1,
+      "nakshatra": "a",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 23.3333,
+      "house": 7,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "significations": [
+        6,
+        7,
+        2,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 10.6,
+      "house": 11,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        5,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 9.7333,
+      "house": 7,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "significations": [
+        2,
+        9,
+        6,
+        7
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 15.6167,
+      "house": 8,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        4,
+        7,
+        8,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 10.2833,
+      "house": 6,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        3,
+        8,
+        6,
+        "Ke"
+      ]
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 20.2667,
+      "house": 2,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        11,
+        12,
+        2,
+        3,
+        6,
+        8
+      ]
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 17.6333,
+      "house": 7,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        5,
+        11,
+        7,
+        "Ma",
+        "Su",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 17.6333,
+      "house": 1,
+      "nakshatra": "Reva",
+      "pada": 1,
+      "significations": [
+        1,
+        "Ju",
+        "Me",
+        "Ma",
+        "Su"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 13.6667,
+      "house": 7,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        "Moon"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "violent",
+    "death_date": "1980-12-08",
+    "age_at_death": 40,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "MOON",
+      "sookshma": "MOON",
+      "stated_by_author": true,
+      "raw_text": "Jupiter-Mercury-Moon. The period purely deals with lagna, longevity, maraca, badhaka, injury, enemy, etc. because of the"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord was in Virgo, which is the natal maraca and badhaka hous~.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "longevity is shall be gravely afflicted and the native could get killed by a weapon.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "fortunately, he was shot by Mark David Chapman at the entrance of the building where he lived, in New York City, on Monday, 08 Dec 1980 when Lennon had returned from a Record Studio.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

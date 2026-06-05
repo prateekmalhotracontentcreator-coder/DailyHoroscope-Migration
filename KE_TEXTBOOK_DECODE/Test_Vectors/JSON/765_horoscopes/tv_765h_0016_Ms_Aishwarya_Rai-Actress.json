@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0016",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0016",
+  "source_file": "0016_A-7_Ms_Aishwarya_Rai-Actress.pdf",
+  "subject": {
+    "name": "Ms Aishwarya Rai",
+    "name_from_filename": "Ms Aishwarya Rai-Actress",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Actress",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1973-11-01",
+    "time_local": "04:05",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1973-11-01T22:35:00Z",
+    "latitude": 12.9,
+    "longitude": 74.85,
+    "place": "74E51 & 12N 54",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 10,
+    "months": 4,
+    "days": 15,
+    "raw_text": "Balance of dasha Ven 10-4-15"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 6.1833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 5.8833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 11.05,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 10.5667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 1.5,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 6.1833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 2.9333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 14.8667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 19.5833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Actress",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

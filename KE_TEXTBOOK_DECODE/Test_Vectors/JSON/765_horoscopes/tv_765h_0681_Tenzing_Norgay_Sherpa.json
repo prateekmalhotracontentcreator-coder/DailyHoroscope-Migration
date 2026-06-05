@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0681",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0681",
+  "source_file": "0681_T-10_Tenzing_Norgay_Sherpa.pdf",
+  "subject": {
+    "name": "Tenzing Norgay Sherpa",
+    "name_from_filename": "Tenzing Norgay Sherpa",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Director",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1914-06-01",
+    "time_local": "08:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1914-06-01T03:00:00Z",
+    "latitude": 21.8333,
+    "longitude": 86.65,
+    "place": "86E39 & 21N 50",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 1,
+    "months": 8,
+    "days": 21,
+    "raw_text": "Balance of dasha Ket 1-8-21"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 17.0333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 3.3667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 10.5833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 14.35,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 17.8167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 10.05,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 17.8167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 10.5833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Director",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

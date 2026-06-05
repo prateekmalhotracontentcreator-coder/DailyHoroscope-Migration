@@ -1,0 +1,85 @@
+{
+  "vector_id": "tv-765h-0524",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0524",
+  "source_file": "0524_P-35_Pope_Benedict-XVI.pdf",
+  "subject": {
+    "name": "Pope Benedict-XVI",
+    "name_from_filename": "Pope Benedict-XVI",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1927-04-16",
+    "time_local": "04:06",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1927-04-16T22:36:00Z",
+    "latitude": 48.25,
+    "longitude": 12.8333,
+    "place": "12E50 & 48N15",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 1,
+    "months": 3,
+    "days": 27,
+    "raw_text": "Balance of dasha Mon 1-3-27"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 6.6167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 8.5667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 21.6333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 27.7167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 8.5667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 21.6333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

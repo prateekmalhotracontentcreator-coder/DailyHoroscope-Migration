@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0344",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0344",
+  "source_file": "0344_K-17_Kapoor_SN.pdf",
+  "subject": {
+    "name": "Kapoor SN",
+    "name_from_filename": "Kapoor SN",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "President",
+    "profession_compound": false,
+    "profession_secondary": "Judiciary_Law",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1940-09-12",
+    "time_local": "01:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1940-09-12T19:50:00Z",
+    "latitude": 27.9,
+    "longitude": 79.95,
+    "place": "79E57 & 27N54",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 3,
+    "months": 5,
+    "days": 26,
+    "raw_text": "Balance of dasha Sun 3-5-26"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 21.5333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 18.0333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 26.15,
+      "retrograde": true
+    },
+    "VENUS": {
+      "degree_in_sign": 10.1,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 21.7333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 25.8833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 2.3167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 18.0333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "President",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

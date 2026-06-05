@@ -1,0 +1,292 @@
+{
+  "vector_id": "tv-300h2-ch107",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch107_106_Finance_Director",
+  "pdf_path": "Chapters/Ch107_106_Finance_Director.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Finance Director-High Salary",
+    "description": "The following chart belongs to one person, who was Finance Director in a medium sized private Company.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "08:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 18.1167,
+    "longitude": 83.4167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "lagna_degree_stated": 29.931,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Leo",
+      "degree": 19.511,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        10,
+        3
+      ],
+      "significations_raw": "01,10,03"
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 27.984,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        12,
+        2,
+        4,
+        9
+      ],
+      "significations_raw": "12,02,04,09"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 6.871,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        2,
+        4,
+        9
+      ],
+      "significations_raw": "01,02 04,09"
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 8.573,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        1,
+        10,
+        8
+      ],
+      "significations_raw": "02,01,10,Ke 08"
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 2.168,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        4,
+        5,
+        8
+      ],
+      "significations_raw": "04,05 08"
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 11.985,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        3,
+        10,
+        1,
+        8
+      ],
+      "significations_raw": "03,10,01 ,Ke 08"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 11.722,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ju,Sa,Ma,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Anonymous Case",
+    "profession_category": "Special_Case",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Special_Case",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Venus and Sun are in lagna, while Ketu offers result of Jupiter and 0200 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "These combinations made.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "native to be at high level and became Finance Director of a Company.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars is in 0200 house with Moon and Rahu and Ketu offers result of 02 and 08 (Jupiter), indicate corruption or unscrupulous earnings.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "But 10 lord Venus is in star of Ketu (08, exit).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "When VMD of Saturn-Saturn arrived with that of saade-saath, native had a humiliating end to his career.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "NAIRS PUBUSHING HOUSE, HYDERABAD Page# 143",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

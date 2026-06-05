@@ -1,0 +1,2205 @@
+[
+  {
+    "rule_id": "num-ch17-001",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Gemstone Purification Process — Universal Prerequisite",
+    "summary": "Before wearing any numerological gemstone, purify it by soaking in ghee, honey, or a mixture of both for a couple of days, then in raw cow milk for a few hours. This removes accumulated negative vibrations from prior handling.",
+    "full_text": "A gemstone may have passed through many hands before reaching the wearer and may have accumulated negative vibrations. To cleanse it completely: dip the ring or pendant with the gemstone in ghee, honey, or a mixture of both for a couple of days. Remove it and then dip it in raw cow milk for a few hours. This two-stage purification process — oily medium followed by milk — is considered to completely cleanse the gemstone of prior vibrational imprints. This process is a universal prerequisite for all numerological gemstone recommendations before the energization step.",
+    "tags": [
+      "foundation",
+      "gemstone",
+      "purification",
+      "ghee",
+      "honey",
+      "cow_milk",
+      "universal_rule"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "basic_number",
+      "numbers_involved": [],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "natal_trait",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "medium",
+    "result": {
+      "effect": "Purification removes accumulated negative vibrations; mandatory before wearing any gemstone",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-purification"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "A gemstone may have passed through many hands before reaching the wearer and may have accumulated negative vibrations. To cleanse it completely: dip the ring or pendant with the gemstone in ghee, honey, or a mixture of both for a couple of days. Remove it and then dip it in raw cow milk for a few hours. This two-stage purification process — oily medium followed by milk — is considered to completely cleanse the gemstone of prior vibrational imprints. This process is a universal prerequisite for all numerological gemstone recommendations before the energization step.",
+      "summary": "Before wearing any numerological gemstone, purify it by soaking in ghee, honey, or a mixture of both for a couple of days, then in raw cow milk for a few hours. This removes accumulated negative vibrations from prior handling."
+    }
+  },
+  {
+    "rule_id": "num-ch17-002",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Gemstone Weight Rule — Minimum 1/12th to 1/10th of Body Weight in Carats",
+    "summary": "The gemstone should weigh a minimum of 1/12th to 1/10th of the wearer's body weight in kg, expressed in carats. Example: 60 kg body weight = minimum 5–6 carat gemstone.",
+    "full_text": "For desired results, the gemstone should weigh according to the weight of the native. In general, it is advised to wear a stone of a minimum of 1/12th or 1/10th of the total body mass (in kg) of the wearer, expressed in carats. For example, if the wearer weighs 60 kg, they should wear a gemstone of at least 5 or 6 carats (60 ÷ 12 = 5; 60 ÷ 10 = 6). This weight rule ensures sufficient vibrational potency. A lighter stone may lack the mass necessary to exert a meaningful energetic influence. This is a universal weight guideline applicable to all numerological gemstone recommendations.",
+    "tags": [
+      "foundation",
+      "gemstone",
+      "weight",
+      "carats",
+      "body_weight",
+      "universal_rule"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "basic_number",
+      "numbers_involved": [],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "natal_trait",
+    "claim_polarity": "neutral",
+    "timing_bias": "sustained",
+    "strength_band": "medium",
+    "result": {
+      "effect": "Minimum carat weight = body_weight_kg ÷ 12; optimal = body_weight_kg ÷ 10; applies to all gemstones",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-weight"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For desired results, the gemstone should weigh according to the weight of the native. In general, it is advised to wear a stone of a minimum of 1/12th or 1/10th of the total body mass (in kg) of the wearer, expressed in carats. For example, if the wearer weighs 60 kg, they should wear a gemstone of at least 5 or 6 carats (60 ÷ 12 = 5; 60 ÷ 10 = 6). This weight rule ensures sufficient vibrational potency. A lighter stone may lack the mass necessary to exert a meaningful energetic influence. This is a universal weight guideline applicable to all numerological gemstone recommendations.",
+      "summary": "The gemstone should weigh a minimum of 1/12th to 1/10th of the wearer's body weight in kg, expressed in carats. Example: 60 kg body weight = minimum 5–6 carat gemstone."
+    }
+  },
+  {
+    "rule_id": "num-ch17-003",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Gemstone Energization Process — Universal Activation Ritual",
+    "summary": "After purification, energize the gemstone by placing it in a new bowl, performing regular puja, and chanting the prescribed mantra for each stone 108 times. Then wear it immediately. Each gemstone has its own specific mantra.",
+    "full_text": "Subsequent to the completion of the purification process, the activation or energization ritual must be performed. Place the ring or pendant in a new bowl, conduct the regular puja, and pray to the respective Lord or Guru by chanting the prescribed holy Guru mantra 108 times. Then wear the jewellery immediately. The mantra to be chanted is specific to each gemstone and is provided under each individual number's prescription. This energization step charges the gemstone with the vibrational intention of the wearer and activates its planetary energy before it enters use.",
+    "tags": [
+      "foundation",
+      "gemstone",
+      "energization",
+      "mantra",
+      "puja",
+      "108_times",
+      "universal_rule"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "basic_number",
+      "numbers_involved": [],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "natal_trait",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "medium",
+    "result": {
+      "effect": "Energization activates gemstone; new bowl + puja + 108 mantra chants + immediate wearing; number-specific mantra used",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-energization"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Subsequent to the completion of the purification process, the activation or energization ritual must be performed. Place the ring or pendant in a new bowl, conduct the regular puja, and pray to the respective Lord or Guru by chanting the prescribed holy Guru mantra 108 times. Then wear the jewellery immediately. The mantra to be chanted is specific to each gemstone and is provided under each individual number's prescription. This energization step charges the gemstone with the vibrational intention of the wearer and activates its planetary energy before it enters use.",
+      "summary": "After purification, energize the gemstone by placing it in a new bowl, performing regular puja, and chanting the prescribed mantra for each stone 108 times. Then wear it immediately. Each gemstone has its own specific mantra."
+    }
+  },
+  {
+    "rule_id": "num-ch17-004",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 1 Gemstone — Red Ruby or Golden/Yellow Topaz (Sun)",
+    "summary": "Basic Number 1 (born on 1, 10, 19, 28): Red Ruby — right hand ring finger, silver or gold, Shukla Paksha Sunday morning, mantra: Om Suryah Namaha. Golden/Yellow Topaz — right hand index or middle finger, gold/silver/Panchdhatu, Shukla Paksha Thursday morning, mantra: Om em kleem brihaspataye namaha or Om Suryah Namaha.",
+    "full_text": "For Basic Number 1 (born on dates 1, 10, 19, or 28): two gemstone options are prescribed. (1) Red Ruby: wear on the right hand ring finger; metal: silver or gold; day: Shukla Paksha (waxing moon) Sunday morning; mantra: 'Om Suryah Namaha'. (2) Golden or Yellow Topaz: wear on the right hand index finger or middle finger; metal: gold, silver, or Panchdhatu; day: Shukla Paksha Thursday morning; mantra: 'Om em kleem brihaspataye namaha' or 'Om Suryah Namaha'. Both gemstones are associated with the Sun (Number 1's ruling planet) and amplify Sun energy — leadership, authority, vitality, and clarity.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_1",
+      "basic_number",
+      "sun",
+      "red_ruby",
+      "golden_topaz",
+      "shukla_paksha"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        1
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Red Ruby (ring finger, silver/gold, Sunday Shukla Paksha, Om Suryah Namaha) or Golden Topaz (index/middle, gold/silver/Panchdhatu, Thursday Shukla Paksha)",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-1"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 1 (born on dates 1, 10, 19, or 28): two gemstone options are prescribed. (1) Red Ruby: wear on the right hand ring finger; metal: silver or gold; day: Shukla Paksha (waxing moon) Sunday morning; mantra: 'Om Suryah Namaha'. (2) Golden or Yellow Topaz: wear on the right hand index finger or middle finger; metal: gold, silver, or Panchdhatu; day: Shukla Paksha Thursday morning; mantra: 'Om em kleem brihaspataye namaha' or 'Om Suryah Namaha'. Both gemstones are associated with the Sun (Number 1's ruling planet) and amplify Sun energy — leadership, authority, vitality, and clarity.",
+      "summary": "Basic Number 1 (born on 1, 10, 19, 28): Red Ruby — right hand ring finger, silver or gold, Shukla Paksha Sunday morning, mantra: Om Suryah Namaha. Golden/Yellow Topaz — right hand index or middle finger, gold/silver/Panchdhatu, Shukla Paksha Thursday morning, mantra: Om em kleem brihaspataye namaha or Om Suryah Namaha."
+    }
+  },
+  {
+    "rule_id": "num-ch17-005",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 2 Gemstone — White Pearl or Moonstone (Moon)",
+    "summary": "Basic Number 2 (born on 2, 11, 20, 29): White Pearl or Moonstone (same process for both) — right hand little finger, silver, Shukla Paksha Monday morning, mantra: Om Soum Somaye Namah.",
+    "full_text": "For Basic Number 2 (born on dates 2, 11, 20, or 29): White Pearl or Moonstone are prescribed — the same wearing process applies to both. Wear on the right hand little finger; metal: silver only; day: Shukla Paksha (waxing moon) Monday morning; mantra: 'Om Soum Somaye Namah'. Both stones are associated with the Moon (Number 2's ruling planet) and amplify lunar energy — intuition, emotional sensitivity, cooperation, and nurturing capacity.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_2",
+      "basic_number",
+      "moon",
+      "white_pearl",
+      "moonstone",
+      "shukla_paksha"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        2
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "White Pearl or Moonstone (little finger, silver, Monday Shukla Paksha, Om Soum Somaye Namah)",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-2"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 2 (born on dates 2, 11, 20, or 29): White Pearl or Moonstone are prescribed — the same wearing process applies to both. Wear on the right hand little finger; metal: silver only; day: Shukla Paksha (waxing moon) Monday morning; mantra: 'Om Soum Somaye Namah'. Both stones are associated with the Moon (Number 2's ruling planet) and amplify lunar energy — intuition, emotional sensitivity, cooperation, and nurturing capacity.",
+      "summary": "Basic Number 2 (born on 2, 11, 20, 29): White Pearl or Moonstone (same process for both) — right hand little finger, silver, Shukla Paksha Monday morning, mantra: Om Soum Somaye Namah."
+    }
+  },
+  {
+    "rule_id": "num-ch17-006",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 3 Gemstone — Amethyst or Yellow Sapphire/Yellow Topaz (Jupiter)",
+    "summary": "Basic Number 3 (born on 3, 12, 21, 30): Amethyst — right hand middle finger, silver only (yellow gold strictly prohibited), Krishna Paksha Saturday morning or evening, mantra: Om Sham Shanishcharaya Namah. Yellow Sapphire or Yellow Topaz — right hand index finger, gold/silver/Panch Dhatu, Shukla Paksha Thursday morning, mantra: Om Brim Brihaspataye Namah.",
+    "full_text": "For Basic Number 3 (born on dates 3, 12, 21, or 30): two gemstone options are prescribed. (1) Amethyst: wear on the right hand middle finger; metal: silver only — yellow gold is strictly prohibited to be paired with amethyst; day: Saturday morning or evening during Krishna Paksha (descending/waning moon); mantra: 'Om Sham Shanishcharaya Namah'. (2) Yellow Sapphire or Yellow Topaz: wear on the right hand index finger; metal: gold, silver, or Panch Dhatu; day: Thursday morning during Shukla Paksha (waxing moon); mantra: 'Om Brim Brihaspataye Namah'. NOTE: The Amethyst prescription uses Saturn's mantra (Shanishcharaya) — flagged for human review as this may reflect an intentional dual-planet approach or a source encoding anomaly. Yellow Sapphire/Topaz is the standard Jupiter (Number 3) gemstone.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_3",
+      "basic_number",
+      "jupiter",
+      "amethyst",
+      "yellow_sapphire",
+      "krishna_paksha",
+      "shukla_paksha",
+      "human_review_flag"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        3
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Amethyst (middle finger, silver only, Saturday Krishna Paksha, Om Sham Shanishcharaya Namah) or Yellow Sapphire (index, gold/silver/Panch Dhatu, Thursday Shukla Paksha, Om Brim Brihaspataye Namah)",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-3"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 3 (born on dates 3, 12, 21, or 30): two gemstone options are prescribed. (1) Amethyst: wear on the right hand middle finger; metal: silver only — yellow gold is strictly prohibited to be paired with amethyst; day: Saturday morning or evening during Krishna Paksha (descending/waning moon); mantra: 'Om Sham Shanishcharaya Namah'. (2) Yellow Sapphire or Yellow Topaz: wear on the right hand index finger; metal: gold, silver, or Panch Dhatu; day: Thursday morning during Shukla Paksha (waxing moon); mantra: 'Om Brim Brihaspataye Namah'. NOTE: The Amethyst prescription uses Saturn's mantra (Shanishcharaya) — flagged for human review as this may reflect an intentional dual-planet approach or a source encoding anomaly. Yellow Sapphire/Topaz is the standard Jupiter (Number 3) gemstone.",
+      "summary": "Basic Number 3 (born on 3, 12, 21, 30): Amethyst — right hand middle finger, silver only (yellow gold strictly prohibited), Krishna Paksha Saturday morning or evening, mantra: Om Sham Shanishcharaya Namah. Yellow Sapphire or Yellow Topaz — right hand index finger, gold/silver/Panch Dhatu, Shukla Paksha Thursday morning, mantra: Om Brim Brihaspataye Namah."
+    }
+  },
+  {
+    "rule_id": "num-ch17-007",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 4 Gemstone — Gomed (Rahu)",
+    "summary": "Basic Number 4 (born on 4, 13, 22, 31): Gomed (Hessonite Garnet) — middle finger of right hand, silver, Krishna Paksha Saturday evening, mantra: Om Rang Rahave Namaha.",
+    "full_text": "For Basic Number 4 (born on dates 4, 13, 22, or 31): Gomed (Hessonite Garnet) is prescribed. Wear on the middle finger of the right hand; metal: silver; time: Saturday evening during Krishna Paksha (waning moon); mantra: 'Om Rang Rahave Namaha'. Gomed is associated with Rahu (Number 4's ruling planet) and is worn to harness Rahu's energy for structure, organisation, and directional focus — addressing Number 4's characteristic challenges with routine and execution.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_4",
+      "basic_number",
+      "rahu",
+      "gomed",
+      "hessonite",
+      "krishna_paksha"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        4
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Gomed (middle finger, silver, Saturday evening Krishna Paksha, Om Rang Rahave Namaha)",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-4"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 4 (born on dates 4, 13, 22, or 31): Gomed (Hessonite Garnet) is prescribed. Wear on the middle finger of the right hand; metal: silver; time: Saturday evening during Krishna Paksha (waning moon); mantra: 'Om Rang Rahave Namaha'. Gomed is associated with Rahu (Number 4's ruling planet) and is worn to harness Rahu's energy for structure, organisation, and directional focus — addressing Number 4's characteristic challenges with routine and execution.",
+      "summary": "Basic Number 4 (born on 4, 13, 22, 31): Gomed (Hessonite Garnet) — middle finger of right hand, silver, Krishna Paksha Saturday evening, mantra: Om Rang Rahave Namaha."
+    }
+  },
+  {
+    "rule_id": "num-ch17-008",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 5 Gemstone — Emerald, Diamond, or Zircon (Mercury)",
+    "summary": "Basic Number 5 (born on 5, 14, 23): Emerald (gold or silver) or Diamond (silver) or Zircon (silver). Diamond on ring or middle finger of working hand; Emerald on little finger (preferred) or ring finger. Shukla Paksha Wednesday morning 6–9 am, mantra: Om Budh Budhaye Namaha.",
+    "full_text": "For Basic Number 5 (born on dates 5, 14, or 23): three gemstone options are prescribed — Emerald, Diamond, or Zircon. Metals: Emerald in gold or silver; Diamond in silver; Zircon in silver. Finger placement: Diamond should be worn on the ring finger or middle finger of the working hand; Emerald can be worn on the little finger (preferably) or the ring finger. Time: Wednesday morning between 6 and 9 am during Shukla Paksha (waxing moon); mantra: 'Om Budh Budhaye Namaha'. All three stones are associated with Mercury (Number 5's ruling planet) and strengthen communicative, intellectual, and adaptive qualities.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_5",
+      "basic_number",
+      "mercury",
+      "emerald",
+      "diamond",
+      "zircon",
+      "shukla_paksha"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        5
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Emerald/Diamond/Zircon; Diamond on ring or middle finger (working hand), Emerald on little or ring finger; Wednesday Shukla Paksha 6–9am; Om Budh Budhaye Namaha",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-5"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 5 (born on dates 5, 14, or 23): three gemstone options are prescribed — Emerald, Diamond, or Zircon. Metals: Emerald in gold or silver; Diamond in silver; Zircon in silver. Finger placement: Diamond should be worn on the ring finger or middle finger of the working hand; Emerald can be worn on the little finger (preferably) or the ring finger. Time: Wednesday morning between 6 and 9 am during Shukla Paksha (waxing moon); mantra: 'Om Budh Budhaye Namaha'. All three stones are associated with Mercury (Number 5's ruling planet) and strengthen communicative, intellectual, and adaptive qualities.",
+      "summary": "Basic Number 5 (born on 5, 14, 23): Emerald (gold or silver) or Diamond (silver) or Zircon (silver). Diamond on ring or middle finger of working hand; Emerald on little finger (preferred) or ring finger. Shukla Paksha Wednesday morning 6–9 am, mantra: Om Budh Budhaye Namaha."
+    }
+  },
+  {
+    "rule_id": "num-ch17-009",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 6 Gemstone — Green Emerald or Turquoise Blue (Venus)",
+    "summary": "Basic Number 6 (born on 6, 15, 24): Green Emerald or Turquoise Blue — ring finger; Emerald in gold/silver/Panchdhatu, Turquoise in silver; Friday morning 5–9 am; mantra: Om Sah Shukraye Namah; Shukla Paksha.",
+    "full_text": "For Basic Number 6 (born on dates 6, 15, or 24): Green Emerald or Turquoise Blue are prescribed. Metal: gold, silver, or Panchdhatu for Emerald; silver for Turquoise Blue. Finger: ring finger (for both). Day: Friday morning between 5 and 9 am; mantra: 'Om Sah Shukraye Namah'. Paksha: Shukla Paksha (GAI-confirmed, Issue 17-B, 2026-06-04). Both stones are associated with Venus (Number 6's ruling planet) and amplify Venusian qualities — beauty, creativity, relationships, and material comfort.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_6",
+      "basic_number",
+      "venus",
+      "green_emerald",
+      "turquoise",
+      "friday"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        6
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Green Emerald (gold/silver/Panchdhatu) or Turquoise Blue (silver); ring finger; Friday morning 5–9am; Om Sah Shukraye Namah (Paksha: Shukla)",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-6",
+      "paksha": "Shukla"
+    },
+    "patch_notes": [
+      "GAI Issue 17-B 2026-06-04: Number 6 Paksha confirmed as Shukla Paksha per Numerology_GAI Guidance.md."
+    ],
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 6 (born on dates 6, 15, or 24): Green Emerald or Turquoise Blue are prescribed. Metal: gold, silver, or Panchdhatu for Emerald; silver for Turquoise Blue. Finger: ring finger (for both). Day: Friday morning between 5 and 9 am; mantra: 'Om Sah Shukraye Namah'. Paksha: Shukla Paksha (GAI-confirmed, Issue 17-B, 2026-06-04). Both stones are associated with Venus (Number 6's ruling planet) and amplify Venusian qualities — beauty, creativity, relationships, and material comfort.",
+      "summary": "Basic Number 6 (born on 6, 15, 24): Green Emerald or Turquoise Blue — ring finger; Emerald in gold/silver/Panchdhatu, Turquoise in silver; Friday morning 5–9 am; mantra: Om Sah Shukraye Namah; Shukla Paksha."
+    }
+  },
+  {
+    "rule_id": "num-ch17-010",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 7 Gemstone — Cat's Eye (Ketu)",
+    "summary": "Basic Number 7 (born on 7, 16, 25): Cat's Eye — middle finger of right hand, silver or gold, Krishna Paksha Tuesday morning after sunrise, mantra: Aum Kem Ketave Namah.",
+    "full_text": "For Basic Number 7 (born on dates 7, 16, or 25): Cat's Eye (Lehsunia) is prescribed. Wear on the middle finger of the right hand; metal: silver or gold; time: Tuesday morning during Krishna Paksha (waning moon), after sunrise; mantra: 'Aum Kem Ketave Namah'. Cat's Eye is associated with Ketu (Number 7's ruling planet) and is worn to strengthen spiritual discernment, detachment, and introspective clarity.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_7",
+      "basic_number",
+      "ketu",
+      "cats_eye",
+      "krishna_paksha",
+      "tuesday"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        7
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Cat's Eye (middle finger, silver or gold, Tuesday morning Krishna Paksha after sunrise, Aum Kem Ketave Namah)",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-7"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 7 (born on dates 7, 16, or 25): Cat's Eye (Lehsunia) is prescribed. Wear on the middle finger of the right hand; metal: silver or gold; time: Tuesday morning during Krishna Paksha (waning moon), after sunrise; mantra: 'Aum Kem Ketave Namah'. Cat's Eye is associated with Ketu (Number 7's ruling planet) and is worn to strengthen spiritual discernment, detachment, and introspective clarity.",
+      "summary": "Basic Number 7 (born on 7, 16, 25): Cat's Eye — middle finger of right hand, silver or gold, Krishna Paksha Tuesday morning after sunrise, mantra: Aum Kem Ketave Namah."
+    }
+  },
+  {
+    "rule_id": "num-ch17-011",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 8 Gemstone — Blue Sapphire or Amethyst (Saturn)",
+    "summary": "Basic Number 8 (born on 8, 17, 26): Blue Sapphire or Amethyst — middle finger, silver ONLY, Saturday early morning or evening, mantra: Om Sham Shanicharaya Namah; Krishna Paksha.",
+    "full_text": "For Basic Number 8 (born on dates 8, 17, or 26): Blue Sapphire or Amethyst are prescribed. Wear on the middle finger; metal: silver ONLY (gold or other metals not permitted); time: Saturday, early morning or evening (Paksha: Krishna Paksha — GAI-confirmed, Issue 17-B, 2026-06-04); mantra: 'Om Sham Shanicharaya Namah'. Both stones are associated with Saturn (Number 8's ruling planet). Blue Sapphire is one of the most powerful Saturnine stones and must be worn with caution — it can produce strong results in either direction. The silver-only metal restriction for Number 8 is explicitly stated in the source and must be observed.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_8",
+      "basic_number",
+      "saturn",
+      "blue_sapphire",
+      "amethyst",
+      "saturday",
+      "silver_only"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        8
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Blue Sapphire or Amethyst (middle finger, silver ONLY, Saturday morning or evening, Om Sham Shanicharaya Namah) (Paksha: Krishna)",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-8",
+      "paksha": "Krishna"
+    },
+    "patch_notes": [
+      "GAI Issue 17-B 2026-06-04: Number 8 Paksha confirmed as Krishna Paksha per Numerology_GAI Guidance.md."
+    ],
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 8 (born on dates 8, 17, or 26): Blue Sapphire or Amethyst are prescribed. Wear on the middle finger; metal: silver ONLY (gold or other metals not permitted); time: Saturday, early morning or evening (Paksha: Krishna Paksha — GAI-confirmed, Issue 17-B, 2026-06-04); mantra: 'Om Sham Shanicharaya Namah'. Both stones are associated with Saturn (Number 8's ruling planet). Blue Sapphire is one of the most powerful Saturnine stones and must be worn with caution — it can produce strong results in either direction. The silver-only metal restriction for Number 8 is explicitly stated in the source and must be observed.",
+      "summary": "Basic Number 8 (born on 8, 17, 26): Blue Sapphire or Amethyst — middle finger, silver ONLY, Saturday early morning or evening, mantra: Om Sham Shanicharaya Namah; Krishna Paksha."
+    }
+  },
+  {
+    "rule_id": "num-ch17-012",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 9 Gemstone — Red Coral (Mars)",
+    "summary": "Basic Number 9 (born on 9, 18, 27): Red Coral — ring finger, silver or gold, Shukla Paksha Tuesday morning, mantra: Om Bhaum Bhaumaye Namah.",
+    "full_text": "For Basic Number 9 (born on dates 9, 18, or 27): Red Coral is prescribed. Wear on the ring finger; metal: silver or gold; day: Tuesday morning during Shukla Paksha (waxing moon); mantra: 'Om Bhaum Bhaumaye Namah'. Red Coral is associated with Mars (Number 9's ruling planet) and amplifies Martian qualities — courage, vitality, drive, and leadership. It is particularly beneficial for those whose Mars energy needs strengthening or stabilisation.",
+    "tags": [
+      "remedy",
+      "gemstone",
+      "number_9",
+      "basic_number",
+      "mars",
+      "red_coral",
+      "shukla_paksha",
+      "tuesday"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "basic_number_trait",
+      "numerology_layer": "correction",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        9
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "name_correction",
+    "claim_polarity": "positive",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Red Coral (ring finger, silver or gold, Tuesday morning Shukla Paksha, Om Bhaum Bhaumaye Namah)",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": "gemstone_remedy",
+      "remedy_available": true,
+      "remedy_ref_id": "num-ch17-number-9"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "For Basic Number 9 (born on dates 9, 18, or 27): Red Coral is prescribed. Wear on the ring finger; metal: silver or gold; day: Tuesday morning during Shukla Paksha (waxing moon); mantra: 'Om Bhaum Bhaumaye Namah'. Red Coral is associated with Mars (Number 9's ruling planet) and amplifies Martian qualities — courage, vitality, drive, and leadership. It is particularly beneficial for those whose Mars energy needs strengthening or stabilisation.",
+      "summary": "Basic Number 9 (born on 9, 18, 27): Red Coral — ring finger, silver or gold, Shukla Paksha Tuesday morning, mantra: Om Bhaum Bhaumaye Namah."
+    }
+  },
+  {
+    "rule_id": "num-ch17-013",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 17,
+      "chapter_name": "Gemstone Numerology",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Gemstone Disclaimer — Numerology and Astrology Must Both Be Verified Before Recommending",
+    "summary": "Gemstone suggestion is difficult — numerology-based recommendations may directly contradict astrology-based ones. Both systems (birth chart: planet positions, rashi, nakshatra, Vimshottari dasha; and numerology: Basic Number, Destiny Number) must be verified before any gemstone is prescribed.",
+    "full_text": "Gemstone therapy or gemstone suggestion is very difficult since it requires knowledge of both numerology and astrology. There are cases where the gemstone suggested by numerology is exactly opposite to the astrology-based suggestion. Therefore, both astrological factors — such as the position of the planets in the horoscope, the ruling lord and planet, rashi, nakshatra, Vimshottari dasha — and numerological factors — such as birth (Basic) number and destiny number — must be considered and verified very carefully and thoroughly before suggesting any gemstone. This disclaimer is the final statement in the chapter and applies to all nine gemstone prescriptions. The engine must not present any numerological gemstone as a definitive recommendation without noting the need for astrological cross-verification.",
+    "tags": [
+      "foundation",
+      "gemstone",
+      "disclaimer",
+      "astrology_crosscheck",
+      "vimshottari_dasha",
+      "caution",
+      "human_review_flag"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "basic_number",
+      "numbers_involved": [],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "destiny",
+    "claim_scope": "natal_trait",
+    "claim_polarity": "neutral",
+    "timing_bias": "sustained",
+    "strength_band": "high",
+    "result": {
+      "effect": "Numerology gemstone is a starting point only; must cross-verify with Vedic horoscope (dasha, rashi, nakshatra) before final prescription",
+      "severity": null,
+      "aayu_bucket": null,
+      "number_outcome": null,
+      "correction_type": null,
+      "remedy_available": false,
+      "remedy_ref_id": null
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Gemstone therapy or gemstone suggestion is very difficult since it requires knowledge of both numerology and astrology. There are cases where the gemstone suggested by numerology is exactly opposite to the astrology-based suggestion. Therefore, both astrological factors — such as the position of the planets in the horoscope, the ruling lord and planet, rashi, nakshatra, Vimshottari dasha — and numerological factors — such as birth (Basic) number and destiny number — must be considered and verified very carefully and thoroughly before suggesting any gemstone. This disclaimer is the final statement in the chapter and applies to all nine gemstone prescriptions. The engine must not present any numerological gemstone as a definitive recommendation without noting the need for astrological cross-verification.",
+      "summary": "Gemstone suggestion is difficult — numerology-based recommendations may directly contradict astrology-based ones. Both systems (birth chart: planet positions, rashi, nakshatra, Vimshottari dasha; and numerology: Basic Number, Destiny Number) must be verified before any gemstone is prescribed."
+    }
+  },
+  {
+    "rule_id": "num-ch18-001",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Donations as Numerology Remedy — Foundation and Scope",
+    "summary": "Donations are a primary remedy for missing or excess numbers in the Lo Shu Grid. When made with faith and a pure heart, simple donations can be more effective than expensive gemstones. Two remedy tiers are provided: number-specific donations and element-wise remedies.",
+    "full_text": "Donations play an important role both in Numerology and astrology. I have covered simple and effective donations in this chapter for the missing numbers and elements. Sometimes, these simple donations donated with faith and pure heart can be more effective and useful than expensive gemstones.",
+    "tags": [
+      "donation",
+      "remedy",
+      "missing_number",
+      "excess_number",
+      "lo_shu_grid",
+      "faith_prerequisite"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "universal",
+    "claim_polarity": "positive",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "scope": "Applies to numbers identified as missing OR excess in the Lo Shu Grid (Ch14/Ch06)",
+      "faith_prerequisite": true,
+      "faith_note": "Efficacy is conditional on sincerity and faith. This cannot be verified by the engine and must be communicated as a user-side condition.",
+      "remedy_tiers": [
+        "number_specific_donation",
+        "element_wise_remedy"
+      ],
+      "note": "Donations are positioned as cost-effective alternatives to gemstones (Ch17). Engine should present donations as a parallel remedy option alongside gemstone recommendations."
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Donations play an important role both in Numerology and astrology. I have covered simple and effective donations in this chapter for the missing numbers and elements. Sometimes, these simple donations donated with faith and pure heart can be more effective and useful than expensive gemstones.",
+      "summary": "Donations are a primary remedy for missing or excess numbers in the Lo Shu Grid. When made with faith and a pure heart, simple donations can be more effective than expensive gemstones. Two remedy tiers are provided: number-specific donations and element-wise remedies."
+    }
+  },
+  {
+    "rule_id": "num-ch18-002",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 1 — Donation Protocol",
+    "summary": "When Number 1 is missing or excess in the Lo Shu Grid, donate wheat, copper, ruby, red clothes, red flowers, saffron, and ghee on Sunday at a temple.",
+    "full_text": "Number 1 (Missing/Excess): Donate wheat, copper, ruby, red clothes, red flowers, saffron, ghee. Donation to be made on Sunday in a Temple.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_1",
+      "missing_number",
+      "sun",
+      "sunday",
+      "temple"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        1
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "sunday",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "wheat",
+        "copper",
+        "ruby",
+        "red clothes",
+        "red flowers",
+        "saffron",
+        "ghee"
+      ],
+      "donation_day": "Sunday",
+      "donation_recipient": "Temple",
+      "donation_time": null,
+      "ruling_planet": "Sun",
+      "associated_color": "red"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 1 (Missing/Excess): Donate wheat, copper, ruby, red clothes, red flowers, saffron, ghee. Donation to be made on Sunday in a Temple.",
+      "summary": "When Number 1 is missing or excess in the Lo Shu Grid, donate wheat, copper, ruby, red clothes, red flowers, saffron, and ghee on Sunday at a temple."
+    }
+  },
+  {
+    "rule_id": "num-ch18-003",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 2 — Donation Protocol",
+    "summary": "When Number 2 is missing or excess in the Lo Shu Grid, donate rice, milk, silver, pearl, curd, white clothes, and white flowers on Monday at a temple.",
+    "full_text": "Number 2 (Missing/Excess): Donate rice, milk, silver, pearl, curd, white clothes, white flowers. Donation to be made on Monday in a Temple.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_2",
+      "missing_number",
+      "moon",
+      "monday",
+      "temple"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        2
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "monday",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "rice",
+        "milk",
+        "silver",
+        "pearl",
+        "curd",
+        "white clothes",
+        "white flowers"
+      ],
+      "donation_day": "Monday",
+      "donation_recipient": "Temple",
+      "donation_time": null,
+      "ruling_planet": "Moon",
+      "associated_color": "white"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 2 (Missing/Excess): Donate rice, milk, silver, pearl, curd, white clothes, white flowers. Donation to be made on Monday in a Temple.",
+      "summary": "When Number 2 is missing or excess in the Lo Shu Grid, donate rice, milk, silver, pearl, curd, white clothes, and white flowers on Monday at a temple."
+    }
+  },
+  {
+    "rule_id": "num-ch18-004",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 3 — Donation Protocol",
+    "summary": "When Number 3 is missing or excess in the Lo Shu Grid, donate chana daal, gold, salt, haldi, gud, brown sugar, laddu, yellow cloth, and yellow flowers on Thursday at a temple.",
+    "full_text": "Number 3 (Missing/Excess): Donate chana daal, gold, salt, haldi, gud, brown sugar, laddu, yellow cloth, yellow flowers. Donation to be made on Thursday in a Temple.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_3",
+      "missing_number",
+      "jupiter",
+      "thursday",
+      "temple"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        3
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "thursday",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "chana daal",
+        "gold",
+        "salt",
+        "haldi",
+        "gud",
+        "brown sugar",
+        "laddu",
+        "yellow cloth",
+        "yellow flowers"
+      ],
+      "donation_day": "Thursday",
+      "donation_recipient": "Temple",
+      "donation_time": null,
+      "ruling_planet": "Jupiter",
+      "associated_color": "yellow"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 3 (Missing/Excess): Donate chana daal, gold, salt, haldi, gud, brown sugar, laddu, yellow cloth, yellow flowers. Donation to be made on Thursday in a Temple.",
+      "summary": "When Number 3 is missing or excess in the Lo Shu Grid, donate chana daal, gold, salt, haldi, gud, brown sugar, laddu, yellow cloth, and yellow flowers on Thursday at a temple."
+    }
+  },
+  {
+    "rule_id": "num-ch18-005",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 4 — Donation Protocol",
+    "summary": "When Number 4 is missing or excess in the Lo Shu Grid, donate blanket, radish, saffron, mixed 7 grains, coal, and blue clothes on Wednesday or Saturday evening to sweepers.",
+    "full_text": "Number 4 (Missing/Excess): Donate blanket, Raddish, Saffron, Mixed 7 grains, Coal, Blue clothes. Donate on Wednesday or Saturday to sweepers in evening.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_4",
+      "missing_number",
+      "rahu",
+      "wednesday",
+      "saturday",
+      "sweepers"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        4
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "wednesday_or_saturday_evening",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "blanket",
+        "radish",
+        "saffron",
+        "mixed 7 grains",
+        "coal",
+        "blue clothes"
+      ],
+      "donation_day": "Wednesday or Saturday",
+      "donation_recipient": "Sweepers",
+      "donation_time": "evening",
+      "ruling_planet": "Rahu",
+      "associated_color": "blue"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 4 (Missing/Excess): Donate blanket, Raddish, Saffron, Mixed 7 grains, Coal, Blue clothes. Donate on Wednesday or Saturday to sweepers in evening.",
+      "summary": "When Number 4 is missing or excess in the Lo Shu Grid, donate blanket, radish, saffron, mixed 7 grains, coal, and blue clothes on Wednesday or Saturday evening to sweepers."
+    }
+  },
+  {
+    "rule_id": "num-ch18-006",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 5 — Donation Protocol",
+    "summary": "When Number 5 is missing or excess in the Lo Shu Grid, donate green clothes, green vegetables, books, ghee, camphor, and spinach on Wednesday to students or deaf people.",
+    "full_text": "Number 5 (Missing/Excess): Donate green clothes, green vegetables, books, ghee, camphor, spinach. On Wednesday to students or deaf people.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_5",
+      "missing_number",
+      "mercury",
+      "wednesday",
+      "students"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        5
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "wednesday",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "green clothes",
+        "green vegetables",
+        "books",
+        "ghee",
+        "camphor",
+        "spinach"
+      ],
+      "donation_day": "Wednesday",
+      "donation_recipient": "Students or deaf people",
+      "donation_time": null,
+      "ruling_planet": "Mercury",
+      "associated_color": "green"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 5 (Missing/Excess): Donate green clothes, green vegetables, books, ghee, camphor, spinach. On Wednesday to students or deaf people.",
+      "summary": "When Number 5 is missing or excess in the Lo Shu Grid, donate green clothes, green vegetables, books, ghee, camphor, and spinach on Wednesday to students or deaf people."
+    }
+  },
+  {
+    "rule_id": "num-ch18-007",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 6 — Donation Protocol",
+    "summary": "When Number 6 is missing or excess in the Lo Shu Grid, donate rice, milk, curd, kheer, white clothes, sugar, white flowers, camphor, and silver on Friday to small girls.",
+    "full_text": "Number 6 (Missing/Excess): Donate rice, milk, curd, kheer, white clothes, sugar, white flowers, camphor, silver. On Friday to small girls.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_6",
+      "missing_number",
+      "venus",
+      "friday",
+      "girls"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        6
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "friday",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "rice",
+        "milk",
+        "curd",
+        "kheer",
+        "white clothes",
+        "sugar",
+        "white flowers",
+        "camphor",
+        "silver"
+      ],
+      "donation_day": "Friday",
+      "donation_recipient": "Small girls",
+      "donation_time": null,
+      "ruling_planet": "Venus",
+      "associated_color": "white"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 6 (Missing/Excess): Donate rice, milk, curd, kheer, white clothes, sugar, white flowers, camphor, silver. On Friday to small girls.",
+      "summary": "When Number 6 is missing or excess in the Lo Shu Grid, donate rice, milk, curd, kheer, white clothes, sugar, white flowers, camphor, and silver on Friday to small girls."
+    }
+  },
+  {
+    "rule_id": "num-ch18-008",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 7 — Donation Protocol",
+    "summary": "When Number 7 is missing or excess in the Lo Shu Grid, donate til, goat, calf, blanket, iron weapons, and grey-coloured materials on Thursday after sunset.",
+    "full_text": "Number 7 (Missing/Excess): Donate til, goat, calf, blanket, iron weapons, grey colored materials. On Thursday after sunset.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_7",
+      "missing_number",
+      "ketu",
+      "thursday",
+      "after_sunset"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        7
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "thursday_after_sunset",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "til",
+        "goat",
+        "calf",
+        "blanket",
+        "iron weapons",
+        "grey colored materials"
+      ],
+      "donation_day": "Thursday",
+      "donation_recipient": null,
+      "donation_time": "after sunset",
+      "ruling_planet": "Ketu",
+      "associated_color": "grey"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 7 (Missing/Excess): Donate til, goat, calf, blanket, iron weapons, grey colored materials. On Thursday after sunset.",
+      "summary": "When Number 7 is missing or excess in the Lo Shu Grid, donate til, goat, calf, blanket, iron weapons, and grey-coloured materials on Thursday after sunset."
+    }
+  },
+  {
+    "rule_id": "num-ch18-009",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 8 — Donation Protocol",
+    "summary": "When Number 8 is missing or excess in the Lo Shu Grid, donate black til, blanket, iron products, wool, and shoes on Saturday after sunset to a needy or handicapped person.",
+    "full_text": "Number 8 (Missing/Excess): Donate black til, blanket, iron products, wool, shoes. On Saturday after sunset to needy or handicapped person.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_8",
+      "missing_number",
+      "saturn",
+      "saturday",
+      "after_sunset",
+      "needy"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        8
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "saturday_after_sunset",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "black til",
+        "blanket",
+        "iron products",
+        "wool",
+        "shoes"
+      ],
+      "donation_day": "Saturday",
+      "donation_recipient": "Needy or handicapped person",
+      "donation_time": "after sunset",
+      "ruling_planet": "Saturn",
+      "associated_color": "black"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 8 (Missing/Excess): Donate black til, blanket, iron products, wool, shoes. On Saturday after sunset to needy or handicapped person.",
+      "summary": "When Number 8 is missing or excess in the Lo Shu Grid, donate black til, blanket, iron products, wool, and shoes on Saturday after sunset to a needy or handicapped person."
+    }
+  },
+  {
+    "rule_id": "num-ch18-010",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Number 9 — Donation Protocol",
+    "summary": "When Number 9 is missing or excess in the Lo Shu Grid, donate wheat, saffron, red flowers, red clothes, copper, and red sandalwood on Tuesday evening at a temple or to needy people.",
+    "full_text": "Number 9 (Missing/Excess): Donate wheat, saffron, red flowers, red clothes, copper, red sandalwood. On Tuesday evening at a temple or needy people.",
+    "tags": [
+      "donation",
+      "remedy",
+      "number_9",
+      "missing_number",
+      "mars",
+      "tuesday",
+      "temple",
+      "needy"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "missing_excess_number_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        9
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": "tuesday_evening",
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "donation_remedy",
+      "donation_items": [
+        "wheat",
+        "saffron",
+        "red flowers",
+        "red clothes",
+        "copper",
+        "red sandalwood"
+      ],
+      "donation_day": "Tuesday",
+      "donation_recipient": "Temple or needy people",
+      "donation_time": "evening",
+      "ruling_planet": "Mars",
+      "associated_color": "red"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Number 9 (Missing/Excess): Donate wheat, saffron, red flowers, red clothes, copper, red sandalwood. On Tuesday evening at a temple or needy people.",
+      "summary": "When Number 9 is missing or excess in the Lo Shu Grid, donate wheat, saffron, red flowers, red clothes, copper, and red sandalwood on Tuesday evening at a temple or to needy people."
+    }
+  },
+  {
+    "rule_id": "num-ch18-011",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Wood Element Remedy — Lo Shu Numbers 3 and 4",
+    "summary": "When numbers 3 or 4 are missing in the Lo Shu Grid (Wood Element), wear a Five Mukhi Rudraksh, Tulsi Mala, or wooden bracelet as an element-wise remedy.",
+    "full_text": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 4, 3 - WOOD ELEMENT: Five Mukhi Rudraksh, Tulsi Mala, Wooden Bracelet.",
+    "tags": [
+      "element_remedy",
+      "wood_element",
+      "number_3",
+      "number_4",
+      "lo_shu_grid",
+      "rudraksh",
+      "tulsi_mala"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "lo_shu_element_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        3,
+        4
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "wearable_remedy",
+      "element": "Wood",
+      "lo_shu_numbers": [
+        3,
+        4
+      ],
+      "remedies": [
+        "Five Mukhi Rudraksh",
+        "Tulsi Mala",
+        "Wooden Bracelet"
+      ]
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 4, 3 - WOOD ELEMENT: Five Mukhi Rudraksh, Tulsi Mala, Wooden Bracelet.",
+      "summary": "When numbers 3 or 4 are missing in the Lo Shu Grid (Wood Element), wear a Five Mukhi Rudraksh, Tulsi Mala, or wooden bracelet as an element-wise remedy."
+    }
+  },
+  {
+    "rule_id": "num-ch18-012",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Earth Element Remedy — Lo Shu Numbers 2, 5 and 8",
+    "summary": "When numbers 2, 5, or 8 are missing in the Lo Shu Grid (Earth Element), wear a White Crystal Mala or White Crystal Bracelet on the left hand.",
+    "full_text": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 2, 5, 8 - EARTH ELEMENT: White Crystal Mala, White Crystal Bracelet on Left Hand.",
+    "tags": [
+      "element_remedy",
+      "earth_element",
+      "number_2",
+      "number_5",
+      "number_8",
+      "lo_shu_grid",
+      "crystal",
+      "left_hand"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "lo_shu_element_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        2,
+        5,
+        8
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "wearable_remedy",
+      "element": "Earth",
+      "lo_shu_numbers": [
+        2,
+        5,
+        8
+      ],
+      "remedies": [
+        "White Crystal Mala",
+        "White Crystal Bracelet on Left Hand"
+      ],
+      "wearing_instruction": "Left hand"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 2, 5, 8 - EARTH ELEMENT: White Crystal Mala, White Crystal Bracelet on Left Hand.",
+      "summary": "When numbers 2, 5, or 8 are missing in the Lo Shu Grid (Earth Element), wear a White Crystal Mala or White Crystal Bracelet on the left hand."
+    }
+  },
+  {
+    "rule_id": "num-ch18-013",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Fire Element Remedy — Lo Shu Number 9",
+    "summary": "When number 9 is missing in the Lo Shu Grid (Fire Element), wear a red thread on the hand.",
+    "full_text": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 9 - FIRE ELEMENT: Red Thread on Hand.",
+    "tags": [
+      "element_remedy",
+      "fire_element",
+      "number_9",
+      "lo_shu_grid",
+      "red_thread"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "lo_shu_element_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        9
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "wearable_remedy",
+      "element": "Fire",
+      "lo_shu_numbers": [
+        9
+      ],
+      "remedies": [
+        "Red Thread on Hand"
+      ]
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 9 - FIRE ELEMENT: Red Thread on Hand.",
+      "summary": "When number 9 is missing in the Lo Shu Grid (Fire Element), wear a red thread on the hand."
+    }
+  },
+  {
+    "rule_id": "num-ch18-014",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Water Element Remedy — Lo Shu Number 1 (BN-8 / DN-8 Exception)",
+    "summary": "When number 1 is missing in the Lo Shu Grid (Water Element), increase water intake and worship the Sun by watering plants. Exception: persons with Basic Number 8 or Destiny Number 8 must NOT worship the Sun.",
+    "full_text": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 1 - WATER ELEMENT: Increase amount of water intake. Worship Sun by watering them (B.N-8 & D.N-8, DON'T WORSHIP SUN).",
+    "tags": [
+      "element_remedy",
+      "water_element",
+      "number_1",
+      "lo_shu_grid",
+      "sun_worship",
+      "bn8_exception",
+      "dn8_exception"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "lo_shu_element_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        1
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "behavioural_remedy",
+      "element": "Water",
+      "lo_shu_numbers": [
+        1
+      ],
+      "remedies": [
+        "Increase daily water intake",
+        "Worship Sun by watering plants (tulsi or other)"
+      ],
+      "exception": {
+        "excluded_basic_numbers": [
+          8
+        ],
+        "excluded_destiny_numbers": [
+          8
+        ],
+        "exception_rule": "Persons with Basic Number 8 OR Destiny Number 8 must NOT perform Sun worship. Water intake increase remains permitted."
+      }
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 1 - WATER ELEMENT: Increase amount of water intake. Worship Sun by watering them (B.N-8 & D.N-8, DON'T WORSHIP SUN).",
+      "summary": "When number 1 is missing in the Lo Shu Grid (Water Element), increase water intake and worship the Sun by watering plants. Exception: persons with Basic Number 8 or Destiny Number 8 must NOT worship the Sun."
+    }
+  },
+  {
+    "rule_id": "num-ch18-015",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Metal Silver Element Remedy — Lo Shu Number 7",
+    "summary": "When number 7 is missing in the Lo Shu Grid (Metal Silver Element), wear a metal strap watch or a silver and gold mix strap watch.",
+    "full_text": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 7 - METAL SILVER ELEMENT: Metal Strap, Silver & Golden Mix Strap Watch.",
+    "tags": [
+      "element_remedy",
+      "metal_silver_element",
+      "number_7",
+      "lo_shu_grid",
+      "silver",
+      "watch"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "lo_shu_element_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        7
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "wearable_remedy",
+      "element": "Metal (Silver)",
+      "lo_shu_numbers": [
+        7
+      ],
+      "remedies": [
+        "Metal Strap Watch",
+        "Silver and Golden Mix Strap Watch"
+      ]
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 7 - METAL SILVER ELEMENT: Metal Strap, Silver & Golden Mix Strap Watch.",
+      "summary": "When number 7 is missing in the Lo Shu Grid (Metal Silver Element), wear a metal strap watch or a silver and gold mix strap watch."
+    }
+  },
+  {
+    "rule_id": "num-ch18-016",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 18,
+      "chapter_name": "Donations for Missing Numbers and Elements",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Metal Gold Element Remedy — Lo Shu Number 6",
+    "summary": "When number 6 is missing in the Lo Shu Grid (Metal Gold Element), wear a golden strap watch.",
+    "full_text": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 6 - METAL GOLD ELEMENT: Golden Strap Watch.",
+    "tags": [
+      "element_remedy",
+      "metal_gold_element",
+      "number_6",
+      "lo_shu_grid",
+      "gold",
+      "watch"
+    ],
+    "category": "numerology_correction",
+    "condition": {
+      "type": "lo_shu_element_remedy",
+      "numerology_layer": "remedy",
+      "number_type": "lo_shu_missing_number",
+      "numbers_involved": [
+        6
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "remedy",
+    "claim_scope": "number_specific",
+    "claim_polarity": "positive",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "wearable_remedy",
+      "element": "Metal (Gold)",
+      "lo_shu_numbers": [
+        6
+      ],
+      "remedies": [
+        "Golden Strap Watch"
+      ]
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Element Wise Remedies — Lo Shu Grid for Missing Numbers. 6 - METAL GOLD ELEMENT: Golden Strap Watch.",
+      "summary": "When number 6 is missing in the Lo Shu Grid (Metal Gold Element), wear a golden strap watch."
+    }
+  },
+  {
+    "rule_id": "num-ch19-001",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": true,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 19,
+      "chapter_name": "Deadly Wars",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Planet-Number-Element-Classification Mapping Table (Pancha Mahabootas Framework)",
+    "summary": "Each planet is assigned a number (1-9) and associated with one of the five natural elements (Pancha Mahabootas: Earth, Fire, Water, Air, Space/Wood). Planets are also classified as good, wicked, or neutral. This table is the foundational reference for analysing major world events numerologically.",
+    "full_text": "Each Planet has been assigned a number between 1 and 9 and each planet is also associated with one of the five natural elements — Earth, fire, water, air and space. Planets Sun, Moon, Jupiter and Mars are considered as good planets and planets Venus, Saturn, Rahu and Ketu are considered as wicked planets. Planet Mercury is considered to be neutral by some, good by some and wicked by some. Though Rahu and Ketu are not considered as planets, they have a huge role to play in our life and therefore they have been assigned a number and are associated with an element. Sun=1/Fire/good; Moon=2/Water/good; Jupiter=3/Space-Wood/good; Rahu=4/Earth/wicked; Mercury=5/Earth/good-or-neutral; Venus=6/Water/wicked; Ketu=7/Silver Metal/wicked; Saturn=8/Air-Earth/wicked; Mars=9/Fire/good.",
+    "tags": [
+      "planet_table",
+      "element_mapping",
+      "pancha_mahabootas",
+      "good_planet",
+      "wicked_planet",
+      "foundation",
+      "engine_table"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "neutral",
+    "claim_scope": "universal",
+    "claim_polarity": "neutral",
+    "timing_bias": null,
+    "strength_band": "high",
+    "result": {
+      "correction_type": "engine_table",
+      "planet_number_element_table": {
+        "Sun": {
+          "number": 1,
+          "element": "Fire",
+          "classification": "good"
+        },
+        "Moon": {
+          "number": 2,
+          "element": "Water",
+          "classification": "good"
+        },
+        "Jupiter": {
+          "number": 3,
+          "element": "Space/Wood",
+          "classification": "good"
+        },
+        "Rahu": {
+          "number": 4,
+          "element": "Earth",
+          "classification": "wicked"
+        },
+        "Mercury": {
+          "number": 5,
+          "element": "Earth",
+          "classification": "good_or_neutral"
+        },
+        "Venus": {
+          "number": 6,
+          "element": "Water",
+          "classification": "wicked"
+        },
+        "Ketu": {
+          "number": 7,
+          "element": "Silver Metal",
+          "classification": "wicked"
+        },
+        "Saturn": {
+          "number": 8,
+          "element": "Air/Earth",
+          "classification": "wicked"
+        },
+        "Mars": {
+          "number": 9,
+          "element": "Fire",
+          "classification": "good"
+        }
+      },
+      "note": "ELEMENT SYSTEM NOTE: This table uses the Indian Pancha Mahabootas (5 elements: Earth, Fire, Water, Air, Space). This is DISTINCT from the Chinese Wu Xing (5 elements: Wood, Fire, Earth, Metal, Water) used in the Lo Shu Grid (Ch06/Ch18). Engine must not conflate these two element systems. Cross-reference: Ch18 Lo Shu groups use Wood/Earth/Fire/Water/Metal; Ch19 uses Space-Wood/Fire/Water/Air-Earth/Silver-Metal."
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Each Planet has been assigned a number between 1 and 9 and each planet is also associated with one of the five natural elements — Earth, fire, water, air and space. Planets Sun, Moon, Jupiter and Mars are considered as good planets and planets Venus, Saturn, Rahu and Ketu are considered as wicked planets. Planet Mercury is considered to be neutral by some, good by some and wicked by some. Though Rahu and Ketu are not considered as planets, they have a huge role to play in our life and therefore they have been assigned a number and are associated with an element. Sun=1/Fire/good; Moon=2/Water/good; Jupiter=3/Space-Wood/good; Rahu=4/Earth/wicked; Mercury=5/Earth/good-or-neutral; Venus=6/Water/wicked; Ketu=7/Silver Metal/wicked; Saturn=8/Air-Earth/wicked; Mars=9/Fire/good.",
+      "summary": "Each planet is assigned a number (1-9) and associated with one of the five natural elements (Pancha Mahabootas: Earth, Fire, Water, Air, Space/Wood). Planets are also classified as good, wicked, or neutral. This table is the foundational reference for analysing major world events numerologically."
+    }
+  },
+  {
+    "rule_id": "num-ch19-002",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 19,
+      "chapter_name": "Deadly Wars",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Mercury Classification — Author's Position: Good or Neutral Balancer",
+    "summary": "The author's explicit position is that Mercury (Number 5) is a good or neutral planet whose role is to balance the good and the wicked. This differs from some occult traditions that classify Mercury as wicked. This book applies the good/neutral classification throughout.",
+    "full_text": "Planet Mercury is considered to be neutral by some, good by some and wicked by some. I consider Mercury as a Good or neutral planet. Role of Mercury is to balance the good and the wicked!",
+    "tags": [
+      "mercury",
+      "number_5",
+      "planet_classification",
+      "author_position",
+      "neutral_planet"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "basic_number",
+      "numbers_involved": [
+        5
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "neutral",
+    "claim_scope": "universal",
+    "claim_polarity": "neutral",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "engine_specification",
+      "mercury_classification": "good_or_neutral",
+      "mercury_role": "Balancer between good and wicked forces",
+      "note": "This is the author's explicit personal position, acknowledged as contested across occult traditions. Engine must apply this book's Mercury=good/neutral classification consistently for all in-book analysis. Do NOT apply the Vedic astrology classification (which may differ) to this book's framework."
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Planet Mercury is considered to be neutral by some, good by some and wicked by some. I consider Mercury as a Good or neutral planet. Role of Mercury is to balance the good and the wicked!",
+      "summary": "The author's explicit position is that Mercury (Number 5) is a good or neutral planet whose role is to balance the good and the wicked. This differs from some occult traditions that classify Mercury as wicked. This book applies the good/neutral classification throughout."
+    }
+  },
+  {
+    "rule_id": "num-ch19-003",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 19,
+      "chapter_name": "Deadly Wars",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Multi-Factor Major Event Analysis Framework",
+    "summary": "Analysing any major event (war, disaster, catastrophe) requires five factors: (1) the day's basic number, (2) the destiny number of the event date, (3) the year number, (4) the name number of the country/place involved, and (5) the name number of the key person/leader responsible. All five must be considered together.",
+    "full_text": "The day, The destiny number (sum total of day + month + year), The Year, The country and the main person or people responsible for the events all should be considered while analysing any major event. For example, the name numbers of Adolf Hitler and Germany both should be considered while analysing world war 2, along with the day, month and the year of commencement of world war 2.",
+    "tags": [
+      "event_analysis",
+      "framework",
+      "destiny_number",
+      "year_number",
+      "name_number",
+      "multi_factor"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "event_analysis",
+      "numbers_involved": [],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "neutral",
+    "claim_scope": "universal",
+    "claim_polarity": "neutral",
+    "timing_bias": null,
+    "strength_band": "high",
+    "result": {
+      "correction_type": "engine_specification",
+      "analysis_factors": [
+        "Day basic number (day digit reduced to single digit)",
+        "Event destiny number (day + month + full year, fully reduced)",
+        "Year number (year digits summed and reduced)",
+        "Country/place name number (Chaldean, Ch08 table)",
+        "Key person/leader name number (Chaldean, Ch08 table)"
+      ],
+      "note": "All five factors must be evaluated together. No single factor alone is sufficient for a complete event analysis. The combination of wicked/good planets across all factors reveals the numerological pattern of the event."
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "The day, The destiny number (sum total of day + month + year), The Year, The country and the main person or people responsible for the events all should be considered while analysing any major event. For example, the name numbers of Adolf Hitler and Germany both should be considered while analysing world war 2, along with the day, month and the year of commencement of world war 2.",
+      "summary": "Analysing any major event (war, disaster, catastrophe) requires five factors: (1) the day's basic number, (2) the destiny number of the event date, (3) the year number, (4) the name number of the country/place involved, and (5) the name number of the key person/leader responsible. All five must be considered together."
+    }
+  },
+  {
+    "rule_id": "num-ch19-004",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 19,
+      "chapter_name": "Deadly Wars",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "Fire Element as Dominant Force in Warfare",
+    "summary": "Fire is the most important element in modern warfare due to the widespread use of firearms. Both World Wars started and ended on destiny number 5 (Mercury/Earth element) and were fought over territory (Earth element), yet fire (numbers 1 and 9) dominated the year compositions of both wars.",
+    "full_text": "Fire is the most important element in modern warfare where lot of fire arms are used. Both world war 1 and world war 2 started on destiny number 5 (mercury is associated with Earth element) and both wars were fought due to the lust for more territory (Earth element). Year compositions of war years also prominently feature fire-element numbers (1=Sun/Fire, 9=Mars/Fire).",
+    "tags": [
+      "fire_element",
+      "warfare",
+      "number_1",
+      "number_9",
+      "earth_element",
+      "territory"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "event_analysis",
+      "numbers_involved": [
+        1,
+        9
+      ],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "negative",
+    "claim_scope": "universal",
+    "claim_polarity": "negative",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "engine_specification",
+      "fire_element_numbers": [
+        1,
+        9
+      ],
+      "earth_element_numbers": [
+        4,
+        5
+      ],
+      "warfare_pattern": "Fire (1, 9) dominates active combat; Earth (4, 5 = territory) dominates the motivation for war; Saturn (8 = justice/reckoning) often appears in war-ending dates"
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "Fire is the most important element in modern warfare where lot of fire arms are used. Both world war 1 and world war 2 started on destiny number 5 (mercury is associated with Earth element) and both wars were fought due to the lust for more territory (Earth element). Year compositions of war years also prominently feature fire-element numbers (1=Sun/Fire, 9=Mars/Fire).",
+      "summary": "Fire is the most important element in modern warfare due to the widespread use of firearms. Both World Wars started and ended on destiny number 5 (Mercury/Earth element) and were fought over territory (Earth element), yet fire (numbers 1 and 9) dominated the year compositions of both wars."
+    }
+  },
+  {
+    "rule_id": "num-ch19-005",
+    "science_id": "numerology",
+    "active": true,
+    "approval_status": "pending_review",
+    "checkable": false,
+    "source": {
+      "book": "Your Destiny Is In Your Name & DOB",
+      "book_id": "destiny_numerology_v1_20260518",
+      "chapter": 19,
+      "chapter_name": "Deadly Wars",
+      "sloka": null,
+      "batch_id": "destiny_numerology_phase_b_20260604",
+      "passage_ref_id": null
+    },
+    "title": "War Inference Principles — Wicked Planets, Country Groupings and Dharma War Exception",
+    "summary": "Five inference principles for war analysis: (1) Wicked planets predominantly instigate wars; (2) People governed by wicked planets are mostly responsible for starting wars; (3) During wars, countries governed by good planets tend to group against those governed by wicked planets; (4) If a good-planet country appears to start a war, examine the ruling leader's number; (5) A good-planet country with a good-planet leader starting a war signals a Dharma war — destruction of evil forces.",
+    "full_text": "It is mostly the wicked planets which instigate, provoke and start a war in quest for power, territory, wealth etc. It is people governed by wicked planets who are mostly responsible for starting wars. During a war, generally Countries governed by good planets group against the countries which are governed by wicked planets. If you find a country governed by good planets responsible for starting a war, then you have to see the number of the leader ruling that country. It is very rare that a country with a name number governed by good planet and ruled by a leader who is also ruled by a good planet starts a war, if it still occurs, that means, it is a war to establish Dharma, for the destruction of the evil forces.",
+    "tags": [
+      "war_inference",
+      "wicked_planet",
+      "good_planet",
+      "dharma_war",
+      "country_name_number",
+      "leader_name_number"
+    ],
+    "category": "numerology_foundation",
+    "condition": {
+      "type": "engine_specification",
+      "numerology_layer": "foundation",
+      "number_type": "event_analysis",
+      "numbers_involved": [],
+      "lagna_modality": null,
+      "badhaka_house": null,
+      "maraka_houses": null
+    },
+    "claim_axis": "negative",
+    "claim_scope": "universal",
+    "claim_polarity": "negative",
+    "timing_bias": null,
+    "strength_band": "medium",
+    "result": {
+      "correction_type": "engine_specification",
+      "war_inference_rules": [
+        "Wicked planets (4/Rahu, 6/Venus, 7/Ketu, 8/Saturn) predominantly instigate wars",
+        "Persons governed by wicked planets are mostly responsible for starting wars",
+        "Countries by good-planet names group against wicked-planet-named countries in conflict",
+        "If a good-planet country appears aggressive, check the ruling leader's name number",
+        "Good-planet country + good-planet leader starting war = Dharma war (destruction of evil) — extremely rare"
+      ]
+    },
+    "ingest_batch_id": "destiny_numerology_phase_b_20260604",
+    "ingested_at": "2026-06-04T11:27:01.592847+00:00",
+    "interpretation": {
+      "detailed": "It is mostly the wicked planets which instigate, provoke and start a war in quest for power, territory, wealth etc. It is people governed by wicked planets who are mostly responsible for starting wars. During a war, generally Countries governed by good planets group against the countries which are governed by wicked planets. If you find a country governed by good planets responsible for starting a war, then you have to see the number of the leader ruling that country. It is very rare that a country with a name number governed by good planet and ruled by a leader who is also ruled by a good planet starts a war, if it still occurs, that means, it is a war to establish Dharma, for the destruction of the evil forces.",
+      "summary": "Five inference principles for war analysis: (1) Wicked planets predominantly instigate wars; (2) People governed by wicked planets are mostly responsible for starting wars; (3) During wars, countries governed by good planets tend to group against those governed by wicked planets; (4) If a good-planet country appears to start a war, examine the ruling leader's number; (5) A good-planet country with a good-planet leader starting a war signals a Dharma war — destruction of evil forces."
+    }
+  }
+]

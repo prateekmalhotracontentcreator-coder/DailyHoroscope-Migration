@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0264",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0264",
+  "source_file": "0264_H-1_Handa_Ashok.pdf",
+  "subject": {
+    "name": "Handa, Ashok",
+    "name_from_filename": "Handa, Ashok",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1950-03-14",
+    "time_local": "14:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1950-03-14T09:15:00Z",
+    "latitude": 31.634,
+    "longitude": 74.872,
+    "place": "Amritsar, Punjab, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 9,
+    "months": 10,
+    "days": 6,
+    "raw_text": "Balance of dasha Mon 9-10-6"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 0.0667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 14.35,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 17.7667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 10.8667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 17.8,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 12.2,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 14.35,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

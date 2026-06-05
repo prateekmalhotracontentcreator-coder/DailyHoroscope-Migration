@@ -1,0 +1,251 @@
+{
+  "vector_id": "tv-300h2-ch032",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch032_31_Swami_Vivekananda",
+  "pdf_path": "Chapters/Ch032_31_Swami_Vivekananda.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Vivekananda Or Narendra Nath Dutta",
+    "description": null,
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "lagna_degree_stated": 2.077,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 29.542,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        12
+      ],
+      "significations_raw": "08,12"
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 17.757,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7,
+        9
+      ],
+      "significations_raw": "07,09"
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 6.431,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        5
+      ],
+      "significations_raw": "04,11,Ke,05"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 22.343,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11 ,Me,Sa,Ma"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 22.343,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05 Ve,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Capricorn",
+      "degree": 4.5
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Religious Leader",
+    "profession_category": "Religion",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Religion",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is in 10 in star of Mars, and Mars is in 04, which aspects 10.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "071h lord Moon is in a barren sign and conjunct with Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "061h lord Mercury is in star of Moon (07), while it is in lagna and is aspecting 071h house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter alone signifies 03, 10 and 12, which is in star of Mars, while Mars signifies Ketu.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Venus signifies 01, 08, 12, while 041h lord Mars signifies Venus through Ketu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Ketu is in Taurus and signifies 10 through Venus, showing lack of interest in materialistic work.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "All these entire combinations led native to not to marry and become a saint of ever-lasting name and fame.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

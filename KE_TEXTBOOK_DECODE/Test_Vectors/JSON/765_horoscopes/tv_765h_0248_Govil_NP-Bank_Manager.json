@@ -1,0 +1,91 @@
+{
+  "vector_id": "tv-765h-0248",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0248",
+  "source_file": "0248_G-41_Govil_NP-Bank_Manager.pdf",
+  "subject": {
+    "name": "Govil, NP",
+    "name_from_filename": "Govil, NP-Bank Manager",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Bank Manager",
+    "profession_category": "Other",
+    "profession_subcategory": "Bank Manager",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1954-10-08",
+    "time_local": "01:05",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1954-10-08T19:35:00Z",
+    "latitude": 28.984,
+    "longitude": 77.706,
+    "place": "Meerut, Uttar Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 16.7,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 4.2,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 12.6833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 21.5,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 16.7,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 15.5333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 28.2,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 16.0667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 12.6833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Bank Manager",
+    "profession_category": "Other",
+    "profession_subcategory": "Bank Manager",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

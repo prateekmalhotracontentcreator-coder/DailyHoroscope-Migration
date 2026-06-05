@@ -1,0 +1,254 @@
+{
+  "vector_id": "tv-300h1-ch032",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch032_CHIEF_MINISTER_UMA_BHARTI",
+  "pdf_path": "Split_Chapters/Ch032_CHIEF_MINISTER_UMA_BHARTI.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Chief Minister Uma Bharti",
+    "description": "Ms. Uma Bharti is a politician and sanyasin. She was the Chief Minister of M.P. and is a",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 29.6361,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 18.7414,
+      "house": 11,
+      "significations": [
+        3,
+        5,
+        11,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 27.9483,
+      "house": 9,
+      "significations": [
+        2,
+        6,
+        7,
+        9,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 19.7214,
+      "house": 1,
+      "significations": [
+        1,
+        4,
+        6,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 22.7761,
+      "house": 10,
+      "significations": [
+        1,
+        4,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 5.7647,
+      "house": 6,
+      "significations": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 28.1756,
+      "house": 12,
+      "significations": [
+        1,
+        5,
+        6,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 18.2933,
+      "house": 4,
+      "significations": [
+        4
+      ]
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 18.2933,
+      "house": 10,
+      "significations": [
+        10
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "Chief Minister",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "061h lord Mars is posited in lagna.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "071h lord Jupiter is in 061h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn occupies 071h house, but its star lord Venus is in 12 and is under aspect from Jupiter, who is in star of Saturn.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Ketu signifies 071h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu offering result of Mercury (01,04), Saturn (08,12), which made native to become sanyasin.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mars signifies 101h house from lagna through Rahu, while Jupiter is lord of 1Qtl• house and is under aspect from Venus (Mars star).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "From Moon sign, Jupiter is in 101h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Position of Ketu in 10th house indicates sudden exit form job.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

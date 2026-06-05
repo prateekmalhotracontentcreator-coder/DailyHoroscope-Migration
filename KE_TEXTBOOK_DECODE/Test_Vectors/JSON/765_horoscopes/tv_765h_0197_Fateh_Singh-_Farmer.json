@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0197",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0197",
+  "source_file": "0197_F-6_Fateh_Singh-_Farmer.pdf",
+  "subject": {
+    "name": "Fateh Singh-Farmer",
+    "name_from_filename": "Fateh Singh- Farmer",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1960-10-16",
+    "time_local": "14:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1960-10-16T08:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Moradabad (UP)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 1,
+    "months": 11,
+    "days": 0,
+    "raw_text": "Balance of dasha Ket 1-11-0"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 18.05,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 21.7167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 9.6833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 21.7167,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 5.1333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 19.2833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

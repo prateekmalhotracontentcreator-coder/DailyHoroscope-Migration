@@ -1,0 +1,246 @@
+{
+  "vector_id": "tv-300h2-ch122",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch122_121_Mamie_Eisenhower",
+  "pdf_path": "Chapters/Ch122_121_Mamie_Eisenhower.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Mamie Eisenhower",
+    "description": "Mamie Eisenhower was the wife of 341h US President Dwight David Eisenhower and the first lady during his regime from 1953 to 1961.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 42.05,
+    "longitude": -93.8667,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "lagna_degree_stated": 26.58,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 0.636,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        8,
+        11,
+        12,
+        3
+      ],
+      "significations_raw": "08,11,12,03"
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 29.132,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        1,
+        2,
+        2,
+        8,
+        7
+      ],
+      "significations_raw": "03,1 2,02,08,07"
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 22.582,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6,
+        9,
+        1,
+        0,
+        8,
+        3,
+        12
+      ],
+      "significations_raw": "06,09,1 0,08,03,12"
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 15.387,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        3,
+        12,
+        10,
+        5
+      ],
+      "significations_raw": "08,03, 12,10,05"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 29.573,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        2,
+        1,
+        0,
+        3,
+        1,
+        2,
+        8
+      ],
+      "significations_raw": "01 ,02,1 0 ,03,1 2,08"
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 27.321,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01,Ma,Sa"
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 27.321,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Me,Mo,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": "Capricorn",
+      "degree": 17.47
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "041h lord Mars signifying 10 for spouse is in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter, Saturn and Mercury are aspecting 041h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sun is posited by Saturn & Mercury in 121h house, while 02nd house is occupied by Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Chart is for high level for spouse.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

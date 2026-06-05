@@ -1,0 +1,299 @@
+{
+  "vector_id": "tv-300h2-ch047",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch047_46_Bruce_Lee",
+  "pdf_path": "Chapters/Ch047_46_Bruce_Lee.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "And Martial Arts Specialist--Bruce Lee",
+    "description": "Bruce Lee born as Lee Jun-fan (27 Nov 1940- 20 Jul1973) was a Chinese-American, Hong Kong actor, martial arts instructor, filrn director, film producer and screenwriter.",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1940-11-27",
+    "time_local": "07:12:00",
+    "timezone_offset_hours": -8.0,
+    "time_utc": "1940-11-27T15:12:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Ayanamsa",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "lagna_degree_stated": 13.269,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 12.315,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        10,
+        1,
+        3,
+        4,
+        6
+      ],
+      "significations_raw": "10,01 03,04,06"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 18.464,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        12,
+        11
+      ],
+      "significations_raw": "09,12,Ra,11"
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 11.629,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        12,
+        11
+      ],
+      "significations_raw": "01,06,12,11,Ra"
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 22.34,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        11
+      ],
+      "significations_raw": "08,11"
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 8.436,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        7,
+        12,
+        11
+      ],
+      "significations_raw": "07,12,11,Ra"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 15.057,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11,Mo,Me"
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 15.057,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05,Sa,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Scorpio",
+      "degree": 14.65
+    },
+    "ghati_lagna": {
+      "sign": "Scorpio",
+      "degree": 18.15
+    }
+  },
+  "life_outcomes": {
+    "profession": "Entertainer",
+    "profession_category": "Entertainment",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1940
+      },
+      {
+        "event": "Died",
+        "year": 1973
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Entertainment",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Sun are in proximity, while Mercury is in star of Jupiter and is under aspect from Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars and Jupiter are in mutual aspect.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter signifies 02{dialogues), 05 {creativity) and 07 {audience) and it is in star of 071ord {Venus).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Venus is in star of Rahu (illusion).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign, 10th lord Moon is in star of Rahu, while Saturn (05, 07, Venus) is in mutual aspect with Venus (in Rahu star) and is linked to Mars (02), etc.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "All these took native to be a film actor at high level.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mars-Venus-Rahu should indicate actions movies.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Rahu is offering result of Moon (badhaka) and Mercury (lord of longevity) has caused longevity issues.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

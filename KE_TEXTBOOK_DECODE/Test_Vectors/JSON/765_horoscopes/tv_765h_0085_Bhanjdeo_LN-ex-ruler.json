@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0085",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0085",
+  "source_file": "0085_B-26_Bhanjdeo_LN-ex-ruler.pdf",
+  "subject": {
+    "name": "Bhanjdeo, LN-ex",
+    "name_from_filename": "Bhanjdeo, LN-ex-ruler",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "ruler",
+    "profession_category": "Other",
+    "profession_subcategory": "ruler",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1912-07-25",
+    "time_local": "19:12",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1912-07-25T13:42:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Cuttack",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 0,
+    "months": 4,
+    "days": 24,
+    "raw_text": "Balance of dasha Mer 0-4-24"
+  },
+  "planet_degrees_from_text": {
+    "SATURN": {
+      "degree_in_sign": 9.7833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 23.4,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 9.8,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 14.9667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 6.5,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 12.6,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 13.05,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 23.4,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 29.7167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "ruler",
+    "profession_category": "Other",
+    "profession_subcategory": "ruler",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

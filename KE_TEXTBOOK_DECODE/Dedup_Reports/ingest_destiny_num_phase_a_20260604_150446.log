@@ -1,0 +1,89 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_destiny_num_phase_a_20260604_150446.log
+DESTINY NUMEROLOGY PHASE A INGEST  |  batch: destiny_numerology_ch01-15_v1
+Scope: Ch03-Ch16 (310 rules, 20 files)
+======================================================================
+
+Source folder : /Users/apple/Documents/Knowledge Engine_eBooks/DestinyNumerology_CC_Decode
+Files         : 20
+
+Building rules...
+
+──────────────────────────────────────────────────────────────────────
+  File                                              Ch   Rules
+──────────────────────────────────────────────────────────────────────
+  Numerology_Ch03_Calculations_Rules.json            3      12
+  Numerology_Ch04v2_Characteristics_Rules_Part1.json   4      25
+  Numerology_Ch04v2_Characteristics_Rules_Part2.json   4      25
+  Numerology_Ch04v2_Characteristics_Rules_Part3.json   4       7
+  Numerology_Ch05_FriendsNonFriends_Rules.json       5      10
+  Numerology_Ch06_LoShuGrid_Rules.json               6      17
+  Numerology_Ch07_LuckyNumbers_Rules.json            7       2
+  Numerology_Ch08_AlphabetNumbers_Rules.json         8       1
+  Numerology_Ch09_CompoundNumbers_Rules_Part1.json   9      25
+  Numerology_Ch09_CompoundNumbers_Rules_Part2.json   9      25
+  Numerology_Ch09_CompoundNumbers_Rules_Part3.json   9      14
+  Numerology_Ch10_NameCorrection_Rules.json         10      10
+  Numerology_Ch11_MobileNumber_Rules.json           11       7
+  Numerology_Ch12_HouseNumber_Rules.json            12       7
+  Numerology_Ch13_RepeatNumbers_Rules_Part1.json    13      25
+  Numerology_Ch13_RepeatNumbers_Rules_Part2.json    13      14
+  Numerology_Ch14_MissingNumbers_Rules.json         14       9
+  Numerology_Ch16_81Combinations_Rules_Part1.json   16      25
+  Numerology_Ch16_81Combinations_Rules_Part2.json   16      25
+  Numerology_Ch16_81Combinations_Rules_Part3.json   16      25
+──────────────────────────────────────────────────────────────────────
+  TOTAL                                                     310
+──────────────────────────────────────────────────────────────────────
+
+Rules by chapter:
+  Ch03: 12
+  Ch04: 57
+  Ch05: 10
+  Ch06: 17
+  Ch07: 2
+  Ch08: 1
+  Ch09: 64
+  Ch10: 10
+  Ch11: 7
+  Ch12: 7
+  Ch13: 39
+  Ch14: 9
+  Ch16: 75
+
+Running local structural check...
+Issues found: 0
+  ✓  All rules pass structural check.
+
+Spot-check first rule (num-ch03-001):
+  approval_status  : pending_review
+  ingest_batch_id  : destiny_numerology_ch01-15_v1
+  source.batch_id  : destiny_numerology_ch01-15_v1
+  source.chapter   : 3
+  interp.detailed  : 'Birth dates 1–9: the date itself is the Basic Number; no calculation required.'
+  interp.summary   : 'Birth dates 1–9: the date itself is the Basic Number; no calculation required.'
+
+Spot-check last rule (num-ch16-075):
+  approval_status  : pending_review
+  ingest_batch_id  : destiny_numerology_ch01-15_v1
+  source.batch_id  : destiny_numerology_ch01-15_v1
+  source.chapter   : 16
+  interp.detailed  : 'Basic Number 9 (Mars) combined with Destiny Number 9 (Mars) yields a highly chal'
+  interp.summary   : 'Double Mars; extreme aggression, impulsiveness, conflict-proneness, and volatile'
+
+Flag summary:
+  pending_human_review      : 0
+  lo_shu_source_unverifiable: 0
+  active=False              : 0
+  rules with full_text      : 298
+  rules without full_text   : 12
+
+Saved 310 rules → backend/scripts/destiny_numerology_phase_a_rules.json
+
+  ✓  Rule count matches expected 310.
+
+✓ Dry run complete.
+  Next steps:
+    1. Review backend/scripts/destiny_numerology_phase_a_rules.json
+    2. Run pre-ingest dedup vs existing ingested books (see script header)
+    3. Re-run with --upload PATH after dedup passes

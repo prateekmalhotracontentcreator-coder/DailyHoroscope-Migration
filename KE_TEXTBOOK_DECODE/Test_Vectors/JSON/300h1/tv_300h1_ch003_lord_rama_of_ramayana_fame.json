@@ -1,0 +1,223 @@
+{
+  "vector_id": "tv-300h1-ch003",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch003_LORD_RAMA_OF_RAMAYANA_FAME",
+  "pdf_path": "Split_Chapters/Ch003_LORD_RAMA_OF_RAMAYANA_FAME.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Lord Rama Of Ramayana Fame",
+    "description": "The possible horoscope of Lord Rama of Ramayana fame, who was King of Ayodhya, is",
+    "nationality": "Indian (Mythological)"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Cancer",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 14.1167,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 6.1136,
+      "house": 10,
+      "significations": [
+        1,
+        2,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 0.4492,
+      "house": 1,
+      "significations": [
+        1,
+        6,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 13.0564,
+      "house": 7,
+      "significations": [
+        1,
+        5,
+        7,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 19.5583,
+      "house": 9,
+      "significations": [
+        3,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 14.1367,
+      "house": 1,
+      "significations": [
+        1,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 26.1981,
+      "house": 9,
+      "significations": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 1.5203,
+      "house": 5,
+      "significations": [
+        1,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 9.6028,
+      "house": 7,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 9.6028,
+      "house": 1,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Deity/Mythological Figure",
+    "profession_category": "Mythology",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Mythology",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lord Rama of Ayodhya (Ramayana fame), is said to be born at mid-day.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "The time of birth may have variation within few minutes.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "When the data is deduced from an astro Software, the date of birth goes back to 09 Jan BC 5114, and the planetary positions stated in Ramayana are matching, except that Saturn was in Scorpio.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "10th lord Mars is aspected by Jupiter, while Sun occupies 101, house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sun too is under aspect from Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

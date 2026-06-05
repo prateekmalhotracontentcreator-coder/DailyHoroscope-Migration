@@ -1,0 +1,243 @@
+{
+  "vector_id": "tv-lu-ch88",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch88_Amitabh_Bachchan",
+  "pdf_path": "Chapter_Splits/Ch88_Amitabh_Bachchan.pdf",
+  "subject": {
+    "name": "Amitabh Bachchan",
+    "description": "Bollywood Film Superstar",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1942-10-11",
+    "time_local": "15:04:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1942-10-11T09:34:30Z",
+    "latitude": 25.4667,
+    "longitude": 81.9,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-57-40.37",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aquarius",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aquarius",
+      "degree": 3.5,
+      "house": 1,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 24.4833,
+      "house": 8,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "significations": [
+        ".07",
+        8,
+        3,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 10.45,
+      "house": 9,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        6,
+        9,
+        7,
+        "Ra"
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 22.7,
+      "house": 8,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": [
+        6,
+        9,
+        10,
+        3,
+        8
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 0.6333,
+      "house": 6,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "significations": [
+        2,
+        11,
+        6
+      ]
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 15.3,
+      "house": 8,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        9,
+        6,
+        8,
+        4
+      ]
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 19.3167,
+      "house": 4,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        1,
+        12,
+        4,
+        9,
+        6
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 8.8667,
+      "house": 7,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        7,
+        "Ke",
+        "Su"
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 8.8667,
+      "house": 1,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        1,
+        "Ra",
+        "Sa"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 10.8833,
+      "house": 6,
+      "nakshatra": "Push",
+      "pada": 3,
+      "significations": [
+        "Saturn"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": "1942-10-11",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "SUN",
+      "pratyantardasha": "VENUS",
+      "sookshma": "MERCURY",
+      "stated_by_author": true,
+      "raw_text": "accident was that of Saturn-Sun-Venus Mercury. Dasha lord Saturn signifies 01, 12, 04, 06, 09 houses. Bhukti lord Sun si"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Saturn signifies 01, 12, 04, 06, 09 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Sun signifies 07, 08, 03, 10 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Venus signifies 04, 09, 08, 06 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sookshma lord Mercury signifies 08, 05, 03, 10 houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "survived the ordeal.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "survived the ordeal as per transit chart.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

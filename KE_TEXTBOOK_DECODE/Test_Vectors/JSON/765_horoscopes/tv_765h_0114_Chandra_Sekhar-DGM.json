@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0114",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0114",
+  "source_file": "0114_C-7_Chandra_Sekhar-DGM.pdf",
+  "subject": {
+    "name": "Chandra Sekhar",
+    "name_from_filename": "Chandra Sekhar-DGM",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1941-06-12",
+    "time_local": "17:50",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1941-06-12T12:20:00Z",
+    "latitude": 29.5,
+    "longitude": 78.3,
+    "place": "78E18 & 29N30",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 0,
+    "months": 8,
+    "days": 6,
+    "raw_text": "Balance of dasha Sun 0-8-6"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 4.5167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 12.5,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 20.9167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 24.9167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 8.4833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 4.5167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0424",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0424",
+  "source_file": "0424_M-25_Marx_Karl.pdf",
+  "subject": {
+    "name": "Marx, Karl",
+    "name_from_filename": "Marx, Karl",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1818-05-05",
+    "time_local": "02:36",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1818-05-05T21:06:00Z",
+    "latitude": 49.7333,
+    "longitude": 6.6333,
+    "place": "6E38 & 49N44",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 2,
+    "months": 9,
+    "days": 18,
+    "raw_text": "Balance of dasha Ven 2-9-18"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 18.65,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 22.8,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 23.1333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 2.9333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 25.4833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 23.0833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 2.9333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

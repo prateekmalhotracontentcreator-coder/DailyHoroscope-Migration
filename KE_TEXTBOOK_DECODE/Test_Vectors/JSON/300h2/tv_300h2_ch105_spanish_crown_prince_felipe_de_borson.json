@@ -1,0 +1,239 @@
+{
+  "vector_id": "tv-300h2-ch105",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch105_104_Prince_Philip_De_Borbon",
+  "pdf_path": "Chapters/Ch105_104_Prince_Philip_De_Borbon.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Spanish Crown Prince --Felipe De Borson",
+    "description": "Felipe De Borbon, the crown Prince of Spanish monarchy, is married to Letizia Ortiz, a TV journalist and a divorcee. SL. Rasi 1.=---; Crown Prince Felipe 1---l .J4n.uary 3Q. . 'Qea (Ju)",
+    "nationality": "Spanish"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "12:45:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "lagna_degree_stated": 26.059,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 16.251,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5,
+        10,
+        4
+      ],
+      "significations_raw": "05,10 04"
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 26.323,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        1,
+        8,
+        10,
+        11
+      ],
+      "significations_raw": "04,01,08,10 11"
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 22.997,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        11,
+        1,
+        8,
+        5,
+        9,
+        12
+      ],
+      "significations_raw": "11 ,01,08,05,09,12"
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 4.602,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        11,
+        1,
+        80306
+      ],
+      "significations_raw": "11,01,080306"
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 10.083,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        5,
+        6,
+        9,
+        12
+      ],
+      "significations_raw": "05,06,09,12,Ke"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 14.582,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12,
+        10,
+        9
+      ],
+      "significations_raw": "12,10,09"
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 29.022,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Me,Ma,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Taurus",
+      "degree": 22.72
+    },
+    "ghati_lagna": {
+      "sign": "Sagittarius",
+      "degree": 2.07
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun is in 1Qih house, while Venus is in 091h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is posited in 11th house in the star of Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "These combinations make the native the King.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "07 lord Venus is linked to Saturn through Ketu, who denotes both Mercury and Mars, which made King to marry an already married person.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "vector_id": "tv-300h1-ch085",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch085_INDIAN_PRESIDENT_09_--SO_SHARMA",
+  "pdf_path": "Split_Chapters/Ch085_INDIAN_PRESIDENT_09_--SO_SHARMA.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Shankar Dayal Sharma",
+    "description": "Shankar Dayal Sharma (19 Aug1918-26 Dec 1999) was the 091h President of Republic",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1999-12-26",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 23.0167,
+    "longitude": 77.4,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 4.5758,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 20.3564,
+      "house": 5,
+      "significations": [
+        3,
+        5,
+        10,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 24.2597,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        3,
+        10,
+        11,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 15.0011,
+      "house": 11,
+      "significations": [
+        4,
+        5,
+        8,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 7.7642,
+      "house": 12,
+      "significations": [
+        3,
+        6,
+        7,
+        10,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 26.4058,
+      "house": 12,
+      "significations": [
+        1,
+        2,
+        6,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 26.2328,
+      "house": 4,
+      "significations": [
+        4
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 26.2328,
+      "house": 10,
+      "significations": [
+        10
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mars is posited in 03•d house and it is aspecting 101h house, passing on power to job.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun is posited in Ketu star, while Ketu occupies 101h house, taking native to Govt.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars (09-Central) is in 3•d house and aspect Ketu in 10.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars signifies 101h house from Moon sign through Rahu and Mars is under aspect of Jupiter (expansion).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Indeed Jupiter (admn., expansion) signifies 101h house through Saturn (democracy).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "These combinations helped native to reach higher level in life with politics as line of profession.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

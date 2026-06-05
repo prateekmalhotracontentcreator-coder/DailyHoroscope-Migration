@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0036",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0036",
+  "source_file": "0036_A-27_Ms_Anita_Arora-astrologer.pdf",
+  "subject": {
+    "name": "Ms Anita Arora",
+    "name_from_filename": "Ms Anita Arora-astrologer",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "astrologer",
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "astrologer",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1954-04-26",
+    "time_local": "05:58",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1954-04-26T00:28:00Z",
+    "latitude": 31.634,
+    "longitude": 74.872,
+    "place": "Amritsar, Punjab, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 0,
+    "months": 1,
+    "days": 13,
+    "raw_text": "Balance of dasha Sun 0-1-13"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 12.0167,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 1.1,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 28.1333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 3.2333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 13.0333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 9.7333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 11.15,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 25.4333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 13.0333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "astrologer",
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "astrologer",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

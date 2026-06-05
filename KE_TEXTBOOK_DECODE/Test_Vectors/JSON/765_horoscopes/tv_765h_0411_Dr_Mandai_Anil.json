@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0411",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0411",
+  "source_file": "0411_M-12_Dr_Mandai_Anil.pdf",
+  "subject": {
+    "name": "Dr Mandai, Anil",
+    "name_from_filename": "Dr Mandai, Anil",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1933-09-09",
+    "time_local": "23:24",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1933-09-09T17:54:00Z",
+    "latitude": 23.5833,
+    "longitude": 87.1167,
+    "place": ": 87E7 & 23N35",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 4,
+    "months": 8,
+    "days": 2,
+    "raw_text": "Balance of dasha Sun 4-8-2"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 29.6167,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 5.5167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 5.5167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 21.6,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 23.65,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 0.1,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 16.5667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 29.6167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

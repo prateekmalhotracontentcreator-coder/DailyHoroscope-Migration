@@ -1,0 +1,246 @@
+{
+  "vector_id": "tv-300h2-ch022",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch022_21_Joseph_Smith_Jr",
+  "pdf_path": "Chapters/Ch022_21_Joseph_Smith_Jr.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Us Cult Leader--Joseph Smith Jr",
+    "description": "Joseph Smith, Jr. (23 Dec 1805 - 27 June 1844) was the founder of the Latter Day Saint movement in the USA.",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1805-12-23",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 43.4333,
+    "longitude": -72.4667,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-03-05.02",
+    "nakshatra_stated": "Shravana",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 12.57,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        7,
+        1
+      ],
+      "significations_raw": "07,01"
+    },
+    "MARS": {
+      "sign": "Sagittarius",
+      "degree": 21.483,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        5,
+        10,
+        6,
+        4,
+        1,
+        1,
+        7
+      ],
+      "significations_raw": "05,10 ,06,04,1 1,07"
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 29.782,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        12,
+        3,
+        6,
+        2
+      ],
+      "significations_raw": "12,03,06,02"
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 29.481,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12,
+        3,
+        5,
+        6,
+        9
+      ],
+      "significations_raw": "12,03,05,06,09"
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 27.675,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        6,
+        7,
+        10
+      ],
+      "significations_raw": "04 11 06 07,10"
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 5.697,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        8,
+        5,
+        6,
+        10
+      ],
+      "significations_raw": "07 ,08,05,06,10"
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 16.598,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Me,Ma,Su,Ju,Sa"
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 16.598,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ra,Me,Ma Su"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Unknown",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1805
+      },
+      {
+        "event": "Died",
+        "year": 1844
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1844-06-27",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Unknown",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Moon-lagna lord (females) are in 071h house indicate multiple spousal relations, especially when Rahu in a dual sign and in 06 is offering result of 07 through Saturn (07).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars (06, 05 and 10) and conjunct with Rahu indicate secret worship and secret oaths & procedures.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

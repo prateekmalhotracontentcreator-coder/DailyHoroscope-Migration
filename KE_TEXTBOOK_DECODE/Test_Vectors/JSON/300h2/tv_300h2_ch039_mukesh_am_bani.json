@@ -1,0 +1,289 @@
+{
+  "vector_id": "tv-300h2-ch039",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch039_38_Mukesh_Ambani",
+  "pdf_path": "Chapters/Ch039_38_Mukesh_Ambani.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Mukesh Am Bani",
+    "description": "Mukesh Ambani, an Indian business magnate, is the head Reliance Industries, a Fortune 500 company and one of the richest men in India.",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "18:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Ayanamsa",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "lagna_degree_stated": 3.868,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aries",
+      "degree": 6.119,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11,
+        7
+      ],
+      "significations_raw": "11,07,Ke"
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 9.898,
+      "house": null,
+      "nakshatra": "Mool",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        10,
+        3
+      ],
+      "significations_raw": "10,03,Ke"
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 27.41,
+      "house": null,
+      "nakshatra": "Mriq",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        8,
+        7
+      ],
+      "significations_raw": "02,08,07"
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 24.755,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        12,
+        7,
+        8,
+        1
+      ],
+      "significations_raw": "09,12,07,08,01"
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 29.957,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "retrograde": true,
+      "significations": [
+        11,
+        3,
+        6
+      ],
+      "significations_raw": "11 03 06,Su"
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 7.439,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        8,
+        7
+      ],
+      "significations_raw": "01,08,07 ,Ke"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 20.567,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        2,
+        9,
+        12,
+        7,
+        3,
+        4
+      ],
+      "significations_raw": "02,09,12,07, 03,04"
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 27.794,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ju,Ve,Su,Me"
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 27.794,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ma,Su,Ve,Me,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Sun are conjunct with Ketu, while Jupiter is aspecting Ketu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Planets signifying 02 are Mars, Saturn and Ketu, while Venus, Sun and Moon are in star of Ketu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "0200 lord Mars is in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "061h house is signified by Jupiter and Rahu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sun, Jupiter and Nodes signify 111h along with Moon, Sun and Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Jupiter is aspecting Moon.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Moon signifies 10 and 07.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Jupiter signifies 03, 06, 07 and 11.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "All these combinations helped native o enter into business and reach high level.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

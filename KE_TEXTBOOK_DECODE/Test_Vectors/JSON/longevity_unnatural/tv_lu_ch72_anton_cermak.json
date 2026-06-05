@@ -1,0 +1,213 @@
+{
+  "vector_id": "tv-lu-ch72",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch72_Anton_Cermak",
+  "pdf_path": "Chapter_Splits/Ch72_Anton_Cermak.pdf",
+  "subject": {
+    "name": "Anton Cermak",
+    "description": "Mayor of Chicago, USA",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1873-05-09",
+    "time_local": "09:45:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1873-05-09T07:45:00Z",
+    "latitude": 50.1333,
+    "longitude": 14.0833,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-59-30.73",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 1.6333,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 26.7333,
+      "house": 10,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "significations": [
+        2,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 19.7,
+      "house": 3,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        1,
+        3
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 11.1333,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "significations": [
+        5,
+        10,
+        11,
+        4,
+        "Ra"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 0.95,
+      "house": 10,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "significations": [
+        12,
+        3,
+        9,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 0.2,
+      "house": 2,
+      "nakshatra": "Magh",
+      "pada": 1,
+      "significations": [
+        6,
+        9,
+        2,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 21.0333,
+      "house": 10,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        4,
+        11,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 10.7167,
+      "house": 7,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        7,
+        8,
+        1,
+        3
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 2.5333,
+      "house": 11,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": [
+        "Ve",
+        "Su",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 2.5333,
+      "house": 5,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "significations": [
+        "Ju",
+        "Ma"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "his wounds on 06 March 1933 during Saturn",
+    "death_type": "unknown",
+    "death_date": "1873-05-09",
+    "age_at_death": 60,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "RAHU",
+      "pratyantardasha": "SUN",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Rahu-Sun-Venus. Dasha and Bhukti lord Saturn (lagna, 07 and 08) and Rahu (badhaka) are under aspect of Mars (caus"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "was the Mayor of Chicago, Illinois, from 1931 until his murder by Giuseppe Zangara in 1933. Date: May 9, 1873 Time: 9:45:00 am Time Zone: 2:00 (E of GMT) Place: 14 E 05' 00\", 50 N 08' 00\" Bahemia, Czech Lunar Yr-Mo: Sreemukha - Vaisakha Tithi: Sukla Dwadasi (Me) Vedic Weekday: Friday (Ve) Nakshatra: Hastha (Mo) Anton Cermak Yoga: Vajra (Mo) Hera Lord: Jupiter Sunrise: 5:32:01 am Sunset: 8:28:44 pm Janma Ghatis: 10.5409 Ayanamsa: 21-59-30.73 Sidereal Time: 23:50:06 298 Longevity and Unnatural Deaths SL e (Ve Gk GL Su Ra · Md Ra Rasi Anton Cennak Sa May 9, 1873 9:45:00 (2:00 east) 14 E 5, 50 N 8",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord Moon is in own star in Q3rd house unconnected to either maraca or badhaka or 06tn (injury).",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "injury by weapon and to cause death by it.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

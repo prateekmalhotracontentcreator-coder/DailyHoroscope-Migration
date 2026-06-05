@@ -1,0 +1,25 @@
+======================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_c_empty_reject_20260603_102945_live.log
+======================================================================
+
+BPHS Vol 2 Phase 1 — C_empty Reject
+Mode    : 🔴 LIVE — WRITING TO DB
+Rules   : 6
+Action  : flagged → rejected  (gap_fill_direct, empty detailed, malformed condition)
+
+#    Rule ID                                  Pre-status             Result
+─────────────────────────────────────────────────────────────────────────────────────
+  1    R-BPHS57-PATCH-4B17E8-GF                 flagged                ✅ REJECTED
+  2    R-BPHS57-PATCH-5F5F3B-GF                 flagged                ✅ REJECTED
+  3    R-BPHS57-PATCH-60E6E0-GF                 flagged                ✅ REJECTED
+  4    R-BPHS57-PATCH-92F798-GF                 flagged                ✅ REJECTED
+  5    R-BPHS57-PATCH-DE1D14-GF                 flagged                ✅ REJECTED
+  6    R-BPHS57-PATCH-F0541B-GF                 flagged                ✅ REJECTED
+
+======================================================================
+Summary
+  Mode     : LIVE
+  Rejected : 6 / 6
+  Skipped  : 0
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_c_empty_reject_20260603_102945_live.log

@@ -1,0 +1,198 @@
+============================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/inspect_bphs_vol1_phase2_flagged_20260603_053038.log
+============================================================
+
+BATCH: bphs-vol1-phase2-v1-20260601
+
+  auto_approved                  491
+  pending_human_review           170
+  pending_review                 0
+  flagged                        35
+  rejected                       0
+  TOTAL                          696
+
+Flagged rules: 35
+
+Bucket A (truncation artifact → auto_approved): 0
+Bucket B (validator doctrinal error → PHR):     14
+Bucket C (genuine issue → GAI/TT queue):        21
+
+────────────────────────────────────────────────────────────
+BUCKET B -- Validator doctrinal errors (patch → PHR + validator_error:true)
+────────────────────────────────────────────────────────────
+  bphs1-ch25-055
+    summary  : If Dhwaja is in the ascendant, the native will be skilful in all branches of learning, be happy, efficient in speech, ag
+    flag     : Dhwaja is not a recognized Upagraha in BPHS Chapter 25. The classical Upagrahas are Gulika, Mandi, Chapa, Parivesh, Indrachapa, Upaketu, and Dhwaja (flag/banner of planets), but Dhwaja as a standalone
+
+  bphs1-ch25-056
+    summary  : If Dhwaja is in the 2nd, the native will be a good and affable speaker, be splendorous, will write poetry, be scholarly,
+    flag     : Dhwaja is not a standalone Upagraha with independent house-wise results in BPHS Chapter 25. This rule appears to be fabricated or misattributed.
+
+  bphs1-ch25-057
+    summary  : If Dhwaja is in the 3rd, the native will be miserly, cruel in acts, thin-bodied, poor and will incur severe diseases.
+    flag     : Dhwaja is not documented as a standalone Upagraha with house-wise results in BPHS. This rule lacks classical source validation.
+
+  bphs1-ch25-058
+    summary  : If Dhwaja is in the 4th, the native will be charming, very virtuous, gentle, interested in Vedas and be always happy.
+    flag     : Dhwaja is not a recognized standalone Upagraha with independent house-wise results in BPHS Chapter 25.
+
+  bphs1-ch25-059
+    summary  : If Dhwaja is in the 5th, the native will be happy, will enjoy pleasures, be versed in arts, skilled in expedients, intel
+    flag     : Dhwaja is not documented as a standalone Upagraha with house-wise results in classical BPHS texts.
+
+  bphs1-ch25-060
+    summary  : If Dhwaja is in the 6th, the native will be ominous for maternal relatives, will win over his enemies, be endowed with m
+    flag     : Dhwaja is not a recognized standalone Upagraha with independent house-wise results in BPHS Chapter 25.
+
+  bphs1-ch25-061
+    summary  : If Dhwaja is in the 7th, the native will be interested in gambling, be sensuous, will enjoy pleasures and will befriend 
+    flag     : Dhwaja is not documented as a standalone Upagraha with house-wise results in BPHS. This rule lacks classical source validation.
+
+  bphs1-ch25-062
+    summary  : If Dhwaja is in the 8th, the native will be interested in base acts, be sinful, shameless, will blame others, will lack 
+    flag     : Dhwaja is not a recognized standalone Upagraha with independent house-wise results in BPHS Chapter 25.
+
+  bphs1-ch25-063
+    summary  : If Dhwaja is in the 9th, the native will wear religious badges, be delighted, helpfully disposed to all and be skilled i
+    flag     : Dhwaja is not documented as a standalone Upagraha with house-wise results in classical BPHS texts.
+
+  bphs1-ch25-064
+    summary  : O Brahmin, if Dhwaja is in the 10th, the native will be endowed with happiness and fortunes, be fond of females, be char
+    flag     : Dhwaja is not a recognized standalone Upagraha with independent house-wise results in BPHS Chapter 25.
+
+  bphs1-ch25-065
+    summary  : If Dhwaja is in the 11th, the native will ever acquire gains, be very religious, honourable, affluent, fortunate, valian
+    flag     : Dhwaja is not documented as a standalone Upagraha with house-wise results in BPHS. This rule lacks classical source validation.
+
+  bphs1-ch25-066
+    summary  : If Dhwaja is in the 12th, the native will be interested in sinful acts, be valiant, untrustworthy, unkind, interested in
+    flag     : Dhwaja is not a recognized standalone Upagraha with independent house-wise results in BPHS Chapter 25.
+
+  bphs1-ch28-002
+    summary  : Deduct the planet's debilitation point from its actual position. If the sum exceeds 6 signs, deduct from 12 signs. The s
+    flag     : Summary is truncated ('multiplied by 2' incomplete); detailed text introduces a formula (Uchcha_Rasmi = (planet_longitude - debilitation_longitude) / 180 × 8) that differs from classical BPHS Uchcha R
+
+  bphs1-ch32-028
+    summary  : If two planets both possess dignity (exaltation, own sign, or friendly sign) but are not in mutual angular houses counte
+    flag     : This rule contradicts classical BPHS teaching on Parasparayogakaraka. BPHS Chapter 32 requires BOTH mutual angularity AND dignity; dignity alone without angular placement does not form a Yoga Karaka. 
+
+────────────────────────────────────────────────────────────
+BUCKET C -- Genuine issues (stay flagged, export for GAI/TT)
+────────────────────────────────────────────────────────────
+  bphs1-ch03-044
+    summary  : Sun's dignities in Leo: First 20 degrees of Leo are Moolatrikona; the remaining 10 degrees (20°-30°) are own house (Swakshetra). Sun's other
+    detailed : Sun: Moolatrikona = Leo 0°-20°. Swakshetra (own sign) = Leo 20°-30°. Note: Sun's second own sign Cancer is treated as plain Swakshetra.
+    flag     : Sun does not own Cancer in classical BPHS; Sun owns only Leo. The statement 'Sun's other own sign is Cancer' is incorrect and contradicts Parasara's teachings.
+
+  bphs1-ch04-020
+    summary  : Nocturnal and diurnal signs: Aries, Taurus, Gemini, Cancer, Sagittarius and Capricorn are nocturnal (Ratri-bala) signs — strong during night
+    detailed : Nocturnal (night-strong) signs: Aries, Taurus, Gemini, Cancer, Sagittarius, Capricorn. Diurnal (day-strong) signs: Leo, Virgo, Libra, Scorpi
+    flag     : Contradicts rule bphs1-ch04-019: assigns Gemini and Cancer to nocturnal but rule 019 assigns them to Shirshodaya (day-strong); internal inconsistency in extracted rules.
+
+  bphs1-ch26-004
+    summary  : Deduct the longitude of the aspected planet (or house) from that of the aspecting planet. If the sum exceeds six signs (or 180 deg) deduct t
+    detailed : Drishti Kona (aspectual angle) computation: Step 1: subtract longitude of aspected body from longitude of aspecting planet. Step 2: if resul
+    flag     : Summary is truncated ('Convert the latest' incomplete); detailed description contains conflicting formulas (step 2 says subtract from 300°, but step 3 mentions 5 signs/150° threshold with different logic). Requires clarification.
+
+  bphs1-ch26-005
+    summary  : The longitude of the aspected is to be deducted from that of the aspector. If the longitude of the aspected is lesser than that of the aspec
+    detailed : Drishti angle computation clarification: (1) aspectual angle = aspector longitude − aspected longitude; (2) if aspected longitude < aspector
+    flag     : Summary is truncated ('facili' incomplete); detailed text contradicts rule bphs1-ch26-004 on angle computation and introduces a 300°-30° no-aspect zone that conflicts with standard Drishti formulas in subsequent rules.
+
+  bphs1-ch26-017
+    summary  : Mars special aspect formula: deduct longitude of Mars from aspected planet. If sum is 3 Rasis or 7 Rasis, degrees (ignoring Rasis) be reduce
+    detailed : Mars detailed aspect formula (sloka 11): (a) if angular difference = 3 signs (90°) or 7 signs (210°): 60 - degrees (ignoring signs) = Drisht
+    flag     : Summary is truncated ('a' incomplete); detailed text contains multiple conflicting formulas (60-degrees, degrees×1.5+15, etc.) and references 'simplified Addition A' which is not defined. Requires reconstruction.
+
+  bphs1-ch26-018
+    summary  : Jupiter special aspect formula: deduct longitude of Jupiter from aspected planet. If sum is 3 Rasis or 7 Rasis, halve degrees (ignoring Rasi
+    detailed : Jupiter detailed aspect formula (sloka 12): (a) if angular difference = 3 signs (90°) or 7 signs (210°): (degrees / 2) + 45 = Drishti value;
+    flag     : Summary is truncated ('degrees' incomplete); detailed text lists multiple sub-formulas with inconsistent logic and references 'simplified Addition B' which is undefined. Requires clarification.
+
+  bphs1-ch30-026
+    summary  : Rescue condition — benefic aspect/conjunction removes all wife health disorder combinations
+    detailed : All wife health disorder combinations stated for the 2nd from Upa Pada (rules 017-025) will NOT come to pass if there is conjunction with or
+    flag     : The statement 'even if the affliction is caused by a benefic planet (like Jupiter in rule 023), another distinct benefic aspect/conjunction can counteract' contradicts classical Vedic logic where a benefic in its own nature cannot be 'afflicting' and does not require cancellation by another benefic.
+
+  bphs1-ch32-003
+    summary  : When both degrees and minutes are identical, the planet with higher seconds of arc is Atmakaraka. When three planets are exactly equal, the 
+    detailed : If the minutes of arc are also identical between two planets, the one with higher seconds of arc is Atmakaraka. In the case where three plan
+    flag     : The terminology 'Anthyakaraka, Madhyakaraka, and Upakhet' for a triple tie is non-standard and not found in classical BPHS texts; the rule conflates tiebreaker logic with non-existent special designations.
+
+  bphs1-ch32-004
+    summary  : For Rahu, the longitude used in Chara Karaka ranking is obtained by deducting its actual position within the sign from 30 degrees — because 
+    detailed : In the case of Rahu, deduct his longitude in that particular sign from 30 degrees to obtain the effective longitude for Chara Karaka ranking
+    flag     : The rule is incomplete (summary cuts off mid-sentence with 'must be co') and the retrograde longitude adjustment for Rahu in Chara Karaka ranking is not a standard BPHS procedure; this appears to be a misinterpretation or non-classical addition.
+
+  bphs1-ch32-011
+    summary  : For the father relationship, the Sthira (constant) Karaka is whichever is stronger between the Sun and Venus in the natal chart.
+    detailed : Among the constant significators, the stronger of the Sun and Venus indicates the father. If the Sun is stronger, it acts as the karaka for 
+    flag     : The rule states the stronger of Sun and Venus indicates father, but classical BPHS assigns Sun as the constant significator for father; Venus is not a co-significator for father in standard texts.
+
+  bphs1-ch32-012
+    summary  : For the mother relationship, the Sthira Karaka is whichever is stronger between the Moon and Mars in the natal chart.
+    detailed : Among the constant significators, the stronger of the Moon and Mars indicates the mother. If the Moon is stronger, it acts as the karaka for
+    flag     : The rule states the stronger of Moon and Mars indicates mother, but classical BPHS assigns Moon as the constant significator for mother; Mars is not a co-significator for mother in standard texts.
+
+  bphs1-ch32-018
+    summary  : Ketu is the constant significator for a broad set of relationships: wife, father, mother, parents-in-law, and maternal grandfather.
+    detailed : From Ketu one notes wife, father, mother, parents-in-law and maternal grandfather as constant significators. Ketu's wide karaka scope covers
+    flag     : Ketu as constant significator for wife, father, mother, parents-in-law, and maternal grandfather is overly broad and not supported by classical BPHS; Ketu's karaka scope is much narrower (typically moksha, spiritual matters, and past-life karma).
+
+  bphs1-ch32-033
+    summary  : Jupiter is the natural karaka for the 2nd house, representing family, accumulated wealth, and the wife.
+    detailed : The second house denotes wife, family, and finance, and its significator is Jupiter. Jupiter's condition reflects the native's family happin
+    flag     : Jupiter as Bhava Karaka for 2nd house is correct, but the summary incorrectly lists 'wife' as a 2nd house signification. Wife is 7th house; 2nd house signifies family, wealth, and speech. The detailed text compounds this by repeating 'wife' in the context of 2nd house.
+
+  bphs1-ch32-041
+    summary  : Mercury is the natural karaka for the 10th house, representing honour, profession, trade, and the native's public standing.
+    detailed : The tenth house denotes honour, and its significator is Mercury. Mercury's condition reflects the native's professional reputation, intellec
+    flag     : Mercury as Bhava Karaka for 10th house is non-standard in classical BPHS. The 10th house Karaka is typically the Sun (authority, career, father) or Saturn (profession, work). Mercury may govern communication/intellect aspects but is not the primary 10th house significator.
+
+  bphs1-ch33-035
+    summary  : When Rahu and the Sun are in Karakamsa, placed in a malefic's sign, and Jupiter aspects this combination, the native will burn a neighbourin
+    detailed : If Rahu and the Sun be in Karakamsa and be in a malefic's sign in aspect to Jupiter, one will burn a neighbouring house. The combination of 
+    flag     : The outcome 'burn a neighbouring house' is extreme and specific; classical BPHS texts do not typically prescribe such literal destructive acts. The interpretation conflates Rahu-Sun malefic energy with arson, which lacks textual support.
+
+  bphs1-ch33-038
+    summary  : When Gulika is in the Karakamsa and is unaspected by any other planet, the native will either administer poison to others or will die from p
+    detailed : If Gulika is in Karakamsa but is unaspected by others, one will administer poison to others or will himself die of poisoning. Gulika's inher
+    flag     : The outcome 'administer poison or die from poisoning' is extreme and literal. While Gulika is associated with poison in classical texts, assigning fatal poisoning outcomes to an unaspected Gulika placement lacks clear textual precedent in BPHS.
+
+  bphs1-ch33-039
+    summary  : When Gulika is in the Karakamsa and Mercury aspects Gulika, the native will have abnormally large testicles (physical anomaly).
+    detailed : Mercury's aspect in this context (Gulika in Karakamsa) will give large testicles. Mercury as karaka of the nervous system and subtle body pa
+    flag     : The outcome 'abnormally large testicles' is anatomically specific and crude. This interpretation appears fabricated or misattributed; classical BPHS does not contain such explicit physical anomaly predictions tied to Mercury-Gulika aspects.
+
+  bphs1-ch33-043
+    summary  : When Ketu is in the Karakamsa and both Mercury and Venus aspect Ketu, the native will be the son of a female slave or of a woman who has rem
+    detailed : With Mercury and Venus aspecting Ketu in Karakamsa, he will be the son of a female slave or of a female remarried. This rule speaks to birth
+    flag     : The outcome 'son of a female slave or remarried woman' is socially specific and appears to conflate Mercury-Venus-Ketu significations with birth lineage in a way that lacks clear classical textual support. The interpretation is incoherent.
+
+  bphs1-ch33-049
+    summary  : When Jupiter is in the 2nd from Karakamsa (in a division of Venus or Mars), the native WILL have the adultery addiction — Jupiter's presence
+    detailed : The position of Jupiter (in the 2nd from Karakamsa in a Venus/Mars division) will cause such an evil. Unexpectedly, Jupiter's placement here
+    flag     : Jupiter in 2nd from Karakamsa in Venus/Mars division causing adultery is counter-intuitive and contradicts Jupiter's classical role as a benefic restrainer. The claim that Jupiter 'amplifies desire rather than restraining it' lacks clear textual support.
+
+  bphs1-ch33-079
+    summary  : When the Sun is in the Karakamsa or the 5th house from it, the native will be a musician.
+    detailed : The Sun in this context (Karakamsa or 5th therefrom) denotes a musician. The Sun governs sound (Nada Brahman), rhythm, and creative arts tie
+    flag     : The Sun as karaka of music is not a standard BPHS doctrine; the Sun typically governs authority, power, and soul, not musical arts. Mercury or Venus are the classical karakas for music. This interpretation appears fabricated or conflated with other traditions.
+
+  bphs1-ch33-098
+    summary  : When both Jupiter and the Sun are related to (aspect or occupy) the 9th from the Karakamsa, the native will betray his elders and be disobed
+    detailed : If Jupiter and the Sun are so related as above (9th from Karakamsa), one will betray his elders and will be disobedient to them. Jupiter (ex
+    flag     : Jupiter and Sun together in 9th from Karakamsa should produce spiritual authority and dharmic leadership, not betrayal of elders; this contradicts classical Jupiter-Sun synergy which elevates dharma.
+
+
+Bucket C JSON export: KE_TEXTBOOK_DECODE/Dedup_Reports/bphs_vol1_phase2_bucket_c_20260603_053038.json
+  → Upload to GAI with BPHS source PDF for doctrinal review
+
+============================================================
+NEXT STEPS:
+  2. Patch 14 Bucket B rules → PHR + validator_error:true
+     (run patch_bphs_vol1_phase2_flagged.py --bucket B)
+  3. Review 21 Bucket C rules via GAI
+     Upload bphs_vol1_phase2_bucket_c_20260603_053038.json to GAI with BPHS PDF
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/inspect_bphs_vol1_phase2_flagged_20260603_053038.log

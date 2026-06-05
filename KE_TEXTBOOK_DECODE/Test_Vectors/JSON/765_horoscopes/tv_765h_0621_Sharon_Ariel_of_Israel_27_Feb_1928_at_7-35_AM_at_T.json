@@ -1,0 +1,105 @@
+{
+  "vector_id": "tv-765h-0621",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0621",
+  "source_file": "0621_S-24_Sharon_Ariel_of_Israel_27_Feb_1928_at_7-35_AM_at_Tel.pdf",
+  "subject": {
+    "name": "Sharon Ariel of Israel",
+    "name_from_filename": "Sharon Ariel of Israel; 27 Feb 1928 at 7-35 AM at Tel",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1928-02-27",
+    "time_local": "07:35",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1928-02-27T02:05:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Tel Aviv",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 3,
+    "months": 3,
+    "days": 10,
+    "raw_text": "Balance of dasha Sun 3-3-10"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 13.6833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 2.7167,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 14.3833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 21.9167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 9.1167,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 14.55,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 6.3667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 12.7333,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 21.9167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 25.4833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 13.6833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

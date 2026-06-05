@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0415",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0415",
+  "source_file": "0415_M-16_Manish_soNK_Singhai-Computer_Engr.pdf",
+  "subject": {
+    "name": "Manish (s/oNK) Singhai",
+    "name_from_filename": "Manish (s/oNK) Singhai-Computer Engr",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Computer Engr",
+    "profession_category": "Other",
+    "profession_subcategory": "Computer Engr",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1976-11-15",
+    "time_local": "12:05",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1976-11-15T06:35:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 6,
+    "months": 9,
+    "days": 8,
+    "raw_text": "Balance of dasha Ket 6-9-8"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 9.85,
+      "retrograde": true
+    },
+    "SATURN": {
+      "degree_in_sign": 23.1833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 14.0333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 2.5667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 9.85,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 4.0833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 29.4833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Computer Engr",
+    "profession_category": "Other",
+    "profession_subcategory": "Computer Engr",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

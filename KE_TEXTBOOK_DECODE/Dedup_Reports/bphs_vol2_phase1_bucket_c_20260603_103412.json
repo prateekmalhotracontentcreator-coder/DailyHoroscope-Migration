@@ -1,0 +1,2236 @@
+[
+  {
+    "rule_id": "R-BPHS47-077",
+    "chapter": "",
+    "summary": "Last part of Ketu Dasa → Sufferings from ailments and journeys to distant places.",
+    "detailed": "Condition: In the last part there will be sufferings from ailments and journeys to distant places.\n\nEffect: Sufferings from ailments and journeys to distant places.",
+    "flag_reason": "Condition field states 'In the last part there will be sufferings...' but this text belongs in Effect, not Condition; the detailed field is malformed with condition and effect reversed.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Ketu",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "72-77",
+      "planets_involved": [
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Ketu"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter47",
+      "dasha_ketu",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS47-077",
+      "verdict": "validator_error",
+      "confidence": 0.85,
+      "reason": "The substantive rule content (Ketu Dasa final phase → ailments and distant journeys) is authentic BPHS doctrine; the flag correctly identifies a field-mapping error in JSON structure, not fabricated content.",
+      "ai_bucket": "B"
+    }
+  },
+  {
+    "rule_id": "R-BPHS47-PATCH-CC30B7",
+    "chapter": "",
+    "summary": "Jupiter in 8th house → Loss of residential premises, anxiety, distress to children, loss of cattle, loss of pilgrimage.",
+    "detailed": "Condition: Jupiter in the 8th house during his Dasa.\n\nEffect: Loss of residential premises, anxiety, distress to children, loss of cattle and pilgrimage (visit to religious places).",
+    "flag_reason": "Jupiter in 8th house should yield mixed or crisis-related results per classical texts; the stated effects (loss of premises, distress to children, loss of cattle) are identical to combust Jupiter rule and lack the nuance expected for 8th house placement.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Sun",
+      "antardasha_planet": "Jupiter",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "49-51",
+      "planets_involved": [
+        "Sun",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "8th",
+      "planet_context_note": "8th house — crisis, obstacles, sudden events",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter47",
+      "dasha_sun",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS47-PATCH-CC30B7",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "BPHS Chapter 47 covers planetary Dashas and their general effects, but the specific attribution of these exact effects to Jupiter in 8th house during Dasha requires verification against Santhanam's exact sloka 49-51 wording and context.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS47-PATCH-D722F2",
+    "chapter": "",
+    "summary": "Venus in own sign during Sun Dasha → Acquisition of fancy clothes, ornaments, conveyances, cattle, land; daily sweet preparations; sovereign recognition; luxurious songs and dances.",
+    "detailed": "Condition: Venus in his own sign during Sun Dasha.\n\nEffect: Acquisition of fancy clothes, ornaments, conveyances, cattle and land etc., availability of sweet preparations every day, recognition from the sovereign, luxurious functions of songs and dances etc. by the benevolence of Goddess Lakshmi.",
+    "flag_reason": "Summary and detailed text refer to 'Venus in own sign' but Venus owns two signs (Libra and Taurus); needs clarification which sign is intended.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Sun",
+      "antardasha_planet": "Venus",
+      "sub_type": "dasha_favourable",
+      "sloka": "79-82",
+      "planets_involved": [
+        "Sun",
+        "Venus"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "own_sign",
+      "planet_context_note": "Own sign — strong, comfortable, reliable results",
+      "condition_group_id": "ch47-sl79-82-venus-favourable",
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter47",
+      "dasha_sun",
+      "dasha_favourable",
+      "ai_extracted",
+      "group:ch47-sl79-82-venus-favourable"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS47-PATCH-D722F2",
+      "verdict": "validator_error",
+      "confidence": 0.82,
+      "reason": "BPHS doctrine on planetary dignity does not require sign specification in dasha effects—'own sign' is a valid unified dignity state covering both owned signs, and the rule content accurately reflects Santhanam's presentation of Sun-Venus dasha combinations.",
+      "ai_bucket": "B"
+    }
+  },
+  {
+    "rule_id": "R-BPHS47-PATCH-E5CAC4",
+    "chapter": "",
+    "summary": "Sun with lord of 5th during Sun Dasha → Blessed with son and children.",
+    "detailed": "Condition: Sun with lord of 5th at time of birth during Sun Dasha.\n\nEffect: The native will be blessed with a son and children.",
+    "flag_reason": "Condition specifies Sun Mahadasha with Sun Antardasha (same planet), but detailed text references 'Sun with lord of 5th at time of birth'—this conflates natal chart placement with dasha interpretation.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Sun",
+      "antardasha_planet": "Sun",
+      "sub_type": "dasha_favourable",
+      "sloka": "7-11",
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        5
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "general",
+      "planet_context_note": "Associated with 5th lord — progeny, creativity, intelligence",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter47",
+      "dasha_sun",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS47-PATCH-E5CAC4",
+      "verdict": "genuine_issue",
+      "confidence": 0.82,
+      "reason": "Rule conflates natal conjunctional placement (Sun with 5th lord) with dasha timing; BPHS 47 addresses planetary combinations in birth chart, not dasha-triggered effects—Sun MD/SD has no special doctrine in this context.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-025",
+    "chapter": "",
+    "summary": "Jupiter is lord of 2nd or 7th from the Ascendant → Premature death.",
+    "detailed": "Condition: Jupiter be the lord of 2nd or 7th from the Ascendant.\n\nEffect: There will be premature death.",
+    "flag_reason": "Rule conflates two distinct conditions: Jupiter as lord of 2nd/7th house (maraka) is different from Jupiter's placement in 2nd/7th during dasha; the condition field does not clarify which interpretation applies, creating ambiguity about whether this is a natal maraka rule or a dasha-specific rule.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Moon",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "29-31",
+      "planets_involved": [
+        "Moon",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        2,
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Jupiter"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_moon",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-025",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "BPHS maraka doctrine (Ch. 49-50) establishes 2nd/7th lords as death-inflicting based on natal lordship, not dasha timing; the condition field's dasha_planet and antardasha_planet specifications introduce temporal constraints absent from foundational maraka teaching, conflating distinct principles.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-PATCH-094A74",
+    "chapter": "",
+    "summary": "Moon in trikona during Moon Mahadasha → Acquisition of horses, elephants, clothes; devotion to deities and preceptor; recitation of religious songs; acquisition of kingdom or high government positi...",
+    "detailed": "Condition: Moon be posited in a trikona.\n\nEffect: Acquisition of horses, elephants and clothes, devotion to deities and preceptor, recitation of religious songs in praise of God, acquisition of a kingdom (attainment of a high position in government), extreme happiness and enjoyment and name and fame.",
+    "flag_reason": "Condition specifies antardasha_planet as Moon but summary states 'Moon in trikona during Moon Mahadasha' which is redundant/unclear; the condition should clarify whether this is about Moon's placement or another planet.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Venus",
+      "antardasha_planet": "Moon",
+      "sub_type": "dasha_favourable",
+      "sloka": "1-2",
+      "planets_involved": [
+        "Venus",
+        "Moon"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "trikona",
+      "planet_context_note": "Trine house — fortunate, dharmic placement"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_venus",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-PATCH-094A74",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "The condition specifies Venus Mahadasha with Moon Antardasha, but the summary claims 'Moon Mahadasha'—these are fundamentally different periods, and BPHS Chapter 53 addresses planetary dashas with specific period combinations that must match exactly.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-PATCH-16C7C5",
+    "chapter": "",
+    "summary": "Saturn in the 8th house during Saturn Antardasha in Moon Mahadasha → Visits to holy places, bathing in holy rivers, creation of troubles by many people, and distress from enemies.",
+    "detailed": "Condition: Saturn be in the 8th house.\n\nEffect: Effects like visits to holy places, bathing in holy rivers etc., creation of troubles by many people and distress from enemies will be derived.",
+    "flag_reason": "Saturn in 8th house (most malefic placement) should produce severe adverse effects, but listed effects (holy pilgrimages, bathing) are positive/remedial; contradicts 8th house malefic significations.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Venus",
+      "antardasha_planet": "Moon",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "35",
+      "planets_involved": [
+        "Venus",
+        "Saturn"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "8th",
+      "planet_context_note": "8th house — crisis, obstacles, sudden events"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_venus",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-PATCH-16C7C5",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "The rule's dasha condition (Venus Mahadasha, Moon Antardasha) contradicts the summary statement and cannot be verified without direct BPHS Ch.53 text access; the apparent mixing of malefic 8th house Saturn with remedial outcomes requires source confirmation.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-PATCH-37CB8C",
+    "chapter": "",
+    "summary": "Ketu in 7th from Moon (Dasha lord) → Danger of affliction of the body with diseases.",
+    "detailed": "Condition: Ketu be in the 7th from the lord of the Dasa (the Moon).\n\nEffect: If Ketu be in the 2nd or 7th there will be danger of affliction of the body with diseases.",
+    "flag_reason": "Detailed text states 'If Ketu be in the 2nd or 7th' but condition specifies only 7th house; the summary omits the 2nd house alternative, creating inconsistency with source text.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Venus",
+      "antardasha_planet": "Moon",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "50-52",
+      "planets_involved": [
+        "Venus",
+        "Ketu"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "7th",
+      "planet_context_note": "7th house — maraka, death-inflicting potential"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_venus",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-PATCH-37CB8C",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "The rule summary and condition specification omit the 2nd house alternative explicitly stated in the detailed text ('2nd or 7th'), creating a material inconsistency with the source doctrine.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-PATCH-5E3A16",
+    "chapter": "",
+    "summary": "Jupiter in the 8th house from Moon → Destruction of preceptor and father, loss of children, loss of position, mental agony, quarrels, destruction of house, conveyances and agricultural land.",
+    "detailed": "Condition: Jupiter be in the 8th from the lord of the Dasa (the Moon).\n\nEffect: Destruction of preceptor (and father etc.) and children, loss of position, mental agony, quarrels, destruction of house, conveyances and agricultural land.",
+    "flag_reason": "Identical effects listed for Jupiter in 8th as for Jupiter in 12th (rules 5D5294 and 5E3A16), but these houses have different significations; 8th house effects should differ from 12th house effects in classical Vedic astrology.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Venus",
+      "antardasha_planet": "Moon",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "25-28",
+      "planets_involved": [
+        "Venus",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "8th",
+      "planet_context_note": "8th house — crisis, obstacles, sudden events"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_venus",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-PATCH-5E3A16",
+      "verdict": "uncertain",
+      "confidence": 0.45,
+      "reason": "Chapter 53 covers Dasha effects; without direct text access, cannot verify whether Jupiter in 8th from Moon is assigned identical effects to 12th house placement or whether this represents actual BPHS doctrine vs. KE compilation error.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-PATCH-6951E2",
+    "chapter": "",
+    "summary": "Rahu in trikona during Rahu Antardasha in Moon Mahadasha → Auspicious results at commencement, then danger from king/government, thieves, snakes, distress to cattle, loss of kinsmen/friends, loss o...",
+    "detailed": "Condition: Rahu be posited in a trikona.\n\nEffect: Some auspicious results at the commencement of the Antardasha of Rahu in the Dasha of the Moon but later there will be danger from the king (government), thieves and snakes, distress to cattle, loss of kinsmen and friends, loss of reputation and mental agony.",
+    "flag_reason": "Rule conflates two different conditions: 'Rahu in trikona' (favorable placement) with 'Rahu Antardasha in Moon Mahadasha' (unfavorable dasha period); the interpretation mixes auspicious and inauspicious effects without clear logical coherence.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Venus",
+      "antardasha_planet": "Moon",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "13-14",
+      "planets_involved": [
+        "Venus",
+        "Rahu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "trikona",
+      "planet_context_note": "Trikona placement — fortunate position amplifies Rahu's shadow effects"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_venus",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-PATCH-6951E2",
+      "verdict": "validator_error",
+      "confidence": 0.78,
+      "reason": "BPHS Chapter 53 explicitly teaches mixed results (auspicious initially, then inauspicious) for Rahu antardasha under Moon mahadasha when Rahu occupies trikona; the rule correctly reflects this doctrine despite appearing paradoxical.",
+      "ai_bucket": "B"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-PATCH-A460E9",
+    "chapter": "",
+    "summary": "Saturn in 7th from Moon (Dasha lord) → Physical distress.",
+    "detailed": "Condition: If Saturn be in 7th from the lord of the Dasa (the Moon).\n\nEffect: There will be physical distress.",
+    "flag_reason": "Condition specifies antardasha_planet=Saturn, but the rule is about Saturn in 7th from the Dasha lord (Moon); the dasha context is unclear and potentially misaligned with classical BPHS phrasing.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Venus",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "36-38",
+      "planets_involved": [
+        "Venus",
+        "Saturn",
+        "Moon"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "7th",
+      "planet_context_note": "7th house — maraka, death-inflicting potential"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_venus",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-PATCH-A460E9",
+      "verdict": "uncertain",
+      "confidence": 0.45,
+      "reason": "The rule's core teaching (Saturn in 7th from Moon → physical distress) plausibly reflects BPHS doctrine, but the structured condition conflates dasha-lord interpretation with antardasha timing, making it impossible to validate without the actual Chapter 53 text and sloka 36-38.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-PATCH-BF3DC0",
+    "chapter": "",
+    "summary": "Mrityunjaya Japa remedy for Ketu malefic effects → Relief from evil effects and gain of wealth and property with beneficence of Lord Shiva.",
+    "detailed": "Condition: Mrityunjaya Japa performed during Ketu malefic effects.\n\nEffect: Mrityunjaya Japa will give relief in all the evil effects and will ensure gain of wealth and property with the beneficence of lord Shiva.",
+    "flag_reason": "Rule is classified as 'dasha_remedy' with sub_type 'dasha_remedy' but BPHS Chapter 53 is dasha phala (results), not remedial prescriptions; Mrityunjaya Japa is not a standard BPHS Chapter 53 teaching and appears to be later interpolation or from different source.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Venus",
+      "antardasha_planet": "Moon",
+      "sub_type": "dasha_remedy",
+      "sloka": "50-52",
+      "planets_involved": [
+        "Venus",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "general",
+      "planet_context_note": "Remedy — Mrityunjaya Japa mitigates malefic effects"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_venus",
+      "dasha_remedy",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-PATCH-BF3DC0",
+      "verdict": "genuine_issue",
+      "confidence": 0.92,
+      "reason": "Chapter 53 covers dasha phala (results/effects) not remedies; Mrityunjaya Japa prescriptions are not characteristic BPHS Chapter 53 doctrine and appear sourced outside classical BPHS framework.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS53-PATCH-E77E96",
+    "chapter": "",
+    "summary": "Saturn in the 2nd house during Saturn Antardasha in Moon Mahadasha → Visits to holy places, bathing in holy rivers, creation of troubles by many people, and distress from enemies.",
+    "detailed": "Condition: Saturn be in the 2nd house.\n\nEffect: Effects like visits to holy places, bathing in holy rivers etc., creation of troubles by many people and distress from enemies will be derived.",
+    "flag_reason": "Saturn in 2nd house (maraka, death-inflicting) should produce inauspicious results, but the detailed effect describes visits to holy places and spiritual merit—this contradicts Saturn's malefic nature in the 2nd; the interpretation appears misaligned with classical doctrine.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Venus",
+      "antardasha_planet": "Moon",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "35",
+      "planets_involved": [
+        "Venus",
+        "Saturn"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "2nd",
+      "planet_context_note": "2nd house — maraka, death-inflicting, family wealth"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter53",
+      "dasha_venus",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS53-PATCH-E77E96",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "The rule conflates Saturn's malefic 2nd house placement (maraka/death-inflicting) with spiritually meritorious outcomes (holy places, bathing in rivers), which contradicts BPHS doctrine on maraka planets; additionally, the dasha condition specifies Venus Mahadasha + Moon Antardasha but the rule body only references Saturn in 2nd house without integrating the dasha lords as required for predictive synthesis.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS54-061",
+    "chapter": "",
+    "summary": "Mercury is the lord of the 2nd or 7th house during Mercury Antardasha in Mars Mahadasha → Possibility of critical illness.",
+    "detailed": "Condition: Mercury is the lord of the 2nd or the 7th house in the Antardasha of Mercury during Mars Mahadasha.\n\nEffect: There will be possibility of critical illness.",
+    "flag_reason": "Condition states Mercury Antardasha in Mars Mahadasha, but summary/detailed text says Mercury is lord of 2nd/7th house—these are two different conditions conflated; the rule lacks clarity on whether the effect applies when Mercury is antardasha lord OR when Mercury rules those houses.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mars",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "46-47",
+      "planets_involved": [
+        "Mercury",
+        "Mars"
+      ],
+      "houses_involved": [
+        2,
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Mercury"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter54",
+      "dasha_mars",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS54-061",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "BPHS Chapter 54 (Santhanam Vol 2) covers dasha effects, but the specific combination of Mercury Antardasha in Mars Mahadasha with Mercury ruling 2nd/7th house producing critical illness cannot be verified without direct text access.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS54-PATCH-116D9B",
+    "chapter": "",
+    "summary": "Sun in 6th from Mars Dasha lord → Distress to body, agony, failure in ventures, troubles in forehead, fever, dysentery.",
+    "detailed": "Condition: Sun in the 6th from the Dasha lord (Mars).\n\nEffect: Distress to the body, agony, failure in ventures, possibilities of suffering from troubles in the forehead, fever, dysentery.",
+    "flag_reason": "Sun in 6th house should produce different results than Sun in 12th; this rule duplicates the effects from R-BPHS54-PATCH-114E6C despite different house placement, which is incoherent with classical Vedic principles where 6th (enemies, disease, service) and 12th (losses, isolation) have distinct significations.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mars",
+      "antardasha_planet": "Mars",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "67-67",
+      "planets_involved": [
+        "Sun",
+        "Mars"
+      ],
+      "houses_involved": [
+        6
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "6th",
+      "planet_context_note": "Sun in 6th — enemies, disease, service; natural malefic in dusthana"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter54",
+      "dasha_mars",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS54-PATCH-116D9B",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Chapter 54 of BPHS Vol 2 (Santhanam) covers Dasha effects, but without direct access to sloka 67 and its exact context regarding Sun-Mars configurations, cannot verify whether the 6th house placement rule is distinct from 12th house or if symptom overlap is intentional doctrine.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS54-PATCH-26A25A",
+    "chapter": "",
+    "summary": "Ketu in 3rd house from Ascendant → Beneficence of king, gain of wealth, land gains, birth of son, government authority, gain of cattle.",
+    "detailed": "Condition: Ketu in the 3rd from the Ascendant.\n\nEffect: Beneficence of the king (government), gain of wealth, little gains of land at the commencement of the Dasa and substantial later, birth of a son, conferment of authority by government, gain of cattle.",
+    "flag_reason": "Ketu in 3rd house is traditionally inauspicious for longevity and causes loss; attributing 'beneficence of king, wealth, son, authority' contradicts classical BPHS teaching where Ketu in 3rd brings obstacles and separation; this appears inverted.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mars",
+      "antardasha_planet": "Mars",
+      "sub_type": "dasha_favourable",
+      "sloka": "48-49",
+      "planets_involved": [
+        "Mars",
+        "Ketu"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "3rd",
+      "planet_context_note": "Upachaya house — gradual growth and improvement"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter54",
+      "dasha_mars",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS54-PATCH-26A25A",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "Ketu in 3rd house traditionally causes obstacles, separation, and loss in BPHS doctrine; attributing royal beneficence, wealth gains, and son-birth directly contradicts established Ketu malefic principles and appears fabricated or severely distorted.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS54-PATCH-3E2164",
+    "chapter": "",
+    "summary": "Moon in 4th house with lord of 4th during Mars Mahadasha Antardasha → Acquisition of kingdom/promotion, gain of perfumes and clothes, construction of reservoirs and shelters, auspicious celebration...",
+    "detailed": "Condition: Moon in the 4th house along with the lord of the 4th during Antardasha of Moon in Dasha of Mars.\n\nEffect: Acquisition of more kingdom (promotion to higher position in government), gain of perfumes, clothes, construction of reservoirs, shelters for cows etc., celebrations of auspicious functions like marriage etc., happiness to wife and children, good relations with parents, acquisition of property by the beneficence of the sovereign, success in the desired projects.",
+    "flag_reason": "This rule is nearly identical to R-BPHS54-PATCH-36FCE5 with only minor condition text differences ('with lord of 4th' added); both cannot be simultaneously valid distinct rules without clarification of their separate classical sources.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mars",
+      "antardasha_planet": "Mars",
+      "sub_type": "dasha_favourable",
+      "sloka": "70-73",
+      "planets_involved": [
+        "Mars",
+        "Moon"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "4th",
+      "planet_context_note": "4th house with its lord — property and home strongly reinforced"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter54",
+      "dasha_mars",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS54-PATCH-3E2164",
+      "verdict": "genuine_issue",
+      "confidence": 0.75,
+      "reason": "The condition field contains internal contradiction: antardasha_planet is 'Mars' but the rule text specifies 'Antardasha of Moon in Dasha of Mars', indicating antardasha should be Moon; additionally, the rule content itself appears plausible for BPHS54 but the flagged duplication issue and condition encoding error suggest fabrication or severe corruption.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS54-PATCH-3E8999",
+    "chapter": "",
+    "summary": "Rahu in 9th house from Ascendant → Recognition from government, gain of house and land, happiness from son, extraordinary profits in business, bathing in holy rivers, foreign journeys.",
+    "detailed": "Condition: Rahu in the 9th from the Ascendant and associated with benefics.\n\nEffect: Recognition from government, gain of house, land etc., happiness from son, extraordinary profits in business, bathing in holy rivers like Ganges and foreign journeys.",
+    "flag_reason": "Condition specifies 'Rahu in 9th house associated with benefics' but summary omits the benefic association requirement; the detailed text mentions it but the summary does not, creating incoherence between the two.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mars",
+      "antardasha_planet": "Mars",
+      "sub_type": "dasha_favourable",
+      "sloka": "9-10",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "9th",
+      "planet_context_note": "9th house — dharma, fortune, pilgrimage, spiritual merit"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter54",
+      "dasha_mars",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS54-PATCH-3E8999",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "The rule's core claim (Rahu in 9th with benefics → government recognition, property, son's happiness, profits, pilgrimages, foreign travel) is plausible for BPHS Vol 2 Ch. 54, but the condition JSON structure (dasha_lord Mars/Mars, sloka 9-10) appears mismatched to a static house placement rule, and without direct text access cannot verify exact sloka correspondence or benefic association requirement.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS54-PATCH-6592D5",
+    "chapter": "",
+    "summary": "Recitation of Shiva Sahasranam as remedy → Mitigation of evil effects from Jupiter's unfavourable placement or lordship.",
+    "detailed": "Condition: Recitation of Shiva Sahasranam.\n\nEffect: Remedial measure to combat the above evil effects.",
+    "flag_reason": "Remedy text states 'Shiva Sahasranam' but claims to mitigate 'Jupiter's unfavourable placement'—Jupiter is not mentioned in the condition (Mars dasha), creating a logical mismatch.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mars",
+      "antardasha_planet": "Mars",
+      "sub_type": "dasha_remedy",
+      "sloka": "20-22",
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "general",
+      "planet_context_note": "Spiritual remedy — invocation of Shiva for protection and mitigation"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter54",
+      "dasha_mars",
+      "dasha_remedy",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS54-PATCH-6592D5",
+      "verdict": "genuine_issue",
+      "confidence": 0.92,
+      "reason": "Rule claims Shiva Sahasranam remedies Jupiter's unfavourable effects, but condition specifies Mars dasha/antardasha with no Jupiter involvement—creating a documented logical mismatch between remedy purpose and planetary condition.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS54-PATCH-F1FDFB",
+    "chapter": "",
+    "summary": "Saturn in 12th house → Danger from foreign dignitaries, loss of wealth, imprisonment, disease affliction, loss in agricultural production.",
+    "detailed": "Condition: Saturn be in the 12th.\n\nEffect: Danger from Yavana kings (foreign dignitaries), loss of wealth, imprisonment, possibility of affliction with diseases, loss in agricultural production.",
+    "flag_reason": "Identical to R-BPHS54-PATCH-E84594 (Saturn in 8th vs 12th effects are the same text); this appears to be a duplicate rule with only the house number changed in metadata but identical effects listed—violates data integrity.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mars",
+      "antardasha_planet": "Mars",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "26",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "12th",
+      "planet_context_note": "12th house — losses, isolation, foreign travel"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter54",
+      "dasha_mars",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS54-PATCH-F1FDFB",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "The rule conflates Saturn in 12th house effects with dasha conditions (Mars-Mars period) in the condition field, creating structural confusion; additionally, the identical flagging of effects between 8th and 12th house placements suggests either fabrication or severe transcription error not consistent with classical BPHS differentiation of house results.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS55-085",
+    "chapter": "",
+    "summary": "Mars in 9th from Rahu → Attainment of position of a commander of the army, enthusiasm and wealth through kinsmen.",
+    "detailed": "Condition: Mars be in the 9th from the lord of the Dasa (Rahu).\n\nEffect: Attainment of position of a commander of the army, enthusiasm and of wealth through kinsmen.",
+    "flag_reason": "Identical effect text to R-BPHS55-084 despite different house position (9th vs 5th); classical sources typically differentiate effects by house placement.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Rahu",
+      "sub_type": "dasha_favourable",
+      "sloka": "78-79",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Mars"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter55",
+      "dasha_rahu",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS55-085",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Cannot verify without consulting the actual BPHS Vol 2 Santhanam text (Chapter 55, slokas 78-79) to confirm whether identical effect-text for different house placements reflects authentic doctrine or transcription error.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS55-086",
+    "chapter": "",
+    "summary": "Mars in 3rd from Rahu → Attainment of position of a commander of the army, enthusiasm and wealth through kinsmen.",
+    "detailed": "Condition: Mars be in the 3rd from the lord of the Dasa (Rahu).\n\nEffect: Attainment of position of a commander of the army, enthusiasm and of wealth through kinsmen.",
+    "flag_reason": "Identical effect text to R-BPHS55-084 and R-BPHS55-085 despite different house position (3rd); suggests possible copy-paste error or incomplete source extraction.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Rahu",
+      "sub_type": "dasha_favourable",
+      "sloka": "78-79",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Mars"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter55",
+      "dasha_rahu",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS55-086",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Chapter 55 Rahu dasha rules (slokas 78-79) require direct text verification; identical effect language across three consecutive house positions (3rd, 4th, 5th) is suspicious but possible if source uses standardized phrasing with only house position varying.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS55-087",
+    "chapter": "",
+    "summary": "Mars in 11th from Rahu → Attainment of position of a commander of the army, enthusiasm and wealth through kinsmen.",
+    "detailed": "Condition: Mars be in the 11th from the lord of the Dasa (Rahu).\n\nEffect: Attainment of position of a commander of the army, enthusiasm and of wealth through kinsmen.",
+    "flag_reason": "Identical effect text to R-BPHS55-084, R-BPHS55-085, and R-BPHS55-086 despite different house position (11th); pattern indicates systematic duplication error.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Rahu",
+      "sub_type": "dasha_favourable",
+      "sloka": "78-79",
+      "planets_involved": [
+        "Mars",
+        "Rahu"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Mars"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter55",
+      "dasha_rahu",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS55-087",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Cannot verify without physical text access; the flagged duplication pattern across R-BPHS55-084/085/086/087 is structurally suspicious but may reflect authentic BPHS slokas 78-79 that share similar phrasing for different planetary positions.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS55-PATCH-3B702B",
+    "chapter": "",
+    "summary": "Venus associated with Mars → Diseases, quarrels, separation from son or father, distress to kinsmen.",
+    "detailed": "Condition: Venus associated with Mars during Rahu Mahadasha.\n\nEffect: There will be diseases, quarrels, separation from the son or father, distress to kinsmen, disputes with co-parceners, danger of death to self or employer, unhappiness to wife and children, pain in the stomach.",
+    "flag_reason": "Condition specifies 'Venus associated with Mars' but the summary and detailed text are identical to the Venus-in-6th-house rule (R-BPHS55-PATCH-330111), suggesting copy-paste error or misalignment between condition and effect.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Rahu",
+      "antardasha_planet": "Rahu",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "51-53",
+      "planets_involved": [
+        "Rahu",
+        "Venus",
+        "Mars"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "malefic_aspect",
+      "planet_context_note": "Malefic aspect — adverse planetary influence on period",
+      "condition_group_id": "ch55-sl51-53-venus-unfavourable",
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter55",
+      "dasha_rahu",
+      "dasha_unfavourable",
+      "ai_extracted",
+      "group:ch55-sl51-53-venus-unfavourable"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS55-PATCH-3B702B",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "Rule condition (Venus-Mars association during Rahu Mahadasha) is mechanically misaligned with its effects text, which appears copied from a Venus-6th-house rule; BPHS Ch.55 Slokas 51-53 address planetary associations and dashas but this specific conflation lacks coherent textual basis.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS55-PATCH-49AF69",
+    "chapter": "",
+    "summary": "Recitation of Vishnu Sahasranam as remedial measure → Relief from fear of premature death and evil effects.",
+    "detailed": "Condition: Recitation of Vishnu Sahasranam is performed as a remedial measure.\n\nEffect: Remedial measure to obtain relief from the evil effects of Mercury as lord of 2nd or 7th house.",
+    "flag_reason": "Detailed text references Mercury as lord of 2nd or 7th house, but summary and condition mention only Vishnu Sahasranam recitation without clear connection to Mercury's lordship; the remedy-to-affliction mapping is unclear.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Rahu",
+      "antardasha_planet": "Rahu",
+      "sub_type": "dasha_remedy",
+      "sloka": "39",
+      "planets_involved": [
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "general",
+      "planet_context_note": "",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter55",
+      "dasha_rahu",
+      "dasha_remedy",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS55-PATCH-49AF69",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "BPHS Chapter 55 (Santhanam Vol 2) addresses dashas and planetary periods, not mantra remedies like Vishnu Sahasranam recitation; the rule conflates unrelated remedial practices with dasha doctrine and lacks textual grounding.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS55-PATCH-4EBC18",
+    "chapter": "",
+    "summary": "Jupiter in 12th house from Ascendant during Rahu Mahadasha → Loss of wealth, obstacles in work, defamation, distress to wife and children, heart disease.",
+    "detailed": "Condition: Jupiter in the 12th house from the Ascendant during Rahu Mahadasha.\n\nEffect: Loss of wealth, obstacles in work, defamation, distress to wife and children, heart disease will result.",
+    "flag_reason": "Jupiter in 12th house is classically inauspicious, but attributing heart disease specifically to this combination during Rahu Mahadasha lacks clear textual support in BPHS Ch.55; the rule conflates house signification (12th = losses) with a medical outcome not explicitly stated in classical sources.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Rahu",
+      "antardasha_planet": "Rahu",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "13-14",
+      "planets_involved": [
+        "Rahu",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "12th",
+      "planet_context_note": "12th house — losses, isolation, foreign travel",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter55",
+      "dasha_rahu",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS55-PATCH-4EBC18",
+      "verdict": "genuine_issue",
+      "confidence": 0.82,
+      "reason": "Jupiter in 12th house is standard BPHS doctrine for losses/expenditure, but adding heart disease as a specific medical outcome during Rahu Mahadasha appears to be an unsupported interpolation not found in BPHS Ch.55 Santhanam text.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS55-PATCH-65706D",
+    "chapter": "",
+    "summary": "Mercury is lord of the 2nd house → Fear of premature death.",
+    "detailed": "Condition: Mercury is the lord of the 2nd house during Rahu Mahadasha.\n\nEffect: There will be fear of premature death.",
+    "flag_reason": "The rule states 'Mercury is lord of the 2nd house' produces 'fear of premature death,' but this is a generic maraka principle not specific to Rahu Mahadasha; the condition metadata contradicts the summary (condition says 'dasha_unfavourable' and 'maraka_lord' but summary omits dasha context entirely).",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Rahu",
+      "antardasha_planet": "Rahu",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "39",
+      "planets_involved": [
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "maraka_lord",
+      "planet_context_note": "Maraka lord — 2nd house lord, death-inflicting potential",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter55",
+      "dasha_rahu",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS55-PATCH-65706D",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "The summary overstates a basic maraka principle as a standalone rule without mandatory Rahu Mahadasha context that the detailed condition metadata requires; BPHS maraka effects are dasha-dependent, not unconditional.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS55-PATCH-6AC96A",
+    "chapter": "",
+    "summary": "Jupiter in kendra from Rahu → Gains of land, good food, cattle, charitable and religious inclination.",
+    "detailed": "Condition: Jupiter in kendra from the lord of the Dasa (Rahu) and be endowed with strength.\n\nEffect: There will be gains of land, good food, gains of cattle etc., inclination towards charitable and religious work.",
+    "flag_reason": "Jupiter in kendra from Rahu (a shadow planet) is conceptually problematic; classical texts measure kendras from Lagna or Moon, not from Rahu. The condition conflates planetary position with dasha-lord relationship.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Rahu",
+      "antardasha_planet": "Rahu",
+      "sub_type": "dasha_favourable",
+      "sloka": "15-17",
+      "planets_involved": [
+        "Jupiter",
+        "Rahu"
+      ],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "kendra",
+      "planet_context_note": "Natural benefic in angular house — strong, auspicious manifestation",
+      "condition_group_id": "ch55-sl15-17-jupiter-favourable",
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter55",
+      "dasha_rahu",
+      "dasha_favourable",
+      "ai_extracted",
+      "group:ch55-sl15-17-jupiter-favourable"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS55-PATCH-6AC96A",
+      "verdict": "genuine_issue",
+      "confidence": 0.72,
+      "reason": "BPHS Ch. 55 discusses Rahu dasha results but measuring kendra from Rahu (a shadow/chaya graha) contradicts foundational BPHS doctrine that kendras are computed from Lagna or Moon; the rule conflates dasha-lordship with positional geometry.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS56-051",
+    "chapter": "",
+    "summary": "At the end of the Antardasha → Loss of wealth and bodily distress.",
+    "detailed": "Condition: At the end of the Dasha.\n\nEffect: There will be loss of wealth and bodily distress.",
+    "flag_reason": "Condition states 'At the end of the Dasha' but rule_id and context suggest Mercury Antardasha in Jupiter Mahadasha; condition field is vague and does not clearly specify which dasha period is meant.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Jupiter",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "29-29",
+      "planets_involved": [
+        "Mercury",
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Mercury"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter56",
+      "dasha_jupiter",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS56-051",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "BPHS56 sloka 29 exists but without direct access to Santhanam Vol 2 text, cannot verify whether this specific Mercury antardasha-end rule is authentic doctrine or a mis-extracted condition.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS56-052",
+    "chapter": "",
+    "summary": "Mercury is the lord of the 2nd or 7th house during Jupiter Mahadasha → Premature death may be expected.",
+    "detailed": "Condition: Mercury be the lord of the 2nd or the 7th.\n\nEffect: Premature death may be expected.",
+    "flag_reason": "Rule states 'premature death may be expected' but this is an extreme outcome; verify BPHS sloka 30-31 actually prescribes death rather than severe hardship, as this contradicts classical astrology's principle of remedies.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Jupiter",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "30-31",
+      "planets_involved": [
+        "Mercury",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        2,
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Mercury"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter56",
+      "dasha_jupiter",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS56-052",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Chapter 56 slokas 30-31 content cannot be verified without physical BPHS Vol 2 text; the rule's specificity (Mercury as 2nd/7th lord during Jupiter MD → premature death) requires direct source confirmation.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS56-055",
+    "chapter": "",
+    "summary": "Ketu Antardasha in Jupiter Mahadasha with Ketu associated with or aspected by benefic → Coarse food or food given at the time of death ceremonies.",
+    "detailed": "Condition: Ketu Antardasha in Jupiter Mahadasha if Ketu be associated with or aspected by benefic.\n\nEffect: Coarse food or food given at the time of death ceremonies.",
+    "flag_reason": "Condition states Ketu is 'associated with or aspected by benefic' (favourable) but sub_type is 'dasha_unfavourable' and effect is negative (coarse food); condition and effect are contradictory.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Jupiter",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "32",
+      "planets_involved": [
+        "Jupiter",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Ketu"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter56",
+      "dasha_jupiter",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS56-055",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "The rule presents a logical contradiction: a benefic association/aspect should mitigate negative effects, yet the outcome (coarse food at death ceremonies) remains decidedly negative despite the 'favourable' condition, suggesting either misinterpretation of the source sloka or fabrication.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS56-056",
+    "chapter": "",
+    "summary": "Ketu Antardasha in Jupiter Mahadasha with Ketu associated with or aspected by benefic → Acquisition of wealth through undesirable means.",
+    "detailed": "Condition: Ketu Antardasha in Jupiter Mahadasha if Ketu be associated with or aspected by benefic.\n\nEffect: Acquisition of wealth through undesirable means.",
+    "flag_reason": "Condition states Ketu is 'associated with or aspected by benefic' (favourable) but sub_type is 'dasha_unfavourable' and effect is negative (undesirable means); condition and effect are contradictory.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Jupiter",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "32",
+      "planets_involved": [
+        "Jupiter",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Ketu"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter56",
+      "dasha_jupiter",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS56-056",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "A benefic association/aspect on Ketu should mitigate negative outcomes; marking this as 'dasha_unfavourable' with negative effect contradicts the stated favourable condition.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS56-PATCH-AEBB42",
+    "chapter": "",
+    "summary": "Ketu is lord of the 2nd house → Physical distress.",
+    "detailed": "Condition: Ketu is the lord of the 2nd house during Jupiter Mahadasha.\n\nEffect: There will be physical distress.",
+    "flag_reason": "Ketu cannot be 'lord' of any house in classical Vedic astrology; Ketu is a shadow planet without rulership. The condition and interpretation are fundamentally incoherent.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Jupiter",
+      "antardasha_planet": "Jupiter",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "37-38",
+      "planets_involved": [
+        "Jupiter",
+        "Ketu"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "maraka_lord",
+      "planet_context_note": "Maraka lord — 2nd house lord, death-inflicting potential",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter56",
+      "dasha_jupiter",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS56-PATCH-AEBB42",
+      "verdict": "genuine_issue",
+      "confidence": 0.92,
+      "reason": "Ketu (a shadow planet/node) cannot be a house lord in BPHS doctrine; only planets with graha-lordship (Sun–Saturn) rule houses, making this rule fundamentally incoherent with Vedic astrology principles.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS56-PATCH-D0BAEB",
+    "chapter": "",
+    "summary": "Sun in 12th from Ascendant during Jupiter Mahadasha → Nervous disorder, fever, laziness, sins, antagonism, separation from kinsmen, distress.",
+    "detailed": "Condition: Sun in the 12th from the Ascendant during Jupiter Mahadasha.\n\nEffect: Effects like nervous disorder, fever, laziness or reluctance in the performance of good deeds; indulgence in sins, antagonistic attitude towards all, separation from kinsmen and distress without reasons will be experienced.",
+    "flag_reason": "Sun in 12th produces different effects than Sun in 6th per BPHS 56:54-55; this rule reuses the 6th house effects (nervous disorder, fever, laziness, sins) for the 12th house, which is textually incorrect—12th house effects differ (losses, isolation, expenditure).",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Jupiter",
+      "antardasha_planet": "Jupiter",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "54-55",
+      "planets_involved": [
+        "Jupiter",
+        "Sun"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "12th",
+      "planet_context_note": "12th house — losses, isolation, foreign travel; Sun's authority diminished",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter56",
+      "dasha_jupiter",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS56-PATCH-D0BAEB",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "The rule conflates Sun in 6th house effects (nervous disorder, fever, laziness, sins) with Sun in 12th house placement, which BPHS 56:54-55 treats distinctly—12th house Sun produces losses, isolation, and expenditure rather than fever/nervous disorders.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-029",
+    "chapter": "",
+    "summary": "Ketu in 8th from Ascendant or Dasha lord (Saturn) → Coarse fool, cold fever, dysentry.",
+    "detailed": "Condition: Ketu be in the 8th from the Ascendant or the lord of the Dasa (Saturn).\n\nEffect: Coarse fool, cold fever, dysentry.",
+    "flag_reason": "Text 'Coarse fool' is archaic/unclear translation; 'dysentry' is misspelling of 'dysentery'; phrasing suggests OCR or translation error from original Sanskrit.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "20-21",
+      "planets_involved": [
+        "Ketu",
+        "Saturn"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Ketu"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-029",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Cannot verify specific sloka 20-21 content, Saturn dasha conditions, or exact Santhanam translation wording without access to physical BPHS Vol 2 Chapter 57 text.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-033",
+    "chapter": "",
+    "summary": "Ketu in 12th from Ascendant or Dasha lord (Saturn) → Coarse fool, cold fever, dysentry.",
+    "detailed": "Condition: Ketu be in the 12th from the Ascendant or the lord of the Dasa (Saturn).\n\nEffect: Coarse fool, cold fever, dysentry.",
+    "flag_reason": "Same translation issues as R-BPHS57-029: 'Coarse fool' and 'dysentry' misspelling; text quality inconsistent with classical Vedic phrasing.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "20-21",
+      "planets_involved": [
+        "Ketu",
+        "Saturn"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Ketu"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-033",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Cannot verify specific sloka 20-21 content, Ketu-12th house effects, or Saturn dasha connections without direct access to BPHS Vol 2 Ch57 Santhanam text; translation anomalies ('dysentry', 'coarse fool') warrant PDF verification.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-098",
+    "chapter": "",
+    "summary": "Mars in 2nd house during Saturn Mahadasha → Great distress, dependence on others, and fear of premature death.",
+    "detailed": "Condition: Mars be in the 2nd from the Ascendant during Saturn Mahadasha.\n\nEffect: Great distress, dependence on others and fear of premature death may be expected.",
+    "flag_reason": "Condition states 'Mars in 2nd house' but summary and detailed text describe outcomes for Mars as 2nd lord; these are distinct conditions and the rule conflates them.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "61-62",
+      "planets_involved": [
+        "Saturn",
+        "Mars"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Mars"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-098",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Chapter 57 of BPHS (Santhanam Vol 2) covers dasha effects, but without direct access to slokas 61-62 and their exact wording, cannot confirm whether the rule describes Mars in 2nd house (occupant), Mars as 2nd lord, or a combined condition.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-0727F5",
+    "chapter": "",
+    "summary": "Venus in 8th house from Ascendant during Saturn Mahadasha → Distress to wife, loss of position, mental agony, quarrels with close relations.",
+    "detailed": "Condition: Venus in the 8th house from the Ascendant during Saturn Mahadasha.\n\nEffect: Distress to wife, loss of position, mental agony, quarrels with close relations.",
+    "flag_reason": "Condition specifies 'Venus in 8th from Ascendant during Saturn Mahadasha' but detailed text says 'from the Ascendant' which is inconsistent with dasha-based interpretation logic; should be '8th from Saturn' not '8th from Ascendant'.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "28-29",
+      "planets_involved": [
+        "Saturn",
+        "Venus"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "8th",
+      "planet_context_note": "8th house — crisis, obstacles, sudden events",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-0727F5",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Chapter 57 of BPHS (Santhanam Vol 2) covers Mahadasha effects, but without direct text access, cannot verify whether Venus in 8th from Ascendant during Saturn Mahadasha is explicitly stated or if the flagged inconsistency (Ascendant vs. Saturn reference frame) reflects actual doctrine.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-37B401",
+    "chapter": "",
+    "summary": "Remedy: recitation of Shiva Sahasranama to mitigate evil effects → Relief from physical distress and death-related effects.",
+    "detailed": "Condition: During Saturn Antardasha with Jupiter as lord of 2nd or 7th.\n\nEffect: Recitation of Shiva Sahasranama provides relief from the above evil effects of physical distress, agony, and death.",
+    "flag_reason": "Remedy rule lacks specificity: condition states 'Jupiter as lord of 2nd or 7th' but summary omits this qualifier; detailed text is vague ('above evil effects') and does not clearly map which specific adverse conditions the Shiva Sahasranama addresses.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_remedy",
+      "sloka": "81-82",
+      "planets_involved": [
+        "Saturn",
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "general",
+      "planet_context_note": "",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_remedy",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-37B401",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "Chapter 57 of BPHS (Santhanam Vol 2) covers dashas and their effects, but without direct access to slokas 81-82 and their context, cannot verify whether this specific Saturn Antardasha + Jupiter lordship + Shiva Sahasranama remedy combination is authentically sourced or fabricated.",
+      "ai_bucket": "?"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-562548",
+    "chapter": "",
+    "summary": "Venus in 6th house from Ascendant during Saturn Mahadasha → Distress to wife, loss of position, mental agony, quarrels with close relations.",
+    "detailed": "Condition: Venus in the 6th house from the Ascendant during Saturn Mahadasha.\n\nEffect: Distress to wife, loss of position, mental agony, quarrels with close relations.",
+    "flag_reason": "Rule states 'Venus in 6th house from Ascendant' but condition field specifies Saturn Mahadasha without clarifying Venus's role (antardasha planet, natal position, or dasha lord); BPHS Ch.57 framework requires explicit planetary period context.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "28-29",
+      "planets_involved": [
+        "Saturn",
+        "Venus"
+      ],
+      "houses_involved": [
+        6
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "6th",
+      "planet_context_note": "6th house — enemies, disease, service",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-562548",
+      "verdict": "genuine_issue",
+      "confidence": 0.78,
+      "reason": "Rule conflates natal Venus placement with dasha effects without clarifying whether Venus functions as antardasha lord, natal significator, or transit point; BPHS 57 dasha effects require explicit planetary period hierarchy.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-5C3BA0",
+    "chapter": "",
+    "summary": "Mercury in 6th house from Ascendant → Acquisition of kingdom, gain of wealth, headship of village.",
+    "detailed": "Condition: Mercury in the 6th house from the Ascendant during Saturn Antardasha.\n\nEffect: Acquisition of a kingdom (attainment of a high position in Government), gain of wealth, headship of a village at the commencement of the Dasa.",
+    "flag_reason": "Rule claims Mercury in 6th house yields 'kingdom, wealth, village headship'—typically inauspicious house; contradicts R-BPHS57-PATCH-55C3E1 which assigns same outcome to 12th house. Requires source verification; likely misattribution or conflation of slokas.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_favourable",
+      "sloka": "12-13",
+      "planets_involved": [
+        "Saturn",
+        "Mercury"
+      ],
+      "houses_involved": [
+        6
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "6th",
+      "planet_context_note": "6th house — enemies, disease, service; Mercury's intellect applied to governance",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-5C3BA0",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "Mercury in 6th house (a malefic house) yielding 'kingdom' and 'village headship' contradicts core BPHS doctrine on dusthana effects; the dasha specification (Saturn Antardasha during Saturn Dasa) appears inconsistent with typical planetary period combinations, and the flagged contradiction with R-BPHS57-PATCH-55C3E1 suggests conflation or source misattribution.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-7B534F",
+    "chapter": "",
+    "summary": "Sun is lord of 7th from Ascendant → Physical distress.",
+    "detailed": "Condition: Sun is the lord of the 7th from the Ascendant during Saturn Antardasha.\n\nEffect: There will be physical distress.",
+    "flag_reason": "Summary claims 'Sun is lord of 7th from Ascendant → Physical distress' but this is incomplete; maraka lords (7th/2nd) cause distress only when activated in unfavourable dasha/antardasha; the rule lacks specificity on *when* this manifests and conflates planetary lordship with dasha timing.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "42",
+      "planets_involved": [
+        "Saturn",
+        "Sun"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "maraka_lord",
+      "planet_context_note": "Maraka lord — 7th house lord, death-inflicting potential",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-7B534F",
+      "verdict": "validator_error",
+      "confidence": 0.75,
+      "reason": "The rule correctly identifies maraka principles (7th lord as death-inflicting) and dasha activation timing per BPHS Chapter 57, but the summary oversimplifies what the detailed condition properly specifies: manifestation requires Saturn antardasha context.",
+      "ai_bucket": "B"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-7C33F5",
+    "chapter": "",
+    "summary": "Ketu Antardasha in Saturn Mahadasha, Ketu aspected by benefics → Loss of position, dangers, poverty, distress, foreign journeys.",
+    "detailed": "Condition: Ketu aspected by benefics during Ketu Antardasha in Saturn Mahadasha.\n\nEffect: Evil effects like loss of position, dangers, poverty, distress, foreign journeys will be derived.",
+    "flag_reason": "Condition states 'Ketu aspected by benefics' yet summary/detailed claim evil effects (loss of position, poverty, distress); benefic aspect should mitigate Ketu's malefic nature, not reinforce it—this contradicts classical principle that benefic aspects reduce malefic results.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "16-18",
+      "planets_involved": [
+        "Saturn",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "benefic_aspect",
+      "planet_context_note": "Benefic aspect — mitigating influence, but Ketu's malefic nature dominates",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-7C33F5",
+      "verdict": "genuine_issue",
+      "confidence": 0.78,
+      "reason": "Rule claims benefic aspect on Ketu produces evil effects (loss, poverty, distress), which contradicts fundamental BPHS principle that benefic aspects mitigate malefic planetary results; the logical inconsistency suggests fabrication or severe misinterpretation of source text.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-AA4529",
+    "chapter": "",
+    "summary": "Ketu Antardasha in Saturn Mahadasha, Ketu in benefic sign → Loss of position, dangers, poverty, distress, foreign journeys.",
+    "detailed": "Condition: Ketu in a benefic sign during Ketu Antardasha in Saturn Mahadasha.\n\nEffect: Evil effects like loss of position, dangers, poverty, distress, foreign journeys will be derived.",
+    "flag_reason": "Contradictory: condition states 'Ketu in benefic sign' but interpretation text says 'evil effects'; classical sources do teach Ketu yields malefic results even in benefic signs, but the condition field's 'friendly_sign' label conflicts with the adverse outcome stated.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "16-18",
+      "planets_involved": [
+        "Saturn",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "friendly_sign",
+      "planet_context_note": "Friendly sign — moderately favourable placement, but Ketu's malefic nature dominates",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-AA4529",
+      "verdict": "genuine_issue",
+      "confidence": 0.72,
+      "reason": "The rule conflates Ketu's intrinsic malefic nature with sign dignity; BPHS teaches Ketu as naturally inauspicious regardless of benefic placement, making the condition 'Ketu in benefic sign' a misleading frame for predicting evil effects—the doctrine doesn't hinge on sign beneficence but on Ketu's inherent character.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-B89C62",
+    "chapter": "",
+    "summary": "Rahu in own sign → Enjoyment, gains of wealth, increase in agricultural production, devotion to deities and Brahmins, pilgrimage to holy places, increase in cattle wealth, well being in the family.",
+    "detailed": "Condition: Rahu in own sign during Saturn Mahadasha.\n\nEffect: Enjoyment, gains of wealth, increase in agricultural production, devotion to deities and Brahmins, pilgrimage to holy places, increase in cattle wealth, well being in the family will be the results at the commencement of the Antardasa.",
+    "flag_reason": "Rahu does not have an 'own sign' in classical Vedic astrology; Rahu and Ketu are shadow planets without rulership of signs. The condition 'dignity_state: own_sign' is inapplicable to Rahu.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_favourable",
+      "sloka": "65-67",
+      "planets_involved": [
+        "Saturn",
+        "Rahu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "own_sign",
+      "planet_context_note": "Own sign — strong, comfortable, reliable results",
+      "condition_group_id": "ch57-sl65-67-rahu-favourable",
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_favourable",
+      "ai_extracted",
+      "group:ch57-sl65-67-rahu-favourable"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-B89C62",
+      "verdict": "genuine_issue",
+      "confidence": 0.92,
+      "reason": "Rahu lacks own sign rulership in classical BPHS doctrine; shadow planets are evaluated by exaltation/debilitation and placement, not dignities of ownership.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS57-PATCH-C5E9B2",
+    "chapter": "",
+    "summary": "Ketu Antardasha in Saturn Mahadasha, Ketu associated with benefics → Loss of position, dangers, poverty, distress, foreign journeys.",
+    "detailed": "Condition: Ketu associated with benefics during Ketu Antardasha in Saturn Mahadasha.\n\nEffect: Evil effects like loss of position, dangers, poverty, distress, foreign journeys will be derived.",
+    "flag_reason": "The rule claims Ketu associated with benefics still produces only malefic results (loss, dangers, poverty); this contradicts the principle that benefic association mitigates malefic effects. The planet_context_note acknowledges 'mitigating influence' but the effect statement ignores this.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Saturn",
+      "antardasha_planet": "Saturn",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "16-18",
+      "planets_involved": [
+        "Saturn",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "benefic_aspect",
+      "planet_context_note": "Benefic association — mitigating influence, but Ketu's malefic nature dominates",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter57",
+      "dasha_saturn",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS57-PATCH-C5E9B2",
+      "verdict": "genuine_issue",
+      "confidence": 0.82,
+      "reason": "Rule claims benefic association with Ketu produces only malefic results, contradicting BPHS principle that benefic influences mitigate malefic planetary effects; the condition-effect mapping is logically incoherent.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-040",
+    "chapter": "",
+    "summary": "Mercury Mahadasha with Antardasha (circumstances mentioned above) → Construction of a new house.",
+    "detailed": "Condition: In the circumstances mentioned above during Mercury Mahadasha Antardasha.\n\nEffect: Construction of a new house.",
+    "flag_reason": "Rule is vague and incomplete; 'circumstances mentioned above' is undefined and makes the rule non-actionable without explicit reference to prior conditions.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "sub_type": "dasha_favourable",
+      "sloka": "28-29",
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Mercury"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-040",
+      "verdict": "validator_error",
+      "confidence": 0.75,
+      "reason": "BPHS Chapter 58 does contain sequential contextual rules where 'circumstances mentioned above' is a legitimate literary convention referring to prior slokas; the rule structure is consistent with BPHS methodology even if operationally incomplete.",
+      "ai_bucket": "B"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-052",
+    "chapter": "",
+    "summary": "Moon is lord of 2nd or 7th from Ascendant during Mercury Mahadasha → Physical distress.",
+    "detailed": "Condition: If the Moon be the lord of the 2nd or the 7th from the Ascendant.\n\nEffect: There will be physical distress.",
+    "flag_reason": "Condition specifies Moon as lord of 2nd or 7th from Ascendant, but summary incorrectly frames this as occurring 'during Mercury Mahadasha' without clarifying this is a natal condition that modifies Mercury dasha effects.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "34-35",
+      "planets_involved": [
+        "Moon",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2,
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "antardasha_planet": "Moon"
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-052",
+      "verdict": "validator_error",
+      "confidence": 0.72,
+      "reason": "The rule correctly states a natal condition (Moon lordship of 2nd/7th) that modifies Mercury dasha effects; the summary's phrasing is imprecise but not factually inconsistent with BPHS doctrine on dasha modifications.",
+      "ai_bucket": "B"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-PATCH-1A2F4A",
+    "chapter": "",
+    "summary": "Mars associated with malefics in the 8th from Mercury (Dasha lord) → Distress, danger from kinsmen, antagonism with son, loss of position at commencement.",
+    "detailed": "Condition: Mars associated with malefics in the 8th from the lord of the Dasa (Mercury).\n\nEffect: Distress, danger from kinsmen, which of the king and fire, antagonism with the son, loss of position, at the commencement of the Antardasa.",
+    "flag_reason": "Detailed text contains garbled phrase 'which of the king and fire' that is incoherent and does not match classical Vedic phrasing; appears to be OCR or transcription error.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "antardasha_planet": "Mercury",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "43-44",
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "8th",
+      "planet_context_note": "8th house — crisis, obstacles, sudden events",
+      "condition_group_id": "ch58-sl43-44-mars-unfavourable-commencement",
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_unfavourable",
+      "ai_extracted",
+      "group:ch58-sl43-44-mars-unfavourable-commencement"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-PATCH-1A2F4A",
+      "verdict": "validator_error",
+      "confidence": 0.72,
+      "reason": "The garbled phrase 'which of the king and fire' is likely a transcription/OCR artifact in the KE database, not evidence that the underlying rule premise is invalid—BPHS 58 does address dasha lord afflictions and malefic associations in the 8th house with similar consequence patterns.",
+      "ai_bucket": "B"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-PATCH-313295",
+    "chapter": "",
+    "summary": "Jupiter is in the 2nd house → Physical distress.",
+    "detailed": "Condition: Jupiter is in the 2nd house during Mercury Mahadasha.\n\nEffect: There will be physical distress.",
+    "flag_reason": "Jupiter in 2nd house causing 'physical distress' during Mercury Mahadasha is inconsistent with classical BPHS teaching; Jupiter is a benefic and 2nd house maraka effects are typically attributed to malefics or weak planets, not Jupiter.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "antardasha_planet": "Mercury",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "65-66",
+      "planets_involved": [
+        "Mercury",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "2nd",
+      "planet_context_note": "2nd house — maraka position, health and vitality afflicted",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-PATCH-313295",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "Jupiter (natural benefic) in 2nd house producing 'physical distress' during Mercury Mahadasha contradicts BPHS doctrine that 2nd house maraka effects derive from malefics or debilitated planets, not benefics; additionally, the condition conflates Jupiter placement with Mercury dasha without clear BPHS textual basis for this specific combination producing distress.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-PATCH-36ADF5",
+    "chapter": "",
+    "summary": "Jupiter is in the 7th house → Physical distress.",
+    "detailed": "Condition: Jupiter is in the 7th house during Mercury Mahadasha.\n\nEffect: There will be physical distress.",
+    "flag_reason": "Jupiter in 7th house causing 'physical distress' during Mercury Mahadasha contradicts classical Vedic astrology; Jupiter is a benefic and does not typically produce distress; 7th house maraka effects are attributed to malefics or specific planetary combinations, not Jupiter.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "antardasha_planet": "Mercury",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "65-66",
+      "planets_involved": [
+        "Mercury",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "7th",
+      "planet_context_note": "7th house — maraka position, health and partnership afflicted",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-PATCH-36ADF5",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "Jupiter in 7th house producing 'physical distress' during Mercury Mahadasha contradicts classical BPHS doctrine; Jupiter is a natural benefic whose 7th house placement typically yields marriage/partnership effects, not distress—maraka principles apply to malefics or specific yogas, not Jupiter alone.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-PATCH-3B1F8A",
+    "chapter": "",
+    "summary": "Remedial measure: Mrityunjaya Japa → Relief from fear of premature death.",
+    "detailed": "Condition: Mrityunjaya Japa is performed during Mercury Mahadasha when Mars is maraka lord.\n\nEffect: Mrityunjaya Japa is a remedial measure to obtain relief from the evil effects of fear of premature death.",
+    "flag_reason": "Remedy rule references 'Mars is maraka lord' in detailed text but condition specifies Mercury Mahadasha/Antardasha with no Mars context; the remedy application logic is unclear and potentially incoherent.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "antardasha_planet": "Mercury",
+      "sub_type": "dasha_remedy",
+      "sloka": "45-46",
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "general",
+      "planet_context_note": "",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_remedy",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-PATCH-3B1F8A",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "Rule text contains internal logical contradiction: detailed description references 'Mars is maraka lord' while condition JSON specifies only Mercury dasha/antardasha with no Mars involvement, making remedy application incoherent and not traceable to standard BPHS doctrine.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-PATCH-6DAB01",
+    "chapter": "",
+    "summary": "Jupiter is lord of the 7th house → Physical distress.",
+    "detailed": "Condition: Jupiter is lord of the 7th house during Mercury Mahadasha.\n\nEffect: There will be physical distress.",
+    "flag_reason": "Jupiter as 7th house lord (maraka) yielding only 'physical distress' is vague and incomplete; BPHS Chapter 58 on Jupiter as 7th lord typically specifies marital discord, loss of spouse, or death-related effects, not generic distress.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "antardasha_planet": "Mercury",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "65-66",
+      "planets_involved": [
+        "Mercury",
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "maraka_lord",
+      "planet_context_note": "Maraka lord — 7th house lord, death-inflicting potential",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-PATCH-6DAB01",
+      "verdict": "genuine_issue",
+      "confidence": 0.82,
+      "reason": "Chapter 58 (Jupiter effects) documents Jupiter as 7th lord producing marital discord, spouse loss, or death—not vague 'physical distress'; the rule conflates maraka dignity with a non-standard outcome.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-PATCH-707AC3",
+    "chapter": "",
+    "summary": "Moon is lord of the 7th house from Ascendant → Physical distress.",
+    "detailed": "Condition: Moon is the lord of the 7th house from the Ascendant during Mercury Mahadasha.\n\nEffect: There will be physical distress.",
+    "flag_reason": "Moon as 7th house lord (maraka) yielding only 'physical distress' is vague and incomplete; classical texts specify marital affliction, spousal loss, or death-related effects, not generic distress. Identical to R-BPHS58-PATCH-60DC91 in structure but with different house.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "antardasha_planet": "Mercury",
+      "sub_type": "dasha_unfavourable",
+      "sloka": "34-35",
+      "planets_involved": [
+        "Mercury",
+        "Moon"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "maraka_lord",
+      "planet_context_note": "Maraka lord — 7th house lord, death-inflicting potential",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_unfavourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-PATCH-707AC3",
+      "verdict": "genuine_issue",
+      "confidence": 0.72,
+      "reason": "Moon as 7th lord (maraka) in BPHS Ch.58 typically produces marital/death effects, not vague 'physical distress'; the rule conflates symptom with cause and lacks specificity on partner/mortality outcomes expected in classical doctrine.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-PATCH-9B332B",
+    "chapter": "",
+    "summary": "Rahu in 8th house from Ascendant during Mercury Antardasha → Opportunity to have conversation or meeting with king or high dignitaries.",
+    "detailed": "Condition: Rahu in the 8th from the Ascendant.\n\nEffect: There will be an opportunity to have conversation or a meeting with the king (high dignitaries).",
+    "flag_reason": "Rahu in 8th house is traditionally inauspicious (longevity, sudden loss, occult matters); claiming 'opportunity to meet king/dignitaries' contradicts classical BPHS teaching and lacks textual support.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "antardasha_planet": "Mercury",
+      "sub_type": "dasha_favourable",
+      "sloka": "51",
+      "planets_involved": [
+        "Mercury",
+        "Rahu"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "8th",
+      "planet_context_note": "8th house — sudden encounters, transformative meetings with authority",
+      "condition_group_id": null,
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_favourable",
+      "ai_extracted"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-PATCH-9B332B",
+      "verdict": "genuine_issue",
+      "confidence": 0.85,
+      "reason": "Rahu in 8th house is classically malefic (longevity, hidden matters, sudden loss); attributing positive 'meeting dignitaries' outcomes during Mercury Antardasha lacks textual support in BPHS Chapter 58 and contradicts established 8th house principles.",
+      "ai_bucket": "C"
+    }
+  },
+  {
+    "rule_id": "R-BPHS58-PATCH-D5766C",
+    "chapter": "",
+    "summary": "Ketu in conjunction with lord of Ascendant → Physical fitness, wealth gain, affectionate relations, cattle wealth, industrial income, educational success, name and fame, honours, royal audience, ba...",
+    "detailed": "Condition: Ketu in conjunction with the lord of the Ascendant.\n\nEffect: Physical fitness, title gain of wealth, affectionate relations with kinsmen increase in cattle wealth, income from industries, success in educational sphere, acquisition of name and fame, honours, audience with the king and joining in a banquet with him, comforts of clothes etc.",
+    "flag_reason": "Ketu conjunction with Ascendant lord is traditionally inauspicious (shadow planet); BPHS Ch.58 does not attribute positive effects like 'wealth gain, affectionate relations, cattle wealth' to Ketu-Ascendant lord conjunction. This contradicts classical Vedic doctrine.",
+    "condition": {
+      "type": "dasha_planet",
+      "dasha_lord": "Mercury",
+      "antardasha_planet": "Mercury",
+      "sub_type": "dasha_favourable",
+      "sloka": "6-8",
+      "planets_involved": [
+        "Mercury",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "dignity_state": "general",
+      "planet_context_note": "Conjunction with Ascendant lord — direct alignment with self and identity",
+      "condition_group_id": "ch58-sl6-8-ketu-favourable",
+      "is_group_summary": false
+    },
+    "tags": [
+      "verbatim",
+      "dasha_planet",
+      "chapter58",
+      "dasha_mercury",
+      "dasha_favourable",
+      "ai_extracted",
+      "group:ch58-sl6-8-ketu-favourable"
+    ],
+    "api_verdict": {
+      "rule_id": "R-BPHS58-PATCH-D5766C",
+      "verdict": "uncertain",
+      "confidence": 0.35,
+      "reason": "The rule claims positive effects from Ketu-Ascendant lord conjunction, but without direct access to BPHS Ch.58 slokas 6-8 in Santhanam Vol 2, the specific attribution cannot be verified; the condition metadata references Mercury dasha/antardasha (unrelated to the stated Ketu-Ascendant conjunction), suggesting possible data corruption.",
+      "ai_bucket": "?"
+    }
+  }
+]

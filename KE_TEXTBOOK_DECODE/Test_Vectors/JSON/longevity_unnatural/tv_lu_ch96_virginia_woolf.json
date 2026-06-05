@@ -1,0 +1,255 @@
+{
+  "vector_id": "tv-lu-ch96",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch96_Virginia_Woolf",
+  "pdf_path": "Chapter_Splits/Ch96_Virginia_Woolf.pdf",
+  "subject": {
+    "name": "Virginia Woolf",
+    "description": "English Novelist and Writer",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": "1882-01-25",
+    "time_local": "12:15:00",
+    "timezone_offset_hours": -0.0,
+    "time_utc": "1882-01-25T12:15:00Z",
+    "latitude": 51.5,
+    "longitude": -0.1167,
+    "place": "London",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-12-36.45",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 18.3167,
+      "house": 1,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 13.2667,
+      "house": 9,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        9,
+        4,
+        3,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 3.1,
+      "house": 12,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "significations": [
+        3,
+        12,
+        "Ke"
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 5.1833,
+      "house": 2,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "significations": [
+        7,
+        12,
+        2
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 24.3833,
+      "house": 12,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "significations": [
+        8,
+        11,
+        12,
+        1,
+        6,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 6.8667,
+      "house": 9,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        1,
+        6,
+        9,
+        4
+      ]
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 13.65,
+      "house": 12,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "significations": [
+        9,
+        10,
+        12,
+        1,
+        6
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 13.7667,
+      "house": 7,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": [
+        7,
+        "Sa",
+        "Ma"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 16.6833,
+      "house": 10,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        "Rah",
+        7,
+        9
+      ]
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 8.65,
+      "house": 11,
+      "nakshatra": "UBha",
+      "pada": 2,
+      "significations": [
+        "Sat",
+        9,
+        12,
+        1
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "her mother in 1895",
+    "death_type": "unknown",
+    "death_date": "1882-01-25",
+    "age_at_death": 60,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "KETU",
+      "pratyantardasha": "MOON",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Rahu-Ketu-Moon-Rahu, which indicates some good longevity for the native. Generally Rahu-Ketu or Ketu-Rahu period should"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "If 12th signifies lagna (01), Maraca, badhaka, Saturn, Mars, Rahu, and dushsthana (06, 08, 12) houses, once could commit suicide. a) Saturn, Moon, Jupiter, Mars, Mercury, Rahu and Ketu signifies 12th house. b) Out of them, Saturn, Moon, Jupiter and Ketu signify lagna. c) Ketu signifies 06th and 12th house. Since Venus is the 08th bhava star lord, Ketu signifies 08th bhava. d) Ketu do signify badhaka house also and not maraca. Virginia Woolf 395 e) In this line up Mars and Rahu are involved. f) Jupiter is the lord of 08th house. But-Ketu signifies Venus, who becomes the 08th bhava star lord. g)",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Another combinations is that if 08th house signifies Mars, Saturn, lagna, maraca, badhaka and dushsthana (06, 08, 12) one could commit suicide. 08th bhava is falling in Purva Ashada star ruled by Venus. Also 08th lord Jupiter is posited in 12th ·house in Venus star Bharani, while Venus signifies 01, 06 and 09 (badhaka). Venus is aspected by maraca Mars. Saturn signifies badhaka and is posited in Venus star Bharani. Under this rule also, the connections are established for Woolf to commit suicide. The suicide took place on 28 March 1941 in her 60th year during the VMD of Rahu-Ketu-Moon-Rahu, wh",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Dasha lord Rahu signifies Mars and Saturn signifying maraca or badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Bhukti lord Ketu is in Antara lord Moon star, which is a watery planet.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "sookshma lord Rahu is in a watery sign.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "08th lord Jupiter signifies 12 (loss in general) and badhaka occupant Venus, since Jupiter is posited in Bharani star ruled by Venus.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "lagna lord is posited in badhaka house and is in the star of another badhaka occupant Sun.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "vector_id": "tv-lu-ch68",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch68_CPN_Singh",
+  "pdf_path": "Chapter_Splits/Ch68_CPN_Singh.pdf",
+  "subject": {
+    "name": "CPN Singh",
+    "description": "Indian Union Minister",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1935-03-28",
+    "time_local": "04:18:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1935-03-27T22:48:00Z",
+    "latitude": 26.5,
+    "longitude": 78.7,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-51-21.24",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aquarius",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aquarius",
+      "degree": 3.5833,
+      "house": 1,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 13.4667,
+      "house": 2,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "significations": [
+        7,
+        2,
+        "01)2"
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 14.5,
+      "house": 11,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "significations": [
+        6,
+        11,
+        3,
+        4,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 26.7,
+      "house": 8,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "significations": [
+        3,
+        "08)0"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 18.6833,
+      "house": 1,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        5,
+        1,
+        "08)2",
+        "Ra"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 29.9333,
+      "house": 9,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "significations": [
+        9,
+        11,
+        2
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 13.85,
+      "house": 3,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "significations": [
+        3,
+        "04)0"
+      ]
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 12.0167,
+      "house": 1,
+      "nakshatra": "Sata",
+      "pada": 2,
+      "significations": [
+        12,
+        1,
+        "Ra"
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 4.8333,
+      "house": 12,
+      "nakshatra": "USha",
+      "pada": 3,
+      "significations": [
+        12,
+        "Sa",
+        "Su"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in 1989 which should be in Rahu dasha",
+    "death_type": "violent",
+    "death_date": "1935-03-28",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "RAHU",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Venus is badhaka lord. 08th lord Mercury is in Rahu star. The Rajah was killed in saade-saath, since the transit Saturn"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord Saturn is posited in Rahu star, Satabhisha, while Rahu is in maraca (02, 07) Sun star.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Longevity of 54 years is madhya aayu.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

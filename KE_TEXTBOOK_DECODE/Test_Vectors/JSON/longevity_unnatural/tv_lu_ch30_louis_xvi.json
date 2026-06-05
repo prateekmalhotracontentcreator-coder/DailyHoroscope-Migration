@@ -1,0 +1,312 @@
+{
+  "vector_id": "tv-lu-ch30",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch30_Louis_XVI_King_of_France",
+  "pdf_path": "Chapter_Splits/Ch30_Louis_XVI_King_of_France.pdf",
+  "subject": {
+    "name": "Louis XVI",
+    "description": "King of France",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": "1754-08-23",
+    "time_local": "06:26:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1754-08-23T04:26:00Z",
+    "latitude": 48.8,
+    "longitude": 2.1333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "20-20-06.02",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 3.4,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Leo",
+      "degree": 9.5167,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        1,
+        8,
+        "Ke"
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 16.4333,
+      "house": 3,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        12,
+        3,
+        2,
+        "Ra"
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 1.05,
+      "house": 2,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "significations": [
+        1,
+        2,
+        4,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 8.65,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        1,
+        5,
+        8,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 16.5333,
+      "house": 2,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "significations": [
+        2,
+        3,
+        10,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 20.9833,
+      "house": 5,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        5,
+        6,
+        7,
+        3,
+        2,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 20.1833,
+      "house": 2,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": [
+        2,
+        "Mo",
+        "Ma",
+        "Ve",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 20.1833,
+      "house": 8,
+      "nakshatra": "a",
+      "pada": 2,
+      "significations": [
+        8,
+        "Me",
+        "Ju",
+        "Ve",
+        "Ma"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 16.6833,
+      "house": 5,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        "Venus"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "injury or in unnatural mode",
+    "death_type": "disease",
+    "death_date": "1754-08-23",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "KETU",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Saturn Jupiter-Ketu-Mars. a) Dasha lord Saturn signifies 02 (maraca), 06 (Injury) and 07 (maraca). Saturn is under the a"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna falls in Ketu star Makha, while Ketu is in 081h house (longevity), but is in the star of Mercury, who is lord of 2nd house (maraca).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Ketu is aspected by Mars from 2nd house (Maraca), who is also the badhaka lord, making some affliction to lagna and longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Ketu is further aspected by Venus from 02nd house (maraca).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Lagna lord is Sun, who is also in Ketu star in lagna.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars is posited in 2nd house, but is in the star of lagna lord Sun. Hence Mars becomes a significator of lagna, besides being lord of badhaka house and occupant of maraca house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Jupiter is the lord of 081h house, is posited in lagna and· is in the star of Ketu. Ketu gets afflicted by badhaka Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "081h bhava falls in the star of Saturn (Uthara bhadra), lord of 061h house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "All the planets from Sun to Ketu are signifying either maraca or badhaka or both.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "There is a mutual aspect between Saturn and Mars, where maraca or badhaka or house of injury is involved along with lagna. These combinations illustrated above are detrimental to good longevity and are causing death by injury or in unnatural mode. The execution of King took place during the VMD of Saturn Jupiter-Ketu-Mars. a) Dasha lord Saturn signifies 02 (maraca), 06 (Injury) and 07 (maraca). Saturn is under the aspect of badhaka Mars, who also signifies injury. b) Bhukti lord Jupiter signifies 08111 house (longevity, accidents) and is posited in lagna (body). 128 Longevity and Unnatural Dea",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Dasha lord Saturn signifies 02 (maraca), 06 (Injury) and 07 (maraca).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Bhukti lord Jupiter signifies 08111 house (longevity, accidents) and is posited in lagna (body).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Antara lord Ketu signifies Mercury (02 lord), a maraca.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Sookshma lord Mars is badhaka and is posited in maraca house (02).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

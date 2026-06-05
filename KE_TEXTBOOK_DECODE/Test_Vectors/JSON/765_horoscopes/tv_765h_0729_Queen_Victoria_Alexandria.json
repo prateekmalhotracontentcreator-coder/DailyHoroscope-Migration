@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0729",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0729",
+  "source_file": "0729_V-10_Queen_Victoria_Alexandria.pdf",
+  "subject": {
+    "name": "Queen Victoria Alexandria",
+    "name_from_filename": "Queen Victoria Alexandria",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Queen",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1819-05-24",
+    "time_local": "04:00",
+    "timezone_offset_hours": 0.0,
+    "time_utc": "1819-05-24T04:00:00Z",
+    "latitude": 51.507,
+    "longitude": -0.128,
+    "place": "London, United Kingdom",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 8,
+    "months": 3,
+    "days": 18,
+    "raw_text": "Balance dasha Mon 8-3-18"
+  },
+  "planet_degrees_from_text": {
+    "SATURN": {
+      "degree_in_sign": 7.4167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.8,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 26.3333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 10.85,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 28.4,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 12.2667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 25.6,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 28.4,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 10.85,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Queen",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "vector_id": "tv-765h-0455",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0455",
+  "source_file": "0455_N-8_Narayanan_KR.pdf",
+  "subject": {
+    "name": "Narayanan, KR",
+    "name_from_filename": "Narayanan, KR",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1921-02-04",
+    "time_local": "17:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1921-02-04T11:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Cochin in a S/C family",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 0.55,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 9.0333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 5.6333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 22.3667,
+      "retrograde": true
+    },
+    "SATURN": {
+      "degree_in_sign": 14.1333,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 5.6333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

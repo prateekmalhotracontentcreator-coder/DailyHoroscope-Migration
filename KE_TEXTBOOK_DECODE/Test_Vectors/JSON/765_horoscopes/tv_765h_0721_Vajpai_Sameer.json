@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0721",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0721",
+  "source_file": "0721_V-2_Vajpai_Sameer.pdf",
+  "subject": {
+    "name": "Vajpai, Sameer",
+    "name_from_filename": "Vajpai, Sameer",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1970-04-16",
+    "time_local": "06:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1970-04-16T00:45:00Z",
+    "latitude": 26.218,
+    "longitude": 78.182,
+    "place": "Gwalior, Madhya Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 2,
+    "months": 7,
+    "days": 3,
+    "raw_text": "Balance of dasha Mer 2-7-3"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 2.1833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 2.4333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 7.8333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 16.5333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 21.6833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 17.05,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 17.6,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 8.35,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 7.8333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

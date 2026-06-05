@@ -1,0 +1,230 @@
+{
+  "vector_id": "tv-300h1-ch101",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch101_FRENCH_QUEEN--MARIE_ANTOINETTE",
+  "pdf_path": "Split_Chapters/Ch101_FRENCH_QUEEN--MARIE_ANTOINETTE.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Maria Antonia Josepha Johanna",
+    "description": "Maria Antonia Josepha Johanna (02 Nov 1755- 16 Oct 1793) was Archduchess of",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": "1755-11-02",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 13.7786,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 19.7036,
+      "house": 5,
+      "significations": [
+        3,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 0.3756,
+      "house": 5,
+      "significations": [
+        1,
+        2,
+        5,
+        6,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 26.1239,
+      "house": 1,
+      "significations": [
+        1,
+        4,
+        6,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 12.8269,
+      "house": 6,
+      "significations": [
+        1,
+        4,
+        6,
+        8,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 21.1317,
+      "house": 5,
+      "significations": [
+        4,
+        5,
+        7,
+        10,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 3.0453,
+      "house": 8,
+      "significations": [
+        3,
+        5,
+        8,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 27.0547,
+      "house": 3,
+      "significations": [
+        3
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 27.0547,
+      "house": 9,
+      "significations": [
+        9
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1793
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1793-10-16",
+    "age_at_death": 38,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter, Sun and Venus are in proximity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Venus is in star of Jupiter and conjunct Moon and Sun.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is aspecting 101h lord Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars is in star of Jupiter in lagna indicate actions wisdom, but quick actions, including anger and sudden bursting.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "' PUBLISHING HOUSE, HYDERABAD Page# 155",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

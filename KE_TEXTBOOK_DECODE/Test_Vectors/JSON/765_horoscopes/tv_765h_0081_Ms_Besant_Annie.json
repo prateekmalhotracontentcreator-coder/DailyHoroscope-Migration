@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0081",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0081",
+  "source_file": "0081_B-22_Ms_Besant_Annie.pdf",
+  "subject": {
+    "name": "Ms Besant, Annie",
+    "name_from_filename": "Ms Besant, Annie",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1847-10-01",
+    "time_local": "17:30",
+    "timezone_offset_hours": 0.0,
+    "time_utc": "1847-10-01T17:30:00Z",
+    "latitude": 51.507,
+    "longitude": -0.128,
+    "place": "London, United Kingdom",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 14,
+    "months": 7,
+    "days": 28,
+    "raw_text": "balance of dasha Jup 14-7-28"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 18.0,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 21.1167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 23.45,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 23.6667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 5.7333,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 16.1667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 18.0,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 19.3,
+      "retrograde": true
+    },
+    "MERCURY": {
+      "degree_in_sign": 24.9333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 23.45,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Spiritual_Religious",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

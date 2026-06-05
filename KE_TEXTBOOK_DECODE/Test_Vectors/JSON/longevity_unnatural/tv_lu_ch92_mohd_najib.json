@@ -1,0 +1,225 @@
+{
+  "vector_id": "tv-lu-ch92",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch92_Mohd_Najib",
+  "pdf_path": "Chapter_Splits/Ch92_Mohd_Najib.pdf",
+  "subject": {
+    "name": "Mohd. Najib",
+    "description": "President of Afghanistan",
+    "nationality": "Afghan"
+  },
+  "birth_data": {
+    "date": "1947-08-06",
+    "time_local": null,
+    "timezone_offset_hours": 4.5,
+    "time_utc": null,
+    "latitude": 34.5167,
+    "longitude": 69.1833,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-07-30.30",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 26.4333,
+      "house": 1,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 6.7167,
+      "house": 7,
+      "nakshatra": "UBha",
+      "pada": 2,
+      "significations": [
+        11,
+        7,
+        "0S",
+        6
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 1.8,
+      "house": 10,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "significations": [
+        3,
+        8,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 25.2333,
+      "house": 2,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "significations": [
+        4,
+        2,
+        7
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 12.05,
+      "house": 11,
+      "nakshatra": "Push",
+      "pada": 3,
+      "significations": [
+        2,
+        9,
+        11,
+        "0S",
+        6
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 5.5167,
+      "house": 9,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        9,
+        "Ve",
+        "Su"
+      ]
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 5.5167,
+      "house": 3,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "significations": [
+        "Ma",
+        "Sa"
+      ]
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 10.6667,
+      "house": 1,
+      "nakshatra": "Hast",
+      "pada": 1,
+      "significations": [
+        "Moon"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 25.3,
+      "house": 12,
+      "nakshatra": "•",
+      "pada": 4,
+      "significations": [
+        "Venus"
+      ]
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 10.2,
+      "house": 7,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "significations": [
+        "Saturn"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in saade-saath",
+    "death_type": "violent",
+    "death_date": "1947-08-06",
+    "age_at_death": 50,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "SUN",
+      "stated_by_author": true,
+      "raw_text": "Venus Jupiter-Mercury-Sun in his 50th year conferring madhya aayu. Dasha lord Venus is maraca and signifies injury and e"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Venus is maraca and signifies injury and enemy through Saturn.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Jupiter is ma~aca and badhaka and aspects 08th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "sookshma lord Mercury signifies lagna, maraca & badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "lagna lord, lagna star lord and 08th house and 08th lord are afflicted indicating that the native shall not live long.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "fortunately, Jupiter is badhaka and maraca, which shall make the lagna lord weak for longevity.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

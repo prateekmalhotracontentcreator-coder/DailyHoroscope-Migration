@@ -1,0 +1,296 @@
+{
+  "vector_id": "tv-300h2-ch033",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch033_32_King_George_I_Greece",
+  "pdf_path": "Chapters/Ch033_32_King_George_I_Greece.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "King Of Greece",
+    "description": "George I (24 Dec 1845- 18 Mar 1913) was King of the Hellenes from 1863 to 1913. George was only 17 years old when he was elected King by the Greek National Assembly.",
+    "nationality": "Greek"
+  },
+  "birth_data": {
+    "date": "1845-12-24",
+    "time_local": "20:00:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1845-12-24T19:00:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "lagna_degree_stated": 29.05,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 15.037,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        4
+      ],
+      "significations_raw": "01,04,Ra"
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 10.049,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        5,
+        10,
+        9,
+        7,
+        8
+      ],
+      "significations_raw": "05,10,09,07,08"
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 18.058,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        12,
+        3,
+        6,
+        11,
+        4,
+        7
+      ],
+      "significations_raw": "12,03,06,11,04,07"
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 9.229,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        6,
+        9,
+        10
+      ],
+      "significations_raw": "06,09,10,Ke"
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 28.524,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        7,
+        9,
+        5,
+        10
+      ],
+      "significations_raw": "04,11 ,07,09,05,10"
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 24.411,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        7,
+        8,
+        5,
+        9,
+        10
+      ],
+      "significations_raw": "07,08 05,09,10"
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 22.338,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Mo,Ve Ju,Ma"
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 22.338,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve,Ju,Ma,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1845
+      },
+      {
+        "event": "Died",
+        "year": 1913
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1913-03-18",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun (Government) is in star of Ketu, who occupies 10.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter (09) is in 10, while Mars (05, 09, 10) signifies Saturn (07).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Ketu signifies 10 and 11 (parliament) and thus Jupiter too.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sa urn (politics and democracy) is in 101h lord Mars star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sun (Government) gets aspect of Jupiter (expansion).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "All these combinations helped native to become King.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "But Ketu is in 10 indicate sudden exit.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

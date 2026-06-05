@@ -1,0 +1,258 @@
+{
+  "vector_id": "tv-lu-ch24",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch24_Archduke_Franz_Ferdinand",
+  "pdf_path": "Chapter_Splits/Ch24_Archduke_Franz_Ferdinand.pdf",
+  "subject": {
+    "name": "Archduke Franz Ferdinand",
+    "description": "Archduke of Austria, assassination triggered WWI",
+    "nationality": "Austrian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "07:25:00",
+    "timezone_offset_hours": 1.0833333333333333,
+    "time_utc": null,
+    "latitude": 47.0833,
+    "longitude": 15.45,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-51-38.75",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 28.4833,
+      "house": 1,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 4.0333,
+      "house": 2,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        2,
+        10,
+        "Ke",
+        7
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 13.8167,
+      "house": 5,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "significations": [
+        9,
+        3,
+        4,
+        5,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 9.05,
+      "house": 1,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "significations": [
+        1,
+        6,
+        3,
+        4,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 13.1333,
+      "house": 2,
+      "nakshatra": "I",
+      "pada": 4,
+      "significations": [
+        2,
+        8,
+        11,
+        "Ke",
+        7
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 25.9833,
+      "house": 12,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "significations": [
+        2,
+        5,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 17.4667,
+      "house": 12,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": [
+        7,
+        12,
+        1,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 24.8,
+      "house": 11,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "significations": [
+        3,
+        4,
+        11,
+        1,
+        6
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 4.3,
+      "house": 1,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "significations": [
+        1,
+        "Ma",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 4.3,
+      "house": 7,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        7,
+        "Su",
+        "Ve",
+        "Ma"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "assassinated",
+    "death_type": "violent",
+    "death_date": "1914-06-28",
+    "age_at_death": 51,
+    "dasha_at_death": {
+      "mahadasha": "SUN",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "VENUS",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Sun-Jupiter-Venus-Mars. Dasha lord Sun and Bhukti lord Jupiter do signify maraca (02) house. Antara lord Venus is lord o"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Antara lord Venus is lord of 07 (another mar?",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Venus is in Rahu star, who in turn gives the result of 01 and 06.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08th lord Mercury is in 2nd house (maraca), and is in the star of Meola ruled by Ketu.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "08th lord Mercury signifies both maraca houses viz.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Lagna lord Mars is in own house in lagna, but it is in Saturrr star and is further aspected by Saturn, who is in turn in Mars star Chitra.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "longevity of the native is curtailed and limited to madhy aayu.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "madhya aayu of 33 to 66 years slot.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

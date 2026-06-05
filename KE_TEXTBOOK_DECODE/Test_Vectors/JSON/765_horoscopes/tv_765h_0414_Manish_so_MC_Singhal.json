@@ -1,0 +1,85 @@
+{
+  "vector_id": "tv-765h-0414",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0414",
+  "source_file": "0414_M-15_Manish_so_MC_Singhal.pdf",
+  "subject": {
+    "name": "Manish (s/o) MC Singhal: JE (Power)",
+    "name_from_filename": "Manish (s/o) MC Singhal",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Royalty_Nobility",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1975-12-05",
+    "time_local": "19:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1975-12-05T13:45:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 7,
+    "months": 8,
+    "days": 21,
+    "raw_text": "balance of dasha Ven 7-8-21"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 21.2333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 9.05,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 19.2667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 28.1667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 22.9833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Royalty_Nobility",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

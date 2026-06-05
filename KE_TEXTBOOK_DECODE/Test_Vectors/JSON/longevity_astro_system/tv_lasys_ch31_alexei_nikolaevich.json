@@ -1,0 +1,143 @@
+{
+  "vector_id": "tv-lasys-ch31",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch31",
+  "chapter_title": "Alexei Nikolaevich, Czar Royalty — Alpaayu",
+  "pdf_path": "Text Books/LongevityAstroSystem/31_Alexei Nikolaevich, Czar Royalty-Alpaayu.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Alexei Nikolaevich",
+    "description": "Heir apparent of Russian Empire, son of Czar Nicholas II; slaughtered by Bolshevik Army with entire family on 17 July 1918",
+    "nationality": "Russian"
+  },
+
+  "birth_data": {
+    "date": "1904-08-12",
+    "time_local": "13:15:00",
+    "timezone_offset_hours": 3.0,
+    "time_utc": "10:15:00",
+    "latitude": 59.9,
+    "longitude": 29.8833,
+    "place": "St. Petersburg, Russia",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22° 25' 28\"",
+    "notes": "Coordinates stated as 29E53, 59N54. Book records time as 13-15-00 (5:00 east). Birth time verified: 9th CSL Mercury is in star of Venus (Purva Phalguni) confirming lagna CSL Venus."
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Lagna at 22° Vi 30' Hastha (Me-Mo-Ve). Moon at 8° Le 06' Makha (Su-Ke-Ju)."
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "VENUS",
+    "8th_csl": "MOON",
+    "badhaka_house": 7,
+    "badhaka_house_rationale": "Virgo = dual lagna → 7th house is simultaneously maraka and badhaka; Jupiter = 7th lord = maraka+badhaka lord",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "alpa",
+
+  "aayu_bucket_computed": null,
+
+  "planet_positions_from_table": {
+    "LAGNA":   { "sign": "Virgo",       "degree": "22°30'", "house": 1,  "significations": [1] },
+    "SUN":     { "sign": "Cancer",      "degree": "26°44'", "house": 11, "significations": [] },
+    "MOON":    { "sign": "Leo",         "degree": "08°06'", "house": 12, "significations": [] },
+    "MARS":    { "sign": "Cancer",      "degree": "05°46'", "house": 11, "significations": [] },
+    "MERCURY": { "sign": "Leo",         "degree": "22°53'", "house": 12, "significations": [] },
+    "JUPITER": { "sign": "Aries",       "degree": "07°41'", "house": 8,  "significations": [] },
+    "VENUS":   { "sign": "Leo",         "degree": "06°24'", "house": 12, "significations": [] },
+    "SATURN":  { "sign": "Capricorn",   "degree": "25°06'", "house": 5,  "significations": [], "notes": "retrograde" },
+    "RAHU":    { "sign": "Leo",         "degree": "27°32'", "house": 12, "significations": [] },
+    "KETU":    { "sign": "Aquarius",    "degree": "27°32'", "house": 6,  "significations": [] }
+  },
+
+  "death_data": {
+    "cause_of_death": "Executed — shot dead by Bolshevik Army along with entire family",
+    "death_type": "violent",
+    "death_date": "1918-07-17",
+    "age_at_death": 13,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "RAHU",
+      "kp_significations": [1, 6, 7, 8, 12],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "The death occurred on 17 Jul 1918 during the VMD of Venus-Jupiter-Mercury-Rahu-Mercury"
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Thus the native lived upto 14 years only. The Czar Prince along with his family members was slaughtered by Bolshevik Army on 17 July 1918.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna cusp sub lord Venus signifies cusps 02, 09, 10 and it is in the star of Ketu. Ketu signifies Jupiter, Moon, Saturn, Mars and Mercury. Jupiter owns 07th cusp viz. maraca and badhaka, while Mars owns 08th cusp (longevity). Mercury owns lagna. These are detrimental for longevity from the point of view of Venus.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08th cusp sub lord is Moon. 07th cusp sub lord is also Moon. Ketu is linked to Moon along with other planets. These combinations are too detrimental such as 01, 07, 08, 06 and 12. The cusps 06-08-12 are dush-sthana or evil houses. Link between 08 (longevity) and 01 (self) with that of 07 (maraca & badhaka) are established. Hence the native died too early.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Dasha lord Venus signifies Ketu, whose significations include Jupiter (maraca+badhaka lord), Moon, Saturn, Mars, Mercury. Bhukti lord Jupiter is maraca and badhaka lord and occupant. Antara and prana lord Mercury becomes lagna lord (self). Sookshma lord Rahu offers result of Moon, who denotes sub lord of cusp 07 and 08.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "dasha_vmd",
+      "claim_axis": "timing",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": ""
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

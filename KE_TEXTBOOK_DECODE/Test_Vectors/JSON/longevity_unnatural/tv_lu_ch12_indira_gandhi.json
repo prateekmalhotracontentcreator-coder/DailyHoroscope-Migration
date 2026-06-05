@@ -1,0 +1,273 @@
+{
+  "vector_id": "tv-lu-ch12",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch12_Indira_Gandhi",
+  "pdf_path": "Chapter_Splits/Ch12_Indira_Gandhi.pdf",
+  "subject": {
+    "name": "Indira Gandhi",
+    "description": "Prime Minister of India",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1917-11-19",
+    "time_local": "23:39:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 25.75,
+    "longitude": 82.4,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-36-49.00",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Capricorn",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 4.1833,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 4.2333,
+      "house": 4,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "significations": [
+        1,
+        4,
+        6,
+        7,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 5.95,
+      "house": 6,
+      "nakshatra": "USha",
+      "pada": 3,
+      "significations": [
+        1,
+        4,
+        6,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 16.4833,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        1,
+        4,
+        9,
+        3,
+        10,
+        5
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 13.3667,
+      "house": 4,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": [
+        2,
+        11,
+        4,
+        6,
+        7,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Sagittarius",
+      "degree": 21.1167,
+      "house": 5,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        3,
+        10,
+        5
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 21.8833,
+      "house": 12,
+      "nakshatra": "Asre",
+      "pada": 2,
+      "significations": [
+        2,
+        11,
+        12,
+        6,
+        7,
+        4
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 10.65,
+      "house": 5,
+      "nakshatra": "I",
+      "pada": 4,
+      "significations": [
+        "Ke",
+        "Ju",
+        "Ve"
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 10.65,
+      "house": 11,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "significations": [
+        "Ra",
+        "Me",
+        "Ve"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 15.15,
+      "house": 5,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed by her own security guards on 31 Oct",
+    "death_type": "violent",
+    "death_date": "1917-11-19",
+    "age_at_death": 67,
+    "dasha_at_death": {
+      "mahadasha": "SUN",
+      "antardasha": "MARS",
+      "pratyantardasha": null,
+      "sookshma": null,
+      "stated_by_author": true,
+      "raw_text": "OS and 08, is in lOth house and is aspecting lagna lord Sun. This combination has given Mrs. Gandhi considerable longevi"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The proximity between Saturn and Mars viz. Saturn is at 21 deg. 53 min. in cancer while Mars is at 16 deg. 29 min in Leo. I • Thus Saturn is close to Mars by less than 25 deg. 54 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "The above combination becomes important when Saturn being lord of 06 (injury) and Mars becomes badhaka lord, significator of lagna, besides aspecting 07 and 08th houses.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is posited in lagna, being badhaka lord, and is aspecting 07 and 08th houses.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Lagna sign lord is Sun, who is under the aspect of badhaka Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Lagna lord Sun signifies 06 (injury) and maraca (07) and is aspecting 08th lord Jupiter, especially when Sun is under the aspect of Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "08th lord Jupiter signifies 06th house through Moon, while Moon is under aspect of maraca Saturn. All these combinations should make the lagna and the 08th weak and they are connected to Mars (badhaka) and 06 should prove fatal for the native. Mrs. Gandhi was killed by her own security guards on 31 Oct 1984 in New Delhi in her 67th year. The VMD period on the date of death was Saturn-Rahu-Jupiter-Saturn. Dasha lord Saturn signifies maraca (06, 07). Bhukti lord Rahu signifies 08th house (longevity) through Jupiter. Antara lord itself is Jupiter. Jupiter posited in lOth house and Rahu signifying",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Dasha lord Saturn signifies maraca (06, 07).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Bhukti lord Rahu signifies 08th house (longevity) through Jupiter.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "maraca Mercury and that Saturn and Mars proximity to lagna have caused just above middle longevity for Mrs.",
+      "condition_type_guess": "maraka_badhaka",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-009"
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

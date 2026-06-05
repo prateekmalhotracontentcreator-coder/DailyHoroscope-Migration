@@ -1,0 +1,308 @@
+{
+  "vector_id": "tv-lu-ch56",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch56_Grand_Duchess_Tatiana_Nikolaevna",
+  "pdf_path": "Chapter_Splits/Ch56_Grand_Duchess_Tatiana_Nikolaevna.pdf",
+  "subject": {
+    "name": "Grand Duchess Tatiana Nikolaevna",
+    "description": "Second daughter of Czar Nicholas II",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1897-06-10",
+    "time_local": "10:00:00",
+    "timezone_offset_hours": 5.0,
+    "time_utc": "1897-06-10T05:00:00Z",
+    "latitude": 59.9167,
+    "longitude": 30.25,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-19-41.42",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 14.6833,
+      "house": 1,
+      "nakshatra": "Push",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 27.1833,
+      "house": 11,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "significations": [
+        2,
+        5,
+        10,
+        11,
+        1
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 22.0833,
+      "house": 3,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": [
+        1,
+        3
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 20.7333,
+      "house": 1,
+      "nakshatra": "Asre",
+      "pada": 2,
+      "significations": [
+        1,
+        3,
+        5,
+        10,
+        11,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 5.6,
+      "house": 11,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        12,
+        3,
+        2,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 10.7667,
+      "house": 2,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        6,
+        9,
+        2,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 15.4333,
+      "house": 10,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "significations": [
+        4,
+        11,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 3.4833,
+      "house": 5,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "significations": [
+        7,
+        8,
+        5
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 16.3167,
+      "house": 7,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "significations": [
+        7,
+        "Mo",
+        "Sa",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 16.3167,
+      "house": 1,
+      "nakshatra": "Push",
+      "pada": 4,
+      "significations": [
+        "Mars",
+        "Sa",
+        "Mo"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "injury and weapon",
+    "death_type": "violent",
+    "death_date": "1897-06-10",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "VENUS",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Rahu-Venus-Jupiter-Saturn. Dasha lord Rahu's significations have been specified in point no. 10 above. Bhukti lord Venus"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "In this chart Cancer is rising and lagna lord Moon is posited in own star in Virgo. This should be treated that lagna lord is comparatively safer. 236 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "For Cancer, Taurus is badhaka place, whose lord is Venus.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Planets posited in Taurus are Sun and Mercury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mercury is posited in Sun star, who is an occupant of badhaka house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sun, being lord of 02 (maraca) is posited in badhaka house, is in the star of Mars (injury).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Sun is aspecting Q8tn lord Saturn.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mars is posited in lagna and is in the star of badhaka occupant Mercury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Ketu is also posited in lagna and signifies Mars (lagna, badhaka), Saturn (maraca and Q8th house) and Moon (lagna lord).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Planet posited in Ketu star is only Jupiter. Hence Jupiter is quite detrimentally placed by offering the result of Ketu as specified above, besides Q6th house (enemy and injury).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Rahu, who is posited in Capricorn in the star of Moon shall offer the results of Mars (lagna and badhaka), Moon (lagna) and Saturn (maraca and longevity). All these combinations put together do not offer good longevity for the native. Lagna and Q8th are linked to 06, badhaka and Mars to cause death by injury and weapon. Grand Duchess Tatiana was killed by Bolsheviks Secret Police on 16 Jul 1918, during the VMD of Rahu-Venus-Jupiter-Saturn. Dasha lord Rahu's significations have been specified in point no. 10 above. Bhukti lord Venus is badhaka. Antara lord Jupiter signifies maraca and Q6th hous",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Antara lord Jupiter signifies maraca and Q6th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Sookshma lord Saturn signifies 07 and Q81h houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "08th lord is in own star and in punya house did not help as it is aspected by Sun and Mercury from badhaka house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0076",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0076",
+  "source_file": "0076_B-17_Beck_Julius_lAS.pdf",
+  "subject": {
+    "name": "Beck Julius, lAS",
+    "name_from_filename": "Beck Julius, lAS",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1943-01-24",
+    "time_local": "02:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1943-01-24T20:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Ranchi",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 3,
+    "months": 9,
+    "days": 8,
+    "raw_text": "Balance of dasha Ket 3-9-8"
+  },
+  "planet_degrees_from_text": {
+    "SATURN": {
+      "degree_in_sign": 12.7,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 1.9,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 9.9167,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 1.9,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 12.0667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 6.15,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 26.3,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 4.8167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 5.3667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 5.3667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

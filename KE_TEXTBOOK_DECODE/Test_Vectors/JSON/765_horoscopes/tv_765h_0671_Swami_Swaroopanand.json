@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0671",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0671",
+  "source_file": "0671_S-74_Swami_Swaroopanand.pdf",
+  "subject": {
+    "name": "Swami Swaroopanand",
+    "name_from_filename": "Swami Swaroopanand",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Swami",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1902-12-15",
+    "time_local": "19:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1902-12-15T13:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "73E22 & 17NO",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 14,
+    "months": 10,
+    "days": 24,
+    "raw_text": "Balance of dasha Jup 14-10-24"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 11.05,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 23.0333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 9.95,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 13.8,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 13.9833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 13.0,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 20.9167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 11.05,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Swami",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

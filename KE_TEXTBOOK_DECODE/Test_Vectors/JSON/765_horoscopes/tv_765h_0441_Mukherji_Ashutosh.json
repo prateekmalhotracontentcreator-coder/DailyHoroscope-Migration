@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0441",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0441",
+  "source_file": "0441_M-42_Mukherji_Ashutosh.pdf",
+  "subject": {
+    "name": "Mukherji, Ashutosh",
+    "name_from_filename": "Mukherji, Ashutosh",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Judiciary_Law",
+    "profession_subcategory": "Judge",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1864-06-29",
+    "time_local": "03:33",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1864-06-29T22:03:00Z",
+    "latitude": 22.573,
+    "longitude": 88.364,
+    "place": "Kolkata, West Bengal, India",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 17,
+    "months": 11,
+    "days": 16,
+    "raw_text": "Balance of dasha Ven 17-11-16"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 19.7667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 9.9667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 26.35,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 15.3667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 25.4,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 26.1333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 19.7667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Judiciary_Law",
+    "profession_subcategory": "Judge",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "vector_id": "tv-300h2-ch073",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch073_72_KS_Chitra",
+  "pdf_path": "Chapters/Ch073_72_KS_Chitra.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Playback Singer--K.S. Chitra",
+    "description": null,
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 8.0333,
+    "longitude": 78.9167,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "lagna_degree_stated": 20.966,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 10.574,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7,
+        8,
+        1,
+        2
+      ],
+      "significations_raw": "07,08,01,02"
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 29.895,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        7,
+        9,
+        4,
+        11
+      ],
+      "significations_raw": "07,09,04,11"
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 26.445,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Ju,Me"
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 26.445,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Ve,Ju,Ma"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Leo",
+      "degree": 12.27
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 0.05
+    }
+  },
+  "life_outcomes": {
+    "profession": "Entertainer",
+    "profession_category": "Entertainment",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Entertainment",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Venus are conjunct, while Rahu, in star of Jupiter is in 12 to them_ Venus becomes lord of 05 (creativity) and 10 Gob) and it is in 07 (audience), 02nd house (speech) is in airy sign.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From Moon sign, Rahu (illusion) is in 10 (proL) and it is in an airy sign.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, 02nd house is in an airy sign, while 02, 05, 07 say, Venus, Saturn and Jupiter and linked by aspect, while Rahu (illusion), signifying Jupiter (07) is in 10_T hese made native a cinema singer with extreme name and fame_",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

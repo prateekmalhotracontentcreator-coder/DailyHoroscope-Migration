@@ -1,0 +1,231 @@
+{
+  "vector_id": "tv-lu-ch31",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch31_Marie_Antoinette",
+  "pdf_path": "Chapter_Splits/Ch31_Marie_Antoinette.pdf",
+  "subject": {
+    "name": "Marie Antoinette",
+    "description": "Queen of France, wife of Louis XVI",
+    "nationality": "Austrian/French"
+  },
+  "birth_data": {
+    "date": "1755-11-02",
+    "time_local": null,
+    "timezone_offset_hours": 1.0,
+    "time_utc": null,
+    "latitude": 48.2,
+    "longitude": 16.3667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "20-21-06.07",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 13.7667,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 19.7,
+      "house": 5,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "significations": [
+        3,
+        5,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 0.3667,
+      "house": 5,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "significations": [
+        2,
+        1,
+        6,
+        11,
+        5
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 26.1167,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        1,
+        6,
+        11,
+        4,
+        7,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 12.8167,
+      "house": 6,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        1,
+        4,
+        6,
+        8,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 17.4,
+      "house": 4,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        4,
+        7,
+        10,
+        2,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 21.1167,
+      "house": 5,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        12,
+        5,
+        7,
+        4,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 3.0333,
+      "house": 8,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": [
+        8,
+        9,
+        3,
+        5
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 27.05,
+      "house": 3,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "significations": [
+        3,
+        "Su"
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 27.05,
+      "house": 9,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "significations": [
+        9,
+        "Sa",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "King Louis XV",
+    "death_type": "unknown",
+    "death_date": "1755-11-02",
+    "age_at_death": 37,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "SATURN",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "SUN",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Saturn-Mercury Sun . . Dasha and Bhukti lord Saturn is lord of 08 and is under aspect · of Mars (01, 06, 07) from"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Bhukti lord Saturn is lord of 08 and is under aspect · of Mars (01, 06, 07) from lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Mercury is in 06th house (injury), being lord of lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sookshma lord Sun signifies Government.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "longevity is afflicted as seen in the previous paragraphs, cannot help Mercury to maintain the strength of the lagna.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

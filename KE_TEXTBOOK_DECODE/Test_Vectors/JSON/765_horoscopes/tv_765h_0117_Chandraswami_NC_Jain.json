@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0117",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0117",
+  "source_file": "0117_C-10_Chandraswami_NC_Jain.pdf",
+  "subject": {
+    "name": "Chandraswami/ NC Jain",
+    "name_from_filename": "Chandraswami/ NC Jain",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Swami",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1949-10-30",
+    "time_local": "00:05",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1949-10-30T18:35:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Alwar",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 6,
+    "months": 0,
+    "days": 20,
+    "raw_text": "Balance of dasha Mar 6-0-20"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 22.2333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 15.45,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 8.4,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 25.1333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 23.2333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 28.7,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 12.85,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 28.7167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 15.45,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Swami",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

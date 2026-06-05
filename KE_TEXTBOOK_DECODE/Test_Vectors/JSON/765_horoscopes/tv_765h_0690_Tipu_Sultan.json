@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0690",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0690",
+  "source_file": "0690_T-19_Tipu_Sultan.pdf",
+  "subject": {
+    "name": "Tipu Sultan",
+    "name_from_filename": "Tipu Sultan",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Sultan",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1751-12-01",
+    "time_local": "08:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1751-12-01T02:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "77E57 & 13NO",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 3,
+    "months": 4,
+    "days": 24,
+    "raw_text": "Balance of dasha Ven 3-4-24"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 15.0,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 17.5,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 18.0167,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 15.0,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 17.7,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 18.0,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 19.9,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 26.4,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 14.9333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 14.9333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Sultan",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

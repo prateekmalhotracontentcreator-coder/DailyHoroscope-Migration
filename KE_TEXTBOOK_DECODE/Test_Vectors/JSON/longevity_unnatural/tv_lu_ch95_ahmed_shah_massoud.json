@@ -1,0 +1,222 @@
+{
+  "vector_id": "tv-lu-ch95",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch95_Ahmed_Shah_Massoud",
+  "pdf_path": "Chapter_Splits/Ch95_Ahmed_Shah_Massoud.pdf",
+  "subject": {
+    "name": "Ahmed Shah Massoud",
+    "description": "Afghan Military Leader",
+    "nationality": "Afghan"
+  },
+  "birth_data": {
+    "date": "1953-09-02",
+    "time_local": null,
+    "timezone_offset_hours": 4.5,
+    "time_utc": null,
+    "latitude": 35.3167,
+    "longitude": 69.55,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-12-35.76",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 15.7333,
+      "house": 1,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Leo",
+      "degree": 16.3333,
+      "house": 10,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 9.2833,
+      "house": 8,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "significations": [
+        9,
+        8,
+        "Ra"
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 28.9167,
+      "house": 9,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "significations": [
+        1,
+        6,
+        9,
+        8,
+        10,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 11.4667,
+      "house": 10,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        8,
+        10,
+        11,
+        9,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 0.4,
+      "house": 8,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "significations": [
+        2,
+        5,
+        1,
+        6,
+        8,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 10.65,
+      "house": 9,
+      "nakshatra": "Push",
+      "pada": 3,
+      "significations": [
+        7,
+        12,
+        9,
+        3,
+        4
+      ]
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 1.1,
+      "house": 12,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "significations": [
+        3,
+        4,
+        12,
+        1,
+        6,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 7.9167,
+      "house": 3,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        "Ma",
+        "Ve",
+        "Su",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 7.9167,
+      "house": 9,
+      "nakshatra": "Push",
+      "pada": 2,
+      "significations": [
+        "Ma",
+        "Mo",
+        "Ve",
+        "Sa"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon",
+    "death_type": "violent",
+    "death_date": "1953-09-02",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "KETU",
+      "sookshma": "KETU",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Jupiter-Ketu-Ketu. Dasha lord Saturn is posited in the star of Mars signifying 01, 06, 08 and badhaka is in mutua"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Saturn is posited in the star of Mars signifying 01, 06, 08 and badhaka is in mutual aspect with Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "longevity of the native, and he is prone to inju,.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "madhya aayu for him.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

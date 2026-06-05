@@ -1,0 +1,69 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_lalkitab_bucket_b_20260605_025201.log
+======================================================================
+LAL KITAB — Bucket B Triage Patch
+Batch: lalkitab_all_v2_20260605  |  Dry-run: True
+======================================================================
+
+Group 1 — Bucket B flagged → PHR (27 rules)
+  [DRY] lalkitab-ch19-001
+  [DRY] lalkitab-ch19-002
+  [DRY] lalkitab-ch19-003
+  [DRY] lalkitab-ch19-004
+  [DRY] lalkitab-ch19-005
+  [DRY] lalkitab-ch21-debt-sun
+  [DRY] lalkitab-ch21-debt-moon
+  [DRY] lalkitab-ch21-debt-mercury
+  [DRY] lalkitab-ch27-wave-w01
+  [DRY] lalkitab-ch27-wave-w02
+  [DRY] lalkitab-ch27-wave-w03
+  [DRY] lalkitab-ch27-wave-w09
+  [DRY] lalkitab-ch27-wave-w31
+  [DRY] lalkitab-ch27-wave-w44
+  [DRY] lalkitab-ch19-066
+  [DRY] lalkitab-ch19-072
+  [DRY] lalkitab-ch20-yog-06
+  [DRY] lalkitab-ch20-yog-08
+  [DRY] lalkitab-ch20-yog-11
+  [DRY] lalkitab-ch27-transfer-h08
+  [DRY] lalkitab-ch28-influence-priority
+  [DRY] lalkitab-ch27-proh-06
+  [DRY] lalkitab-ch27-proh-10
+  [DRY] lalkitab-ch27-corr-mars-benefic
+  [DRY] lalkitab-ch25-moon-h11
+  [DRY] lalkitab-ch25-mars-mercury-sister
+  [DRY] lalkitab-ch23-formula-remainder
+  Patched: 27/27
+
+Group 2 — Structural failure → PHR (1 rule)
+  [DRY] lalkitab-ch20-yog-07
+  Patched: 1/1
+
+Group 3 — Truncated interpretation.summary fix (5 rules)
+  [DRY] lalkitab-ch19-001: interpretation.summary restored (379 chars)
+  [DRY] lalkitab-ch19-002: interpretation.summary restored (383 chars)
+  [DRY] lalkitab-ch19-003: interpretation.summary restored (363 chars)
+  [DRY] lalkitab-ch19-004: interpretation.summary restored (309 chars)
+  [DRY] lalkitab-ch19-005: interpretation.summary restored (283 chars)
+  Fixed: 5/5
+
+Bucket C — stay flagged (17 rules, no action)
+  lalkitab-ch20-yog-01
+  lalkitab-ch20-yog-05
+  lalkitab-ch20-yog-09
+  lalkitab-ch20-gp-interact
+  lalkitab-ch21-gp-05
+  lalkitab-ch23-geoveto-triangle
+  lalkitab-ch24-mortality-north-star
+  lalkitab-ch24-mortality-reflection-organic
+  lalkitab-ch24-mortality-reflection-mirror
+  lalkitab-ch24-mortality-stasis
+  lalkitab-ch24-age-infancy-12d
+  lalkitab-ch24-age-childhood-12m
+  lalkitab-ch24-age-sudden-death
+  lalkitab-ch24-age-long-illness
+  lalkitab-ch24-age-survival-son
+  lalkitab-ch24-age-father-dependency
+  lalkitab-ch24-age-shortlife-2y
+
+── Post-patch counts ─────────────────────────────────────────────────
+  (dry-run — no DB counts)

@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0707",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0707",
+  "source_file": "0707_T-36_Tyson_Mike.pdf",
+  "subject": {
+    "name": "Tyson, Mike",
+    "name_from_filename": "Tyson, Mike",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Boxer",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1966-06-30",
+    "time_local": "15:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1966-06-30T10:00:00Z",
+    "latitude": 40.85,
+    "longitude": -73.9,
+    "place": "73W54 & 40N51",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 10,
+    "months": 3,
+    "days": 20,
+    "raw_text": "Balance of dasha Mer 10-3-20"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 1.3167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 11.7833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 18.65,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 10.9167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 1.3167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 21.9167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Boxer",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

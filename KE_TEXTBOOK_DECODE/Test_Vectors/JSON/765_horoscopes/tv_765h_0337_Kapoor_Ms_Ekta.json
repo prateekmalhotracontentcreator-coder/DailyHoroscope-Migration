@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0337",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0337",
+  "source_file": "0337_K-10_Kapoor_Ms_Ekta.pdf",
+  "subject": {
+    "name": "Kapoor Ms Ekta",
+    "name_from_filename": "Kapoor Ms Ekta",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Politics",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1975-06-07",
+    "time_local": "09:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1975-06-07T04:15:00Z",
+    "latitude": 19.076,
+    "longitude": 72.877,
+    "place": "Mumbai, Maharashtra, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 7,
+    "months": 4,
+    "days": 6,
+    "raw_text": "Balance of dasha Ven 7-4-6"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 7.4333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 19.05,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 22.3,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 24.35,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 24.1667,
+      "retrograde": true
+    },
+    "VENUS": {
+      "degree_in_sign": 7.2333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 12.35,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 7.4333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 12.35,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,243 @@
+{
+  "vector_id": "tv-lu-ch91",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch91_King_George_I_Greece",
+  "pdf_path": "Chapter_Splits/Ch91_King_George_I_Greece.pdf",
+  "subject": {
+    "name": "King George I of Greece",
+    "description": "King of Greece",
+    "nationality": "Greek/Danish"
+  },
+  "birth_data": {
+    "date": "1845-12-24",
+    "time_local": "20:00:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1845-12-24T19:00:00Z",
+    "latitude": 55.6667,
+    "longitude": 12.5833,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-36-35.11",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 29.1333,
+      "house": 1,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 11.3,
+      "house": 6,
+      "nakshatra": "I",
+      "pada": 4,
+      "significations": [
+        2,
+        6,
+        10,
+        "Ke"
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 15.0333,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        1,
+        4,
+        "Ra"
+      ]
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 10.0333,
+      "house": 9,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "significations": [
+        5,
+        10,
+        9,
+        7,
+        8
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 18.05,
+      "house": 6,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        12,
+        3,
+        6,
+        11,
+        4,
+        7
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 9.2167,
+      "house": 10,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "significations": [
+        6,
+        9,
+        10,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 28.5167,
+      "house": 7,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "significations": [
+        4,
+        11,
+        7,
+        9,
+        5,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 24.4,
+      "house": 7,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        7,
+        8,
+        5,
+        9,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 22.3333,
+      "house": 4,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        "Mo",
+        "Ve",
+        "Ju",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 22.3333,
+      "house": 10,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "significations": [
+        "Ve",
+        "Ju",
+        "Ma",
+        "Mo"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": "1845-12-24",
+    "age_at_death": 68,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "VENUS",
+      "pratyantardasha": "RAHU",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Venus Venus-Rahu-Venus-Sun. Dasha, Bhukti and sookshma lord Venus signifies badhaka, maraca, Mars and is aspecting lagna"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Antara lord Rahu signifies Jupiter, Venus and Mars and their significations have been explained above.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "sookshma lord Venus signifies badhaka, maraca, Mars and is aspecting lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "lagna lord Moon is in Rahu star, it is afflicted to a considerable extent.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Lagna lord) Saturn is conjoined with Venus (09, 10, 11) in 07th house and aspecting lagna and its lord Moon.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "08th lord Saturn was in badhaka house i.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

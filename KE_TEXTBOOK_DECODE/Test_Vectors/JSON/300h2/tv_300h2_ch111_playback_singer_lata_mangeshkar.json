@@ -1,0 +1,275 @@
+{
+  "vector_id": "tv-300h2-ch111",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch111_110_Lata_Mangeshkar",
+  "pdf_path": "Chapters/Ch111_110_Lata_Mangeshkar.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Playback Singer--Lata Mangeshkar",
+    "description": "Lata Mangeshkar is a celebrity Indian cinema female play back singer and is famously called as nightingale of India. Ra ~2&.tt10 2t $000(530 ... 1) 1'5! 50.22 N43",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 12.275,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        5,
+        3
+      ],
+      "significations_raw": "04,05,03"
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 16.683,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        2,
+        5,
+        6
+      ],
+      "significations_raw": "03,02,05,06"
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 1.949,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        6,
+        7
+      ],
+      "significations_raw": "06 07"
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 0.086,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        2,
+        5,
+        6,
+        7
+      ],
+      "significations_raw": "02,05,06,07"
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 23.554,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01"
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 10.871,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        4
+      ],
+      "significations_raw": "01 ,06,04,Ke"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 21.156,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Ve,Me,Mo,Ma"
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 21.156,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Ju,Me,Ma,Ve"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Entertainer",
+    "profession_category": "Entertainment",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Entertainment",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "02nd lord (sing or speech) and 051h lord (creativity) is Mercury (rhythm), who is in an airy sign and conjunct with Ketu, who denotes Venus (creativity).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Rahu (illusion) is in star of Venus and signifies Mercury and Venus.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "These combinations made native a cinema singer.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "071h and 12th lord Mars is in 061h, while Jupiter in lagna is in star of Mars (07, 06).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Nodes are linked to Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Venus is in Ketu star in a barren sign.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Moon, index of mind, is in star of Mercury, who is in 06, stopping mind from marrying under the conditions.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "NAIRS PUBLISHING HOUSI!, HYOI!RABAO Page# 148",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

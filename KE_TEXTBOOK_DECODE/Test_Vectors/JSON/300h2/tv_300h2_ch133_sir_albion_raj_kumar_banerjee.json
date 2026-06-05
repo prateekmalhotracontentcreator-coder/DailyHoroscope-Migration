@@ -1,0 +1,261 @@
+{
+  "vector_id": "tv-300h2-ch133",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch133_132_Diwan_Albiion_Banerjee",
+  "pdf_path": "Chapters/Ch133_132_Diwan_Albiion_Banerjee.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Sir Albion Raj Kumar Banerjee",
+    "description": "Sir Albion Rajkumar Banerjee, ICS, Diwan of Princely Sates of Cochin, Mysore and Kashmir. As: Me: Ra:",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 24.821,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        9,
+        10,
+        12,
+        5
+      ],
+      "significations_raw": "09,10 ,12,05"
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 7.871,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        8,
+        9,
+        1
+      ],
+      "significations_raw": "08,09,01 ,Ke"
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 17.446,
+      "house": null,
+      "nakshatra": "Jve",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        12,
+        7,
+        10
+      ],
+      "significations_raw": "05,12,07,10"
+    },
+    "MERCURY": {
+      "sign": "Virgo",
+      "degree": 9.355,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        10,
+        9
+      ],
+      "significations_raw": "07,10,09"
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 3.901,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        6,
+        1110,
+        9
+      ],
+      "significations_raw": "06 1110 09"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 3.113,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Ma,Me Sa"
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun (09) and Venus (06, 11) are conjunct 10 (profession).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun is in star of Mars, while Venus is in star of Sun.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn is in lagna and aspects 10 1h house.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Rahu offers result of Mars, Saturn and Mercury.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Ketu in lagna shows magnanimity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Lagna lord Jupiter is in sign of exaltation show egoistic and adamant person.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "All these combinations helped native to reach high level as Diwan in princely state.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

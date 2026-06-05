@@ -1,0 +1,237 @@
+{
+  "vector_id": "tv-300h2-ch139",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch139_138_Dumbness_and_Deafness",
+  "pdf_path": "Chapters/Ch139_138_Dumbness_and_Deafness.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Dumbness And Deafness",
+    "description": "The following natal horoscope is that of a boy who is diagnosed to be dumb and deaf: ,. ,",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "2001-11-09",
+    "time_local": "00:10:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 17.3833,
+    "longitude": 78.4667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Aslesha",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Libra",
+      "degree": 22.552,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        4,
+        6,
+        9,
+        12
+      ],
+      "significations_raw": "02,04,06,09,12"
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 25.989,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01"
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 14.49,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5,
+        7,
+        10,
+        1
+      ],
+      "significations_raw": "05,07,10,01"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 6.405,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        5,
+        10,
+        7
+      ],
+      "significations_raw": "04,11 ,05,10,07"
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 19.519,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        7,
+        8,
+        11,
+        1
+      ],
+      "significations_raw": "07,08,11,01"
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 5.297,
+      "house": null,
+      "nakshatra": "Mria",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Ma,Ju,Me"
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 5.297,
+      "house": null,
+      "nakshatra": "Mool",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Aries",
+      "degree": 16.2
+    },
+    "ghati_lagna": {
+      "sign": "Cancer",
+      "degree": 7.8
+    }
+  },
+  "life_outcomes": {
+    "profession": "Anonymous Case",
+    "profession_category": "Special_Case",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Special_Case",
+    "key_claim_axes": [
+      "career",
+      "health",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "03rd lord (hearing) and Mercury is aspected by Jupiter (06, 12), while Mercury again signifies 12th through Rahu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Similar situation prevails with regard to 02nd lord (speech), as Sun is in star of Jupiter (02,012).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Moon in star of Mercury is under aspect of 081h lord Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Native is found to be dumb and deaf.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

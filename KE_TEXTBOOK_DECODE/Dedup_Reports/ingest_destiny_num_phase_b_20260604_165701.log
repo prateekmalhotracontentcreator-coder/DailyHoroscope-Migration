@@ -1,0 +1,42 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_destiny_num_phase_b_20260604_165701.log
+DESTINY NUMEROLOGY PHASE B INGEST  |  batch: destiny_numerology_phase_b_20260604
+Scope: Ch17-Ch19 (34 rules, 3 files)
+======================================================================
+
+Building rules...
+
+──────────────────────────────────────────────────────────────────────
+  File                                              Ch   Rules
+──────────────────────────────────────────────────────────────────────
+  Numerology_Ch17_GemstoneNumerology_Rules.json     17      13   Gemstone Numerology
+  Numerology_Ch18_Donations_Rules.json              18      16   Donations
+  Numerology_Ch19_DeadlyWars_Rules.json             19       5   Deadly Wars / Element Classification
+──────────────────────────────────────────────────────────────────────
+  TOTAL                                                      34
+──────────────────────────────────────────────────────────────────────
+
+Running local structural check...
+Issues found: 0
+  ✓  All rules pass structural check.
+
+Spot-check first rule (num-ch17-001):
+  approval_status : pending_review
+  ingest_batch_id : destiny_numerology_phase_b_20260604
+  source.batch_id : destiny_numerology_phase_b_20260604
+  interp.detailed : 'A gemstone may have passed through many hands before reaching the wearer and may'
+
+Spot-check last rule (num-ch19-005):
+  approval_status : pending_review
+  source.chapter  : 19
+  interp.detailed : 'It is mostly the wicked planets which instigate, provoke and start a war in ques'
+
+Paksha patch verification:
+  num-ch17-009: paksha=Shukla
+  num-ch17-011: paksha=Krishna
+
+  ✓  Rule count matches expected 34.
+
+Saved 34 rules → backend/scripts/destiny_numerology_phase_b_rules.json
+
+✓ Dry run complete.

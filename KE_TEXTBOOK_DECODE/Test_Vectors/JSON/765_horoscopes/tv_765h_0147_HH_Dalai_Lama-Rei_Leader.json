@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0147",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0147",
+  "source_file": "0147_D-2_HH_Dalai_Lama-Rei_Leader.pdf",
+  "subject": {
+    "name": "HH Dalai Lama",
+    "name_from_filename": "HH Dalai Lama-Rei. Leader",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Rei. Leader",
+    "profession_category": "Politics",
+    "profession_subcategory": "Rei. Leader",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1935-07-06",
+    "time_local": "04:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1935-07-06T23:00:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "36N32 & 101E 12",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 15,
+    "months": 10,
+    "days": 6,
+    "raw_text": "Balance of dasha Ven 15-10-6"
+  },
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 2.55,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 19.9167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 29.0833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 17.1,
+      "retrograde": true
+    },
+    "VENUS": {
+      "degree_in_sign": 5.2333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 16.1,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 29.0833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Rei. Leader",
+    "profession_category": "Politics",
+    "profession_subcategory": "Rei. Leader",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

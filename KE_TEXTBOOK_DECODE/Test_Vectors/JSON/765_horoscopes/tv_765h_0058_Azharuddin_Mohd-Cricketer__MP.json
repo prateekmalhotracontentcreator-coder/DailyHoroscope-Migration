@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0058",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0058",
+  "source_file": "0058_A-49_Azharuddin_Mohd-Cricketer__MP.pdf",
+  "subject": {
+    "name": "Azharuddin, Mohd",
+    "name_from_filename": "Azharuddin, Mohd-Cricketer & MP",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Cricketer & MP",
+    "profession_category": "Sports",
+    "profession_subcategory": "Cricketer",
+    "profession_compound": true,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1963-02-08",
+    "time_local": "22:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1963-02-08T16:30:00Z",
+    "latitude": 17.385,
+    "longitude": 78.487,
+    "place": "Hyderabad, Telangana, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 4,
+    "months": 3,
+    "days": 8,
+    "raw_text": "Balance of dasha Mer 4-3-8"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 6.3,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 23.6667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 26.65,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 0.4333,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 6.3,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 21.1333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 25.8667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 9.75,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Cricketer & MP",
+    "profession_category": "Sports",
+    "profession_subcategory": "Cricketer",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0037",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0037",
+  "source_file": "0037_A-28_Annadurai_CN.pdf",
+  "subject": {
+    "name": "Annadurai, CN",
+    "name_from_filename": "Annadurai, CN",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1909-09-15",
+    "time_local": "09:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1909-09-15T04:00:00Z",
+    "latitude": 13.083,
+    "longitude": 80.27,
+    "place": "Chennai, Tamil Nadu, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 2,
+    "months": 3,
+    "days": 5,
+    "raw_text": "Balance of dasha Sun 2-3-5"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 10.7833,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 18.3333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 29.2833,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 29.0833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 5.2167,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 1.65,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 18.3333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 4.9667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 25.45,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

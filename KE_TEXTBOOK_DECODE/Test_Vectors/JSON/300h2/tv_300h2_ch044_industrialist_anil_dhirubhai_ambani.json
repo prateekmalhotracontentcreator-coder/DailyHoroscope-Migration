@@ -1,0 +1,302 @@
+{
+  "vector_id": "tv-300h2-ch044",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch044_43_Anil_Ambani",
+  "pdf_path": "Chapters/Ch044_43_Anil_Ambani.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Industrialist--Anil Dhirubhai Ambani",
+    "description": "Anil Ambani is an industrialist of Reliance Group and is the son of founder of Reliance Industries.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1959-06-04",
+    "time_local": "22:30:17",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "lagna_degree_stated": 7.72,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 20.136,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        8,
+        5,
+        7
+      ],
+      "significations_raw": "08,05,07"
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 0.599,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        7,
+        5,
+        8
+      ],
+      "significations_raw": "07,05,08"
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 8.967,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4,
+        7,
+        12,
+        1,
+        2,
+        11
+      ],
+      "significations_raw": "04,07 ,12,01,02,11"
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 22.038,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        6,
+        5,
+        9,
+        7
+      ],
+      "significations_raw": "06,05,09,07"
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 1.845,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        12,
+        3,
+        11
+      ],
+      "significations_raw": "12,03,11"
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 4.449,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        7,
+        10,
+        1,
+        2,
+        1,
+        2
+      ],
+      "significations_raw": "05,07,10 ,1 2,01,02"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 16.668,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        9
+      ],
+      "significations_raw": "09,Mo,Me,Sa"
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From lagna, 10th lord Venus is in 07 (business).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mercury, causative planet for business signifies 07.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, Mars (power) signifies 10, while it is under aspect of Jupiter (expansion).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "It is lord 07 (business).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn, Rahu, Mars and Venus signify 02nd house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Planets signify 07 are Moon, Sun, Mercury, Venus, Mars, Rahu and Ketu, including Saturn and most of these planets get aspect of Jupiter (expansion).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mercury, Nodes and Saturn signify 061h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Venus signify 10 1h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Mars & Jupiter signify 11 Ill house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "These combinations helped native to become a businessman and quite rich.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

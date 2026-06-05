@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0544",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0544",
+  "source_file": "0544_R-3_Rafter_Patrik.pdf",
+  "subject": {
+    "name": "Rafter, Patrik-Tennis",
+    "name_from_filename": "Rafter Patrik",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1972-12-28",
+    "time_local": "07:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": "1972-12-28T12:00:00Z",
+    "latitude": 40.728,
+    "longitude": -73.794,
+    "place": "Queens, New York, USA",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 4,
+    "months": 2,
+    "days": 16,
+    "raw_text": "Balance of dasha Mon 4-2-16"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 22.1167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 7.8667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 4.6167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 12.75,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 17.8667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 23.3833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 23.4,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 7.8667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "vector_id": "tv-300h1-ch039",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch039_SRILANKAN_MINISTER--JAYARAJ_FERNADOPALLE",
+  "pdf_path": "Split_Chapters/Ch039_SRILANKAN_MINISTER--JAYARAJ_FERNADOPALLE.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Srilankan Minister Jayaraj Fernadopalle",
+    "description": "Jeyaraj Fernandopalle, (11 Jan 1953 - 06 Apr 2008) was a Sri Lankan politician, a",
+    "nationality": "Sri Lankan"
+  },
+  "birth_data": {
+    "date": "1953-01-11",
+    "time_local": "22:58:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 7.2167,
+    "longitude": 79.8333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 9.7425,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 28.1158,
+      "house": 4,
+      "significations": [
+        4,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 7.0222,
+      "house": 3,
+      "significations": [
+        2,
+        3,
+        5,
+        6,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 16.0114,
+      "house": 6,
+      "significations": [
+        3,
+        5,
+        6,
+        8
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 14.6497,
+      "house": 4,
+      "significations": [
+        1,
+        2,
+        4,
+        6,
+        9,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 17.9394,
+      "house": 8,
+      "significations": [
+        2,
+        4,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 13.9553,
+      "house": 6,
+      "significations": [
+        2,
+        5,
+        6,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 3.6708,
+      "house": 2,
+      "significations": [
+        2,
+        3,
+        5,
+        6,
+        8
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 20.4031,
+      "house": 5,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 20.4031,
+      "house": 11,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 2008
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "2008-04-06",
+    "age_at_death": 55,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From Moon sign, Jupiter is in 061h and aspects 101h house as well as 10th lord Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is in 041h house from Moon sign, and aspects 10111 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn is in star of Mars and it aspects Mercury, who is lord of 10 from lagna.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter signifies 07, 08, 09 from lagna.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "1Qih lord Mercury signifies 10 and 09 houses.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

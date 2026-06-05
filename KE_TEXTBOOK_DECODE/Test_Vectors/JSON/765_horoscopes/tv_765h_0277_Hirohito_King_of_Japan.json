@@ -1,0 +1,85 @@
+{
+  "vector_id": "tv-765h-0277",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0277",
+  "source_file": "0277_H-14_Hirohito_King_of_Japan.pdf",
+  "subject": {
+    "name": "Hirohito",
+    "name_from_filename": "Hirohito King of Japan",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "King",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1901-04-29",
+    "time_local": "21:50",
+    "timezone_offset_hours": 9.0,
+    "time_utc": "1901-04-29T12:50:00Z",
+    "latitude": 35.69,
+    "longitude": 139.692,
+    "place": "Tokyo, Japan",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 4,
+    "months": 5,
+    "days": 27,
+    "raw_text": "Balance of dasha Sun 4-5-27"
+  },
+  "planet_degrees_from_text": {
+    "VENUS": {
+      "degree_in_sign": 15.6,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 29.9,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 4.0333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 20.5667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 29.4,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 29.4,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "King",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

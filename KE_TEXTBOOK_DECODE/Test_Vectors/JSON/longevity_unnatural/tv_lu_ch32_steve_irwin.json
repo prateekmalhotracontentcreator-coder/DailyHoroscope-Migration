@@ -1,0 +1,298 @@
+{
+  "vector_id": "tv-lu-ch32",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch32_Steve_Irwin",
+  "pdf_path": "Chapter_Splits/Ch32_Steve_Irwin.pdf",
+  "subject": {
+    "name": "Steve Irwin",
+    "description": "Wildlife Expert, 'Crocodile Hunter'",
+    "nationality": "Australian"
+  },
+  "birth_data": {
+    "date": "1962-02-22",
+    "time_local": "01:00:00",
+    "timezone_offset_hours": 11.0,
+    "time_utc": "1962-02-21T14:00:00Z",
+    "latitude": null,
+    "longitude": 144.9667,
+    "place": "Melbourne, Australia",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-13-54.00",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 22.9,
+      "house": 1,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 9.2333,
+      "house": 4,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        10,
+        4,
+        9,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 1.1667,
+      "house": 11,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "significations": [
+        9,
+        11,
+        10,
+        4
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 22.0667,
+      "house": 3,
+      "nakshatra": "Srav",
+      "pada": 4,
+      "significations": [
+        1,
+        6,
+        3,
+        9,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 14.75,
+      "house": 3,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "significations": [
+        8,
+        11,
+        3,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 29.35,
+      "house": 3,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "significations": [
+        2,
+        5,
+        1,
+        6,
+        3
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 15.3167,
+      "house": 4,
+      "nakshatra": "Sata",
+      "pada": 3,
+      "significations": [
+        7,
+        12,
+        4,
+        9,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 12.4667,
+      "house": 3,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        3,
+        4,
+        9,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 24.05,
+      "house": 9,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "significations": [
+        "Me",
+        "Sa",
+        "Mo",
+        "Ju",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 24.05,
+      "house": 3,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        "Me",
+        "Ju",
+        "Sa",
+        "Ma"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "Irwin is",
+    "death_type": "unknown",
+    "death_date": "1962-02-22",
+    "age_at_death": 45,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "SUN",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "Jupiter Mercury-Sun-Jupiter for Mr. Irwin in his 45th year, which gave 33-66 years range of longevity. . Dasha and sooks"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": ". Lagna lord and 06th lord Mars and OSth lord Mercury are conjoined in Capricorn and they are posited in the star of Moon (Shravana), who is badhka lord. Hence the longevity aspect of the native is under tremendous threat.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Ketu, who is posited in Capricorn, is conjoined with Saturn, ~ars, Mercury and Jupiter. Hence Ketu will also give significations detrimental houses like 01, 02, 06 08, 09 and 1 Mars. This is enough to cause injury to body and taking it to a dangerous level and losing the life due to maraca and badhaka connections.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Maraca Jupiter is posited in the star of Mars, who is lagna lord.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Rahu is posited in badhaka house and is being aspected by Jupiter, Saturn, Mercury and Mars. Hence Rahu will give result of all these planets, besides badhaka house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn is posited in the star of Moon, who is badhaka occupant.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Both Venus and Sun are posited in the star of Rahu, who i.s badhaka occupant. Hence all these combinations do not entail good longevity for the native and the body is vulnerable to injury, accident and death. · The VMD period ran on 04 Sep 2006 was that of Jupiter Mercury-Sun-Jupiter for Mr. Irwin in his 45th year, which gave 33-66 years range of longevity. . Dasha and sookshma lord Jupiter is lord of 02 (maraca) and signifies lagna since posited in the star of Mars. Bhukti lord Mercury signifies OSth house (longevity) and is in the star of Badhaka Moon. Antara lord Sun is in the star of Rahu,",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Bhukti lord Mercury signifies OSth house (longevity) and is in the star of Badhaka Moon.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Antara lord Sun is in the star of Rahu, who is posited in badhaka house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "sookshma lord Jupiter is lord of 02 (maraca) and signifies lagna since posited in the star of Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Madhya aayu or medium longevity.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "fortunately Irwin died on 4 September 2006 after being fatally pierced in the chest by a sting-ray barb while filming in Australia's Great Barrier Reef.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

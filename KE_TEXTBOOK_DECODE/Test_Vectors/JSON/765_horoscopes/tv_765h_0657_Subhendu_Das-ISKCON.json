@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0657",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0657",
+  "source_file": "0657_S-60_Subhendu_Das-ISKCON.pdf",
+  "subject": {
+    "name": "Subhendu Das",
+    "name_from_filename": "Subhendu Das-ISKCON",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "ISKCON",
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "ISKCON",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1976-04-19",
+    "time_local": "08:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1976-04-19T03:00:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "18EO & 54N30 (Poland)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 0,
+    "months": 11,
+    "days": 23,
+    "raw_text": "Balance of dasha Ket 0-11-23"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 5.85,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 12.0833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 19.4833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 19.0833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 21.8167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 23.2167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 2.9667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 11.4667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 19.4833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "ISKCON",
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "ISKCON",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

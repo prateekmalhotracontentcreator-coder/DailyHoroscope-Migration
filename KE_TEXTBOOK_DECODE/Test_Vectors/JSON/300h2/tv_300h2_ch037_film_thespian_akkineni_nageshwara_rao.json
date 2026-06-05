@@ -1,0 +1,250 @@
+{
+  "vector_id": "tv-300h2-ch037",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch037_36_Nageshwara_Rao",
+  "pdf_path": "Chapters/Ch037_36_Nageshwara_Rao.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Film Thespian--Akkineni Nageshwara Rao",
+    "description": "The native is famous cinema actor donning role of hero in Te lugu films of yester-years.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "lagna_degree_stated": 18.136,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 4.184,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        12,
+        11
+      ],
+      "significations_raw": "12,11"
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 23.279,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        10,
+        8
+      ],
+      "significations_raw": "10,08"
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 2.657,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        2,
+        7,
+        5
+      ],
+      "significations_raw": "02,07,05"
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 20.035,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        9,
+        1,
+        9,
+        1,
+        0
+      ],
+      "significations_raw": "09,1 2.11.02,09,1 0"
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 20.186,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        6,
+        9,
+        1
+      ],
+      "significations_raw": "02,03,06,09,1 1.12"
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 18.515,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        8,
+        10,
+        9,
+        11,
+        12
+      ],
+      "significations_raw": "01,08,10,09,11,12"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 28.372,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        10
+      ],
+      "significations_raw": "10 Me,Mo,sa,Ju,Ve"
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 28.372,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4
+      ],
+      "significations_raw": "04,Ma,Sa,Ve"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Entertainer",
+    "profession_category": "Entertainment",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Entertainment",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is in Q2nd house and aspects Rahu, which is in 1Qih house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From Moon sign, Mars is in 1Qih house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Rahu (illusion) and Venus (creativity) are in 101h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "02.-.:1 and 071h lord Mars (05) is aspecting Mercury (dual) and Mercury is in star of Venus (10).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations helped native to become a film actor of high repute.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

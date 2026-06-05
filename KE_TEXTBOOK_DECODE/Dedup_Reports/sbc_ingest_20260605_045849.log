@@ -1,0 +1,53 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/sbc_ingest_20260605_045849.log
+============================================================
+SBC KE Ingest v1
+Batch:   sbc_v1_20260605
+Source:  /Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/1. Sarvato Bhadra Chakra_V2
+Run:     20260605_045849
+============================================================
+
+STEP 1 — Loading source JSON files
+  SBC_Ch02_Rules_v1.json                20 rules
+  SBC_Ch03_Rules_v1.json                19 rules
+  SBC_Ch04_Rules_v1.json                15 rules
+  SBC_Ch05_Rules_v1.json                11 rules
+  SBC_Ch06_Rules_v1.json                 7 rules
+  SBC_Ch07_Rules_v1.json                 6 rules
+  SBC_Ch08_Rules_v1.json                 7 rules
+  SBC_Ch09_Rules_v1.json                10 rules
+  SBC_Ch10_Rules_v1.json                23 rules
+  SBC_Ch11_Rules_v1.json                18 rules
+  SBC_Ch12_Rules_v1.json                 9 rules
+  SBC_Ch13_Rules_v1.json                12 rules
+  SBC_Ch14_Rules_v1.json                 9 rules
+  SBC_Ch16_Rules_v1.json                 3 rules
+  SBC_Ch17_Rules_v1.json                 2 rules
+  SBC_Ch18_Rules_v1.json                11 rules
+  Total raw rules loaded: 182
+
+STEP 2 — Transforming to standard schema
+  Transformed: 182 rules
+
+STEP 3 — Structural validation
+  Issues: 0  ✅
+
+STEP 4 — Per-chapter breakdown
+  Ch02  Elementary Norms and Time Conversion            20 rules
+  Ch03  Sarvato Bhadra Chakra and Its Constituents      19 rules
+  Ch04  All About Stars                                 15 rules
+  Ch05  All About Planets                               11 rules
+  Ch06  All About Signs                                  7 rules
+  Ch07  Numerical Strength of Planets                    6 rules
+  Ch08  General Strength of Planets (Shadbala)           7 rules
+  Ch09  Vedha Aspect of Planets                         10 rules
+  Ch10  Forecasting Methodology — Future of Individuals   23 rules
+  Ch11  Muhurata Optimization                           18 rules
+  Ch12  Sickness and Accident Diagnostic                 9 rules
+  Ch13  Geopolitical and War Analysis                   12 rules
+  Ch14  Horary Diagnostic                                9 rules
+  Ch16  Social and Group Events                          3 rules
+  Ch17  Master Coordinate Library                        2 rules
+  Ch18  Sarvato Bhadra Chakra and Other Important Chakras   11 rules
+  TOTAL                                               182 rules
+
+STEP 5 — Uploading to MongoDB

@@ -1,0 +1,267 @@
+{
+  "vector_id": "tv-lu-ch59",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch59_Ranasinghe_Premadasa",
+  "pdf_path": "Chapter_Splits/Ch59_Ranasinghe_Premadasa.pdf",
+  "subject": {
+    "name": "Ranasinghe Premadasa",
+    "description": "President of Sri Lanka",
+    "nationality": "Sri Lankan"
+  },
+  "birth_data": {
+    "date": "1924-06-23",
+    "time_local": "15:27:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1924-06-23T09:57:00Z",
+    "latitude": 6.9167,
+    "longitude": 79.8333,
+    "place": "Colombo, Sri Lanka",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 27.85,
+      "house": 1,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 8.9167,
+      "house": 9,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "significations": [
+        11,
+        9,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 0.9333,
+      "house": 6,
+      "nakshatra": "PBha",
+      "pada": 4,
+      "significations": [
+        "1.0",
+        6,
+        3,
+        2
+      ]
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 6.8667,
+      "house": 5,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        2,
+        7,
+        5,
+        "Ra"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 24.7833,
+      "house": 8,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "significations": [
+        9112,
+        8,
+        7,
+        2,
+        5
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 20.1833,
+      "house": 2,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "significations": [
+        2,
+        3,
+        6,
+        8,
+        9,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 21.3667,
+      "house": 9,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        1,
+        8,
+        6,
+        3,
+        2,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 2.9333,
+      "house": 1,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "significations": [
+        4,
+        5,
+        1,
+        2,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 3.0667,
+      "house": 11,
+      "nakshatra": "Magh",
+      "pada": 1,
+      "significations": [
+        "Ke",
+        "Su",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 3.0667,
+      "house": 5,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "significations": [
+        "Ma",
+        "Sa"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "assassinated",
+    "death_type": "violent",
+    "death_date": "1924-06-23",
+    "age_at_death": 69,
+    "dasha_at_death": {
+      "mahadasha": "SUN",
+      "antardasha": "SATURN",
+      "pratyantardasha": "SATURN",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "Sun-Saturn-Saturn-Jupiter period. The longevity of 69 years should be attributed to lagna and OSth lord Venus signifies"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Libra rising and the Lagna is occupied by Saturn, who is in Mars star, who signifies maraca and injury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mercury is posited in OSth house and is in the star of Mars signifies maraca and injury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars, who is maraca and badhaka, besides the causative planet for injury is aspecting Mercury who occupies OSth house. Mars is in Rahu star, who is badhaka house occupant.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "06th lord Jupiter who could cause injury is posited in 02nd house (maraca) and is aspecting Mercury in OSth house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter is further posited in the star of Mercury, who signifies maraca, injury, etc.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "All the planets from Sun to Ketu are either signifying maraca or badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Lagna and OSth lord Venus is in Jupiter star, who signifies maraca. But Venus is in 09th, a punya house. But the lagna and OSth are afflicted and they are connected to 06, IVlars and badhaka and maraca. President Premadasa was killed in a suicide bomb blast during May day celebrations on pt May 1993 in his 69th year during the VMD of Sun-Saturn-Saturn-Jupiter period. The longevity of 69 years should be attributed to lagna and OSth lord Venus signifies 09th house, a punya house and yogakaraka Saturn (though a maraca signifying planet) is posited in lagna. The planets ruled during the time of as",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "longevity of 69 years should be attributed to lagna and OSth lord Venus signifies 09th house, a punya house and yogakaraka Saturn (though a maraca signifying planet) is posited in lagna.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

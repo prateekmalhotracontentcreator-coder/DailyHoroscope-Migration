@@ -1,0 +1,234 @@
+{
+  "vector_id": "tv-lu-ch15",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch15_John_F_Kennedy_Jr",
+  "pdf_path": "Chapter_Splits/Ch15_John_F_Kennedy_Jr.pdf",
+  "subject": {
+    "name": "John Fitzgerald Kennedy Jr.",
+    "description": "Son of President Kennedy",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1960-11-25",
+    "time_local": "00:22:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": "1960-11-25T05:22:00Z",
+    "latitude": 38.895,
+    "longitude": -77.0333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-12-51.60",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 18.7333,
+      "house": 1,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 9.7333,
+      "house": 4,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "significations": [
+        1,
+        4,
+        6,
+        7,
+        "OS"
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 4.2,
+      "house": 7,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": [
+        12,
+        7,
+        4,
+        9,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 25.2833,
+      "house": 11,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        11,
+        5,
+        8,
+        9,
+        4
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 20.0167,
+      "house": 3,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        2,
+        11,
+        3,
+        5,
+        8
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 12.6,
+      "house": 5,
+      "nakshatra": "I",
+      "pada": 4,
+      "significations": [
+        "OS",
+        8,
+        7,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Sagittarius",
+      "degree": 18.6833,
+      "house": 5,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        3,
+        10,
+        "OS"
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 22.35,
+      "house": 5,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        5,
+        6,
+        7,
+        3,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 18.0667,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        1,
+        "Ve",
+        "Su",
+        "Mo",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 18.0667,
+      "house": 7,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        7,
+        "Sa",
+        "Ra",
+        "Mo"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "a plane crash",
+    "death_type": "accident",
+    "death_date": "1960-11-25",
+    "age_at_death": 39,
+    "dasha_at_death": {
+      "mahadasha": "MARS",
+      "antardasha": "SATURN",
+      "pratyantardasha": "SUN",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "natal chart, found to be tallying for the accident. Mars posited in an airy sign, and it is in ·mutual aspect with Satur"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sookshma lord Saturn signifies 06 (injury) and 07 (maraca) and is under the aspect of badhaka Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna lord Sun was under aspect of maraca Saturn.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "lagna lord Sun's star lord Saturn is maraca and is under aspect of Badhaka Mars.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "longevity is just above alpa-aayu.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

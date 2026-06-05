@@ -1,0 +1,212 @@
+{
+  "vector_id": "tv-300h1-ch024",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch024_US_PRESIDENT_35_JOHN_F_KENNEDY",
+  "pdf_path": "Split_Chapters/Ch024_US_PRESIDENT_35_JOHN_F_KENNEDY.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "John Fitzgerald Kennedy",
+    "description": "John Fitzgerald Kennedy was the 3501 US President from 20 Jan 1961 until his",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1961-01-20",
+    "time_local": "15:09:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 42.3333,
+    "longitude": -71.1167,
+    "place": "Brookline, Massachusetts USA",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 29.1425,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 15.2436,
+      "house": 9,
+      "significations": [
+        9,
+        11,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 24.6728,
+      "house": 12,
+      "significations": [
+        2,
+        9,
+        11,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 27.9822,
+      "house": 8,
+      "significations": [
+        1,
+        8,
+        9,
+        10,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 0.4453,
+      "house": 9,
+      "significations": [
+        4,
+        7,
+        9,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 24.1531,
+      "house": 9,
+      "significations": [
+        2,
+        3,
+        8,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 4.5558,
+      "house": 11,
+      "significations": [
+        5,
+        6,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 19.8772,
+      "house": 4,
+      "significations": [
+        4
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 19.8772,
+      "house": 10,
+      "significations": [
+        10
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From Moon sign, Venus, Jupiter and Sun are posited in 10th house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From lagna, 10111 lord Oob) Mercury is in star of Sun (govt.) and is under aspect of Saturn.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "But position of Ketu in 10111 house does not augment well for continuance in job as it can throw one out from workplace suddenly.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mutual aspect between Saturn and Mars involving houses 06 and 08 with lagna lord Mercury getting involved, the native got killed in Jupiter-Saturn-Saturn VMD.",
+      "condition_type_guess": "dasha_planet",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

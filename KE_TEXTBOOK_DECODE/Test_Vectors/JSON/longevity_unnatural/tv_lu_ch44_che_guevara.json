@@ -1,0 +1,225 @@
+{
+  "vector_id": "tv-lu-ch44",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch44_Ernesto_Che_Guevara",
+  "pdf_path": "Chapter_Splits/Ch44_Ernesto_Che_Guevara.pdf",
+  "subject": {
+    "name": "Ernesto Che Guevara",
+    "description": "Marxist Revolutionary",
+    "nationality": "Argentine"
+  },
+  "birth_data": {
+    "date": "1928-06-14",
+    "time_local": "03:05:00",
+    "timezone_offset_hours": -3.0,
+    "time_utc": "1928-06-14T06:05:00Z",
+    "latitude": null,
+    "longitude": -60.6664,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-45-40.21",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Pisces",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Pisces",
+      "degree": 26.6333,
+      "house": 1,
+      "nakshatra": "a",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 0.15,
+      "house": 4,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "significations": [
+        2,
+        4,
+        6,
+        9,
+        1
+      ]
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 9.8667,
+      "house": 2,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "significations": [
+        2,
+        5,
+        "Ke",
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Pisces",
+      "degree": 28.4167,
+      "house": 1,
+      "nakshatra": "a",
+      "pada": 4,
+      "significations": [
+        2,
+        1,
+        9,
+        4,
+        7
+      ]
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 19.5167,
+      "house": 4,
+      "nakshatra": "Ardr",
+      "pada": 4,
+      "significations": [
+        4,
+        3,
+        7,
+        "Ra"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 9.25,
+      "house": 2,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "significations": [
+        1,
+        10,
+        2,
+        "Ke",
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 25.4,
+      "house": 3,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "significations": [
+        3,
+        8,
+        2,
+        1,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 22.5167,
+      "house": 9,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "significations": [
+        11,
+        12,
+        7,
+        4,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 16.1333,
+      "house": 3,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "significations": [
+        3,
+        "Mo",
+        "Ve",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 16.1333,
+      "house": 9,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": [
+        9,
+        "Sa",
+        "Ma",
+        "Ve"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in October 09",
+    "death_type": "violent",
+    "death_date": "1928-06-14",
+    "age_at_death": 40,
+    "dasha_at_death": {
+      "mahadasha": "MARS",
+      "antardasha": "MARS",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "KETU",
+      "stated_by_author": true,
+      "raw_text": "Mars-Jup-Jup period. Dasha lord Mars is lord of 02 (maraca) and is in the star of Mercury (badhka pnd maraca). It is fur"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "or badhaka (07). This is quite dangerous for longevity. Indeed Guevara was killed in his 40th year in the VMD of Mars-Jup-Jup period. Dasha lord Mars is lord of 02 (maraca) and is in the star of Mercury (badhka pnd maraca). It is further posited in lagna (self). Ketu is conjunct with saturn in Scorpio is practically a conjunction between Saturn and Mars. Bhukti and Antara lord Jupiter is in Ketu star in 2nd house, being lagna lord. So, wherever Ketu will offer its result, Jupiter will follow the same. Ketu is conjoined with Satum, who is in badhaka and maraca Mercury star. Ketu is further aspe",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Dasha lord Mars is lord of 02 (maraca) and is in the star of Mercury (badhka pnd maraca).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Jupiter is in Ketu star in 2nd house, being lagna lord.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,297 @@
+{
+  "vector_id": "tv-300h2-ch151",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch151_150_President_Mohammad_Najib",
+  "pdf_path": "Chapters/Ch151_150_President_Mohammad_Najib.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Afghan Leader--Mohammad Najib",
+    "description": "Mohammad Najibullah Ahmadzai, a Doctor in medicine (06 Aug 1947-27 Sep 1996) was the last President of the Democratic Republic of Afghanistan backed by erstwhile Soviet Union. Mo Rasi Mohd. Najib",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1947-08-06",
+    "time_local": "10:31:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "lagna_degree_stated": 26.444,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 19.822,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        12,
+        11,
+        10,
+        1
+      ],
+      "significations_raw": "12,11,10,01"
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 6.718,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11,
+        7,
+        5,
+        6
+      ],
+      "significations_raw": "11,07,05 06"
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 1.812,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        8,
+        10
+      ],
+      "significations_raw": "03,08,10"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 12.065,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        11,
+        5,
+        6
+      ],
+      "significations_raw": "02,09,11 ,05,06"
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 19.388,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        6111001
+      ],
+      "significations_raw": "05,06111001"
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 5.521,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        9
+      ],
+      "significations_raw": "09,Ve,Su"
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 5.521,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ma,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1947
+      },
+      {
+        "event": "Died",
+        "year": 1996
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1996-09-27",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is in 02nd house, being lord of 07 and it is in own star.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is in 1Oth house and is also in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sun signifies 10 1h house through Mercury (11 ).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Mars is in 041h house and aspects 10 1h house, while Jupiter is lord of 1Oth house.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Rahu is in 091h house and signifies Sun and Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Mercury is in star of Jupiter and it is conjunct with Sun and Venus.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "All these combinations helped native to lead his country.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "ASTROLOGY TUITIONS ASTROLOGICAL TUTIONS ARE IMPARTED IN PERSON OR THROUGH ONLINE I E-MAIL I SKYPE I WHATASPP UNDER THE AUSPICES OF: CLASSES ARE CONDUCTED PERSONALLY BY AUTHOR OF THIS BOOK v 204B I I, Janapriya township, Mallapur, Nacharam PO Hyderabad-500 076, India Mob: +91 9542 693 230 E-Mail: nphhyd@yahoo.com",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

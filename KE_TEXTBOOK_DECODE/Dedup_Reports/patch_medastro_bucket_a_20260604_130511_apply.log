@@ -1,0 +1,46 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/patch_medastro_bucket_a_20260604_130511_apply.log
+===========================================================================
+
+MEDICAL ASTROLOGY — BUCKET A PATCH  |  APPLY
+Input  : /tmp/medical_astrology_rules/medical_astrology_v1_TRIAGED.json
+Output : /tmp/medical_astrology_rules/medical_astrology_v1_PATCHED.json
+
+Correction: 3 rules misclassified as truncation artifacts.
+Source file inspection confirms all 3 texts are complete sentences.
+
+Loaded 270 rules
+
+───────────────────────────────────────────────────────────────────────────
+Patch decisions:
+───────────────────────────────────────────────────────────────────────────
+  [PATCH] ma-ch01-124
+    Before : approval_status=pending_human_review  truncation_artifact=True  validator_error=True
+    After  : approval_status=auto_approved  (flags removed)
+    Evidence: source file confirms text ends "...the severity is reduced." — complete sentence
+  [PATCH] ma-ch09-007
+    Before : approval_status=pending_human_review  truncation_artifact=True  validator_error=True
+    After  : approval_status=auto_approved  (flags removed)
+    Evidence: source file confirms text ends "...and the dashas running at the given point of time." — complete sentence
+  [PATCH] ma-ch06-009
+    Before : approval_status=pending_human_review  truncation_artifact=True  validator_error=True
+    After  : approval_status=auto_approved  (flags removed)
+    Evidence: source file confirms text ends "...with the bhukti of the afflicted 4th lord." — complete sentence
+
+───────────────────────────────────────────────────────────────────────────
+SUMMARY
+───────────────────────────────────────────────────────────────────────────
+  Mode    : APPLIED
+  Patched : 3 rules (PHR → auto_approved, flags removed)
+
+POST-PATCH STATUS:
+  auto_approved        : 53
+  pending_human_review : 196
+  flagged              : 21
+  TOTAL                : 270
+
+Patched JSON saved: /tmp/medical_astrology_rules/medical_astrology_v1_PATCHED.json
+
+NEXT STEP — upload patched JSON:
+  python3 backend/scripts/ingest_medical_astrology_v1.py \
+    --upload /tmp/medical_astrology_rules/medical_astrology_v1_PATCHED.json

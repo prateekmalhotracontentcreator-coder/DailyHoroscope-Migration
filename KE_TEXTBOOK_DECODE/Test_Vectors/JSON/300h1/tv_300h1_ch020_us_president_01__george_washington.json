@@ -1,0 +1,231 @@
+{
+  "vector_id": "tv-300h1-ch020",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch020_US_PRESIDENT_01_-GEORGE_WASHINGTON",
+  "pdf_path": "Split_Chapters/Ch020_US_PRESIDENT_01_-GEORGE_WASHINGTON.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "George Washington",
+    "description": "George Washington (22 Feb 1732 - 04 Dec 1799) served as the first constitutional",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1732-02-22",
+    "time_local": "11:00:00",
+    "timezone_offset_hours": -5.1167,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth; time marked rectified."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 16.6447,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 27.5228,
+      "house": 8,
+      "significations": [
+        3,
+        4,
+        8,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 3.2267,
+      "house": 7,
+      "significations": [
+        5,
+        7,
+        8,
+        11,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 16.5786,
+      "house": 9,
+      "significations": [
+        2,
+        3,
+        5,
+        8,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 18.585,
+      "house": 5,
+      "significations": [
+        3,
+        5,
+        8,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 9.4511,
+      "house": 11,
+      "significations": [
+        1,
+        6,
+        9,
+        10,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 12.6803,
+      "house": 11,
+      "significations": [
+        9,
+        10,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 5.6547,
+      "house": 8,
+      "significations": [
+        8
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 5.6547,
+      "house": 2,
+      "significations": [
+        2
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1799
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1799-12-04",
+    "age_at_death": 67,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun (Government) is in 10111 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars (power) is in star of Jupiter (admn.) in 07111 house and aspects 10111 house (prof.).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus and Saturn (in own star) are conjunct in 11111 house (Senate).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter is in 05111 house from lagna, but in 10111 house from Moon sign.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter is aspecting 10111 lord Saturn and Venus, who is also in Saturn star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

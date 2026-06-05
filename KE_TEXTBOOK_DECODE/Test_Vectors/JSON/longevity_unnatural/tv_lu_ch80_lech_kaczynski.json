@@ -1,0 +1,284 @@
+{
+  "vector_id": "tv-lu-ch80",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch80_Lech_Kaczynski",
+  "pdf_path": "Chapter_Splits/Ch80_Lech_Kaczynski.pdf",
+  "subject": {
+    "name": "Lech Kaczynski",
+    "description": "President of Poland",
+    "nationality": "Polish"
+  },
+  "birth_data": {
+    "date": "1949-06-18",
+    "time_local": "02:45:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1949-06-18T00:45:00Z",
+    "latitude": 52.25,
+    "longitude": 21.0,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-03-16.46",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 4.9667,
+      "house": 1,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 3.4,
+      "house": 2,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "significations": [
+        4,
+        2,
+        1,
+        7,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 28.05,
+      "house": 10,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "significations": [
+        3,
+        10,
+        8,
+        9,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 12.6333,
+      "house": 1,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "significations": [
+        3,
+        1,
+        12,
+        10,
+        7
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 15.7667,
+      "house": 1,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "significations": [
+        2,
+        1,
+        5,
+        3,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 7.8667,
+      "house": 9,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        4,
+        2,
+        "08(09",
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 19.9,
+      "house": 2,
+      "nakshatra": "Ardr",
+      "pada": 4,
+      "significations": [
+        1,
+        6,
+        2,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 8.1667,
+      "house": 4,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        9,
+        10,
+        4,
+        "Ke"
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 29.4833,
+      "house": 11,
+      "nakshatra": "a",
+      "pada": 4,
+      "significations": [
+        "Ju",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 29.4833,
+      "house": 5,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "significations": [
+        "Ma",
+        "Me",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed in a plane",
+    "death_type": "violent",
+    "death_date": "2010-04-10",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "VENUS",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Venus-Jupiter-Venus-Venus indicating lagna, injury, accident, maraca, badhaka and longevity have been made to come in .."
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord Venus is posited in Rahu star in 0200 house (maraca), while Rahu is in Pisces will signify Mercury and Jupiter (badhaka occupant). 330 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is lord of Q8th house (longevity), but is posited in badhaka house. This has caused longevity problem. It is in the star of Sun, who is maraca occupant.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars and Mercury are maraca lords, and are posited in lagna. Both are posited in Rohini star ruled by Moon, who is in badhaka occupant, Jupiter star. So the strength of lagna gets weakened with regard to longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun is posited in 02nd house (maraca) and is in the star of maraca Mars star.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars and Saturn are aspecting each other and they are linked to lagna, maraca and badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Saturn is posited in Ketu star Makha, while Ketu is posited in Mars star Chitra. This makes a direct link between Saturn and Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Lagna longitude is at 04 deg. 58 min in Taurus and lagna is posited by Mars. Q6th bhava star lord is again Mars which is in Libra, while Mars is aspecting QSth house. Hence there is connection for Mars with 01, 06, 08 houses. All these combinations indicate very lesser longevity, injury, accident and death for the native. When the air accident took place on 10 Apr 2010 at 10-56 a.m. near Moscow, the VMD period operated for President Kaczynski was that of Venus-Jupiter-Venus-Venus indicating lagna, injury, accident, maraca, badhaka and longevity have been made to come in .. Dasha lord Venus sig",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Dasha lord Venus signifies vehicle in general and is posited in the Gemini, an airy sign, signaling air plane.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "injury, accident and death for the native.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "survived after the plane apparently hit trees as it approached Smolensk airport in thick fog due to pilot error.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

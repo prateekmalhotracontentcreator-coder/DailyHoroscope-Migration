@@ -1,0 +1,30 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_kp_p27_dict_20260604_141317.log
+======================================================================
+KP P27 PROFESSION DICTIONARY INGEST
+Batch: kp_p27_dict_v1_20260604  |  Expected: 229
+Dry-run: True
+======================================================================
+
+Source file  : KP_P27_Profession_Dictionary.json
+Entries found: 229
+
+Rules built  : 229
+Build errors : 0 ✓
+
+── Sample rules ──────────────────────────────────────────────────────
+  [  1] kp3-p27dict-001        | Abrasives                                | ['Saturn', 'Mars', 'Mercury']
+  [  2] kp3-p27dict-002        | Accounts                                 | ['Mercury', 'Jupiter']
+  [100] kp3-p27dict-100        | Insurance                                | ['Saturn', 'Mercury']
+  [174] kp3-p27dict-174        | President                                | ['Mars', 'Jupiter', 'Venus', 'Saturn']
+  [175] kp3-p27dict-175        | Member of Parliament                     | ['Sun', 'Mercury', 'Jupiter']
+  [206] kp3-p27dict-206        | Ministry – Works and Housing             | ['Mars', 'Mercury', 'Venus', 'Jupiter']
+  [207] kp3-p27dict-207        | Secretary                                | ['Mercury', 'Mars', 'Jupiter', 'Sun']
+  [229] kp3-p27dict-229        | Draftsman                                | ['Saturn', 'Venus', 'Mercury']
+
+── Category breakdown ────────────────────────────────────────────────
+  industry_profession           : 173
+  government_ministry           : 33
+  ministry                      : 31
+  professional_role             : 23
+
+DRY-RUN complete — no DB writes.

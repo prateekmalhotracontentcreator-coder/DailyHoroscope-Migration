@@ -1,0 +1,172 @@
+{
+  "vector_id": "tv-lasys-ch23",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch23",
+  "chapter_title": "Balarishta or Infant Mortality Chart-III",
+  "pdf_path": "Text Books/LongevityAstroSystem/23_Balarishta or Infant Mortality Chart-III.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Unnamed Balarishta Case III (Male Child)",
+    "description": "Male infant born at primary health centre in Banda, Sagar district, Madhya Pradesh. Died 1 hour after birth on same day.",
+    "nationality": "Indian"
+  },
+
+  "birth_data": {
+    "date": "2012-04-22",
+    "time_local": "09:45:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "04:15:00",
+    "latitude": 24.0167,
+    "longitude": 78.9833,
+    "place": "Banda, Sagar District, Madhya Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-55-58",
+    "notes": "Reported TOB 09:45:00 AM. Lagna CSL = Jupiter, 9th CSL = Saturn. Both are aspecting each other — time confirmed. Sidereal time 23h 33m 28s. Death at 10:45 AM same day."
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Lagna at 10° Ge 10' Ardhra (Me-Ra-Ju). Moon at 17° Ar 58' Bharani (Ma-Ve-Ma)."
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "JUPITER",
+    "8th_csl": "SATURN",
+    "badhaka_house": 7,
+    "badhaka_house_rationale": "Gemini = dual sign → 7th house is both maraka and badhaka",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "balarishta",
+  "aayu_bucket_computed": null,
+
+  "planet_positions_from_table": {
+    "LAGNA": { "sign": "Gemini", "degree": "10°10'", "house": 1, "significations": [1] },
+    "SUN":   { "sign": "Aries", "degree": "8°30'", "house": 11, "significations": [11] },
+    "MOON":  { "sign": "Aries", "degree": "17°58'", "house": 11, "significations": [] },
+    "MARS":  { "sign": "Leo", "degree": "10°06'", "house": 3, "significations": [3, 6] },
+    "MERCURY": { "sign": "Pisces", "degree": "11°24'", "house": 10, "significations": [1, 8] },
+    "JUPITER": { "sign": "Aries", "degree": "24°11'", "house": 11, "significations": [7, 10] },
+    "VENUS":   { "sign": "Taurus", "degree": "21°08'", "house": 12, "significations": [2, 3, 5, 11, 12] },
+    "SATURN":  { "sign": "Libra", "degree": "01°45'", "house": 5, "significations": [3, 5, 6, 8, 9, 10, 11] },
+    "RAHU":    { "sign": "Scorpio", "degree": "13°20'", "house": 6, "significations": [6, 8, 12] },
+    "KETU":    { "sign": "Taurus", "degree": "13°20'", "house": 12, "significations": [12] }
+  },
+
+  "death_data": {
+    "cause_of_death": "Unknown — infant mortality; chart shows combinations of maraca and badhaka linked to 8th house",
+    "death_type": "unknown",
+    "death_date": "2012-04-22",
+    "age_at_death": 0,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "MARS",
+      "pratyantardasha": "VENUS",
+      "sookshma": "SATURN",
+      "kp_significations": [2, 3, 5, 11, 12, 6, 8, 9, 10],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "Unfortunately, the baby died on the same day at 10-45 a.m. during the VMD of Venus-Mars-Venus-Saturn-Sun."
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna falls in Gemini at 10 deg. 10 minutes in the star of Rahu and sub of Jupiter. Lagna Cuspal sub lord Jupiter is badhaka and maraca, and hence it should be watched carefully.",
+      "aayu_gate": "gate_1",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Cuspal sub lord of 08th house (longevity) and 07th house (maraca & badhaka) is Saturn itself. Hence Saturn is holding dual detrimental portfolios. Rahu is in the star of Saturn and sign of Mars. It is getting aspect of Mars too. Venus also is aspecting Rahu. Hence Rahu offers result of 06, 08 and 12 houses. These combinations suggest bala-arishta or infant mortality.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08th lord Saturn is in mutual aspect with maraca & badhaka lord Jupiter.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "mutual_aspect",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Birth took place in Rahu star Ardra in the sub of Jupiter. The significations of Rahu have been explained above. Jupiter is maraca and badhaka.",
+      "aayu_gate": "gate_1",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sookshma lord Saturn denotes cusps 03, 05, 06, 08, 09, 10 and 11 through self and Mars. Rahu is posited in star of Saturn denoting Saturn and Mars. Lagna lord Mercury is in star of Saturn. So Rahu and Mercury got detrimental cusps such as 01, 06 and 08, while Saturn being cuspal sub lord of 07 (maraca & badhaka) and 08 (longevity). There is mutual aspect between Saturn (08) and Jupiter (07), while lagna lord Mercury is linked to 08th house through Saturn.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "dasha_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Death occurred when lagna travelled to Jupiter star, Punarvasu and when it was in the sub of Saturn. Saturn has got dual portfolio of 07 and 08 at sub level.",
+      "aayu_gate": "gate_5",
+      "condition_type_guess": "transit",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "The chart indicates combinations of maraca and badhaka linked to 08th house. The dashas running are linked to these houses. The transit is associated to the chart. Hence the death is imminent for the person born.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "dasha_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": ""
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

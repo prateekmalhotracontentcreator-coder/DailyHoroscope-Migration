@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0537",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0537",
+  "source_file": "0537_P-48_Ms_Preeti_Singhal.pdf",
+  "subject": {
+    "name": "Preeti Singhal",
+    "name_from_filename": "Ms Preeti Singhal",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1969-03-02",
+    "time_local": "09:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1969-03-02T04:10:00Z",
+    "latitude": 21.5,
+    "longitude": 81.5333,
+    "place": "81E32 & 21N30",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 7,
+    "months": 7,
+    "days": 16,
+    "raw_text": "Balance of dasha Mer 7-7-16"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 6.8333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 28.65,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 29.4333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 17.9833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 22.35,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 6.8333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 8.75,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

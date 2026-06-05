@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0354",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0354",
+  "source_file": "0354_K-27_Ms_Keerti.pdf",
+  "subject": {
+    "name": "Ms Keerti",
+    "name_from_filename": "Ms Keerti",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1942-07-15",
+    "time_local": "02:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1942-07-15T21:10:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Nagercoil (Tn)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 6,
+    "months": 2,
+    "days": 12,
+    "raw_text": "Balance of dasha Ven 6-2-12"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 8.5,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 29.7167,
+      "retrograde": true
+    },
+    "MARS": {
+      "degree_in_sign": 8.1333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 13.4833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 19.2833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 22.5333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 28.55,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 8.5,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

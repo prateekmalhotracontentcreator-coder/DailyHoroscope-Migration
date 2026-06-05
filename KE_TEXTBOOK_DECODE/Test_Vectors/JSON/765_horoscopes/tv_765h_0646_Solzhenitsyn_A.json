@@ -1,0 +1,75 @@
+{
+  "vector_id": "tv-765h-0646",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0646",
+  "source_file": "0646_S-49_Solzhenitsyn_A.pdf",
+  "subject": {
+    "name": "Solzhenitsyn, A",
+    "name_from_filename": "Solzhenitsyn, A",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1918-12-11",
+    "time_local": "08:59",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1918-12-11T03:29:00Z",
+    "latitude": 43.75,
+    "longitude": 42.7167,
+    "place": "42E43 & 43N45",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 20.0833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 27.5333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 0.15,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 20.0833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

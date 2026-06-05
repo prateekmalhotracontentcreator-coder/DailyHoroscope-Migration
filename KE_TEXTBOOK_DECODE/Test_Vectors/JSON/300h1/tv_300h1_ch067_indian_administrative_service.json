@@ -1,0 +1,257 @@
+{
+  "vector_id": "tv-300h1-ch067",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch067_INDIAN_ADMINISTRATIVE_SERVICE",
+  "pdf_path": "Split_Chapters/Ch067_INDIAN_ADMINISTRATIVE_SERVICE.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Indian Administrative Service",
+    "description": "The following native appeared for Civil Services Examinations in 2012 and obtained 27th",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1988-01-02",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 11.8333,
+    "longitude": 75.5667,
+    "place": "Kottayam-",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 26.2972,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 17.6794,
+      "house": 8,
+      "significations": [
+        1,
+        4,
+        6,
+        8,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 29.6658,
+      "house": 1,
+      "significations": [
+        1,
+        3,
+        7,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 2.3108,
+      "house": 7,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 23.6514,
+      "house": 8,
+      "significations": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 26.7289,
+      "house": 11,
+      "significations": [
+        2,
+        5,
+        8,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 20.2281,
+      "house": 9,
+      "significations": [
+        1,
+        3,
+        6,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 3.4969,
+      "house": 11,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 3.4969,
+      "house": 5,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The native got selected for lAS during the VMD of Jupiter-Saturn-Ketu.",
+      "condition_type_guess": "dasha_planet",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter signifies Administration.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn is lord of 09 and 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "It is the star of Node Ketu, while Ketu is in the star of Sun (Government).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars is posited in 07111 house in the star of Jupiter and is aspecting 10th house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu offers result of Jupiter and also signifies 10th house through Saturn.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "But Saturn (10) is in 08, in star of Ketu indicates sudden exit with humiliation.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "During VMD of Saturn-Saturn, native shall quit the job.",
+      "condition_type_guess": "dasha_planet",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "NAtR:S PUBLISHING HOUSE; HYDERABAD Page# 117",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

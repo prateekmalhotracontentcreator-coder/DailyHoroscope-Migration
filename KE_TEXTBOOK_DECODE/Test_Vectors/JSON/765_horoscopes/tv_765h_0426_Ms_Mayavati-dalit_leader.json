@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0426",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0426",
+  "source_file": "0426_M-27_Ms_Mayavati-dalit_leader.pdf",
+  "subject": {
+    "name": "Ms Mayavati",
+    "name_from_filename": "Ms Mayavati-dalit leader",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "dalit leader",
+    "profession_category": "Politics",
+    "profession_subcategory": "dalit leader",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1956-01-15",
+    "time_local": "09:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1956-01-15T04:00:00Z",
+    "latitude": 28.65,
+    "longitude": 77.4333,
+    "place": "77E26 & 28N39",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 4,
+    "months": 4,
+    "days": 12,
+    "raw_text": "Balance of dasha Mar 4-4-12"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 23.55,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 4.3,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 19.3333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 28.35,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 6.9833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 23.55,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 4.3,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "dalit leader",
+    "profession_category": "Politics",
+    "profession_subcategory": "dalit leader",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

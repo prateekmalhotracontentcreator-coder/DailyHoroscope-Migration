@@ -1,0 +1,293 @@
+{
+  "vector_id": "tv-300h2-ch115",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch115_114_Narayan_Dutt_Tiwari",
+  "pdf_path": "Chapters/Ch115_114_Narayan_Dutt_Tiwari.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "And Governor--Nary An Dutt Tiwari",
+    "description": "Narayan Dutt Tiwari was the Chief Minister of Uttar Pradesh and 191 Chief Minister of newly formed Uttaranchal State. He is a Congress leader and was also the Governor of A.P. State.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Pisces",
+    "lagna_degree_stated": 3.006,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Libra",
+      "degree": 1.725,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        6,
+        8,
+        2,
+        7,
+        9
+      ],
+      "significations_raw": "06,08,02,07,09"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 10.274,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05 OB,Ra"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 19.967,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        5,
+        8,
+        7
+      ],
+      "significations_raw": "02 09,05,08 07"
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 9.274,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        7,
+        8,
+        5
+      ],
+      "significations_raw": "04,07,08,05,Ra"
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 22.229,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        110030809
+      ],
+      "significations_raw": "0110030809"
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 15.125,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        3,
+        8,
+        911,
+        12
+      ],
+      "significations_raw": "03,08,0911,12"
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 21.542,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        9,
+        1,
+        11,
+        12
+      ],
+      "significations_raw": "08,09,01,11,12"
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 7.434,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05,Sa,Mo"
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 7.434,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11,Sa Su"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "There is proximity between Sun, Venus and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is in 10 and signifies 03, 08, 09 through Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter gets aspect of Mars (07).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn (12, 08, democracy) signifies 10 through Jupiter, while Ketu offers result of Saturn and Sun (Government) and 10 (profession).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Native is in Politics.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "So Ketu took native to Govt.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Jupiter and Mars gave administrative abilities and Power.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "But the link of 03, 08, 12 with that of Saturn offered not real lift to career to the top level.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "From Moon sign, Mars (07- spouse) is in 12 (secret) in a dual sign, indicates a concubine.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

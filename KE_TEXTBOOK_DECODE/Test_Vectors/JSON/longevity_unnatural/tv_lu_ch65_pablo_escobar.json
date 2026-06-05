@@ -1,0 +1,304 @@
+{
+  "vector_id": "tv-lu-ch65",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch65_Pablo_Escobar",
+  "pdf_path": "Chapter_Splits/Ch65_Pablo_Escobar.pdf",
+  "subject": {
+    "name": "Pablo Escobar",
+    "description": "Colombian Drug Lord",
+    "nationality": "Colombian"
+  },
+  "birth_data": {
+    "date": "1949-12-01",
+    "time_local": "11:50:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": "1949-12-01T16:50:00Z",
+    "latitude": 6.155,
+    "longitude": -75.3889,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-03-39.40",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aquarius",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aquarius",
+      "degree": 11.3,
+      "house": 1,
+      "nakshatra": "Sata",
+      "pada": 2,
+      "significations": [
+        "--"
+      ]
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 2.7333,
+      "house": 3,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "significations": [
+        3,
+        6,
+        8,
+        "Ke"
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 25.95,
+      "house": 7,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "significations": [
+        3,
+        10,
+        7,
+        12,
+        5,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 21.5667,
+      "house": 10,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "significations": [
+        5,
+        8,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 7.1,
+      "house": 12,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        11,
+        12,
+        2,
+        10,
+        7
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 2.8333,
+      "house": 12,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": [
+        12,
+        7,
+        10,
+        5,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 25.6333,
+      "house": 7,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "significations": [
+        1,
+        12,
+        7,
+        5,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 20.65,
+      "house": 2,
+      "nakshatra": "a",
+      "pada": 2,
+      "significations": [
+        2,
+        "Ju",
+        "Me",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 20.65,
+      "house": 8,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": [
+        8,
+        "Mo",
+        "Me",
+        "Ju"
+      ]
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 16.85,
+      "house": 10,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        "Mercury"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "shot dead",
+    "death_type": "violent",
+    "death_date": "1949-12-01",
+    "age_at_death": 44,
+    "dasha_at_death": {
+      "mahadasha": "MARS",
+      "antardasha": "SATURN",
+      "pratyantardasha": "SATURN",
+      "sookshma": "MERCURY",
+      "stated_by_author": true,
+      "raw_text": "Mars-Saturn-Saturn Mercury in his 44th year. Dasha lord Mars (injury) signifies maraca and badhaka. Bhukti and antara lo"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mars is posited from Saturn in Leo in the house of maraca in less than 01 deg. of longitude.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Both Mars and Saturn are in Venus star Purva, who is badhaka and they are aspecting lagna, ·made it weak.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna lord Saturn signifies maraca and badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun, maraca, is in Saturn star, who is badhaka and maraca significator. OS) Moon is lord of 06 and is in Ketu star. Ketu is in Virgo ruled by Mercury. Mercury, who is OSth lord, is under aspect of Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter and Venus are posited in maraca Sun star.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu is in Pisces while its lord Jupiter signifies maraca",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Ketu, who is posited in Moon star (06th lord), while its sign lord Mercury is under aspect of Mars. So Moon gives result of 06 and 08 houses. Hence almost all planets are linked to maraca or badhaka and the lagna and 08th become weak. Escobar was shot dead by the Colombian police in a shoot out on 02 Dec 1993 during the VMD period of Mars-Saturn-Saturn Mercury in his 44th year. Dasha lord Mars (injury) signifies maraca and badhaka. Bhukti and antara lord Saturn signifies lagna, maraca and badhaka. Saturn is also the 06th house (enmity and injury) bhava star lord. Sun is posited in Saturn star ",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "antara lord Saturn signifies lagna, maraca and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Sookshma lord Mercury signifies 08 (accidents, longevity) and is under aspect of Mars.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "maraca) and badhaka, gave Madhya aayu.",
+      "condition_type_guess": "maraka_badhaka",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-118"
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "08th lord Mercury is in own star in the 10th house gave some longevity to the native, but Mercury is under aspect of Mars (maraca) and badhaka, gave Madhya aayu.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "longevity of 44 years to Escobar.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

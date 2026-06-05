@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0484",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0484",
+  "source_file": "0484_O-5_Omar_Khayyam.pdf",
+  "subject": {
+    "name": "Omar Khayyam",
+    "name_from_filename": "Omar Khayyam",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Saint",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1048-05-18",
+    "time_local": "04:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1048-05-18T23:15:00Z",
+    "latitude": 36.2167,
+    "longitude": 58.75,
+    "place": "58E45 & 36N13",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 7,
+    "months": 9,
+    "days": 6,
+    "raw_text": "Balance of dasha Sat 7-9-6"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 7.7167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 26.15,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 11.2167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 0.45,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 26.6667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 13.4833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 16.0833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 7.7167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Saint",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

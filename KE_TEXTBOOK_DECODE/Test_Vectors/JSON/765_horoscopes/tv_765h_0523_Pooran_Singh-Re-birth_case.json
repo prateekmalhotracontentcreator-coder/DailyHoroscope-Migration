@@ -1,0 +1,91 @@
+{
+  "vector_id": "tv-765h-0523",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0523",
+  "source_file": "0523_P-34_Pooran_Singh-Re-birth_case.pdf",
+  "subject": {
+    "name": "Pooran Singh-Re",
+    "name_from_filename": "Pooran Singh-Re-birth case",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "birth case",
+    "profession_category": "Other",
+    "profession_subcategory": "birth case",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1968-12-09",
+    "time_local": "04:10",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1968-12-09T22:40:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Kapurthala (earlier born19-11-1929:6-26 PM at Moga & died 19-5-66 in accident) Ra13:9 SaR 25:25 Mo 6:53",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 13.15,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 25.4167,
+      "retrograde": true
+    },
+    "MOON": {
+      "degree_in_sign": 6.8833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 5.3833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 23.5,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 9.9,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 13.15,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 24.5167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "birth case",
+    "profession_category": "Other",
+    "profession_subcategory": "birth case",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "vector_id": "tv-lu-ch42",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch42_Anwar_Sadat",
+  "pdf_path": "Chapter_Splits/Ch42_Anwar_Sadat.pdf",
+  "subject": {
+    "name": "Anwar Sadat",
+    "description": "President of Egypt",
+    "nationality": "Egyptian"
+  },
+  "birth_data": {
+    "date": "1918-12-25",
+    "time_local": "03:41:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1918-12-25T01:41:00Z",
+    "latitude": 30.8,
+    "longitude": 31.0,
+    "place": "Mit Abu El Kom, Egypt",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-37-44.10",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 27.75,
+      "house": 1,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 9.8333,
+      "house": 3,
+      "nakshatra": "I",
+      "pada": 3,
+      "significations": [
+        11,
+        8,
+        "Ke",
+        3
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 7.6167,
+      "house": 12,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "significations": [
+        10,
+        11,
+        12,
+        3
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 11.05,
+      "house": 4,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        2,
+        7,
+        4,
+        10,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Sagittarius",
+      "degree": 17.3333,
+      "house": 3,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        1,
+        8,
+        3
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 5.4,
+      "house": 11,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "significations": [
+        4,
+        5,
+        11,
+        8,
+        "Ke"
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 19.4333,
+      "house": 2,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        "Me",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 19.4333,
+      "house": 8,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "significations": [
+        "Ve",
+        "Me",
+        "Mo"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "assassinated",
+    "death_type": "violent",
+    "death_date": "1918-12-25",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "SUN",
+      "antardasha": "MOON",
+      "pratyantardasha": "MARS",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "06 Oct 1981 is appended below: Body Longitude Nakshatra Pad a Lagna 20 Cp 23' 52.15\" Srav 4 Sun-PiK 19 Vi 40' 29.59\" Has"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

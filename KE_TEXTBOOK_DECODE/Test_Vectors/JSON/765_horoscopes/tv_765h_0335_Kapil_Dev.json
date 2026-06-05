@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0335",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0335",
+  "source_file": "0335_K-8_Kapil_Dev.pdf",
+  "subject": {
+    "name": "Kapil Dev",
+    "name_from_filename": "Kapil Dev",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1959-01-06",
+    "time_local": "05:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1959-01-06T23:30:00Z",
+    "latitude": 30.733,
+    "longitude": 76.779,
+    "place": "Chandigarh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 11,
+    "months": 10,
+    "days": 15,
+    "raw_text": "Balance of dasha Sat 11-10-15"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 25.2,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 4.0833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 0.4,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 1.45,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 6.65,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 8.3333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 21.6667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 26.0,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 26.0,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

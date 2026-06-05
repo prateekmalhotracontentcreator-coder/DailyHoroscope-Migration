@@ -1,0 +1,227 @@
+{
+  "vector_id": "tv-300h1-ch117",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch117_EMPEROR_ALEXANDER_II_CZAR_OF_RUSSIA",
+  "pdf_path": "Split_Chapters/Ch117_EMPEROR_ALEXANDER_II_CZAR_OF_RUSSIA.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Alexander II",
+    "description": "Alexander II (29 Apr 1818-13 Mar 1881) was the Emperor of the Russian Empire from",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1818-04-29",
+    "time_local": "05:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 55.75,
+    "longitude": 37.6,
+    "place": "Moscow, Russia",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-13-25.34",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth; time marked rectified."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 16.3725,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 17.0378,
+      "house": 11,
+      "significations": [
+        3,
+        5,
+        11,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 6.8111,
+      "house": 9,
+      "significations": [
+        2,
+        9,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 26.3478,
+      "house": 1,
+      "significations": [
+        1,
+        6,
+        7,
+        10,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 7.6906,
+      "house": 12,
+      "significations": [
+        1,
+        2,
+        3,
+        4,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 21.7503,
+      "house": 7,
+      "significations": [
+        5,
+        7,
+        10,
+        11,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 24.0756,
+      "house": 9,
+      "significations": [
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 17.6431,
+      "house": 11,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 17.6431,
+      "house": 5,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1881
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1881-03-13",
+    "age_at_death": 63,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Sun are in Aries and conjunct with Rahu, while Rahu gets aspects of Jupiter, which gives a special status.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is 07 and 101h lord while Rahu signifies Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Hence Rahu offers result of 10 and that of Sun (govt.), Mars (power) and Jupiter (admn., expansion).",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "09 lord (Federal) Saturn is in Jupiter (10) star, getting control over federal ruling.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars and Jupiter (10) are in mutual aspect which makes 10the lord stronger.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0266",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0266",
+  "source_file": "0266_H-3_Harish-Carpenter.pdf",
+  "subject": {
+    "name": "Harish-Carpenter",
+    "name_from_filename": "Harish-Carpenter",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1970-11-24",
+    "time_local": "09:44",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1970-11-24T04:14:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Mathura (UP)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 6,
+    "months": 4,
+    "days": 15,
+    "raw_text": "Balance of dasha Man 6-4-15"
+  },
+  "planet_degrees_from_text": {
+    "SATURN": {
+      "degree_in_sign": 24.6833,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 4.7,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 4.7,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 8.0167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 17.2667,
+      "retrograde": true
+    },
+    "MOON": {
+      "degree_in_sign": 12.8333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 23.3333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 26.3,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 28.6,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

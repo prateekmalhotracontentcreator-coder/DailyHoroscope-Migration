@@ -1,0 +1,66 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_lalkitab_schema_20260605_013748.log
+======================================================================
+LAL KITAB — Schema Patch (Ch19–Ch29, 467 rules)
+Patch batch: lalkitab_all_v2_20260605  |  Dry-run: False
+======================================================================
+
+── Ch19 ─────────────────────────────────────────────────────────
+  Source JSON: 78 rules loaded from backend/scripts/lalkitab_ch19_rules.json
+  OK   Patched: 78/78  (empty_src: 0  missing: 0)
+
+── Ch20 ─────────────────────────────────────────────────────────
+  Source JSON: 48 rules loaded from backend/scripts/lalkitab_ch20_rules.json
+  OK   Patched: 48/48  (empty_src: 0  missing: 0)
+
+── Ch21 ─────────────────────────────────────────────────────────
+  Source JSON: 43 rules loaded from backend/scripts/lalkitab_ch21_rules.json
+  OK   Patched: 43/43  (empty_src: 0  missing: 0)
+
+── Ch22 ─────────────────────────────────────────────────────────
+  Source JSON: 17 rules loaded from backend/scripts/lalkitab_ch22_rules.json
+  OK   Patched: 17/17  (empty_src: 0  missing: 0)
+
+── Ch23 ─────────────────────────────────────────────────────────
+  Source JSON: 31 rules loaded from backend/scripts/lalkitab_ch23_rules.json
+  OK   Patched: 31/31  (empty_src: 0  missing: 0)
+
+── Ch24 ─────────────────────────────────────────────────────────
+  Source JSON: 60 rules loaded from backend/scripts/lalkitab_ch24_rules.json
+  OK   Patched: 60/60  (empty_src: 0  missing: 0)
+
+── Ch25 ─────────────────────────────────────────────────────────
+  Source JSON: 35 rules loaded from backend/scripts/lalkitab_ch25_rules.json
+  OK   Patched: 35/35  (empty_src: 0  missing: 0)
+
+── Ch26 ─────────────────────────────────────────────────────────
+  Source JSON: 16 rules loaded from backend/scripts/lalkitab_ch26_rules.json
+  OK   Patched: 16/16  (empty_src: 0  missing: 0)
+
+── Ch27 ─────────────────────────────────────────────────────────
+  Source JSON: 99 rules loaded from backend/scripts/lalkitab_ch27_rules.json
+  OK   Patched: 99/99  (empty_src: 0  missing: 0)
+
+── Ch28 ─────────────────────────────────────────────────────────
+  Source JSON: 18 rules loaded from backend/scripts/lalkitab_ch28_rules.json
+  OK   Patched: 18/18  (empty_src: 0  missing: 0)
+
+── Ch29 ─────────────────────────────────────────────────────────
+  Source JSON: 22 rules loaded from backend/scripts/lalkitab_ch29_rules.json
+  OK   Patched: 22/22  (empty_src: 0  missing: 0)
+
+======================================================================
+PATCH SUMMARY
+======================================================================
+  Total rules processed : 467
+  Successfully patched  : 467
+  Empty source text     : 0
+  Missing from source   : 0
+
+  Post-patch DB verify:
+    full_text populated : 467
+    pending_review      : 467
+
+  Next step — run validator:
+    python3 backend/scripts/validate_rules.py \
+      --mongo-url "$MONGO_URL" --db-name horoscope_db \
+      --batch-id lalkitab_all_v2_20260605

@@ -1,0 +1,207 @@
+{
+  "vector_id": "tv-lu-ch75",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch75_Alberto_Fujimori",
+  "pdf_path": "Chapter_Splits/Ch75_Alberto_Fujimori.pdf",
+  "subject": {
+    "name": "Alberto Fujimori",
+    "description": "President of Peru",
+    "nationality": "Peruvian/Japanese"
+  },
+  "birth_data": {
+    "date": "1938-07-28",
+    "time_local": "08:58:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": "1938-07-28T13:58:00Z",
+    "latitude": null,
+    "longitude": -77.0333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 22.7833,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 11.9167,
+      "house": 12,
+      "nakshatra": "Push",
+      "pada": 3,
+      "significations": [
+        1,
+        12,
+        6,
+        7,
+        8
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 1.95,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 1,
+      "significations": [
+        12,
+        1,
+        10,
+        "Ke"
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 10.7333,
+      "house": 12,
+      "nakshatra": "Push",
+      "pada": 3,
+      "significations": [
+        4,
+        9,
+        6,
+        7,
+        8,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 8.9167,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        11,
+        1,
+        10,
+        "Ke",
+        2
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 7.25,
+      "house": 7,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        5,
+        7,
+        8,
+        4,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 23.5333,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "significations": [
+        3,
+        10,
+        1
+      ]
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 25.1333,
+      "house": 8,
+      "nakshatra": "a",
+      "pada": 3,
+      "significations": [
+        8,
+        1,
+        11,
+        2,
+        6,
+        7
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 0.25,
+      "house": 4,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "significations": [
+        "Ma",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 0.25,
+      "house": 10,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": [
+        "Ve",
+        "Su",
+        "Sa"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "violent",
+    "death_date": "1938-07-28",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "SATURN",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Jupiter Saturn. Jupiter signifies 05,07,08,04 and Rahu. Rahu signifies Mars. Bhukti lord Saturn signifies 06,07,08,02 an"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Bhukti lord Saturn signifies 06,07,08,02 and 11.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

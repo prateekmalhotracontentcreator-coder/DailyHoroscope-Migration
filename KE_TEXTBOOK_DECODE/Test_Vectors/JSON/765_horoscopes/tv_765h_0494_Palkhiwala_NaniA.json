@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0494",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0494",
+  "source_file": "0494_P-5_Palkhiwala_NaniA.pdf",
+  "subject": {
+    "name": "Palkhiwala NaniA",
+    "name_from_filename": "Palkhiwala NaniA",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Judiciary_Law",
+    "profession_subcategory": "Judiciary_Law",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1920-01-16",
+    "time_local": "00:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1920-01-16T19:15:00Z",
+    "latitude": 19.076,
+    "longitude": 72.877,
+    "place": "Mumbai, Maharashtra, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 1,
+    "months": 5,
+    "days": 16,
+    "raw_text": "Balance of dasha Jup 1-5-16"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 0.3,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 22.75,
+      "retrograde": true
+    },
+    "SATURN": {
+      "degree_in_sign": 1.6,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 0.3,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 0.6667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 1.15,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 1.15,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Judiciary_Law",
+    "profession_subcategory": "Judiciary_Law",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,310 @@
+{
+  "vector_id": "tv-300h2-ch146",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch146_145_Napoleon_Bonaparte",
+  "pdf_path": "Chapters/Ch146_145_Napoleon_Bonaparte.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "French General And Emperor Napolean Bonaparte",
+    "description": "The French General and Ruler, Napoleon (15 Aug 1769- 05 May 1821) need no introduction: Mo Auouat 15. 170~ 11:23:00 (2:00 ...... 8 E-44.-41 N 55 L !Gk",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": "1769-08-15",
+    "time_local": "11:23:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "lagna_degree_stated": 27.879,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Leo",
+      "degree": 2.159,
+      "house": null,
+      "nakshatra": "Maqh",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        12,
+        10
+      ],
+      "significations_raw": "12,10,Ke"
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 7.589,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5,
+        11,
+        12
+      ],
+      "significations_raw": "05,11,12"
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 21.481,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        12,
+        3,
+        8,
+        1,
+        0,
+        2,
+        9
+      ],
+      "significations_raw": "12,03,08,1 0,02,09"
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 15.521,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        10,
+        4,
+        5,
+        6,
+        11
+      ],
+      "significations_raw": "01 ,10,04,05,06,11"
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 24.466,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        812,
+        4,
+        7
+      ],
+      "significations_raw": "02,03,0812 04,07"
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 16.436,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        9,
+        4,
+        10
+      ],
+      "significations_raw": ". 02,09,04,10,Ra"
+    },
+    "SATURN": {
+      "sign": "Cancer",
+      "degree": 5.358,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        6,
+        11
+      ],
+      "significations_raw": "05,06 11"
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 0.259,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "1O ,Ma,Ve,Me,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1769
+      },
+      {
+        "event": "Died",
+        "year": 1821
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1821-05-05",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus is in 10 1h house and it gets aspect of Jupiter from own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun (Government) signifies 10th house through Ketu, who is in Mars star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "These combinations indicate very high level profession.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "But there is strong signifies 12th house by Sun and Ketu, which can get one into problems in job.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Badhaka and Maraca Jupiter is aspecting Ketu who signifies Mercury (01) and Mars (08).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Hence longevity is stake for Napoleon.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "The war of waterloo took place on 18 Jun 1815 and Napoleon was defeated in VMD of Jupiter Venus-Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Surely Ketu is conjunct with bhukti lord Venus and signifies 03, 08, and 12 through Mars caused debacle.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

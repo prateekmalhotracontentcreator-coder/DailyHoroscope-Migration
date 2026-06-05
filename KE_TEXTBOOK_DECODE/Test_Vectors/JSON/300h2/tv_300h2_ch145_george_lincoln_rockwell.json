@@ -1,0 +1,293 @@
+{
+  "vector_id": "tv-300h2-ch145",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch145_144_George_Lincoln_Rockwell",
+  "pdf_path": "Chapters/Ch145_144_George_Lincoln_Rockwell.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "George Lincoln Rockwell",
+    "description": "American Nazi, an ex-navy pilot and commercial artist who acknowledged Hitler as his spiritual leader. He founded US Nazi Party around 1959 with much publicity.",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 25.369,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        9,
+        3,
+        1,
+        4,
+        6
+      ],
+      "significations_raw": "09,03,01,04 06"
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 7.148,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        8,
+        9,
+        3
+      ],
+      "significations_raw": "02,08,09,03"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 3.538,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        5,
+        12,
+        10,
+        9,
+        3
+      ],
+      "significations_raw": "05,12,10 09,03"
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 21.958,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        7,
+        10,
+        3,
+        1,
+        4,
+        6
+      ],
+      "significations_raw": "07,10,03,01 ,04,06"
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 11.643,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        4,
+        6,
+        8,
+        2
+      ],
+      "significations_raw": "01,04,06,08 02"
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 20.986,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        6,
+        11,
+        8,
+        2
+      ],
+      "significations_raw": "06,11,08,02"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 4.852,
+      "house": null,
+      "nakshatra": "MooI",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01 ,Ke,Ju,Ma"
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 4.852,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Ma,Me"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Scorpio",
+      "degree": 12.28
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Religious Leader",
+    "profession_category": "Religion",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Religion",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter is in 06 and Mars is 10 with proximity between Moon (in Sun star) conjunct Venus, while Rahu in 12 to them signifies Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "These gave fame to native.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "But Ketu signifies 10 and 07, which throws one out and friends exit.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mercury signifies 03, 07 and 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "12th lord Mars is in 10 in star of Sun (03, 09).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Mars is under aspect from Saturn (03, 08).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "These combinations did not help in flourishing well in professional matters.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0371",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0371",
+  "source_file": "0371_K-44_Kissinger_Henery.pdf",
+  "subject": {
+    "name": "Kissinger Henery",
+    "name_from_filename": "Kissinger Henery",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Singer",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1923-05-27",
+    "time_local": "05:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1923-05-27T00:00:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Frankfurt",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 3,
+    "months": 8,
+    "days": 0,
+    "raw_text": "Balance of dasha Mar 3-8-0"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 12.1,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 13.9333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 28.65,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 24.55,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 24.55,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 20.9167,
+      "retrograde": true
+    },
+    "MOON": {
+      "degree_in_sign": 29.7333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 28.65,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Singer",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

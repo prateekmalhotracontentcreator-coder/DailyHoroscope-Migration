@@ -1,0 +1,207 @@
+{
+  "vector_id": "tv-lu-ch35",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch35_Eva_Braun",
+  "pdf_path": "Chapter_Splits/Ch35_Eva_Braun.pdf",
+  "subject": {
+    "name": "Eva Braun",
+    "description": "Wife of Adolf Hitler",
+    "nationality": "German"
+  },
+  "birth_data": {
+    "date": "1912-02-06",
+    "time_local": "00:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 48.15,
+    "longitude": 11.5833,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-37-45.78",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 13.05,
+      "house": 1,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 23.2,
+      "house": 4,
+      "nakshatra": "Srav",
+      "pada": 4,
+      "significations": [
+        11,
+        4,
+        12,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 4.0333,
+      "house": 12,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "significations": [
+        12,
+        10,
+        11,
+        4
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 9.4333,
+      "house": 8,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "significations": [
+        2,
+        7,
+        8,
+        11,
+        4
+      ]
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 5.6833,
+      "house": 4,
+      "nakshatra": "USha",
+      "pada": 3,
+      "significations": [
+        4,
+        11,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 18.3167,
+      "house": 2,
+      "nakshatra": "Jye",
+      "pada": 1,
+      "significations": [
+        9,
+        12,
+        2,
+        3,
+        6,
+        4
+      ]
+    },
+    "VENUS": {
+      "sign": "Sagittarius",
+      "degree": 15.8667,
+      "house": 3,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "significations": [
+        1,
+        8,
+        3
+      ]
+    },
+    "RAHU": {
+      "sign": "Aries",
+      "degree": 2.5667,
+      "house": 7,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "significations": [
+        "Ke",
+        "Sa",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Libra",
+      "degree": 2.5667,
+      "house": 1,
+      "nakshatra": "Chit",
+      "pada": 3,
+      "significations": [
+        "Sa;Ma",
+        "Ve"
+      ]
+    },
+    "SATURN": {
+      "sign": "Gemini",
+      "degree": 13.5333,
+      "house": 9,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        "Rahu"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "Eva Braun is illustrated",
+    "death_type": "unknown",
+    "death_date": "1912-02-06",
+    "age_at_death": 33,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "MARS",
+      "pratyantardasha": "RAHU",
+      "sookshma": null,
+      "stated_by_author": true,
+      "raw_text": "the bunker heard a gunshot and the bodies were soon discovered. One will take away own life, when: 1) significators of 1"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "significators of 12th house signifies 06, 08, 12, 01, maraca, badhaka along with Saturn, Mars and Rahu; or",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "lagna significators signify 02, 07, 08, 01 and badhaka or m~raca. In the second rule, Ketu is an occupant of lagna and is the moksha karaka. Ketu signifies Venus (01,03,08) and Mars (02,07,11) along with Saturn (04,05,03,01,08). Hence the combinations do tally for one to commit suicide. When she committed suicide along with Hitler, Eva Braun was only :33 years of age. For longevity one could check 01,03,08 houses. If they are weak i.e., connected to badhaka and maraca houses without getting connected to 01,05,09,10 or 08, then the question of longevity shall be under threat. A maraca or badhak",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "vector_id": "tv-765h-0625",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0625",
+  "source_file": "0625_S-28_Shivaji_Ganeshan.pdf",
+  "subject": {
+    "name": "Shivaji Ganeshan",
+    "name_from_filename": "Shivaji Ganeshan",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 3,
+    "months": 0,
+    "days": 24,
+    "raw_text": "Balance of dasha Sun 3-0-24"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 3.1833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 28.7167,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 29.9,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 3.4833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 12.2667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 17.5,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 10.4,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 29.9,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 10.25,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 9.85,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 10.4,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

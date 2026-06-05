@@ -1,0 +1,36 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/patch_medastro_bucket_a_20260604_125413_dryrun.log
+===========================================================================
+
+MEDICAL ASTROLOGY — BUCKET A PATCH  |  DRY RUN
+Input  : /tmp/medical_astrology_rules/medical_astrology_v1_TRIAGED.json
+Output : /tmp/medical_astrology_rules/medical_astrology_v1_PATCHED.json
+
+Correction: 3 rules misclassified as truncation artifacts.
+Source file inspection confirms all 3 texts are complete sentences.
+
+Loaded 270 rules
+
+───────────────────────────────────────────────────────────────────────────
+Patch decisions:
+───────────────────────────────────────────────────────────────────────────
+  [PATCH] ma-ch01-124
+    Before : approval_status=pending_human_review  truncation_artifact=True  validator_error=True
+    After  : approval_status=auto_approved  (flags removed)
+    Evidence: source file confirms text ends "...the severity is reduced." — complete sentence
+  [PATCH] ma-ch09-007
+    Before : approval_status=pending_human_review  truncation_artifact=True  validator_error=True
+    After  : approval_status=auto_approved  (flags removed)
+    Evidence: source file confirms text ends "...and the dashas running at the given point of time." — complete sentence
+  [PATCH] ma-ch06-009
+    Before : approval_status=pending_human_review  truncation_artifact=True  validator_error=True
+    After  : approval_status=auto_approved  (flags removed)
+    Evidence: source file confirms text ends "...with the bhukti of the afflicted 4th lord." — complete sentence
+
+───────────────────────────────────────────────────────────────────────────
+SUMMARY
+───────────────────────────────────────────────────────────────────────────
+  Mode    : DRY RUN — no changes written
+  Patched : 3 rules (PHR → auto_approved, flags removed)
+
+Re-run with --apply to write the patched JSON.

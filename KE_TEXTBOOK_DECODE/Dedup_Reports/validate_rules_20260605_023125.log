@@ -1,0 +1,36 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/validate_rules_20260605_023125.log
+============================================================
+Knowledge Engine — Rule Validator
+Timestamp : 20260605_023125
+Batch ID  : lalkitab_all_v2_20260605
+Dry-run   : False
+============================================================
+
+Fetching pending_review rules...
+Found 1 rules to validate
+
+Stage 1: Structural checks...
+  Structural failures: 1 / 1
+  Proceeding with: 0 rules
+
+Stage 2: Claude quality check (batch_size=20)...
+
+Stage 3: Contradiction detection...
+  0 condition groups with >=2 rules to check
+  Contradictions found: 0 pair(s)
+
+Stage 4: Writing skipped-batch verdicts + summary...
+
+=======================================================
+VALIDATION COMPLETE
+  pending_review                  1  (100%)
+  ----------------------------------------
+  Total                           1
+
+  Contradictions: 0 pair(s)
+
+  auto_approved rules have approval_status='auto_approved' in MongoDB.
+  NOTE: The live backend queries approval_status='approved' only.
+  No rules reach live users until explicitly promoted to 'approved'
+  via co-founder sign-off after full Phase 1 validation.
+  Review flagged rules at /admin/library -> Rules Browser -> filter: flagged

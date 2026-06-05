@@ -1,0 +1,227 @@
+{
+  "vector_id": "tv-300h2-ch103",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch103_102_Bjorn_Borg",
+  "pdf_path": "Chapters/Ch103_102_Bjorn_Borg.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Tennis Icon--Bjorn Borg",
+    "description": "Bjorn Rune Borg, considered as all time great, is a former World No. 1 tennis player from Sweden. Between 1974 and 1981 he won 11 Grand Slam singles titles. Dafe /time Time Zome Place:",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "lagna_degree_stated": 25.4,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 22.979,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        6,
+        5,
+        8
+      ],
+      "significations_raw": "09,06,05,08"
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 25.868,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5,
+        6,
+        1,
+        1,
+        7,
+        8
+      ],
+      "significations_raw": "05,06,1 1,07,08"
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 8.824,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        512
+      ],
+      "significations_raw": "03 0512 Ra"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 1.925,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        9,
+        1,
+        4,
+        6
+      ],
+      "significations_raw": "09,01 ,04,06,Ke"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 14.577,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Ma,Me,Su"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 14.577,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Me,Su,Mo Ve,Ma"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Sportsperson",
+    "profession_category": "Sports",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Sports",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mars signifies 03 and 05 and is in star ofRahu, who gives result of Mercury (10, player).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Rahu is also offering result of 09 (organized sports} through Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "It was in dasha of Mars, native won grand-slam matches and attained name & fame.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Once the dasha of Rahu (12} commenced the professional downfall of native commenced.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

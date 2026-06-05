@@ -1,0 +1,280 @@
+{
+  "vector_id": "tv-lu-ch54",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch54_Grand_Duchess_Maria_Nikolaevna",
+  "pdf_path": "Chapter_Splits/Ch54_Grand_Duchess_Maria_Nikolaevna.pdf",
+  "subject": {
+    "name": "Grand Duchess Maria Nikolaevna",
+    "description": "Daughter of Czar Nicholas II",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1899-06-26",
+    "time_local": "12:10:00",
+    "timezone_offset_hours": 5.0,
+    "time_utc": "1899-06-26T07:10:00Z",
+    "latitude": 59.8833,
+    "longitude": 29.9,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-21-24.10",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Capricorn",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 13.7833,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 12.0667,
+      "house": 11,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "significations": [
+        1,
+        11,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 19.6833,
+      "house": 6,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "significations": [
+        12,
+        6
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 13.3333,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        4,
+        9,
+        "03)0",
+        1
+      ]
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 25.2833,
+      "house": 11,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        11,
+        2,
+        5,
+        8,
+        3
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 7.95,
+      "house": 3,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "significations": [
+        5,
+        8,
+        3,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 20.0167,
+      "house": 10,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        "03)0",
+        12,
+        6
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 26.95,
+      "house": 4,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        6,
+        7,
+        11,
+        2,
+        4
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 6.7833,
+      "house": 5,
+      "nakshatra": "I",
+      "pada": 3,
+      "significations": [
+        5,
+        "Ke)u",
+        "Su",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 6.7833,
+      "house": 11,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "significations": [
+        "Su",
+        "Ra)u",
+        "Me"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed by gun shot",
+    "death_type": "violent",
+    "death_date": "1899-06-26",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "KETU",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Rahu-Mercury-Ketu. Dasha lord Rahu signifies Sagittarius, a war sign along with maraca due to aspect of Mercury. Through"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is occupied by badhaka Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Badhka Mars aspects 07 (maraca) and 08 (longevity or accidents). 228 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn is lord of 06 (injury or enemy) and 07 (maraca) is in mutual aspect with Mars (badhka) and lagna occupant.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Hence lagna and 08111 are involved with Mars and 06111 house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "08111 lord Jupiter is posited in 03rd house, but is in the star of Rahu. Rahu is maraca due to the aspect of Mercury (lord of",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Maraca Jupiter, by virtue of Rahu signification, is aspecting lagna lord Sun.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Rahu gives the result of Jupiter (maraca, 08th), Ketu, Mercury (02nd house, 08111) and Sun (lagna). These combinations made the lagna and 08111 weak and due to their connections to 06, Mars and maraca & badhaka, the native was killed by gun shot. Rahu signifies blast. · 18 years old Grand Duchess f':'laria along with her parents Czar Nicholas II, Czarina Alexandria, Brother Alexi, sisters Olga, Tatiana, Anastasia and other members of Czar Cortege were shot dead by the Bolshevik Secret Service Police on 16 I 17 July 1918 during the VMD of Rahu-Mercury-Ketu. Dasha lord Rahu signifies Sagittarius",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Dasha lord Rahu signifies Sagittarius, a war sign along with maraca due to aspect of Mercury.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Bhukti lord Mercury is lord of 02nd house (maraca).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Antara lord Ketu gives the result of Sun (lagna or body), Mercury (02nd maraca and 08111 longevity or accidents).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

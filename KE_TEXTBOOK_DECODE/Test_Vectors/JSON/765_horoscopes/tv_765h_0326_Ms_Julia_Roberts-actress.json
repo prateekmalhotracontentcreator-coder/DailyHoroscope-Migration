@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0326",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0326",
+  "source_file": "0326_J-33_Ms_Julia_Roberts-actress.pdf",
+  "subject": {
+    "name": "Ms Julia Roberts",
+    "name_from_filename": "Ms Julia Roberts-actress",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "actress",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1967-10-28",
+    "time_local": "00:16",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1967-10-28T18:46:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Atlanta (USA)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 5,
+    "months": 11,
+    "days": 21,
+    "raw_text": "Balance of dasha Ket 5-11-21"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 13.7333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 26.5833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 1.95,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 7.8333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 24.3667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 4.5,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.7,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 20.15,
+      "retrograde": true
+    },
+    "MARS": {
+      "degree_in_sign": 25.6333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 26.5833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "actress",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

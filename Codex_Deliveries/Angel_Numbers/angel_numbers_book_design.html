@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angel Numbers — EverydayHoroscope Printer Book Design</title>
+  <!--
+    DESIGN REFERENCE — 10 pages:
+    Page 1  → Cover
+    Page 2  → Hub: Intro + Popular Numbers
+    Page 3  → Hub: By Intent + Numerology Families + How To + FAQ
+    Page 4  → 111: Hero + Meaning + What To Do
+    Page 5  → 111: 9 Intent Overview + Affirmation + Related + FAQ
+    Page 6  → 111 Expanded: Love & Relationships · Career & Abundance
+    Page 7  → 111 Expanded: Twin Flame · Manifestation
+    Page 8  → 111 Expanded: Spiritual Growth · Financial Abundance
+    Page 9  → 111 Expanded: Life Purpose · Healing & Recovery
+    Page 10 → 111 Expanded: Protection & Guidance (closing)
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @page { size: A4; margin: 0; }
+
+    :root {
+      --gold:        #c5a059;
+      --gold-light:  rgba(197,160,89,0.10);
+      --gold-border: rgba(197,160,89,0.22);
+      --cream-1:     #fffbf2;
+      --stone-950:   #0c0a09;
+      --stone-900:   #1c1917;
+      --stone-800:   #292524;
+      --stone-700:   #44403c;
+      --stone-600:   #57534e;
+      --stone-500:   #78716c;
+      --stone-400:   #a8a29e;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 10pt;
+      color: var(--stone-900);
+      background: #cec3b0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── PAGE SHELL ─────────────────────────────────── */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      background: var(--cream-1);
+      margin: 0 auto 14px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    /* ── RUNNING HEADER / FOOTER ─────────────────────── */
+    .rh {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4.5mm 17mm;
+      border-bottom: 0.4pt solid var(--gold-border);
+    }
+    .rh-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 6.5pt;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .rh-section {
+      font-size: 6.5pt;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--stone-500);
+    }
+    .rf {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3.5mm 17mm;
+      border-top: 0.4pt solid var(--gold-border);
+    }
+    .rf-pg  { font-size: 6.5pt; color: var(--stone-500); }
+    .rf-url { font-size: 6.5pt; color: var(--stone-400); letter-spacing: 0.08em; }
+
+    /* ── CONTENT WRAPPER ─────────────────────────────── */
+    .cx { padding: 8mm 17mm 18mm; }
+
+    /* ── TYPOGRAPHY ──────────────────────────────────── */
+    .lbl {
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .h1  { font-family: 'Cinzel', serif; font-size: 22pt; font-weight: 600; line-height: 1.2; }
+    .h2  { font-family: 'Playfair Display', serif; font-size: 15pt; font-weight: 600; }
+    .h3  { font-family: 'Playfair Display', serif; font-size: 12pt; font-weight: 600; }
+    .tag { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13pt; color: var(--stone-700); }
+    .bd  { font-size: 9pt; line-height: 1.75; color: var(--stone-600); }
+    .sm  { font-size: 8pt; line-height: 1.65; color: var(--stone-600); }
+
+    /* ── UTILITIES ───────────────────────────────────── */
+    .mt1 { margin-top: 2mm; }
+    .mt2 { margin-top: 4mm; }
+    .mt3 { margin-top: 6mm; }
+    .mt4 { margin-top: 8mm; }
+    .g2  { display: grid; grid-template-columns: 1fr 1fr;         gap: 4mm; }
+    .g3  { display: grid; grid-template-columns: 1fr 1fr 1fr;     gap: 3.5mm; }
+    .g4  { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 3mm; }
+    .g5  { display: grid; grid-template-columns: repeat(5,1fr);   gap: 3mm; }
+
+    .stripe { height: 1.2mm; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+    .divider { height: 0.4pt; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 4mm 0; }
+
+    /* ── CARDS ───────────────────────────────────────── */
+    .card {
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 7pt;
+      background: rgba(255,255,255,0.88);
+      padding: 5mm 6mm;
+    }
+    .card-g {
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 7pt;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(197,160,89,0.08));
+      padding: 5mm 6mm;
+    }
+    .card-hero {
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 9pt;
+      background: rgba(255,255,255,0.88);
+      padding: 7mm 8mm;
+    }
+
+    /* ── CHIPS ───────────────────────────────────────── */
+    .chip {
+      display: inline-block;
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 40pt;
+      background: var(--gold-light);
+      padding: 1.2mm 3.5mm;
+      font-size: 7.5pt;
+      font-weight: 600;
+      color: var(--stone-800);
+    }
+    .chip-active {
+      display: inline-block;
+      border: 0.5pt solid var(--gold);
+      border-radius: 40pt;
+      background: var(--gold);
+      padding: 1.2mm 3.5mm;
+      font-size: 7.5pt;
+      font-weight: 600;
+      color: var(--stone-950);
+    }
+    .chip-rel {
+      display: inline-block;
+      border: 0.5pt solid var(--gold);
+      border-radius: 40pt;
+      background: var(--gold-light);
+      padding: 1.5mm 4mm;
+      font-family: 'Cinzel', serif;
+      font-size: 9.5pt;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* ── NUM CARD (popular numbers grid) ─────────────── */
+    .nc {
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 6pt;
+      background: rgba(255,255,255,0.88);
+      padding: 3.5mm 3mm;
+      text-align: center;
+    }
+    .nc-n {
+      font-family: 'Cinzel', serif;
+      font-size: 19pt;
+      font-weight: 600;
+      color: var(--stone-900);
+      line-height: 1;
+      margin: 1.5mm 0 1mm;
+    }
+    .nc-n-sm { font-size: 14pt; }
+    .nc-t { font-size: 7pt; color: var(--stone-600); font-weight: 500; line-height: 1.3; }
+
+    /* ── STEP ─────────────────────────────────────────── */
+    .step {
+      display: flex;
+      gap: 3.5mm;
+      align-items: flex-start;
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 7pt;
+      background: rgba(197,160,89,0.05);
+      padding: 3.5mm 4.5mm;
+    }
+    .step-n {
+      width: 6.5mm; height: 6.5mm; min-width: 6.5mm;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 7.5pt; font-weight: 700; color: var(--stone-950);
+    }
+
+    /* ── INTENT CARD ─────────────────────────────────── */
+    .ic {
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 6pt;
+      background: linear-gradient(135deg, #fff, rgba(197,160,89,0.07));
+      padding: 4mm 4.5mm;
+    }
+    .ic-name   { font-size: 8pt; font-weight: 600; color: var(--stone-900); }
+    .ic-teaser { font-size: 7.5pt; color: var(--stone-600); line-height: 1.6; margin-top: 1.5mm; }
+
+    /* ── FAMILY ROW ───────────────────────────────────── */
+    .fr { border-bottom: 0.4pt solid var(--gold-border); padding: 3mm 0; display: flex; gap: 4mm; align-items: flex-start; }
+    .fr-root { font-family: 'Cinzel', serif; font-size: 17pt; font-weight: 600; color: var(--gold); min-width: 10mm; line-height: 1; }
+    .fr-lbl  { font-size: 8.5pt; font-weight: 600; color: var(--stone-900); }
+    .fr-thm  { font-size: 7.5pt; color: var(--stone-600); margin-top: 0.8mm; }
+    .fr-nums { display: flex; flex-wrap: wrap; gap: 1.5mm; margin-top: 2mm; }
+    .fr-num  {
+      font-size: 7pt;
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 3pt;
+      padding: 0.7mm 2.5mm;
+      color: var(--stone-700);
+      background: rgba(197,160,89,0.07);
+    }
+
+    /* ── VEDIC BOX ────────────────────────────────────── */
+    .vb {
+      border-left: 2pt solid var(--gold);
+      padding: 3.5mm 4.5mm;
+      background: rgba(197,160,89,0.05);
+      border-radius: 0 6pt 6pt 0;
+    }
+
+    /* ── AFFIRMATION ─────────────────────────────────── */
+    .aff {
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 7pt;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(197,160,89,0.10));
+      padding: 6mm 7mm;
+      text-align: center;
+    }
+    .aff-q {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 12.5pt;
+      line-height: 1.75;
+      color: var(--stone-800);
+    }
+
+    /* ── FAQ ─────────────────────────────────────────── */
+    .fq { border-bottom: 0.4pt solid var(--gold-border); padding: 3mm 0; }
+    .fq:last-child { border-bottom: none; }
+    .fq-q { font-size: 8.5pt; font-weight: 600; color: var(--stone-900); margin-bottom: 1.5mm; }
+    .fq-a { font-size: 8pt; line-height: 1.65; color: var(--stone-600); }
+
+    /* ── ROOT BADGE ───────────────────────────────────── */
+    .root-badge {
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 7pt;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(197,160,89,0.12));
+      padding: 4.5mm 5.5mm;
+      text-align: right;
+      min-width: 40mm;
+    }
+    .root-n {
+      font-family: 'Cinzel', serif;
+      font-size: 30pt;
+      font-weight: 600;
+      color: var(--stone-900);
+      line-height: 1;
+    }
+
+    /* ────────────────────────────────────────────────────
+       COVER
+    ──────────────────────────────────────────────────── */
+    .cover {
+      background:
+        radial-gradient(circle at 28% 18%, rgba(197,160,89,0.20) 0%, transparent 48%),
+        radial-gradient(circle at 72% 82%, rgba(197,160,89,0.13) 0%, transparent 48%),
+        linear-gradient(155deg, #0f0903 0%, #1d1205 42%, #0a0602 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 297mm;
+      padding: 15mm 22mm;
+      text-align: center;
+    }
+    .cov-eyebrow {
+      font-size: 6.5pt;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(197,160,89,0.65);
+      margin-bottom: 10mm;
+    }
+    .cov-ring-outer {
+      width: 72mm; height: 72mm;
+      border-radius: 50%;
+      border: 0.5pt solid rgba(197,160,89,0.28);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 9mm;
+    }
+    .cov-ring-inner {
+      width: 58mm; height: 58mm;
+      border-radius: 50%;
+      border: 0.5pt solid rgba(197,160,89,0.48);
+      background: rgba(197,160,89,0.06);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20pt;
+      color: var(--gold);
+    }
+    .cov-title {
+      font-family: 'Cinzel', serif;
+      font-size: 50pt;
+      font-weight: 700;
+      color: #f2e2bc;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      margin-bottom: 5mm;
+    }
+    .cov-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 12.5pt;
+      color: rgba(240,224,184,0.72);
+      line-height: 1.65;
+      max-width: 115mm;
+      margin-bottom: 9mm;
+    }
+    .cov-line { width: 55mm; height: 0.4pt; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 7mm; }
+    .cov-tag  { font-size: 7pt; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(197,160,89,0.75); margin-bottom: 14mm; }
+    .cov-url  { font-family: 'Cinzel', serif; font-size: 7.5pt; letter-spacing: 0.22em; color: rgba(197,160,89,0.55); }
+
+    /* ── EXPANDED INTENT SECTION ─────────────────────── */
+    .int-sec {
+      border: 0.5pt solid var(--gold-border);
+      border-radius: 8pt;
+      background: rgba(255,255,255,0.88);
+      padding: 5.5mm 6.5mm;
+      position: relative;
+      overflow: hidden;
+    }
+    .int-sec-hdr {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+      margin-bottom: 3mm;
+    }
+    .int-icon { font-size: 13pt; line-height: 1; }
+    .int-dim  { font-size: 5.8pt; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+    .int-name { font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 600; color: var(--stone-900); line-height: 1.2; margin-top: 0.5mm; }
+    .int-wm   {
+      position: absolute; top: 1.5mm; right: 4mm;
+      font-family: 'Cinzel', serif; font-size: 36pt; font-weight: 700;
+      color: rgba(197,160,89,0.07); line-height: 1; pointer-events: none; user-select: none;
+    }
+    .int-body { font-size: 8.5pt; line-height: 1.72; color: var(--stone-600); margin-bottom: 3.5mm; }
+    .int-steps {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5mm; margin-bottom: 3mm;
+    }
+    .int-step {
+      border: 0.5pt solid var(--gold-border); border-radius: 5pt;
+      background: rgba(197,160,89,0.05); padding: 2.8mm 3.2mm;
+      display: flex; gap: 2.5mm; align-items: flex-start;
+    }
+    .int-sn {
+      width: 5.5mm; height: 5.5mm; min-width: 5.5mm;
+      border-radius: 50%; background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6.5pt; font-weight: 700; color: var(--stone-950);
+    }
+    .int-st { font-size: 7.5pt; line-height: 1.6; color: var(--stone-700); }
+    .int-aff {
+      border-left: 2pt solid var(--gold);
+      padding: 2.5mm 4mm;
+      background: rgba(197,160,89,0.05);
+      border-radius: 0 5pt 5pt 0;
+    }
+    .int-aff-t {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 8.5pt;
+      line-height: 1.6; color: var(--stone-700);
+    }
+    .int-divider {
+      height: 0.4pt;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 3.5mm 0;
+    }
+
+    @media print {
+      body  { background: white; }
+      .page { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 1 · COVER
+════════════════════════════════════════════════════════ -->
+<div class="page cover">
+  <p class="cov-eyebrow">EverydayHoroscope &nbsp;·&nbsp; Design Reference</p>
+  <div class="cov-ring-outer">
+    <div class="cov-ring-inner">✦</div>
+  </div>
+  <h1 class="cov-title">Angel<br>Numbers</h1>
+  <p class="cov-sub">A Complete Guide to Sacred Sequences, Divine Messages &amp; Spiritual Meaning</p>
+  <div class="cov-line"></div>
+  <p class="cov-tag">1,000 Numbers &nbsp;·&nbsp; 9 Intent Dimensions &nbsp;·&nbsp; Vedic Foundations</p>
+  <p class="cov-url">EVERYDAYHOROSCOPE.IN</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 2 · HUB — INTRO + POPULAR NUMBERS
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers Hub</span></div>
+
+  <div class="cx">
+
+    <!-- Hero block -->
+    <div class="card-hero">
+      <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:7mm; align-items:start;">
+        <div>
+          <p class="lbl">Angel Numbers Guide</p>
+          <h1 class="h1 mt1">Angel Numbers — Meanings, Messages &amp; What They Mean for You</h1>
+          <p class="bd mt2">Angel numbers are repeating number sequences many people notice during turning points, decisions, and seasons of growth. This guide helps you move from curiosity into clarity with practical interpretations, numerology families, and intent-specific guidance across every major sequence from 1 to 10,000.</p>
+        </div>
+        <div class="card-g">
+          <p class="lbl">Search Any Number</p>
+          <h2 class="h3 mt1" style="font-size:10pt;">Find your number</h2>
+          <p class="sm mt1">Every sequence from 1 to 10,000 has a dedicated meaning page covering core message, intent dimensions, affirmation, and Vedic connection.</p>
+          <div style="margin-top:4mm; border:0.5pt solid var(--gold-border); border-radius:5pt; padding:2.5mm 4mm; background:rgba(255,255,255,0.8); font-size:8.5pt; color:var(--stone-400);">111 &nbsp;·&nbsp; 1212 &nbsp;·&nbsp; 4444 &nbsp;···</div>
+          <div style="margin-top:3mm; display:inline-block; border-radius:30pt; background:var(--gold); padding:2mm 5mm; font-size:8pt; font-weight:600; color:var(--stone-950);">Explore number meaning →</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popular Numbers -->
+    <div class="mt3">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3mm;">
+        <div>
+          <p class="lbl">Popular Sequences</p>
+          <h2 class="h2 mt1" style="font-size:13pt;">Most-searched angel numbers</h2>
+        </div>
+        <span class="sm" style="color:var(--stone-500);">20 high-interest entry points</span>
+      </div>
+
+      <div class="g5">
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">111</p><p class="nc-t">New Beginnings</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">222</p><p class="nc-t">Balance &amp; Faith</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">333</p><p class="nc-t">Creative Guidance</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">444</p><p class="nc-t">Divine Protection</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">555</p><p class="nc-t">Major Change</p></div>
+
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">666</p><p class="nc-t">Home &amp; Nurturing</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">777</p><p class="nc-t">Spiritual Awakening</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">888</p><p class="nc-t">Abundance &amp; Karma</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">999</p><p class="nc-t">Completion &amp; Release</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n nc-sm">1111</p><p class="nc-t">Awakening Portal</p></div>
+
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n nc-sm">1212</p><p class="nc-t">Divine Alignment</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n nc-sm">1234</p><p class="nc-t">Ordered Progress</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n nc-sm">2222</p><p class="nc-t">Master Balance</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n nc-sm">3333</p><p class="nc-t">Creative Mastery</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">11</p><p class="nc-t">Master Intuition</p></div>
+
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">22</p><p class="nc-t">Master Builder</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">33</p><p class="nc-t">Master Teacher</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">44</p><p class="nc-t">Master Stability</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n">55</p><p class="nc-t">Master Change</p></div>
+        <div class="nc"><p class="lbl" style="font-size:5.5pt;">Angel number</p><p class="nc-n nc-sm">4444</p><p class="nc-t">Deep Foundation</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rf"><span class="rf-pg">2</span><span class="rf-url">everydayhoroscope.in/angel-numbers</span></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 3 · HUB — BY INTENT + FAMILIES + HOW TO + FAQ
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers Hub</span></div>
+
+  <div class="cx">
+    <div class="g2" style="gap:7mm; align-items:start;">
+
+      <!-- LEFT COL -->
+      <div>
+        <!-- By Intent -->
+        <p class="lbl">By Intent</p>
+        <h2 class="h2 mt1" style="font-size:13pt;">Follow the life area you care about most</h2>
+        <p class="sm mt1" style="color:var(--stone-500);">Select a focus area to see the angel numbers most active for it.</p>
+
+        <div style="display:flex; flex-wrap:wrap; gap:2mm; margin-top:3.5mm;">
+          <span class="chip-active">Love &amp; Relationships</span>
+          <span class="chip">Career &amp; Abundance</span>
+          <span class="chip">Twin Flame</span>
+          <span class="chip">Manifestation</span>
+          <span class="chip">Spiritual Growth</span>
+          <span class="chip">Healing &amp; Recovery</span>
+          <span class="chip">Life Purpose</span>
+          <span class="chip">Protection &amp; Guidance</span>
+          <span class="chip">Family &amp; Home</span>
+        </div>
+
+        <!-- Expanded intent example -->
+        <div style="margin-top:3.5mm; border:0.5pt solid var(--gold-border); border-radius:6pt; background:rgba(197,160,89,0.05); padding:4mm 5mm;">
+          <p class="lbl" style="font-size:6pt;">Love &amp; Relationships</p>
+          <p class="sm mt1">Angel numbers aligned with love, partnership, and heart-centred connection.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:2mm; margin-top:3mm;">
+            <span style="font-family:'Cinzel',serif; font-size:10.5pt; border:0.5pt solid var(--gold-border); border-radius:5pt; padding:2mm 3.5mm; background:rgba(255,255,255,0.88);">111</span>
+            <span style="font-family:'Cinzel',serif; font-size:10.5pt; border:0.5pt solid var(--gold-border); border-radius:5pt; padding:2mm 3.5mm; background:rgba(255,255,255,0.88);">222</span>
+            <span style="font-family:'Cinzel',serif; font-size:10.5pt; border:0.5pt solid var(--gold-border); border-radius:5pt; padding:2mm 3.5mm; background:rgba(255,255,255,0.88);">444</span>
+            <span style="font-family:'Cinzel',serif; font-size:10.5pt; border:0.5pt solid var(--gold-border); border-radius:5pt; padding:2mm 3.5mm; background:rgba(255,255,255,0.88);">717</span>
+            <span style="font-family:'Cinzel',serif; font-size:10.5pt; border:0.5pt solid var(--gold-border); border-radius:5pt; padding:2mm 3.5mm; background:rgba(255,255,255,0.88);">1111</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Numerology Families -->
+        <p class="lbl">Numerology Families</p>
+        <h2 class="h2 mt1" style="font-size:13pt;">Numbers grouped by root vibration</h2>
+
+        <div class="fr">
+          <p class="fr-root">1</p>
+          <div><p class="fr-lbl">Root 1 — The Pioneer</p><p class="fr-thm">Surya (Sun) · Leadership, new beginnings, originality</p>
+          <div class="fr-nums"><span class="fr-num">1</span><span class="fr-num">10</span><span class="fr-num">100</span><span class="fr-num">111</span><span class="fr-num">1000</span><span class="fr-num">1111</span></div></div>
+        </div>
+        <div class="fr">
+          <p class="fr-root">2</p>
+          <div><p class="fr-lbl">Root 2 — The Partner</p><p class="fr-thm">Chandra (Moon) · Balance, trust, divine timing</p>
+          <div class="fr-nums"><span class="fr-num">2</span><span class="fr-num">11</span><span class="fr-num">20</span><span class="fr-num">200</span><span class="fr-num">222</span><span class="fr-num">2222</span></div></div>
+        </div>
+        <div class="fr">
+          <p class="fr-root">3</p>
+          <div><p class="fr-lbl">Root 3 — The Creator</p><p class="fr-thm">Guru (Jupiter) · Expression, expansion, divine grace</p>
+          <div class="fr-nums"><span class="fr-num">3</span><span class="fr-num">12</span><span class="fr-num">21</span><span class="fr-num">111</span><span class="fr-num">333</span><span class="fr-num">3333</span></div></div>
+        </div>
+        <div class="fr">
+          <p class="fr-root">4</p>
+          <div><p class="fr-lbl">Root 4 — The Builder</p><p class="fr-thm">Rahu · Foundation, structure, karmic direction</p>
+          <div class="fr-nums"><span class="fr-num">4</span><span class="fr-num">13</span><span class="fr-num">22</span><span class="fr-num">400</span><span class="fr-num">1111</span><span class="fr-num">4444</span></div></div>
+        </div>
+        <div class="fr">
+          <p class="fr-root">5</p>
+          <div><p class="fr-lbl">Root 5 — The Traveller</p><p class="fr-thm">Budha (Mercury) · Change, adaptability, movement</p>
+          <div class="fr-nums"><span class="fr-num">5</span><span class="fr-num">14</span><span class="fr-num">23</span><span class="fr-num">50</span><span class="fr-num">500</span><span class="fr-num">555</span></div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT COL -->
+      <div>
+        <div class="fr">
+          <p class="fr-root">6</p>
+          <div><p class="fr-lbl">Root 6 — The Nurturer</p><p class="fr-thm">Shukra (Venus) · Love, home, creative harmony</p>
+          <div class="fr-nums"><span class="fr-num">6</span><span class="fr-num">15</span><span class="fr-num">24</span><span class="fr-num">33</span><span class="fr-num">600</span><span class="fr-num">666</span></div></div>
+        </div>
+        <div class="fr">
+          <p class="fr-root">7</p>
+          <div><p class="fr-lbl">Root 7 — The Seeker</p><p class="fr-thm">Ketu · Spiritual depth, intuition, liberation</p>
+          <div class="fr-nums"><span class="fr-num">7</span><span class="fr-num">16</span><span class="fr-num">25</span><span class="fr-num">700</span><span class="fr-num">777</span><span class="fr-num">7777</span></div></div>
+        </div>
+        <div class="fr">
+          <p class="fr-root">8</p>
+          <div><p class="fr-lbl">Root 8 — The Achiever</p><p class="fr-thm">Shani (Saturn) · Karma, discipline, material reward</p>
+          <div class="fr-nums"><span class="fr-num">8</span><span class="fr-num">17</span><span class="fr-num">26</span><span class="fr-num">800</span><span class="fr-num">888</span><span class="fr-num">8888</span></div></div>
+        </div>
+        <div class="fr">
+          <p class="fr-root">9</p>
+          <div><p class="fr-lbl">Root 9 — The Sage</p><p class="fr-thm">Mangal (Mars) · Completion, courage, transformation</p>
+          <div class="fr-nums"><span class="fr-num">9</span><span class="fr-num">18</span><span class="fr-num">27</span><span class="fr-num">900</span><span class="fr-num">999</span><span class="fr-num">9999</span></div></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- How to Work With -->
+        <p class="lbl">How To Use The Signs</p>
+        <h2 class="h2 mt1" style="font-size:12pt;">How to work with angel numbers</h2>
+        <div style="display:grid; gap:2.5mm; margin-top:3mm;">
+          <div class="step"><div class="step-n">1</div><p class="sm">Pause and notice the thought you were having the moment you saw the number.</p></div>
+          <div class="step"><div class="step-n">2</div><p class="sm">Write it down in a dedicated journal with the date, location, and context.</p></div>
+          <div class="step"><div class="step-n">3</div><p class="sm">Look up the specific number and read all nine intent dimensions.</p></div>
+          <div class="step"><div class="step-n">4</div><p class="sm">Choose one action step from the guidance and do it today.</p></div>
+          <div class="step"><div class="step-n">5</div><p class="sm">Express gratitude and remain open to further signs in the days ahead.</p></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- FAQ -->
+        <p class="lbl">Frequently Asked Questions</p>
+        <div class="mt2">
+          <div class="fq">
+            <p class="fq-q">What are angel numbers?</p>
+            <p class="fq-a">Angel numbers are repeating number sequences believed to carry messages from divine guides, the Universe, or your higher self. They appear during moments of significance to offer direction, reassurance, or confirmation.</p>
+          </div>
+          <div class="fq">
+            <p class="fq-q">How do I know which number is meant for me?</p>
+            <p class="fq-a">The number that gets your attention repeatedly is the one for you. Trust the pattern you keep noticing rather than searching for a number you want to see.</p>
+          </div>
+          <div class="fq">
+            <p class="fq-q">What does it mean to see the same number every day?</p>
+            <p class="fq-a">A number appearing persistently over days or weeks is carrying an active message for your current life situation. Read its full meaning and reflect on which area it most applies to.</p>
+          </div>
+          <div class="fq">
+            <p class="fq-q">What are the most important angel numbers?</p>
+            <p class="fq-a">111, 222, 333, 444, and 555 are among the most commonly noticed. 1111 is widely regarded as the most powerful awakening signal in angel number tradition.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="rf"><span class="rf-pg">3</span><span class="rf-url">everydayhoroscope.in/angel-numbers</span></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 4 · 111 NUMBER PAGE A — HERO + MEANING + WHAT TO DO
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers · 111</span></div>
+
+  <div class="cx">
+
+    <!-- Breadcrumb -->
+    <p style="font-size:7.5pt; color:var(--stone-500);">Angel Numbers <span style="margin:0 2mm; color:var(--stone-400);">/</span> <strong style="color:var(--stone-700);">111</strong></p>
+
+    <!-- HERO -->
+    <div class="card-hero mt2">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:7mm;">
+        <div style="flex:1;">
+          <p class="lbl">Angel Number Meaning</p>
+          <p style="font-family:'Cinzel',serif; font-size:76pt; font-weight:700; color:var(--stone-900); line-height:1; letter-spacing:-0.02em; margin-top:2mm;">111</p>
+          <p class="tag mt2">"New Beginnings and Manifestation"</p>
+        </div>
+        <div class="root-badge">
+          <p class="lbl" style="text-align:right;">Numerology Root</p>
+          <p class="root-n mt1">3</p>
+          <p class="sm mt2" style="text-align:right; color:var(--stone-600);">111 reduces to 3 (1+1+1). Root 3 governs creative expression, expansion, and Jovian wisdom.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEEING IT MEANS + KEY THEMES -->
+    <div class="g2 mt3" style="align-items:start;">
+      <div class="card">
+        <h2 class="h3">Seeing it means</h2>
+        <p class="bd mt2">When 111 appears, the Universe is sending a clear message: your thoughts are directly shaping your reality right now. This is one of the most powerful alignment signals in angel number practice — a confirmation that your intentions are active, your vibration is elevated, and the invisible is beginning to become visible. Pay attention to the thoughts you carry during this time, because 111 is not a passive sign. It is a creative directive.</p>
+      </div>
+      <div class="card">
+        <h2 class="h3">Key themes</h2>
+        <div style="display:flex; flex-wrap:wrap; gap:2mm; margin-top:4mm;">
+          <span class="chip">New Beginnings</span>
+          <span class="chip">Manifestation</span>
+          <span class="chip">Alignment</span>
+          <span class="chip">Leadership</span>
+          <span class="chip">Clarity</span>
+          <span class="chip">Creative Power</span>
+          <span class="chip">Solar Energy</span>
+        </div>
+        <div class="vb mt3">
+          <p class="lbl" style="font-size:6pt;">Vedic Connection</p>
+          <p class="sm mt1"><strong>Surya (Sun)</strong> — soul, authority, life purpose. Triple 1 amplifies solar energy threefold, indicating a portal of creation and new beginnings in the Vedic tradition.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 MEANING PANELS -->
+    <div class="card mt3">
+      <div class="g3">
+        <div>
+          <p class="lbl" style="font-size:6pt;">Core Meaning</p>
+          <p class="sm mt2">Angel number 111 is a powerful manifestation code. When you see 111, the Universe is signalling that your thoughts are rapidly manifesting into reality. This is a call to align your mind with your highest intentions.</p>
+        </div>
+        <div>
+          <p class="lbl" style="font-size:6pt;">Spiritual Dimension</p>
+          <p class="sm mt2">In Vedic numerology, 1 is the number of the Sun: leadership, willpower, and originality. Triple 1 amplifies this energy threefold, indicating a portal of creation and new beginnings.</p>
+        </div>
+        <div>
+          <p class="lbl" style="font-size:6pt;">Numerology Root 3</p>
+          <p class="sm mt2">Root 3 is ruled by Guru (Jupiter) — expansion, wisdom, and divine grace. 111 channels Jovian creative energy through a solar lens, making it one of the most generative vibrations in angel number practice.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT TO DO -->
+    <div class="card mt3">
+      <h2 class="h3">What to do when you see 111</h2>
+      <div class="g4 mt2">
+        <div class="step" style="flex-direction:column; align-items:flex-start; gap:2mm;">
+          <div class="step-n">1</div>
+          <p class="sm">Write down your intentions and desires — the Universe is listening right now.</p>
+        </div>
+        <div class="step" style="flex-direction:column; align-items:flex-start; gap:2mm;">
+          <div class="step-n">2</div>
+          <p class="sm">Avoid negative thought loops — your focus is amplifying everything it touches.</p>
+        </div>
+        <div class="step" style="flex-direction:column; align-items:flex-start; gap:2mm;">
+          <div class="step-n">3</div>
+          <p class="sm">Take one bold step toward your goal today — even a small move matters.</p>
+        </div>
+        <div class="step" style="flex-direction:column; align-items:flex-start; gap:2mm;">
+          <div class="step-n">4</div>
+          <p class="sm">Notice repeating signs and synchronicities in the hours that follow.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rf"><span class="rf-pg">4</span><span class="rf-url">everydayhoroscope.in/angel-numbers/111</span></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 5 · 111 NUMBER PAGE B — 9 INTENTS + AFFIRMATION + RELATED + FAQ
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers · 111 · All 9 Dimensions</span></div>
+
+  <div class="cx">
+
+    <!-- 9 INTENT DIMENSIONS -->
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3mm;">
+        <div>
+          <p class="lbl">All 9 Intent Meanings</p>
+          <h2 class="h2 mt1" style="font-size:13pt;">Explore all 9 dimensions of 111</h2>
+        </div>
+        <span class="sm" style="color:var(--stone-500);">The main journey deeper into this number</span>
+      </div>
+      <div class="g3">
+        <div class="ic"><p class="ic-name">❤&nbsp; Love &amp; Relationships</p><p class="ic-teaser">A powerful new beginning is entering your love life. Either a new connection is arriving or an existing relationship is renewing with authenticity and fresh energy.</p></div>
+        <div class="ic"><p class="ic-name">💼&nbsp; Career &amp; Abundance</p><p class="ic-teaser">A green light for new ventures, leadership roles, and bold decisions. Your instincts are aligned with real opportunity — move on what calls you now.</p></div>
+        <div class="ic"><p class="ic-name">🔥&nbsp; Twin Flame</p><p class="ic-teaser">A sign that your twin flame connection is activating or about to surface. 111 often appears just before a significant soul-level encounter or reunion.</p></div>
+        <div class="ic"><p class="ic-name">✨&nbsp; Manifestation</p><p class="ic-teaser">Your thoughts are seeding reality right now. The gap between intention and form is narrowing. Write your desires clearly and hold your focus steady.</p></div>
+        <div class="ic"><p class="ic-name">🌿&nbsp; Spiritual Growth</p><p class="ic-teaser">A portal to elevated awareness is opening. Your spiritual practice is ready to deepen. This is a moment to begin, recommit, or expand your path.</p></div>
+        <div class="ic"><p class="ic-name">💰&nbsp; Financial Abundance</p><p class="ic-teaser">New income streams and opportunities are beginning to form. The energy of 111 asks you to think bigger and believe your worth is expanding.</p></div>
+        <div class="ic"><p class="ic-name">🎯&nbsp; Life Purpose</p><p class="ic-teaser">You are aligning with your authentic path. The steps you have been hesitating on are now supported. Begin the chapter you have been delaying.</p></div>
+        <div class="ic"><p class="ic-name">🌿&nbsp; Healing &amp; Recovery</p><p class="ic-teaser">A new chapter of self-restoration is beginning. Old wounds are ready to close. This is the start of a healthier, more grounded version of yourself.</p></div>
+        <div class="ic"><p class="ic-name">🛡&nbsp; Protection &amp; Guidance</p><p class="ic-teaser">You are guided and supported as you step into the new. Your guides are close, and the path ahead is clearer than it may currently appear.</p></div>
+      </div>
+    </div>
+
+    <!-- AFFIRMATION + RELATED NUMBERS -->
+    <div class="g2 mt3" style="gap:5mm; align-items:start;">
+      <div class="aff">
+        <p class="lbl">Affirmation</p>
+        <blockquote class="aff-q mt2">"I am in perfect alignment with the Universe. My thoughts create my reality, and I choose only what serves my highest good."</blockquote>
+      </div>
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:3mm;">
+          <div>
+            <h2 class="h3">Related numbers</h2>
+            <p class="sm mt1" style="color:var(--stone-500);">Follow the neighbouring signals around 111.</p>
+          </div>
+          <span class="lbl" style="font-size:5.5pt; white-space:nowrap;">See hub →</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:2.5mm; margin-top:4mm;">
+          <span class="chip-rel">11</span>
+          <span class="chip-rel">1</span>
+          <span class="chip-rel">1111</span>
+          <span class="chip-rel">1010</span>
+          <span class="chip-rel">1212</span>
+          <span class="chip-rel">222</span>
+          <span class="chip-rel">333</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card mt3">
+      <h2 class="h3" style="margin-bottom:2.5mm;">Frequently asked questions about 111</h2>
+      <div class="fq">
+        <p class="fq-q">What does 111 mean spiritually?</p>
+        <p class="fq-a">Spiritually, 111 is a portal of awakening and conscious creation. It signals that you are moving into alignment with your higher self and that the Universe is actively responding to your energetic state.</p>
+      </div>
+      <div class="fq">
+        <p class="fq-q">Is 111 a twin flame number?</p>
+        <p class="fq-a">Yes, 111 is often associated with twin flame encounters and activations. It signals a moment of magnetic alignment where soul-level meetings are possible and energetically supported.</p>
+      </div>
+      <div class="fq">
+        <p class="fq-q">What should I do when I see 111?</p>
+        <p class="fq-a">Stop, notice your current thoughts, and consciously redirect them toward your highest intention. Write down your desire, take one aligned action, and release the outcome with gratitude.</p>
+      </div>
+      <div class="fq">
+        <p class="fq-q">What does 111 mean in love?</p>
+        <p class="fq-a">In love, 111 signals a fresh start — either a new connection entering your life or a renewed, authentic chapter beginning within an existing relationship. It asks for honesty and openness.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rf"><span class="rf-pg">5</span><span class="rf-url">everydayhoroscope.in/angel-numbers/111</span></div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 6 · 111 EXPANDED — LOVE & RELATIONSHIPS + CAREER & ABUNDANCE
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers · 111 · Dimensions 1 &amp; 2 of 9</span></div>
+
+  <div class="cx">
+    <p class="lbl" style="margin-bottom:3.5mm;">111 — Expanded Intent Dimensions</p>
+
+    <!-- INTENT 1: LOVE & RELATIONSHIPS -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">❤</span>
+        <div>
+          <p class="int-dim">Intent Dimension 1 of 9</p>
+          <p class="int-name">Love &amp; Relationships</p>
+        </div>
+      </div>
+      <p class="int-body">When 111 appears in the context of love, the Universe is signalling a powerful new beginning in your heart life. This could be the arrival of a significant connection, the start of a fresh chapter within an existing relationship, or an invitation to fall more deeply in love with yourself. The solar energy of triple 1 burns away what no longer serves and illuminates what is real and ready to grow. If you are single, 111 is an activation signal — prepare your heart rather than your expectations. If you are in a relationship, this is a moment to restart from authenticity: say what you have been holding back, choose each other deliberately, and let old grievances complete their hold. Love under 111 does not drift — it declares itself.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Write a love intention focused on how you want to feel, not who you want to meet.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Release one old story you carry about love or your worth in relationships. Say it out loud.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Have the honest conversation you have been postponing. Authenticity is the door.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"I am open to love in its most authentic and aligned form. I welcome the new chapter with a full and courageous heart."</p></div>
+    </div>
+
+    <div class="int-divider"></div>
+
+    <!-- INTENT 2: CAREER & ABUNDANCE -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">💼</span>
+        <div>
+          <p class="int-dim">Intent Dimension 2 of 9</p>
+          <p class="int-name">Career &amp; Abundance</p>
+        </div>
+      </div>
+      <p class="int-body">In career matters, 111 is an unmistakable green light. Your professional instincts are running ahead of your rational mind right now, and they are correct. New ventures, leadership opportunities, and bold pivots are all energetically supported under triple 1. This is not a time for waiting, refining further, or delaying — the portal is open now. If you have been hesitating on a pitch, a proposal, a launch, or a professional change, 111 says the conditions are aligned and your window is active. The solar energy of 1 rewards initiative above preparation. Your confidence and your output are both amplified. Those who act in this window tend to look back and say the timing was perfect — not because conditions were safe, but because they moved.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Take the professional action you have been procrastinating on. Send it, pitch it, launch it today.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Declare your professional intention in writing as a present-tense statement of fact.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Step into a leadership role or perspective in your current work, even in a small way today.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"My boldest professional moves are supported and perfectly timed. I act now with solar confidence."</p></div>
+    </div>
+  </div>
+
+  <div class="rf"><span class="rf-pg">6</span><span class="rf-url">everydayhoroscope.in/angel-numbers/111</span></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 7 · 111 EXPANDED — TWIN FLAME + MANIFESTATION
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers · 111 · Dimensions 3 &amp; 4 of 9</span></div>
+
+  <div class="cx">
+    <p class="lbl" style="margin-bottom:3.5mm;">111 — Expanded Intent Dimensions</p>
+
+    <!-- INTENT 3: TWIN FLAME -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">🔥</span>
+        <div>
+          <p class="int-dim">Intent Dimension 3 of 9</p>
+          <p class="int-name">Twin Flame</p>
+        </div>
+      </div>
+      <p class="int-body">111 is one of the most recognised twin flame activation signals in angel number tradition. When it appears in the context of a significant soul connection, it indicates that a meeting, reunion, or deep awakening within the twin flame journey is energetically close or already quietly in motion. The triple 1 mirrors the twin flame dynamic: two flames of one original source recognising each other across time and circumstance. Whether you are in separation, approaching union, or in the early recognition phase, 111 does not tell you to chase the connection — it asks you to pursue your own alignment and let the magnetic pull do its work. The number also appears as a reminder that the person you are becoming matters more than the timeline you are managing.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Journal what you were thinking or feeling the moment you saw 111. It holds a mirror.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Focus entirely on your own growth and becoming — the connection follows your alignment.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Release urgency about timing. Trust that what is real cannot be missed.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"I am becoming who I need to be. The connection that is meant for me finds me as I grow."</p></div>
+    </div>
+
+    <div class="int-divider"></div>
+
+    <!-- INTENT 4: MANIFESTATION -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">✨</span>
+        <div>
+          <p class="int-dim">Intent Dimension 4 of 9</p>
+          <p class="int-name">Manifestation</p>
+        </div>
+      </div>
+      <p class="int-body">In the context of manifestation, 111 is the most direct signal you can receive. The creative field around you is exceptionally active right now. Your thoughts are not just drifting — they are seeding. The gap between intention and physical form is narrower than usual under triple 1, which means both your aligned desires and your undisciplined fears are amplified equally. This is a time to be deliberate. Choose your dominant thoughts with care. Visualise what you want to attract rather than what you want to avoid. Write your desires in the present tense, as if already true, and return to them daily. 111 says the Universe has its ear to the ground. Speak clearly — not once, but consistently.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Write your top three intentions in present tense as if already fully true in your life.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Spend 11 minutes in focused visualisation — feel the outcome fully rather than watching it.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Identify and release one limiting belief that contradicts what you are trying to create.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"Everything I desire is already forming in the field before me. I think clearly, I feel fully, and I receive."</p></div>
+    </div>
+  </div>
+
+  <div class="rf"><span class="rf-pg">7</span><span class="rf-url">everydayhoroscope.in/angel-numbers/111</span></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 8 · 111 EXPANDED — SPIRITUAL GROWTH + FINANCIAL ABUNDANCE
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers · 111 · Dimensions 5 &amp; 6 of 9</span></div>
+
+  <div class="cx">
+    <p class="lbl" style="margin-bottom:3.5mm;">111 — Expanded Intent Dimensions</p>
+
+    <!-- INTENT 5: SPIRITUAL GROWTH -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">🌿</span>
+        <div>
+          <p class="int-dim">Intent Dimension 5 of 9</p>
+          <p class="int-name">Spiritual Growth</p>
+        </div>
+      </div>
+      <p class="int-body">On the spiritual path, 111 marks the opening of a portal. You are not just growing — you are awakening to a more expanded version of your spiritual reality. What once felt conceptual is beginning to feel lived. Practices you have been circling around are ready to become real commitments. Teachers, texts, and experiences that deepen your path are beginning to gather around you, sometimes invisibly. The solar energy of triple 1 is not a passive spiritual frequency — it activates. It asks you to stop treating your spiritual life as supplementary and start honouring it as central. The awakening that 111 signals does not wait for perfect circumstances. It begins the moment you decide to take it seriously.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Start or deepen a daily practice — meditation, prayer, sacred reading, or intentional silence.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Explore one teaching or tradition that has been calling your attention for too long.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Create one protected window of stillness in your daily routine and guard it.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"I welcome the deeper truth that is emerging in me. My spiritual life is central, not supplementary."</p></div>
+    </div>
+
+    <div class="int-divider"></div>
+
+    <!-- INTENT 6: FINANCIAL ABUNDANCE -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">💰</span>
+        <div>
+          <p class="int-dim">Intent Dimension 6 of 9</p>
+          <p class="int-name">Financial Abundance</p>
+        </div>
+      </div>
+      <p class="int-body">When 111 speaks to financial matters, it signals that a new income chapter is beginning to form in the unseen field before it appears in your bank account. The solar energy of triple 1 is entrepreneurial, bold, and action-oriented — it rewards those who move rather than those who wait for certainty. New streams, unexpected opportunities, and creative financial solutions are in motion around you. This is also a moment to examine the deeper layer: your beliefs about money and what you deserve. Are you allowing abundance, or intellectually accepting it while emotionally blocking it? 111 asks for full alignment — your financial desires, your self-worth, and your actions must point in the same direction simultaneously.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Review your financial intentions — are they specific enough? Vague desires produce vague results.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Take one action that demonstrates you expect abundance — a savings move, an application, a proposal.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Identify and name one belief of financial lack you have been carrying, then consciously release it.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"I am open to receiving abundance from expected and unexpected sources. My worth is not negotiable."</p></div>
+    </div>
+  </div>
+
+  <div class="rf"><span class="rf-pg">8</span><span class="rf-url">everydayhoroscope.in/angel-numbers/111</span></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 9 · 111 EXPANDED — LIFE PURPOSE + HEALING & RECOVERY
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers · 111 · Dimensions 7 &amp; 8 of 9</span></div>
+
+  <div class="cx">
+    <p class="lbl" style="margin-bottom:3.5mm;">111 — Expanded Intent Dimensions</p>
+
+    <!-- INTENT 7: LIFE PURPOSE -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">🎯</span>
+        <div>
+          <p class="int-dim">Intent Dimension 7 of 9</p>
+          <p class="int-name">Life Purpose</p>
+        </div>
+      </div>
+      <p class="int-body">111 in the dimension of life purpose is one of the most potent combinations in angel number practice. Your soul already knows the direction. The resistance you feel is not wisdom — it is habit, fear, and the accumulated weight of other people's expectations. The solar energy of triple 1 illuminates the path of authentic leadership, originality, and self-directed purpose with unusual clarity under this signal. You do not need more preparation, more credentials, or more confirmation. You need to begin. The chapter your deeper self has been calling toward is already partially open. 111 is the confirmation that stepping through is the correct move right now, not in a safer season. The door is open because you are ready, even if you do not feel it yet.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Name the one thing you keep postponing that feels most aligned with your real self.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Take one concrete step toward it today — however small. Starting matters more than scale.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Stop waiting for certainty before beginning. Certainty follows action, not the other way around.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"My path is clear and I am already on it. I move forward with solar certainty and begin now."</p></div>
+    </div>
+
+    <div class="int-divider"></div>
+
+    <!-- INTENT 8: HEALING & RECOVERY -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">🌱</span>
+        <div>
+          <p class="int-dim">Intent Dimension 8 of 9</p>
+          <p class="int-name">Healing &amp; Recovery</p>
+        </div>
+      </div>
+      <p class="int-body">In the context of healing, 111 marks the beginning of a new chapter of wholeness. Something old is completing its hold on you — a pattern, a wound, or a story that has defined your healing journey for longer than it needed to. The solar energy of triple 1 brings warmth, clarity, and the specific kind of courage required to choose differently after choosing the same way for years. Healing under 111 is not slow or tentative. It is definitive. You are not merely recovering from something — you are beginning a new and more grounded relationship with yourself. The number asks you to mark this moment consciously: acknowledge what is ending, honour what it taught you, and choose the new chapter with full intention rather than waiting for the old one to fade on its own.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Acknowledge one old wound or pattern out loud and consciously choose to release its authority over you.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Begin or recommit to a healing practice — therapy, somatic work, journaling, or intentional movement.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Be gentle with your nervous system as the new chapter settles. Rest is not avoidance here.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"I am beginning again — whole, clear, and free. What was is honoured. What is new is chosen."</p></div>
+    </div>
+  </div>
+
+  <div class="rf"><span class="rf-pg">9</span><span class="rf-url">everydayhoroscope.in/angel-numbers/111</span></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PAGE 10 · 111 EXPANDED — PROTECTION & GUIDANCE (CLOSING)
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="stripe"></div>
+  <div class="rh"><span class="rh-brand">EverydayHoroscope</span><span class="rh-section">Angel Numbers · 111 · Dimension 9 of 9</span></div>
+
+  <div class="cx">
+    <p class="lbl" style="margin-bottom:3.5mm;">111 — Expanded Intent Dimensions</p>
+
+    <!-- INTENT 9: PROTECTION & GUIDANCE -->
+    <div class="int-sec">
+      <div class="int-wm">111</div>
+      <div class="int-sec-hdr">
+        <span class="int-icon">🛡</span>
+        <div>
+          <p class="int-dim">Intent Dimension 9 of 9</p>
+          <p class="int-name">Protection &amp; Guidance</p>
+        </div>
+      </div>
+      <p class="int-body">When 111 speaks through the lens of protection and guidance, it carries a message from your highest guardians: you are not alone in this transition, and the new beginning you are stepping into is already watched over, supported, and blessed in the unseen. The solar energy of triple 1 is not just initiating — it is illuminating. It lights the next step clearly enough that you do not need to see the whole path at once. Fear of the unknown is natural, but it is not a reliable guide. 111 is. The number also appears as confirmation that the discomfort of the threshold — that in-between space where one chapter has not fully closed and the next has not fully opened — is not a sign that something is wrong. It is the texture of transformation. You are held in it, not lost in it.</p>
+      <div class="int-steps">
+        <div class="int-step"><div class="int-sn">1</div><p class="int-st">Speak a prayer, declaration, or word of gratitude to your guides and guardians for this signal.</p></div>
+        <div class="int-step"><div class="int-sn">2</div><p class="int-st">Release the anxious thought that something will go wrong in the new chapter. Replace it consciously.</p></div>
+        <div class="int-step"><div class="int-sn">3</div><p class="int-st">Trust the sequence of events unfolding around you. You are in the right position at the right time.</p></div>
+      </div>
+      <div class="int-aff"><p class="int-aff-t">"I am guided, protected, and never alone on this path. The light moves with me into every new chapter."</p></div>
+    </div>
+
+    <!-- CLOSING PANEL -->
+    <div style="margin-top:5mm; border:0.5pt solid var(--gold-border); border-radius:8pt; background:linear-gradient(135deg,rgba(255,255,255,0.95),rgba(197,160,89,0.08)); padding:6mm 7mm;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6mm; align-items:center;">
+        <div>
+          <p class="lbl">The Complete 111 Journey</p>
+          <h2 class="h2 mt1" style="font-size:13pt;">All 9 dimensions explored</h2>
+          <p class="sm mt2">This number now lives fully in your hands — not as a symbol to be decoded, but as a call to be answered. Every one of the nine dimensions above points to the same root truth: a new beginning is available to you right now. The only question is which door you choose to walk through.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2mm;">
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">❤ Love</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">💼 Career</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">🔥 Twin Flame</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">✨ Manifestation</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">🌿 Spiritual</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">💰 Financial</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">🎯 Life Purpose</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">🌱 Healing</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:rgba(197,160,89,0.05); padding:2.5mm 3mm; font-size:7.5pt; font-weight:600; color:var(--stone-700);">🛡 Protection</div>
+          <div style="border:0.5pt solid var(--gold-border); border-radius:5pt; background:var(--gold); padding:2.5mm 3mm; font-size:7.5pt; font-weight:700; color:var(--stone-950); text-align:center;">✓ Complete</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM BAND -->
+    <div style="margin-top:5mm; text-align:center;">
+      <div style="height:0.4pt; background:linear-gradient(90deg,transparent,var(--gold),transparent); margin-bottom:3mm;"></div>
+      <p style="font-family:'Cinzel',serif; font-size:7pt; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); margin-bottom:1.5mm;">Continue Your Journey</p>
+      <p class="sm" style="color:var(--stone-500);">Explore all 1,000 angel numbers — each with 9 intent dimensions — at <strong style="color:var(--stone-700);">everydayhoroscope.in/angel-numbers</strong></p>
+    </div>
+  </div>
+
+  <div class="rf"><span class="rf-pg">10</span><span class="rf-url">everydayhoroscope.in/angel-numbers</span></div>
+</div>
+
+
+</body>
+</html>

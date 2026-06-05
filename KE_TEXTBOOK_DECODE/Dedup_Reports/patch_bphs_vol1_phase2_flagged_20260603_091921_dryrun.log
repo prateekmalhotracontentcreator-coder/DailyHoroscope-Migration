@@ -1,0 +1,34 @@
+============================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol1_phase2_flagged_20260603_091921_dryrun.log
+============================================================
+
+BPHS Vol 1 Phase 2 -- Flagged Rules Triage Patch
+Batch: bphs-vol1-phase2-v1-20260601
+Mode : DRY RUN
+
+── Bucket B (14 rules) → PHR + validator_error:true ──
+  [DRY]   bphs1-ch25-055 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-056 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-057 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-058 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-059 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-060 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-061 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-062 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-063 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-064 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-065 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch25-066 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch28-002 → pending_human_review + validator_error:true
+  [DRY]   bphs1-ch32-028 → pending_human_review + validator_error:true
+
+── Direct CC fix: bphs1-ch03-044 (Sun+Cancer factual error) ──
+  [DRY]   bphs1-ch03-044 → PHR + corrected Sun-sign text (remove 'Sun owns Cancer')
+
+── PDF fix: bphs1-ch32-033 (validator error -- wife in 2nd house IS in source) ──
+  [DRY]   bphs1-ch32-033 → PHR + validator_error:true (wife in 2nd house confirmed p.325)
+
+============================================================
+[DRY RUN] Would patch 16 rules:
+  Bucket B (validator_error → PHR) : 14
+  Direct CC fix (corrected → PHR)  : 2

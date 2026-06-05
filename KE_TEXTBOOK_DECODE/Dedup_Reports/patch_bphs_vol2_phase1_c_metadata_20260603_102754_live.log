@@ -1,0 +1,95 @@
+======================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_c_metadata_20260603_102754_live.log
+======================================================================
+
+BPHS Vol 2 Phase 1 — C_metadata Patch
+Mode    : 🔴 LIVE — WRITING TO DB
+Rules   : 61
+Action  : flagged → pending_human_review + validator_error:true
+          (condition metadata encoding errors — content correct per BPHS)
+
+#    Rule ID                                  Pre-status             Result
+─────────────────────────────────────────────────────────────────────────────────────
+
+  ── BPHS47 ──
+  1    R-BPHS47-PATCH-09C246                    flagged                ✅ PATCHED
+  2    R-BPHS47-PATCH-1069F7                    flagged                ✅ PATCHED
+  3    R-BPHS47-PATCH-2797E4                    flagged                ✅ PATCHED
+  4    R-BPHS47-PATCH-298CE9                    flagged                ✅ PATCHED
+  5    R-BPHS47-PATCH-4A1525                    flagged                ✅ PATCHED
+  6    R-BPHS47-PATCH-67A820                    flagged                ✅ PATCHED
+  7    R-BPHS47-PATCH-7184C5                    flagged                ✅ PATCHED
+  8    R-BPHS47-PATCH-7A5D78                    flagged                ✅ PATCHED
+  9    R-BPHS47-PATCH-80282A                    flagged                ✅ PATCHED
+  10   R-BPHS47-PATCH-88272C                    flagged                ✅ PATCHED
+  11   R-BPHS47-PATCH-8D595F                    flagged                ✅ PATCHED
+  12   R-BPHS47-PATCH-D1922F                    flagged                ✅ PATCHED
+  13   R-BPHS47-PATCH-D30274                    flagged                ✅ PATCHED
+  14   R-BPHS47-PATCH-D5CC6E                    flagged                ✅ PATCHED
+  15   R-BPHS47-PATCH-DE23B9                    flagged                ✅ PATCHED
+  16   R-BPHS47-PATCH-E0CB28                    flagged                ✅ PATCHED
+  17   R-BPHS47-PATCH-E14959                    flagged                ✅ PATCHED
+  18   R-BPHS47-PATCH-E29B0D                    flagged                ✅ PATCHED
+  19   R-BPHS47-PATCH-EE6596                    flagged                ✅ PATCHED
+  20   R-BPHS47-PATCH-FDF113                    flagged                ✅ PATCHED
+
+  ── BPHS53 ──
+  21   R-BPHS53-PATCH-03DE50                    flagged                ✅ PATCHED
+  22   R-BPHS53-PATCH-0EC9A8                    flagged                ✅ PATCHED
+  23   R-BPHS53-PATCH-0F0AE5                    flagged                ✅ PATCHED
+  24   R-BPHS53-PATCH-683029                    flagged                ✅ PATCHED
+  25   R-BPHS53-PATCH-6CB14A                    flagged                ✅ PATCHED
+  26   R-BPHS53-PATCH-76A429                    flagged                ✅ PATCHED
+  27   R-BPHS53-PATCH-77CE04                    flagged                ✅ PATCHED
+  28   R-BPHS53-PATCH-A318DE                    flagged                ✅ PATCHED
+  29   R-BPHS53-PATCH-C604A1                    flagged                ✅ PATCHED
+  30   R-BPHS53-PATCH-C89F02                    flagged                ✅ PATCHED
+  31   R-BPHS53-PATCH-EB70F6                    flagged                ✅ PATCHED
+  32   R-BPHS53-PATCH-F28C85                    flagged                ✅ PATCHED
+  33   R-BPHS53-PATCH-F44FC6                    flagged                ✅ PATCHED
+  34   R-BPHS53-PATCH-F4678B                    flagged                ✅ PATCHED
+  35   R-BPHS53-PATCH-F9E11F                    flagged                ✅ PATCHED
+
+  ── BPHS54 ──
+  36   R-BPHS54-PATCH-267C0C                    flagged                ✅ PATCHED
+  37   R-BPHS54-PATCH-57F064                    flagged                ✅ PATCHED
+  38   R-BPHS54-PATCH-978D01                    flagged                ✅ PATCHED
+  39   R-BPHS54-PATCH-B98FFD                    flagged                ✅ PATCHED
+  40   R-BPHS54-PATCH-C3D51D                    flagged                ✅ PATCHED
+  41   R-BPHS54-PATCH-D39C3F                    flagged                ✅ PATCHED
+
+  ── BPHS55 ──
+  42   R-BPHS55-PATCH-03D34A                    flagged                ✅ PATCHED
+  43   R-BPHS55-PATCH-BCF6B4                    flagged                ✅ PATCHED
+
+  ── BPHS56 ──
+  44   R-BPHS56-PATCH-0003D2                    flagged                ✅ PATCHED
+  45   R-BPHS56-PATCH-064229                    flagged                ✅ PATCHED
+  46   R-BPHS56-PATCH-4F443D                    flagged                ✅ PATCHED
+  47   R-BPHS56-PATCH-6BCB5E                    flagged                ✅ PATCHED
+  48   R-BPHS56-PATCH-931CD1                    flagged                ✅ PATCHED
+  49   R-BPHS56-PATCH-A7E387                    flagged                ✅ PATCHED
+  50   R-BPHS56-PATCH-C18482                    flagged                ✅ PATCHED
+  51   R-BPHS56-PATCH-D52D1C                    flagged                ✅ PATCHED
+
+  ── BPHS57 ──
+  52   R-BPHS57-039                             flagged                ✅ PATCHED
+  53   R-BPHS57-040                             flagged                ✅ PATCHED
+  54   R-BPHS57-PATCH-0D45D7                    flagged                ✅ PATCHED
+  55   R-BPHS57-PATCH-1C6BF4                    flagged                ✅ PATCHED
+  56   R-BPHS57-PATCH-2085B1                    flagged                ✅ PATCHED
+  57   R-BPHS57-PATCH-79CED3                    flagged                ✅ PATCHED
+  58   R-BPHS57-PATCH-9A7BCC                    flagged                ✅ PATCHED
+
+  ── BPHS58 ──
+  59   R-BPHS58-PATCH-16D243                    flagged                ✅ PATCHED
+  60   R-BPHS58-PATCH-B6420B                    flagged                ✅ PATCHED
+  61   R-BPHS58-PATCH-C446ED                    flagged                ✅ PATCHED
+
+======================================================================
+Summary
+  Mode    : LIVE
+  Patched : 61 / 61
+  Skipped : 0
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_c_metadata_20260603_102754_live.log

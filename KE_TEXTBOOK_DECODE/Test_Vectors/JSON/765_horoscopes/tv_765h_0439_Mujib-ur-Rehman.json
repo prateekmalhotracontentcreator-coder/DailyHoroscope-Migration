@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0439",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0439",
+  "source_file": "0439_M-40_Mujib-ur-Rehman.pdf",
+  "subject": {
+    "name": "Mujib-ur-Rehman",
+    "name_from_filename": "Mujib-ur-Rehman",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1920-03-07",
+    "time_local": "21:09",
+    "timezone_offset_hours": 6.0,
+    "time_utc": "1920-03-07T15:09:00Z",
+    "latitude": 23.81,
+    "longitude": 90.412,
+    "place": "Dhaka, Bangladesh",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 4,
+    "months": 7,
+    "days": 20,
+    "raw_text": "balance of dasha Mar 4-7-20"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 11.1667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 24.0167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 23.75,
+      "retrograde": true
+    },
+    "LAGNA": {
+      "degree_in_sign": 7.5833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 16.0167,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 24.6333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 7.5833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

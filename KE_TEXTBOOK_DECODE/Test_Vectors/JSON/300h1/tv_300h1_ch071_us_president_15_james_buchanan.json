@@ -1,0 +1,215 @@
+{
+  "vector_id": "tv-300h1-ch071",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch071_US_PRESIDENT_15-JAMES_BUCHANAN",
+  "pdf_path": "Split_Chapters/Ch071_US_PRESIDENT_15-JAMES_BUCHANAN.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "James Buchanan",
+    "description": "James Buchanan, Jr. (23 Apr 1791 - 01 Jun 1868) was the 15th US President from",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1791-04-23",
+    "time_local": "11:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth; time marked rectified."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 18.4122,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 12.3844,
+      "house": 11,
+      "significations": [
+        3,
+        11
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 20.3042,
+      "house": 7,
+      "significations": [
+        2,
+        5,
+        7,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 2.4256,
+      "house": 11,
+      "significations": [
+        6,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 1.5614,
+      "house": 4,
+      "significations": [
+        4
+      ]
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 9.3108,
+      "house": 12,
+      "significations": [
+        3,
+        5,
+        11,
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 0.3997,
+      "house": 5,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 0.3997,
+      "house": 11,
+      "significations": [
+        11
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1868
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1868-06-01",
+    "age_at_death": 77,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Saturn (Democracy, 09-Federal) is in 10 Gob) and signifies 111h (Senate) through Mercury.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun and Venus are in proximity, while Jupiter is aspecting Venus, which grants a special status.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "07 and 101h lord Jupiter is in star of Sun (Government).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Jupiter signifies 10, 09 and Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "NIIURS PUBLISHING HOUSE, HYDERABAD Page# 121",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

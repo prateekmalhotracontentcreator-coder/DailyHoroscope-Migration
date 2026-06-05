@@ -1,0 +1,210 @@
+{
+  "vector_id": "tv-lu-ch38",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch38_Paul_Josef_Goebbels",
+  "pdf_path": "Chapter_Splits/Ch38_Paul_Josef_Goebbels.pdf",
+  "subject": {
+    "name": "Paul Josef Goebbels",
+    "description": "Nazi Propaganda Minister",
+    "nationality": "German"
+  },
+  "birth_data": {
+    "date": "1897-10-29",
+    "time_local": "23:30:00",
+    "timezone_offset_hours": 2.0,
+    "time_utc": "1897-10-29T21:30:00Z",
+    "latitude": 51.1667,
+    "longitude": 6.4167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-20-00.92",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 9.35,
+      "house": 1,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Libra",
+      "degree": 14.4167,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        2,
+        4,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 9.1667,
+      "house": 6,
+      "nakshatra": "I",
+      "pada": 3,
+      "significations": [
+        1,
+        6,
+        "Ke"
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 21.2167,
+      "house": 4,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        4,
+        5,
+        10,
+        6,
+        3,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 8.5333,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "significations": [
+        12,
+        3,
+        4,
+        "Ra"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 8.1,
+      "house": 3,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "significations": [
+        6,
+        9,
+        3,
+        4,
+        2
+      ]
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 18.3,
+      "house": 3,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        3,
+        4,
+        11,
+        6,
+        1
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 7.9,
+      "house": 5,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "significations": [
+        7,
+        8,
+        5
+      ]
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 8.8167,
+      "house": 7,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        7,
+        "Su",
+        "Ju",
+        "Sa",
+        "Ma"
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 19.4333,
+      "house": 6,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        "Venus"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "committed suicide 1st May 1945 by shooting",
+    "death_type": "suicide",
+    "death_date": "1897-10-29",
+    "age_at_death": 48,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "RAHU",
+      "pratyantardasha": "MOON",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Rahu-Rahu-Moon in his 48th year. · Rahu signified maraca (07) and (08) longevity, while Antara lord Moon signifies lagna"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Antara lord Moon signifies lagna (body).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "longevity of 48 years gave middle aayu for Goebbels.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

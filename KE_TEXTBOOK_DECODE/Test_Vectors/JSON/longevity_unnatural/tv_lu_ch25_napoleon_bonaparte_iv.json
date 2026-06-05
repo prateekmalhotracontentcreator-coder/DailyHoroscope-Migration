@@ -1,0 +1,76 @@
+{
+  "vector_id": "tv-lu-ch25",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch25_Napoleon_Bonaparte_IV",
+  "pdf_path": "Chapter_Splits/Ch25_Napoleon_Bonaparte_IV.pdf",
+  "subject": {
+    "name": "Napoleon Bonaparte IV",
+    "description": "French Ruling Family",
+    "nationality": "French"
+  },
+  "birth_data": {
+    "date": "1856-03-16",
+    "time_local": "03:30:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1856-03-16T02:30:00Z",
+    "latitude": 45.6333,
+    "longitude": 5.7333,
+    "place": "Paris, France",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-45-08.92",
+    "notes": " Birth chart shown as South Indian grid image only — KP body table not present in OCR output; planet positions cannot be extracted via pdfplumber."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {},
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": "1856-03-16",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "stated_by_author": false,
+      "raw_text": null
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "recovered, -his body had eighteen assegai wounds.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

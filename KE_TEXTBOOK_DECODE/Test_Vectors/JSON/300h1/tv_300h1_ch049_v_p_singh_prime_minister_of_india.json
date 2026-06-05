@@ -1,0 +1,222 @@
+{
+  "vector_id": "tv-300h1-ch049",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch049_V_P_SINGH_PRIME_MINISTER_OF_INDIA",
+  "pdf_path": "Split_Chapters/Ch049_V_P_SINGH_PRIME_MINISTER_OF_INDIA.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Vishwanath Pratap Singh",
+    "description": "Vishwanath Pratap Singh was Chief Minister of Uttar Pradesh, Union Minister and Prime",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1931-06-25",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": 12.6833,
+    "time_utc": null,
+    "latitude": 25.45,
+    "longitude": 81.85,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 13.4583,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 9.7814,
+      "house": 12,
+      "significations": [
+        2,
+        9,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 7.0678,
+      "house": 4,
+      "significations": [
+        1,
+        4,
+        9
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 15.1061,
+      "house": 2,
+      "significations": [
+        2,
+        4,
+        5,
+        10,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 4.0097,
+      "house": 12,
+      "significations": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 2.3439,
+      "house": 1,
+      "significations": [
+        1,
+        6,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 28.4661,
+      "house": 6,
+      "significations": [
+        1,
+        2,
+        6,
+        7,
+        8
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 17.5372,
+      "house": 9,
+      "significations": [
+        9
+      ]
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 17.5372,
+      "house": 3,
+      "significations": [
+        3
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "Prime Minister",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus, Sun and Jupiter are in proximity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is in lagna and Mars (05, 10, 11) is in star of Venus in 200 house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, Jupiter is in 10' house, while Sun signifies 101lJ house through Rahu (in house of Jupiter).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "071h lord Saturn is in star of Sun (Govt.).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations helped native to become a politician, Minister and later on as Prime Minister.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

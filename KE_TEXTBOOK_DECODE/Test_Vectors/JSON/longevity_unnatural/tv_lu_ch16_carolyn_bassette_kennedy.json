@@ -1,0 +1,229 @@
+{
+  "vector_id": "tv-lu-ch16",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch16_Carolyn_Bessette_Kennedy",
+  "pdf_path": "Chapter_Splits/Ch16_Carolyn_Bessette_Kennedy.pdf",
+  "subject": {
+    "name": "Carolyn Bassette Kennedy",
+    "description": "Wife of JFK Jr.",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1966-01-07",
+    "time_local": "08:45:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": "1966-01-07T13:45:00Z",
+    "latitude": 41.0333,
+    "longitude": -73.9667,
+    "place": "White Plains",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-17-08.93",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 17.1667,
+      "house": 1,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 23.5333,
+      "house": 12,
+      "nakshatra": "PSha",
+      "pada": 4,
+      "significations": [
+        8,
+        12,
+        "05)0",
+        1
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 28.4833,
+      "house": 6,
+      "nakshatra": "Puna",
+      "pada": 3,
+      "significations": [
+        6,
+        "07)2",
+        3
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 18.7833,
+      "house": 1,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "significations": [
+        1,
+        4,
+        7,
+        6,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 6.4333,
+      "house": 12,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        12,
+        6,
+        9,
+        11,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 0.35,
+      "house": 6,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "significations": [
+        6,
+        3,
+        12,
+        4,
+        11,
+        1
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 20.4667,
+      "house": 1,
+      "nakshatra": "Srav",
+      "pada": 4,
+      "significations": [
+        7,
+        5,
+        10,
+        6,
+        1
+      ]
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 19.6833,
+      "house": 2,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        1,
+        2,
+        5,
+        "Ra"
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 9.0167,
+      "house": 5,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "significations": [
+        5,
+        "Su",
+        "Ve"
+      ]
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 20.2,
+      "house": 1,
+      "nakshatra": "Srav",
+      "pada": 4,
+      "significations": [
+        "Moon"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "violent",
+    "death_date": "1966-01-07",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "MERCURY",
+      "antardasha": "MARS",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "MARS",
+      "stated_by_author": true,
+      "raw_text": "Mercury-Mars-Jupiter. ercury signifies 06, air planes and badhaka. Mars is the planet of injury, besides badhaka and lag"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "was the wife of John F. Kennedy, Jr., the son of assassinated U.S. President John F. Kennedy. Date: January 7, 1966 Time: 8:45:00 am Time Zone: 5:00:00 (West of GMT) Place: 73 W 58', 41 N 02' White Plains, New York, USA Lunar Yr-Mo: Viswa-vasu - Pushya Tithi: Krishna Pratipat (Su) Carolyn Jeanne Vedic Weekday: Friday (Ve) Bessette Kennedy Nakshatra: Punarvasu (Ju) Yoga: Vaidhriti (Ju) Hora Lord: Mercury Sunrise: 7:26:10 am Sunset: 4:38:24 pm Janma Ghatis: 3.2850 Ayanamsa: 23-17-08.93 Sidereal Time: 15:55:50 As: 17Cp10 Su: 23Sg33-AmK Mo: 28Ge29-AK Ma: 18Cp47-PK Me: 6Sg27-GK Ju (R): 0Ge21-DK Ve ",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "8th lord Sun is under the aspect of badhaka Jupiter.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna lord Saturn is under aspect of badhaka Jupiter from Q6th house.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "8th lord Sun (accident) is in Sagittarius and is aspected by Jupiter.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

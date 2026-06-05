@@ -1,0 +1,299 @@
+{
+  "vector_id": "tv-300h2-ch121",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch121_120_Warren_Harding",
+  "pdf_path": "Chapters/Ch121_120_Warren_Harding.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Us President# 29 ··Warren Harding",
+    "description": "Warren Gamiliel Harding (02 Nov 1865 - 02 Aug 1923) was the 29th US President from 1921 until his death in 1923. Mo HL Warren Harding Novemb<lr2. 16e5 1.,.:00:00 (S;OO.wor.t)",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1865-11-02",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "lagna_degree_stated": 26.323,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Libra",
+      "degree": 18.518,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        8,
+        10,
+        9
+      ],
+      "significations_raw": "08, 10,Ra,09"
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 10.794,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        4,
+        3
+      ],
+      "significations_raw": "07, 04,Ke,03"
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 21.164,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        10,
+        4,
+        11,
+        3,
+        12
+      ],
+      "significations_raw": "10, 04,11,03,12"
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 26.002,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6,
+        9,
+        10,
+        3,
+        12
+      ],
+      "significations_raw": "06,09 10,03,12"
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 21.019,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5,
+        9,
+        10,
+        4,
+        7
+      ],
+      "significations_raw": "05, 09, 10,04, 07"
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 12.148,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        2,
+        10,
+        9
+      ],
+      "significations_raw": "01 ,02,10,Ra, 09"
+    },
+    "RAHU": {
+      "sign": "Virgo",
+      "degree": 27.986,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        9
+      ],
+      "significations_raw": "09, Me, Ma,Ve"
+    },
+    "KETU": {
+      "sign": "Pisces",
+      "degree": 27.986,
+      "house": null,
+      "nakshatra": "Reva",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        3
+      ],
+      "significations_raw": "03, Ve, Me,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": "Pisces",
+      "degree": 24.03
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1865
+      },
+      {
+        "event": "Died",
+        "year": 1923
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": "1923-08-02",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "health",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mars is in the star of Visakha in Libra and is conjoined with Sun, while Venus is in Virgo.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars (11) is in 1011l house along with Sun and Saturn, while Venus (05, 10) is in 09the house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sun, Mercury and Mars are aspected by Moon (07).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter too signifies 10u1 house through Ketu (in Mercury star).AII these combinations suggest high level job and Governmental position.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "0811l significator is only Sun, which is in Rahu star, while Rahu is badhaka.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Hence longevity is not much assured.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Native died in his 561h year.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

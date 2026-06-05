@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0451",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0451",
+  "source_file": "0451_N-4_Nanavati_Cdr_KM-Navy.pdf",
+  "subject": {
+    "name": "Nanavati, Cdr KM-Navy",
+    "name_from_filename": "Nanavati, Cdr KM-Navy",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Military",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1922-05-01",
+    "time_local": "13:35",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1922-05-01T08:05:00Z",
+    "latitude": 19.076,
+    "longitude": 72.877,
+    "place": "Mumbai, Maharashtra, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 0,
+    "months": 0,
+    "days": 13,
+    "raw_text": "Balance of dasha Mar 0-0-13"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 7.4,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 15.5333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 25.1167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 2.15,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 8.9333,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 15.5333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 18.05,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 2.15,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

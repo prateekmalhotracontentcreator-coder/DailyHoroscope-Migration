@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0056",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0056",
+  "source_file": "0056_A-47_FM_Ayub_Khan-_Pak.pdf",
+  "subject": {
+    "name": "FM, Ayub Khan- Pak",
+    "name_from_filename": "FM, Ayub Khan- Pak",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1901-10-18",
+    "time_local": "10:53",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1901-10-18T05:23:00Z",
+    "latitude": 31.5333,
+    "longitude": 74.3667,
+    "place": "74E22 & 31N32",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 5,
+    "months": 3,
+    "days": 28,
+    "raw_text": "Balance of dasha Ket 5-3-28"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 3.1833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 10.15,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 1.65,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 14.2333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 14.35,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 7.4167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 18.2333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 24.75,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 21.1833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 24.75,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

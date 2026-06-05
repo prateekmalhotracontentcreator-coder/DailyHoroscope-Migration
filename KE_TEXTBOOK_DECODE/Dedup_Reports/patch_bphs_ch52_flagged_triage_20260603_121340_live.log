@@ -1,0 +1,15 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_ch52_flagged_triage_20260603_121340_live.log
+
+BPHS Ch.52 Flagged Triage Patch
+Mode    : LIVE
+Rules   : 3 PDF-confirmed → PHR + validator_error:True
+
+  1    R-BPHS52-040                        flagged              PATCHED  [Ch.52 slokas 21-22]
+  2    R-BPHS52-137                        flagged              PATCHED  [Ch.52 slokas 69-73]
+  3    R-BPHS52-138                        flagged              PATCHED  [Ch.52 slokas 69-73]
+
+SUMMARY
+  Patched : 0 / 3
+
+ENCODING ERROR:
+  R-BPHS52-040 : condition_text 'own sign' → should be 'debilitation sign'

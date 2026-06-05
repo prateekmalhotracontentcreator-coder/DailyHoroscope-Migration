@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0672",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0672",
+  "source_file": "0672_T-1_Tagore_Rabindra_Nath.pdf",
+  "subject": {
+    "name": "Tagore Rabindra Nath",
+    "name_from_filename": "Tagore Rabindra Nath",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Arts_Literature",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1861-05-07",
+    "time_local": "02:51",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1861-05-07T21:21:00Z",
+    "latitude": 22.65,
+    "longitude": 88.2167,
+    "place": "88E13 & 22N 39",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 12,
+    "months": 0,
+    "days": 25,
+    "raw_text": "Balance of dasha Mer 12-0-25"
+  },
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 7.8333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 0.1333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 23.05,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 20.5333,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 23.5833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 25.9333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 10.7333,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 23.6,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "vector_id": "tv-lu-ch40",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch40_Solomon_Bandaranaike",
+  "pdf_path": "Chapter_Splits/Ch40_Solomon_Bandaranaike.pdf",
+  "subject": {
+    "name": "Solomon Bandaranaike",
+    "description": "Prime Minister of Sri Lanka",
+    "nationality": "Sri Lankan"
+  },
+  "birth_data": {
+    "date": "1899-01-08",
+    "time_local": "08:40:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 6.9167,
+    "longitude": 79.8333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-21-00.82",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 28.2167,
+      "house": 1,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 25.3167,
+      "house": 12,
+      "nakshatra": "PSha",
+      "pada": 4,
+      "significations": [
+        8,
+        12,
+        10,
+        11,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 2.5667,
+      "house": 11,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "significations": [
+        7,
+        11,
+        3,
+        10,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 10.6,
+      "house": 7,
+      "nakshatra": "Push",
+      "pada": 3,
+      "significations": [
+        11,
+        4,
+        7,
+        1,
+        2
+      ]
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 2.1833,
+      "house": 12,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        6,
+        9,
+        12,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 14.6167,
+      "house": 10,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        3,
+        12,
+        10,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 14.7333,
+      "house": 11,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": [
+        1,
+        2,
+        11,
+        5,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 26.1,
+      "house": 11,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        1,
+        2,
+        11,
+        6,
+        12,
+        9
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 15.75,
+      "house": 12,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "significations": [
+        12,
+        "Ju",
+        "Ve",
+        "Su",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 15.75,
+      "house": 6,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        6,
+        "Ra",
+        "Me",
+        "Su",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "Bandaranaike",
+    "death_type": "unknown",
+    "death_date": "1899-01-08",
+    "age_at_death": 60,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "VENUS",
+      "pratyantardasha": "VENUS",
+      "sookshma": "SATURN",
+      "stated_by_author": true,
+      "raw_text": "Venus-Mer-Venus, which conferred him medium range of longevity of 33-66 years. · Dasha lord Venus is badhaka and is in l"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Venus is badhaka and is in lagna lord Saturn star.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "badhaka, but 08th lord Sun is posited in lagna, and 03rct lord Jupiter is in lOth house gave some solace for longevity.",
+      "condition_type_guess": "maraka_badhaka",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-063"
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08th lord Sun is in Venus star Purva Ashada, whereas Venus an occupant of badhaka house ~ong with lagna lord Saturn.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "lagna lord Saturn signifying planet Saturn, and aspects lagna.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "lagna lord Saturn, lagna and 08th (longevity) becomes afflicted and weak.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Lagna lord Saturn signifies badhaka, but 08th lord Sun is posited in lagna, and 03rct lord Jupiter is in lOth house gave some solace for longevity.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "longevity of 33-66 years.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

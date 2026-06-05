@@ -1,0 +1,274 @@
+{
+  "vector_id": "tv-300h2-ch019",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch019_18_Pope_Pious_XI",
+  "pdf_path": "Chapters/Ch019_18_Pope_Pious_XI.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Pius Xi",
+    "description": "HL. Rasi Pope Pius XI May 31, 1857 Mo 7:58:00 (2~00 east) QE13,45N37",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "1857-05-31",
+    "time_local": "07:58:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "lagna_degree_stated": 20.188,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 17.916,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        12,
+        2
+      ],
+      "significations_raw": "03 12 02"
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 25.868,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        12
+      ],
+      "significations_raw": "02,03,12"
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 19.823,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        6,
+        11
+      ],
+      "significations_raw": "06,11"
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 19.569,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        1,
+        4,
+        12,
+        2,
+        3
+      ],
+      "significations_raw": "01 ,04, 12,02,03"
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 11.848,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7,
+        10,
+        11,
+        4
+      ],
+      "significations_raw": "07,10,11,04,Ke"
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 19.654,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        5,
+        11,
+        12
+      ],
+      "significations_raw": "05,11,12"
+    },
+    "SATURN": {
+      "sign": "Gemini",
+      "degree": 21.075,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        7,
+        8,
+        9,
+        1,
+        0,
+        11
+      ],
+      "significations_raw": "01 ,07,08,09,1 0,11"
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 11.072,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        10
+      ],
+      "significations_raw": "10,Sa,Ju"
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Religious Leader",
+    "profession_category": "Religion",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Religion",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Keiu 11 Vi 04' 18 Hast 1 04,Mo,Me Jupiter is lord of 07 and it is in Ketu star, while Ketu signifies a barren sign.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "061h lord Mars aspects 07th house from 12th house.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn also throws its obstacle and it is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "These combinations led native to remain Bachelor.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign, Sun is in 10th house along with Mars.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "From Lagna Jupiter becomes 10th lord.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "These combinations led native to be at highest level and head of the Government.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "vector_id": "tv-300h2-ch117",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch117_116_John_D_Rockefeller",
+  "pdf_path": "Chapters/Ch117_116_John_D_Rockefeller.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Billionaire--John D Rockefeller Sr",
+    "description": "John Davison Rockefeller (08 Jul 1839 - 23 May 1937) was an American Industrialist and Philanthropist: \" Ma Su; 24 G<t 44-N< Mo: 1 Ge 31· OK Ma; ,_. V144-I'K Me: ..Ju: 18VI-52·AmK Ve: 11Le20-PIK Sa (R): 12S<:5~MK",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1839-07-08",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 24.727,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3,
+        5,
+        9,
+        12,
+        6
+      ],
+      "significations_raw": "03,05,09,12 06"
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 1.521,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        3,
+        1,
+        8,
+        6
+      ],
+      "significations_raw": "04,03,01,08,06"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 14.738,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        8,
+        6,
+        4,
+        3
+      ],
+      "significations_raw": "01, 08,06,04,03"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 18.862,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        6,
+        9,
+        12,
+        3,
+        4
+      ],
+      "significations_raw": "06,09,12,03,04"
+    },
+    "VENUS": {
+      "sign": "Leo",
+      "degree": 9.327,
+      "house": null,
+      "nakshatra": "Maah",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        7,
+        5
+      ],
+      "significations_raw": "02,07,05,Ke"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 12.891,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        8,
+        10,
+        11
+      ],
+      "significations_raw": "08,10,11"
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": 27.431,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11,Ra,Ju,Ve Sa"
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 27.431,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05,Ve,Su,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1839
+      },
+      {
+        "event": "Died",
+        "year": 1937
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1937-05-23",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter and Venus are in proximity with 02/12, while Venus is conjunct with Ketu, who denotes.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Rahu signifies Venus (02, 07) and Saturn 10 & 11, and it is in star of Jupiter, who is in 06.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, Jupiter is lord of 07 and 10 and is aspecting it, while Mars is aspecting it.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Jupiter, Moon, Rahu, Mars signify 0200 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn (10) and Venus (07) are linked through Ketu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Saturn-Venus could denote oil (chemical), which is drilled from underground (Scorpio) and from sea (Saturn is in a watery sign).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Ketu (give up) signifies 0200 house (funds) through Venus, while Rahu (signifies 09, 10, 11, 12) through Saturn and Jupiter could be the reason for charity, as 9 signifies charity, and 11 & 12 combinations indicate lack of interest in keeping money, when 0200 house and Ketu are linked.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

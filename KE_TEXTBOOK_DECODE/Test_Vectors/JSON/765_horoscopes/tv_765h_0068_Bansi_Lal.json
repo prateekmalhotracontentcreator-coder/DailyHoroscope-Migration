@@ -1,0 +1,105 @@
+{
+  "vector_id": "tv-765h-0068",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0068",
+  "source_file": "0068_B-9_Bansi_Lal.pdf",
+  "subject": {
+    "name": "Bansi Lal",
+    "name_from_filename": "Bansi Lal",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Minister",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1927-08-26",
+    "time_local": "06:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1927-08-26T00:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Bhiwani",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 7,
+    "months": 0,
+    "days": 9,
+    "raw_text": "Balance of dasha Mer 7-0-9"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 9.0167,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 2.85,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 24.4833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 1.3333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 8.0667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 8.9333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 27.15,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 2.85,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 8.5167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 1.55,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 8.0667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Minister",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

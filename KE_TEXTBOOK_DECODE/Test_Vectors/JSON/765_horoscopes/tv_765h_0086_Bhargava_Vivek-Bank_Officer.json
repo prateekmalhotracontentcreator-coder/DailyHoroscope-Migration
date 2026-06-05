@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0086",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0086",
+  "source_file": "0086_B-27_Bhargava_Vivek-Bank_Officer.pdf",
+  "subject": {
+    "name": "Bhargava, Vivek",
+    "name_from_filename": "Bhargava, Vivek-Bank Officer",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Bank Officer",
+    "profession_category": "Other",
+    "profession_subcategory": "Bank Officer",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1962-09-13",
+    "time_local": "22:35",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1962-09-13T17:05:00Z",
+    "latitude": 26.847,
+    "longitude": 80.947,
+    "place": "Lucknow, Uttar Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 15,
+    "months": 4,
+    "days": 24,
+    "raw_text": "Balance of dasha Jup 15-4-24"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 20.5667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 12.6833,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 14.95,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 20.5,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 11.9833,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 27.1,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 14.95,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 12.8,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 23.65,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Bank Officer",
+    "profession_category": "Other",
+    "profession_subcategory": "Bank Officer",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

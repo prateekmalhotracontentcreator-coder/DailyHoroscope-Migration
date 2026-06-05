@@ -1,0 +1,251 @@
+{
+  "vector_id": "tv-300h1-ch125",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch125_SRILANKAN_POLITICAL_LEADER--GAMINI_DISSANAYAKE",
+  "pdf_path": "Split_Chapters/Ch125_SRILANKAN_POLITICAL_LEADER--GAMINI_DISSANAYAKE.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Lionel Gamini Dissanayake",
+    "description": "Lionel Gamini Dissanayake (20 Mar 1942-24 Oct 1994) was a prominent Sri Lankan",
+    "nationality": "Sri Lankan"
+  },
+  "birth_data": {
+    "date": "1942-03-20",
+    "time_local": null,
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": 7.2,
+    "longitude": 80.5667,
+    "place": "Kothmale, Sri Lanka",
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-57-12.19",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 23.9292,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 18.9281,
+      "house": 7,
+      "significations": [
+        1,
+        4,
+        7,
+        8,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 14.9497,
+      "house": 8,
+      "significations": [
+        2,
+        7,
+        8,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 12.0514,
+      "house": 5,
+      "significations": [
+        5,
+        9,
+        11,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 21.3856,
+      "house": 8,
+      "significations": [
+        3,
+        6,
+        7,
+        8,
+        10
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 23.0167,
+      "house": 4,
+      "significations": [
+        1,
+        4,
+        7,
+        8,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 1.4722,
+      "house": 8,
+      "significations": [
+        4,
+        5,
+        6,
+        8,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 19.7253,
+      "house": 5,
+      "significations": [
+        5
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1994
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1994-10-24",
+    "age_at_death": 52,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Rahu is in Leo (Sun) and it is in star of Venus.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Venus signifies 10 through Moon and thus Rahu (Sun) too.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars and Jupiter signify 10 through Moon.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "But their link to 08 indicates drudgery and deceit.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Saturn is in star of badhaka Sun.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Rahu offers badhaka Sun, Venus and Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "They contribute to destruction of body too.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

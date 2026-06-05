@@ -1,0 +1,139 @@
+{
+  "vector_id": "tv-lu-ch26",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch26_Gen_Mohd_Zia_Ul_Haq",
+  "pdf_path": "Chapter_Splits/Ch26_Gen_Mohd_Zia_Ul_Haq.pdf",
+  "subject": {
+    "name": "Gen. Mohd. Zia Ul Haq",
+    "description": "President of Pakistan",
+    "nationality": "Pakistani"
+  },
+  "birth_data": {
+    "date": "1924-08-12",
+    "time_local": "20:03:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1924-08-12T14:33:00Z",
+    "latitude": 31.6,
+    "longitude": 71.3167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-42-27.29",
+    "notes": " Birth chart shown as South Indian grid image only — KP body table not present in OCR output; planet positions cannot be extracted via pdfplumber."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {},
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "accident",
+    "death_type": "unknown",
+    "death_date": "1924-08-12",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "stated_by_author": false,
+      "raw_text": null
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Moon is lord of 06th house and signifies O]th house (injury and maraca).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is in lagna and signifies Rahu, who denotes 06, 07 and 08th .houses.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mercury is lord of 08 (longevity, accidents) and is posited in maraca house. It is aspecting lagna from Badhaka Venus star.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter is lord of 02 (maraca) and is in the star of Mercury, who is ma·raca and 08th lord. · ·",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Venus is badhaka lord and signifies Rahu, who is maraca and signifies lagna. ·",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Saturn is posited in badakha house and is in the star of Mars. ·'. . . , . '",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Rahu denotes 01, · 06, 07, cis, Mars, etc.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Ketu signifies ·Mars, Rahu~ ··saturn, etc~· who are linked to detrimental houses. to :Hente the -~~·gha and oath. are weak and they are linked. o6, r:naraca &. badhak~ ariq _Mars ~6 be. susceptible to attac:k: by ·an object or. ~m accident and death. thereupon. due to mar:aca ··and badhka links. · - .·• . Dash a and Sool(shma lord Saturn is lord, pf lagna and is:posited in· badhaka. house;: in the staf-of Mars. · · ... .. . ·I ·. . . i • · . Bhukti lorc;!Ve~us is posited·in Ratiu star Arudra. Rahu signifies maraca (07) and Sun (06-injury .and 'enemy}.. Rahu is conjoined with -Mercu,.Y,_w ho· s",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

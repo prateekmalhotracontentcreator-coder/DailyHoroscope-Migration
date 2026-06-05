@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0228",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0228",
+  "source_file": "0228_G-21_George-VI_King_of_Britain.pdf",
+  "subject": {
+    "name": "George",
+    "name_from_filename": "George-VI, King of Britain",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "VI, King of Britain",
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "King",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1895-12-14",
+    "time_local": "03:05",
+    "timezone_offset_hours": 0.0,
+    "time_utc": "1895-12-14T03:05:00Z",
+    "latitude": 51.507,
+    "longitude": -0.128,
+    "place": "London, United Kingdom",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 1,
+    "months": 1,
+    "days": 0,
+    "raw_text": "Balance of dasha Jup 1-1-0"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 14.5167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 14.5167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 2.4333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 4.4,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 8.4333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 25.8333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 13.35,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 29.5,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 22.35,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 4.4,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "VI, King of Britain",
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "King",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

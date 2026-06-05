@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0177",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0177",
+  "source_file": "0177_D-32_Ms_Divya_Gupta_USA-.pdf",
+  "subject": {
+    "name": "Ms Divya Gupta USA-",
+    "name_from_filename": "Ms Divya Gupta USA-",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Royalty_Nobility",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1968-11-24",
+    "time_local": "08:25",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1968-11-24T02:55:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 3,
+    "months": 8,
+    "days": 27,
+    "raw_text": "Balance of dasha Sun 3-8-27"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 14.6667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 25.9333,
+      "retrograde": true
+    },
+    "MOON": {
+      "degree_in_sign": 1.6833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 1.1833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 7.55,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 8.45,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 14.6667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 27.25,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 15.5667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 27.25,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,34 @@
+======================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_bucket_b_20260603_102524_dryrun.log
+======================================================================
+
+BPHS Vol 2 Phase 1 — Bucket B Patch
+Mode    : 🟡 DRY RUN — no changes
+Rules   : 13
+Action  : flagged → pending_human_review + validator_error:true
+
+#    Rule ID                             Pre-status             Result
+────────────────────────────────────────────────────────────────────────────────
+  1    R-BPHS47-040                        flagged                🟡 DRY RUN
+  2    R-BPHS47-PATCH-FAB97F               flagged                🟡 DRY RUN
+  3    R-BPHS53-PATCH-07021E               flagged                🟡 DRY RUN
+  4    R-BPHS53-PATCH-167D28               flagged                🟡 DRY RUN
+  5    R-BPHS53-PATCH-F6F702               flagged                🟡 DRY RUN
+  6    R-BPHS54-PATCH-B9935D               flagged                🟡 DRY RUN
+  7    R-BPHS54-PATCH-F7EB29               flagged                🟡 DRY RUN
+  8    R-BPHS55-PATCH-7910FC               flagged                🟡 DRY RUN
+  9    R-BPHS56-042                        flagged                🟡 DRY RUN
+  10   R-BPHS56-PATCH-6CC98D               flagged                🟡 DRY RUN
+  11   R-BPHS56-PATCH-741DB0               flagged                🟡 DRY RUN
+  12   R-BPHS57-PATCH-FA9AEE               flagged                🟡 DRY RUN
+  13   R-BPHS58-PATCH-69208E               flagged                🟡 DRY RUN
+
+======================================================================
+Summary
+  Mode    : DRY RUN
+  Patched : 13 / 13
+  Skipped : 0
+
+  Re-run with --live to apply.
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_bucket_b_20260603_102524_dryrun.log

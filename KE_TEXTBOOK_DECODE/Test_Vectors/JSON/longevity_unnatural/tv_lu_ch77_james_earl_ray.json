@@ -1,0 +1,294 @@
+{
+  "vector_id": "tv-lu-ch77",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch77_James_Earl_Ray",
+  "pdf_path": "Chapter_Splits/Ch77_James_Earl_Ray.pdf",
+  "subject": {
+    "name": "James Earl Ray",
+    "description": "Assassin of Martin Luther King",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1928-03-10",
+    "time_local": "15:00:00",
+    "timezone_offset_hours": -6.0,
+    "time_utc": "1928-03-10T21:00:00Z",
+    "latitude": 38.8906,
+    "longitude": -90.1842,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-45-27.08",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 21.6833,
+      "house": 1,
+      "nakshatra": "Asre",
+      "pada": 2,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 27.3,
+      "house": 8,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "significations": [
+        2,
+        6,
+        8,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 16.3833,
+      "house": 4,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "significations": [
+        1,
+        "04)1",
+        "Ra"
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 16.05,
+      "house": 7,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "significations": [
+        7,
+        5,
+        10,
+        4,
+        1
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 3.5333,
+      "house": 8,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": [
+        12,
+        3,
+        8,
+        7,
+        5,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 17.3833,
+      "house": 9,
+      "nakshatra": "a",
+      "pada": 1,
+      "significations": [
+        6,
+        9,
+        12,
+        3,
+        8
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 28.3333,
+      "house": 7,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "significations": [
+        "04)1",
+        7,
+        "05)0"
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 26.1,
+      "house": 5,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "significations": [
+        7,
+        8,
+        5,
+        12,
+        3
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 21.1833,
+      "house": 11,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "significations": [
+        "Sa",
+        "Mo",
+        "Ve"
+      ]
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 21.1833,
+      "house": 5,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "significations": [
+        "Sa",
+        "Me",
+        "Ma)u"
+      ]
+    }
+  },
+  "life_events": [
+    {
+      "event_id": "ev-001",
+      "event_type": "life_threatening_event",
+      "description": "was shot dead at 6:01 p.",
+      "date": null,
+      "age_at_event": null,
+      "survived": true,
+      "dasha_at_event": {
+        "mahadasha": "MERCURY",
+        "antardasha": "MERCURY",
+        "pratyantardasha": "MOON",
+        "sookshma": null,
+        "stated_by_author": true,
+        "raw_text": "Mercury-Mercury-Moon. After pleading guilty he was sentenced to ninety-nine years in prison. But Ray and six other convi"
+      }
+    }
+  ],
+  "death_data": {
+    "cause_of_death": "weapon for Ray",
+    "death_type": "violent",
+    "death_date": "1928-03-10",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "MERCURY",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "MOON",
+      "sookshma": null,
+      "stated_by_author": true,
+      "raw_text": "Mercury-Mercury-Moon. After pleading guilty he was sentenced to ninety-nine years in prison. But Ray and six other convi"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Cancer is rising for the native and the lagna lord Moon is posited in Rahu star, while Rahu is a badhaka occupant.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna falls in the star of Mercury, who occupies 08th house and is in the star of Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars, lord of OS and 10, is aspecting lagna. 08th house is occupied by Sun and Mercury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun signifies Jupiter (06, 0.9). S) While Mercury signifies 03, 12, 08, OS, 10, 07 houses, lagna lord Moon is in Rahu star in Swati.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "07 and 08th lord Saturn is in OSth house (punya).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "09th lord Jupiter (Punya) is in own house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Apart from the above planet like Saturn, Mercury, Sun, Jupiter, Ketu, Rahu and Moon do signify 08th house. These combinations do not really pave way for injury and death by weapon for Ray. From Mar 1969 until his death in prison on April 23, 1998, at seventy years of age Ray was in jail. He died of complications related to kidney disease and liver failure. James Earl Ray 319 As events suggest, assassin Ray who killed a charismati~ personality like Dr. Martin Luther King Jr. but was not awarded with death penalty. · In March, 1969 Ray confessed to crime, he was running the VMD of Mercury-Mercur",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "lagna lord Moon is posited in Rahu star, while Rahu is a badhaka occupant.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "escaped from Brushy Mountain State Penitentiary in Tennessee on June 10, 1977, They were recaptured on June 13, three days later, and returned to prison.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

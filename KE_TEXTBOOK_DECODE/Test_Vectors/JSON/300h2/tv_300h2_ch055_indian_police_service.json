@@ -1,0 +1,207 @@
+{
+  "vector_id": "tv-300h2-ch055",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch055_54_Indian_Police_Service_2",
+  "pdf_path": "Chapters/Ch055_54_Indian_Police_Service_2.pdf",
+  "public_figure": false,
+  "subject": {
+    "name": "Indian Police Service",
+    "description": "The following natal chart belongs to an IPS officer:",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1957-02-14",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 26.4833,
+    "longitude": 76.7167,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Aslesha",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": 2.398,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        8,
+        2,
+        5,
+        10
+      ],
+      "significations_raw": "08,02 05,10"
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 29.799,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01"
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 17.232,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11,
+        5,
+        7,
+        10,
+        4
+      ],
+      "significations_raw": "11,05,07,10,04"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 7.311,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        2,
+        3,
+        6,
+        9,
+        8
+      ],
+      "significations_raw": "02,03,06,09,08"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": 17.679,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7,
+        4,
+        11,
+        1
+      ],
+      "significations_raw": "07,04,11,01"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 19.991,
+      "house": null,
+      "nakshatra": "Jve",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        7,
+        8,
+        12,
+        3
+      ],
+      "significations_raw": "05,07 08,12,03"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 1.191,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Ju,Ma"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 1.191,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Su,Ve,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Law Enforcement",
+    "profession_category": "Law Enforcement",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Law Enforcement",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mars is in 10 Gob), while Sun (Government) is in star of Mars, 09fh lord Jupiter is in star of Sun, Mars signifies 07 through Venus, All these combinations with Jupiter not really connected to 101h house gave job of IPS for native, Rahu signifies Jupiter (09), Mars (investigation) and Saturn (08-mystical) (ancient science) show interest and study of ancient science like Astrology,",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

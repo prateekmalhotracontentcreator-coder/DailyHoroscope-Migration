@@ -1,0 +1,258 @@
+{
+  "vector_id": "tv-300h2-ch141",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch141_140_President_Gerald_Ford",
+  "pdf_path": "Chapters/Ch141_140_President_Gerald_Ford.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Us President# 38 •• Gerald Ford",
+    "description": "Gerald Rudolf Ford was the 381h US President. He became Vice President and President at the cost of someone. d Ma Ra As Rasi Gerald Ford",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "lagna_degree_stated": 20.618,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 28.653,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        5,
+        3,
+        9,
+        12
+      ],
+      "significations_raw": "05,03,09,12"
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 11.378,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        8,
+        2,
+        10,
+        11
+      ],
+      "significations_raw": "04 08,02,10,11"
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 27.026,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        8,
+        3,
+        5
+      ],
+      "significations_raw": "01,08,03,05"
+    },
+    "MERCURY": {
+      "sign": "Cancer",
+      "degree": 23.589,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        6,
+        4
+      ],
+      "significations_raw": "03,06,04"
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 19.286,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        9,
+        12,
+        2,
+        7
+      ],
+      "significations_raw": "09,12,02,07"
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 13.331,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        7,
+        4,
+        8
+      ],
+      "significations_raw": "02,07,04,08"
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 20.651,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        10,
+        11,
+        4,
+        8
+      ],
+      "significations_raw": "02,10,11,04,08"
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 4.891,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Sa,Ju"
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 4.891,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Su,Me"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Aquarius",
+      "degree": 16.05
+    },
+    "ghati_lagna": {
+      "sign": "Cancer",
+      "degree": 28.33
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From Moon sign, Jupiter is in 02nd house and aspects 10, while Sun is the lord of 10th house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sun is under aspect from Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is in star of Sun and hence signifies 10th house from Moon.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "12th lord from lagna, Jupiter is aspecting 08th lord Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "These combinations helped Ford to lead his country, that too on unusual circumstances at the cost of someone.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "vector_id": "tv-300h1-ch043",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch043_US_PRESIDENT_14-FRANKLIN_PIERCE",
+  "pdf_path": "Split_Chapters/Ch043_US_PRESIDENT_14-FRANKLIN_PIERCE.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Franklin Pierce",
+    "description": "Franklin Pierce (23 Nov 1804- 08 Oct 1869) was an American politician and lawyer,",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1804-11-23",
+    "time_local": "02:12:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth; time marked rectified."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Cancer",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 12.9533,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 9.8158,
+      "house": 3,
+      "significations": [
+        1,
+        3,
+        5,
+        6,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 29.0697,
+      "house": 11,
+      "significations": []
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 23.8975,
+      "house": 11,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 7.6447,
+      "house": 3,
+      "significations": [
+        1,
+        3,
+        5,
+        6,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 28.4533,
+      "house": 2,
+      "significations": [
+        2,
+        4,
+        7
+      ]
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 27.1567,
+      "house": 1,
+      "significations": [
+        1,
+        2,
+        3,
+        8,
+        9,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 21.8478,
+      "house": 1,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 7.5653,
+      "house": 5,
+      "significations": [
+        5
+      ]
+    },
+    "KETU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": [
+      {
+        "event": "Death",
+        "year": 1869
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Death (cause unspecified)",
+    "death_type": "unknown",
+    "death_date": "1869-10-08",
+    "age_at_death": 65,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From Moon sign, Mars is lord of 101h house, while Jupiter is aspecting 10 house from own star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Rahu is Sun star (Government} and it signifies 101h house through Mars (power}.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From lagna, Mars signifies 10 and 11, while Jupiter (07} aspects 10 house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "combinations assisted native to reach high level.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

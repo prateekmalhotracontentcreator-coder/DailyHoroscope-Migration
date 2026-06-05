@@ -1,0 +1,336 @@
+{
+  "vector_id": "tv-lu-ch19",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch19_John_Wilkes_Booth",
+  "pdf_path": "Chapter_Splits/Ch19_John_Wilkes_Booth.pdf",
+  "subject": {
+    "name": "John Wilkes Booth",
+    "description": "Assassin of Abraham Lincoln",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1838-05-10",
+    "time_local": "17:00:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": "1838-05-10T22:00:00Z",
+    "latitude": 39.5333,
+    "longitude": -76.3333,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-30-11.95",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Libra",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Libra",
+      "degree": 4.0167,
+      "house": 1,
+      "nakshatra": "Chit",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aries",
+      "degree": 28.2333,
+      "house": 7,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "significations": [
+        11,
+        7
+      ]
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 12.5833,
+      "house": 2,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        10,
+        2,
+        4,
+        5
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 12.1,
+      "house": 7,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "significations": [
+        2,
+        7,
+        "Ke"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 8.0333,
+      "house": 8,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "significations": [
+        8,
+        7,
+        11,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 17.3333,
+      "house": 11,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        1,
+        3,
+        6,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Pisces",
+      "degree": 12.2833,
+      "house": 6,
+      "nakshatra": "UBha",
+      "pada": 3,
+      "significations": [
+        1,
+        6,
+        8,
+        4,
+        5,
+        2
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 4.4667,
+      "house": 2,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "significations": [
+        4,
+        5,
+        2
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 19.9,
+      "house": 6,
+      "nakshatra": "a",
+      "pada": 1,
+      "significations": [
+        6,
+        "Ve",
+        "Me",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Virgo",
+      "degree": 19.9,
+      "house": 12,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        12,
+        "Mo",
+        "Me",
+        "Ve"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "shot dead",
+    "death_type": "violent",
+    "death_date": "1838-05-10",
+    "age_at_death": 27,
+    "dasha_at_death": {
+      "mahadasha": "KETU",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "SATURN",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Ketu-Jupiter-Saturn-Venus. Dasha lord Ketu signifies Moon (02-maraca) and Mercury (08- longevity). Bhukti lord Jupiter i"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna star lord is Mars, who signifies maraca 02, 07 houses.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Mars is maraca lord and aspects lagna forcing the body to undergo injury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is posited in Ketu star Ashwini, while Ketu signifies 01, 06 and QSth house by aspect of Venus.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Lagna and Q8th sign lord is Venus, who is in Q6th house and signifies 01, 08 and 02 also.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sun is the badhaka and is in own star in maraca house. Sun aspects lagna, making the lagna weak.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Occupant of QSth house is Mercury, who is in maraca and badhka Sun star. Hence the Q8th hollse has become weak.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mercury is further aspected by Saturn and Moon from maraca 02nd house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Mars aspects Saturn, while Saturn is posited in Mars sign.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Jupiter, who is posited in badhaka house, is in Venus star, who is lagna and QSth lord. All these combinations make the lagna ·and QSth vulnerable to affliction and it is connected to. Q6th and Mars along with maraca and badhaka. Assassin Booth was shot dead during the VMD of Ketu-Jupiter-Saturn-Venus. Dasha lord Ketu signifies Moon (02-maraca) and Mercury (08- longevity). Bhukti lord Jupiter is badhka and lord of 06 (enemy and injury). Antara lord Saturn signifies 02 (maraca) a.nd is under aspect of Mars (injury). Mars signifies military or armed police. Saturn is under aspect of Mercury from",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Dasha lord Ketu signifies Moon (02-maraca) and Mercury (08- longevity).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Bhukti lord Jupiter is badhka and lord of 06 (enemy and injury).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "bhukti lord Jupiter is posited in Ketu star.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Antara lord Saturn signifies 02 (maraca) a.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-014",
+      "verbatim": "Antara lord Saturn is posited in Mars star Chitra in Libra, which happens to be the natal lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-015",
+      "verbatim": "Sookshma lord Venus signifies 01, 02, 06, 08 denoting self, maraca, injury & enemy, accidents & longevity respectively.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-016",
+      "verbatim": "longevity of alpa aayu.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

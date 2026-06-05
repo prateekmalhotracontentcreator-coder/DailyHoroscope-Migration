@@ -1,0 +1,81 @@
+{
+  "vector_id": "tv-765h-0161",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0161",
+  "source_file": "0161_D-16_Devanand-actor.pdf",
+  "subject": {
+    "name": "Devanand",
+    "name_from_filename": "Devanand-actor",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "actor",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actor",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1923-01-26",
+    "time_local": "09:32",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1923-01-26T04:02:00Z",
+    "latitude": 32.7333,
+    "longitude": 75.4667,
+    "place": "75E28 & 32N44",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 10,
+    "months": 10,
+    "days": 24,
+    "raw_text": "Balance of dasha Mer 10-10-24"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 21.45,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 18.6833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 18.6833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 23.2,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "actor",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actor",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

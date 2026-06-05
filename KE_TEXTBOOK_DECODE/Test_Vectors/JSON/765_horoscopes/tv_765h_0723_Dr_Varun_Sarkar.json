@@ -1,0 +1,81 @@
+{
+  "vector_id": "tv-765h-0723",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0723",
+  "source_file": "0723_V-4_Dr_Varun_Sarkar.pdf",
+  "subject": {
+    "name": "Dr Varun Sarkar",
+    "name_from_filename": "Dr Varun Sarkar",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Royalty_Nobility",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1973-06-07",
+    "time_local": "03:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1973-06-07T21:50:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 1,
+    "months": 6,
+    "days": 8,
+    "raw_text": "Balance of dasha Ket 1-6-8"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 22.5167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 27.1667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 18.55,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 14.3833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

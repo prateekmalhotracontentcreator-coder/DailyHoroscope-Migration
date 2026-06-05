@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0529",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0529",
+  "source_file": "0529_P-40_Prabhupad_Srila_Swami.pdf",
+  "subject": {
+    "name": "Prabhupad Srila Swami",
+    "name_from_filename": "Prabhupad Srila Swami",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Swami",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1896-09-01",
+    "time_local": "16:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1896-09-01T10:30:00Z",
+    "latitude": 22.573,
+    "longitude": 88.364,
+    "place": "Kolkata, West Bengal, India",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 4,
+    "months": 4,
+    "days": 2,
+    "raw_text": "Balance of dasha Mar 4-4-2"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 16.95,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 28.4,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 2.0833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 2.0333,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 2.0833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 17.0333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 1.8167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 11.15,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Spiritual_Religious",
+    "profession_subcategory": "Swami",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "vector_id": "tv-765h-0579",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0579",
+  "source_file": "0579_R-38_Dr_Ravi_Sethi.pdf",
+  "subject": {
+    "name": "Dr Ravi Sethi",
+    "name_from_filename": "Dr Ravi Sethi",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1947-09-06",
+    "time_local": "23:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1947-09-06T18:10:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Quewta",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 2.3,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 3.1833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 24.3333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 23.15,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 20.1833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 21.0333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 28.0,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 3.1833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 24.3333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0286",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0286",
+  "source_file": "0286_I-3_lmran_Khan-Pak.pdf",
+  "subject": {
+    "name": "lmran Khan-Pak",
+    "name_from_filename": "lmran Khan-Pak",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1952-11-25",
+    "time_local": "06:45",
+    "timezone_offset_hours": 5.0,
+    "time_utc": "1952-11-25T01:45:00Z",
+    "latitude": 31.558,
+    "longitude": 74.352,
+    "place": "Lahore, Punjab, Pakistan",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "RAHU",
+    "years": 4,
+    "months": 9,
+    "days": 24,
+    "raw_text": "Balance of dasha Rah 4-9-24"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 20.5167,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 16.95,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 9.25,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 22.2167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 3.6167,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 9.5167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 17.95,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 28.9333,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 3.6167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

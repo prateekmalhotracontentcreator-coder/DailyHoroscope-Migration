@@ -1,0 +1,328 @@
+{
+  "vector_id": "tv-300h2-ch101",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch101_100_Rahul_Bajaj",
+  "pdf_path": "Chapters/Ch101_100_Rahul_Bajaj.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Industrialist--Rahul Bajaj",
+    "description": "Rahul Bajaj is a businessman and the Chairman of Bajaj group of Companies. He is also a Parliamentarian.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "05:10:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 25.549,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        1,
+        12,
+        7,
+        2
+      ],
+      "significations_raw": "04 01,12,07,02"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 22.315,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6,
+        3,
+        8,
+        10,
+        11
+      ],
+      "significations_raw": "06,03,08,10,11"
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 9.046,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        12,
+        2,
+        7
+      ],
+      "significations_raw": "12 02 07 Ra"
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 10.782,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        5,
+        3,
+        6,
+        1
+      ],
+      "significations_raw": "02 05 03 06 01"
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 9.131,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8,
+        1,
+        0,
+        11,
+        7
+      ],
+      "significations_raw": "08,1 0,11,07 ,Ra"
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 26.728,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        2,
+        8,
+        1,
+        0,
+        11
+      ],
+      "significations_raw": "01 ,06,02,08,1 0,11"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 2.837,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Ju,Ma,Su"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 2.837,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01 ,Ve,Su,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus, Sun are in 02 /12, while Jupiter is aspecting Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Indeed Venus is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter signifies 07 (busin·ess) and 10 (profession).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "101h lord Saturn is in 11 and is in star of Mercury (business).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Rahu offers result of 04 (vehicle) through Sun, while Venus (vehicle) signifies 10 through Jupiter.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "02nd house is signified by Venus, Mercury, Rahu, Mars, Saturn, Ketu, Jupiter and Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "06ih house is signified by Venus, Moon and Ketu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "101h house is signified by Jupiter, Saturn, Venus, Moon, Rahu and Ketu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "071h house is signified by Mars, Sun, Rahu, Ketu, and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Jupiter, Saturn, Nodes, Moon and Venus denotes 111h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "All these combinations made native a successful and famous businessman, especially in automobile sector.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "NAIRS PUBUSHING HOUSE, HYDERABAD Page# 137",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

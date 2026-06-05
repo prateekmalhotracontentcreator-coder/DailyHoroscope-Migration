@@ -1,0 +1,71 @@
+======================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/bphs_vol2_status_breakdown_20260603_100340.log
+======================================================================
+
+
+Ch     Total   AA     PHR    PR    FLAG   DEPR   REJ  
+─────────────────────────────────────────────────────────────────
+  Ch47   220     113    41     0     26     39     1     ⚠️ 🔴
+  Ch53   191     83     46     0     27     33     2     ⚠️ 🔴
+  Ch54   207     111    54     0     15     27     0     ⚠️ 🔴
+  Ch55   250     140    55     0     11     40     4     ⚠️ 🔴
+  Ch56   246     106    45     0     17     71     7     ⚠️ 🔴
+  Ch57   265     133    47     0     26     56     3     ⚠️ 🔴
+  Ch58   236     113    45     0     14     58     6     ⚠️ 🔴
+─────────────────────────────────────────────────────────────────
+  TOTAL  1615    799    333    0     136    324    23   
+
+── Active rules only (excl. deprecated) ─────────────────────────
+  Active total         : 1291
+  auto_approved        : 799
+  pending_human_review : 333
+  pending_review       : 0
+  flagged              : 136  ← triage target
+
+── Flagged breakdown by chapter ──────────────────────────────────
+  Ch47 : 26 flagged
+  Ch53 : 27 flagged
+  Ch54 : 15 flagged
+  Ch55 : 11 flagged
+  Ch56 : 17 flagged
+  Ch57 : 26 flagged
+  Ch58 : 14 flagged
+
+── Sample flagged rules (up to 5) ────────────────────────────────
+  R-BPHS47-040
+    flag_reason : {}
+    text        : ...
+
+  R-BPHS47-077
+    flag_reason : {}
+    text        : ...
+
+  R-BPHS53-025
+    flag_reason : {}
+    text        : ...
+
+  R-BPHS55-085
+    flag_reason : {}
+    text        : ...
+
+  R-BPHS55-086
+    flag_reason : {}
+    text        : ...
+
+
+── Deprecated rules (324 total) ──────────────────────────────
+  These are superseded by re-ingest passes — OK to ignore for triage.
+  Ch47 : 39 deprecated
+  Ch53 : 33 deprecated
+  Ch54 : 27 deprecated
+  Ch55 : 40 deprecated
+  Ch56 : 71 deprecated
+  Ch57 : 56 deprecated
+  Ch58 : 58 deprecated
+
+  Deprecated rule_ids that also have an active copy : 0
+  Deprecated rule_ids with NO active copy (orphans)  : 324
+
+======================================================================
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/bphs_vol2_status_breakdown_20260603_100340.log
+======================================================================

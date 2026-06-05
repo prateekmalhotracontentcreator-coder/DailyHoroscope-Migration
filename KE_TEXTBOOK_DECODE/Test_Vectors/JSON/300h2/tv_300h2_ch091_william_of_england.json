@@ -1,0 +1,305 @@
+{
+  "vector_id": "tv-300h2-ch091",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch091_90_Prince_William",
+  "pdf_path": "Chapters/Ch091_90_Prince_William.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "William Of England",
+    "description": "Prince William is the elder son of Charles, Prince of Wales and is heir to the British throne after his father.",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": 3.975,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 6.601,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        7,
+        5,
+        12
+      ],
+      "significations_raw": "09,07 05,12"
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 11.454,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        8,
+        7
+      ],
+      "significations_raw": "08,07,Ra"
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 15.696,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5,
+        10,
+        12,
+        7,
+        8
+      ],
+      "significations_raw": "05,10 12,07,08"
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 15.461,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        7,
+        10,
+        6
+      ],
+      "significations_raw": "07,10,06"
+    },
+    "JUPITER": {
+      "sign": "Libra",
+      "degree": 6.978,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "retrograde": true,
+      "significations": [
+        1,
+        4,
+        11
+      ],
+      "significations_raw": "01,04,11,Ra"
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 2.161,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6,
+        11,
+        9,
+        7
+      ],
+      "significations_raw": "06,11,09 07"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 20.574,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Me,Ju,Mo,Su,Sa"
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 20.574,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ju,Ma Ve"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": 12.35
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 21.95
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "marriage"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Venus and Sun are in 02 I 12, while Sun, conjoined with Rahu, is under aspect of Jupiter (11 ).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Saturn is in 10 in star of Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Rahu offers result of 07 and 10 through Mercry, while it is conjunct with 9th lord (kingdom) Sun (Government).",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "All these combinations make native a King.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "(Sun (09) is in star of Mars (05) and is in O?lh indicates spouse is from College after love affair.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Ketu in lagna indicate easy going and self-less.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mercury signifies 06, 07 and 08.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Venus signifies 06, 07 and 09.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Rahu (under aspect from Saturn) and Sun offers 07 and 09.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Ketu is offering result of Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "These combinations suggest divorce and second marriage.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

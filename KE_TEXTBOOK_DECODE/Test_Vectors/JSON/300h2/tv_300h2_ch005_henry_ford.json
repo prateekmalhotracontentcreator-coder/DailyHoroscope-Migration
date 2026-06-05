@@ -1,0 +1,282 @@
+{
+  "vector_id": "tv-300h2-ch005",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch005_04_Henry_Ford",
+  "pdf_path": "Chapters/Ch005_04_Henry_Ford.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Henry Ford",
+    "description": "Henry Ford was a prominent American Industrialist, the founder of the Ford Motor Company, and sponsor of the development of the assembly line technique of mass production. Mo",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "lagna_degree_stated": 2.745,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Cancer",
+      "degree": 15.229,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        10,
+        9,
+        3,
+        4,
+        11
+      ],
+      "significations_raw": "10,09,03,04,11"
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 18.97,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        9
+      ],
+      "significations_raw": "03 09"
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 6.27,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        1,
+        0,
+        7
+      ],
+      "significations_raw": "01, 06,1 0,07,Ke"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 28.579,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        2,
+        11
+      ],
+      "significations_raw": "02,11"
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 0.443,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        7,
+        12,
+        11,
+        10,
+        9
+      ],
+      "significations_raw": "07,12,11,10,09"
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 9.694,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        3,
+        4,
+        10,
+        11,
+        9
+      ],
+      "significations_raw": "03,04,10,11,09"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 11.756,
+      "house": null,
+      "nakshatra": "Anur",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01,Sa,Ma"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 11.756,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Mo,Ve,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": "Gemini",
+      "degree": 18.93
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Ketu signifies Venus (07, 10, 11), while Mars (06, 10) signifies 07.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter signifies 10 through Mars (industry).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus (vehicle) and Jupiter (02, 10, 11) and conjunct while Saturn (04, 10, 11) is in star of Sun.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "These combinations made native a rich businessman in automobile industry.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "i.cr - ···-·-···-·· ..• ·-....",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "·•II ·' • -1:1r 1:\"•1:\\t-'>t' ::i:l!!l',i \"::1'1-JIIII!",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "~ 6X ;.: I I XF - 1- ~ I \\ ..",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "~ I I \"\"\"\":\"~ ~ ., I g ~~ i f ..",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

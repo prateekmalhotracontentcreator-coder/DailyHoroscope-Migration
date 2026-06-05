@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0245",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0245",
+  "source_file": "0245_G-38_Gorki_Maxim.pdf",
+  "subject": {
+    "name": "Gorki, Maxim",
+    "name_from_filename": "Gorki, Maxim",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Royalty_Nobility",
+    "profession_compound": false,
+    "profession_secondary": "Military",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1868-03-28",
+    "time_local": "15:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1868-03-28T09:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "44EO & 56N20",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 1,
+    "months": 2,
+    "days": 28,
+    "raw_text": "Balance of dasha Sun 1-2-28"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 2.7,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 16.0833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 12.5,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 19.0833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 26.6333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 11.7833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 12.5,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 13.5,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 11.7833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Royalty_Nobility",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

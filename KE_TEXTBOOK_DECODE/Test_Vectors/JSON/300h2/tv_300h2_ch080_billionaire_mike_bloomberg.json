@@ -1,0 +1,291 @@
+{
+  "vector_id": "tv-300h2-ch080",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch080_79_Mike_Bloomberg",
+  "pdf_path": "Chapters/Ch080_79_Mike_Bloomberg.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Billionaire--Mike Bloomberg",
+    "description": "Mike Bloomberg is an American Business magnate, Politician and Philanthropist. His personal wealth is around $22.",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": 3.42,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 2.549,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        8,
+        5,
+        10
+      ],
+      "significations_raw": "02,08,05,10"
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 24.826,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        7,
+        10,
+        5
+      ],
+      "significations_raw": "01,07,10,05"
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 25.186,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        10,
+        7
+      ],
+      "significations_raw": "04,11,10,07"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Taurus",
+      "degree": 18.585,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        11,
+        6,
+        9,
+        1,
+        7
+      ],
+      "significations_raw": "11,06,09,01 ,07"
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 14.016,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        1,
+        4,
+        7,
+        11
+      ],
+      "significations_raw": "01,04,07,11"
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 29.158,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        7,
+        10,
+        2,
+        8
+      ],
+      "significations_raw": "07,10,02,08"
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 21.519,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        8
+      ],
+      "significations_raw": "08,Su,Ju,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": 28.18
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 22.13
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "wealth"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "From Moon sign, Venus is in lagna, while Sun is in 02nd house and is conjunct with Ketu, who is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From Moon sign, Mars is in 04 and aspects 10.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Moon denotes 07 and 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter is aspecting Venus.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Planets signify 07 (business) are Saturn, Jupiter, Mercury, Moon, Venus and Ketu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "071h lord Saturn is in 10 indicating link between business and profession.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Planets signify 02nd house are Sun, Nodes and Saturn; out of which Saturn (democracy) signifies 07 and 10 too.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Mars signify 05,07,10,11, etc.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "All these combinations made native a successful and famous businessman with political outlook.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "wealth",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

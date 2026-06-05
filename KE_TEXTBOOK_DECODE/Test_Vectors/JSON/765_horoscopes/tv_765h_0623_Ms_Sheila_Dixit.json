@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0623",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0623",
+  "source_file": "0623_S-26_Ms_Sheila_Dixit.pdf",
+  "subject": {
+    "name": "Ms Sheila Dixit",
+    "name_from_filename": "Ms Sheila Dixit",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Cm",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1938-03-31",
+    "time_local": "13:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1938-03-31T07:50:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Kapurthala (Pb)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 7,
+    "months": 11,
+    "days": 6,
+    "raw_text": "Balance of dasha Sat 7-11-6"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 11.1,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 0.05,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 15.2167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 5.5667,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 16.95,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 20.5833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 8.4,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 29.9667,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 4.8333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 8.4,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Cm",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,26 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_medical_astrology_v1_20260604_130554_upload.log
+===========================================================================
+
+MEDICAL ASTROLOGY INGEST  |  UPLOAD
+Batch ID  : medical_astrology_v1
+Loaded    : 270 rules from /tmp/medical_astrology_rules/medical_astrology_v1_PATCHED.json
+Target    : horoscope_db.interpretation_rules
+
+✅ MongoDB connection OK
+
+Upserting 270 rules...
+
+  Inserted : 270
+  Updated  : 0
+  Errors   : 0
+  import_batches log written for batch medical_astrology_v1
+
+===========================================================================
+UPLOAD COMPLETE
+===========================================================================
+
+NEXT STEP -- Post-upload structural validation:
+  python3 backend/scripts/validate_ingest_batch.py \
+    --batch-id medical_astrology_v1 \
+    --mongo-url "$MONGO_URL" --db-name horoscope_db

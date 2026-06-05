@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0596",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0596",
+  "source_file": "0596_R-55_Roy_Dr_BC.pdf",
+  "subject": {
+    "name": "Roy Dr BC",
+    "name_from_filename": "Roy Dr BC",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Politics",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1882-07-01",
+    "time_local": "13:32",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1882-07-01T08:02:00Z",
+    "latitude": 25.594,
+    "longitude": 85.137,
+    "place": "Patna, Bihar, India",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 12,
+    "months": 9,
+    "days": 10,
+    "raw_text": "Balance of dasha Ven 12-9-10"
+  },
+  "planet_degrees_from_text": {
+    "SATURN": {
+      "degree_in_sign": 0.15,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 6.9833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 23.9,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 17.1333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 19.9167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 8.1333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 18.15,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 18.15,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

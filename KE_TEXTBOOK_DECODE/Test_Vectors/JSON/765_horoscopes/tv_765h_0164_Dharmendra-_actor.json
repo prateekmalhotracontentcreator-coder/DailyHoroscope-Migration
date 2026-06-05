@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0164",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0164",
+  "source_file": "0164_D-19_Dharmendra-_actor.pdf",
+  "subject": {
+    "name": "Dharmendra",
+    "name_from_filename": "Dharmendra- actor",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "actor",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actor",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1935-12-08",
+    "time_local": "06:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1935-12-08T00:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Sanniwal (Pb)",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 3,
+    "months": 1,
+    "days": 24,
+    "raw_text": "Balance of dasha Ven 3-1-24"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 24.5667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 11.3,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 7.6833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 5.9167,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 13.4667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 19.9,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 20.75,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 22.0167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 5.9167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "actor",
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actor",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

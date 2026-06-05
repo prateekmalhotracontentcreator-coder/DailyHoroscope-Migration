@@ -1,0 +1,69 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/validate_destiny_num_phase_a_20260604_163811.log
+DESTINY NUMEROLOGY PHASE A -- VALIDATION QUERY
+Batch: destiny_numerology_ch01-15_v1
+======================================================================
+
+=== DB COUNTS ===
+  auto_approved                  282
+  pending_human_review           25
+  flagged                        4
+  pending_review                 0
+  TOTAL                          311
+
+=== FLAGGED (4) ===
+
+  rule_id   : num-ch04v2-027
+  title     : Number 4 — Character Virtues and Shadow: Faithful, Devoted Partners but Emotiona
+  ch        : 4
+  condition : {'type': 'basic_number_trait', 'numerology_layer': 'diagnostic', 'number_type': 'basic_number', 'numbers_involved': [4], 'lagna_modality': None, 'badhaka_house': None, 'maraka_houses': None}
+  polarity  : conditional
+  summary   : Number 4 people are disciplined, energetic, down-to-earth, faithful, honest, and devoted partners. H
+
+  rule_id   : num-ch04v2-054
+  title     : Number 9 — Shadow and Struggle: Fighters Facing Many Struggles; Adventurous, Agg
+  ch        : 4
+  condition : {'type': 'basic_number_trait', 'numerology_layer': 'diagnostic', 'number_type': 'basic_number', 'numbers_involved': [9], 'lagna_modality': None, 'badhaka_house': None, 'maraka_houses': None}
+  polarity  : conditional
+  summary   : Number 9 people are fighters who face a lot of struggles. They are adventurous, aggressive, and cour
+
+  rule_id   : num-ch09-015
+  title     : Compound Number 24 — Success, Superior Support, Fame; Most Fortunate for Future 
+  ch        : 9
+  condition : {'type': 'compound_number', 'numerology_layer': 'diagnostic', 'number_type': 'compound', 'numbers_involved': [24, 6], 'lagna_modality': None, 'badhaka_house': None, 'maraka_houses': None}
+  polarity  : positive
+  summary   : Number 24 is a very good number indicating success, support from superiors, good opportunities, and 
+
+  rule_id   : num-ch13-039
+  title     : Number 9 Appears Five Times — Maximum Martian Overload
+  ch        : 13
+  condition : {'type': 'basic_number_trait', 'numerology_layer': 'diagnostic', 'number_type': 'lo_shu', 'numbers_involved': [9], 'lagna_modality': None, 'badhaka_house': None, 'maraka_houses': None}
+  polarity  : negative
+  summary   : Five times: maximum Mars overload; life defined by conflict, aggression, or accident; extraordinary 
+
+=== PENDING_HUMAN_REVIEW (25) ===
+  Ch4   num-ch04v2-012                      
+  Ch4   num-ch04v2-030                      
+  Ch4   num-ch04v2-032                      
+  Ch4   num-ch04v2-037                      
+  Ch4   num-ch04v2-044                      
+  Ch4   num-ch04v2-048                      
+  Ch6   num-ch06-008                        
+  Ch6   num-ch06-009                        
+  Ch6   num-ch06-010                        
+  Ch6   num-ch06-011                        
+  Ch6   num-ch06-017                        
+  Ch7   num-ch07-001                        
+  Ch9   num-ch09-007                        
+  Ch9   num-ch09-017                        
+  Ch9   num-ch09-050                        
+  Ch10  num-ch10-008                        
+  Ch10  num-ch10-010                        
+  Ch13  num-ch13-001                        
+  Ch13  num-ch13-017                        
+  Ch13  num-ch13-018                        
+  Ch13  num-ch13-026                        
+  Ch13  num-ch13-030                        
+  Ch16  num-ch16-045                        
+  Ch16  num-ch16-052                        
+  Ch16  num-ch16-061                        

@@ -1,0 +1,276 @@
+{
+  "vector_id": "tv-lu-ch79",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch79_JD_Tippit",
+  "pdf_path": "Chapter_Splits/Ch79_JD_Tippit.pdf",
+  "subject": {
+    "name": "J.D. Tippit",
+    "description": "Dallas Police Officer",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "17:07:00",
+    "timezone_offset_hours": -6.0,
+    "time_utc": null,
+    "latitude": 32.7833,
+    "longitude": -96.8,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-42-32.43",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aquarius",
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aquarius",
+      "degree": 4.4167,
+      "house": 1,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Virgo",
+      "degree": 3.0167,
+      "house": 8,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "significations": [
+        7,
+        8
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 9.15,
+      "house": 4,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "significations": [
+        6,
+        4,
+        7,
+        8
+      ]
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 2.7,
+      "house": 1,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "significations": [
+        3,
+        1,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 20.2667,
+      "house": 7,
+      "nakshatra": "PPha",
+      "pada": 3,
+      "significations": [
+        "OS",
+        8,
+        7,
+        4,
+        9,
+        6
+      ]
+    },
+    "JUPITER": {
+      "sign": "Scorpio",
+      "degree": 20.0333,
+      "house": 10,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "significations": [
+        2,
+        11,
+        10,
+        "0S",
+        7,
+        8
+      ]
+    },
+    "VENUS": {
+      "sign": "Cancer",
+      "degree": 17.2833,
+      "house": 6,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "significations": [
+        6,
+        4,
+        "0S",
+        7,
+        8,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 7.8167,
+      "house": 9,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "significations": [
+        "Q1",
+        9,
+        12,
+        "Ra"
+      ]
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 28.4333,
+      "house": 6,
+      "nakshatra": "Asre",
+      "pada": 4,
+      "significations": [
+        "Me",
+        "Ve",
+        "Mo",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 28.4333,
+      "house": 12,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "significations": [
+        "Ma",
+        "Sa",
+        "Ve"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon",
+    "death_type": "violent",
+    "death_date": "1924-09-18",
+    "age_at_death": 39,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "SATURN",
+      "pratyantardasha": "MOON",
+      "sookshma": "SUN",
+      "stated_by_author": true,
+      "raw_text": "Jupiter-Saturn-Moon-Sun. Tippit was ordered to look out for the possible assassin of President Kennedy and went in his o"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna is in Mars star in Aquarius, while Mars is posited in lagna. Mars aspects 06th lord Moon, 07th house and 08th lord Mercury. Hence Mars is connected to 01, 06, 07 and 08. This combination is-enough for one to sustain injury. ' 326 Longevity and Unnatural Deaths",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "07th lord (maraca) Sun is posited in 08th house (longevity) and is in own star, whereas 08th lord Mercury is in 07th house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna lord Saturn is posited in badhaka house and signifies 06th house through Rahu, while Rahu itself signifies badhaka through Venus.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Badhaka Venus is posited in 08th lord Mercury star, making longevity weak. All these facts do lead one to believe that the lagna and the 08th are afflicted and they are connected to Mars and 06 along with maraca and badhka to cause injury and death by weapon. Officer Tippit was killed by assassin Oswald on 22 Nov 1963 at 1-14 pm, Dallas, Texas. He was 39 years old and was running the VMD period of Jupiter-Saturn-Moon-Sun. Tippit was ordered to look out for the possible assassin of President Kennedy and went in his official car in search of Oswald. Tippit tried to talk to Oswald on way side in ",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Dasha lord Jupiter is in Mercury star and signifies maraca and longevity, including accident.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Bhukti lord Saturn is lord of lagna and is in badhaka house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Antara lord Moon is in 04th house and is lord of 06th house (injury, enemy).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "injury, accident and death by weapon.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "fortunately was killed by the assassin, Lee Harvey Oswald.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

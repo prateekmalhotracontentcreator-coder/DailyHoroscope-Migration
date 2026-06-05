@@ -1,0 +1,99 @@
+{
+  "vector_id": "tv-765h-0079",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0079",
+  "source_file": "0079_B-20_Bell_AG-Scientist.pdf",
+  "subject": {
+    "name": "Bell, AG",
+    "name_from_filename": "Bell, AG-Scientist",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Scientist",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Scientist",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1847-03-03",
+    "time_local": "07:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1847-03-03T01:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Edinburgh (UK): died 2-8-'22: Prof of Phisiology-1873: Invented Telephone in 1876 Me3:14 Ve8:53 Ju16:25 Ke27:23 As29:50 Sa12:41 Su20:26",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 3.2333,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 8.8833,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 16.4167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 27.3833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 29.8333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 12.6833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 20.4333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 3.4333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 23.0167,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 27.3833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 29.8333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Scientist",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Scientist",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

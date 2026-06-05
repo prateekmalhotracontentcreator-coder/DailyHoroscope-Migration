@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0352",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0352",
+  "source_file": "0352_K-25_KD_Singh_Babu.pdf",
+  "subject": {
+    "name": "K.D. Singh Babu",
+    "name_from_filename": "K.D. Singh Babu",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1923-02-19",
+    "time_local": "04:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1923-02-19T22:30:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "81Ell & 26N 58",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 7,
+    "months": 8,
+    "days": 10,
+    "raw_text": "Balance of dasha Sat 7-8-10"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 11.2667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 27.8833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 6.4667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 27.7833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 10.2167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 20.2333,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 20.2667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 20.2667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

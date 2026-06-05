@@ -1,0 +1,275 @@
+{
+  "vector_id": "tv-300h2-ch009",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch009_08_James_Earl_Ray",
+  "pdf_path": "Chapters/Ch009_08_James_Earl_Ray.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "James Earl Ray",
+    "description": "James Earl Ray (1 0 Mar 1928 - 23 Apr 1998) was a murderer convicted for killing of American civil rights activist Dr. Martin Luther King, Jr.",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1928-03-10",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 38.8833,
+    "longitude": -90.1833,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Swati",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "lagna_degree_stated": 21.697,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 27.306,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        6,
+        8,
+        9
+      ],
+      "significations_raw": "02,06,08,09"
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 16.392,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        4,
+        11
+      ],
+      "significations_raw": "01,04,11 Ra"
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 16.062,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        7,
+        5,
+        1,
+        0,
+        4,
+        1
+      ],
+      "significations_raw": "07 ,05,1 0,04,01"
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 3.544,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12,
+        3,
+        8,
+        7,
+        5,
+        10
+      ],
+      "significations_raw": "12,03,08,07 ,05, 10"
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 17.398,
+      "house": null,
+      "nakshatra": "Reva",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6,
+        9,
+        1,
+        2,
+        3,
+        8
+      ],
+      "significations_raw": "06,09,1 2,03,08"
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 28.334,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        7,
+        5,
+        10
+      ],
+      "significations_raw": "04,11,07,05,10"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 26.11,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7,
+        8,
+        5,
+        1,
+        2,
+        3
+      ],
+      "significations_raw": "07,08,05,1 2,03"
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 21.192,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Mo,Ve"
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 21.192,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Sa,Me,Ma,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1928
+      },
+      {
+        "event": "Died",
+        "year": 1998
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": "Violent death",
+    "death_type": "violent",
+    "death_date": "1998-04-23",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lord of 03 (action) Mercury is in star of Mars (10).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lord of 04 (mind) Venus is in star of Mars (violence).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn (destruction) is in 05 (intention) and is conjunct with Ketu (Mars) in Scorpio.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars is in star of lagna lord Moon.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

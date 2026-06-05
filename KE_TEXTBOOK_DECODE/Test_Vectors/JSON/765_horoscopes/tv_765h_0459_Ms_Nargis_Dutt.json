@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0459",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0459",
+  "source_file": "0459_N-12_Ms_Nargis_Dutt.pdf",
+  "subject": {
+    "name": "Ms Nargis Dutt",
+    "name_from_filename": "Ms Nargis Dutt",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1929-06-01",
+    "time_local": "05:07",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1929-06-01T23:37:00Z",
+    "latitude": 22.573,
+    "longitude": 88.364,
+    "place": "Kolkata, West Bengal, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 15,
+    "months": 3,
+    "days": 23,
+    "raw_text": "Balance of dasha Jup 15-3-23"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 1.4667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 5.6333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 16.9,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 28.25,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 20.2667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 29.1333,
+      "retrograde": true
+    },
+    "MARS": {
+      "degree_in_sign": 20.5667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 5.6333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 20.2667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

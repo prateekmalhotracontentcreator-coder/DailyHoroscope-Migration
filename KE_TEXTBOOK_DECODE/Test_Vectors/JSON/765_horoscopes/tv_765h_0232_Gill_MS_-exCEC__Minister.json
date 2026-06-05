@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0232",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0232",
+  "source_file": "0232_G-25_Gill_MS_-exCEC__Minister.pdf",
+  "subject": {
+    "name": "Gill, MS",
+    "name_from_filename": "Gill, MS -exCEC & Minister",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "exCEC & Minister",
+    "profession_category": "Politics",
+    "profession_subcategory": "exCEC & Minister",
+    "profession_compound": true,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1936-06-14",
+    "time_local": "17:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1936-06-14T11:50:00Z",
+    "latitude": 31.634,
+    "longitude": 74.872,
+    "place": "Amritsar, Punjab, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 4,
+    "months": 1,
+    "days": 6,
+    "raw_text": "Balance of dasha Mer 4-1-6"
+  },
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 12.65,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 19.5833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 29.3,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 29.25,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 2.0667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 26.0833,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 2.0667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "exCEC & Minister",
+    "profession_category": "Politics",
+    "profession_subcategory": "exCEC & Minister",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

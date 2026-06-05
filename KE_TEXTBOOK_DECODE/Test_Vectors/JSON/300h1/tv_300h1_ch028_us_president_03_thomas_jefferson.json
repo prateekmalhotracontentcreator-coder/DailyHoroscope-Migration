@@ -1,0 +1,229 @@
+{
+  "vector_id": "tv-300h1-ch028",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch028_US_PRESIDENT_03_THOMAS_JEFFERSON",
+  "pdf_path": "Split_Chapters/Ch028_US_PRESIDENT_03_THOMAS_JEFFERSON.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Thomas Jefferson",
+    "description": "Thomas Jefferson was 3rc US President (1801-1809). He was the eponym of",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 38.0167,
+    "longitude": -78.4,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Scorpio",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 10.5939,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Scorpio",
+      "degree": 20.6069,
+      "house": 11,
+      "significations": [
+        3,
+        6,
+        7,
+        9,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 28.5358,
+      "house": 7,
+      "significations": [
+        3,
+        4,
+        6,
+        7,
+        9,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 6.4411,
+      "house": 3,
+      "significations": [
+        1,
+        2,
+        3,
+        6,
+        8,
+        9
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 14.5683,
+      "house": 8,
+      "significations": [
+        3,
+        4,
+        5,
+        8,
+        10,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 23.6506,
+      "house": 4,
+      "significations": [
+        4,
+        5,
+        10
+      ]
+    },
+    "SATURN": {
+      "sign": "Leo",
+      "degree": 8.8981,
+      "house": 8,
+      "significations": [
+        1,
+        2,
+        8,
+        11
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 0.1022,
+      "house": 5,
+      "significations": [
+        5
+      ]
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 0.1022,
+      "house": 11,
+      "significations": [
+        11
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": "President",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Venus are conjunct while Jupiter is aspecting them.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is posited in the star of 10th lord Venus, while Mars is aspecting 10!11 house.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "So the strength of 10th house has become stronger.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "From Moon sign, Jupiter and Saturn are in 10th house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Rahu signifies 05 and 10 along with Sun (Government).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

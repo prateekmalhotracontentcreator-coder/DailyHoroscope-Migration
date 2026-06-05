@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0231",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0231",
+  "source_file": "0231_G-24_Gill_KPS-Police__sports.pdf",
+  "subject": {
+    "name": "Gill, KPS",
+    "name_from_filename": "Gill, KPS-Police & sports",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Police & sports",
+    "profession_category": "Sports",
+    "profession_subcategory": "Police & sports",
+    "profession_compound": true,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1934-12-29",
+    "time_local": "14:00",
+    "timezone_offset_hours": 5.0,
+    "time_utc": "1934-12-29T09:00:00Z",
+    "latitude": 31.558,
+    "longitude": 74.352,
+    "place": "Lahore, Punjab, Pakistan",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 4,
+    "months": 9,
+    "days": 5,
+    "raw_text": "Balance of dasha Man 4-9-5"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 17.9833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 1.7833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 8.4333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 12.9667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 15.5833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 13.9833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 16.9833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 23.7333,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 17.9833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Police & sports",
+    "profession_category": "Sports",
+    "profession_subcategory": "Police & sports",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

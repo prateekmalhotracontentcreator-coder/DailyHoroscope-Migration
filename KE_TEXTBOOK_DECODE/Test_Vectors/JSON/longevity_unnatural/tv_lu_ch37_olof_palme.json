@@ -1,0 +1,222 @@
+{
+  "vector_id": "tv-lu-ch37",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch37_Olof_Palme",
+  "pdf_path": "Chapter_Splits/Ch37_Olof_Palme.pdf",
+  "subject": {
+    "name": "Olaf Joachim Palme",
+    "description": "Prime Minister of Sweden",
+    "nationality": "Swedish"
+  },
+  "birth_data": {
+    "date": "1927-01-30",
+    "time_local": "05:50:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": "1927-01-30T04:50:00Z",
+    "latitude": 56.1333,
+    "longitude": 13.4167,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-44-31.24",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "moon_sign_stated_in_book": "Sagittarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Sagittarius",
+      "degree": 2.0333,
+      "house": 1,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 16.5667,
+      "house": 2,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "significations": [
+        2,
+        9,
+        1,
+        8
+      ]
+    },
+    "MOON": {
+      "sign": "Sagittarius",
+      "degree": 4.7833,
+      "house": 1,
+      "nakshatra": "I",
+      "pada": 2,
+      "significations": [
+        2,
+        8,
+        "Ke"
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 26.2333,
+      "house": 5,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "significations": [
+        5,
+        12,
+        6,
+        11,
+        3
+      ]
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 17.7167,
+      "house": 2,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "significations": [
+        7,
+        10,
+        2,
+        1,
+        8
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 9.9167,
+      "house": 3,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        3,
+        1,
+        4,
+        7,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 3.2167,
+      "house": 3,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "significations": [
+        3,
+        6,
+        11,
+        "o5",
+        12
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 13.1333,
+      "house": 12,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        2,
+        3,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Gemini",
+      "degree": 12.6833,
+      "house": 7,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "significations": [
+        "Ra",
+        "Me",
+        "Mo",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Sagittarius",
+      "degree": 12.6833,
+      "house": 1,
+      "nakshatra": "MooI",
+      "pada": 4,
+      "significations": [
+        "Mo",
+        "Ju"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "assassinated",
+    "death_type": "violent",
+    "death_date": "1927-01-30",
+    "age_at_death": 57,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "VENUS",
+      "pratyantardasha": "VENUS",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Rahu-Venus-Venus. Prime Minister Palme was killed on 28 Feb 1986 at 23:21 hours, Stockholm, and the transit planetary po"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord 08th bhava star lord Jupiter is in Rahu star (Satabhisha), who is an occupant of maraca and badhaka house {07th).",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "longevity of around 56 years for Prime Minister Palme.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "recovered Lagna lord 08th bhava star lord Jupiter is in Rahu star (Satabhisha), who is an occupant of maraca and badhaka house {07th).",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

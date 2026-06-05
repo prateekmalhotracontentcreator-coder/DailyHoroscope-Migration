@@ -1,0 +1,216 @@
+{
+  "vector_id": "tv-300h1-ch092",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch092_CAROLYN_BESSETTE_KENNEDY",
+  "pdf_path": "Split_Chapters/Ch092_CAROLYN_BESSETTE_KENNEDY.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Carolyn Jeanne Bessette Kennedy",
+    "description": "Carolyn Jeanne Bessette Kennedy (07 Jan 1966-16 Jul, 1999) was the wife of John F.",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1966-01-07",
+    "time_local": "05:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": "White Plains, New York, USA",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Capricorn",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Capricorn",
+      "degree": 17.1725,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Sagittarius",
+      "degree": 23.5425,
+      "house": 12,
+      "significations": [
+        1,
+        5,
+        8,
+        10,
+        12
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 28.4903,
+      "house": 6,
+      "significations": [
+        3,
+        6,
+        7,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 18.7864,
+      "house": 1,
+      "significations": [
+        1,
+        4,
+        6,
+        7
+      ]
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": [
+        6,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 0.3561,
+      "house": 6,
+      "significations": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        11
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 20.4758,
+      "house": 1,
+      "significations": [
+        1,
+        5,
+        6,
+        7
+      ]
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 19.6889,
+      "house": 2,
+      "significations": [
+        1,
+        2,
+        5
+      ]
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 9.0172,
+      "house": 5,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 9.0172,
+      "house": 11,
+      "significations": [
+        11
+      ]
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "The aspect of Mars and Venus is on 07th house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "071h lord Moon is in star of Jupiter and is conjunct with Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sun is aspecting 071h lord and Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "051h lord Venus (romance) is in star of 071h lord Moon gave a love marriage.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "marriage",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

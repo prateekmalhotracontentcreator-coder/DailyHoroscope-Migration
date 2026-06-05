@@ -1,0 +1,277 @@
+{
+  "vector_id": "tv-300h2-ch130",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch130_129_Prince_Harry",
+  "pdf_path": "Chapters/Ch130_129_Prince_Harry.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Harry Of England",
+    "description": "Price Harry is the second son of late Princess Diana and Prince Charles, who is the second in command to the British throne. Mo Ra HL. Rasi Prince Harry SL.",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Sagittarius",
+    "lagna_degree_stated": 17.874,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Leo",
+      "degree": 29.412,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        9
+      ],
+      "significations_raw": "09"
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 27.794,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        8,
+        9
+      ],
+      "significations_raw": "05,08,09"
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 23.413,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        5,
+        1,
+        2,
+        7,
+        11,
+        9
+      ],
+      "significations_raw": "05,1 2,07,11,09"
+    },
+    "MERCURY": {
+      "sign": "Leo",
+      "degree": 11.67,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        7,
+        10,
+        12
+      ],
+      "significations_raw": "09,07 10,12,Ke"
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 24.176,
+      "house": null,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6,
+        10,
+        11,
+        5,
+        12
+      ],
+      "significations_raw": "06,10,11,05,12"
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 19.307,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        3,
+        11,
+        6
+      ],
+      "significations_raw": "02,03,11 ,06,Ra"
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 7.29,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06 Su VeMa"
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 7.29,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Ma Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Jupiter's proximity to Sun I Venus eludes which denies position as King, instead since it is linked to Ketu, it indicates seclusion ad charity.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Since 08111 lord Moon is in 05 and is not linked to badhka assures good longevity for native.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "10111 lord Mercury 07 (war) in 09 (federal) is linked to Mars (war) through Ketu in 12 (foreign environment).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Venus (06- enemy) is in 10 in star of Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Rahu is in 12 in star of Sun (Govt.) is linked to Venus and Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "These took native to war in Afghanistan (a barren country) signified by Leo I Virgo where Mercury, Sun and Venus are posited.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

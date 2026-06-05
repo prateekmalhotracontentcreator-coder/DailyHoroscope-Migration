@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0240",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0240",
+  "source_file": "0240_G-33_Goenka_RP-industry.pdf",
+  "subject": {
+    "name": "Goenka, RP",
+    "name_from_filename": "Goenka, RP-industry",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "industry",
+    "profession_category": "Business",
+    "profession_subcategory": "industry",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1930-03-01",
+    "time_local": "08:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1930-03-01T03:10:00Z",
+    "latitude": 22.573,
+    "longitude": 88.364,
+    "place": "Kolkata, West Bengal, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "JUPITER",
+    "years": 12,
+    "months": 1,
+    "days": 18,
+    "raw_text": "Balance of dasha Jup 12-1-18"
+  },
+  "planet_degrees_from_text": {
+    "LAGNA": {
+      "degree_in_sign": 8.3,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 11.1833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 16.9333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 23.2,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 23.4,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 23.7167,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 24.5167,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 16.9167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 8.3,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "industry",
+    "profession_category": "Business",
+    "profession_subcategory": "industry",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

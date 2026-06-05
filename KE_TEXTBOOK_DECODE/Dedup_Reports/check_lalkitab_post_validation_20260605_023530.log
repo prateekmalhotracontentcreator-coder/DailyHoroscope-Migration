@@ -1,0 +1,78 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/check_lalkitab_post_validation_20260605_023530.log
+======================================================================
+LAL KITAB — Post-Validation Status (batch: lalkitab_all_v2_20260605)
+Timestamp: 20260605_023530
+======================================================================
+
+Overall batch totals:
+  auto_approved        : 287 (61%)
+  pending_human_review : 135 (28%)
+  flagged              : 44 (9%)
+  pending_review       : 1
+  TOTAL                : 467
+
+Ch        AA    PHR    FLG   PR   TOTAL
+---------------------------------------------
+Ch19      48     23      7    0      78
+Ch20      29     11      7    1      48
+Ch21      27     12      4    0      43
+Ch22      12      5      0    0      17
+Ch23      17     12      2    0      31
+Ch24      25     24     11    0      60
+Ch25      28      5      2    0      35
+Ch26      13      3      0    0      16
+Ch27      58     31     10    0      99
+Ch28      12      5      1    0      18
+Ch29      18      4      0    0      22
+---------------------------------------------
+TOT      287    135     44    1     467
+
+── Flagged Rules (44) ──────────────────────────────────────────────
+  lalkitab-ch19-002                   [dosha]  Summary field is truncated mid-word ('rashne'); detailed int
+  lalkitab-ch19-072                   [planetary_combination]  Saturn in H11 → abandonment of wife/children at young age is
+  lalkitab-ch19-001                   [dosha]  Summary field is truncated mid-sentence ('The '); detailed t
+  lalkitab-ch19-005                   [dosha]  Summary field is truncated mid-word ('enemie'); detailed tex
+  lalkitab-ch19-004                   [dosha]  Summary field is truncated mid-word ('destro'); detailed tex
+  lalkitab-ch19-003                   [dosha]  Summary field is truncated mid-word ('rash'); phrase 'unnatu
+  lalkitab-ch19-066                   [planetary_combination]  Triple Mangali check (Ascendant + Moon + Sun simultaneously)
+  lalkitab-ch20-yog-01                [planetary_combination]  The detailed text describes a 'triple condition' but the sum
+  lalkitab-ch20-yog-09                [planetary_combination]  The condition structure is incoherent: 'Mars Malefic (Sun-Sa
+  lalkitab-ch20-yog-05                [planetary_combination]  The condition logic is ambiguous: 'Sun + (Venus OR Mercury) 
+  lalkitab-ch20-yog-11                [planetary_combination]  The rule requires Varshaphalam (annual chart) injection whic
+  lalkitab-ch20-gp-interact           [general_principle]  The H3/H5 interaction matrices and H3+H9 debilitation chain 
+  lalkitab-ch20-yog-06                [planetary_combination]  Mars-Saturn conjunction producing leprosy is an extreme path
+  lalkitab-ch20-yog-08                [planetary_combination]  Venus-Ketu conjunction producing premature ejaculation is a 
+  lalkitab-ch27-proh-06               [planetary_combination]  Confidence marked LOW; the consequence (jail/confinement fro
+  lalkitab-ch27-wave-w02              [general_principle]  The '42-section mental wave engine' framework is not a docum
+  lalkitab-ch27-wave-w09              [general_principle]  Venus in House 6 signifies marital discord and health issues
+  lalkitab-ch27-wave-w44              [general_principle]  Saturn in House 1 with 'Musical Note' lacks classical Vedic 
+  lalkitab-ch27-corr-mars-benefic     [general_principle]  Objects field is explicitly unverified with data quality iss
+  lalkitab-ch27-transfer-h08          [general_principle]  House 8 transfer protocol (bury at pyre ground) is ethically
+  lalkitab-ch27-wave-w01              [general_principle]  The '42-section mental wave engine' is not a recognized clas
+  lalkitab-ch27-wave-w03              [general_principle]  The '42-section mental wave engine' is not a recognized Lal 
+  lalkitab-ch27-wave-w31              [general_principle]  Condition specifies 'Evil Planet' (undefined placeholder) in
+  lalkitab-ch27-proh-10               [planetary_combination]  Confidence marked LOW; the rule about Sun in 7th/8th prohibi
+  lalkitab-ch21-gp-05                 [general_principle]  The phrase 'enemy's own influence is in a state of diminishi
+  lalkitab-ch21-debt-sun              [dosha]  Swayam Rina (Self-Debt) outcome 'body becomes inflexible wit
+  lalkitab-ch21-debt-moon             [dosha]  Matri Rina (Mother's Debt) outcome 'affliction spreads to th
+  lalkitab-ch21-debt-mercury          [dosha]  Bhagin Rina (Sister/Daughter Debt) includes the symptom 'des
+  lalkitab-ch23-geoveto-triangle      [dosha]  The rule conflates 'triangular' with '13-sided' plot, which 
+  lalkitab-ch23-formula-remainder     [general_principle]  The remainder formula (L+B)×3÷8 and its eight interpretation
+  lalkitab-ch24-mortality-north-star  [general_principle]  The claim that inability to locate the North Star (Dhruv Tar
+  lalkitab-ch24-mortality-reflection-organic [general_principle]  The claim that absence of reflection in ghee/oil/water signa
+  lalkitab-ch24-mortality-reflection-mirror [general_principle]  The claim that absence of mirror reflection signals 1 day re
+  lalkitab-ch24-mortality-stasis      [general_principle]  The claim that stomach stasis during breathing signals a few
+  lalkitab-ch24-age-infancy-12d       [planetary_combination]  Lal Kitab Chapter 24 does not document a 12-day mortality do
+  lalkitab-ch24-age-childhood-12m     [planetary_combination]  Branch logic is incoherent: 'Sun+Saturn with unfriendly male
+  lalkitab-ch24-age-sudden-death      [planetary_combination]  Moon+Rahu H1 causing 'bullet shot death in afternoon' is hig
+  lalkitab-ch24-age-long-illness      [planetary_combination]  The 20-year illness duration and specific Jupiter+Rahu H2 / 
+  lalkitab-ch24-age-survival-son      [planetary_combination]  The rule mixes planetary conditions with unverifiable physic
+  lalkitab-ch24-age-father-dependency [planetary_combination]  The rule conflates two separate outcomes: native's age 30 AN
+  lalkitab-ch24-age-shortlife-2y      [dosha]  The 2-year lifespan prediction with Jupiter H8-11 + Mars/Mer
+  lalkitab-ch25-moon-h11              [planetary_combination]  The 52-day birth protocol requiring the mother to avoid look
+  lalkitab-ch25-mars-mercury-sister   [planetary_combination]  The diagnostic logic linking sister's health suffering to Ma
+  lalkitab-ch28-influence-priority    [?]  The three-step propagation sequence (natal house → enemy pla
+
+── Pending Review / Structural Failures (1) ──────────────────────
+  lalkitab-ch20-yog-07: Venus-Rahu conjunction is classically associated with sexual dysfunction and relationship complications, but the blanket statement 'impotence' is overly reductive; classical sources (BPHS, Phaladeepika) typically qualify such effects by sign, house placement, and aspect strength. The rule lacks nuance regarding remedial potential and contextual factors.
+

@@ -1,0 +1,223 @@
+{
+  "vector_id": "tv-lu-ch94",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch94_King_Umberto_I_Italy",
+  "pdf_path": "Chapter_Splits/Ch94_King_Umberto_I_Italy.pdf",
+  "subject": {
+    "name": "King Umberto I",
+    "description": "King of Italy",
+    "nationality": "Italian"
+  },
+  "birth_data": {
+    "date": "1844-03-14",
+    "time_local": null,
+    "timezone_offset_hours": 1.0,
+    "time_utc": null,
+    "latitude": 45.05,
+    "longitude": 7.6667,
+    "place": "Turin, Italy",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-40-53.30",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "moon_sign_stated_in_book": "Capricorn",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Aries",
+      "degree": 12.15,
+      "house": 1,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Pisces",
+      "degree": 2.15,
+      "house": 12,
+      "nakshatra": "PBha",
+      "pada": 4,
+      "significations": [
+        5,
+        12,
+        9,
+        11
+      ]
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 6.6,
+      "house": 10,
+      "nakshatra": "USha",
+      "pada": 3,
+      "significations": [
+        5,
+        12,
+        4,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 15.3167,
+      "house": 1,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "significations": [
+        1,
+        8,
+        2,
+        7
+      ]
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 11.4833,
+      "house": 11,
+      "nakshatra": "Sata",
+      "pada": 2,
+      "significations": [
+        3,
+        6,
+        11,
+        "Ra"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 21.85,
+      "house": 11,
+      "nakshatra": "PBha",
+      "pada": 1,
+      "significations": [
+        9,
+        11,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Aries",
+      "degree": 10.0,
+      "house": 1,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "significations": [
+        2,
+        7,
+        1,
+        "Ke"
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 12.5167,
+      "house": 10,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        10,
+        11,
+        4
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 26.7,
+      "house": 8,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        "Ma",
+        "Me"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 26.7,
+      "house": 2,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "significations": [
+        "Ma",
+        "Ve"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "killed by anarchist Gaetano",
+    "death_type": "violent",
+    "death_date": "1844-03-14",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "SATURN",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "VENUS",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Saturn-Mercury-Venus. Saturn signifies badhaka and is posited in lOth house. Mercury is lord of 06 and is posited"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Bhukti lord Moon is lord of 04 and is posited in lOth house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Sookshma lord Venus is maraca and signifies Ketu who is in Mars star.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "madhya aayu or medium longevity.",
+      "condition_type_guess": "ayur_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "fortunately Rahu is in the star of Mercury, who is occupant of 11th house, badhka house for Aries born persons.",
+      "condition_type_guess": "survival",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

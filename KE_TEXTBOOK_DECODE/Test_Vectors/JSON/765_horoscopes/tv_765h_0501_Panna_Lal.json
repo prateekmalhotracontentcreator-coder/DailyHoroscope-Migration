@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0501",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0501",
+  "source_file": "0501_P-12_Panna_Lal.pdf",
+  "subject": {
+    "name": "Panna Lal",
+    "name_from_filename": "Panna Lal",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1972-11-07",
+    "time_local": "01:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1972-11-07T20:00:00Z",
+    "latitude": 28.984,
+    "longitude": 77.706,
+    "place": "Meerut, Uttar Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SATURN",
+    "years": 16,
+    "months": 9,
+    "days": 6,
+    "raw_text": "Balance of dasha Sat 16-9-6"
+  },
+  "planet_degrees_from_text": {
+    "KETU": {
+      "degree_in_sign": 26.0,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 22.3167,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 12.6,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 4.5833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 0.8333,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 25.3167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 4.9,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 21.4833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 22.3167,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

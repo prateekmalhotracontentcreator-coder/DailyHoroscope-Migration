@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0736",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0736",
+  "source_file": "0736_V-17_Vipul_Gupta.pdf",
+  "subject": {
+    "name": "Vipul Gupta",
+    "name_from_filename": "Vipul Gupta",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1967-10-18",
+    "time_local": "11:45",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1967-10-18T06:15:00Z",
+    "latitude": 28.614,
+    "longitude": 77.209,
+    "place": "New Delhi, Delhi, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 1,
+    "months": 3,
+    "days": 9,
+    "raw_text": "Balance dasha Mer 1-3-9"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 14.4167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 29.0,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 6.4,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 16.4333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 0.7833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 3.0833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 4.5,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 9.65,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 23.8667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 9.65,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

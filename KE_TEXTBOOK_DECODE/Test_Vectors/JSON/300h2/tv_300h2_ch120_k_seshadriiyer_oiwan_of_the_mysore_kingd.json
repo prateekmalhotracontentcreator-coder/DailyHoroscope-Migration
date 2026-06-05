@@ -1,0 +1,299 @@
+{
+  "vector_id": "tv-300h2-ch120",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch120_119_Diwan_K_Seshadri_Iyer",
+  "pdf_path": "Chapters/Ch120_119_Diwan_K_Seshadri_Iyer.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "K. Seshadriiyer Oiwan Of The Mysore Kingdom",
+    "description": "Kumarapuram Seshadri lyer (01 Jun 1845 -13 Sep 1901), was an advocate who served as the Dewan of Mysore Kingdom from 1883 to 1901.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "01:50:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Ashwini",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "lagna_degree_stated": 11.195,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 18.879,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        11,
+        1,
+        1002
+      ],
+      "significations_raw": "11,01,1002"
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 5.807,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1,
+        10,
+        11
+      ],
+      "significations_raw": "01,10,11,Ke"
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 26.307,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        5,
+        7,
+        10
+      ],
+      "significations_raw": "05,07,10"
+    },
+    "MERCURY": {
+      "sign": "Aries",
+      "degree": 25.426,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12,
+        310,
+        11,
+        4
+      ],
+      "significations_raw": "12,0310,11 04"
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 8.137,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        10,
+        6,
+        9,
+        11
+      ],
+      "significations_raw": "10,06 09,11,Ke"
+    },
+    "VENUS": {
+      "sign": "Taurus",
+      "degree": 23.17,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        110
+      ],
+      "significations_raw": "04,11,0110"
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 27.356,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        7,
+        5,
+        8,
+        10
+      ],
+      "significations_raw": "07 05,08,10"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 3.287,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05,Ju,Ma,Ve,Su"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 3.287,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11,Su,Ve"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1845
+      },
+      {
+        "event": "Died",
+        "year": 1901
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1901-09-13",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career",
+      "health",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "051h and 101h lord Mars is in 071h house and it is in own star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter (09) is in 101h house along with Moon, while Sun (11) is in star of Moon.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Governmental administration with power is seen by these combinations for a specific State (kingdom).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "081h lord Saturn is in maraca house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Badhka Venus is in lagna lord's star.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Lagna lord Moon is linked to badhaka.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Though Saturn is comparatively safer, with the other afflictions, the longevity was curtailed.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

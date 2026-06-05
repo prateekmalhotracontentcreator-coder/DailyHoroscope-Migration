@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0440",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0440",
+  "source_file": "0440_M-41_Mukesh_8-surgeon.pdf",
+  "subject": {
+    "name": "Mukesh, 8",
+    "name_from_filename": "Mukesh, 8-surgeon",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "surgeon",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "surgeon",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1954-01-24",
+    "time_local": "10:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1954-01-24T04:45:00Z",
+    "latitude": 25.594,
+    "longitude": 85.137,
+    "place": "Patna, Bihar, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 0,
+    "months": 8,
+    "days": 16,
+    "raw_text": "Balance of dasha Sun 0-8-16"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 19.4,
+      "retrograde": true
+    },
+    "KETU": {
+      "degree_in_sign": 0.75,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 0.75,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 6.7833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 10.0833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.45,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 15.6333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 27.25,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "surgeon",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "surgeon",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,18 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/export_lalkitab_for_dedup_20260605_042438.log
+============================================================
+Lal Kitab MongoDB Export for Dedup
+Batch:   lalkitab_all_v2_20260605
+Output:  /tmp/lalkitab_rules_for_dedup
+Run:     20260605_042438
+============================================================
+
+Attempt 1/3 ...
+ATTEMPT 1 FAILED: No replica set members found yet, Timeout: 30.0s, Topology Description: <TopologyDescription id: 6a224f8607d600b18ab2a3a0, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-sctwdlf-shard-00-01.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None>]>
+Retrying in 10s ...
+Attempt 2/3 ...
+ATTEMPT 2 FAILED: ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30.0s, Topology Description: <TopologyDescription id: 6a224faf07d600b18ab2a3a1, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None, error=NetworkTimeout('ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-sctwdlf-shard-00-01.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None>]>
+Retrying in 10s ...
+Attempt 3/3 ...
+ATTEMPT 3 FAILED: SSL handshake failed: ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net:27017: EOF occurred in violation of protocol (_ssl.c:1129) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),SSL handshake failed: ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net:27017: _ssl.c:1112: The handshake operation timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms),ac-sctwdlf-shard-00-01.bqtc8l9.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms), Timeout: 30.0s, Topology Description: <TopologyDescription id: 6a224fd707d600b18ab2a3a2, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None, error=NetworkTimeout('SSL handshake failed: ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net:27017: _ssl.c:1112: The handshake operation timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-sctwdlf-shard-00-01.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None, error=NetworkTimeout('ac-sctwdlf-shard-00-01.bqtc8l9.mongodb.net:27017: timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net:27017: EOF occurred in violation of protocol (_ssl.c:1129) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+
+FATAL: All 3 attempts failed. Check Atlas connectivity and retry.

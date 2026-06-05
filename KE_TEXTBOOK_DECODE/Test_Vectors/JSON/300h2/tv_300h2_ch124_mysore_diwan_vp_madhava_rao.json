@@ -1,0 +1,257 @@
+{
+  "vector_id": "tv-300h2-ch124",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch124_123_Diwan_VP_Madhava_Rao",
+  "pdf_path": "Chapters/Ch124_123_Diwan_VP_Madhava_Rao.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Mysore Diwan Vp Madhava Rao",
+    "description": "Vishwanath Patankar Madhava Rao was an Indian administrator and statesman who served as the Diwan of Mysore kingdom from 1906 to 1909 and Baroda from 1910 to 1913.",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1850-02-11",
+    "time_local": "19:30:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1850-02-11T14:00:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Ayanamsha",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 2.244,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        10,
+        4,
+        9
+      ],
+      "significations_raw": "01,10 04,09"
+    },
+    "MOON": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 29.558,
+      "house": null,
+      "nakshatra": "Mriq",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4,
+        9,
+        10
+      ],
+      "significations_raw": "04,09 10"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Virgo",
+      "degree": 0.899,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        2,
+        1,
+        7,
+        5,
+        8
+      ],
+      "significations_raw": "02,01,07,05,08"
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 27.476,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3,
+        10,
+        6,
+        4,
+        9
+      ],
+      "significations_raw": "03,10,06,04 09"
+    },
+    "SATURN": {
+      "sign": "Pisces",
+      "degree": 14.824,
+      "house": null,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        6,
+        7,
+        8
+      ],
+      "significations_raw": "06,07 08"
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 3.681,
+      "house": null,
+      "nakshatra": "Magh",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01, Ke,Su,Ma"
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 3.681,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Su,Ma,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "health"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mars is in 10th house and it is in own star.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is in 02nd house and it is in star of Sun.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Jupiter (05) is aspecting 10th lord Venus and 10th house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sun is posited in star of Mars in 07.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mercury (11) too signifies Mars (09,10).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Hence the political appointment as head of a State with administration and governmental power is seen.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

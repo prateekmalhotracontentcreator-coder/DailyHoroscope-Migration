@@ -1,0 +1,267 @@
+{
+  "vector_id": "tv-300h2-ch078",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch078_77_Kamal_Haasan",
+  "pdf_path": "Chapters/Ch078_77_Kamal_Haasan.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Kamal Haasan",
+    "description": "Kamal Haasan is famous actor of Indian cinema and achieved phenomenal success.",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "Purva",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": 22.161,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": null,
+      "degree": 20.948,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        11,
+        1,
+        3,
+        6
+      ],
+      "significations_raw": "11,01,03,06"
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 0.856,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        10,
+        6,
+        1,
+        4,
+        5
+      ],
+      "significations_raw": "10,06,01, 04,05"
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 17.842,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        2,
+        4,
+        7,
+        6,
+        10
+      ],
+      "significations_raw": "02,04,07,06, 10"
+    },
+    "MERCURY": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 6.642,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        6,
+        10,
+        1,
+        4,
+        5
+      ],
+      "significations_raw": "03,06 10,01,04 05"
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 3.913,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "retrograde": true,
+      "significations": [
+        1,
+        2,
+        8,
+        4,
+        5
+      ],
+      "significations_raw": "01,02,08 04,05"
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 15.2,
+      "house": null,
+      "nakshatra": "PSha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ve,Ju,Sa"
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 15.2,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ra,Me"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": 23.48
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Entertainer",
+    "profession_category": "Entertainment",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Entertainment",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Mars is in 04111 house and it is in star of 10111 lord Moon.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter (10, 06) is in star of 05111 lord Saturn.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus (creativity) signifies 02, 05 through Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Rahu (illusion) is in star of Venus and signifies 05 and 10.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mercury signifies 02 and 07 (audience) through Mars.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "All these combinations made native an actor of high repute.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "NAIRS PUBUSHING HOUSE, HYDERABAD Page# 111",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

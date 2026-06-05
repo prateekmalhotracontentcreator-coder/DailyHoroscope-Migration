@@ -1,0 +1,19 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_kp_vol3_20260604_174708.log
+KP ASTROLOGY VOL 3 INGEST  |  batch: kp_vol3_v1_20260604
+Scope: 256 rules · 77 files · science_id: kp_jyotish
+======================================================================
+
+Loaded 256 rules from backend/scripts/kp_vol3_rules.json
+Running final structural check before upload...
+Issues found: 0
+
+  ✓  Inserted 256 rules into horoscope_db.interpretation_rules
+  ✓  import_batches record upserted  (batch_id: kp_vol3_v1_20260604)
+     chapters: 75 distinct chapter IDs
+
+  Verification: count = 256
+  ✓  Count matches expected 256.
+
+✓ Upload complete.
+  Next: python3 backend/scripts/validate_rules.py --batch-id kp_vol3_v1_20260604 --mongo-url "$MONGO_URL" --db-name horoscope_db

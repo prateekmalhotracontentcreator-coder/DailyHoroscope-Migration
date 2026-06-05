@@ -1,0 +1,222 @@
+{
+  "vector_id": "tv-lu-ch55",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch55_Grand_Duchess_Olga_Nikolaevna",
+  "pdf_path": "Chapter_Splits/Ch55_Grand_Duchess_Olga_Nikolaevna.pdf",
+  "subject": {
+    "name": "Grand Duchess Olga Nikolaevna",
+    "description": "Eldest daughter of Czar Nicholas II",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1891-11-15",
+    "time_local": null,
+    "timezone_offset_hours": 3.0,
+    "time_utc": null,
+    "latitude": 59.7167,
+    "longitude": 30.3667,
+    "place": "Tsarskoe, Russia",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-15-01.58",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Cancer",
+      "degree": 8.8,
+      "house": 1,
+      "nakshatra": "Push",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 0.8667,
+      "house": 5,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "significations": [
+        2,
+        5,
+        6,
+        9,
+        8
+      ]
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 27.3,
+      "house": 10,
+      "nakshatra": "Krit",
+      "pada": 1,
+      "significations": [
+        1,
+        10,
+        2,
+        5
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 23.4833,
+      "house": 3,
+      "nakshatra": "Chit",
+      "pada": 1,
+      "significations": [
+        5,
+        10,
+        3
+      ]
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 11.5667,
+      "house": 5,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        12,
+        3,
+        5,
+        7,
+        8
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 16.1333,
+      "house": 8,
+      "nakshatra": "Sata",
+      "pada": 3,
+      "significations": [
+        6,
+        9,
+        8,
+        "Ra"
+      ]
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 15.7333,
+      "house": 5,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": [
+        11,
+        4,
+        5,
+        7,
+        8,
+        3
+      ]
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 27.9833,
+      "house": 5,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "significations": [
+        "Mercury"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 27.9833,
+      "house": 11,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "significations": [
+        "Mars"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "executed in Kantaka Shani",
+    "death_type": "violent",
+    "death_date": "1895-11-15",
+    "age_at_death": 23,
+    "dasha_at_death": {
+      "mahadasha": "RAHU",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "VENUS",
+      "sookshma": "SUN",
+      "stated_by_author": true,
+      "raw_text": "Rahu Jupiter-Venus-Sun period. Dasha lord Rahu signifies badhaka and maraca. Bhukti lord Jupiter signifies badhaka, mara"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Rahu signifies badhaka and maraca.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Jupiter signifies badhaka, maraca, enemy & injury and longevity houses.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Antara lord Venus signifies badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Sookshma lord Sun signifies maraca and Jupiter.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "longevity is under threat.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

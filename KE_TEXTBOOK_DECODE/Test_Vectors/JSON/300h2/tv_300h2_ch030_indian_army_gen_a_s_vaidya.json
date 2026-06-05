@@ -1,0 +1,271 @@
+{
+  "vector_id": "tv-300h2-ch030",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch030_29_General_AS_Vaidya",
+  "pdf_path": "Chapters/Ch030_29_General_AS_Vaidya.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Indian Army Gen. A.S. Vaidya",
+    "description": "Gen. A.S. Vaidya (27 Jan 1926 - 10 Aug 1986) was the 13th Chief of Army Staff of the Indian Army, who was heading the Operation Blue star, which involved in flushing out the terrorists from Golden Temple in June 1984.",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1926-01-26",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 18.65,
+    "longitude": 72.9167,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-43-40.46",
+    "nakshatra_stated": "Aridrai",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "lagna_degree_stated": null,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 12.795,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        6,
+        11,
+        6,
+        5
+      ],
+      "significations_raw": "06,11,06,05"
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 13.699,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        5,
+        6
+      ],
+      "significations_raw": "05,06,Ra"
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 27.502,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        9,
+        2,
+        10,
+        4,
+        7
+      ],
+      "significations_raw": "09,02,10 ,04,07"
+    },
+    "MERCURY": {
+      "sign": "Sagittarius",
+      "degree": 29.098,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        4,
+        7,
+        10,
+        6,
+        11
+      ],
+      "significations_raw": "04,07,10,06,11"
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 12.03,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        10,
+        11,
+        4,
+        5
+      ],
+      "significations_raw": "01,10,11,04,05"
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 1.908,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        3,
+        12,
+        8,
+        9,
+        2
+      ],
+      "significations_raw": "03,12,08 09,02"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 2.089,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        910,
+        1
+      ],
+      "significations_raw": "0910,11.12 01"
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 2.243,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        5
+      ],
+      "significations_raw": "05,Ju,Mo,Su"
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 2.243,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        11
+      ],
+      "significations_raw": "11 Su Ju,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": 7.07
+    }
+  },
+  "life_outcomes": {
+    "profession": "Military",
+    "profession_category": "Military",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1926
+      },
+      {
+        "event": "Died",
+        "year": 1986
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1986-08-10",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Military",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Jupiter are conjunct, while Venus is in 0200 house to them.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "07°' lord (war), Mercury is posited in 10 (profession) and it is in star of Sun (06, 11, Government).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars (war) is in 09 (Central) and signifies 10 Oob) through Mercury, while Jupiter is lord of 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "All these combinations led native to become a soldier and chief of Army.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

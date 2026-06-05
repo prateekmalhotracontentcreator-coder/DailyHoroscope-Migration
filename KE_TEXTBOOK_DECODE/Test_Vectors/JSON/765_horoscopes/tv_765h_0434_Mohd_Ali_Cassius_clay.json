@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0434",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0434",
+  "source_file": "0434_M-35_Mohd_Ali_Cassius_clay.pdf",
+  "subject": {
+    "name": "Mohd Ali/ Cassius clay",
+    "name_from_filename": "Mohd Ali/ Cassius clay",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1942-01-18",
+    "time_local": "18:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1942-01-18T13:10:00Z",
+    "latitude": 38.25,
+    "longitude": -85.7667,
+    "place": "85W46 & 38N15",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 1,
+    "months": 9,
+    "days": 19,
+    "raw_text": "balance of dasha Mar 1-9-19"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 10.5333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 18.8333,
+      "retrograde": true
+    },
+    "MOON": {
+      "degree_in_sign": 3.2333,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 21.15,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 5.25,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 21.9667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 27.3833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

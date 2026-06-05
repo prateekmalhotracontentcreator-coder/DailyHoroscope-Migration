@@ -1,0 +1,284 @@
+{
+  "vector_id": "tv-300h2-ch081",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch081_80_Shah_Rukh_Khan",
+  "pdf_path": "Chapters/Ch081_80_Shah_Rukh_Khan.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Hollywood Actor--Shah Rukh Khan",
+    "description": "Shah Rukh Khan is a famous Hindi film actor at top level, donning roles of hero and sometimes villain:",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "lagna_degree_stated": 24.074,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Libra",
+      "degree": 15.966,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        3,
+        1,
+        0
+      ],
+      "significations_raw": "01 ,03,1 0,Ra"
+    },
+    "MOON": {
+      "sign": "Capricorn",
+      "degree": 21.725,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        6,
+        12
+      ],
+      "significations_raw": "06,12"
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 27.436,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        4,
+        9,
+        211
+      ],
+      "significations_raw": "04 09 0211"
+    },
+    "MERCURY": {
+      "sign": "Scorpio",
+      "degree": 6.231,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        11,
+        4,
+        6,
+        7
+      ],
+      "significations_raw": "02,11,04,06,07"
+    },
+    "JUPITER": {
+      "sign": "Gemini",
+      "degree": 7.749,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "retrograde": true,
+      "significations": [
+        5,
+        8,
+        11,
+        1
+      ],
+      "significations_raw": "05,08,11,1 O ,Ra"
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "SATURN": {
+      "sign": "Aquarius",
+      "degree": 17.338,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        6,
+        7,
+        10
+      ],
+      "significations_raw": "06 07,10,Ra"
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 12.551,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Me,Ma,Mo,Ve"
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 12.551,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": "Ma,Me,Sa"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Entertainer",
+    "profession_category": "Entertainment",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Entertainment",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "101h lord (profession) Venus (creativity) is in 051h house (creativity).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "It is aspected by Jupiter from 111h house, while Jupiter is in star of Rahu (illusion).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Rahu is in 10th house in Taurus ruled by Venus, while Jupiter signifies Rahu and 101h house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Saturn signifies 07 (audience) and 101h house through Rahu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Mars is in 041h house and it aspects 101h house and Rahu.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Mercury, duality & 02-dialogue, is aspecting Rahu and it also signifies 071h house through Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "From Moon sign, Venus becomes lord of 05 and 10.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "All these led native to acting in films at high level.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Saturn signifies 05 and 07 through self and Rahu, which made native to marry from outside community.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

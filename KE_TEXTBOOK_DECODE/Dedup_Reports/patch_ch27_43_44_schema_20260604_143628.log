@@ -1,0 +1,42 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_ch27_43_44_schema_20260604_143628.log
+======================================================================
+BPHS Ch27 / Ch43 / Ch44 — SCHEMA PATCH
+Patch batch ID : bphs_ch27_43_44_v2_20260604
+Dry-run        : False
+======================================================================
+
+── Ch27 — Shadbala ──────────────────────────────────────────────
+  Source rules : 28 (expected 28)
+  Patches built: 28 / 28
+  Build errors : 0
+  Sample [bphs-ch27-001] full_text[:100]: Component of Sthana Bala. Procedure: deduct the deep debilitation longitude from the planet's actual
+
+── Ch43 — Longevity (Ayurdaya) ──────────────────────────────────────────────
+  Source rules : 35 (expected 35)
+  Patches built: 35 / 35
+  Build errors : 0
+  Sample [bphs-ch43-001] full_text[:100]: Each of the seven classical planets is allotted a fixed number of years at its deep exaltation point
+
+── Ch44 — Marakas ──────────────────────────────────────────────
+  Source rules : 40 (expected 40)
+  Patches built: 40 / 40
+  Build errors : 0
+  Sample [bphs-ch44-MI01] full_text[:100]: The 2nd and 7th houses are designated Maraka (killer) houses. Lords and occupants of these houses ga
+
+Total patches ready: 103
+
+── DB result ─────────────────────────────────────────────────────────
+  Patched      : 103
+  Not found    : 0
+  DB errors    : 0
+
+── Post-patch verification ───────────────────────────────────────────
+  Ch27 — Shadbala                    : total=28 | full_text=28/28 | pending_review=28
+  Ch43 — Longevity (Ayurdaya)        : total=35 | full_text=35/35 | pending_review=35
+  Ch44 — Marakas                     : total=40 | full_text=40/40 | pending_review=40
+
+  ingest_batch_id=bphs_ch27_43_44_v2_20260604: 103 rules, 103 pending_review
+
+✓ All 103 rules patched. Re-run AI validator on these rules next.
+  Validation command:
+    python3 backend/knowledge_engine.py --validate-batch bphs_ch27_43_44_v2_20260604

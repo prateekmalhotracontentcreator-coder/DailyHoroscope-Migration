@@ -1,0 +1,85 @@
+{
+  "vector_id": "tv-765h-0495",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0495",
+  "source_file": "0495_P-6_Ms_Pallavi_Gupta.pdf",
+  "subject": {
+    "name": "Ms Pallavi Gupta",
+    "name_from_filename": "Ms Pallavi Gupta",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_compound": false,
+    "profession_secondary": "Royalty_Nobility",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1984-06-27",
+    "time_local": "00:50",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1984-06-27T19:20:00Z",
+    "latitude": 26.449,
+    "longitude": 80.331,
+    "place": "Kanpur, Uttar Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 4,
+    "months": 8,
+    "days": 13,
+    "raw_text": "Balance of dasha Sun 4-8-13"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 10.7667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 13.4833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 14.1,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 16.3,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 18.2833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Science_Academia",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

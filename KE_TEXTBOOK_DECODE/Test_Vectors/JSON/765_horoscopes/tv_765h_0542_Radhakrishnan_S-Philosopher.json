@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0542",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0542",
+  "source_file": "0542_R-1_Radhakrishnan_S-Philosopher.pdf",
+  "subject": {
+    "name": "Radhakrishnan S-Philosopher",
+    "name_from_filename": "Radhakrishnan S-Philosopher",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "President",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1888-09-05",
+    "time_local": "07:05",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1888-09-05T01:35:00Z",
+    "latitude": 13.5,
+    "longitude": 79.5,
+    "place": "79E 30 & 13N30",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 1,
+    "months": 11,
+    "days": 25,
+    "raw_text": "Balance of dasha Ket 1-11-25"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 7.5167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 22.1,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 9.55,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 20.8667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 4.1,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 1.7,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 6.95,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 6.0833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "President",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

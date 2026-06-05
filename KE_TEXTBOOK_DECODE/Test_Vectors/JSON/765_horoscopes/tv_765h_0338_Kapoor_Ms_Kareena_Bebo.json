@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0338",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0338",
+  "source_file": "0338_K-11_Kapoor_Ms_Kareena_Bebo.pdf",
+  "subject": {
+    "name": "Kapoor, Ms Kareena (Bebo)",
+    "name_from_filename": "Kapoor, Ms Kareena (Bebo)",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1980-09-21",
+    "time_local": "14:17",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1980-09-21T08:47:00Z",
+    "latitude": 19.076,
+    "longitude": 72.877,
+    "place": "Mumbai, Maharashtra, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 1,
+    "months": 3,
+    "days": 9,
+    "raw_text": "Balance of dasha Mon 1-3-9"
+  },
+  "planet_degrees_from_text": {
+    "VENUS": {
+      "degree_in_sign": 21.0833,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 24.3,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 21.6333,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 24.3,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 4.9333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 6.4,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 24.25,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Entertainment",
+    "profession_subcategory": "Actress",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

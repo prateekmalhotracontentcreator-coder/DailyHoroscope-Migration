@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0168",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0168",
+  "source_file": "0168_D-23_Diana_Princess_of_Britain.pdf",
+  "subject": {
+    "name": "Diana, Princess of Britain",
+    "name_from_filename": "Diana, Princess of Britain",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Prince",
+    "profession_compound": false,
+    "profession_secondary": "Politics",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1961-07-01",
+    "time_local": "18:30",
+    "timezone_offset_hours": 0.0,
+    "time_utc": "1961-07-01T18:30:00Z",
+    "latitude": 51.507,
+    "longitude": -0.128,
+    "place": "London, United Kingdom",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 2,
+    "months": 7,
+    "days": 15,
+    "raw_text": "Balance of dasha Mar 2-7-15"
+  },
+  "planet_degrees_from_text": {
+    "MERCURY": {
+      "degree_in_sign": 9.8667,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 16.3833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 1.6667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 4.85,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 4.5,
+      "retrograde": true
+    },
+    "RAHU": {
+      "degree_in_sign": 4.85,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 11.7667,
+      "retrograde": true
+    },
+    "MARS": {
+      "degree_in_sign": 8.35,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 6.3667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 6.3667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Prince",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "vector_id": "tv-300h2-ch038",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch038_37_Virginia_Woolf",
+  "pdf_path": "Chapters/Ch038_37_Virginia_Woolf.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Virginia Woolf",
+    "description": "Adeline Virginia Woolf (25 Jan 1882 - 28 Mar 1941) was an English author, publisher, and writer of short stories, regarded as one of the foremost modernist literary figures. Ms. Woolf had bouts of depression in her life.",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": "1882-01-25",
+    "time_local": "12:15:00",
+    "timezone_offset_hours": -0.0,
+    "time_utc": "1882-01-25T12:15:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-12-36.45",
+    "nakshatra_stated": "Aswini",
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "lagna_degree_stated": 18.323,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 13.282,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        9,
+        4,
+        3,
+        12
+      ],
+      "significations_raw": "09 04,03,12"
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 3.116,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        12
+      ],
+      "significations_raw": "03,12,Ke"
+    },
+    "MARS": {
+      "sign": "Gemini",
+      "degree": 5.184,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        7,
+        12,
+        2
+      ],
+      "significations_raw": "07,12,02"
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 25.849,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        9,
+        7,
+        12
+      ],
+      "significations_raw": "02.05,09,07,12"
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 24.388,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        8,
+        11
+      ],
+      "significations_raw": "08,11"
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 6.876,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        9,
+        4
+      ],
+      "significations_raw": "01,06,09,04"
+    },
+    "SATURN": {
+      "sign": "Aries",
+      "degree": 13.658,
+      "house": null,
+      "nakshatra": "Bhar",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        9,
+        10,
+        6
+      ],
+      "significations_raw": "09,10,12.01,06"
+    },
+    "RAHU": {
+      "sign": "Scorpio",
+      "degree": 13.767,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Sa,Ma"
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 13.767,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01,Mo,ve"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Taurus",
+      "degree": 22.92
+    },
+    "ghati_lagna": {
+      "sign": "Sagittarius",
+      "degree": 7.55
+    }
+  },
+  "life_outcomes": {
+    "profession": "Writer",
+    "profession_category": "Literature",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1882
+      },
+      {
+        "event": "Died",
+        "year": 1941
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1941-03-28",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Literature",
+    "key_claim_axes": [
+      "career",
+      "health"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Ketu (melancholy) is in lagna and it is in star of Moon (mind), while Moon is in star of Ketu in 12 (isolation).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Saturn (pain) is conjunct with Moon.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "It is in 12, which causes disturbed sleep.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "It is aspecting lagna (brain) and 061h lord (disease) Venus, who signifies 04 (mind) through Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter signifies 08 (disgrace) and disappointment is in star of lagna lord Venus and is conjunct with Moon in 12 (isolation).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "From Moon sign, Moon itself is lord of 04 and signifies Ketu.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "All these combinations made native to be withdrawn.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "depressed, moody, etc.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "health",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

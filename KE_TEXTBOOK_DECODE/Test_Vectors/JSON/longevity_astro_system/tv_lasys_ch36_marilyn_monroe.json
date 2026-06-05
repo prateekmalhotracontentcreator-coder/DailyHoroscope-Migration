@@ -1,0 +1,192 @@
+{
+  "vector_id": "tv-lasys-ch36",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch36",
+  "chapter_title": "Madhya Aayu or Middle Longevity — Marilyn Monroe",
+  "pdf_path": "Text Books/LongevityAstroSystem/36_Madhya Aayu or middle longevity.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Marilyn Monroe",
+    "description": "Born Norma Jean Mortensen; famous Hollywood actress in the 1950s; married and divorced more than once; romantically linked with US President John F Kennedy",
+    "nationality": "American"
+  },
+
+  "birth_data": {
+    "date": "1926-06-01",
+    "time_local": "09:26:45",
+    "timezone_offset_hours": -8,
+    "time_utc": "17:26:45",
+    "latitude": 34.052222,
+    "longitude": -118.243056,
+    "place": "Los Angeles, California, USA",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22° 43' 28\"",
+    "notes": "Settings listed as Universal Time in PDF; coordinates 118-14-34W, 34-03-08N; Placidus cusp system"
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "moon_sign_stated_in_book": "Capricorn",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Lagna: 19° Cn 40' Aslesha (Mo-Me-Ve); Moon: 26° Cp 20' Dhanishtha (Sa-Ma-Ju)"
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "VENUS",
+    "8th_csl": "MERCURY",
+    "badhaka_house": 11,
+    "badhaka_house_rationale": "Cancer is moveable lagna; badhaka = 11th house",
+    "badhaka_csl": "SATURN",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "madhya",
+  "aayu_bucket_computed": null,
+  "aayu_boundary_note": "Died in 36th year — text explicitly states 'end of Alpa-aayu range'; classified under Madhya chapter as Alpa/Madhya border case",
+
+  "planet_positions_from_table": {
+    "LAGNA": { "sign": "Cancer",      "degree": "19°40'", "house": 1,  "nakshatra": "Aslesha",    "sss_lord": "Mo-Me-Ve", "significations": [1] },
+    "SUN":   { "sign": "Taurus",      "degree": "17°43'", "house": 11, "nakshatra": "Rohini",     "sss_lord": "Ve-Mo-Sa", "significations": [11] },
+    "MOON":  { "sign": "Capricorn",   "degree": "26°20'", "house": 7,  "nakshatra": "Dhanishtha", "sss_lord": "Sa-Ma-Ju", "significations": [7] },
+    "MARS":  { "sign": "Aquarius",    "degree": "28°00'", "house": 8,  "nakshatra": "PrvBhadra",  "sss_lord": "Sa-Ju-Ve", "significations": [8] },
+    "MERCURY":{ "sign": "Taurus",     "degree": "14°02'", "house": 11, "nakshatra": "Rohini",     "sss_lord": "Ve-Mo-Ju", "significations": [11] },
+    "JUPITER":{ "sign": "Aquarius",   "degree": "04°06'", "house": 8,  "nakshatra": "Dhanishtha", "sss_lord": "Sa-Ma-Ve", "significations": [8] },
+    "VENUS": { "sign": "Aries",       "degree": "06°01'", "house": 10, "nakshatra": "Aswini",     "sss_lord": "Ma-Ke-Ra", "significations": [10] },
+    "SATURN":{ "sign": "Libra",       "degree": "28°43'", "house": 4,  "nakshatra": "Vishakha",   "sss_lord": "Ve-Ju-Ve", "retrograde": true, "significations": [4] },
+    "RAHU":  { "sign": "Gemini",      "degree": "25°32'", "house": 12, "nakshatra": "Punarvasu",  "sss_lord": "Me-Ju-Me", "significations": [12] },
+    "KETU":  { "sign": "Sagittarius", "degree": "25°32'", "house": 6,  "nakshatra": "Prvashada",  "sss_lord": "Ju-Ve-Me", "significations": [6] }
+  },
+
+  "cuspal_data_from_table": {
+    "I":   { "longitude": "19° Cn 40'", "nakshatra": "Aslesha",    "sss_lord": "Mo-Me-Ve" },
+    "II":  { "longitude": "12° Le 41'", "nakshatra": "Makha",      "sss_lord": "Su-Ke-Me" },
+    "III": { "longitude": "10° Vi 08'", "nakshatra": "Hastha",     "sss_lord": "Me-Mo-Mo" },
+    "IV":  { "longitude": "12° Li 26'", "nakshatra": "Swati",      "sss_lord": "Ve-Ra-Sa" },
+    "V":   { "longitude": "17° Sc 04'", "nakshatra": "Jyeshtha",   "sss_lord": "Ma-Me-Me" },
+    "VI":  { "longitude": "20° Sa 04'", "nakshatra": "Prvashada",  "sss_lord": "Ju-Ve-Ra" },
+    "VII": { "longitude": "19° Cp 40'", "nakshatra": "Shravana",   "sss_lord": "Sa-Mo-Ke" },
+    "VIII":{ "longitude": "12° Aq 41'", "nakshatra": "Satabhi",    "sss_lord": "Sa-Ra-Me" },
+    "IX":  { "longitude": "10° Pi 08'", "nakshatra": "UtrBhadra",  "sss_lord": "Ju-Sa-Ve" },
+    "X":   { "longitude": "12° Ar 26'", "nakshatra": "Aswini",     "sss_lord": "Ma-Ke-Me" },
+    "XI":  { "longitude": "17° Ta 04'", "nakshatra": "Rohini",     "sss_lord": "Ve-Mo-Sa" },
+    "XII": { "longitude": "20° Ge 04'", "nakshatra": "Punarvasu",  "sss_lord": "Me-Ju-Ju" }
+  },
+
+  "death_data": {
+    "cause_of_death": "Suicide (drug overdose / barbiturate poisoning)",
+    "death_type": "suicide",
+    "death_date": "1962-08-05",
+    "death_time_approx": "~02:40 AM",
+    "death_place": "Brentwood, Los Angeles, California, USA",
+    "age_at_death": 36,
+    "dasha_at_death": {
+      "mahadasha": "JUPITER",
+      "antardasha": "MARS",
+      "pratyantardasha": "RAHU",
+      "sookshma": "JUPITER",
+      "prana": "VENUS",
+      "kp_significations": [6, 7, 8, 12, 11],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "The native died on 05 Aug 1962 at around 2-40 a.m. in Brentwood, Los Angeles, California State, USA, during the VMD of Jupiter-Mars-Rahu-Jupiter-Venus."
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna cusp sub lord Venus denotes cusps 04, 09, 11 and it is in the star of Ketu. Ketu denotes Venus, Saturn and Jupiter. Saturn denotes cusps 04, 07, 08 by self and 06, 07 and 09 through Jupiter. Jupiter denotes cusps 06, 07, 09, 05, 08, and 10 through self and Mars.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl_stellar_chain",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "The sub lord of 08th cusp, which stands for longevity, is Mercury. It is in Moon star in Taurus. Mercury denotes cusps 01, 07, 03, 10 and 12 through self and Moon. It could be seen that Mercury does not signify badhaka cusp. But it is close to the badhaka cusp with a longitudinal distance of 3 deg.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_8th_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Badhaka cusp sub lord is Saturn. Saturn denotes cusps 04, 07, 08 by self and 06, 07 and 09 through Jupiter. Among many good houses, it signifies 06, 07 and 08 cusps.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_badhaka_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "So Venus, Mercury and Saturn are having negative connections with reference to prolonging the longevity. Also, there is a 06-08-12 and maraca & badhaka link between Saturn, Mercury and Venus. Hence the longevity will not go beyond Madhya aayu.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "multi_planet_chain",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "08th is for longevity. 12th is for sacrifice. 11th is badhaka. Rahu in 12th bhava indicates sudden death. It denotes Jupiter who signifies 08th cusp (longevity). Jupiter is in star of Mars. Saturn is lord of 08th cusp. Mercury is in the star of Moon (01) in badhaka. These combinations indicate suicide.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "death_type_indicator",
+      "claim_axis": "death_mode",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Native died in her 36th year, which is end of Alpa-aayu range.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "aayu_classification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "The native was in saade-saath or (Eartha Shani), which means transit of Saturn over natal Moon. It should be concluded that more than the natal chart, the transit brought in affliction to longevity.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "transit_trigger",
+      "claim_axis": "timing",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": ""
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

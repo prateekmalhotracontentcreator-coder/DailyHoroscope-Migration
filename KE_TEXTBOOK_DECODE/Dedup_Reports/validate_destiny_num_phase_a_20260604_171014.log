@@ -1,0 +1,45 @@
+======================================================================
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/validate_destiny_num_phase_a_20260604_171014.log
+DESTINY NUMEROLOGY PHASE A -- VALIDATION QUERY
+Batch: destiny_numerology_ch01-15_v1
+======================================================================
+
+=== DB COUNTS ===
+  auto_approved                  282
+  pending_human_review           29
+  flagged                        0
+  pending_review                 0
+  TOTAL                          311
+
+=== FLAGGED (0) ===
+
+=== PENDING_HUMAN_REVIEW (29) ===
+  Ch4   num-ch04v2-012                      
+  Ch4   num-ch04v2-027                      validator_error
+  Ch4   num-ch04v2-030                      
+  Ch4   num-ch04v2-032                      
+  Ch4   num-ch04v2-037                      
+  Ch4   num-ch04v2-044                      
+  Ch4   num-ch04v2-048                      
+  Ch4   num-ch04v2-054                      validator_error
+  Ch6   num-ch06-008                        
+  Ch6   num-ch06-009                        
+  Ch6   num-ch06-010                        
+  Ch6   num-ch06-011                        
+  Ch6   num-ch06-017                        
+  Ch7   num-ch07-001                        
+  Ch9   num-ch09-007                        
+  Ch9   num-ch09-015                        validator_error
+  Ch9   num-ch09-017                        
+  Ch9   num-ch09-050                        
+  Ch10  num-ch10-008                        
+  Ch10  num-ch10-010                        
+  Ch13  num-ch13-001                        
+  Ch13  num-ch13-017                        
+  Ch13  num-ch13-018                        
+  Ch13  num-ch13-026                        
+  Ch13  num-ch13-030                        
+  Ch13  num-ch13-039                        validator_error
+  Ch16  num-ch16-045                        
+  Ch16  num-ch16-052                        
+  Ch16  num-ch16-061                        

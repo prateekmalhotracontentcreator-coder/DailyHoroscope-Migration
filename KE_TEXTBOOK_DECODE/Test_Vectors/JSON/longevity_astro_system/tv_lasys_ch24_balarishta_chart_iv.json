@@ -1,0 +1,152 @@
+{
+  "vector_id": "tv-lasys-ch24",
+  "book_id": "longevity_astro_system_v1_20260605",
+  "source_chapter": "Ch24",
+  "chapter_title": "Balarishta or Infant Mortality Chart-IV",
+  "pdf_path": "Text Books/LongevityAstroSystem/24_Balarishta or Infant Mortality Chart-IV.pdf",
+  "is_blind_chart": false,
+
+  "subject": {
+    "name": "Unnamed Balarishta Case IV (Gender Unknown)",
+    "description": "Infant of unknown gender born at primary health centre in Banda, Sagar district, Madhya Pradesh. Died approximately 55 minutes after birth on same day (reported 11:40 AM; computed 11:39:15 AM).",
+    "nationality": "Indian"
+  },
+
+  "birth_data": {
+    "date": "2012-04-22",
+    "time_local": "10:45:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "05:15:00",
+    "latitude": 24.0167,
+    "longitude": 78.9833,
+    "place": "Banda, Sagar District, Madhya Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "23-55-58",
+    "notes": "Reported TOB 10:45:00 AM. Lagna CSL = Saturn, 9th CSL = Mercury. Mercury posited in star of Saturn in Pisces (Utharabhadra). Saturn-Mercury link via stellar chain confirms accuracy. Sidereal time 0h 33m 37s. Reported death at 11:40 AM; computed precise death at 11:39:15 AM when lagna in Pushya (Saturn star) sub of Saturn."
+  },
+
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Aries",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": "Lagna at 23° Ge 32' Punarvasu (Mo-Ju-Sa). Moon at 18° Ar 28' Bharani (Ma-Ve-Ra)."
+  },
+
+  "kp_cuspal_data": {
+    "lagna_csl": "SATURN",
+    "8th_csl": "SATURN",
+    "badhaka_house": 7,
+    "badhaka_house_rationale": "Gemini = dual sign → 7th house is both maraka and badhaka",
+    "maraka_houses": [2, 7]
+  },
+
+  "aayu_bucket_stated": "balarishta",
+  "aayu_bucket_computed": null,
+
+  "planet_positions_from_table": {
+    "LAGNA": { "sign": "Gemini", "degree": "23°32'", "house": 1, "significations": [1] },
+    "SUN":   { "sign": "Aries", "degree": "8°33'", "house": 11, "significations": [11] },
+    "MOON":  { "sign": "Aries", "degree": "18°28'", "house": 11, "significations": [] },
+    "MARS":  { "sign": "Leo", "degree": "10°08'", "house": 3, "significations": [3] },
+    "MERCURY": { "sign": "Pisces", "degree": "11°27'", "house": 10, "significations": [1, 8] },
+    "JUPITER": { "sign": "Aries", "degree": "24°12'", "house": 11, "significations": [7, 10] },
+    "VENUS":   { "sign": "Taurus", "degree": "21°10'", "house": 12, "significations": [2, 7] },
+    "SATURN":  { "sign": "Libra", "degree": "01°45'", "house": 5, "significations": [1, 6, 7, 8, 12] },
+    "RAHU":    { "sign": "Scorpio", "degree": "13°05'", "house": 6, "significations": [6, 8, 12] },
+    "KETU":    { "sign": "Taurus", "degree": "13°05'", "house": 12, "significations": [12] }
+  },
+
+  "death_data": {
+    "cause_of_death": "Unknown — infant mortality; 01, 06, 08, 12 along with badhaka and maraca held by Saturn or its representatives",
+    "death_type": "unknown",
+    "death_date": "2012-04-22",
+    "age_at_death": 0,
+    "dasha_at_death": {
+      "mahadasha": "VENUS",
+      "antardasha": "RAHU",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "SATURN",
+      "kp_significations": [2, 7, 8, 12, 10],
+      "stated_by_author": true,
+      "cc_computed": false,
+      "raw_text": "Unfortunately the baby died on the same day at 11-40 a.m. during the VMD period of Venus-Rahu-Jupiter-Saturn-Venus. Venus denotes Moon (maraca). Rahu denotes Saturn (08-longevity). Jupiter is maraca and badhaka. Saturn is lagna cusp sub lord and 08th bhava lord."
+    }
+  },
+
+  "rotation_technique": null,
+
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "In this case, Saturn is the sub lord of the cusps 01, 07 and 08. Saturn denotes 06th cusp through Mars. Rahu denotes 12th cusp through Venus, while Rahu is in the star of Saturn.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Hence 01, 06, 08, 12 along with badhaka and maraca are held by Saturn or its representatives. These combinations are really detrimental for the longevity.",
+      "aayu_gate": "gate_2",
+      "condition_type_guess": "kp_csl",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Venus denotes Moon (maraca). Rahu denotes Saturn (08-longevity). Jupiter is maraca and badhaka. Saturn is lagna cusp sub lord and 08th bhava lord.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "dasha_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "The child should have died at 11-39-15 a.m. when Lagna was in the star of Saturn in Cancer (Pushya) and sub of Saturn (01 and 08) too, as per the transit chart.",
+      "aayu_gate": "gate_5",
+      "condition_type_guess": "transit",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "The combinations of the natal chart such as link of 01 and 08 with 07th and the dush sthaana linked, coupled with period at the time of birth caused the death immediately after birth.",
+      "aayu_gate": "gate_4",
+      "condition_type_guess": "dasha_signification",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "timing_precision_pass": null,
+    "rule_precision_score": null,
+    "judge_score": null,
+    "false_positive_flag": false,
+    "notes": "Saturn is both lagna CSL and 8th CSL — dual detrimental portfolio. This is the only case among Ch21-24 where a single planet holds both lagna and 8th cusp sub lordship."
+  },
+
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

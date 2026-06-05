@@ -1,0 +1,85 @@
+{
+  "vector_id": "tv-765h-0468",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0468",
+  "source_file": "0468_N-21_Ms_Nidhi_Gupta-MCA.pdf",
+  "subject": {
+    "name": "Ms Nidhi Gupta",
+    "name_from_filename": "Ms Nidhi Gupta-MCA",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "MCA",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "MCA",
+    "profession_compound": false,
+    "profession_secondary": "Royalty_Nobility",
+    "profession_inferred": false,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1980-11-30",
+    "time_local": "05:36",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1980-11-30T00:06:00Z",
+    "latitude": 28.984,
+    "longitude": 77.706,
+    "place": "Meerut, Uttar Pradesh, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "VENUS",
+    "years": 8,
+    "months": 8,
+    "days": 3,
+    "raw_text": "Balance of dasha Ven 8-8-3"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 19.8167,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 19.8167,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 13.75,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 14.0833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 27.75,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "MCA",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "MCA",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

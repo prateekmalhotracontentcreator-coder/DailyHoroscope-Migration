@@ -1,0 +1,221 @@
+{
+  "vector_id": "tv-lu-ch74",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch74_Benigno_Aquino",
+  "pdf_path": "Chapter_Splits/Ch74_Benigno_Aquino.pdf",
+  "subject": {
+    "name": "Benigno Aquino",
+    "description": "Filipino Opposition Leader",
+    "nationality": "Filipino"
+  },
+  "birth_data": {
+    "date": "1932-11-27",
+    "time_local": "00:01:00",
+    "timezone_offset_hours": 8.0,
+    "time_utc": "1932-11-26T16:01:00Z",
+    "latitude": 15.3167,
+    "longitude": 120.65,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-49-24.07",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Leo",
+    "moon_sign_stated_in_book": "Libra",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Leo",
+      "degree": 14.1833,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Scorpio",
+      "degree": 11.3833,
+      "house": 4,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        1,
+        4,
+        6,
+        7
+      ]
+    },
+    "MOON": {
+      "sign": "Libra",
+      "degree": 21.8833,
+      "house": 3,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        12,
+        3,
+        5,
+        1,
+        8
+      ]
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 13.1,
+      "house": 1,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        4,
+        9,
+        1,
+        "Ke"
+      ]
+    },
+    "JUPITER": {
+      "sign": "Leo",
+      "degree": 27.7167,
+      "house": 1,
+      "nakshatra": "UPha",
+      "pada": 1,
+      "significations": [
+        5,
+        1,
+        8,
+        4
+      ]
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 6.7667,
+      "house": 3,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "significations": [
+        3,
+        10,
+        7,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 7.6833,
+      "house": 6,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        6,
+        7,
+        1,
+        4
+      ]
+    },
+    "RAHU": {
+      "sign": "Aquarius",
+      "degree": 19.95,
+      "house": 7,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        7,
+        "Sa",
+        "Ma",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 19.95,
+      "house": 1,
+      "nakshatra": "PPha",
+      "pada": 2,
+      "significations": [
+        1,
+        "Ma",
+        "Ju",
+        "Su",
+        "Ve"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Virgo",
+      "degree": 1.3333,
+      "house": 2,
+      "nakshatra": "UPha",
+      "pada": 2,
+      "significations": [
+        "Sun"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "weapon",
+    "death_type": "violent",
+    "death_date": "1932-11-27",
+    "age_at_death": 51,
+    "dasha_at_death": {
+      "mahadasha": "KETU",
+      "antardasha": "VENUS",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "Ketu-Venus-Jupiter-Jupiter-Mercury in his 51st year. Dasha lord Ketu gives the result of lagna, 08th, Mars who signifies"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Dasha lord Ketu gives the result of lagna, 08th, Mars who signifies body, longevity or accidents, causative planet for injury & badhaka respectively.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Bhukti lord Venus signifies Rahu signifies maraca and 06th house (enemy and injury).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "sookshma lord Jupiter signifies body and longevity.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

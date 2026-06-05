@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0491",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0491",
+  "source_file": "0491_P-2_Padukone_Prakash.pdf",
+  "subject": {
+    "name": "Padukone, Prakash",
+    "name_from_filename": "Padukone, Prakash",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1955-06-10",
+    "time_local": "03:27",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1955-06-10T21:57:00Z",
+    "latitude": 12.972,
+    "longitude": 77.594,
+    "place": "Bengaluru, Karnataka, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 8,
+    "months": 0,
+    "days": 27,
+    "raw_text": "Balance of dasha Mon 8-0-27"
+  },
+  "planet_degrees_from_text": {
+    "VENUS": {
+      "degree_in_sign": 2.5833,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 3.1167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 4.35,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 25.0333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 16.4667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 6.1667,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 12.5667,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 3.1167,
+      "retrograde": true
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

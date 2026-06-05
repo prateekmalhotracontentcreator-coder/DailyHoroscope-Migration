@@ -1,0 +1,93 @@
+{
+  "vector_id": "tv-765h-0291",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0291",
+  "source_file": "0291_I-8_Islam_Nazrul.pdf",
+  "subject": {
+    "name": "Islam Nazrul",
+    "name_from_filename": "Islam Nazrul",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_compound": false,
+    "profession_secondary": "Military",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1889-05-24",
+    "time_local": "10:20",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1889-05-24T04:50:00Z",
+    "latitude": 24.5,
+    "longitude": 89.55,
+    "place": "89E33 & 24N30",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 1,
+    "months": 2,
+    "days": 17,
+    "raw_text": "Balance of dasha Sun 1-2-17"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 3.5167,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 20.5833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 23.6333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.7833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 10.45,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 14.65,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 20.5833,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 23.6333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Politics",
+    "profession_subcategory": "Politics",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

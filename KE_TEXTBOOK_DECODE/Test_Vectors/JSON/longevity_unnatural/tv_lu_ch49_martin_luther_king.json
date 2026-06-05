@@ -1,0 +1,295 @@
+{
+  "vector_id": "tv-lu-ch49",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch49_Martin_Luther_King",
+  "pdf_path": "Chapter_Splits/Ch49_Martin_Luther_King.pdf",
+  "subject": {
+    "name": "Martin Luther King",
+    "description": "US Civil Rights Leader",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1929-01-15",
+    "time_local": null,
+    "timezone_offset_hours": -5.616666666666667,
+    "time_utc": null,
+    "latitude": 33.7489,
+    "longitude": -84.3881,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-46-09.87",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Taurus",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Taurus",
+      "degree": 2.9833,
+      "house": 1,
+      "nakshatra": "Krit",
+      "pada": 2,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 2.4,
+      "house": 9,
+      "nakshatra": "USha",
+      "pada": 2,
+      "significations": [
+        4,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 27.1667,
+      "house": 10,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "significations": [
+        8,
+        12,
+        11,
+        3,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": "Taurus",
+      "degree": 29.1167,
+      "house": 1,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "significations": [
+        1,
+        7,
+        12
+      ]
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 19.0333,
+      "house": 9,
+      "nakshatra": "Srav",
+      "pada": 3,
+      "significations": [
+        2,
+        5,
+        9,
+        3,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Aries",
+      "degree": 8.4,
+      "house": 12,
+      "nakshatra": "Aswi",
+      "pada": 3,
+      "significations": [
+        8,
+        11,
+        12,
+        "Ke"
+      ]
+    },
+    "VENUS": {
+      "sign": "Aquarius",
+      "degree": 17.8167,
+      "house": 10,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        1,
+        6,
+        10,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 2.5833,
+      "house": 8,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        9,
+        10,
+        8,
+        "Ke"
+      ]
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 4.7167,
+      "house": 7,
+      "nakshatra": "Anu",
+      "pada": 1,
+      "significations": [
+        "Ma",
+        "Sa"
+      ]
+    },
+    "RAHU": {
+      "sign": "Pisces",
+      "degree": 25.6333,
+      "house": 11,
+      "nakshatra": "a",
+      "pada": 3,
+      "significations": [
+        "Mercury"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "assassinated",
+    "death_type": "violent",
+    "death_date": "1929-01-15",
+    "age_at_death": 39,
+    "dasha_at_death": {
+      "mahadasha": "MERCURY",
+      "antardasha": "JUPITER",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "SUN",
+      "stated_by_author": true,
+      "raw_text": "Mercury-Jupiter Mercury-Sun period at the age of 39 years and 03 months. Dasha and antara lord Mercury is maraca and bad"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "For Taurus, Saturn is the badhaka, who is posited in 08th house, the house of longevity. Hence Saturn is ready to spoil the longevity. Martin Luther King 207",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Lagna falls in the star of Sun, who is posited in badhaka house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08tll lord Jupiter who is giving longevity, is in Ketu star Ashwini, while Ketu is maraca (Mars) and badhaka (Saturn).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars is posited in lagna in own star, being the maraca lord and is aspecting badhka Saturn.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Rahu is posited in lagna in the star of Sun, while Sun is badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Moon is posited in Jupiter star, while Jupiter is badhaka and maraca through Ketu.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Mercury is posited in Badhaka house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Venus is posited in Rahu star, while Rahu is maraca (Mars) and badhka (Sun) and also signifies 01 and 06 houses.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "08tll lord Jupiter who is allocated longevity portfolio, is linked to Ketu. Ketu is maraca and badhaka significator. Hence all the planets from Sun to Ketu are connected to either maraca or badhaka, especially when badhaka Saturn is posited in house of longevity. These combinations are not favourable for good longevity (08) and due to its connection to 01,06,08, Mars, maraca and badhka. Dr. King was shot at and assassinated at the Lorraine Motel in Memphis, Tennessee, on April 4, 1968, 6:01 p.m.at the age of 39, while he was standing on the motel's second floor balcony. The death occurred duri",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Bhukti lord Jupiter signifies lagna (through Ketu) and is lord 08tll house (longevity).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "antara lord Mercury is maraca and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Antara lord Sun is an occupant of badhaka house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

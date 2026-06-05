@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0751",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0751",
+  "source_file": "0751_W-10_Ms_Williams_Venus-Tennis.pdf",
+  "subject": {
+    "name": "Ms Williams, Venus-Tennis",
+    "name_from_filename": "Ms Williams, Venus-Tennis",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_compound": false,
+    "profession_secondary": "Science_Academia",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1980-06-17",
+    "time_local": "14:12",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1980-06-17T08:42:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": ":118WSS & 37NSS",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "KETU",
+    "years": 5,
+    "months": 1,
+    "days": 16,
+    "raw_text": "Balance dasha Ket 5-1-16"
+  },
+  "planet_degrees_from_text": {
+    "SUN": {
+      "degree_in_sign": 3.1833,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 27.35,
+      "retrograde": false
+    },
+    "RAHU": {
+      "degree_in_sign": 27.9833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 3.5667,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 10.5333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 24.35,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 27.1833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 8.6667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 8.6667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Sports",
+    "profession_subcategory": "Sports",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

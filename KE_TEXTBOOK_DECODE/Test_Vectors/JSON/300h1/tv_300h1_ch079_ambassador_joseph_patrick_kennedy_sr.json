@@ -1,0 +1,198 @@
+{
+  "vector_id": "tv-300h1-ch079",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch079_AMBASSADOR_JOSEPH_PATRICK_KENNEDY_SR",
+  "pdf_path": "Split_Chapters/Ch079_AMBASSADOR_JOSEPH_PATRICK_KENNEDY_SR.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Joseph Patrick Kennedy Sr.",
+    "description": "Joseph Patrick Kennedy Sr. was a businessman. Kennedy was also Ambassador to",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 12.8317,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 26.0056,
+      "house": 12,
+      "significations": [
+        1,
+        2,
+        9,
+        11,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Scorpio",
+      "degree": 4.9647,
+      "house": 3,
+      "significations": [
+        3,
+        5,
+        6,
+        8,
+        11
+      ]
+    },
+    "MERCURY": {
+      "sign": "Virgo",
+      "degree": 3.7969,
+      "house": 1,
+      "significations": [
+        2,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 7.6169,
+      "house": 1,
+      "significations": [
+        2,
+        9
+      ]
+    },
+    "SATURN": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Cancer",
+      "degree": 5.835,
+      "house": 11,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Capricorn",
+      "degree": 5.835,
+      "house": 5,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Businessman",
+    "profession_category": "Business",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Business",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Venus are in 02 I 12, while Jupiter.is aspecting Rahu, who is in 12 to Sun.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From Moon sign, Sun, Moon, Venus, Mercury, Saturn and Nodes signify 02\"' house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Saturn, Jupiter, Mars and Nodes denote 06Vl house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "These should assist native to earn enough money and net-worth was estimated to be US$ 500 Million when he died in 1969.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

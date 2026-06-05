@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0477",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0477",
+  "source_file": "0477_N-30_Noble_Alfred-Scientist.pdf",
+  "subject": {
+    "name": "Noble Alfred",
+    "name_from_filename": "Noble Alfred-Scientist",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "Scientist",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Scientist",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1833-10-21",
+    "time_local": "06:54",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1833-10-21T01:24:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": ": Stockholm",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MOON",
+    "years": 6,
+    "months": 9,
+    "days": 14,
+    "raw_text": "Balance of dasha Man 6-9-14"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 9.4,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 14.2833,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 5.3833,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 6.0667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 3.4333,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 9.6833,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 12.9333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 16.75,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 5.3833,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "Scientist",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Scientist",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

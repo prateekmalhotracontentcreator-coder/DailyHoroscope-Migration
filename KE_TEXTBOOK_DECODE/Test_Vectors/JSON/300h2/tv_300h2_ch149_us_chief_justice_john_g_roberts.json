@@ -1,0 +1,275 @@
+{
+  "vector_id": "tv-300h2-ch149",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch149_148_Chief_Justice_John_Roberts",
+  "pdf_path": "Chapters/Ch149_148_Chief_Justice_John_Roberts.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Us Chief Justice -John G Roberts",
+    "description": "John Glover Roberts, Jr. is the 17th US Supreme Court Chief Justice. He was appointed by President George W Bush in 2005. HL a AL Mo (Ju) Ra.sl",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": "11:17:00",
+    "timezone_offset_hours": -5.0,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aries",
+    "lagna_degree_stated": 14.06,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 13.831,
+      "house": null,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        5,
+        10,
+        4,
+        11
+      ],
+      "significations_raw": "05,10,04,11"
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 28.277,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        11,
+        12,
+        9
+      ],
+      "significations_raw": "04,11,12 09"
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "MERCURY": {
+      "sign": "Aquarius",
+      "degree": 2.248,
+      "house": null,
+      "nakshatra": "Dhan",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        6,
+        1,
+        1,
+        12,
+        1,
+        8
+      ],
+      "significations_raw": "03,06,1 1,12,01,08"
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 0.2,
+      "house": null,
+      "nakshatra": "Puna",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        9,
+        12,
+        4
+      ],
+      "significations_raw": "09,12 04"
+    },
+    "VENUS": {
+      "sign": "Scorpio",
+      "degree": 27.002,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        2,
+        7,
+        8,
+        11,
+        3,
+        6
+      ],
+      "significations_raw": "02,07,08,11 ,03,06"
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 27.142,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        10,
+        11,
+        7,
+        9,
+        4,
+        12
+      ],
+      "significations_raw": "10,11,07 ,09,04,12"
+    },
+    "RAHU": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "nakshatra": null,
+      "pada": null,
+      "retrograde": false,
+      "significations": [],
+      "significations_raw": ""
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 10.874,
+      "house": null,
+      "nakshatra": "Ardr",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        3
+      ],
+      "significations_raw": "03,Ra,Me,Ma"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun (Government) is posited in 10th house Gob).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter is in own star in 041h house.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Rahu is in 09lh house and denotes Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "02nd lord (argument), Venus, is in star of 06ih lord (dispute) Mercury star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "From Moon sign, Mars is in 0200 house (argument).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "10111 lord Saturn signifies 09 (law) and Jupiter (law).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "All these combinations put together, helped native to study law and become a lawyer.",
+      "condition_type_guess": "kp_signification_chain",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

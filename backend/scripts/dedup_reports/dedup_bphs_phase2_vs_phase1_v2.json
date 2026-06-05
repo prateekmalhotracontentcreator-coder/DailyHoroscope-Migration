@@ -1,0 +1,13 @@
+{
+  "run_timestamp": "2026-05-31T20:58:33Z",
+  "folder_a": "/private/tmp/bphs_phase2_rules",
+  "folder_b": "/private/tmp/bphs_phase1_rules",
+  "threshold_used": 0.82,
+  "rules_in_a": 220,
+  "rules_in_b": 365,
+  "pairs_evaluated": 80300,
+  "duplicate_candidates": 0,
+  "contradiction_pairs": 0,
+  "matches": [],
+  "contradictions": []
+}

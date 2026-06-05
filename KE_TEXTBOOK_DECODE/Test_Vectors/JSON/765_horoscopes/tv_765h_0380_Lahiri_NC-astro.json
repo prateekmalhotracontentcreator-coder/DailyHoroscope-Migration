@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0380",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0380",
+  "source_file": "0380_L-1_Lahiri_NC-astro.pdf",
+  "subject": {
+    "name": "Lahiri, NC",
+    "name_from_filename": "Lahiri, NC-astro",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": "astro",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "astro",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": false,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1906-10-03",
+    "time_local": "23:40",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1906-10-03T18:10:00Z",
+    "latitude": null,
+    "longitude": null,
+    "place": "Chittagong",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "RAHU",
+    "years": 1,
+    "months": 6,
+    "days": 11,
+    "raw_text": "Balance of dasha Rah 1-6-11"
+  },
+  "planet_degrees_from_text": {
+    "MARS": {
+      "degree_in_sign": 4.1333,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 12.2167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 21.4,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 1.3333,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 5.0333,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 18.8667,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 4.1333,
+      "retrograde": false
+    },
+    "JUPITER": {
+      "degree_in_sign": 26.5667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 4.1333,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": "astro",
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "astro",
+    "profession_inferred": false,
+    "note": "Profession label is the Layer B ground truth."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

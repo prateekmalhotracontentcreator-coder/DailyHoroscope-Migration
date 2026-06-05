@@ -1,0 +1,83 @@
+{
+  "vector_id": "tv-765h-0560",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0560",
+  "source_file": "0560_R-19_Raman_BV.pdf",
+  "subject": {
+    "name": "Raman BV",
+    "name_from_filename": "Raman BV",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1912-08-08",
+    "time_local": "07:42",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1912-08-08T02:12:00Z",
+    "latitude": 12.972,
+    "longitude": 77.594,
+    "place": "Bengaluru, Karnataka, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": null,
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 23.7,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.5667,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 2.2667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 13.9333,
+      "retrograde": true
+    },
+    "MARS": {
+      "degree_in_sign": 21.3667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 12.9667,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": false,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

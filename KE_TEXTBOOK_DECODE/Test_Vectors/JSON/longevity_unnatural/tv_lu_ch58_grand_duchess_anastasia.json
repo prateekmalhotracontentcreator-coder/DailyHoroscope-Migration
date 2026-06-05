@@ -1,0 +1,350 @@
+{
+  "vector_id": "tv-lu-ch58",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch58_Grand_Duchess_Anastasia_Nikolaevna",
+  "pdf_path": "Chapter_Splits/Ch58_Grand_Duchess_Anastasia_Nikolaevna.pdf",
+  "subject": {
+    "name": "Grand Duchess Anastasia Nikolaevna",
+    "description": "Youngest daughter of Czar Nicholas II",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1901-06-18",
+    "time_local": "06:00:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 59.8833,
+    "longitude": 29.9,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-23-03.43",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Gemini",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 6.5667,
+      "house": 1,
+      "nakshatra": null,
+      "pada": null,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 3.7,
+      "house": 1,
+      "nakshatra": "Mrig",
+      "pada": 4,
+      "significations": [
+        3,
+        6,
+        11,
+        1
+      ]
+    },
+    "MOON": {
+      "sign": "Gemini",
+      "degree": 23.4667,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 2,
+      "significations": [
+        1,
+        2,
+        7,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 28.2333,
+      "house": 1,
+      "nakshatra": "Puna",
+      "pada": 3,
+      "significations": [
+        1,
+        4,
+        7,
+        10
+      ]
+    },
+    "JUPITER": {
+      "sign": "Sagittarius",
+      "degree": 17.3667,
+      "house": 7,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        7,
+        10,
+        1,
+        5,
+        12
+      ]
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 16.5833,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 3,
+      "significations": [
+        1,
+        5,
+        12,
+        "Ra"
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 21.9667,
+      "house": 7,
+      "nakshatra": "PSha",
+      "pada": 3,
+      "significations": [
+        7,
+        8,
+        9,
+        1,
+        5,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 28.5333,
+      "house": 5,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "significations": [
+        "Ve",
+        "Ju"
+      ]
+    },
+    "MARS": {
+      "sign": "Virgo",
+      "degree": 18.95,
+      "house": 4,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "significations": [
+        "Moon"
+      ]
+    },
+    "KETU": {
+      "sign": "Taurus",
+      "degree": 27.9833,
+      "house": 12,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "significations": [
+        "Mars"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "a weapon is quite inevitable",
+    "death_type": "violent",
+    "death_date": "1901-06-18",
+    "age_at_death": 17,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "MERCURY",
+      "pratyantardasha": "JUPITER",
+      "sookshma": "RAHU",
+      "stated_by_author": true,
+      "raw_text": "Saturn-Mercury-Jupiter-Rahu. Dasha lord Saturn signifies 01, 08, 07 houses denoting body, longevity and maraca & badhaka"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "08th lord Saturn, who denotes longevity is in badhaka and maraca house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Saturn is in the star of Venus, who is in Lagna. Hence Saturn being badhaka, also signifies lagna too.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna lord Mercury is posited in lagna, but is in the star of Jupiter, who is maraca and badhka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Jupiter, who is maraca and badhaka, is posited in own house in the star of Venus, who is in lagna. Jupiter is aspecting lagna.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Hence the significators of lagna, viz. Mercury and Venus are aspected by Jupiter who is maraca and badhaka.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Mars who is lord of 06th house (enemy and injury) is posited in Leo (fiery sign) and is in the star of Venus, who is an occupant of lagna. Lagna is in the star of Mars. Venus signifies 01 and 07 through Rahu too.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Hence Mars signifies 06 and 01 strongly.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Sun, who is posited in the star of Mars (Mrigashira) in lagna is aspecting 08th lord Saturn.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "The mutual aspect of Saturn and Sun (in Mars star) involving houses viz. 01 (body), 08 (longevity), 06 (Injury & enemy) and maraca & badhaka is directly raising finger at the destructive combination of the longevity of native.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Moon, being lord of 02 (maraca) is posited in lagna and is in the star of Jupiter, who is maraca and badhaka. These combinations quite gravely affected the longevity of the native and injury and death by a weapon is quite inevitable. Grand Duchess Anastasia was killed during the VMD period of Saturn-Mercury-Jupiter-Rahu. Dasha lord Saturn signifies 01, 08, 07 houses denoting body, longevity and maraca & badhaka. Saturn is aspected by Sun signifies involvement by Government and Saturn itself will signify working class. Bhukti lord Mercury signifies lagna and badhaka & maraca. Antara lord Jupite",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Dasha lord Saturn signifies 01, 08, 07 houses denoting body, longevity and maraca & badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Bhukti lord Mercury signifies lagna and badhaka & maraca.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "Antara lord Jupiter signifies 07th house.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-014",
+      "verbatim": "Sookshma lord Rahu signifie·s Jupiter.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-015",
+      "verbatim": "maraca, badhaka and 08th have caused cutting short of longevity at the age of 17 years, as per natal chart.",
+      "condition_type_guess": "maraka_badhaka",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-101"
+    },
+    {
+      "obs_id": "obs-018",
+      "verbatim": "longevity is in badhaka and maraca house.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-019",
+      "verbatim": "longevity of the native and injury and death by a weapon is quite inevitable.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-020",
+      "verbatim": "injury and longevity as the following points could be taken up for evaluation: 244 Longevity and Unnatural Deaths 1) 08th lord Saturn, who denotes longevity is in badhaka and maraca house.",
+      "condition_type_guess": "death_mechanism",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

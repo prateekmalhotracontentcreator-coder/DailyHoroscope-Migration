@@ -1,0 +1,301 @@
+{
+  "vector_id": "tv-lu-ch78",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch78_Morarjee_Desai",
+  "pdf_path": "Chapter_Splits/Ch78_Morarjee_Desai.pdf",
+  "subject": {
+    "name": "Morarjee Desai",
+    "description": "Prime Minister of India",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1896-02-29",
+    "time_local": "13:30:00",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1896-02-29T08:00:00Z",
+    "latitude": 20.6667,
+    "longitude": 72.9667,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "22-18-37.17",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Gemini",
+    "moon_sign_stated_in_book": "Leo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Gemini",
+      "degree": 8.6167,
+      "house": 1,
+      "nakshatra": "Ardr",
+      "pada": 1,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 17.9667,
+      "house": 9,
+      "nakshatra": "Sata",
+      "pada": 4,
+      "significations": [
+        3,
+        9,
+        "Ra"
+      ]
+    },
+    "MOON": {
+      "sign": "Leo",
+      "degree": 25.1167,
+      "house": 3,
+      "nakshatra": "PPha",
+      "pada": 4,
+      "significations": [
+        2,
+        3,
+        5,
+        8,
+        12
+      ]
+    },
+    "MARS": {
+      "sign": "Capricorn",
+      "degree": 5.3333,
+      "house": 8,
+      "nakshatra": "·USha",
+      "pada": 3,
+      "significations": [
+        6,
+        8,
+        11,
+        3,
+        9
+      ]
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 21.3667,
+      "house": 8,
+      "nakshatra": "Srav",
+      "pada": 4,
+      "significations": [
+        1,
+        4,
+        8,
+        2,
+        3
+      ]
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 7.7333,
+      "house": 2,
+      "nakshatra": "Push",
+      "pada": 2,
+      "significations": [
+        7,
+        10,
+        2,
+        8,
+        "Q9",
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 14.6667,
+      "house": 8,
+      "nakshatra": "Srav",
+      "pada": 2,
+      "significations": [
+        5,
+        12,
+        8,
+        2,
+        3
+      ]
+    },
+    "SATURN": {
+      "sign": "Libra",
+      "degree": 26.7833,
+      "house": 5,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "significations": [
+        8,
+        9,
+        5,
+        2,
+        7,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Aquarius",
+      "degree": 11.0667,
+      "house": 9,
+      "nakshatra": "Sata",
+      "pada": 2,
+      "significations": [
+        9,
+        "Su",
+        "Mo",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Leo",
+      "degree": 11.0667,
+      "house": 3,
+      "nakshatra": "Magh",
+      "pada": 4,
+      "significations": [
+        3,
+        "Mo",
+        "Su",
+        "Ma"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "accident",
+    "death_date": "1896-02-29",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "MERCURY",
+      "antardasha": "KETU",
+      "pratyantardasha": "MERCURY",
+      "sookshma": "JUPITER",
+      "stated_by_author": true,
+      "raw_text": "Mercury-Ketu-Mercury-Jupiter of Mr. Desai. Dasha and a·ntara lord Mercury is posited in OSth house (accidents) being lor"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "OSih lord Saturn is in 05th house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "OSih house is occupied by Mars, Mercury and Venus.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is lord of 06th house, while lagn·a lord is Mercury.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "But Mars is not signifying lagna at star level or by aspect.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Venus is lord of 05th house in OSth house.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Ketu gives the result of Mars.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "There is no link between Saturn (08) and Mars (06).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "There is no link between Saturn (08) and Mercury (lagna).",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "There is a conjunction between Mars and Mercul)l. These combinations make the Prime Minister not to get injury in spite of a grave accident like air crash. The air accident took place on 04 Nov 1977 during the VMD of Mercury-Ketu-Mercury-Jupiter of Mr. Desai. Dasha and a·ntara lord Mercury is posited in OSth house (accidents) being lord of lagna. Mercury in general signifies Air plane and is the lord of 04th house (vehicle). It is co.njoined with Mars indicates military or police. Bhukti lord Ketu is posited in 03rd house (short journey) in Leo and signifies Sun (Government). Ketu signifies Ve",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Bhukti lord Ketu is posited in 03rd house (short journey) in Leo and signifies Sun (Government).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Sookshma lord Jupiter signifies 02,07,10,05,08,09 houses and is aspected by Mars (injury).",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

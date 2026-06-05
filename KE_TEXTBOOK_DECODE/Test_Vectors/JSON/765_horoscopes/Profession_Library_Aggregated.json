@@ -1,0 +1,125 @@
+[
+  {
+    "profession_category": "Politics",
+    "total_cases": 131,
+    "lagna_degree_distribution": {
+      "0-10deg": 35,
+      "10-20deg": 29,
+      "20-30deg": 18
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Military",
+    "total_cases": 8,
+    "lagna_degree_distribution": {
+      "0-10deg": 4,
+      "10-20deg": 2
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Judiciary_Law",
+    "total_cases": 13,
+    "lagna_degree_distribution": {
+      "0-10deg": 2,
+      "10-20deg": 4,
+      "20-30deg": 2
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Business",
+    "total_cases": 31,
+    "lagna_degree_distribution": {
+      "0-10deg": 8,
+      "10-20deg": 5,
+      "20-30deg": 6
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Entertainment",
+    "total_cases": 70,
+    "lagna_degree_distribution": {
+      "0-10deg": 20,
+      "10-20deg": 12,
+      "20-30deg": 17
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Sports",
+    "total_cases": 33,
+    "lagna_degree_distribution": {
+      "0-10deg": 10,
+      "10-20deg": 10,
+      "20-30deg": 5
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Spiritual_Religious",
+    "total_cases": 63,
+    "lagna_degree_distribution": {
+      "0-10deg": 20,
+      "10-20deg": 16,
+      "20-30deg": 9
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Science_Academia",
+    "total_cases": 153,
+    "lagna_degree_distribution": {
+      "0-10deg": 40,
+      "10-20deg": 33,
+      "20-30deg": 38
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Arts_Literature",
+    "total_cases": 28,
+    "lagna_degree_distribution": {
+      "0-10deg": 10,
+      "10-20deg": 5,
+      "20-30deg": 4
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Royalty_Nobility",
+    "total_cases": 46,
+    "lagna_degree_distribution": {
+      "0-10deg": 13,
+      "10-20deg": 15,
+      "20-30deg": 5
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Criminal_Notorious",
+    "total_cases": 2,
+    "lagna_degree_distribution": {
+      "20-30deg": 1
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Housewife",
+    "total_cases": 1,
+    "lagna_degree_distribution": {},
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  },
+  {
+    "profession_category": "Other",
+    "total_cases": 177,
+    "lagna_degree_distribution": {
+      "0-10deg": 42,
+      "10-20deg": 33,
+      "20-30deg": 35
+    },
+    "note": "Planet house assignments pending Phase 4 (vedic_calculator.py computation). Degree distributions recorded here as placeholders."
+  }
+]

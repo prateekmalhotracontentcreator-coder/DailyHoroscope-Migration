@@ -1,0 +1,269 @@
+{
+  "vector_id": "tv-300h2-ch138",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch138_137_LK_Advani",
+  "pdf_path": "Chapters/Ch138_137_LK_Advani.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Dy Prime Minister--Lal Krishna Advani",
+    "description": "LK Advani is connected to RSS and is a political leader of BJP. He is currently patriarch of BJP and was Minister and Dy. Prime Minister. SL (Ju) Mo Ra GL Ras;",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 24.8667,
+    "longitude": 57.05,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "lagna_degree_stated": 21.417,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Libra",
+      "degree": 22.011,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        10,
+        12,
+        2,
+        5
+      ],
+      "significations_raw": "10,12,02,05"
+    },
+    "MOON": {
+      "sign": "Aries",
+      "degree": 6.25,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        9,
+        6,
+        1
+      ],
+      "significations_raw": "09 06 01 ,Ke"
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 16.205,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        12,
+        7
+      ],
+      "significations_raw": "01,06, 12,07,Ra"
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 26.793,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        8,
+        11
+      ],
+      "significations_raw": "08,11"
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 1.091,
+      "house": null,
+      "nakshatra": "PBha",
+      "pada": 4,
+      "retrograde": true,
+      "significations": [
+        2,
+        5
+      ],
+      "significations_raw": "02 05"
+    },
+    "VENUS": {
+      "sign": "Virgo",
+      "degree": 6.007,
+      "house": null,
+      "nakshatra": "UPha",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        7,
+        1211,
+        10
+      ],
+      "significations_raw": "07,1211,10"
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 14.496,
+      "house": null,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1,
+        3,
+        4
+      ],
+      "significations_raw": "01,03,04"
+    },
+    "RAHU": {
+      "sign": "Taurus",
+      "degree": 27.748,
+      "house": null,
+      "nakshatra": "Mrig",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        7
+      ],
+      "significations_raw": "07,Ma,Ve,Sa"
+    },
+    "KETU": {
+      "sign": "Scorpio",
+      "degree": 27.748,
+      "house": null,
+      "nakshatra": "Jye",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        1
+      ],
+      "significations_raw": "01 ,Sa,Ma,Me,Ju"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": "Aquarius",
+      "degree": 12.03
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": null,
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Sun and Venus are in 02 /12, while Jupiter is aspecting Ketu, which is in Q2nd to Sun.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Indeed Sun is in star of Jupiter.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars in 12 indicate always active and bounce back from debacle.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars is in 07 from Moon and aspects 10th house.",
+      "condition_type_guess": "kp_aspect",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Jupiter is aspecting Saturn, who is 101h lord from Moon.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "But position of Sun and Mars indicate hidden plots against native and occupying higher post will be an oasis.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "PUBLISHING HOUSE, HYDERABAD Page# 180",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

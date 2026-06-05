@@ -1,0 +1,277 @@
+{
+  "vector_id": "tv-300h2-ch104",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch104_103_Aurangzeb",
+  "pdf_path": "Chapters/Ch104_103_Aurangzeb.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Mug Hal Emperor Aurangazeb",
+    "description": "Abul Muzaffar Muhy-ud-Oin Muhammad Aurangzeb Alamgir (3 Nov 1618- 3 Mar 1707), more commonly known as Aurangzeb, was the sixth Mughal Emperor of India. ... ... Ke Rasi ~",
+    "nationality": "Indian"
+  },
+  "birth_data": {
+    "date": "1618-11-03",
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": null,
+    "ocr_corrected": false,
+    "notes": "Pre-1900 birth — round time may indicate author rectification"
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Aquarius",
+    "lagna_degree_stated": 7.775,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Libra",
+      "degree": 22.42,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        7,
+        9,
+        2,
+        11,
+        1
+      ],
+      "significations_raw": "07,09,02,11 ,01"
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 3.546,
+      "house": null,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        6,
+        4,
+        9,
+        7
+      ],
+      "significations_raw": "06 04,09,07"
+    },
+    "MARS": {
+      "sign": "Leo",
+      "degree": 16.425,
+      "house": null,
+      "nakshatra": "PPha",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        3,
+        7,
+        1,
+        0,
+        11,
+        9,
+        4
+      ],
+      "significations_raw": "03,07,1 0,11 ,09,04"
+    },
+    "MERCURY": {
+      "sign": "Libra",
+      "degree": 25.232,
+      "house": null,
+      "nakshatra": "Visa",
+      "pada": 2,
+      "retrograde": true,
+      "significations": [
+        5,
+        8,
+        9,
+        11,
+        1,
+        2
+      ],
+      "significations_raw": "05,08,09,11 ,01, 02"
+    },
+    "JUPITER": {
+      "sign": "Aquarius",
+      "degree": 9.604,
+      "house": null,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        1,
+        11,
+        12
+      ],
+      "significations_raw": "02,01,11,12,Ra"
+    },
+    "VENUS": {
+      "sign": "Sagittarius",
+      "degree": 5.851,
+      "house": null,
+      "nakshatra": "Mool",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4,
+        9,
+        11,
+        6
+      ],
+      "significations_raw": "04,09,11 ,06,Ke"
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 18.138,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        4,
+        6,
+        1,
+        12
+      ],
+      "significations_raw": "04,06,01,12"
+    },
+    "RAHU": {
+      "sign": "Capricorn",
+      "degree": 8.653,
+      "house": null,
+      "nakshatra": "USha",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        12
+      ],
+      "significations_raw": "12,Su,Sa"
+    },
+    "KETU": {
+      "sign": "Cancer",
+      "degree": 8.653,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        6
+      ],
+      "significations_raw": "06,Sa,Mo"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": null,
+      "degree": null
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": [
+      {
+        "event": "Born",
+        "year": 1618
+      },
+      {
+        "event": "Died",
+        "year": 1707
+      }
+    ]
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": "1707-03-03",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "10 1h lord is Mars, which is in Venus (09,1 1) star and Mars is under aspect from Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "From Moon sign, Mars is in 04 and Jupiter is in 10, while 101h lord is Saturn.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "From Moon sign, Sun signifies 10 through Jupiter.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "These combinations helped native to get high position and long-lasting name & fame.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

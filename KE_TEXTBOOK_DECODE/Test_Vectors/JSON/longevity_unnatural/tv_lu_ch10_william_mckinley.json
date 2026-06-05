@@ -1,0 +1,224 @@
+{
+  "vector_id": "tv-lu-ch10",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch10_William_McKinley",
+  "pdf_path": "Chapter_Splits/Ch10_William_McKinley.pdf",
+  "subject": {
+    "name": "William McKinley",
+    "description": "25th US President",
+    "nationality": "American"
+  },
+  "birth_data": {
+    "date": "1843-01-21",
+    "time_local": "23:32:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": 41.1828,
+    "longitude": -80.7656,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-39-55.92",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Virgo",
+    "moon_sign_stated_in_book": "Virgo",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Virgo",
+      "degree": 22.6167,
+      "house": 1,
+      "nakshatra": "Hast",
+      "pada": 4,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Capricorn",
+      "degree": 9.9,
+      "house": 5,
+      "nakshatra": "USha",
+      "pada": 4,
+      "significations": [
+        12,
+        5
+      ]
+    },
+    "MOON": {
+      "sign": "Virgo",
+      "degree": 28.7167,
+      "house": 1,
+      "nakshatra": "Chit",
+      "pada": 2,
+      "significations": [
+        11,
+        1,
+        2,
+        3,
+        8
+      ]
+    },
+    "MARS": {
+      "sign": "Libra",
+      "degree": 22.35,
+      "house": 2,
+      "nakshatra": "Visa",
+      "pada": 1,
+      "significations": [
+        2,
+        3,
+        8,
+        4,
+        7,
+        5
+      ]
+    },
+    "MERCURY": {
+      "sign": "Capricorn",
+      "degree": 25.45,
+      "house": 5,
+      "nakshatra": "Dhan",
+      "pada": 1,
+      "significations": [
+        1,
+        10,
+        5,
+        2,
+        3,
+        8
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 12.3333,
+      "house": 5,
+      "nakshatra": "Srav",
+      "pada": 1,
+      "significations": [
+        4,
+        1,
+        7,
+        11,
+        5
+      ]
+    },
+    "VENUS": {
+      "sign": "Sagittarius",
+      "degree": 1.05,
+      "house": 4,
+      "nakshatra": "I",
+      "pada": 1,
+      "significations": [
+        2,
+        9,
+        4,
+        10,
+        "Ke"
+      ]
+    },
+    "SATURN": {
+      "sign": "Sagittarius",
+      "degree": 26.8167,
+      "house": 4,
+      "nakshatra": "USha",
+      "pada": 1,
+      "significations": [
+        4,
+        5,
+        6,
+        12
+      ]
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 18.8,
+      "house": 4,
+      "nakshatra": "PSha",
+      "pada": 2,
+      "significations": [
+        "Ve",
+        "Sa",
+        "Ju"
+      ]
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 18.8,
+      "house": 10,
+      "nakshatra": "Ardr",
+      "pada": 4,
+      "significations": [
+        "Me",
+        "Ra",
+        "Sa",
+        "Ve"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "gangrene surrounding his wounds",
+    "death_type": "unknown",
+    "death_date": "1843-01-29",
+    "age_at_death": 58,
+    "dasha_at_death": {
+      "mahadasha": "SUN",
+      "antardasha": "MOON",
+      "pratyantardasha": "MARS",
+      "sookshma": "MERCURY",
+      "stated_by_author": true,
+      "raw_text": "death, i.e., at 2:15a.m. on 14 Sept 1901, is given below: William McKinley 47 Body Longitude Star/p Lagna 15 Cn 31' 32.8"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Bhukti lord Mercury is posited in Mars star Dhanishta in Capricorn.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Antara lord Rahu is posited in Sagittarius and signifies Venus, Saturn and Jupiter.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Lagna lord Mercury is in 05111 house in the star of Dhanishta ruled by Mars, and is aspected by Mars, the planet of injury and lord of 08111 • Mars is lord of 03 arid 08, but is posited in 2nc1 house (maraca) and is in the star of Visakha, ruled by Jupiter, who is lord of 07111 house (maraca and badhka).",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

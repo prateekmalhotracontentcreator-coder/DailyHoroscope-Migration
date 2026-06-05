@@ -1,0 +1,236 @@
+{
+  "vector_id": "tv-300h1-ch034",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch034_YSR_CONGRES_POLITICAL_PARTY",
+  "pdf_path": "Split_Chapters/Ch034_YSR_CONGRES_POLITICAL_PARTY.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Ysr Congres Political Party",
+    "description": "Newspapers reported that Mr. YS Jagan Mohan Reddy, son of late YS Rajasekhar",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": "2011-03-12",
+    "time_local": "05:30:00",
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": null,
+    "moon_sign_stated_in_book": "Taurus",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": null,
+      "degree": null,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Aquarius",
+      "degree": 27.5222,
+      "house": 8,
+      "significations": [
+        2,
+        6,
+        8,
+        9
+      ]
+    },
+    "MOON": {
+      "sign": "Taurus",
+      "degree": 20.3111,
+      "house": 11,
+      "significations": []
+    },
+    "MARS": {
+      "sign": "Aquarius",
+      "degree": 19.7628,
+      "house": 8,
+      "significations": [
+        5,
+        8,
+        10
+      ]
+    },
+    "MERCURY": {
+      "sign": "Pisces",
+      "degree": 10.9858,
+      "house": 9,
+      "significations": [
+        3,
+        7,
+        8,
+        9,
+        12
+      ]
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 16.4844,
+      "house": 9,
+      "significations": [
+        3,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": "Capricorn",
+      "degree": 18.2556,
+      "house": 7,
+      "significations": [
+        1,
+        4,
+        7,
+        11
+      ]
+    },
+    "SATURN": {
+      "sign": "Virgo",
+      "degree": 21.6342,
+      "house": 3,
+      "significations": []
+    },
+    "RAHU": {
+      "sign": "Sagittarius",
+      "degree": 4.6592,
+      "house": 6,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Gemini",
+      "degree": 4.6592,
+      "house": 12,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": null,
+    "profession_category": "Case Study",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": "unknown",
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Case Study",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna lord Moon is in badhaka and is in own star.",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Badhaka lord Venus signifies lagna and maraca, and is aspecting lagna.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "08th lord Saturn is retrograde, and is in Moon star in Virgo (03).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Ketu (eject) is in 12th house and signifies 10th.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "10th lord Mars is in 08th house.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Sun (Government) is in 08th house (disgrace).",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "This is not an auspicious chart to commence a political party.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

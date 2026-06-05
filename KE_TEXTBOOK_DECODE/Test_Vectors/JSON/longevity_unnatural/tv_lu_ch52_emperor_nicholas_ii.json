@@ -1,0 +1,328 @@
+{
+  "vector_id": "tv-lu-ch52",
+  "book_id": "longevity_unnatural",
+  "source_chapter": "Ch52_Emperor_Nicholas_II",
+  "pdf_path": "Chapter_Splits/Ch52_Emperor_Nicholas_II.pdf",
+  "subject": {
+    "name": "Emperor Nicholas II",
+    "description": "Last Czar of Russia",
+    "nationality": "Russian"
+  },
+  "birth_data": {
+    "date": "1868-05-19",
+    "time_local": "00:15:00",
+    "timezone_offset_hours": 5.0,
+    "time_utc": "1868-05-18T19:15:00Z",
+    "latitude": 59.9167,
+    "longitude": 30.25,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": "21-55-20.77",
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Pisces",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 13.6,
+      "house": 1,
+      "nakshatra": "Anu",
+      "pada": 4,
+      "significations": [
+        "--"
+      ]
+    },
+    "SUN": {
+      "sign": "Taurus",
+      "degree": 6.1333,
+      "house": 7,
+      "nakshatra": "Krit",
+      "pada": 3,
+      "significations": [
+        10,
+        7
+      ]
+    },
+    "MOON": {
+      "sign": "Pisces",
+      "degree": 22.3167,
+      "house": 5,
+      "nakshatra": "a",
+      "pada": 2,
+      "significations": [
+        9,
+        5,
+        8,
+        7,
+        11
+      ]
+    },
+    "MARS": {
+      "sign": "Aries",
+      "degree": 6.1833,
+      "house": 6,
+      "nakshatra": "Aswi",
+      "pada": 2,
+      "significations": [
+        1,
+        6,
+        4,
+        "Ke"
+      ]
+    },
+    "MERCURY": {
+      "sign": "Taurus",
+      "degree": 10.5167,
+      "house": 7,
+      "nakshatra": "Rohi",
+      "pada": 1,
+      "significations": [
+        9,
+        7,
+        5,
+        8,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Pisces",
+      "degree": 14.05,
+      "house": 5,
+      "nakshatra": "UBha",
+      "pada": 4,
+      "significations": [
+        2,
+        5,
+        1,
+        3,
+        4
+      ]
+    },
+    "VENUS": {
+      "sign": "Gemini",
+      "degree": 21.0333,
+      "house": 8,
+      "nakshatra": "Puna",
+      "pada": 1,
+      "significations": [
+        7,
+        8,
+        12,
+        2,
+        5
+      ]
+    },
+    "SATURN": {
+      "sign": "Scorpio",
+      "degree": 10.8167,
+      "house": 1,
+      "nakshatra": "Anu",
+      "pada": 3,
+      "significations": [
+        3,
+        4,
+        1
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 8.8,
+      "house": 10,
+      "nakshatra": "Magh",
+      "pada": 3,
+      "significations": [
+        "Ke",
+        "Su",
+        "Sa"
+      ]
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 8.8,
+      "house": 4,
+      "nakshatra": "Sata",
+      "pada": 1,
+      "significations": [
+        "Ra",
+        "Sa"
+      ]
+    }
+  },
+  "life_events": [],
+  "death_data": {
+    "cause_of_death": "executed by the Bolsheviks",
+    "death_type": "violent",
+    "death_date": "1868-05-18",
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": "SATURN",
+      "antardasha": "SUN",
+      "pratyantardasha": "VENUS",
+      "sookshma": "MOON",
+      "stated_by_author": true,
+      "raw_text": "view of the firing squad, the transit lagna is rising in Saturn sign, Sun star in Capricorn, denoting Government control"
+    }
+  },
+  "known_facts": {
+    "profession": null,
+    "profession_category": null,
+    "key_events": []
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Lagna rising in Scorpio and OSth lord Mercury is posited in maraca'bhava and is in badhaka Moon star Rohini. Hence OSth lord is afflicted and is not strong. This should also reduce the longevity.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Further badhaka Moon is posited in Revati star ruled by OSth lord Mercury. So Moon also signifies 07th house (maraca). This should be like adding fuel to fire.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Mars is lord of 01 (lagna) and 06 (enemy, injury) is posited in the star of Ketu. Ketu is in Aquarius in Rahu star and will signify both Saturn and Rahu. So wherever Rahu and Saturn give their results, a Node, Ketu will follow. This establishes a relation between Mars and Saturn.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Rahu gives Sun's result and hence Ketu and planets posited in Rahu's or Ketu's star will follow the suit. Hence Mars will give the result of maraca, since Sun is in Taurus. S) Hence lagna lord Mars gives the result of 01, 06, 07 houses, while OSth and badhaka Mercury is aspecting lagna. This will make the body and longevity very vulnerable, and can give longevity of 33-66 years range only.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Sth bhava star lord is Rahu and as explained above Mars gives result of Ketu through Rahu.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Mars aspects Saturn.",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Maraca Venus is posited in OSth house (longevity). But Venus is in Jupiter star, who is occupant of OSth house. Sun is lord of 10 and is aspecting lagna from own star. These have given some longevity of about SO years to the Czar. When the Czar was executed, he was running the VMD of Moon-Ketu-Venus-Saturn period. 220 Longevity and Unnatural Deaths .Dasha lord Moon is maraca and badhaka. Bhukti lord Ketu signifies Saturn and lagna. Mars posited in Ketu star in a fiery sign, gave way for killing by gun shot, injury and bleeding. Rahu is in Bhukti (blast) lord Ketu star. Antara lord Venus is mar",
+      "condition_type_guess": "planet_in_house",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Dasha lord Moon is maraca and badhaka.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-009",
+      "verbatim": "Bhukti lord Ketu signifies Saturn and lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-010",
+      "verbatim": "Antara lord Venus is maraca and occupies house of longevity.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-011",
+      "verbatim": "Sookshma lord Saturn is under aspect of Mars and signifies lagna.",
+      "condition_type_guess": "dasha_planet",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-012",
+      "verbatim": "Badhaka Moon is in OSth lord Mercury star, while OSth lord Mercury is in Moon star in Taurus, have caused problems for longevity.",
+      "condition_type_guess": "maraka_badhaka",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": "lu-cdr-079"
+    },
+    {
+      "obs_id": "obs-013",
+      "verbatim": "lagna lord Mars gives the result of 01, 06, 07 houses, while OSth and badhaka Mercury is aspecting lagna.",
+      "condition_type_guess": "lagna_lord_affliction",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-014",
+      "verbatim": "longevity of 33-66 years range only.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-015",
+      "verbatim": "longevity of about SO years to the Czar.",
+      "condition_type_guess": "longevity_statement",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

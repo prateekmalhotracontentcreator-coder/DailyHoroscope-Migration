@@ -1,0 +1,97 @@
+{
+  "vector_id": "tv-765h-0129",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0129",
+  "source_file": "0129_C-22_Chekhov_Anton_Russia.pdf",
+  "subject": {
+    "name": "Chekhov, Anton (Russia)",
+    "name_from_filename": "Chekhov, Anton (Russia)",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Physician",
+    "profession_compound": false,
+    "profession_secondary": "Arts_Literature",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1860-01-29",
+    "time_local": "07:15",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1860-01-29T01:45:00Z",
+    "latitude": 47.2333,
+    "longitude": 38.9167,
+    "place": "38E55 & 47N14",
+    "time_confidence": "rectified",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MERCURY",
+    "years": 4,
+    "months": 8,
+    "days": 26,
+    "raw_text": "Balance of dasha Mer 4-8-26"
+  },
+  "planet_degrees_from_text": {
+    "MOON": {
+      "degree_in_sign": 26.2833,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 16.5,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 19.25,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 2.55,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 7.6,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 1.8,
+      "retrograde": true
+    },
+    "SUN": {
+      "degree_in_sign": 16.85,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 6.9167,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 7.6,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Science_Academia",
+    "profession_subcategory": "Physician",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

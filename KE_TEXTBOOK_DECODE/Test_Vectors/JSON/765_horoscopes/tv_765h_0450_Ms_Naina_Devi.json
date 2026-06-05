@@ -1,0 +1,101 @@
+{
+  "vector_id": "tv-765h-0450",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0450",
+  "source_file": "0450_N-3_Ms_Naina_Devi.pdf",
+  "subject": {
+    "name": "Naina Devi",
+    "name_from_filename": "Ms Naina Devi",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Royalty_Nobility",
+    "profession_compound": false,
+    "profession_secondary": "Entertainment",
+    "profession_inferred": true,
+    "profession_ambiguous": true
+  },
+  "birth_data": {
+    "date": "1917-09-27",
+    "time_local": "01:48",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1917-09-27T20:18:00Z",
+    "latitude": 22.573,
+    "longitude": 88.364,
+    "place": "Kolkata, West Bengal, India",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "MARS",
+    "years": 0,
+    "months": 7,
+    "days": 17,
+    "raw_text": "Balance of dasha Mar 0-7-17"
+  },
+  "planet_degrees_from_text": {
+    "JUPITER": {
+      "degree_in_sign": 12.4667,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 6.4167,
+      "retrograde": false
+    },
+    "LAGNA": {
+      "degree_in_sign": 23.2667,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 17.8,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 10.5333,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 11.3667,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 25.35,
+      "retrograde": false
+    },
+    "VENUS": {
+      "degree_in_sign": 4.9833,
+      "retrograde": false
+    },
+    "MOON": {
+      "degree_in_sign": 17.8,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": 23.2667,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Royalty_Nobility",
+    "profession_subcategory": "Royalty_Nobility",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

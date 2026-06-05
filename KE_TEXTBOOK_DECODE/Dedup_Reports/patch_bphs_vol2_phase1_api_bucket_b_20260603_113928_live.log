@@ -1,0 +1,27 @@
+======================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_api_bucket_b_20260603_113928_live.log
+======================================================================
+
+BPHS Vol 2 Phase 1 — API-Confirmed Bucket B Patch
+Mode    : 🔴 LIVE — WRITING TO DB
+Rules   : 7
+Action  : flagged → pending_human_review + validator_error:true
+Source  : claude-haiku-4-5 API validator (2026-06-03 session)
+
+#    Rule ID                                  Pre-status             Result
+─────────────────────────────────────────────────────────────────────────────────────
+  1    R-BPHS47-077                             flagged                ✅ PATCHED
+  2    R-BPHS47-PATCH-D722F2                    flagged                ✅ PATCHED
+  3    R-BPHS53-PATCH-6951E2                    flagged                ✅ PATCHED
+  4    R-BPHS57-PATCH-7B534F                    flagged                ✅ PATCHED
+  5    R-BPHS58-040                             flagged                ✅ PATCHED
+  6    R-BPHS58-052                             flagged                ✅ PATCHED
+  7    R-BPHS58-PATCH-1A2F4A                    flagged                ✅ PATCHED
+
+======================================================================
+Summary
+  Mode    : LIVE
+  Patched : 7 / 7
+  Skipped : 0
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_api_bucket_b_20260603_113928_live.log

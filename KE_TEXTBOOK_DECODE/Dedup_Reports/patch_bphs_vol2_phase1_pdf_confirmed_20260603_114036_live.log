@@ -1,0 +1,88 @@
+===========================================================================
+  LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_pdf_confirmed_20260603_114036_live.log
+===========================================================================
+
+BPHS Vol 2 Phase 1 — PDF-Confirmed Patch
+Mode        : 🔴 LIVE — WRITING TO DB
+Confirmed   : 48 rules → PHR + validator_error:True + C_pdf_confirmed
+Deferred    : 1 rule  → PHR + validator_error:False + deferred_further_eval
+Source      : Santhanam BPHS Vol 2 PDF, triage session 2026-06-03
+
+───────────────────────────────────────────────────────────────────────────
+SECTION 1 — PDF CONFIRMED (validator_error=True, bucket=C_pdf_confirmed)
+───────────────────────────────────────────────────────────────────────────
+#     Rule ID                                    Pre-status               Result
+───────────────────────────────────────────────────────────────────────────
+  1    R-BPHS47-PATCH-CC30B7                      flagged                  ✅ PATCHED  [Ch.47 slokas 49-51]
+  2    R-BPHS47-PATCH-E5CAC4                      flagged                  ✅ PATCHED  [Ch.47 slokas 7-11]
+  3    R-BPHS53-025                               flagged                  ✅ PATCHED  [Ch.53 sloka 31]
+  4    R-BPHS53-PATCH-094A74                      flagged                  ✅ PATCHED  [Ch.53 slokas 1-2]
+  5    R-BPHS53-PATCH-16C7C5                      flagged                  ✅ PATCHED  [Ch.53 sloka 35]
+  6    R-BPHS53-PATCH-37CB8C                      flagged                  ✅ PATCHED  [Ch.53 sloka 51]
+  7    R-BPHS53-PATCH-5E3A16                      flagged                  ✅ PATCHED  [Ch.53 slokas 25-28]
+  8    R-BPHS53-PATCH-A460E9                      flagged                  ✅ PATCHED  [Ch.53 slokas 36-38]
+  9    R-BPHS53-PATCH-BF3DC0                      flagged                  ✅ PATCHED  [Ch.53 slokas 50-52]
+  10   R-BPHS53-PATCH-E77E96                      flagged                  ✅ PATCHED  [Ch.53 sloka 35]
+  11   R-BPHS54-061                               flagged                  ✅ PATCHED  [Ch.54 slokas 46-47]
+  12   R-BPHS54-PATCH-116D9B                      flagged                  ✅ PATCHED  [Ch.54 sloka 67]
+  13   R-BPHS54-PATCH-26A25A                      flagged                  ✅ PATCHED  [Ch.54 slokas 48-49]
+  14   R-BPHS54-PATCH-3E2164                      flagged                  ✅ PATCHED  [Ch.54 slokas 70-73]
+  15   R-BPHS54-PATCH-3E8999                      flagged                  ✅ PATCHED  [Ch.54 slokas 9-10]
+  16   R-BPHS54-PATCH-6592D5                      flagged                  ✅ PATCHED  [Ch.54 slokas 20-22]
+  17   R-BPHS54-PATCH-F1FDFB                      flagged                  ✅ PATCHED  [Ch.54 sloka 26]
+  18   R-BPHS55-085                               flagged                  ✅ PATCHED  [Ch.55 slokas 78-79]
+  19   R-BPHS55-087                               flagged                  ✅ PATCHED  [Ch.55 slokas 78-79]
+  20   R-BPHS55-PATCH-3B702B                      flagged                  ✅ PATCHED  [Ch.55 slokas 51-53]
+  21   R-BPHS55-PATCH-49AF69                      flagged                  ✅ PATCHED  [Ch.55 sloka 39]
+  22   R-BPHS55-PATCH-4EBC18                      flagged                  ✅ PATCHED  [Ch.55 slokas 13-14]
+  23   R-BPHS55-PATCH-65706D                      flagged                  ✅ PATCHED  [Ch.55 sloka 39]
+  24   R-BPHS55-PATCH-6AC96A                      flagged                  ✅ PATCHED  [Ch.55 slokas 15-17]
+  25   R-BPHS56-051                               flagged                  ✅ PATCHED  [Ch.56 sloka 29]
+  26   R-BPHS56-052                               flagged                  ✅ PATCHED  [Ch.56 slokas 30-31]
+  27   R-BPHS56-055                               flagged                  ✅ PATCHED  [Ch.56 slokas 32-32.5]
+  28   R-BPHS56-056                               flagged                  ✅ PATCHED  [Ch.56 slokas 32-32.5]
+  29   R-BPHS56-PATCH-AEBB42                      flagged                  ✅ PATCHED  [Ch.56 slokas 37-38]
+  30   R-BPHS56-PATCH-D0BAEB                      flagged                  ✅ PATCHED  [Ch.56 slokas 54-55]
+  31   R-BPHS57-029                               flagged                  ✅ PATCHED  [Ch.57 slokas 20-21.5]
+  32   R-BPHS57-033                               flagged                  ✅ PATCHED  [Ch.57 slokas 20-21.5]
+  33   R-BPHS57-098                               flagged                  ✅ PATCHED  [Ch.57 slokas 61-62]
+  34   R-BPHS57-PATCH-0727F5                      flagged                  ✅ PATCHED  [Ch.57 slokas 32-34]
+  35   R-BPHS57-PATCH-37B401                      flagged                  ✅ PATCHED  [Ch.57 slokas 81-82]
+  36   R-BPHS57-PATCH-562548                      flagged                  ✅ PATCHED  [Ch.57 slokas 28-29]
+  37   R-BPHS57-PATCH-5C3BA0                      flagged                  ✅ PATCHED  [Ch.57 slokas 12-13.5]
+  38   R-BPHS57-PATCH-7C33F5                      flagged                  ✅ PATCHED  [Ch.57 slokas 16-18]
+  39   R-BPHS57-PATCH-AA4529                      flagged                  ✅ PATCHED  [Ch.57 slokas 16-18]
+  40   R-BPHS57-PATCH-B89C62                      flagged                  ✅ PATCHED  [Ch.57 slokas 68-68.5]
+  41   R-BPHS57-PATCH-C5E9B2                      flagged                  ✅ PATCHED  [Ch.57 slokas 16-18]
+  42   R-BPHS58-PATCH-313295                      flagged                  ✅ PATCHED  [Ch.58 sloka 65]
+  43   R-BPHS58-PATCH-36ADF5                      flagged                  ✅ PATCHED  [Ch.58 sloka 65]
+  44   R-BPHS58-PATCH-3B1F8A                      flagged                  ✅ PATCHED  [Ch.58 slokas 45-46]
+  45   R-BPHS58-PATCH-6DAB01                      flagged                  ✅ PATCHED  [Ch.58 sloka 65]
+  46   R-BPHS58-PATCH-707AC3                      flagged                  ✅ PATCHED  [Ch.58 slokas 34-35]
+  47   R-BPHS58-PATCH-9B332B                      flagged                  ✅ PATCHED  [Ch.58 sloka 51]
+  48   R-BPHS58-PATCH-D5766C                      flagged                  ✅ PATCHED  [Ch.58 slokas 6-8.5]
+
+───────────────────────────────────────────────────────────────────────────
+SECTION 2 — DEFERRED (validator_error:False, bucket=deferred_further_eval)
+───────────────────────────────────────────────────────────────────────────
+#     Rule ID                                    Pre-status               Result
+───────────────────────────────────────────────────────────────────────────
+  1    R-BPHS55-086                               flagged                  ✅ PATCHED  [deferred]
+
+===========================================================================
+SUMMARY
+  Mode        : LIVE
+  Total rules : 49
+  Patched     : 49 / 49
+  Skipped     : 0
+
+ENCODING ERRORS NOTED (separate data correction task, not rejections):
+  R-BPHS53-PATCH-094A74/A460E9/E77E96 : dasha_lord=Venus → should be Moon
+  R-BPHS53-PATCH-37CB8C               : houses_involved=[7] → should be [2,7]
+  R-BPHS47-PATCH-CC30B7               : dasha_lord=Sun → should be Jupiter
+  R-BPHS54-PATCH-3E2164               : antardasha_planet=Mars → should be Moon
+  R-BPHS54-PATCH-3E8999               : antardasha_planet=Mars → should be Rahu
+  R-BPHS54-PATCH-6592D5               : antardasha_planet=Mars → should be Jupiter
+  R-BPHS57-PATCH-0727F5               : ref point 'Ascendant' → should be 'Dasa lord (Saturn)'
+
+Log saved: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol2_phase1_pdf_confirmed_20260603_114036_live.log

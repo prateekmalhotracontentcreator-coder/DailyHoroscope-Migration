@@ -1,0 +1,48 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/patch_lalkitab_bucket_b_20260605_034847.log
+======================================================================
+LAL KITAB — Bucket B Triage Patch (bulk_write, sync pymongo)
+Batch: lalkitab_all_v2_20260605  |  Dry-run: False
+======================================================================
+
+Group 1 — Bucket B flagged → PHR (27 rules, bulk_write)
+
+FATAL ERROR: No primary available for writes, Timeout: 30s, Topology Description: <TopologyDescription id: 6a22471f0b4a0bef3fda59ba, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None, error=NetworkTimeout('SSL handshake failed: ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net:27017: _ssl.c:1112: The handshake operation timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-sctwdlf-shard-00-01.bqtc8l9.mongodb.net', 27017) server_type: RSSecondary, rtt: 1.8447371250000018>, <ServerDescription ('ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net:27017: EOF occurred in violation of protocol (_ssl.c:1129) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+Traceback (most recent call last):
+  File "/Users/apple/DailyHoroscope-Migration/backend/scripts/patch_lalkitab_bucket_b.py", line 196, in <module>
+    main(args.dry_run)
+  File "/Users/apple/DailyHoroscope-Migration/backend/scripts/patch_lalkitab_bucket_b.py", line 113, in main
+    result = col.bulk_write(ops_b, ordered=False)
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/_csot.py", line 125, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/collection.py", line 791, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session, _Op.INSERT)
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/bulk.py", line 751, in execute
+    return self.execute_command(generator, write_concern, session, operation)
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/bulk.py", line 604, in execute_command
+    _ = client._retryable_write(
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/mongo_client.py", line 2083, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/mongo_client.py", line 1968, in _retry_with_session
+    return self._retry_internal(
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/_csot.py", line 125, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/mongo_client.py", line 2003, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/mongo_client.py", line 2763, in run
+    return self._read() if self._is_read else self._write()
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/mongo_client.py", line 2873, in _write
+    self._server = self._get_server()
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/mongo_client.py", line 2856, in _get_server
+    return self._client._select_server(
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/mongo_client.py", line 1833, in _select_server
+    server = topology.select_server(
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/topology.py", line 428, in select_server
+    server = self._select_server(
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/topology.py", line 402, in _select_server
+    servers = self.select_servers(
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/topology.py", line 298, in select_servers
+    server_descriptions = self._select_servers_loop(
+  File "/Users/apple/Library/Python/3.9/lib/python/site-packages/pymongo/synchronous/topology.py", line 359, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: No primary available for writes, Timeout: 30s, Topology Description: <TopologyDescription id: 6a22471f0b4a0bef3fda59ba, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None, error=NetworkTimeout('SSL handshake failed: ac-sctwdlf-shard-00-00.bqtc8l9.mongodb.net:27017: _ssl.c:1112: The handshake operation timed out (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>, <ServerDescription ('ac-sctwdlf-shard-00-01.bqtc8l9.mongodb.net', 27017) server_type: RSSecondary, rtt: 1.8447371250000018>, <ServerDescription ('ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('SSL handshake failed: ac-sctwdlf-shard-00-02.bqtc8l9.mongodb.net:27017: EOF occurred in violation of protocol (_ssl.c:1129) (configured timeouts: socketTimeoutMS: 20000.0ms, connectTimeoutMS: 20000.0ms)')>]>
+

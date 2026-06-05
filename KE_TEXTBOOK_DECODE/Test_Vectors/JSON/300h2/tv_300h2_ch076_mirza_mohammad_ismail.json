@@ -1,0 +1,262 @@
+{
+  "vector_id": "tv-300h2-ch076",
+  "book_id": "300_horoscopes_vol1_part2",
+  "source_chapter": "Ch076_75_Sir_Mirza_Ismail_Baig",
+  "pdf_path": "Chapters/Ch076_75_Sir_Mirza_Ismail_Baig.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Mirza Mohammad Ismail",
+    "description": "Sir Mirza Mohammad Ismail was Diwan of Mysore, Jaipur, etc. in the Princely State.",
+    "nationality": null
+  },
+  "birth_data": {
+    "date": null,
+    "time_local": null,
+    "timezone_offset_hours": null,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "unknown",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "nakshatra_stated": "A",
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Cancer",
+    "lagna_degree_stated": 23.765,
+    "moon_sign_stated_in_book": null,
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "SUN": {
+      "sign": "Libra",
+      "degree": 7.935,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        2,
+        4
+      ],
+      "significations_raw": "02,04,Ra"
+    },
+    "MOON": {
+      "sign": "Cancer",
+      "degree": 18.175,
+      "house": null,
+      "nakshatra": "Asre",
+      "pada": 1,
+      "retrograde": false,
+      "significations": [
+        1,
+        12,
+        3
+      ],
+      "significations_raw": "01,12,03"
+    },
+    "MARS": {
+      "sign": "Cancer",
+      "degree": 12.476,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        5,
+        10,
+        1,
+        11,
+        7,
+        8
+      ],
+      "significations_raw": "05,10 01,11,07,08"
+    },
+    "MERCURY": {
+      "sign": "Virgo",
+      "degree": 19.76,
+      "house": null,
+      "nakshatra": "Hast",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        3,
+        12,
+        1
+      ],
+      "significations_raw": "03,12,01"
+    },
+    "JUPITER": {
+      "sign": "Cancer",
+      "degree": 11.116,
+      "house": null,
+      "nakshatra": "Push",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        1,
+        6,
+        9,
+        1,
+        1,
+        7,
+        8
+      ],
+      "significations_raw": "01, 06,09,1 1,07,08"
+    },
+    "VENUS": {
+      "sign": "Libra",
+      "degree": 16.51,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 3,
+      "retrograde": false,
+      "significations": [
+        4,
+        11
+      ],
+      "significations_raw": "04,11,Ra"
+    },
+    "SATURN": {
+      "sign": "Taurus",
+      "degree": 17.127,
+      "house": null,
+      "nakshatra": "Rohi",
+      "pada": 3,
+      "retrograde": true,
+      "significations": [
+        11,
+        7,
+        8,
+        1
+      ],
+      "significations_raw": "11 ,07,08,01"
+    },
+    "RAHU": {
+      "sign": "Libra",
+      "degree": 10.144,
+      "house": null,
+      "nakshatra": "Swat",
+      "pada": 2,
+      "retrograde": false,
+      "significations": [
+        4
+      ],
+      "significations_raw": "04,Ve,Su,Ma"
+    },
+    "KETU": {
+      "sign": "Aries",
+      "degree": 10.144,
+      "house": null,
+      "nakshatra": "Aswi",
+      "pada": 4,
+      "retrograde": false,
+      "significations": [
+        10
+      ],
+      "significations_raw": "10,Ve,Su,Ma"
+    }
+  },
+  "kp_special_points": {
+    "hora_lagna": {
+      "sign": "Taurus",
+      "degree": 5.7
+    },
+    "ghati_lagna": {
+      "sign": null,
+      "degree": null
+    }
+  },
+  "life_outcomes": {
+    "profession": "Politician",
+    "profession_category": "Politics",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    },
+    "additional_context": null
+  },
+  "cross_reference": null,
+  "layer_b_expected": {
+    "profession_category": "Politics",
+    "key_claim_axes": [
+      "career",
+      "longevity"
+    ],
+    "note": ""
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-001",
+      "verbatim": "Ketu is in 10 and it is getting aspect of Sun (Government) and hence the job is connected to Government.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Jupiter signifies 10 and is in conjunction with Mars in lagna.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "neutral",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "These conditons helped native to become a Minister at high level, which was a post of diwan at that time.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "But Ketu in 10 indicate sudden exit from job.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "longevity",
+      "claim_polarity": "negative",
+      "gap_flag": true,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}

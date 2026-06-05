@@ -1,0 +1,37 @@
+LOG FILE: KE_TEXTBOOK_DECODE/Dedup_Reports/verify_lalkitab_triage_20260605_030433.log
+======================================================================
+LAL KITAB — Post-Triage Verification
+Timestamp: 20260605_030433
+======================================================================
+
+Overall counts:
+  auto_approved        : 287 (61%)
+  pending_human_review : 143 (30%)
+  flagged              : 36 (7%)
+  pending_review       : 1
+  TOTAL                : 467
+
+Bucket B patch status:
+  Rules successfully moved to PHR : 8/28
+  Rules still flagged (not patched): 19
+
+  ⚠ Patch did NOT fully apply — 19 Bucket B rules still flagged
+    - lalkitab-ch19-072
+    - lalkitab-ch19-066
+    - lalkitab-ch20-yog-11
+    - lalkitab-ch20-yog-06
+    - lalkitab-ch20-yog-08
+    - lalkitab-ch27-proh-06
+    - lalkitab-ch27-wave-w02
+    - lalkitab-ch27-wave-w09
+    - lalkitab-ch27-wave-w44
+    - lalkitab-ch27-corr-mars-benefic
+    - lalkitab-ch27-transfer-h08
+    - lalkitab-ch27-wave-w01
+    - lalkitab-ch27-wave-w03
+    - lalkitab-ch27-wave-w31
+    - lalkitab-ch27-proh-10
+    - lalkitab-ch23-formula-remainder
+    - lalkitab-ch25-moon-h11
+    - lalkitab-ch25-mars-mercury-sister
+    - lalkitab-ch28-influence-priority

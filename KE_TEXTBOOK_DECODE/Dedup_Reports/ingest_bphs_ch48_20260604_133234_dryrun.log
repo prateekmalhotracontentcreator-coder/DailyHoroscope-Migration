@@ -1,0 +1,40 @@
+===========================================================================
+  LOG FILE : KE_TEXTBOOK_DECODE/Dedup_Reports/ingest_bphs_ch48_20260604_133234_dryrun.log
+===========================================================================
+
+BPHS VOL 2 CH.48 INGEST  |  DRY RUN
+Batch ID  : bphs-ch48-dasha-20260603
+Science ID: vedic_astrology
+Source    : BPHS_Ch48_Vol2_Rules.json
+
+Loading + transforming source rules...
+  Loaded 46 rules from BPHS_Ch48_Vol2_Rules.json
+
+  Section breakdown:
+    A-General+PerHouse: 23 rules
+    C-KendraTrikona: 12 rules
+    D-Unfavourable: 11 rules
+  TOTAL                    : 46
+
+  Polarity breakdown:
+    dasha_conditional: 3
+    dasha_favourable: 27
+    dasha_unfavourable: 16
+  Checkable (yoga_check)   : 4
+Issues    : 0 ✅
+  Saved: /tmp/bphs_ch48_rules/bphs_ch48_DRY_RUN.json
+
+NEXT STEPS:
+  Step 2 -- Dedup vs MongoDB export:
+    python3 backend/ke_dedup_script.py \
+      --folder-a "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Vol2_CC_Decode/" \
+      --folder-b /tmp/mongo_existing_rules_dedup/ \
+      --output-report KE_TEXTBOOK_DECODE/Dedup_Reports/dedup_bphs_ch48_vs_mongodb.md \
+      --threshold 0.82
+  Step 3 -- AI validate (pre-upload):
+    python3 backend/scripts/validate_rules.py \
+      --json-file /tmp/bphs_ch48_rules/bphs_ch48_DRY_RUN.json \
+      --batch-id bphs-ch48-dasha-20260603
+  Step 4 -- Upload validated JSON:
+    python3 backend/scripts/ingest_bphs_ch48_dasha.py \
+      --upload /tmp/bphs_ch48_rules/bphs_ch48_DRY_RUN_VALIDATED.json

@@ -1,0 +1,89 @@
+{
+  "vector_id": "tv-765h-0358",
+  "book_id": "765_notable_horoscopes",
+  "source_serial": "0358",
+  "source_file": "0358_K-31_Kennedy_Robert.pdf",
+  "subject": {
+    "name": "Kennedy, Robert",
+    "name_from_filename": "Kennedy, Robert",
+    "mythological": false
+  },
+  "profession": {
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_compound": false,
+    "profession_secondary": null,
+    "profession_inferred": true,
+    "profession_ambiguous": false
+  },
+  "birth_data": {
+    "date": "1925-11-21",
+    "time_local": "01:30",
+    "timezone_offset_hours": 5.5,
+    "time_utc": "1925-11-21T20:00:00Z",
+    "latitude": 42.0833,
+    "longitude": -71.1333,
+    "place": "71W8 & 42N5",
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "mythological": false,
+    "ocr_corrected": false,
+    "notes": ""
+  },
+  "dasha_balance_from_book": {
+    "planet": "SUN",
+    "years": 5,
+    "months": 7,
+    "days": 20,
+    "raw_text": "Balance of dasha Sun 5-7-20"
+  },
+  "planet_degrees_from_text": {
+    "RAHU": {
+      "degree_in_sign": 4.4,
+      "retrograde": false
+    },
+    "KETU": {
+      "degree_in_sign": 4.4,
+      "retrograde": false
+    },
+    "SUN": {
+      "degree_in_sign": 4.6167,
+      "retrograde": false
+    },
+    "SATURN": {
+      "degree_in_sign": 25.4167,
+      "retrograde": false
+    },
+    "MERCURY": {
+      "degree_in_sign": 26.3833,
+      "retrograde": false
+    },
+    "MARS": {
+      "degree_in_sign": 11.5,
+      "retrograde": false
+    }
+  },
+  "chart_verification": {
+    "lagna_degree_from_book": null,
+    "lagna_sign_computed": null,
+    "lagna_computed_matches_degree": null,
+    "dasha_balance_engine_match": null,
+    "engine_notes": ""
+  },
+  "layer_b_expected": {
+    "type": "profession_match",
+    "profession_raw": null,
+    "profession_category": "Other",
+    "profession_subcategory": "Unknown",
+    "profession_inferred": true,
+    "note": "Profession inferred from life-events — flagged for TT review."
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "dasha_balance_verified": false,
+    "layer_a_evaluated": false,
+    "layer_b_evaluated": false
+  }
+}

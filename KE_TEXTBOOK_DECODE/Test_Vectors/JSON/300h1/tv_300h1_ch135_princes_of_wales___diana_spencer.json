@@ -1,0 +1,232 @@
+{
+  "vector_id": "tv-300h1-ch135",
+  "book_id": "300_horoscopes_vol1_part1",
+  "source_chapter": "Ch135_PRINCES_OF_WALES_--DIANA_SPENCER",
+  "pdf_path": "Split_Chapters/Ch135_PRINCES_OF_WALES_--DIANA_SPENCER.pdf",
+  "public_figure": true,
+  "subject": {
+    "name": "Princess Diana",
+    "description": "Princess Diana was the estranged wife of Prince of Wales, the Crown Prince of British",
+    "nationality": "British"
+  },
+  "birth_data": {
+    "date": "1961-07-01",
+    "time_local": "16:45:00",
+    "timezone_offset_hours": 1.0,
+    "time_utc": null,
+    "latitude": null,
+    "longitude": null,
+    "place": null,
+    "time_confidence": "from_chart",
+    "ayanamsha": "lahiri",
+    "ayanamsha_stated": null,
+    "ocr_corrected": true,
+    "notes": "OCR year was 1901 — corrected to 1961. OCR time \"1G:45·:00\" — hard-corrected to 16:45:00. Historical records suggest 19:45 BST; book states 16:45."
+  },
+  "chart_verification": {
+    "lagna_stated_in_book": "Scorpio",
+    "moon_sign_stated_in_book": "Aquarius",
+    "lagna_computed": null,
+    "moon_sign_computed": null,
+    "engine_matches_book": null,
+    "mismatch_notes": ""
+  },
+  "planet_positions_from_table": {
+    "LAGNA": {
+      "sign": "Scorpio",
+      "degree": 24.385,
+      "house": 1,
+      "significations": []
+    },
+    "SUN": {
+      "sign": "Gemini",
+      "degree": 16.4481,
+      "house": 8,
+      "significations": [
+        8,
+        10
+      ]
+    },
+    "MOON": {
+      "sign": "Aquarius",
+      "degree": 1.8175,
+      "house": 4,
+      "significations": [
+        1,
+        4,
+        6,
+        9,
+        10
+      ]
+    },
+    "MARS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "MERCURY": {
+      "sign": "Gemini",
+      "degree": 9.9792,
+      "house": 8,
+      "significations": [
+        8,
+        11
+      ]
+    },
+    "JUPITER": {
+      "sign": "Capricorn",
+      "degree": 11.8739,
+      "house": 3,
+      "significations": [
+        2,
+        3,
+        4,
+        5,
+        9
+      ]
+    },
+    "VENUS": {
+      "sign": null,
+      "degree": null,
+      "house": null,
+      "significations": []
+    },
+    "SATURN": {
+      "sign": "Capricorn",
+      "degree": 4.59,
+      "house": 3,
+      "significations": [
+        3,
+        4,
+        8,
+        10
+      ]
+    },
+    "RAHU": {
+      "sign": "Leo",
+      "degree": 6.4958,
+      "house": 10,
+      "significations": []
+    },
+    "KETU": {
+      "sign": "Aquarius",
+      "degree": 6.4958,
+      "house": 4,
+      "significations": []
+    }
+  },
+  "life_outcomes": {
+    "profession": "Royalty",
+    "profession_category": "Royalty",
+    "key_events": []
+  },
+  "death_data": {
+    "cause_of_death": null,
+    "death_type": null,
+    "death_date": null,
+    "age_at_death": null,
+    "dasha_at_death": {
+      "mahadasha": null,
+      "antardasha": null,
+      "pratyantardasha": null,
+      "sookshma": null,
+      "kp_significations": [],
+      "stated_by_author": false,
+      "cc_computed": false,
+      "raw_text": null
+    }
+  },
+  "layer_b_expected": {
+    "profession_category": "Royalty",
+    "key_claim_axes": [
+      "career"
+    ],
+    "note": "Author analysis should yield KP signification rule hits for stated axes."
+  },
+  "author_observations": [
+    {
+      "obs_id": "obs-002",
+      "verbatim": "Moon is in Mars star in 04.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-003",
+      "verbatim": "Sun is lord of 10 indicate connection with Governmental persons, but its occupancy in 08 indicate humiliation with them.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-004",
+      "verbatim": "Mars is in 10 in.dicate independent attitude and lack of love.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-005",
+      "verbatim": "Lord of 04 (10 for spouse) is Saturn and is in star of Sun (Government).",
+      "condition_type_guess": "kp_star_lord",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": true,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-006",
+      "verbatim": "Jupiter, Mars and Moon along with Saturn's link to 04 indicate high level spouse.",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-007",
+      "verbatim": "Venus in 07 indicates lots of outside food and friends.",
+      "condition_type_guess": "planet_in_house",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    },
+    {
+      "obs_id": "obs-008",
+      "verbatim": "Venus (07,12) is linked to 06 via Sun and Rahu (Ketu star).",
+      "condition_type_guess": "kp_planet_signification",
+      "science_id": "kp_jyotish",
+      "claim_axis": "career",
+      "claim_polarity": "positive",
+      "gap_flag": false,
+      "potential_rule_id": null
+    }
+  ],
+  "rule_evaluation": {
+    "evaluated": false,
+    "evaluated_at": null,
+    "rules_fired": [],
+    "layer_a_pass": null,
+    "layer_b_pass": null,
+    "notes": ""
+  },
+  "test_status": {
+    "extraction_complete": true,
+    "chart_computed": false,
+    "rules_evaluated": false
+  }
+}
