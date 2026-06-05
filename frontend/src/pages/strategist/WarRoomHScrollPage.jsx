@@ -48,6 +48,11 @@ const PLANET_ABBR = {
   Jupiter: 'Ju', Venus: 'Ve', Saturn: 'Sa', Rahu: 'Ra', Ketu: 'Ke',
 };
 
+const HOUSE_ORDINAL = {
+  1: '1st', 2: '2nd', 3: '3rd', 4: '4th', 5: '5th', 6: '6th',
+  7: '7th', 8: '8th', 9: '9th', 10: '10th', 11: '11th', 12: '12th',
+};
+
 function planetDpClass(name) {
   if (!name) return 'wrs-dp-sat';
   const key = Object.keys(PLANET_DP_CLASS).find(
@@ -70,6 +75,25 @@ function planetAbbr(name) {
     (k) => name.toLowerCase().includes(k.toLowerCase()),
   );
   return PLANET_ABBR[key] || name.slice(0, 2);
+}
+
+function parseMissionPlanetHouse(planetLabel) {
+  if (!planetLabel) return { planet: '', houseLabel: '' };
+  const [planet = '', housePart = ''] = planetLabel.split('·').map((part) => part.trim());
+  const match = housePart.match(/H(\d{1,2})/i);
+  if (!match) return { planet, houseLabel: '' };
+  const houseNumber = Number(match[1]);
+  return {
+    planet,
+    houseLabel: HOUSE_ORDINAL[houseNumber] ? `${HOUSE_ORDINAL[houseNumber]} House` : `House ${houseNumber}`,
+  };
+}
+
+function formatMonthYear(dateStr) {
+  if (!dateStr) return '';
+  const parsed = new Date(dateStr);
+  if (Number.isNaN(parsed.getTime())) return '';
+  return parsed.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -263,13 +287,56 @@ function WrsVerdictChip({ type, active }) {
   );
 }
 
+function WrsTransitBar({ commandPlanet, directive, dashaEndLabel, mission }) {
+  const missionMeta = parseMissionPlanetHouse(mission?.planet);
+  const activePlanet = missionMeta.planet || commandPlanet || 'Saturn';
+  const title = mission
+    ? `${activePlanet} is in your ${missionMeta.houseLabel || 'active house'} · ${mission.obj || 'A tactical window is active.'}`
+    : `${commandPlanet || 'Current'} Dasha active · ${directive || 'Hold your strategic cadence.'}`;
+  const rightLabel = mission?.name
+    ? `${mission.name}${dashaEndLabel ? ` · Act before ${dashaEndLabel}` : ''}`
+    : dashaEndLabel
+      ? `Dasha closes · ${dashaEndLabel}`
+      : 'War Room directive';
+
+  return (
+    <div className="wrs-transit-bar">
+      <span className={`wrs-transit-bar__planet ${planetDpClass(activePlanet)}`} aria-hidden="true">
+        {planetAbbr(activePlanet)}
+      </span>
+      <div className="wrs-transit-bar__body">
+        <div className="wrs-transit-bar__title">{title}</div>
+        <div className="wrs-transit-bar__sub">
+          {mission?.pivot
+            ? `Pivot now · ${mission.pivot}`
+            : `Command vector · ${directive || 'Proceed with measured discipline.'}`}
+        </div>
+      </div>
+      <div className="wrs-transit-bar__right">{rightLabel}</div>
+    </div>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // PANEL 1 · Conquest Score
 // ─────────────────────────────────────────────────────────────────────────────
 function PanelConquest({ data }) {
   if (!data) return null;
 
-  const { score, max, tier, warState, verdict, karmicCleared, streak, kpGate0 } = data;
+  const {
+    score,
+    max,
+    tier,
+    warState,
+    verdict,
+    karmicCleared,
+    streak,
+    kpGate0,
+    commandPlanet,
+    directive,
+    dashaEndLabel,
+    activeMission,
+  } = data;
 
   const stateSegs = [
     { k: 'offensive', cls: 'wrs-state-seg--off',  label: 'Offensive',   sub: 'press the attack' },
@@ -283,6 +350,12 @@ function PanelConquest({ data }) {
       <div className="wrs-conquest">
         <WrsGauge score={score} max={max || 99} tier={tier} />
         <div className="wrs-conquest__right">
+          <WrsTransitBar
+            commandPlanet={commandPlanet}
+            directive={directive}
+            dashaEndLabel={dashaEndLabel}
+            mission={activeMission}
+          />
           <div className="wrs-state-banner">
             {stateSegs.map((st) => (
               <div
@@ -384,8 +457,9 @@ function PanelMissions({ missions }) {
                 </div>
               )}
               {m.rem && (
-                <div className="wrs-mission__foot">
-                  <span className="wrs-mission__rem">remedy · <b>{m.rem}</b></span>
+                <div className="wrs-mission-remedy">
+                  <span className="wrs-mission-remedy__label">◈ Remedy · {m.rem}</span>
+                  <Link to="/lk-remedies/remedies" className="wrs-mission-remedy__link">→ LK Remedies</Link>
                 </div>
               )}
             </article>
@@ -720,6 +794,10 @@ function WarRoomShell({ dashboard, gate0Status, missions, loading }) {
       ? { days: scoreboard.streak_days, tier: scoreboard.streak_tier }
       : null,
     kpGate0,
+    commandPlanet: dashboard?.command_planet || '',
+    directive: conquest.directive || scoreboard.score_directive || '',
+    dashaEndLabel: formatMonthYear(dashboard?.current_mahadasha_end),
+    activeMission: normalizedMissions[0] || null,
   };
 
   return (

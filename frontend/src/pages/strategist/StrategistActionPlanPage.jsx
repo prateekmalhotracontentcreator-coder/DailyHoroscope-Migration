@@ -144,6 +144,53 @@ const ACTION_QUEUE = [
   },
 ];
 
+function firstMeaningfulString(...values) {
+  for (const value of values) {
+    if (typeof value === 'string' && value.trim()) return value.trim();
+  }
+  return '';
+}
+
+function extractKpGuidancePayload(raw) {
+  const source = raw?.report || raw?.session || raw?.reading || raw?.data || raw || {};
+  const sourceText = typeof source === 'string' ? source : '';
+  const guidance = firstMeaningfulString(
+    source?.guidance,
+    source?.guidance_text,
+    source?.oracle_guidance,
+    source?.answer_text,
+    source?.reading_text,
+    source?.summary,
+    source?.message,
+    source?.content,
+    source?.report_text,
+    raw?.guidance,
+    raw?.guidance_text,
+    raw?.message,
+    sourceText,
+  );
+  const mantra = firstMeaningfulString(
+    source?.mantra,
+    source?.mantra_text,
+    source?.remedy?.mantra,
+    source?.recommendation?.mantra,
+    raw?.mantra,
+  );
+  return { guidance, mantra };
+}
+
+function formatDaysAgoLabel(daysSince) {
+  if (daysSince == null || Number.isNaN(Number(daysSince))) return 'recently';
+  const days = Number(daysSince);
+  if (days <= 0) return 'today';
+  if (days === 1) return '1 day ago';
+  return `${days} days ago`;
+}
+
+function shouldShowKpGuidance(verdict) {
+  return ['wait', 'no', 'pray'].includes((verdict || '').toLowerCase());
+}
+
 // -----------------------------------------------------------------
 // Section frame component (from 2G composition shell)
 // -----------------------------------------------------------------
@@ -271,6 +318,40 @@ function ActionQueueModule({ density }) {
   );
 }
 
+function ApKpGuidance({ verdict, daysSince, guidance, mantra }) {
+  const [open, setOpen] = useState(false);
+
+  if (!shouldShowKpGuidance(verdict)) return null;
+
+  return (
+    <div className="ap-kp-guidance">
+      <button
+        type="button"
+        className="ap-kp-guidance__header"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
+      >
+        <span>
+          ◆ Oracle Guidance
+          <span className="ap-kp-guidance__meta">last read: {formatDaysAgoLabel(daysSince)}</span>
+        </span>
+        <span>{open ? '▴ collapse' : '▾ expand'}</span>
+      </button>
+      {open && (
+        <div className="ap-kp-guidance__body">
+          <p>{guidance || 'Return to Gate 0 to receive new Oracle guidance.'}</p>
+          {mantra ? (
+            <div className="ap-kp-guidance__mantra">{mantra}</div>
+          ) : null}
+          <a href="/strategist" className="ap-kp-guidance__cta">
+            Re-enter Gate 0
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // -----------------------------------------------------------------
 // Active-path source metadata for §04 Section sub-header
 // -----------------------------------------------------------------
@@ -297,21 +378,65 @@ export default function StrategistActionPlanPage() {
   const [locked, setLocked]       = useState(false);
   const [dashboard, setDashboard] = useState(null);
   const [density, setDensity]     = useState('briefing');
+  const [gate0Status, setGate0Status] = useState(null);
+  const [kpGuidance, setKpGuidance] = useState(null);
 
   // Fetch dashboard on mount
   useEffect(() => {
     let active = true;
+
+    async function readJson(res) {
+      const data = await res.json().catch(() => ({}));
+      return { ok: res.ok, status: res.status, data };
+    }
+
     async function load() {
       setLoading(true);
       setError('');
       setLocked(false);
       try {
-        const res  = await fetch(`${BACKEND}/api/strategist/dashboard`, { credentials: 'include' });
-        const data = await res.json().catch(() => ({}));
+        const [dashboardResult, gate0Result] = await Promise.allSettled([
+          fetch(`${BACKEND}/api/strategist/dashboard`, { credentials: 'include' }).then(readJson),
+          fetch(`${BACKEND}/api/strategist/gate0/status`, { credentials: 'include' }).then(readJson),
+        ]);
         if (!active) return;
+
+        const dashboardPayload = dashboardResult.status === 'fulfilled' ? dashboardResult.value : null;
+        const gate0Payload = gate0Result.status === 'fulfilled' ? gate0Result.value : null;
+        const data = dashboardPayload?.data || {};
+
         if (data?.error?.includes('LK profile missing')) { setLocked(true); return; }
-        if (!res.ok) throw new Error(data?.error || 'Unable to load action plan.');
+        if (!dashboardPayload?.ok) throw new Error(data?.error || 'Unable to load action plan.');
+
         setDashboard(data);
+        if (gate0Payload?.ok) setGate0Status(gate0Payload.data);
+
+        const effectiveVerdict = (
+          data?.scoreboard?.gate0_last_verdict
+          || gate0Payload?.data?.last_verdict
+          || ''
+        ).toUpperCase();
+
+        if (effectiveVerdict && effectiveVerdict !== 'YES') {
+          const reportPayload = await fetch(
+            `${BACKEND}/api/kp/sessions/last?context=strategist_gate0`,
+            { credentials: 'include' },
+          )
+            .then(readJson)
+            .catch(() => null);
+
+          if (!active) return;
+
+          const extracted = extractKpGuidancePayload(reportPayload?.data);
+          setKpGuidance({
+            verdict: effectiveVerdict.toLowerCase(),
+            daysSince: data?.scoreboard?.gate0_days_since ?? null,
+            guidance: extracted.guidance || 'Return to Gate 0 to receive new Oracle guidance.',
+            mantra: extracted.mantra || '',
+          });
+        } else {
+          setKpGuidance(null);
+        }
       } catch (e) {
         if (!active) return;
         setError(e.message || 'Unable to load action plan right now.');
@@ -366,6 +491,7 @@ export default function StrategistActionPlanPage() {
   const directive = dashboard?.scoreboard?.score_directive ?? '';
   const asOf      = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) + ' IST';
   const d         = DENSITY_MAP[density];
+  const guidanceVerdict = (dashboard?.scoreboard?.gate0_last_verdict || gate0Status?.last_verdict || '').toLowerCase();
 
   // Gates array for §02 Diagnostics -- normalised to CD LKGateSummaries shape
   const gates = normalizeGates(dashboard?.gate_summaries ?? []);
@@ -526,6 +652,12 @@ export default function StrategistActionPlanPage() {
                 onCtaClick={() => {}}
               />
             )}
+            <ApKpGuidance
+              verdict={kpGuidance?.verdict || guidanceVerdict}
+              daysSince={kpGuidance?.daysSince ?? dashboard?.scoreboard?.gate0_days_since ?? null}
+              guidance={kpGuidance?.guidance}
+              mantra={kpGuidance?.mantra}
+            />
           </Section>
 
           {/* §04 · Active Path -- switch(verdict): 2D (no/wait) · 2I (pray) · ClearanceCard (yes) */}
