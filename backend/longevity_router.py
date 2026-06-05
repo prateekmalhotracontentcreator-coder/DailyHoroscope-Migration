@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import importlib
 import inspect
 import json
@@ -215,18 +216,24 @@ async def _anthropic_client():
     return AsyncAnthropic(api_key=api_key)
 
 
-async def _call_claude_json(prompt: str, *, max_tokens: int = 1800, temperature: float = 0.35) -> dict[str, Any] | None:
+async def _call_claude_json(prompt: str, *, max_tokens: int = 1800, temperature: float = 0.35, timeout_secs: float = 20.0) -> dict[str, Any] | None:
     client = await _anthropic_client()
     if client is None:
         return None
     try:
-        response = await client.messages.create(
-            model=CLAUDE_MODEL,
-            max_tokens=max_tokens,
-            temperature=temperature,
-            messages=[{"role": "user", "content": [{"type": "text", "text": prompt}]}],
+        response = await asyncio.wait_for(
+            client.messages.create(
+                model=CLAUDE_MODEL,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                messages=[{"role": "user", "content": [{"type": "text", "text": prompt}]}],
+            ),
+            timeout=timeout_secs,
         )
-    except Exception:
+    except BaseException:
+        # Catches asyncio.CancelledError, asyncio.TimeoutError, and all network errors.
+        # Always fall through to deterministic fallback -- never let narrative generation
+        # kill the report.
         return None
     text = _extract_text_from_claude_response(response)
     if not text:
@@ -315,9 +322,33 @@ def _fallback_narrative(output_payload: dict[str, Any], knowledge_context: dict[
     }
 
 
+def _slim_payload_for_prompt(output_payload: dict[str, Any]) -> dict[str, Any]:
+    """Return a trimmed payload for the Claude prompt -- omits raw longitudes and
+    degree-level data that inflate the prompt without adding narrative value."""
+    snap = output_payload.get("birth_snapshot") or {}
+    planets_slim = {
+        p: {"sign": v.get("sign"), "house": v.get("whole_sign_house"), "retrograde": v.get("retrograde"),
+            "nakshatra": (v.get("kp") or {}).get("nakshatra")}
+        for p, v in (snap.get("planets") or {}).items()
+    }
+    return {
+        "summary": output_payload.get("summary"),
+        "ayanamsha": snap.get("ayanamsha"),
+        "ascendant": (snap.get("angles") or {}).get("ascendant_sign"),
+        "planets": planets_slim,
+        "current_dasha": output_payload.get("current_dasha"),
+        "longevity_classification": output_payload.get("longevity_classification"),
+        "constitutional_health_profile": output_payload.get("constitutional_health_profile"),
+        "vulnerable_systems": output_payload.get("vulnerable_systems"),
+        "disease_susceptibility_windows": output_payload.get("disease_susceptibility_windows"),
+        "critical_period_alerts": output_payload.get("critical_period_alerts"),
+        "remedial_guidance": output_payload.get("remedial_guidance"),
+    }
+
+
 def _narrative_prompt(output_payload: dict[str, Any], knowledge_context: dict[str, Any] | None) -> str:
     knowledge_json = json.dumps(knowledge_context or {}, ensure_ascii=True)
-    report_json = json.dumps(output_payload, ensure_ascii=True)
+    report_json = json.dumps(_slim_payload_for_prompt(output_payload), ensure_ascii=True)
     return f"""
 You are writing a premium Ayur Jyotish Longevity & Health narrative for Everyday Horoscope.
 
