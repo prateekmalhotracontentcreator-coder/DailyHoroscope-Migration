@@ -8,7 +8,7 @@ from zoneinfo import ZoneInfo
 import swisseph as swe
 
 
-swe.set_sid_mode(swe.SIDM_LAHIRI)
+swe.set_sid_mode(swe.SIDM_KRISHNAMURTI)  # KP system requires Newcomb/Krishnamurti ayanamsha -- not Lahiri (AYA-1)
 
 SIDEREAL_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL | swe.FLG_SPEED
 KP_MODEL_VERSION = "kp-longevity-1.0.0"
@@ -943,7 +943,7 @@ def critical_period_alerts(snapshot: dict[str, Any], timeline: dict[str, Any], r
                         "type": "64th Navamsa from Moon",
                         "severity": "high" if body in {"Saturn", "Rahu"} else "elevated",
                         "date": target.isoformat(),
-                        "detail": f"{body} comes within {orb_64:.1f}° of the Moon’s 64th Navamsa point ({format_degree(point_64th_navamsa)}).",
+                        "detail": f"{body} comes within {orb_64:.1f}° of the Moon's 64th Navamsa point ({format_degree(point_64th_navamsa)}).",
                         "support": "Mental, hormonal, sleep, and immunity patterns may need tighter care when this point is sensitized.",
                     }
                 )
@@ -1002,7 +1002,7 @@ def decade_quality_forecast(snapshot: dict[str, Any], timeline: dict[str, Any], 
                 "focus": focus,
                 "dominant_dashas": unique_lords,
                 "current_decade": start_age <= current_age <= end_age if start_age < 80 else current_age >= 80,
-                "note": f"This decade is primarily colored by {unique_lords}, so health outcomes improve when life pace matches the chart’s timing rather than fighting it.",
+                "note": f"This decade is primarily colored by {unique_lords}, so health outcomes improve when life pace matches the chart's timing rather than fighting it.",
             }
         )
     return decades
@@ -1032,7 +1032,7 @@ def remedial_guidance(snapshot: dict[str, Any], longevity: dict[str, Any], prakr
     return {
         "preventive_guidance": [
             f"Primary constitutional rule: {balancing[primary]}.",
-            "Use the report’s elevated windows for checkups, labs, sleep discipline, and reduced physical overreach.",
+            "Use the report's elevated windows for checkups, labs, sleep discipline, and reduced physical overreach.",
             "If symptoms are persistent, unusual, rapidly worsening, or severe, move to qualified medical care immediately instead of relying on spiritual timing.",
         ],
         "planetary_remedies": [
