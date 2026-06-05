@@ -216,7 +216,7 @@ async def _anthropic_client():
     return AsyncAnthropic(api_key=api_key)
 
 
-async def _call_claude_json(prompt: str, *, max_tokens: int = 1800, temperature: float = 0.35, timeout_secs: float = 20.0) -> dict[str, Any] | None:
+async def _call_claude_json(prompt: str, *, max_tokens: int = 1800, temperature: float = 0.35, timeout_secs: float = 12.0) -> dict[str, Any] | None:
     client = await _anthropic_client()
     if client is None:
         return None
@@ -245,7 +245,12 @@ async def _call_claude_json(prompt: str, *, max_tokens: int = 1800, temperature:
 
 
 async def _try_scan_chart(payload: LongevityGenerateRequest) -> dict[str, Any] | None:
-    candidates = (
+    # KE rules layer (interpretation_rules) is NOT wired here.
+    # Zero `approved` rules in production -- only `approved` rules may reach live users.
+    # The Longevity Report runs entirely on kp_engine.py (computational engine).
+    # Re-enable scan_chart() only after TT approves health-category KE rules.
+    return None
+    candidates = (  # noqa: unreachable
         "backend.knowledge_engine",
         "knowledge_engine",
         "backend.scan_chart",
