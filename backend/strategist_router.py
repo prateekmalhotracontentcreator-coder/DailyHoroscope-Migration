@@ -566,6 +566,7 @@ class StrategistProfileRequest(BaseModel):
     dob: str                        # YYYY-MM-DD -- birth date from landing form
     tob: Optional[str] = None       # HH:MM -- birth time (empty if unknown)
     city: Optional[str] = None      # City name from landing form
+    office_direction: Optional[str] = None
 
 
 @router.post("/profile")
@@ -601,6 +602,8 @@ async def save_strategist_profile(body: StrategistProfileRequest, request: Reque
         "tob": body.tob or "12:00",
         "birth_city": body.city or "New Delhi",
     }
+    if body.office_direction:
+        update["office_direction"] = body.office_direction.strip()
     if moon_longitude is not None:
         update["moon_longitude"] = moon_longitude
 

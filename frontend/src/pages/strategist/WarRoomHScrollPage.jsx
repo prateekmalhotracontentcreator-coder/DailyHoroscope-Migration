@@ -995,7 +995,12 @@ function WarRoomHScrollInner() {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ dob: draft.dob, tob: draft.tob || '', city: draft.city || '' }),
+            body: JSON.stringify({
+              dob: draft.dob,
+              tob: draft.tob || '',
+              city: draft.city || '',
+              ...(draft.office_direction ? { office_direction: draft.office_direction } : {}),
+            }),
           });
         }
       } catch { /* best-effort */ }

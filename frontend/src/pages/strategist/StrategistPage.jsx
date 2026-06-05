@@ -897,6 +897,7 @@ function Dashboard() {
               dob: draft.dob,
               tob: draft.tob || '',
               city: draft.city || '',
+              ...(draft.office_direction ? { office_direction: draft.office_direction } : {}),
             }),
           });
         }

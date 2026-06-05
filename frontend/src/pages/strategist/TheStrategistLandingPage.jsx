@@ -6,7 +6,7 @@
 // Delivered by Claude Design 2026-05-20. Integrated by Claude Code.
 // ─────────────────────────────────────────────────────────────────────────────
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowRight, ChevronDown,
@@ -27,6 +27,8 @@ import { GlassCard } from '@/components/strategist/GlassCard';
 import { Footer } from '@/components/Footer';
 
 import '@/styles/strategist-tokens.css';
+
+const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Locked copy
@@ -77,6 +79,47 @@ const CREDIBILITY = [
   'Vimshottari Dasha',
   'Live Swiss Ephemeris',
 ];
+
+const DIGBALA_DIRECTIONS = {
+  Sun: 'South',
+  Moon: 'North',
+  Mercury: 'North',
+  Mars: 'South',
+  Jupiter: 'NE',
+  Venus: 'SE',
+  Saturn: 'West',
+  Rahu: 'SW',
+  Ketu: 'NW',
+};
+
+const OFFICE_DIRECTIONS = [
+  { value: '', label: 'Not sure (skip)' },
+  { value: 'North', label: 'North' },
+  { value: 'South', label: 'South' },
+  { value: 'East', label: 'East' },
+  { value: 'West', label: 'West' },
+  { value: 'NE', label: 'NE' },
+  { value: 'SE', label: 'SE' },
+  { value: 'SW', label: 'SW' },
+  { value: 'NW', label: 'NW' },
+];
+
+function readStrategistDraft() {
+  if (typeof window === 'undefined') {
+    return { dob: '', tob: '', city: '', office_direction: '' };
+  }
+  try {
+    const draft = JSON.parse(localStorage.getItem('strategist-profile-draft') || 'null');
+    return {
+      dob: draft?.dob || '',
+      tob: draft?.tob || '',
+      city: draft?.city || '',
+      office_direction: draft?.office_direction || '',
+    };
+  } catch {
+    return { dob: '', tob: '', city: '', office_direction: '' };
+  }
+}
 
 const FAQ = [
   {
@@ -160,10 +203,10 @@ function SectionHead({ kicker, title, sub, center }) {
   );
 }
 
-function PrimaryCTA({ children, onClick, size = 'md', className }) {
+function PrimaryCTA({ children, onClick, size = 'md', className, type = 'button' }) {
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       className={cn(
         'inline-flex items-center gap-2.5 rounded-full',
@@ -884,6 +927,132 @@ function SecFaq() {
   );
 }
 
+function SecProfileUnlock({
+  profile,
+  onFieldChange,
+  onSubmit,
+  saving,
+  error,
+  commandPlanet,
+  powerDirection,
+  officeDirection,
+  isAuthenticated,
+}) {
+  let hint = 'Set this later to unlock Digbala bonus';
+  let hintTone = 'text-[color:var(--strategist-text-muted)] opacity-70';
+
+  if (officeDirection && powerDirection && commandPlanet) {
+    if (officeDirection === powerDirection) {
+      hint = '✓ Digbala aligned -- +15 to Conquest Score';
+      hintTone = 'text-emerald-500';
+    } else {
+      hint = 'Digbala not aligned';
+      hintTone = 'text-[color:var(--strategist-gold)]';
+    }
+  } else if (officeDirection && !powerDirection) {
+    hint = 'Direction saved. Strategist will compare it to your command planet after profile sync.';
+    hintTone = 'text-[color:var(--strategist-gold)]';
+  }
+
+  return (
+    <section id="profile-unlock" className="px-5 py-14 md:px-20 md:py-[90px]">
+      <SectionHead
+        kicker="&#9670; Profile Unlock &middot; Digbala input"
+        title="Set your work direction before you enter."
+        sub="Birth data times the mission window. Office direction unlocks the Digbala bonus when it matches your command planet."
+      />
+      <div className="mt-7 md:mt-10">
+        <GlassCard variant="highlight" className="p-5 md:p-8 max-w-[920px]">
+          <form className="grid gap-4 md:grid-cols-2" onSubmit={onSubmit}>
+            <label className="flex flex-col gap-2">
+              <span className="font-cinzel text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--strategist-gold)]">
+                Birth Date
+              </span>
+              <input
+                type="date"
+                value={profile.dob}
+                onChange={(event) => onFieldChange('dob', event.target.value)}
+                className="rounded-xl border border-[color:var(--strategist-card-border)] bg-black/10 px-4 py-3 text-sm text-[color:var(--strategist-text-primary)] outline-none transition focus:border-gold/60"
+                required
+              />
+            </label>
+
+            <label className="flex flex-col gap-2">
+              <span className="font-cinzel text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--strategist-gold)]">
+                Birth Time
+              </span>
+              <input
+                type="time"
+                value={profile.tob}
+                onChange={(event) => onFieldChange('tob', event.target.value)}
+                className="rounded-xl border border-[color:var(--strategist-card-border)] bg-black/10 px-4 py-3 text-sm text-[color:var(--strategist-text-primary)] outline-none transition focus:border-gold/60"
+              />
+            </label>
+
+            <label className="flex flex-col gap-2">
+              <span className="font-cinzel text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--strategist-gold)]">
+                Birth City
+              </span>
+              <input
+                type="text"
+                value={profile.city}
+                onChange={(event) => onFieldChange('city', event.target.value)}
+                placeholder="Mumbai"
+                className="rounded-xl border border-[color:var(--strategist-card-border)] bg-black/10 px-4 py-3 text-sm text-[color:var(--strategist-text-primary)] outline-none transition placeholder:text-[color:var(--strategist-text-muted)] focus:border-gold/60"
+              />
+            </label>
+
+            <label className="flex flex-col gap-2">
+              <span className="font-cinzel text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--strategist-gold)]">
+                Office / Workplace Direction
+              </span>
+              <select
+                value={officeDirection}
+                onChange={(event) => onFieldChange('office_direction', event.target.value)}
+                className="rounded-xl border border-[color:var(--strategist-card-border)] bg-black/10 px-4 py-3 text-sm text-[color:var(--strategist-text-primary)] outline-none transition focus:border-gold/60"
+              >
+                {OFFICE_DIRECTIONS.map((option) => (
+                  <option key={option.label} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <p className="font-playfair text-[13px] leading-[1.5] text-[color:var(--strategist-text-muted)]">
+                Face of your building entrance, or city direction of your primary work location from home.
+              </p>
+              <p className={cn('font-cinzel text-[11px] uppercase tracking-[0.08em]', hintTone)}>
+                {commandPlanet && powerDirection
+                  ? `Your command planet ${commandPlanet} has power direction ${powerDirection}. ${hint}`
+                  : hint}
+              </p>
+            </label>
+
+            <div className="md:col-span-2 flex flex-col gap-3 pt-2">
+              {error ? (
+                <p className="font-playfair text-sm text-red-400">{error}</p>
+              ) : null}
+              <div className="flex flex-wrap items-center gap-3">
+                <PrimaryCTA size="md" type="submit" className="justify-center" >
+                  {saving
+                    ? 'Saving...'
+                    : isAuthenticated
+                      ? 'Save Profile & Enter War Room'
+                      : 'Save Draft & Continue'}
+                </PrimaryCTA>
+                <span className="font-playfair italic text-sm text-[color:var(--strategist-text-muted)]">
+                  {isAuthenticated
+                    ? 'Saved to your Strategist profile and used immediately by the Digbala engine.'
+                    : 'We will carry these details into login and sync them to your Strategist profile after sign-in.'}
+                </span>
+              </div>
+            </div>
+          </form>
+        </GlassCard>
+      </div>
+    </section>
+  );
+}
+
 function FaqRow({ q, a, open, onClick }) {
   return (
     <div className="border-b border-[color:var(--strategist-card-border)] last:border-b-0">
@@ -948,6 +1117,33 @@ function SecFinalCta({ onEnter }) {
 function LandingInner() {
   const navigate = useNavigate();
   const { user } = useAuth() || {};
+  const [profile, setProfile] = useState(() => readStrategistDraft());
+  const [savingProfile, setSavingProfile] = useState(false);
+  const [profileError, setProfileError] = useState('');
+  const [strategistMeta, setStrategistMeta] = useState({ commandPlanet: '', powerDirection: '' });
+
+  useEffect(() => {
+    if (!user) return undefined;
+    let active = true;
+
+    fetch(`${BACKEND}/api/strategist/dashboard`, { credentials: 'include' })
+      .then((response) => response.json().catch(() => ({})))
+      .then((data) => {
+        if (!active || data?.error) return;
+        setStrategistMeta({
+          commandPlanet: data?.command_planet || '',
+          powerDirection: data?.success_direction || DIGBALA_DIRECTIONS[data?.command_planet] || '',
+        });
+      })
+      .catch(() => {
+        if (!active) return;
+        setStrategistMeta((prev) => prev);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [user]);
 
   const goEnter = () => {
     if (user) {
@@ -965,6 +1161,60 @@ function LandingInner() {
     }
   };
 
+  const updateProfileField = (field, value) => {
+    setProfile((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleProfileSubmit = async (event) => {
+    event.preventDefault();
+    setProfileError('');
+
+    const draft = {
+      dob: profile.dob,
+      tob: profile.tob || '',
+      city: profile.city || '',
+      office_direction: profile.office_direction || '',
+      timestamp: Date.now(),
+      name: user?.name || '',
+    };
+
+    try {
+      localStorage.setItem('strategist-profile-draft', JSON.stringify(draft));
+    } catch {
+      // Best-effort draft persistence only.
+    }
+
+    if (!user) {
+      navigate('/login', { state: { from: { pathname: '/strategist/snapshot' } } });
+      return;
+    }
+
+    setSavingProfile(true);
+    try {
+      const payload = {
+        dob: profile.dob,
+        tob: profile.tob || '',
+        city: profile.city || '',
+        ...(profile.office_direction ? { office_direction: profile.office_direction } : {}),
+      };
+      const response = await fetch(`${BACKEND}/api/strategist/profile`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(data?.detail || data?.error || 'Could not save strategist profile.');
+      }
+      navigate('/strategist/snapshot');
+    } catch (error) {
+      setProfileError(error.message || 'Could not save strategist profile.');
+    } finally {
+      setSavingProfile(false);
+    }
+  };
+
   return (
     <>
       <SEO
@@ -979,6 +1229,17 @@ function LandingInner() {
       <SecMissionEngine />
       <SecControlRoom />
       <SecCredibility />
+      <SecProfileUnlock
+        profile={profile}
+        onFieldChange={updateProfileField}
+        onSubmit={handleProfileSubmit}
+        saving={savingProfile}
+        error={profileError}
+        commandPlanet={strategistMeta.commandPlanet}
+        powerDirection={strategistMeta.powerDirection}
+        officeDirection={profile.office_direction}
+        isAuthenticated={Boolean(user)}
+      />
       <SecFaq        />
       <SecFinalCta   onEnter={goEnter} />
       <Footer />
