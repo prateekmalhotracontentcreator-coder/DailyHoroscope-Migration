@@ -1,7 +1,7 @@
 # The Strategist -- Module Tracker
 > Path: `Codex_Deliveries/Strategist/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-06-03 · v2.8
+> Last updated: 2026-06-06 · v3.3
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- STR-3A ✅ + STR-3B ✅ INTEGRATED (2026-06-06): transit bar, LK remedy on missions, KP guidance block, Shadbala panel + scoreboard chip all live. STR-3C ready to issue. TT verify: STR-OP-5/24/25/29. |
+| **Status** | 🟡 ACTIVE -- STR-3A ✅ + STR-3B ✅ + STR-3C ✅ INTEGRATED (2026-06-06): initial intelligence round complete. Digbala engine fully unlocked. TT: verify conquest score, Shadbala panel, Digbala alignment hint, mission board on production (STR-OP-5/24/25/29). |
 | **Frontend** | `frontend/src/pages/strategist/` (StrategistPage, StrategistMissionsPage, etc.) |
 | **Backend** | `backend/strategist_router.py` · `backend/strategist_engine.py` |
 | **Live URL** | `/strategist` · `/strategist/missions` |
@@ -35,7 +35,7 @@
 | **STR-1** | Premium Landing Page + War Room Visual Rebuild | ✅ INTEGRATED -- commit `ba58192` | `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · Built Codex workspace 2026-05-14, integrated same session |
 | **STR-3A** | Career Intelligence Layer (transit narrative bar · LK remedy on missions · KP guidance in §03) | ✅ INTEGRATED -- commit `0541719` | `CODEX_COMMISSION_STR_3A_CAREER_INTELLIGENCE.md` · Delivered by Codex 2026-06-06. CC build-verified + pushed. |
 | **STR-3B** | Command Planet Strength Panel (Shadbala UI -- WrsShadbalaPanel + scoreboard chip) | ✅ INTEGRATED -- commit `fdde61a` | `CODEX_COMMISSION_STR_3B_SHADBALA_PANEL.md` · Delivered by Codex 2026-06-06. CC build-verified + pushed. |
-| **STR-3C** | Office Direction Selector (Digbala unlock -- compass input in profile form) | 🟣 READY TO ISSUE | `CODEX_COMMISSION_STR_3C_OFFICE_DIRECTION.md` · Written 2026-06-05. Backend ready (STR-FIX-3 ✅). CC 2-line backend follow-up after CD delivers. |
+| **STR-3C** | Office Direction Selector (Digbala unlock -- compass input in profile form) | ✅ INTEGRATED -- commit `0324b3c` | `CODEX_COMMISSION_STR_3C_OFFICE_DIRECTION.md` · Delivered by Codex 2026-06-06. CC backend wiring + build verified + pushed. |
 
 ---
 
@@ -72,8 +72,8 @@
 | ~~STR-OP-26~~ | ~~CD commission ready: War Room horizontal scroll (STR-CD-WRS)~~ | -- | ✅ DONE 2026-06-03 | CC built directly (not sent to CD). Integrated commit `71eb351`. |
 | ~~STR-OP-31~~ | ~~Issue STR-3A to Codex~~ | -- | ✅ DONE | Integrated commit `0541719` 2026-06-06. |
 | ~~STR-OP-32~~ | ~~Issue STR-3B to Codex~~ | -- | ✅ DONE | Integrated commit `fdde61a` 2026-06-06. |
-| STR-OP-33 | **Issue STR-3C to Codex** -- Office Direction selector in profile form (Digbala unlock) | TT | 🟠 HIGH | Brief: `CODEX_COMMISSION_STR_3C_OFFICE_DIRECTION.md`. After CD delivers, CC adds 2-line backend update to `StrategistProfileRequest` + `save_strategist_profile`. |
-| STR-OP-30 | **CC follow-up after STR-3C**: add `office_direction: Optional[str]` to `StrategistProfileRequest` + persist in `save_strategist_profile` | CC | 🔵 POST STR-3C | Scope: 2-line change in `strategist_router.py`. Do after CD delivers STR-3C frontend. |
+| ~~STR-OP-33~~ | ~~Issue STR-3C to Codex~~ | -- | ✅ DONE | Integrated commit `0324b3c` 2026-06-06. |
+| ~~STR-OP-30~~ | ~~CC backend follow-up for STR-3C~~ | -- | ✅ DONE | `office_direction: Optional[str]` added to `StrategistProfileRequest` + persisted in `save_strategist_profile`. Done inline with STR-3C integration commit `0324b3c`. |
 | STR-OP-29 | STR-2H notification triggers -- production smoke test | TT | 🟠 HIGH | 7 evaluators in `strategist_notification_service.py` and 7 TRIGGER_CONFIG entries in `notification_trigger_router.py`. Verify: (1) golden_hour_open fires ~30 min before sunset on prod, (2) in-app bell notifications appear in notification feed, (3) dedup log prevents double-fire (check `str_notification_log` collection). Commit `71eb351`. |
 | ~~STR-OP-27~~ | ~~CD commission ready: User Manual Guide (STR-UM-01)~~ | -- | ✅ INTEGRATED | CD delivered `str-user-manual.html` + `strategist-manual.css`. CC integrated as `StrategistManualPage.jsx` + `strategist-manual.css` (React-adapted). Route `/strategist/manual` live (ProtectedRoute). "Field Manual" link added to snapshot nav strip + StrategistPage layer bar. Build clean. Commit `a8bd50e`. |
 
@@ -115,6 +115,7 @@
 | v2.2 | 2026-05-30 | 4 TT-flagged issues resolved. (1) Theme isolation: `.strategist-module[data-mode="light"]` now pins host Tailwind vars -- global .dark class cannot bleed. (2) Theme toggle added to Missions / Report / Surrogate / Executive pages -- all 8 Strategist pages now have module-scoped toggle. (3) Conquest Gauge production glow contained: `overflow:hidden` + 7px shadow (was 12px). (4) CR grid optimised: `#2d7a42` darker green, 32px/128px cells (was 48px/192px), tighter opacities. Build clean. CD commission STR-OP-20 (War Room horizontal scroll) written and ready to send. | CC | `08d0ffb` |
 | v2.3 | 2026-05-30 | Phase 2 triage audit complete. `DIAGNOSTIC_STR_2026-05.md` created. Critical fix: `--strategist-card-border-bold` was undefined in light + dark modes (12 broken CSS rules across 5 component files). Light mode cards now match CD: `--strategist-card-bg: #FFFFFF` (was transparent), `--strategist-card-elev: #FBF7EC`, `--strategist-bg: #F4EFE3`, `--strategist-fg: #2A2418`. CSS extractions verified verbatim across all 7 components. JSX structure verified faithful. 3 new open points (STR-OP-21/22/23). Routes still maintenance-screened pending browser verify + re-wire. | CC | `3a81700` |
 | v2.4 | 2026-05-30 | Open points resolved. (1) Proof strips hidden behind `showProofStrip` prop (default false) on OracleVerdictBanners + LKGateSummaries -- STR-OP-22 closed. (2) gate_summaries shape adapter added: `normalizeGates()` in StrategistActionPlanPage maps backend UPPERCASE statuses + integer gate numbers to CD-expected shape. karmic_debt_cleared path fixed (scoreboard not diagnosis_summary) -- STR-OP-23 closed. (3) All 8 Strategist routes re-wired from maintenance screen to real components. StrategistWarRoomPage lazy import added. Build clean. Pending: TT production verify (STR-OP-24). | CC | `5cf4b33` |
+| v3.3 | 2026-06-06 | STR-3C integrated. Office direction compass selector added to `TheStrategistLandingPage.jsx` profile form: 8 cardinal/intercardinal options + "Not sure", Digbala hint text (aligned ✓ / not aligned / unlock prompt), `DIGBALA_DIRECTIONS` lookup hardcoded in component. `office_direction` included in POST body when set. Backend: `office_direction: Optional[str] = None` added to `StrategistProfileRequest`; persisted in `save_strategist_profile` update dict. `ENGINE_VERSION` → v24-str-digbala. STR-OP-33 + STR-OP-30 closed. Initial STR intelligence round (3A + 3B + 3C) complete. | CC (Codex delivery) | `0324b3c` |
 | v3.2 | 2026-06-06 | STR-3B integrated. `WrsShadbalaPanel` renders in War Room Panel 1 below the transit bar: progress bar at `min(100, ratio/2 * 100)%`, STRONG (green) or NEEDS SUPPORT (gold) badge, rupas/minimum_rupas meta, factor delta from conquest payload. `ConquestScoreboard` (expanded + compact) now accepts `shadbalaBadge` prop rendered as `KarmicChip`. `StrategistWarRoomPage` derives badge from `command_planet_shadbala.is_strong`. Null-safe when birth data unavailable. CSS appended to `war-room-hscroll.css`. Build clean. STR-OP-32 closed. | CC (Codex delivery) | `fdde61a` |
 | v3.1 | 2026-06-06 | STR-3A integrated. `WrsTransitBar` added to Panel 1 (transit planet + directive or mission name). LK remedy link added to each mission card in Panel 2 when `m.rem` non-empty. `ApKpGuidance` collapsible block added to Action Plan §03 -- best-effort fetch to `/api/kp/sessions/last?context=strategist_gate0`, static fallback when absent. CSS appended to `war-room-hscroll.css` + `strategist-2g-actionplan.css`. Build clean. STR-OP-31 closed. | CC (Codex delivery) | `0541719` |
 | v3.0 | 2026-06-05 | Three Codex commissions written to complete initial round of Strategist intelligence. STR-3A: Career Intelligence Layer (transit narrative bar in Panel 1, LK remedy linked to mission cards, KP Gate 0 guidance block in §03). STR-3B: Command Planet Strength Panel (WrsShadbalaPanel + scoreboard chip -- data already live in API). STR-3C: Office Direction selector in profile form (Digbala unlock -- backend wired, needs frontend input). All three ready to issue. STR-OP-31/32/33 added. | CC | -- |
