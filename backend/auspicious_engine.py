@@ -326,12 +326,7 @@ def _tier_for_score(unified_score: int, is_blocked: bool) -> str:
     return "neutral"
 
 
-def _recommendation(
-    activity_category: str,
-    tier: str,
-    vedic_result: dict[str, Any],
-    chinese_result: dict[str, Any],
-) -> str:
+def _recommendation(activity_category: str, tier: str, reasons: list[str]) -> str:
     phrase = CATEGORY_INTENT_PHRASES[activity_category]
     if tier == "blocked":
         lead = "Avoid major commitments on this date."
@@ -342,10 +337,17 @@ def _recommendation(
     else:
         lead = f"A workable but mixed date for {phrase}."
 
-    reason_pool = vedic_result["reasons"] + chinese_result["reasons"]
-    if not reason_pool:
+    if not reasons:
         return lead
-    return f"{lead} {reason_pool[0]}"
+    return f"{lead} {reasons[0]}"
+
+
+def _inactive_vedic_details() -> dict[str, Any] | None:
+    return None
+
+
+def _inactive_chinese_details() -> dict[str, Any] | None:
+    return None
 
 
 def score_day(
@@ -374,6 +376,8 @@ def score_day(
         activity_vector=activity_vector,
         filter_personal_clash=filter_personal_clash,
     )
+    uses_vedic = system != "chinese"
+    uses_chinese = system != "vedic"
 
     if system == "vedic":
         chinese_score = 0
@@ -389,7 +393,14 @@ def score_day(
         unified_score = round((vedic_result["score"] * 0.55) + (chinese_score * 0.45))
         is_blocked = vedic_result["is_blocked"] or chinese_result["is_blocked"]
 
-    blockers = vedic_result["blockers"] + chinese_result["blockers"]
+    blockers: list[str] = []
+    reasons: list[str] = []
+    if uses_vedic:
+        blockers.extend(vedic_result["blockers"])
+        reasons.extend(vedic_result["reasons"])
+    if uses_chinese:
+        blockers.extend(chinese_result["blockers"])
+        reasons.extend(chinese_result["reasons"])
     tier = _tier_for_score(unified_score, is_blocked)
 
     return {
@@ -401,9 +412,9 @@ def score_day(
         "tier": tier,
         "is_blocked": is_blocked,
         "blockers": blockers,
-        "vedic_details": vedic_result["details"],
-        "chinese_details": chinese_result["details"],
-        "recommendation": _recommendation(activity_category, tier, vedic_result, chinese_result),
+        "vedic_details": vedic_result["details"] if uses_vedic else _inactive_vedic_details(),
+        "chinese_details": chinese_result["details"] if uses_chinese else _inactive_chinese_details(),
+        "recommendation": _recommendation(activity_category, tier, reasons),
     }
 
 

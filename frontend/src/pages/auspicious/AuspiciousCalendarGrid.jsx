@@ -17,6 +17,12 @@ const TIER_LABELS = {
   blocked: "Blocked",
 };
 
+const SYSTEM_LABELS = {
+  dual: "Dual system",
+  vedic: "Vedic only",
+  chinese: "Chinese only",
+};
+
 function buildMonthLabel(days) {
   if (!days.length) return "";
   const target = new Date(`${days[0].date}T12:00:00`);
@@ -66,6 +72,42 @@ function DayBadge({ tier }) {
   );
 }
 
+function buildTopPickSummary(day, system) {
+  if (system === "chinese") {
+    return `${day.chinese_details?.day_officer || "Chinese layer"} · ${day.chinese_details?.day_animal || "Day animal"}`;
+  }
+  return `${day.vedic_details?.tithi_name || "Vedic layer"} · ${day.vedic_details?.nakshatra_name || "Nakshatra"}`;
+}
+
+function buildCellSummary(day, system) {
+  if (system === "chinese") {
+    return day.chinese_details?.day_officer || "Chinese layer";
+  }
+  return `${day.vedic_details?.tithi_name || "Vedic layer"} · ${day.vedic_details?.nakshatra_name || "Nakshatra"}`;
+}
+
+function buildDayTitle(day, system) {
+  if (system === "vedic") {
+    return `${day.vedic_details?.tithi_name || "Vedic layer"} · ${day.vedic_details?.nakshatra_name || "Nakshatra"}`;
+  }
+  if (system === "chinese") {
+    return `${day.chinese_details?.day_officer || "Chinese layer"} · ${day.chinese_details?.day_animal || "Day animal"}`;
+  }
+  return `${day.vedic_details?.tithi_name || "Vedic layer"} · ${day.vedic_details?.nakshatra_name || "Nakshatra"} · ${day.chinese_details?.day_officer || "Chinese layer"}`;
+}
+
+function buildScoreLabel(system) {
+  if (system === "vedic") return "Final Vedic Score";
+  if (system === "chinese") return "Final Chinese Score";
+  return "Unified";
+}
+
+function buildTopPickScoreLabel(system) {
+  if (system === "vedic") return "Vedic score";
+  if (system === "chinese") return "Chinese score";
+  return "Unified score";
+}
+
 export default function AuspiciousCalendarGrid({
   days,
   categoryLabel,
@@ -79,6 +121,10 @@ export default function AuspiciousCalendarGrid({
   const cells = useMemo(() => buildCalendarCells(days), [days]);
   const topPicks = useMemo(() => [...days].sort(scoreSort).slice(0, 3), [days]);
   const [selectedDay, setSelectedDay] = useState(topPicks[0] || days[0] || null);
+  const usesVedic = system !== "chinese";
+  const usesChinese = system !== "vedic";
+  const scoreGridClass = usesVedic && usesChinese ? "grid grid-cols-3 gap-3" : "grid grid-cols-1 gap-3";
+  const detailsGridClass = usesVedic && usesChinese ? "grid gap-4 sm:grid-cols-2" : "grid gap-4 sm:grid-cols-1";
 
   useEffect(() => {
     setSelectedDay(topPicks[0] || days[0] || null);
@@ -95,7 +141,7 @@ export default function AuspiciousCalendarGrid({
           <div className="mt-3 flex flex-wrap gap-2">
             <span className="rounded-full border border-gold/20 bg-gold/10 px-3 py-1 text-xs font-semibold text-stone-700">{categoryLabel}</span>
             <span className="rounded-full border border-gold/20 bg-white px-3 py-1 text-xs font-semibold text-stone-700">{cityLabel}</span>
-            <span className="rounded-full border border-gold/20 bg-white px-3 py-1 text-xs font-semibold uppercase text-stone-700">{system}</span>
+            <span className="rounded-full border border-gold/20 bg-white px-3 py-1 text-xs font-semibold uppercase text-stone-700">{SYSTEM_LABELS[system] || system}</span>
           </div>
         </div>
 
@@ -135,7 +181,9 @@ export default function AuspiciousCalendarGrid({
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">Top Picks</p>
             <h3 className="mt-2 font-playfair text-2xl font-semibold text-stone-900">Best dates in this month</h3>
           </div>
-          <p className="text-sm text-stone-500">Ordered by unified score with blocked days pushed down.</p>
+          <p className="text-sm text-stone-500">
+            {system === "dual" ? "Ordered by unified score with blocked days pushed down." : "Ordered by final score with blocked days pushed down."}
+          </p>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-3">
@@ -148,9 +196,8 @@ export default function AuspiciousCalendarGrid({
                 </div>
                 <DayBadge tier={day.tier} />
               </div>
-              <p className="mt-4 text-sm font-semibold text-stone-900">
-                {day.vedic_details.tithi_name} · {day.vedic_details.nakshatra_name}
-              </p>
+              <p className="mt-4 text-sm font-semibold text-stone-900">{buildTopPickSummary(day, system)}</p>
+              <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">{buildTopPickScoreLabel(system)}</p>
               <p className="mt-2 inline-flex rounded-full bg-white/85 px-3 py-1 text-sm font-semibold text-stone-800">
                 {day.unified_score}/100
               </p>
@@ -181,7 +228,7 @@ export default function AuspiciousCalendarGrid({
                 key={cell.key}
                 type="button"
                 onClick={() => setSelectedDay(cell.day)}
-                title={`${cell.day.vedic_details.tithi_name} · ${cell.day.vedic_details.nakshatra_name} · ${cell.day.chinese_details.day_officer}`}
+                title={buildDayTitle(cell.day, system)}
                 className={`min-h-[132px] border-b border-r border-gold/10 p-3 text-left transition hover:bg-gold/8 ${
                   selectedDay?.date === cell.day.date ? "bg-gold/10" : "bg-white/65"
                 }`}
@@ -192,7 +239,7 @@ export default function AuspiciousCalendarGrid({
                     <span className="text-xs font-semibold text-stone-600">{cell.day.unified_score}</span>
                   </div>
                   <p className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-stone-500">{TIER_LABELS[cell.day.tier]}</p>
-                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-stone-600">{cell.day.chinese_details.day_officer}</p>
+                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-stone-600">{buildCellSummary(cell.day, system)}</p>
                 </div>
               </button>
             ),
@@ -213,17 +260,21 @@ export default function AuspiciousCalendarGrid({
               <DayBadge tier={selectedDay.tier} />
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className={`mt-5 ${scoreGridClass}`}>
+              {usesVedic && usesChinese ? (
+                <div className="rounded-[1.2rem] border border-gold/15 bg-white/80 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Vedic</p>
+                  <p className="mt-2 text-2xl font-semibold text-stone-900">{selectedDay.vedic_score}</p>
+                </div>
+              ) : null}
+              {usesVedic && usesChinese ? (
+                <div className="rounded-[1.2rem] border border-gold/15 bg-white/80 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Chinese</p>
+                  <p className="mt-2 text-2xl font-semibold text-stone-900">{selectedDay.chinese_score}</p>
+                </div>
+              ) : null}
               <div className="rounded-[1.2rem] border border-gold/15 bg-white/80 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Vedic</p>
-                <p className="mt-2 text-2xl font-semibold text-stone-900">{selectedDay.vedic_score}</p>
-              </div>
-              <div className="rounded-[1.2rem] border border-gold/15 bg-white/80 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Chinese</p>
-                <p className="mt-2 text-2xl font-semibold text-stone-900">{selectedDay.chinese_score}</p>
-              </div>
-              <div className="rounded-[1.2rem] border border-gold/15 bg-white/80 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Unified</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-stone-500">{buildScoreLabel(system)}</p>
                 <p className="mt-2 text-2xl font-semibold text-stone-900">{selectedDay.unified_score}</p>
               </div>
             </div>
@@ -246,34 +297,38 @@ export default function AuspiciousCalendarGrid({
 
           <article className="rounded-[1.75rem] border border-gold/15 bg-white/85 p-5">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">Expanded details</p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.2rem] border border-gold/15 bg-gold/6 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Vedic layer</p>
-                <p className="mt-3 text-sm font-semibold text-stone-900">{selectedDay.vedic_details.tithi_name}</p>
-                <p className="mt-1 text-sm text-stone-600">{selectedDay.vedic_details.nakshatra_name}</p>
-                <p className="mt-1 text-sm text-stone-600">{selectedDay.vedic_details.yoga_name}</p>
-                <p className="mt-1 text-sm text-stone-600">{selectedDay.vedic_details.karana_name}</p>
-                <p className="mt-4 text-xs uppercase tracking-[0.18em] text-stone-500">Timing windows</p>
-                <p className="mt-2 text-sm text-stone-700">
-                  Abhijit Muhurta: {selectedDay.vedic_details.abhijit_muhurta?.start || "--"} - {selectedDay.vedic_details.abhijit_muhurta?.end || "--"}
-                </p>
-                <p className="mt-1 text-sm text-red-600">
-                  Rahu Kalam: {selectedDay.vedic_details.rahu_kalam?.start || "--"} - {selectedDay.vedic_details.rahu_kalam?.end || "--"}
-                </p>
-              </div>
+            <div className={`mt-4 ${detailsGridClass}`}>
+              {usesVedic ? (
+                <div className="rounded-[1.2rem] border border-gold/15 bg-gold/6 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Vedic layer</p>
+                  <p className="mt-3 text-sm font-semibold text-stone-900">{selectedDay.vedic_details?.tithi_name || "--"}</p>
+                  <p className="mt-1 text-sm text-stone-600">{selectedDay.vedic_details?.nakshatra_name || "--"}</p>
+                  <p className="mt-1 text-sm text-stone-600">{selectedDay.vedic_details?.yoga_name || "--"}</p>
+                  <p className="mt-1 text-sm text-stone-600">{selectedDay.vedic_details?.karana_name || "--"}</p>
+                  <p className="mt-4 text-xs uppercase tracking-[0.18em] text-stone-500">Timing windows</p>
+                  <p className="mt-2 text-sm text-stone-700">
+                    Abhijit Muhurta: {selectedDay.vedic_details?.abhijit_muhurta?.start || "--"} - {selectedDay.vedic_details?.abhijit_muhurta?.end || "--"}
+                  </p>
+                  <p className="mt-1 text-sm text-red-600">
+                    Rahu Kalam: {selectedDay.vedic_details?.rahu_kalam?.start || "--"} - {selectedDay.vedic_details?.rahu_kalam?.end || "--"}
+                  </p>
+                </div>
+              ) : null}
 
-              <div className="rounded-[1.2rem] border border-gold/15 bg-gold/6 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Chinese layer</p>
-                <p className="mt-3 text-sm font-semibold text-stone-900">{selectedDay.chinese_details.day_officer}</p>
-                <p className="mt-1 text-sm text-stone-600">Day animal: {selectedDay.chinese_details.day_animal}</p>
-                <p className="mt-1 text-sm text-stone-600">
-                  User animal: {selectedDay.chinese_details.user_animal || "Not supplied"}
-                </p>
-                <p className="mt-1 text-sm text-stone-600">
-                  Personal clash: {selectedDay.chinese_details.is_personal_clash ? "Yes" : "No"}
-                </p>
-                <p className="mt-1 text-sm text-stone-600">Lunar mansion: {selectedDay.chinese_details.lunar_mansion}</p>
-              </div>
+              {usesChinese ? (
+                <div className="rounded-[1.2rem] border border-gold/15 bg-gold/6 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Chinese layer</p>
+                  <p className="mt-3 text-sm font-semibold text-stone-900">{selectedDay.chinese_details?.day_officer || "--"}</p>
+                  <p className="mt-1 text-sm text-stone-600">Day animal: {selectedDay.chinese_details?.day_animal || "--"}</p>
+                  <p className="mt-1 text-sm text-stone-600">
+                    User animal: {selectedDay.chinese_details?.user_animal || "Not supplied"}
+                  </p>
+                  <p className="mt-1 text-sm text-stone-600">
+                    Personal clash: {selectedDay.chinese_details?.is_personal_clash ? "Yes" : "No"}
+                  </p>
+                  <p className="mt-1 text-sm text-stone-600">Lunar mansion: {selectedDay.chinese_details?.lunar_mansion || "--"}</p>
+                </div>
+              ) : null}
             </div>
           </article>
         </div>

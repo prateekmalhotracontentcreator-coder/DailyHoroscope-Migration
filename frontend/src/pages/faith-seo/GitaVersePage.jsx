@@ -165,6 +165,35 @@ export function GitaVersePage() {
               </article>
             </section>
 
+            {data.recitation?.is_featured ? (
+              <section className="mt-8 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+                <article className="rounded-[1.8rem] border border-[#d4af37]/18 bg-white/[0.05] p-7">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f3d27a]">Recitation mode</p>
+                  <h2 className="mt-2 font-playfair text-2xl font-semibold text-stone-50">{data.recitation.focus}</h2>
+                  <div className="mt-5 space-y-3">
+                    {(data.recitation.display_lines || []).map((line) => (
+                      <p key={line} className="font-playfair text-xl leading-9 text-stone-50">{line}</p>
+                    ))}
+                  </div>
+                  <p className="mt-5 text-sm leading-7 text-stone-300">{data.recitation.cadence_note}</p>
+                </article>
+
+                <article className="rounded-[1.8rem] border border-[#d4af37]/18 bg-white/[0.05] p-7">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f3d27a]">How to use this verse</p>
+                  <p className="mt-4 text-sm leading-8 text-stone-300">{data.recitation.why}</p>
+                  <p className="mt-4 text-sm leading-8 text-stone-300">{data.recitation.practice_window}</p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <div className="rounded-full border border-[#d4af37]/16 bg-white/[0.04] px-4 py-2 text-sm text-stone-200">
+                      {data.recitation.rounds} slow rounds
+                    </div>
+                    <Link to={data.recitation.collection_href} className="inline-flex rounded-full border border-[#d4af37]/18 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-stone-100 transition hover:border-[#d4af37]/35 hover:bg-white/[0.07]">
+                      Open full recitation set
+                    </Link>
+                  </div>
+                </article>
+              </section>
+            ) : null}
+
             <section className="mt-8 grid gap-5 md:grid-cols-3">
               {(data.etymology_items || []).map((item) => (
                 <article key={item.term} className="rounded-[1.5rem] border border-[#d4af37]/18 bg-white/[0.05] p-6">

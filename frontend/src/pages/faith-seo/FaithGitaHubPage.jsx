@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, BookHeart, LoaderCircle } from 'lucide-react';
+import { ArrowLeft, BookHeart, LoaderCircle, Sparkles } from 'lucide-react';
 import { Footer } from '../../components/Footer';
 import { SEO } from '../../components/SEO';
 import { API, SITE, buildBreadcrumbSchema, buildCollectionSchema } from './faithShared';
@@ -153,6 +153,36 @@ export function FaithGitaHubPage() {
                   </Link>
                 </article>
               ))}
+            </section>
+
+            <section className="mt-8 rounded-[1.8rem] border border-[#d4af37]/18 bg-white/[0.05] p-7">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="max-w-3xl">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f3d27a]">
+                    <Sparkles className="mr-2 inline h-4 w-4" />
+                    Recitation mode
+                  </p>
+                  <h2 className="mt-2 font-playfair text-2xl font-semibold text-stone-50">A smaller featured set for repetition and devotional pacing.</h2>
+                  <p className="mt-3 text-sm leading-7 text-stone-300">
+                    Start with the curated recitation set if you want a slower entry path than the full 700-verse library.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <div className="rounded-full border border-[#d4af37]/16 bg-white/[0.04] px-4 py-2 text-sm text-stone-200">
+                    {data.recitation_collection?.count} featured verses
+                  </div>
+                  <Link to={data.recitation_collection?.href || '/faith/gita/recitation'} className="inline-flex rounded-full bg-[#d4af37] px-5 py-3 text-sm font-semibold text-stone-950 transition hover:opacity-90">
+                    Open recitation mode
+                  </Link>
+                </div>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {(data.recitation_collection?.preview_refs || []).map((item) => (
+                  <span key={item} className="rounded-full border border-[#d4af37]/16 bg-white/[0.04] px-4 py-2 text-sm text-stone-200">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </section>
 
             <FaithPathwayLinks

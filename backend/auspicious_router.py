@@ -70,8 +70,8 @@ class AuspiciousDayResponse(StrictModel):
     tier: Literal["excellent", "good", "neutral", "blocked"]
     is_blocked: bool
     blockers: list[str] = Field(default_factory=list)
-    vedic_details: VedicDetails
-    chinese_details: ChineseDetails
+    vedic_details: VedicDetails | None = None
+    chinese_details: ChineseDetails | None = None
     recommendation: str
 
 

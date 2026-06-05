@@ -1076,6 +1076,485 @@ def get_current_dasha(dashas: list) -> dict:
     return dashas[-1]
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# KALACHAKRA DASA ENGINE  (Commission VC-1)
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Source: BPHS Vol 2 Ch.46 (R. Santhanam translation).
+# PDF verification note: The actual Kalachakra charts in Ch.46 are on
+# handwritten diagram pages (pp.49-50 of Ch.46) that could not be OCR'd.
+# Taurus=16 is confirmed by sloka-91 text example ("the present 16 years of
+# Venus"). All other period values are from standard classical commentaries.
+# TT: verify remaining values against Ch.46 PDF by manual inspection if needed.
+#
+# ⚠️  KALACHAKRA_PERIODS verified sources:
+#   Taurus = 16  ← CONFIRMED by BPHS Ch.46 sloka 91 example text.
+#   All others   ← classical consensus; may be revised if PDF manual review differs.
+
+KALACHAKRA_PERIODS: dict = {
+    # Savya group (forward / zodiacal direction)    total: 52 years
+    "Aries":        7,
+    "Taurus":      16,
+    "Gemini":       9,
+    "Cancer":       7,
+    "Leo":          5,
+    "Virgo":        8,
+    # Apasavya group (reverse / anti-zodiacal direction)   total: 39 years
+    "Libra":        7,
+    "Scorpio":      7,
+    "Sagittarius":  9,
+    "Capricorn":    4,
+    "Aquarius":     7,
+    "Pisces":       5,
+}
+# Full 12-sign cycle: 91 years (52 + 39).  Two complete cycles = 182 years.
+_KAL_TOTAL: int = sum(KALACHAKRA_PERIODS.values())   # 91
+
+KALACHAKRA_SAVYA_SIGNS: frozenset = frozenset({
+    "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo",
+})
+KALACHAKRA_APASAVYA_SIGNS: frozenset = frozenset({
+    "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces",
+})
+
+
+def calculate_kalachakra_dasha(
+    birth_date: str,
+    moon_longitude: float,
+    lagna_longitude: float,
+) -> list:
+    """
+    Calculate Kalachakra Dasha Mahadasha sequence.
+
+    Algorithm:
+      1. Derive Moon's Navamsa Pada in the 108-point Kalachakra wheel
+      2. Determine starting Rasi + direction (Savya=forward / Apasavya=backward)
+      3. Compute balance of first dasha from Moon's position within the pada
+      4. Cycle through all 12 signs (repeating) until ~150 years from birth
+
+    Mortality flag: Any dasha where the sign is the 8th house from Lagna is
+    tagged with ``mortality_flag: True`` -- dates are NOT altered (tag only).
+
+    Returns list of dicts with keys: sign, planet, start, end, years.
+    planet = SIGN_LORDS[sign] (standard lord, for KE rule lookup).
+    """
+    navamsa_size  = 360.0 / 108
+    navamsa_index = int(moon_longitude / navamsa_size)   # 0-107
+    rasi_index    = navamsa_index // 9                   # 0-11
+    pada_within   = navamsa_index % 9                    # 0-8 (0 = first pada of this rasi)
+
+    moon_rasi = SIGN_ORDER[rasi_index]
+    forward   = moon_rasi in KALACHAKRA_SAVYA_SIGNS
+
+    # Balance of first dasha -- fraction of the Rasi period already elapsed at birth
+    pada_fraction   = pada_within / 9.0
+    years_total     = KALACHAKRA_PERIODS[moon_rasi]
+    years_remaining = round(years_total * (1.0 - pada_fraction), 4)
+
+    # 8th sign from Lagna (mortality veto tag; tag only -- no date change)
+    lagna_idx      = int(lagna_longitude / 30) % 12
+    mortality_sign = SIGN_ORDER[(lagna_idx + 7) % 12]
+
+    bd        = datetime.strptime(birth_date, "%Y-%m-%d")
+    start_idx = SIGN_ORDER.index(moon_rasi)
+    dashas: list = []
+    current   = bd
+    step      = 0   # 0 = balance of first sign; 1+ = full subsequent periods
+
+    while True:
+        if step == 0:
+            sign  = moon_rasi
+            years = years_remaining
+        else:
+            if forward:
+                sign = SIGN_ORDER[(start_idx + step) % 12]
+            else:
+                sign = SIGN_ORDER[(start_idx - step) % 12]
+            years = float(KALACHAKRA_PERIODS[sign])
+
+        end   = current + timedelta(days=years * 365.25)
+        entry: dict = {
+            "sign":   sign,
+            "planet": SIGN_LORDS[sign],
+            "start":  current.strftime("%Y-%m-%d"),
+            "end":    end.strftime("%Y-%m-%d"),
+            "years":  years,
+        }
+        if sign == mortality_sign:
+            entry["mortality_flag"] = True
+
+        dashas.append(entry)
+        current = end
+        step   += 1
+
+        if (current - bd).days / 365.25 >= 150:
+            break
+
+    return dashas
+
+
+def build_kalachakra_timeline(
+    birth_date: str,
+    moon_longitude: float,
+    lagna_longitude: float,
+) -> list:
+    """
+    Returns the Kalachakra dasha timeline with antardasha sub-periods.
+
+    Return structure is identical to build_dasha_timeline():
+      [{sign, planet, start, end, years, antardashas: [{sign, planet, start, end}, ...]}, ...]
+
+    Antardasha proportioning:
+      antar_fraction = KALACHAKRA_PERIODS[sign] / _KAL_TOTAL (91 years)
+    Antardasha direction: same as the overall Kalachakra direction (Savya/Apasavya).
+    Antardasha sequence starts from the Mahadasha sign itself.
+    """
+    mahas = calculate_kalachakra_dasha(birth_date, moon_longitude, lagna_longitude)
+
+    # Re-derive direction (same computation as in calculate_kalachakra_dasha)
+    navamsa_size  = 360.0 / 108
+    navamsa_index = int(moon_longitude / navamsa_size)
+    moon_rasi     = SIGN_ORDER[(navamsa_index // 9) % 12]
+    forward       = moon_rasi in KALACHAKRA_SAVYA_SIGNS
+
+    timeline: list = []
+    for maha in mahas:
+        maha_sign     = maha["sign"]
+        maha_start    = datetime.strptime(maha["start"], "%Y-%m-%d")
+        maha_end      = datetime.strptime(maha["end"],   "%Y-%m-%d")
+        maha_days     = max(1, (maha_end - maha_start).days)
+        maha_sign_idx = SIGN_ORDER.index(maha_sign)
+
+        antardashas: list = []
+        cursor = maha_start
+
+        for i in range(12):   # one antardasha per sign
+            if forward:
+                antar_sign = SIGN_ORDER[(maha_sign_idx + i) % 12]
+            else:
+                antar_sign = SIGN_ORDER[(maha_sign_idx - i) % 12]
+
+            antar_fraction = KALACHAKRA_PERIODS[antar_sign] / _KAL_TOTAL
+            antar_days     = max(1, int(maha_days * antar_fraction))
+            antar_end      = cursor + timedelta(days=antar_days)
+            if antar_end > maha_end:
+                antar_end = maha_end
+
+            antardashas.append({
+                "sign":   antar_sign,
+                "planet": SIGN_LORDS[antar_sign],
+                "start":  cursor.strftime("%Y-%m-%d"),
+                "end":    antar_end.strftime("%Y-%m-%d"),
+            })
+            cursor = antar_end
+
+        # Ensure last antardasha ends exactly at maha end
+        if antardashas:
+            antardashas[-1]["end"] = maha["end"]
+
+        timeline.append({**maha, "antardashas": antardashas})
+
+    return timeline
+
+
+def get_current_kalachakra_dasha(timeline: list) -> dict:
+    """Return the currently active Kalachakra Mahadasha period."""
+    today = datetime.now()
+    for d in timeline:
+        start = datetime.strptime(d["start"], "%Y-%m-%d")
+        end   = datetime.strptime(d["end"],   "%Y-%m-%d")
+        if start <= today <= end:
+            return d
+    return timeline[-1]
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CHARA DASA ENGINE  (Commission VC-1)
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Jaimini Parasara school.  Every chart has a unique dasa duration map because
+# durations depend on where each sign's lord is placed in the nativity.
+#
+# Sources:
+#   Computation rules  -- BPHS Vol 2 Ch.50 (slokas 86-91)
+#   Antardasha rule    -- BPHS Vol 2 Ch.50 Rule 059 (slokas 90-91)
+#   Override flags     -- BPHS Vol 2 Ch.50 Rules 052 (deep debi) & 061 (ashtakvarga)
+
+CHARA_RAHU_FOR_AQ: bool = True   # Rahu substitutes Saturn as Aquarius lord (Parasara)
+
+SIGN_MODALITY: dict = {
+    "Aries":       "movable",  "Cancer":      "movable",
+    "Libra":       "movable",  "Capricorn":   "movable",
+    "Taurus":      "fixed",    "Leo":         "fixed",
+    "Scorpio":     "fixed",    "Aquarius":    "fixed",
+    "Gemini":      "dual",     "Virgo":       "dual",
+    "Sagittarius": "dual",     "Pisces":      "dual",
+}
+
+# Chara sign lords: standard SIGN_LORDS + Rahu for Aquarius + Ketu for Scorpio
+CHARA_SIGN_LORDS: dict = {
+    **SIGN_LORDS,
+    "Aquarius": "Rahu",   # Parasara substitute (CHARA_RAHU_FOR_AQ)
+    "Scorpio":  "Ketu",   # Ketu substitution for Scorpio in Parasara Chara
+}
+
+# Exact debilitation degrees (same degree as exaltation; used for Parama Neecha check)
+_DEBILITATION_DEGREES: dict = {
+    planet: deg for planet, (_, deg) in EXALTATION_DATA.items()
+}
+
+# Map chart display-names → plain planet names (for calculate_vedic_chart integration)
+_DISPLAY_TO_PLAIN: dict = {
+    "Sun (Surya)":          "Sun",
+    "Moon (Chandra)":       "Moon",
+    "Mars (Mangal)":        "Mars",
+    "Mercury (Budha)":      "Mercury",
+    "Jupiter (Brihaspati)": "Jupiter",
+    "Venus (Shukra)":       "Venus",
+    "Saturn (Shani)":       "Saturn",
+    "Rahu":                 "Rahu",
+    "Ketu":                 "Ketu",
+}
+
+
+def chara_duration(sign: str, planet_positions: dict) -> int:
+    """
+    Compute Chara Dasa duration in years for a given sign.
+
+    Parasara rule:
+      Movable sign -- count FORWARD  from sign to lord's sign (inclusive): 1-12 years
+      Fixed sign   -- count BACKWARD from sign to lord's sign (inclusive): 1-12 years
+      Dual sign    -- take SHORTER of forward / backward counts:           1-12 years
+      If lord occupies the same sign: always 12 years.
+
+    Args:
+        sign: Rasi to compute duration for (e.g. "Aries")
+        planet_positions: {plain_planet_name: sign_name} for all 9 planets
+
+    Returns:
+        Integer duration in years (1-12).
+    """
+    lord      = CHARA_SIGN_LORDS[sign]
+    lord_sign = planet_positions.get(lord)
+    if lord_sign is None:
+        return 1   # fallback: planet absent from map
+
+    if lord_sign == sign:
+        return 12   # lord in own sign
+
+    sign_idx = SIGN_ORDER.index(sign)
+    lord_idx = SIGN_ORDER.index(lord_sign)
+    modality = SIGN_MODALITY[sign]
+
+    forward  = (lord_idx - sign_idx) % 12 + 1
+    backward = (sign_idx - lord_idx) % 12 + 1
+
+    if modality == "movable":
+        return forward
+    elif modality == "fixed":
+        return backward
+    else:   # dual / mutable
+        return min(forward, backward)
+
+
+def calculate_chara_dasha_durations(
+    planet_positions: dict,
+    lagna_sign: str,
+) -> dict:
+    """
+    Return {sign: chara_duration} for all 12 signs, starting from lagna_sign.
+
+    Args:
+        planet_positions: {plain_planet_name: sign_name}
+        lagna_sign: ascendant sign name
+    """
+    lagna_idx = SIGN_ORDER.index(lagna_sign)
+    return {
+        SIGN_ORDER[(lagna_idx + i) % 12]: chara_duration(
+            SIGN_ORDER[(lagna_idx + i) % 12], planet_positions
+        )
+        for i in range(12)
+    }
+
+
+def _chara_deep_debi_veto(
+    lord: str,
+    planet_positions: dict,
+    planet_degree_map: "dict | None",
+) -> "bool | None":
+    """
+    Rule 052 -- Deep Debilitation veto (Parama Neecha).
+    Returns True  if the dasha lord is at its exact debilitation degree ±1°.
+    Returns False if the lord is not in its debilitation sign.
+    Returns None  if degree information is unavailable (can't compute precisely).
+    """
+    if lord not in EXALTATION_DATA:
+        return None   # Rahu/Ketu: not in classical debilitation table
+
+    debi_sign = DEBILITATION_SIGNS.get(lord)
+    lord_sign = planet_positions.get(lord)
+
+    if lord_sign != debi_sign:
+        return False  # not in debilitation sign at all
+
+    if planet_degree_map is None:
+        return None   # in debi sign but degree unavailable
+
+    lord_degree = planet_degree_map.get(lord)
+    if lord_degree is None:
+        return None
+
+    exact_deg = _DEBILITATION_DEGREES.get(lord)
+    if exact_deg is None:
+        return None
+
+    return abs(lord_degree - exact_deg) <= 1.0
+
+
+def calculate_chara_dasha(
+    birth_date: str,
+    planet_positions: dict,
+    lagna_sign: str,
+    planet_degree_map: "dict | None" = None,
+) -> list:
+    """
+    Calculate Chara Dasa Mahadasha sequence (Jaimini Parasara school).
+
+    Sequence starts from lagna_sign and proceeds forward (zodiacal order),
+    cycling through all 12 signs until ~150 years from birth are covered.
+
+    Tags applied (tag only -- no date changes):
+      deep_debilitation_veto: True/False/None  (Rule 052 Parama Neecha)
+      ashtakvarga_veto:       None             (Rule 061 -- set by KE pipeline)
+
+    Args:
+        birth_date:        'YYYY-MM-DD'
+        planet_positions:  {plain_planet_name: sign_name} for all 9 planets
+        lagna_sign:        ascendant sign name
+        planet_degree_map: optional {plain_planet_name: degree_in_sign} for
+                           precise Parama Neecha check (±1° of exact debi degree)
+
+    Returns list of dicts: sign, planet, start, end, years,
+                           deep_debilitation_veto, ashtakvarga_veto.
+    planet = SIGN_LORDS[sign] (standard lord, NOT Chara substitute, for KE lookup).
+    """
+    bd        = datetime.strptime(birth_date, "%Y-%m-%d")
+    lagna_idx = SIGN_ORDER.index(lagna_sign)
+    dashas: list = []
+    current       = bd
+    years_covered = 0.0
+
+    while years_covered < 150:
+        for i in range(12):
+            sign  = SIGN_ORDER[(lagna_idx + i) % 12]
+            years = float(chara_duration(sign, planet_positions))
+            lord  = SIGN_LORDS[sign]   # standard lord for KE rule lookup
+
+            end   = current + timedelta(days=years * 365.25)
+            entry: dict = {
+                "sign":   sign,
+                "planet": lord,
+                "start":  current.strftime("%Y-%m-%d"),
+                "end":    end.strftime("%Y-%m-%d"),
+                "years":  years,
+                "deep_debilitation_veto": _chara_deep_debi_veto(
+                    lord, planet_positions, planet_degree_map
+                ),
+                "ashtakvarga_veto": None,   # downstream KE pipeline sets this
+            }
+
+            dashas.append(entry)
+            current       = end
+            years_covered = (current - bd).days / 365.25
+            if years_covered >= 150:
+                break
+        if years_covered >= 150:
+            break
+
+    return dashas
+
+
+def build_chara_timeline(
+    birth_date: str,
+    planet_positions: dict,
+    lagna_sign: str,
+    planet_degree_map: "dict | None" = None,
+) -> list:
+    """
+    Returns the Chara dasha timeline with antardasha sub-periods.
+
+    Return structure is identical to build_dasha_timeline():
+      [{sign, planet, start, end, years, deep_debilitation_veto,
+        ashtakvarga_veto, antardashas: [{sign, planet, start, end}, ...]}, ...]
+
+    Antardasha rule (BPHS Ch.50 Rule 059, slokas 90-91):
+      Sequence starts from the sign occupied by the lord of the Dasa Rasi
+      (using CHARA_SIGN_LORDS).  Proceeds forward (zodiacal) for 12 sub-periods.
+
+    Antardasha proportioning:
+      antar_fraction = chara_duration(antar_sign) / sum_of_all_12_durations
+    """
+    mahas = calculate_chara_dasha(
+        birth_date, planet_positions, lagna_sign, planet_degree_map
+    )
+
+    # Total duration across all 12 signs (chart-specific denominator)
+    durations     = calculate_chara_dasha_durations(planet_positions, lagna_sign)
+    total_12_yrs  = sum(durations.values())
+    if total_12_yrs <= 0:
+        total_12_yrs = 12   # safety fallback
+
+    timeline: list = []
+    for maha in mahas:
+        maha_sign  = maha["sign"]
+        maha_start = datetime.strptime(maha["start"], "%Y-%m-%d")
+        maha_end   = datetime.strptime(maha["end"],   "%Y-%m-%d")
+        maha_days  = max(1, (maha_end - maha_start).days)
+
+        # Antardasha starts from the sign where CHARA lord of maha_sign sits
+        chara_lord       = CHARA_SIGN_LORDS[maha_sign]
+        antar_start_sign = planet_positions.get(chara_lord, maha_sign)
+        antar_start_idx  = SIGN_ORDER.index(antar_start_sign)
+
+        antardashas: list = []
+        cursor = maha_start
+
+        for i in range(12):
+            antar_sign     = SIGN_ORDER[(antar_start_idx + i) % 12]
+            antar_years    = float(chara_duration(antar_sign, planet_positions))
+            antar_fraction = antar_years / total_12_yrs
+            antar_days     = max(1, int(maha_days * antar_fraction))
+            antar_end      = cursor + timedelta(days=antar_days)
+            if antar_end > maha_end:
+                antar_end = maha_end
+
+            antardashas.append({
+                "sign":   antar_sign,
+                "planet": SIGN_LORDS[antar_sign],
+                "start":  cursor.strftime("%Y-%m-%d"),
+                "end":    antar_end.strftime("%Y-%m-%d"),
+            })
+            cursor = antar_end
+
+        if antardashas:
+            antardashas[-1]["end"] = maha["end"]
+
+        timeline.append({**maha, "antardashas": antardashas})
+
+    return timeline
+
+
+def get_current_chara_dasha(timeline: list) -> dict:
+    """Return the currently active Chara Dasha period."""
+    today = datetime.now()
+    for d in timeline:
+        start = datetime.strptime(d["start"], "%Y-%m-%d")
+        end   = datetime.strptime(d["end"],   "%Y-%m-%d")
+        if start <= today <= end:
+            return d
+    return timeline[-1]
+
+
 def calculate_donut_resilience(house_data: dict) -> int:
     """
     Calculate the structural resilience percentage for a focus-area house.
@@ -1409,6 +1888,33 @@ def calculate_vedic_chart(
         mars_house = planets[mars_name]['house']
         mangal_dosha = check_mangal_dosha(mars_house)
 
+        # ── Kalachakra + Chara Dasa engines (VC-1) ──────────────────────────
+        # Build plain-name maps from the already-computed planets dict
+        planet_sign_map: dict = {}
+        planet_degree_map: dict = {}
+        for display_name, pdata in planets.items():
+            plain = _DISPLAY_TO_PLAIN.get(display_name)
+            if plain:
+                planet_sign_map[plain]   = pdata["sign"]
+                planet_degree_map[plain] = float(pdata.get("degree", 0.0))
+
+        try:
+            kalachakra_dasha = build_kalachakra_timeline(
+                date_of_birth, moon_lon, asc_lon
+            )
+        except Exception as _kal_err:
+            logging.warning(f"Kalachakra dasha calculation failed: {_kal_err}")
+            kalachakra_dasha = []
+
+        try:
+            chara_dasha = build_chara_timeline(
+                date_of_birth, planet_sign_map, lagna_sign, planet_degree_map
+            )
+        except Exception as _chara_err:
+            logging.warning(f"Chara dasha calculation failed: {_chara_err}")
+            chara_dasha = []
+        # ────────────────────────────────────────────────────────────────────
+
         chart = {
             'lagna': {
                 'sign': lagna_sign,
@@ -1427,6 +1933,8 @@ def calculate_vedic_chart(
             'houses': houses,
             'dashas': dashas,
             'current_dasha': current_dasha,
+            'kalachakra_dasha': kalachakra_dasha,
+            'chara_dasha':      chara_dasha,
             'mangal_dosha': mangal_dosha,
             'birth_details': {
                 'date': date_of_birth,

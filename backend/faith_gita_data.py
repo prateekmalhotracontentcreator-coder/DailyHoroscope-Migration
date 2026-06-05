@@ -262,6 +262,57 @@ GITA_SITUATIONS = [
 ]
 SITUATION_INDEX = {item["slug"]: item for item in GITA_SITUATIONS}
 
+RECITATION_FEATURES = {
+    (2, 47): {
+        "focus": "Work without panic",
+        "why": "Use this when effort feels tangled up with outcome anxiety.",
+        "practice_window": "Best for morning resets before work, interviews, or heavy decision blocks.",
+        "situation_slug": "career-failure",
+    },
+    (4, 7): {
+        "focus": "Restoring order",
+        "why": "Use this when life feels morally noisy and you need to remember that correction can still enter the scene.",
+        "practice_window": "Best for threshold moments, conflict-heavy weeks, or spiritual fatigue.",
+        "situation_slug": "major-decision",
+    },
+    (6, 5): {
+        "focus": "Lifting the self",
+        "why": "Use this when low mood or self-sabotage is turning inward pressure into passivity.",
+        "practice_window": "Best for depression, discouragement, or slow-start mornings.",
+        "situation_slug": "depression",
+    },
+    (9, 22): {
+        "focus": "Protection and provision",
+        "why": "Use this when fear about support, money, or being carried through uncertainty becomes loud.",
+        "practice_window": "Best for financial pressure, family stress, and evening calming.",
+        "situation_slug": "financial-pressure",
+    },
+    (12, 15): {
+        "focus": "Becoming non-agitating",
+        "why": "Use this when relationships are reactive and you need a cleaner emotional field.",
+        "practice_window": "Best before hard conversations or after emotional conflict.",
+        "situation_slug": "relationship-breakdown",
+    },
+    (15, 1): {
+        "focus": "Seeing the deeper structure",
+        "why": "Use this when confusion is high and you need to step back from surface noise.",
+        "practice_window": "Best for identity questions, study, and reflective journaling.",
+        "situation_slug": "identity-crisis",
+    },
+    (17, 3): {
+        "focus": "Examining faith and inner posture",
+        "why": "Use this when your habits are shaping belief more than your ideals are.",
+        "practice_window": "Best for devotional recalibration and habit resets.",
+        "situation_slug": "anxiety",
+    },
+    (18, 66): {
+        "focus": "Surrender and refuge",
+        "why": "Use this when life feels too heavy to solve by control alone.",
+        "practice_window": "Best for grief, surrender seasons, and night recitation.",
+        "situation_slug": "grief-and-loss",
+    },
+}
+
 GLOSSARY_STOP_TERMS = {
     "arjuna",
     "sañjaya",
@@ -295,6 +346,62 @@ def _hash_index(*values: str, modulus: int) -> int:
         for char in value:
             total += ord(char)
     return total % modulus
+
+
+def _recitation_lines(verse: dict, max_lines: int = 3) -> list[str]:
+    source = verse.get("transliteration") or verse.get("iast") or ""
+    words = source.split()
+    if not words:
+        return []
+
+    target = max(4, len(words) // max_lines)
+    lines: list[str] = []
+    current: list[str] = []
+    for word in words:
+        current.append(word)
+        if len(current) >= target and len(lines) < max_lines - 1:
+            lines.append(" ".join(current))
+            current = []
+    if current:
+        lines.append(" ".join(current))
+    return lines[:max_lines]
+
+
+def _verse_recitation_payload(verse: dict) -> dict:
+    feature = RECITATION_FEATURES.get((verse["chapter"], verse["verse"]))
+    lines = _recitation_lines(verse)
+    return {
+        "is_featured": feature is not None,
+        "collection_href": "/faith/gita/recitation",
+        "focus": feature["focus"] if feature else "Slow recitation and reflective repetition",
+        "why": feature["why"] if feature else "Use slow repetition to let the verse settle before interpretation rushes in.",
+        "practice_window": feature["practice_window"] if feature else "Best for three slow rounds before journaling, prayer, or meditation.",
+        "display_lines": lines,
+        "rounds": 3 if feature else 2,
+        "cadence_note": "Read one line per breath and pause briefly at the end of each round.",
+    }
+
+
+def _featured_recitation_cards() -> list[dict]:
+    cards: list[dict] = []
+    for (chapter, verse_number), meta in RECITATION_FEATURES.items():
+        verse = _gita_index().get((chapter, verse_number))
+        if verse is None:
+            continue
+        cards.append(
+            {
+                "reference": verse["reference"],
+                "chapter": chapter,
+                "verse": verse_number,
+                "focus": meta["focus"],
+                "why": meta["why"],
+                "practice_window": meta["practice_window"],
+                "translation": verse["translation"],
+                "display_lines": _recitation_lines(verse),
+                "href": f"/faith/gita/{chapter}-{verse_number}/{meta['situation_slug']}",
+            }
+        )
+    return cards
 
 
 @lru_cache(maxsize=1)
@@ -394,6 +501,7 @@ def get_gita_page(chapter: int, verse_number: int, situation_slug: str) -> dict 
         for item in GITA_SITUATIONS
     ]
     top_situations = [item for item in related_situations if item["slug"] != situation_slug][:5]
+    recitation = _verse_recitation_payload(verse)
 
     return {
         "id": f"faith-gita-{chapter}-{verse_number}-{situation_slug}",
@@ -466,6 +574,7 @@ def get_gita_page(chapter: int, verse_number: int, situation_slug: str) -> dict 
                 ),
             },
         ],
+        "recitation": recitation,
         "related_situations": related_situations,
         "top_situations": top_situations,
         "links": {
@@ -567,10 +676,49 @@ def get_gita_hub_payload() -> dict:
             "pages": len(verses) * len(GITA_SITUATIONS),
             "chapters": 18,
         },
+        "recitation_collection": {
+            "count": len(RECITATION_FEATURES),
+            "href": "/faith/gita/recitation",
+            "preview_refs": [card["reference"] for card in _featured_recitation_cards()[:4]],
+        },
         "chapters": chapter_cards,
         "situations": [{"slug": item["slug"], "label": item["label"]} for item in GITA_SITUATIONS],
         "featured_verses": featured_verses,
         "phase_note": "Phase 2 is live for the Gita layer. Bible promise pages remain the next major build phase.",
+    }
+
+
+def get_gita_recitation_payload() -> dict:
+    cards = _featured_recitation_cards()
+    return {
+        "title": "Bhagavad Gita Recitation Mode",
+        "meta_title": "Bhagavad Gita Recitation Mode",
+        "meta_description": "A featured set of Bhagavad Gita verses prepared for slow recitation, repetition, and devotional reflection.",
+        "hero_title": "Bhagavad Gita Recitation Mode",
+        "hero_body": (
+            "This page curates a smaller set of Gita verses that work especially well for repetition. "
+            "Instead of reading for volume, the goal is to stay with one verse long enough for its rhythm, language, and discipline to reshape the inner atmosphere."
+        ),
+        "intro_steps": [
+            "Read one verse slowly for three rounds before interpreting it.",
+            "Use one breath per line and pause briefly at the end of each round.",
+            "After the third round, journal one sentence about the shift in mental state rather than trying to solve the whole problem.",
+        ],
+        "featured_verses": cards,
+        "faq": [
+            {
+                "q": "How is recitation mode different from the regular Gita verse pages?",
+                "a": "The regular pages explain and apply a verse by situation. Recitation mode slows that down and prioritizes repetition, pacing, and devotional absorption first.",
+            },
+            {
+                "q": "Do I need Sanskrit pronunciation mastery to use this?",
+                "a": "No. The transliteration lines are here to help you move steadily and respectfully. Clean pacing matters more than perfect pronunciation for this mode.",
+            },
+            {
+                "q": "Which verses are included in the featured recitation set?",
+                "a": "The current set focuses on work, surrender, protection, emotional steadiness, identity, and self-lift so the practice has immediate everyday use.",
+            },
+        ],
     }
 
 
@@ -587,7 +735,7 @@ def get_gita_page_count() -> int:
 
 
 def get_gita_sitemap_urls() -> list[str]:
-    urls = [f"{SITE_URL}/faith/gita"]
+    urls = [f"{SITE_URL}/faith/gita", f"{SITE_URL}/faith/gita/recitation"]
     urls.extend(f"{SITE_URL}/faith/gita/chapter/{chapter}" for chapter in range(1, 19))
     for verse in _load_gita_verses():
         for situation in GITA_SITUATIONS:

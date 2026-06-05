@@ -9,7 +9,7 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, Field
 
 from faith_bible_data import get_bible_page, get_bible_page_count, get_bible_topic_payload
-from faith_gita_data import get_gita_chapter_payload, get_gita_page, get_gita_page_count
+from faith_gita_data import get_gita_chapter_payload, get_gita_page, get_gita_page_count, get_gita_recitation_payload
 from faith_seo_data import (
     build_daily_pages,
     build_transit_pages,
@@ -149,6 +149,11 @@ async def get_gita_chapter_hub(chapter: int) -> dict:
     if payload is None:
         raise HTTPException(status_code=404, detail="Gita chapter hub not found.")
     return payload
+
+
+@router.get("/gita/recitation")
+async def get_gita_recitation() -> dict:
+    return get_gita_recitation_payload()
 
 
 @router.get("/bible/hub")

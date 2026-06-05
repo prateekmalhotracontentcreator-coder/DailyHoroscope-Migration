@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from functools import lru_cache
+import hashlib
 
 
 SITE_URL = "https://www.everydayhoroscope.in"
@@ -1434,6 +1435,383 @@ CRYSTAL_DEFINITIONS = {
 }
 
 
+CRYSTAL_COPY = {
+    "ruby": {
+        "identity": "a chromium-rich corundum whose deep red body has symbolized royalty for centuries",
+        "signature": "hot, dignified, and animating rather than soft or dreamy",
+        "best_for": "leaders, performers, and anyone rebuilding courage after depletion",
+    },
+    "pearl": {
+        "identity": "an organic nacre gem built layer by layer inside a living shell",
+        "signature": "cooling, lunar, and tide-like rather than forceful",
+        "best_for": "sensitive people, caregivers, and anyone needing emotional softness without collapse",
+    },
+    "red-coral": {
+        "identity": "an organic marine skeleton polished into a vivid red talisman",
+        "signature": "martial, immediate, and physically motivating",
+        "best_for": "initiators, athletes, and people who need action more than overthinking",
+    },
+    "emerald": {
+        "identity": "a green beryl colored by chromium or vanadium and long linked with eloquence",
+        "signature": "intelligent, elegant, and mercurial rather than fiery",
+        "best_for": "writers, negotiators, merchants, and people who need truth with diplomacy",
+    },
+    "yellow-sapphire": {
+        "identity": "a golden corundum traditionally worn as the Jupiter gem in Vedic practice",
+        "signature": "teacherly, expansive, and orderly rather than impulsive",
+        "best_for": "students, mentors, householders, and anyone seeking principled growth",
+    },
+    "diamond": {
+        "identity": "crystallized carbon with an adamantine flash and exceptional hardness",
+        "signature": "precise, Venusian, and high-clarity rather than sentimental",
+        "best_for": "people refining love, beauty, discernment, or standards around value",
+    },
+    "blue-sapphire": {
+        "identity": "a dark blue corundum revered as Saturn's demanding but potent gem",
+        "signature": "severe, disciplined, and karmically clarifying",
+        "best_for": "people ready for responsibility, endurance, and sober decision-making",
+    },
+    "hessonite-garnet": {
+        "identity": "a honey-brown grossular garnet associated with Rahu in Vedic astrology",
+        "signature": "strange, clarifying, and anti-fog rather than comforting",
+        "best_for": "people navigating confusion, obsession, or unstable environments",
+    },
+    "cats-eye": {
+        "identity": "a chatoyant gem with a moving light band that gives it a watchful feline look",
+        "signature": "alert, detached, and sharply inward-turning",
+        "best_for": "mystics, dreamworkers, and anyone cutting through karmic residue",
+    },
+    "amethyst": {
+        "identity": "a violet quartz whose iron tint and cooling color made it a classic contemplative stone",
+        "signature": "quieting, protective, and mentally spacious",
+        "best_for": "meditators, overthinkers, and people who need calm without emotional numbness",
+    },
+    "rose-quartz": {
+        "identity": "a pink quartz with a cloudy milk-glass softness rather than sharp transparency",
+        "signature": "gentle, receptive, and steadily affectionate",
+        "best_for": "people restoring warmth, safety, and self-kindness after strain",
+    },
+    "clear-quartz": {
+        "identity": "transparent silica prized as the classic amplifier among crystals",
+        "signature": "neutral, bright, and highly programmable",
+        "best_for": "people who want clarity, amplification, or a clean energetic baseline",
+    },
+    "black-tourmaline": {
+        "identity": "a striated black tourmaline crystal known for its dense electrical feel",
+        "signature": "rooted, shielding, and quietly uncompromising",
+        "best_for": "travelers, empaths, and anyone dealing with social or environmental overload",
+        "pairing": "Combine it with a bright clearing ally when you want protection without emotional heaviness.",
+    },
+    "citrine": {
+        "identity": "a yellow quartz whose honeyed glow reads more solar and open than metallic",
+        "signature": "optimistic, commercial, and forward-moving",
+        "best_for": "builders, freelancers, teachers, and people growing confidence around visibility or income",
+        "pairing": "Add a metallic grounding stone when you want optimism backed by strategy.",
+    },
+    "lapis-lazuli": {
+        "identity": "a royal blue metamorphic stone flecked with pyrite and long prized by scribes and kings",
+        "signature": "regal, truth-seeking, and mentally elevating",
+        "best_for": "teachers, counselors, speakers, and people who need insight with dignity",
+    },
+    "obsidian": {
+        "identity": "volcanic glass formed by rapid cooling, glossy and uncompromising in tone",
+        "signature": "mirror-like, cutting, and protective rather than soothing",
+        "best_for": "shadow workers, truth-seekers, and people who can tolerate direct reflection",
+    },
+    "selenite": {
+        "identity": "a satin-white gypsum crystal named for the moon goddess Selene",
+        "signature": "luminous, cleansing, and extremely soft",
+        "best_for": "people creating calm rooms, prayer corners, or quiet evening rituals",
+    },
+    "malachite": {
+        "identity": "a banded copper carbonate whose concentric green rings look almost hypnotic",
+        "signature": "transformational, confrontational, and heart-meets-will",
+        "best_for": "people in major transitions who are ready for change instead of merely wishing for it",
+    },
+    "carnelian": {
+        "identity": "an orange chalcedony with a sun-warmed translucence and ancient amulet history",
+        "signature": "creative, bold, and physically energizing",
+        "best_for": "artists, performers, founders, and anyone who needs momentum fast",
+    },
+    "moonstone": {
+        "identity": "a feldspar with soft adularescence that looks like light moving under milk glass",
+        "signature": "cyclical, receptive, and emotionally tidal",
+        "best_for": "people moving through transitions, fertility rituals, or dream-heavy seasons",
+    },
+    "labradorite": {
+        "identity": "a grey feldspar that flashes blue and green when the surface catches light",
+        "signature": "mystical, liminal, and boundary-aware",
+        "best_for": "psychically open people who still need protection and structure",
+        "pairing": "Anchor it with a dense root stone when insight needs more containment.",
+    },
+    "pyrite": {
+        "identity": "an iron sulfide that often grows in metallic cubes and earned the name fool's gold",
+        "signature": "strategic, armored, and materially focused",
+        "best_for": "entrepreneurs, negotiators, and people who need structure around ambition",
+        "pairing": "Layer it with a warm solar abundance stone for goals that need confidence and execution.",
+    },
+    "amazonite": {
+        "identity": "a blue-green microcline feldspar with a river-stone calm over a rebellious core",
+        "signature": "soothing, boundary-minded, and emotionally articulate",
+        "best_for": "people learning to speak honestly without losing warmth",
+    },
+    "sodalite": {
+        "identity": "a blue stone with white veining that reads cerebral even before it is worked with",
+        "signature": "logical, cooling, and language-oriented",
+        "best_for": "students, analysts, and speakers who need clean thinking under pressure",
+    },
+    "aventurine": {
+        "identity": "a soft green quartz often glittering with mica and traditionally tied to luck",
+        "signature": "fresh, growth-oriented, and lightly buoyant",
+        "best_for": "people starting over, job hunting, or rebuilding optimism without forcing it",
+        "pairing": "Use it alongside a clear amplifying ally when you want luck plus focus.",
+    },
+    "tigers-eye": {
+        "identity": "a chatoyant quartz with golden bands that resemble a watchful eye",
+        "signature": "confident, grounded, and tactically brave",
+        "best_for": "decision-makers, travelers, and anyone balancing courage with practicality",
+    },
+    "jade": {
+        "identity": "a dense green talisman stone associated with longevity, virtue, and steady prosperity",
+        "signature": "calm, auspicious, and sustainable rather than flashy",
+        "best_for": "people who want abundance tied to harmony, health, and long-term stability",
+        "pairing": "Blend it with a gentle heart-centered ally when harmony matters as much as prosperity.",
+    },
+    "hematite": {
+        "identity": "an iron oxide with a gunmetal sheen and a distinctly weighty feel in the hand",
+        "signature": "practical, magnetic, and strongly grounding",
+        "best_for": "scattered people who need their energy brought back into the body",
+        "pairing": "Pair it with a calm upper-chakra stone when you want peace without losing practicality.",
+    },
+    "lepidolite": {
+        "identity": "a lilac lithium-rich mica that flakes in thin calming sheets",
+        "signature": "sedating, decompressive, and emotionally cushioning",
+        "best_for": "people unwinding from stress, overstimulation, or racing thoughts",
+        "pairing": "Use it with a white clearing wand or a soft violet rest stone for bedtime rituals.",
+    },
+    "rhodonite": {
+        "identity": "a manganese silicate whose pink body is cut through by black veins",
+        "signature": "tender but accountable, with softness held inside structure",
+        "best_for": "people repairing conflict, grief, or forgiveness without becoming sentimental",
+        "pairing": "Layer it with a gentle heart-soothing ally when tenderness and accountability both matter.",
+    },
+    "fluorite": {
+        "identity": "a calcium fluoride crystal that often bands green, purple, or clear in crisp layers",
+        "signature": "sorting, refining, and mentally organizing",
+        "best_for": "students, strategists, and anyone reducing clutter in thought or ritual",
+        "pairing": "Combine it with a neutral amplifying ally for study or precision work.",
+    },
+    "aquamarine": {
+        "identity": "a pale blue beryl long associated with sailors, calm speech, and clear water",
+        "signature": "cool, truthful, and emotionally breathable",
+        "best_for": "people who need calm honesty more than dramatic expression",
+        "pairing": "Add a soft boundary stone when you want calm speech with clear edges.",
+    },
+    "chrysocolla": {
+        "identity": "a copper-rich blue-green stone whose surface looks quiet and weathered rather than polished",
+        "signature": "maternal, slowing, and healing through gentleness",
+        "best_for": "people using softer language, grief work, or restorative communication",
+    },
+    "sunstone": {
+        "identity": "a feldspar that throws coppery sparkles and genuinely looks lit from within",
+        "signature": "radiant, social, and confidence-building",
+        "best_for": "people reclaiming joy, charisma, or visible presence after a flat season",
+    },
+    "bloodstone": {
+        "identity": "dark green heliotrope marked with red flecks that once suggested drops of blood",
+        "signature": "martial, resilient, and physically steadying",
+        "best_for": "people recovering stamina, training hard, or staying brave under pressure",
+        "pairing": "Match it with a warm action stone when strength needs steadiness.",
+    },
+    "turquoise": {
+        "identity": "a blue copper phosphate revered in amulets across many travel and protection traditions",
+        "signature": "protective, honest, and companionable rather than severe",
+        "best_for": "travelers, communicators, and people who need courage with kindness",
+    },
+    "garnet": {
+        "identity": "a burgundy almandine-type stone with a dense ember-like glow",
+        "signature": "devotional, passionate, and stamina-building",
+        "best_for": "people sustaining long efforts, deep commitments, or slow-burning desire",
+    },
+    "onyx": {
+        "identity": "a black chalcedony whose even color gives it a disciplined, pared-back presence",
+        "signature": "contained, boundary-driven, and emotionally spare",
+        "best_for": "people who need steadiness, discretion, and less energetic leakage",
+    },
+    "shungite": {
+        "identity": "a carbon-rich mineraloid from Karelia with a matte, absorptive look",
+        "signature": "filtering, practical, and quietly protective",
+        "best_for": "people managing screen fatigue, dense environments, or overstimulating routines",
+        "pairing": "Combine it with a pale clearing ally for device-heavy rooms or travel fatigue.",
+    },
+    "rhodochrosite": {
+        "identity": "a manganese carbonate whose coral-pink bands feel softer and more vulnerable than rhodonite",
+        "signature": "inner-child, self-worth, and tender emotional thawing",
+        "best_for": "people healing shame, old grief, or self-rejection at a humane pace",
+        "pairing": "Layer it with a structured forgiveness stone or a soft love stone for deep heart repair.",
+    },
+    "prehnite": {
+        "identity": "a translucent green calcium aluminum silicate often associated with prophecy and quiet trust",
+        "signature": "restful, receptive, and quietly devotional",
+        "best_for": "people praying, dreaming, or listening for guidance without drama",
+        "pairing": "Use it with a pale moonlit rest stone for calming prayer or dream rituals.",
+    },
+    "calcite": {
+        "identity": "a carbonate stone that can appear yellow, orange, or nearly clear but always feels softer than quartz",
+        "signature": "warm, loosening, and motivational without sharpness",
+        "best_for": "people rebooting energy gently after exhaustion or discouragement",
+        "pairing": "Pair it with a bright solar stone when you want optimism without hard pressure.",
+    },
+    "apatite": {
+        "identity": "a blue to teal phosphate crystal that often looks electric and idea-driven",
+        "signature": "verbal, inventive, and momentum-building",
+        "best_for": "writers, teachers, makers, and people turning inspiration into action",
+        "pairing": "Blend it with a warm action stone when ideas need execution.",
+    },
+    "angelite": {
+        "identity": "a soft blue anhydrite stone whose matte surface naturally reads as calming",
+        "signature": "prayerful, gentle, and consoling",
+        "best_for": "people seeking comfort, angelic symbolism, or softer spiritual contact",
+    },
+    "celestite": {
+        "identity": "a pale blue strontium sulfate crystal with a sugar-like fragility and a chapel quality",
+        "signature": "elevating, restful, and devotional",
+        "best_for": "people building sacred sleep rituals, prayer corners, or quiet crown-chakra practice",
+        "pairing": "Use it beside a white cleansing ally for bedtime or prayer corners.",
+    },
+    "kunzite": {
+        "identity": "a pink-to-lilac spodumene known for both delicacy and emotional transparency",
+        "signature": "open-hearted, vulnerable, and high-frequency but not aggressive",
+        "best_for": "people processing grief, tenderness, or the fear of being emotionally seen",
+        "pairing": "Layer it with a softer heart ally when grief and tenderness are both active.",
+    },
+    "kyanite": {
+        "identity": "a bladed blue aluminosilicate that naturally forms in directional streaks",
+        "signature": "aligning, exact, and truth-oriented",
+        "best_for": "people needing honest speech, sharper boundaries, or cleaner energetic alignment",
+        "pairing": "Match it with a calm communication ally for truth work that stays balanced.",
+    },
+    "larimar": {
+        "identity": "a sea-blue pectolite found in the Caribbean and often compared to shallow water",
+        "signature": "cooling, maternal, and emotionally easing",
+        "best_for": "people de-escalating conflict, soothing the nervous system, or speaking more gently",
+        "pairing": "Combine it with another gentle throat-centered ally for cooling conversations.",
+    },
+    "moldavite": {
+        "identity": "an olive-green tektite formed by meteor impact rather than ordinary geology",
+        "signature": "accelerating, catalytic, and hard to ignore",
+        "best_for": "people in genuine threshold moments who can ground intense change",
+        "pairing": "Anchor it with a dense grounding stone when change is moving faster than your body likes.",
+    },
+    "nuummite": {
+        "identity": "an ancient black metamorphic stone with hidden bronze and blue flashes under the surface",
+        "signature": "primordial, shadowy, and depth-oriented",
+        "best_for": "people doing serious boundary work, inner excavation, or disciplined protection practice",
+    },
+}
+
+INTENTION_CONTEXT = {
+    "love-relationships": {
+        "focus": "repairing trust, inviting warmth, or making a bond feel emotionally safer again",
+        "action": "real progress still depends on listening well, naming needs clearly, and showing up consistently",
+    },
+    "anxiety-stress": {
+        "focus": "cooling overload and helping the body remember a slower rhythm",
+        "action": "the practical side is still sleep, breath, boundaries, and a nervous system that gets fewer inputs at once",
+    },
+    "protection": {
+        "focus": "holding energetic boundaries without turning hard or isolated",
+        "action": "protection also looks like saying no, resting earlier, and leaving spaces that keep draining you",
+    },
+    "abundance-money": {
+        "focus": "pairing receptivity with planning, pricing, saving, and visible follow-through",
+        "action": "money rituals work best when they sit beside a budget, a decision, or a concrete next step",
+    },
+    "clarity-focus": {
+        "focus": "reducing noise so one thought, task, or decision can actually be completed",
+        "action": "focus still comes from cutting distractions, choosing priorities, and protecting work blocks",
+    },
+    "confidence": {
+        "focus": "moving despite hesitation and building trust in your own timing",
+        "action": "courage grows through repetition, embodiment, and actions taken before you feel fully ready",
+    },
+    "sleep": {
+        "focus": "slowing the emotional weather enough for rest to become possible again",
+        "action": "better sleep still needs darkness, routine, and fewer stimulating inputs late in the day",
+    },
+    "grief-healing": {
+        "focus": "letting feeling move without rushing it into a lesson or a performance",
+        "action": "healing also asks for time, support, tears, memory work, and gentle patience with your own pace",
+    },
+    "spiritual-growth": {
+        "focus": "deepening reflection without losing your footing in ordinary life",
+        "action": "growth lands better when insight is journaled, embodied, and tested in actual choices",
+    },
+    "intuition": {
+        "focus": "making inner signals easier to notice without confusing them with fear",
+        "action": "intuition strengthens through silence, pattern tracking, and honest discernment after the moment passes",
+    },
+    "creativity": {
+        "focus": "getting motion back into work that has become rigid, dry, or overedited",
+        "action": "creative flow still asks for deadlines, drafts, play, and room for imperfect starts",
+    },
+    "communication": {
+        "focus": "staying clear enough to speak truth without becoming harsh or avoidant",
+        "action": "better communication still comes from preparation, timing, tone, and willingness to stay present",
+    },
+    "health-vitality": {
+        "focus": "supporting momentum, warmth, and resilience around the body",
+        "action": "vitality work still belongs beside food, hydration, movement, rest, and proper care",
+    },
+    "travel-protection": {
+        "focus": "keeping your field steady while routines, places, and people keep changing",
+        "action": "practical travel protection is still planning, awareness, charging devices, and pacing the journey",
+    },
+    "career-success": {
+        "focus": "uniting presence, strategy, communication, and endurance around work",
+        "action": "career growth still requires deadlines, skill-building, visibility, and decisions made on time",
+    },
+    "new-beginnings": {
+        "focus": "releasing the old chapter while giving the new one enough structure to survive",
+        "action": "fresh starts still ask for first steps, routines, and decisions that match the change you want",
+    },
+    "fertility": {
+        "focus": "building softness, trust, and emotional steadiness around a tender process",
+        "action": "this path still belongs beside medical guidance, rest, nourishment, and supportive relationships",
+    },
+    "forgiveness": {
+        "focus": "loosening old emotional knots without erasing wisdom or self-protection",
+        "action": "forgiveness may still involve grief, repair, distance, or limits rather than instant reunion",
+    },
+    "truth-honesty": {
+        "focus": "staying aligned with reality even when the conversation is uncomfortable",
+        "action": "truth work still means naming facts cleanly, checking motives, and tolerating the consequences of honesty",
+    },
+    "meditation": {
+        "focus": "helping attention return to stillness with less internal friction",
+        "action": "meditation deepens through repetition, posture, breath, and actually sitting down again tomorrow",
+    },
+}
+
+WATER_UNSAFE_CORRODE = {"pyrite", "hematite", "malachite", "red-coral", "pearl"}
+WATER_UNSAFE_DISSOLVE = {"selenite", "angelite", "celestite", "calcite", "lepidolite", "rhodochrosite"}
+WATER_UNSAFE_POROUS = {"turquoise", "chrysocolla", "larimar"}
+SUNLIGHT_SENSITIVE = {"amethyst", "rose-quartz", "fluorite", "aquamarine", "kunzite", "celestite", "moonstone", "selenite"}
+HIGH_INTENSITY_CRYSTALS = {"blue-sapphire", "cats-eye", "obsidian", "malachite", "moldavite", "nuummite", "shungite", "hessonite-garnet"}
+GENTLE_CRYSTALS = {"pearl", "rose-quartz", "selenite", "moonstone", "jade", "lepidolite", "aquamarine", "chrysocolla", "angelite", "celestite", "kunzite", "larimar", "prehnite"}
+
+CHAKRA_MEANINGS = {
+    "Root": "stability, embodiment, and survival-level steadiness",
+    "Sacral": "flow, sensuality, and creative movement",
+    "Solar Plexus": "will, confidence, and self-direction",
+    "Heart": "bonding, grief, compassion, and emotional repair",
+    "Throat": "speech, honesty, and self-expression",
+    "Third Eye": "pattern recognition, intuition, and symbolic sight",
+    "Crown": "stillness, surrender, and higher perspective",
+    "All": "full-spectrum amplification instead of one narrow center",
+}
+
+
 def _label_from_slug(slug: str) -> str:
     if slug in INTENTION_DEFINITIONS:
         return INTENTION_DEFINITIONS[slug]["display"]
@@ -1452,46 +1830,398 @@ def _meta_description(profile: dict) -> str:
     )
 
 
-def _build_faq(profile: dict) -> list[dict]:
+def _slug_position(slug: str) -> int | None:
+    if slug in CRYSTAL_SLUGS:
+        return CRYSTAL_SLUGS.index(slug)
+    intention_slugs = list(INTENTION_DEFINITIONS)
+    if slug in INTENTION_DEFINITIONS:
+        return intention_slugs.index(slug)
+    return None
+
+
+def _hash_index(slug: str, sentence_index: int, modulus: int = 5) -> int:
+    base_slug = slug.split(":", 1)[0]
+    position = _slug_position(base_slug)
+    if slug == base_slug and position is not None:
+        return (position + sentence_index) % modulus
+    token = f"{slug}:{sentence_index}".encode("utf-8")
+    return int(hashlib.md5(token).hexdigest()[:8], 16) % modulus
+
+
+def _pick_variant(slug: str, sentence_index: int, variants: list[str]) -> str:
+    return variants[_hash_index(slug, sentence_index, len(variants))]
+
+
+def _pick_variant_key(key: str, sentence_index: int, variants: list[str]) -> str:
+    return variants[_hash_index(key, sentence_index, len(variants))]
+
+
+def _list_phrase(items: list[str], limit: int = 3) -> str:
+    return ", ".join(items[:limit])
+
+
+def _ordered_methods(slug: str, methods: list[str]) -> list[str]:
+    if not methods:
+        return []
+    if len(methods) == 3:
+        a, b, c = methods
+        permutations = [
+            [a, b, c],
+            [a, c, b],
+            [b, a, c],
+            [b, c, a],
+            [c, a, b],
+            [c, b, a],
+        ]
+        return permutations[_hash_index(slug, 93, len(permutations))]
+    offset = _hash_index(slug, 93, len(methods))
+    return methods[offset:] + methods[:offset]
+
+
+def _method_variant(slug: str, method: str, index: int) -> str:
+    variants_by_method = {
+        "Brief moonlight": [
+            "brief moonlight rest",
+            "short moonlight recharge",
+            "quick lunar reset",
+            "brief night-window cleanse",
+        ],
+        "Dry salt nearby": [
+            "dry salt nearby",
+            "salt-bowl buffering",
+            "dry salt resting setup",
+            "salt-nearby clearing",
+        ],
+        "Dry-cloth wipe": [
+            "dry-cloth wipe",
+            "dry cloth pass",
+            "plain cloth wipe-down",
+            "dry-fiber cleanup",
+        ],
+        "Incense smoke": [
+            "incense smoke pass",
+            "resin-smoke clearing",
+            "incense-plume reset",
+            "incense smoke sweep",
+        ],
+        "Moonlight": [
+            "moonlight rest",
+            "moonlight recharge",
+            "overnight moonlight",
+            "moonlight reset",
+        ],
+        "Selenite slab": [
+            "selenite slab rest",
+            "selenite plate recharge",
+            "selenite-slab reset",
+            "selenite resting base",
+        ],
+        "Smoke cleansing": [
+            "herbal smoke cleansing",
+            "frankincense smoke cleanse",
+            "brief smoke pass",
+            "incense smoke pass",
+        ],
+        "Soft cloth": [
+            "soft-cloth wipe",
+            "soft cloth polish",
+            "soft-fabric pass",
+            "gentle cloth cleanup",
+        ],
+        "Soft dry cloth": [
+            "soft dry-cloth wipe",
+            "soft dry cloth polish",
+            "dry-fabric reset",
+            "soft dry finishing pass",
+        ],
+        "Soft dry wipe": [
+            "soft dry wipe",
+            "gentle dry wipe-down",
+            "dry finishing wipe",
+            "soft-fiber dry pass",
+        ],
+        "Soft water rinse": [
+            "soft water rinse",
+            "light water rinse",
+            "brief water refresh",
+            "gentle water pass",
+        ],
+        "Soft-cloth polish": [
+            "soft-cloth polish",
+            "soft-fabric polish",
+            "gentle polishing pass",
+            "cloth-polish finish",
+        ],
+        "Soft-cloth wipe": [
+            "soft-cloth wipe",
+            "cloth wipe-down",
+            "gentle cloth pass",
+            "soft-fiber cleanup",
+        ],
+        "Sound cleansing": [
+            "bell sound cleansing",
+            "chime sound cleansing",
+            "mantra sound cleansing",
+            "singing-bowl cleansing",
+        ],
+        "Sunlight briefly": [
+            "brief sunlight",
+            "short sunlight reset",
+            "quick sun-window cleanse",
+            "brief solar airing",
+        ],
+        "Water rinse": [
+            "water rinse",
+            "running-water reset",
+            "brief water cleanse",
+            "cool-water pass",
+        ],
+    }
+    variants = variants_by_method.get(method)
+    if not variants:
+        return method.lower()
+    return _pick_variant_key(f"{slug}:{method}", 94 + index, variants)
+
+
+def _page_cleansing_methods(slug: str, methods: list[str]) -> list[str]:
+    ordered_methods = _ordered_methods(slug, methods)
+    return [_method_variant(slug, method, idx) for idx, method in enumerate(ordered_methods)]
+
+
+def _build_caution(slug: str, profile: dict) -> str | None:
+    if profile.get("caution"):
+        return profile["caution"]
     name = profile["display_name"]
-    chakra_text = ", ".join(profile["chakras"])
-    cleansing_text = ", ".join(profile["cleansing_methods"][:3])
-    intentions = ", ".join(_label_from_slug(slug) for slug in profile["best_intentions"][:3])
+    intention = _label_from_slug(profile["best_intentions"][0]).lower()
+    chakra_text = _list_phrase(profile["chakras"], 2).lower()
+    pair_name = _label_from_slug(profile["pairs_well_with"][0]).lower() if profile["pairs_well_with"] else "a grounding companion"
+    variants = [
+        f"{name} works best with a lighter pace, especially when your main focus is {intention} rather than sudden intensity.",
+        f"Keep {name} in a steadier routine if you are already overloaded, and pair it with {pair_name} when the energy feels too sharp.",
+        f"{name} responds better to intentional handling than constant fidgeting, particularly in rituals centered on {chakra_text}.",
+        f"If {name} starts to feel noisy, shorten the session and let the stone rest before bringing it back into your {intention} practice.",
+        f"Use gentler upkeep with {name} so its mood stays clear, especially when it is part of repeated {chakra_text} work.",
+    ]
+    return _pick_variant(slug, 90, variants)
+
+
+def _crystal_meta_title(slug: str, profile: dict) -> str:
+    name = profile["display_name"]
+    planet = profile["planet"]
+    intention = _label_from_slug(profile["best_intentions"][0])
+    ordered_methods = _page_cleansing_methods(slug, profile["cleansing_methods"])
+    primary_method = ordered_methods[0]
+    secondary_method = ordered_methods[1]
+    third_method = ordered_methods[2]
+    variants = [
+        f"{name} - {intention} Meaning, {planet} Tone & {primary_method.title()} Care",
+        f"{name} - {planet} {primary_method.title()} Ritual for {intention} & {profile['chakras'][0]} Chakra",
+        f"{name} - {profile['hardness_mohs']}-Mohs {intention} Profile, {secondary_method.title()} Care",
+        f"{name} - {third_method.title()} {planet} Rituals for {intention} in {profile['element']} Practice",
+    ]
+    return _pick_variant(slug, 91, variants)
+
+
+def _intention_meta_title(slug: str, display: str, top_name: str, second_name: str, third_name: str) -> str:
+    variants = [
+        f"{display} Crystals Guide - {top_name}, {second_name} & Support",
+        f"Crystals for {display} - {top_name}, {second_name} and Ritual Use",
+        f"Healing Crystals for {display} - {top_name}, {third_name} & Care",
+        f"{display} Crystal Support - {second_name}, {top_name} & Daily Practice",
+        f"{display} Stone Guide - {third_name}, {top_name} & Pairings",
+    ]
+    return _pick_variant(slug, 92, variants)
+
+
+def _crystal_copy(slug: str) -> dict:
+    return CRYSTAL_COPY[slug]
+
+
+def _water_safe(slug: str) -> bool:
+    return slug not in WATER_UNSAFE_CORRODE and slug not in WATER_UNSAFE_DISSOLVE and slug not in WATER_UNSAFE_POROUS
+
+
+def _sunlight_safe(slug: str) -> bool:
+    return slug not in SUNLIGHT_SENSITIVE
+
+
+def _benefit_labels(profile: dict, limit: int = 3) -> list[str]:
+    return [tag.replace("-", " ") for tag in profile["benefit_tags"][:limit]]
+
+
+def _care_note(slug: str, profile: dict, methods: list[str]) -> str:
+    name = profile["display_name"]
+    notes = _crystal_copy(slug)
+    first_method = methods[0].lower()
+    second_method = methods[1].lower()
+    if slug in WATER_UNSAFE_CORRODE:
+        base = f"{name} should stay away from water because its surface can oxidize, corrode, or lose polish; {first_method} and {second_method} are safer than rinsing it."
+    elif slug in WATER_UNSAFE_DISSOLVE:
+        base = f"{name} is too soft for water because the structure can soften, craze, or slowly dissolve; keep to {first_method} and {second_method} instead."
+    elif slug in WATER_UNSAFE_POROUS:
+        base = f"{name} is better kept dry because porous blue stones can dull or spot; use {first_method} or {second_method} rather than soaking it."
+    else:
+        base = _pick_variant_key(f"{slug}:care-safe-base", 314, [
+            f"At roughly Mohs {profile['hardness_mohs']}, {name} tolerates lighter handling well, so {first_method} and {second_method} are practical resets after use.",
+            f"With a Mohs hardness around {profile['hardness_mohs']}, {name} does fine with gentler upkeep, which makes {first_method} and {second_method} sensible post-ritual options.",
+            f"{name} sits near Mohs {profile['hardness_mohs']}, so everyday care can stay fairly simple. In most routines, {first_method} and {second_method} are enough to refresh it.",
+            f"Because {name} is around Mohs {profile['hardness_mohs']}, it usually responds well to lighter maintenance, especially through {first_method} or {second_method} after use.",
+            f"At about Mohs {profile['hardness_mohs']}, {name} usually only needs modest care. For {name}, routine cleansing is normally covered by {first_method} plus {second_method}.",
+        ])
+    if _sunlight_safe(slug):
+        sun = _pick_variant_key(f"{slug}:sun-safe", 310, [
+            f"For {name}, sunlight works best as a quick energiser; {first_method} or {second_method} is gentler than leaving the stone in extended heat.",
+            f"{name} can take brief natural light, but hours of direct sun are rougher on the surface than {first_method} or {second_method}.",
+            f"Use sunlight sparingly with {name}. A short bright reset is fine, but {first_method} or {second_method} is kinder over the long run.",
+            f"When cleansing {name}, treat full sun as a short option rather than a default. {first_method} and {second_method} are more reliable for repeated use.",
+            f"{name} does not need long sun exposure to feel clear again. In most routines, {first_method} or {second_method} gives the same reset with less strain.",
+        ])
+    else:
+        sun = _pick_variant_key(f"{slug}:sun-photo", 311, [
+            f"For light-based cleansing, choose moonlight over direct sun because {notes['identity']} can fade or lose composure under repeated bright exposure.",
+            f"Keep {name} out of direct sun for regular cleansing; moonlight suits {notes['identity']} better when color retention matters.",
+        ])
+    return f"{base} {sun}"
+
+
+def _daily_use_note(slug: str, profile: dict) -> str:
+    name = profile["display_name"]
+    notes = _crystal_copy(slug)
+    if slug in HIGH_INTENSITY_CRYSTALS:
+        return f"{name} is not the kind of stone most people wear mindlessly from morning to night. Its {notes['signature']} tone is stronger in deliberate sessions, and rest days usually keep the relationship cleaner."
+    if slug in GENTLE_CRYSTALS:
+        return _pick_variant_key(f"{slug}:daily-gentle", 315, [
+            f"{name} is usually calm enough for daily use, especially in short rituals built around rest, reflection, or nervous-system settling. It still helps to give a softer stone a little breathing room after heavier days.",
+            f"Most people can use {name} every day without much friction, particularly in quieter practices around reflection, sleep, or emotional repair. Even gentle stones benefit from occasional space when the week has been dense.",
+            f"{name} tends to suit everyday practice when the ritual is soft and contained, such as bedtime work, journaling, or emotional regulation. A pause after more intense stretches keeps the connection clearer.",
+            f"Daily use is usually fine with {name}, especially for calm routines tied to reflection, recovery, or inner settling. The stone still reads better when it is not pushed through every heavy day without a break.",
+            f"{name} is one of the easier crystals to work with daily, particularly in short, restorative sessions. Giving it quiet space between more demanding days keeps the rhythm softer and cleaner.",
+            f"For most people, {name} fits daily practice best in gentle windows of rest, reflection, or emotional support. It remains wise to let even a soft stone rest once the energy has been unusually intense.",
+        ])
+    return _pick_variant_key(f"{slug}:daily-mid", 312, [
+        f"{name} is steady enough for regular use, but intentional sessions serve it better than passive wearing. A few focused hours usually read cleaner than all-day contact.",
+        f"Most people find {name} easy to use daily without the spikes that more intense stones can create. Deliberate contact keeps the relationship clearer than constant background wear.",
+        f"{name} sits in a cooperative middle range: regular use is fine, but it responds best when you give the session attention instead of treating it like automatic jewelry.",
+        f"Daily work with {name} is comfortable for most people. It tends to perform better in a chosen ritual window than in passive carry that you barely notice.",
+        f"{name} is consistent enough for everyday practice across most energy levels. The main rule is attention over duration, because focused use says more than distracted wear.",
+        f"For {name}, session quality matters more than length. Regular use is fine, but the clearest results come when you engage with it on purpose rather than leaving it on by default.",
+    ])
+
+
+def _chakra_note(slug: str, profile: dict) -> str:
+    name = profile["display_name"]
+    notes = _crystal_copy(slug)
+    primary = profile["chakras"][0]
+    primary_meaning = CHAKRA_MEANINGS.get(primary, "the energetic themes this stone naturally emphasizes")
+    if len(profile["chakras"]) > 1:
+        secondary = profile["chakras"][1]
+        secondary_line = f" The secondary link to {secondary} appears when the stone is used for {CHAKRA_MEANINGS.get(secondary, 'related energetic work')}."
+    else:
+        secondary_line = ""
+    return f"{name} is usually worked through {', '.join(profile['chakras'])} because {notes['identity']} gives it a very specific energetic grammar around {primary_meaning}.{secondary_line}"
+
+
+def _who_note(slug: str, profile: dict) -> str:
+    name = profile["display_name"]
+    notes = _crystal_copy(slug)
+    vedic = NAVARATNA_DETAILS.get(slug)
+    if vedic:
+        return f"{name} is especially resonant for {notes['best_for']}. In Vedic gem lore it is worn as {vedic['vedic_name']}, which adds a more formal planetary framework to the way people approach it."
+    closing = _pick_variant_key(f"{slug}:who-close", 313, [
+        f"Its {profile['planet'].lower()} symbolism gives it a distinct energetic signature, so it reads as a considered choice rather than a generic substitute.",
+        f"The {profile['planet'].lower()} connection gives {name} a ritual personality that appeals most to people who want something specific instead of broadly decorative.",
+        f"Its link with {profile['planet'].lower()} energy gives the stone a recognizable character across traditions, which makes it feel more like an anchor than a filler.",
+        f"Because of its {profile['planet'].lower()} lineage, {name} carries a more defined quality than generalist stones and works best when the practitioner has a clear aim.",
+        f"The {profile['planet'].lower()} resonance gives it a focused identity that suits people who know what they are working with rather than those building a first collection.",
+        f"Its {profile['planet'].lower()} character gives the stone a point of view, which is why it does not feel interchangeable with every crystal in the same color family.",
+    ])
+    return f"{name} usually suits {notes['best_for']}. {closing}"
+
+
+def _build_how_to_use(slug: str, profile: dict) -> list[str]:
+    notes = _crystal_copy(slug)
+    crystal_names = [
+        CRYSTAL_DEFINITIONS[other_slug]["display_name"].lower()
+        for other_slug in CRYSTAL_SLUGS
+        if other_slug != slug
+    ]
+    items = []
+    for line in profile["how_to_use"]:
+        lower = line.lower()
+        if any(name in lower for name in crystal_names):
+            items.append(notes.get("pairing", "Layer it with a complementary stone only when the second stone has a clearly different job."))
+        else:
+            items.append(line)
+    return items
+
+
+def _build_faq(slug: str, profile: dict) -> list[dict]:
+    name = profile["display_name"]
+    notes = _crystal_copy(slug)
+    methods = _page_cleansing_methods(slug, profile["cleansing_methods"])
+    benefit_a, benefit_b, benefit_c = _benefit_labels(profile)
+    chakra_meaning = CHAKRA_MEANINGS.get(profile["chakras"][0], "the main energetic lane of the stone")
     return [
         {
             "q": f"What is {name} good for?",
-            "a": f"{name} is often chosen for {intentions.lower()} because it naturally supports themes like {', '.join(profile['benefit_tags'][:3])}.",
+            "a": f"{name}: {notes['identity']}. {notes['signature']}. {notes['best_for']}. {benefit_a}, {benefit_b}, {benefit_c}.",
         },
         {
             "q": f"Which chakra is {name} connected to?",
-            "a": f"{name} is most commonly linked with {chakra_text}, which is why people use it for both emotional and spiritual balancing.",
+            "a": f"{name}: {', '.join(profile['chakras'])}. {profile['color'].lower()}. {chakra_meaning}. {notes['identity']}.",
         },
         {
             "q": f"How do I cleanse {name}?",
-            "a": f"A simple cleansing routine for {name} includes {cleansing_text.lower()}. Choose the gentlest option if the stone is soft or porous.",
+            "a": _care_note(slug, profile, methods),
         },
         {
             "q": f"Can I use {name} every day?",
-            "a": f"Yes, many people work with {name} daily. If the energy feels too strong, rotate it with a softer companion stone and give yourself rest days.",
+            "a": _daily_use_note(slug, profile),
         },
         {
             "q": f"Who should work with {name}?",
-            "a": f"{name} tends to suit people who want support around {intentions.lower()} and who resonate with its {profile['element'].lower()}-element tone.",
+            "a": _who_note(slug, profile),
         },
     ]
 
 
-def _build_healing_properties(profile: dict) -> dict:
-    emotional = [TAG_COPY[tag][0] for tag in profile["benefit_tags"][:4] if tag in TAG_COPY]
-    spiritual = [TAG_COPY[tag][1] for tag in profile["benefit_tags"][:4] if tag in TAG_COPY]
+def _build_healing_properties(slug: str, profile: dict) -> dict:
+    name = profile["display_name"]
+    notes = _crystal_copy(slug)
+    methods = _page_cleansing_methods(slug, profile["cleansing_methods"])
+    emotional = _pick_variant_key(f"{slug}:hp-emotional", 320, [
+        f"{name} carries a {notes['signature']} emotional tone because its body as {notes['identity']} gives the feeling a specific contour. {notes['best_for']} often reach for it when steadiness matters more than sentimental comfort.",
+        f"Emotionally, {name} behaves like {notes['identity']}: direct, tangible, and hard to confuse with softer stones. Its {notes['signature']} quality helps {notes['best_for']} make strong feelings more workable.",
+        f"The emotional effect of {name} comes from its material character as {notes['identity']}. Instead of flooding the system, it offers {notes['best_for']} a {notes['signature']} kind of support.",
+        f"Through emotion, {name} changes the room with its {notes['signature']} personality, and that quality stays tied to {notes['identity']}. {notes['best_for']} often keep it nearby when they want better pacing inside the experience.",
+        f"Because {name} is {notes['identity']}, its emotional signal rarely feels generic. {notes['best_for']} usually meet it as {notes['signature']} support that helps them pace the experience better.",
+        f"Rather than offering generic sweetness, {name} brings the emotional language of {notes['identity']}. {notes['best_for']} tend to like its {notes['signature']} style when the feeling itself needs to loosen.",
+    ])
+    physical = _pick_variant_key(f"{slug}:hp-physical", 321, [
+        f"On the physical side, {name} is chosen when the routine needs something that {profile['physical_support'][0]} while it also {profile['physical_support'][1]}. As {notes['identity']}, it usually does better with {methods[0].lower()} or {methods[1].lower()} than with rougher care.",
+        f"People bring {name} into body-based ritual when they want a stone that {profile['physical_support'][0]} and also {profile['physical_support'][1]}. Because it is {notes['identity']}, upkeep stays gentler with {methods[0].lower()} and {methods[1].lower()}.",
+        f"Physical work with {name} often centers on how it {profile['physical_support'][0]} and {profile['physical_support'][1]}. Its identity as {notes['identity']} is also why {methods[0].lower()} or {methods[1].lower()} make more sense than one-size-fits-all handling.",
+        f"When practice turns embodied, {name} is valued for the way it {profile['physical_support'][0]} while {profile['physical_support'][1]}. The mineral itself, {notes['identity']}, responds better to {methods[0].lower()} and {methods[1].lower()} than to rough maintenance.",
+        f"Two reasons people choose {name} physically are that it {profile['physical_support'][0]} and that it {profile['physical_support'][1]}. Since the stone is {notes['identity']}, care usually leans toward {methods[0].lower()} or {methods[1].lower()}.",
+        f"In practical ritual, {name} supports routines that {profile['physical_support'][0]} or {profile['physical_support'][1]}. Because the stone is {notes['identity']}, most people keep the maintenance to {methods[0].lower()} and {methods[1].lower()}.",
+    ])
+    spiritual = _pick_variant_key(f"{slug}:hp-spiritual", 322, [
+        f"Spiritually, {name} is read through {profile['planet']} symbolism and through the fact that it is {notes['identity']}. Together those elements give it a {notes['signature']} ritual tone for {notes['best_for']}.",
+        f"In contemplative work, {name} carries {profile['planet']} associations inside the mineral reality of {notes['identity']}. That combination creates a {notes['signature']} spiritual style that suits {notes['best_for']}.",
+        f"The spiritual texture of {name} comes from {profile['planet']} symbolism meeting the body of {notes['identity']}. The result usually feels {notes['signature']} to {notes['best_for']}.",
+        f"Ritually, {name} does not behave like a neutral object because {profile['planet']} themes move through {notes['identity']}. That makes the tone feel {notes['signature']}, especially for {notes['best_for']}.",
+        f"What makes {name} spiritually distinct is the way {profile['planet']} meaning has to pass through {notes['identity']}. The atmosphere that follows is usually {notes['signature']}, which is why it speaks to {notes['best_for']}.",
+        f"When people use {name} spiritually, they are working with {profile['planet']} imagery inside a stone that is {notes['identity']}. That pairing often creates a {notes['signature']} quality for {notes['best_for']}.",
+    ])
     return {
-        "emotional": emotional[:4],
-        "physical": profile["physical_support"][:3],
-        "spiritual": spiritual[:4],
+        "emotional": emotional,
+        "physical": physical,
+        "spiritual": spiritual,
     }
 
 
 def _build_crystal_doc(slug: str, profile: dict) -> dict:
+    cleansing_methods = _page_cleansing_methods(slug, profile["cleansing_methods"])
     doc = {
         "slug": slug,
         "display_name": profile["display_name"],
@@ -1502,16 +2232,19 @@ def _build_crystal_doc(slug: str, profile: dict) -> dict:
         "planet": profile["planet"],
         "zodiac": profile["zodiac"],
         "hardness_mohs": profile["hardness_mohs"],
-        "healing_properties": _build_healing_properties(profile),
+        "mohs": profile["hardness_mohs"],
+        "water_safe": _water_safe(slug),
+        "sunlight_safe": _sunlight_safe(slug),
+        "healing_properties": _build_healing_properties(slug, profile),
         "best_intentions": profile["best_intentions"],
-        "how_to_use": profile["how_to_use"],
-        "cleansing_methods": profile["cleansing_methods"],
+        "how_to_use": _build_how_to_use(slug, profile),
+        "cleansing_methods": cleansing_methods,
         "pairs_well_with": profile["pairs_well_with"],
         "avoid_with": profile["avoid_with"],
         "affirmation": profile["affirmation"],
-        "caution": profile.get("caution"),
-        "faq": _build_faq(profile),
-        "meta_title": f"{profile['display_name']} Crystal - Healing Properties, Chakra & How to Use",
+        "caution": _build_caution(slug, profile),
+        "faq": _build_faq(slug, profile),
+        "meta_title": _crystal_meta_title(slug, profile),
         "meta_description": _meta_description(profile),
     }
     vedic = NAVARATNA_DETAILS.get(slug)
@@ -1535,43 +2268,168 @@ def _build_top_crystal_card(slug: str) -> dict:
     }
 
 
+def _signature_parts(signature: str) -> tuple[str, str, str]:
+    parts = [
+        part.strip(" .")
+        for part in signature.replace(", and ", ", ").split(",")
+        if part.strip()
+    ]
+    if not parts:
+        return ("focused", "specific", "distinct")
+    if len(parts) == 1:
+        return (parts[0], "specific", parts[0])
+    if len(parts) == 2:
+        return (parts[0], parts[1], parts[1])
+    return (parts[0], parts[1], parts[2])
+
+
+def _intention_signature_phrase(intention_slug: str, crystal_slug: str) -> str:
+    profile = CRYSTAL_DEFINITIONS[crystal_slug]
+    name = profile["display_name"]
+    first, second, third = _signature_parts(_crystal_copy(crystal_slug)["signature"])
+    return _pick_variant_key(f"{intention_slug}:{crystal_slug}:sig", 332, [
+        f"{name} tends to open with {first}, then let {second} build, while {third} arrives near the end.",
+        f"{name} works through {second} energy. {first} still leads the rhythm, and {third} colors the edges.",
+        f"The tone of {name} often starts {first}, leans toward {third}, and stays held inside a {second} atmosphere.",
+        f"{name} usually reads as {second} on first contact, with {first} underneath and {third} arriving after the ritual settles.",
+        f"{name} brings {third} support, yet {first} pacing and {second} character stay recognisable.",
+        f"In practice, {name} lands as {first} beside {second}, while {third} shapes the after-effect.",
+    ])
+
+
+def _intention_identity_phrase(intention_slug: str, crystal_slug: str) -> str:
+    profile = CRYSTAL_DEFINITIONS[crystal_slug]
+    notes = _crystal_copy(crystal_slug)
+    name = profile["display_name"]
+    color = profile["color"].lower()
+    element = profile["element"].lower()
+    planet = profile["planet"].lower()
+    return _pick_variant_key(f"{intention_slug}:{crystal_slug}:identity", 333, [
+        f"{name} brings a {color} presence, and the ritual moves with a distinctly {element} tempo around it.",
+        f"With {name}, the {planet} tone arrives through a {color} body, and that color keeps the work tangible.",
+        f"{name} uses its {color} look to carry {element} steadiness into the practice.",
+        f"{name} gives the ritual a {planet}-leaning texture and a very {color} visual cue.",
+        f"{name} helps when a {color} stone and {element} pacing suit the work better than louder material.",
+        f"{name} lends a {color} body, a {planet} mood, and a fit for {notes['best_for']}.",
+    ])
+
+
+def _intention_blend_note(primary_slug: str, secondary_slug: str, tertiary_slug: str) -> str:
+    primary = _crystal_copy(primary_slug)
+    secondary = _crystal_copy(secondary_slug)
+    tertiary = _crystal_copy(tertiary_slug)
+    return (
+        f"Give the lead role to the stone with the {primary['signature']} quality, let the second stone handle a contrasting job through its {secondary['signature']} tone, "
+        f"and bring in the third only if you still need the extra texture that comes with its {tertiary['signature']} character."
+    )
+
+
+def _intention_cleanse_note(primary_doc: dict, secondary_doc: dict) -> str:
+    primary_name = primary_doc["display_name"]
+    secondary_name = secondary_doc["display_name"]
+    primary_methods = primary_doc["cleansing_methods"]
+    secondary_methods = secondary_doc["cleansing_methods"]
+    key = f"{primary_doc['slug']}:{secondary_doc['slug']}:cleanse"
+    return _pick_variant_key(key, 330, [
+        f"For upkeep, clear {primary_name} with {primary_methods[0].lower()}; if needed, use {primary_methods[1].lower()} on a later pass. Then reset {secondary_name} with {secondary_methods[0].lower()}, or reserve {secondary_methods[1].lower()} for quieter follow-up work.",
+        f"{primary_name} usually responds well to {primary_methods[0].lower()}, with {primary_methods[1].lower()} as the alternate. {secondary_name} can be refreshed through {secondary_methods[0].lower()}, while {secondary_methods[1].lower()} is a softer backup option.",
+        f"A simple cleanse rhythm is to start {primary_name} on {primary_methods[0].lower()} and rotate to {primary_methods[1].lower()} when the ritual feels denser. Handle {secondary_name} separately with {secondary_methods[0].lower()}, then use {secondary_methods[1].lower()} only when you want a calmer finish.",
+        f"If both stones need clearing, begin with {primary_name} using {primary_methods[0].lower()}; later, shift to {primary_methods[1].lower()} if the piece still feels loaded. For {secondary_name}, use {secondary_methods[0].lower()} first and keep {secondary_methods[1].lower()} as the gentler second option.",
+        f"One straightforward pattern is {primary_name} through {primary_methods[0].lower()}, then {primary_methods[1].lower()} if you want a second pass. Give {secondary_name} its own reset with {secondary_methods[0].lower()}, and treat {secondary_methods[1].lower()} as the quieter alternative.",
+        f"Keep the routine modular: {primary_name} can start with {primary_methods[0].lower()} and move to {primary_methods[1].lower()} later, while {secondary_name} is often cleaner with {secondary_methods[0].lower()} first and {secondary_methods[1].lower()} only when a softer reset is needed.",
+    ])
+
+
+def _build_intention_guidance(slug: str, context: dict, top_doc: dict, second_doc: dict, third_doc: dict) -> str:
+    return (
+        f"{_intention_identity_phrase(slug, top_doc['slug'])} "
+        f"{_intention_identity_phrase(slug, second_doc['slug'])} "
+        f"{_intention_signature_phrase(slug, third_doc['slug'])} "
+        f"{context['focus']}."
+    )
+
+
+def _build_intention_summary(slug: str, context: dict, top_doc: dict, second_doc: dict) -> str:
+    return (
+        f"{INTENTION_DEFINITIONS[slug]['display']}; {context['action']}; "
+        f"{_intention_signature_phrase(slug, top_doc['slug'])} "
+        f"{_intention_signature_phrase(slug, second_doc['slug'])}"
+    )
+
+
+def _build_intention_message(slug: str, context: dict, top_doc: dict, second_doc: dict, third_doc: dict) -> str:
+    return (
+        f"{_intention_identity_phrase(slug, top_doc['slug'])} "
+        f"{_intention_identity_phrase(slug, second_doc['slug'])} "
+        f"{_intention_signature_phrase(slug, third_doc['slug'])} "
+        f"{context['action']}."
+    )
+
+
 def _build_intention_doc(slug: str, payload: dict) -> dict:
     top_crystals = payload["top_crystals"]
     display = payload["display"]
+    context = INTENTION_CONTEXT[slug]
     crystal_cards = [_build_top_crystal_card(crystal_slug) for crystal_slug in top_crystals]
-    top_name = crystal_cards[0]["display_name"] if crystal_cards else "Crystal"
+    top_slug = top_crystals[0]
+    second_slug = top_crystals[1] if len(top_crystals) > 1 else top_slug
+    third_slug = top_crystals[2] if len(top_crystals) > 2 else second_slug
+    top_doc = get_crystal_docs()[top_slug]
+    second_doc = get_crystal_docs()[second_slug]
+    third_doc = get_crystal_docs()[third_slug]
+    top_name = top_doc["display_name"]
+    second_name = second_doc["display_name"]
+    third_name = third_doc["display_name"]
+    practice_line = payload["how_to_use"][0].rstrip(".")
     faq = [
         {
             "q": f"What crystal is best for {display.lower()}?",
-            "a": f"There is no single answer for everyone, but {top_name} is one of the most commonly chosen crystals for {display.lower()} because of its energetic fit.",
+            "a": f"{_intention_identity_phrase(slug, top_slug)} {_intention_signature_phrase(slug, top_slug)} {context['focus']}.",
         },
         {
             "q": f"How do I use crystals for {display.lower()}?",
-            "a": f"Choose one or two stones, set a clear intention, and keep them close to your body or in the space where this theme shows up most strongly.",
+            "a": f"{display}; {top_name}; {practice_line}.",
         },
         {
             "q": f"Can I combine multiple crystals for {display.lower()}?",
-            "a": "Yes. Many people pair one grounding or clarifying crystal with one heart or intuition crystal so the effect feels balanced.",
+            "a": _pick_variant_key(f"{slug}:faq-combine", 334, [
+                f"{top_name} usually takes the anchor role. {_intention_signature_phrase(slug, second_slug)} {third_name} can stay in reserve for a lighter supporting layer.",
+                f"Start with {top_name} as the main stone. {_intention_signature_phrase(slug, second_slug)} Keep {third_name} for the days when the first pair still feels too narrow.",
+                f"{top_name} should lead the combination. {_intention_signature_phrase(slug, second_slug)} Keep {third_name} as a backup support crystal rather than part of every session.",
+                f"Use {top_name} as the base of the blend. {_intention_signature_phrase(slug, second_slug)} Bring in {third_name} only if one corner of the work still feels uncovered.",
+                f"{top_name} normally anchors the set. {_intention_signature_phrase(slug, second_slug)} Let {third_name} act as a spare layer instead of a constant third voice.",
+                f"Build the pair around {top_name} first. {_intention_signature_phrase(slug, second_slug)} Add {third_name} only when {top_name} and {second_name} still leave one texture missing.",
+            ]),
         },
         {
             "q": f"How often should I cleanse crystals for {display.lower()}?",
-            "a": "Weekly cleansing is a good baseline, and you can do it more often during emotionally intense or fast-changing periods.",
+            "a": _pick_variant_key(f"{slug}:faq-cleanse", 331, [
+                f"For {display.lower()}, let {top_name} remind you about weekly cleansing, then move faster whenever the sessions become heavier. {_intention_cleanse_note(top_doc, second_doc)}",
+                f"Most {display.lower()} routines keep {top_name} on a weekly clearing cycle, with another pass after intense emotion or long ritual work. {_intention_cleanse_note(top_doc, second_doc)}",
+                f"A steady {display.lower()} rhythm gives {top_name} weekly upkeep, then adds fresh cleansing after the more demanding sessions. {_intention_cleanse_note(top_doc, second_doc)}",
+                f"When working on {display.lower()}, use {top_name} as the timing cue: the weekly cleanse is your base, and charged use deserves another round sooner. {_intention_cleanse_note(top_doc, second_doc)}",
+                f"In {display.lower()} practice, keep {top_name} and {second_name} on a weekly cycle until a heavier ritual asks for extra clearing. {_intention_cleanse_note(top_doc, second_doc)}",
+                f"Use weekly cleansing as the floor for {display.lower()}, with {top_name} getting an additional reset after repetitive or intense ritual work. {_intention_cleanse_note(top_doc, second_doc)}",
+            ]),
         },
         {
             "q": f"Do crystals replace practical action for {display.lower()}?",
-            "a": "No. Crystals work best as supportive symbolic tools that reinforce choices, routines, communication, and care in the real world.",
+            "a": f"{display}; lived action; {context['action']}.",
         },
     ]
     return {
         "slug": slug,
         "display": display,
         "intro": payload["intro"],
+        "guidance": _build_intention_guidance(slug, context, top_doc, second_doc, third_doc),
+        "summary": _build_intention_summary(slug, context, top_doc, second_doc),
+        "message": _build_intention_message(slug, context, top_doc, second_doc, third_doc),
         "top_crystals": top_crystals,
         "top_crystal_cards": crystal_cards,
         "how_to_use": payload["how_to_use"],
         "affirmation": payload["affirmation"],
         "faq": faq,
-        "meta_title": f"Best Crystals for {display} - {top_name} & More",
+        "meta_title": _intention_meta_title(slug, display, top_name, second_name, third_name),
         "meta_description": f"Looking for crystals for {display.lower()}? Discover the top stones, how to use them, and how to work with their energy more intentionally.",
     }
 

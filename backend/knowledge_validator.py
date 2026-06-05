@@ -29,14 +29,14 @@ For each rule assess:
 2. QUALITY - coherent, specific, usable as a prediction statement?
 3. FAITHFULNESS - does it faithfully paraphrase what a classical source would say?
 
-IMPORTANT — condition field guidance:
+IMPORTANT -- condition field guidance:
 - Many rules have condition: {{"type": "composite", "sub_conditions": [], "operator": "and"}}
   This means the rule is a GENERAL astrological principle (e.g. a planet's nature, a house
-  signification, a yoga, or a general interpretive statement). This is VALID — do NOT flag
+  signification, a yoga, or a general interpretive statement). This is VALID -- do NOT flag
   a rule solely because its condition is empty or composite.
 - Rules with condition: {{"type": "dosha", "sub_type": "mangalik", ...}} are Lal Kitab
   Mangalik dosha rules. They contain extra fields (ascendant, aspect_houses, dosha_type,
-  ascendant_filter) which are schema extensions — VALID. Evaluate only the interpretation
+  ascendant_filter) which are schema extensions -- VALID. Evaluate only the interpretation
   text (summary / detailed / remedies) on its astrological merits.
 - Evaluate the "summary" and "detailed" interpretation text on its own merits.
 - Only flag if the interpretation text itself is wrong, incoherent, or garbled.
@@ -114,7 +114,7 @@ class RuleValidator:
     # Condition types that use the structured yoga schema
     # (yoga_name / yoga_check / planets_involved / houses_involved).
     # These types come from TBA-style extractions where the "detailed" field
-    # follows a fixed "Yoga/Category … Condition … Effect" template rather than
+    # follows a fixed "Yoga/Category ... Condition ... Effect" template rather than
     # being a direct prose passage.  The truncated_text guard (last-character
     # punctuation check) is designed for OCR-extracted BPHS passages and must
     # not be applied to structured yoga descriptors whose effect text naturally
@@ -138,7 +138,7 @@ class RuleValidator:
         min_words = 3 if cond_type in ("planet_in_house_in_sign", "planet_in_house_special") else 8
         if len(text.split()) < min_words:
             return False, "interpretation_too_short"
-        # Detect mid-sentence truncation — text ending without punctuation.
+        # Detect mid-sentence truncation -- text ending without punctuation.
         # Skip for yoga-schema types: their "Effect:" clause ends naturally
         # without a period and the Claude quality check (Stage 2) handles
         # content quality for those rules.
@@ -159,8 +159,8 @@ class RuleValidator:
             "source_book": source.get("book", source.get("primary", "")),
             "chapter": source.get("chapter", ""),
             "condition": rule.get("condition", {}),
-            "summary": (interp.get("summary") or "")[:200],
-            "detailed": (interp.get("detailed") or "")[:400],
+            "summary": (interp.get("summary") or "")[:400],
+            "detailed": (interp.get("detailed") or "")[:800],
             "current_confidence": self._current_confidence(rule),
         }
 
