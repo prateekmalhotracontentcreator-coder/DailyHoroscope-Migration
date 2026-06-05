@@ -48,6 +48,18 @@ const PLANET_ABBR = {
   Jupiter: 'Ju', Venus: 'Ve', Saturn: 'Sa', Rahu: 'Ra', Ketu: 'Ke',
 };
 
+const PLANET_VEDIC_NAME = {
+  Sun: 'Surya',
+  Moon: 'Chandra',
+  Mars: 'Mangal',
+  Mercury: 'Budha',
+  Jupiter: 'Guru',
+  Venus: 'Shukra',
+  Saturn: 'Shani',
+  Rahu: 'Rahu',
+  Ketu: 'Ketu',
+};
+
 const HOUSE_ORDINAL = {
   1: '1st', 2: '2nd', 3: '3rd', 4: '4th', 5: '5th', 6: '6th',
   7: '7th', 8: '8th', 9: '9th', 10: '10th', 11: '11th', 12: '12th',
@@ -94,6 +106,11 @@ function formatMonthYear(dateStr) {
   const parsed = new Date(dateStr);
   if (Number.isNaN(parsed.getTime())) return '';
   return parsed.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
+}
+
+function formatSignedDelta(value) {
+  if (typeof value !== 'number' || Number.isNaN(value)) return '0';
+  return value > 0 ? `+${value}` : `${value}`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -317,6 +334,43 @@ function WrsTransitBar({ commandPlanet, directive, dashaEndLabel, mission }) {
   );
 }
 
+function WrsShadbalaPanel({ dashboard, factorDelta }) {
+  const bala = dashboard?.command_planet_shadbala;
+  const commandPlanet = dashboard?.command_planet || 'Command Planet';
+  if (!bala || bala.strength_ratio == null || bala.is_strong == null) return null;
+
+  const strengthRatio = Number(bala.strength_ratio);
+  const barPct = Math.min(100, Math.round((strengthRatio / 2.0) * 100));
+  const isStrong = Boolean(bala.is_strong);
+  const vedicName = PLANET_VEDIC_NAME[commandPlanet] || commandPlanet;
+
+  return (
+    <div className="wrs-shadbala">
+      <div className="wrs-shadbala__title">
+        Command Planet Strength · {commandPlanet} ({vedicName})
+      </div>
+      <div className="wrs-shadbala__row">
+        <span className="wrs-shadbala__label">{Math.round(strengthRatio * 100)}%</span>
+        <span className={`wrs-shadbala__badge ${isStrong ? 'wrs-shadbala__badge--strong' : 'wrs-shadbala__badge--weak'}`}>
+          {isStrong ? 'Strong' : 'Needs Support'}
+        </span>
+      </div>
+      <div className="wrs-shadbala__track" aria-hidden="true">
+        <div
+          className={`wrs-shadbala__fill ${isStrong ? 'wrs-shadbala__fill--strong' : 'wrs-shadbala__fill--weak'}`}
+          style={{ width: `${barPct}%` }}
+        />
+      </div>
+      <div className="wrs-shadbala__meta">
+        Shadbala: {Number(bala.rupas || 0).toFixed(2)} rupas · Minimum: {Number(bala.minimum_rupas || 0).toFixed(2)} rupas
+      </div>
+      <div className="wrs-shadbala__factor">
+        Factor contribution: {formatSignedDelta(factorDelta)} to Conquest Score
+      </div>
+    </div>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // PANEL 1 · Conquest Score
 // ─────────────────────────────────────────────────────────────────────────────
@@ -336,6 +390,8 @@ function PanelConquest({ data }) {
     directive,
     dashaEndLabel,
     activeMission,
+    dashboard,
+    shadbalaDelta,
   } = data;
 
   const stateSegs = [
@@ -356,6 +412,7 @@ function PanelConquest({ data }) {
             dashaEndLabel={dashaEndLabel}
             mission={activeMission}
           />
+          <WrsShadbalaPanel dashboard={dashboard} factorDelta={shadbalaDelta} />
           <div className="wrs-state-banner">
             {stateSegs.map((st) => (
               <div
@@ -776,6 +833,9 @@ function WarRoomShell({ dashboard, gate0Status, missions, loading }) {
   const pitruActive = Boolean(dashboard?.diagnosis_summary?.pitru_rin_active);
   const verdict = (scoreboard.gate0_last_verdict || gate0Status?.last_verdict || '').toLowerCase();
   const karmicCleared = scoreboard.karmic_debt_cleared ?? false;
+  const shadbalaDelta = Array.isArray(conquest.factors)
+    ? conquest.factors.find((factor) => String(factor?.factor || '').toLowerCase() === 'shadbala')?.delta
+    : undefined;
 
   const kpGate0 = {
     question: gate0Status?.last_question || scoreboard.gate0_last_question || 'No consultation on record.',
@@ -798,6 +858,8 @@ function WarRoomShell({ dashboard, gate0Status, missions, loading }) {
     directive: conquest.directive || scoreboard.score_directive || '',
     dashaEndLabel: formatMonthYear(dashboard?.current_mahadasha_end),
     activeMission: normalizedMissions[0] || null,
+    dashboard,
+    shadbalaDelta,
   };
 
   return (

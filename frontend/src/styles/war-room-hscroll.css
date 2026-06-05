@@ -586,3 +586,57 @@
 .wrs-mission-remedy__label { color: inherit; }
 .wrs-mission-remedy__link { color: #c5a059; text-decoration: none; }
 .wrs-mission-remedy__link:hover { text-decoration: underline; }
+
+.wrs-shadbala {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(197,160,89,0.3);
+}
+[data-mode="light"] .wrs-shadbala { background: #faf4e6; }
+[data-mode="dark"] .wrs-shadbala { background: #1a150a; }
+[data-mode="cr-ambient"] .wrs-shadbala,
+[data-mode="cr-tactical"] .wrs-shadbala { background: #0a150a; border-color: rgba(58,106,58,0.4); }
+
+.wrs-shadbala__title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+  margin-bottom: 8px;
+}
+.wrs-shadbala__track {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(197,160,89,0.2);
+  margin: 6px 0;
+  overflow: hidden;
+}
+.wrs-shadbala__fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+.wrs-shadbala__fill--strong { background: #4caf72; }
+.wrs-shadbala__fill--weak { background: #c5a059; }
+
+.wrs-shadbala__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+.wrs-shadbala__label { font-weight: 600; }
+.wrs-shadbala__badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.wrs-shadbala__badge--strong { background: rgba(76,175,114,0.2); color: #4caf72; }
+.wrs-shadbala__badge--weak { background: rgba(197,160,89,0.2); color: #c5a059; }
+.wrs-shadbala__meta { font-size: 11px; opacity: 0.65; margin-top: 4px; }
+.wrs-shadbala__factor { font-size: 11px; margin-top: 6px; opacity: 0.8; }

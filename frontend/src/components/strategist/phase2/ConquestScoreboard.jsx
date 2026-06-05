@@ -90,7 +90,7 @@ function getBandLabel(score) {
 // -----------------------------------------------------------------
 export function ScoreboardExpanded({
   score, max, tier, nextTier, pointsToNext, nextThreshold,
-  verdict, karmic, streak, directive, asOf,
+  verdict, karmic, streak, directive, asOf, shadbalaBadge,
 }) {
   return (
     <div className="board-hero">
@@ -100,6 +100,12 @@ export function ScoreboardExpanded({
           <span className="board-hero__verdict-lbl">Active verdict</span>
           <VerdictChip type={verdict} active />
         </div>
+        {shadbalaBadge ? (
+          <div className="board-hero__verdict" style={{ marginTop: 10 }}>
+            <span className="board-hero__verdict-lbl">Shadbala</span>
+            <KarmicChip state={shadbalaBadge} />
+          </div>
+        ) : null}
       </div>
 
       <div className="board-hero__rows">
@@ -149,13 +155,18 @@ export function ScoreboardExpanded({
 // ScoreboardCompact -- single horizontal row density view
 // Step 2: all SEEKER.* replaced with explicit props
 // -----------------------------------------------------------------
-export function ScoreboardCompact({ score, max, tier, verdict, directive, streak }) {
+export function ScoreboardCompact({ score, max, tier, verdict, directive, streak, shadbalaBadge }) {
   return (
     <div className="board-compact">
       <Gauge score={score} max={max} tier={tier} mini />
       <div className="board-compact__score-block">
         <span className="board-compact__score">{score}</span>
         <span className="board-compact__tier">{tier}</span>
+        {shadbalaBadge ? (
+          <div style={{ marginTop: 8 }}>
+            <KarmicChip state={shadbalaBadge} />
+          </div>
+        ) : null}
       </div>
       <VerdictChip type={verdict} active />
       <div className="board-compact__directive">&ldquo;{directive}&rdquo;</div>
@@ -223,10 +234,11 @@ export default function ConquestScoreboard({ data, asOf, view: viewProp = null, 
     tier: data?.scoreboard?.streak_tier ?? '--',
   };
   const directive = data?.scoreboard?.score_directive ?? '';
+  const shadbalaBadge = data?.scoreboard?.shadbalaBadge ?? null;
 
   const scoreboardProps = {
     score, max, tier, nextTier, nextThreshold, pointsToNext,
-    verdict, karmic, streak, directive, asOf,
+    verdict, karmic, streak, directive, asOf, shadbalaBadge,
   };
 
   return (

@@ -188,6 +188,11 @@ function mapWarRoomProps(dashboard, missions, layout) {
   const scoreboard = dashboard?.scoreboard || {};
   const pitruActive = Boolean(dashboard?.diagnosis_summary?.pitru_rin_active);
   const pitruRin = Array.isArray(dashboard?.pitru_rin_ledger) ? dashboard.pitru_rin_ledger : [];
+  const shadbalaBadge = dashboard?.command_planet_shadbala?.is_strong === true
+    ? `${dashboard?.command_planet || 'Command planet'} · Strong`
+    : dashboard?.command_planet_shadbala?.is_strong === false
+      ? `${dashboard?.command_planet || 'Command planet'} · Needs Support`
+      : null;
 
   return {
     conquestScore: {
@@ -210,7 +215,12 @@ function mapWarRoomProps(dashboard, missions, layout) {
     layout,
     onRecalibrate: () => window.location.reload(),
     // Phase 2 additions (Doc 10 §03)
-    scoreboardData: dashboard?.scoreboard || null,
+    scoreboardData: dashboard?.scoreboard
+      ? {
+          ...dashboard.scoreboard,
+          shadbalaBadge,
+        }
+      : null,
     gateSummaries:  normalizeGates(dashboard?.gate_summaries ?? []),
   };
 }
@@ -525,7 +535,7 @@ export default function StrategistWarRoomPage() {
       {warRoomProps.scoreboardData && (
         <div style={{ padding: '0 20px 40px' }}>
           <ConquestScoreboard
-            data={dashboard}
+            data={{ ...dashboard, scoreboard: warRoomProps.scoreboardData }}
             asOf={new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) + ' IST'}
           />
           <div style={{ marginTop: 16 }}>
