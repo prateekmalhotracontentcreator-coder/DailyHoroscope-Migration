@@ -1007,10 +1007,20 @@
    Prefix: .ptm-  |  Zero .panchang-* classes overridden  |  Light theme only
    ════════════════════════════════════════════════════════════════════════════ */
 
-.ptm-shell { width: 100%; max-width: 1260px; margin: 0 auto; }
+/* Break out of the page's max-w-3xl (768px) container and fill the full viewport.
+   left: 50% + translateX(-50%) recentres the full-width section on any screen. */
+.ptm-shell {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+  padding: 0 24px;
+  margin-bottom: 32px;
+}
 
 /* ── Header ─────────────────────────────────────────────────────────────────── */
-.ptm-header { text-align: center; margin-bottom: 18px; }
+.ptm-header { text-align: center; margin-bottom: 18px; max-width: 1260px; margin-left: auto; margin-right: auto; }
 .ptm-eyebrow {
   margin: 0 0 10px; font-size: 0.74rem; font-weight: 700;
   text-transform: uppercase; letter-spacing: 0.26em; color: var(--panchang-saffron-deep);
@@ -1030,6 +1040,8 @@
   position: relative;
   aspect-ratio: 100 / 58;
   min-height: 600px;
+  max-width: 1260px;
+  margin: 0 auto;
   background-color: #f3e7c9;
   border-radius: 14px;
   box-shadow:
@@ -1213,7 +1225,7 @@
 
 /* ── Critical Guidance bar ──────────────────────────────────────────────────── */
 .ptm-guidance {
-  margin: 20px 14px 0; border-radius: var(--panchang-radius-md); padding: 14px 20px;
+  margin: 20px auto 0; max-width: 1260px; border-radius: var(--panchang-radius-md); padding: 14px 20px;
   font-size: 0.92rem; font-weight: 700; line-height: 1.5;
   display: flex; align-items: flex-start; gap: 12px;
   transition: background 0.28s ease, border-color 0.28s ease, color 0.28s ease;
