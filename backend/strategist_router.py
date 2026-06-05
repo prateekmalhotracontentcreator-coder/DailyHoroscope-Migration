@@ -25,6 +25,7 @@ from panchang_router import (
     DEFAULT_LOCATIONS,
 )
 from vedic_calculator import (
+    calculate_vedic_chart,
     calculate_vimshottari_dasha,
     get_current_dasha,
     get_current_transits,
@@ -187,9 +188,36 @@ async def _build_war_room_state(db, user_email: str) -> dict:
     current_transits = get_current_transits()
     primary_planet_degree = current_transits.get(command_planet, {}).get("degree", 15)
 
+    # Compute real Shadbala for command planet from birth chart
+    command_planet_strength = 1.0  # neutral fallback
+    shadbala_rupas: float | None = None
+    shadbala_minimum: float | None = None
+    try:
+        _tob = profile.get("tob") or "12:00"
+        _city = profile.get("birth_city") or "New Delhi"
+        _birth_date = profile.get("birth_date") or profile.get("dob")
+        if _birth_date and _loc:
+            _full_chart = calculate_vedic_chart(_birth_date, _tob, _city, "+05:30")
+            _chart_planets = _full_chart.get("planets", {})
+            for _display_key, _planet_data in _chart_planets.items():
+                if command_planet.lower() in _display_key.lower():
+                    _bala = _planet_data.get("shadbala", {})
+                    _rupas = _bala.get("total_rupas", 0)
+                    _min_rupas = _bala.get("minimum_rupas", 1)
+                    if _min_rupas > 0:
+                        command_planet_strength = _rupas / _min_rupas
+                        shadbala_rupas = _rupas
+                        shadbala_minimum = _min_rupas
+                    break
+    except Exception:
+        pass
+
+    # Digbala: use stored office_direction if user has set it (compass direction like "North")
+    office_direction = profile.get("office_direction", "")
+
     user_data = {
-        "command_planet_strength": 1.0,
-        "office_location": location_slug,
+        "command_planet_strength": command_planet_strength,
+        "office_location": office_direction,
         "success_direction": success_direction,
         "active_pitru_rin": active_pitru_rin,
         "surrogate_active": surrogate_active,
@@ -253,6 +281,13 @@ async def _build_war_room_state(db, user_email: str) -> dict:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "command_planet": command_planet,
         "success_direction": success_direction,
+        "office_direction": office_direction,
+        "command_planet_shadbala": {
+            "rupas": shadbala_rupas,
+            "minimum_rupas": shadbala_minimum,
+            "strength_ratio": round(command_planet_strength, 3) if command_planet_strength != 1.0 else None,
+            "is_strong": command_planet_strength >= 1.0 if shadbala_rupas is not None else None,
+        },
         "sunset_iso": _sunset_iso,
         **_dasha_context,
         "conquest_probability": prob,
@@ -448,8 +483,8 @@ async def action_plan(request: Request):
     )
     score = prob["score"]
 
-    # Top missions
-    missions_list = await get_active_missions(natal_chart, {}, db, limit=3)
+    # Top missions -- pass live transits so transit-triggered conditions fire
+    missions_list = await get_active_missions(natal_chart, get_current_transits(), db, limit=3)
 
     # Priority actions
     actions = []
@@ -561,7 +596,11 @@ async def save_strategist_profile(body: StrategistProfileRequest, request: Reque
     except Exception:
         pass
 
-    update: dict = {"birth_date": body.dob}
+    update: dict = {
+        "birth_date": body.dob,
+        "tob": body.tob or "12:00",
+        "birth_city": body.city or "New Delhi",
+    }
     if moon_longitude is not None:
         update["moon_longitude"] = moon_longitude
 
@@ -588,7 +627,8 @@ async def missions(body: MissionsRequest, request: Request):
     profile = await db.lk_user_profiles.find_one({"user_id": uid}, {"_id": 0})
     natal_chart = profile.get("natal_chart", {}) if profile else {}
 
-    active = await get_active_missions(natal_chart, {}, db)
+    current_transits = get_current_transits()
+    active = await get_active_missions(natal_chart, current_transits, db)
     return {"user_id": uid, "date": body.date, "missions": active, "count": len(active)}
 
 

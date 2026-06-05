@@ -97,12 +97,15 @@ def calculate_conquest_probability(user_data: dict, transit_data: dict) -> dict:
 
     office_loc = user_data.get("office_location", "")
     success_dir = user_data.get("success_direction", "")
-    if office_loc and success_dir and office_loc == success_dir:
-        score += 15
-        factors.append({"factor": "Digbala", "delta": +15, "detail": "Office aligned with power direction"})
-    else:
-        score -= 10
-        factors.append({"factor": "Digbala", "delta": -10, "detail": "Office not aligned with power direction"})
+    if office_loc and success_dir:
+        # office_loc must be a compass direction (N/S/NE/etc.) set by the user -- not a location slug
+        if office_loc.strip().lower() == success_dir.strip().lower():
+            score += 15
+            factors.append({"factor": "Digbala", "delta": +15, "detail": "Office aligned with power direction"})
+        else:
+            score -= 10
+            factors.append({"factor": "Digbala", "delta": -10, "detail": "Office not aligned with power direction"})
+    # else: no office direction set -- neutral, no delta
 
     if user_data.get("active_pitru_rin"):
         score -= 20
