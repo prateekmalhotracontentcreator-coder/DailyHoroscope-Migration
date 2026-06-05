@@ -1001,3 +1001,260 @@
     min-height: 160px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PAN-TM-1 · The Cosmic Clock — all .ptm-* classes
+   Prefix: .ptm-  |  Zero .panchang-* classes overridden  |  Light theme only
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.ptm-shell { width: 100%; max-width: 1260px; margin: 0 auto; }
+
+/* ── Header ─────────────────────────────────────────────────────────────────── */
+.ptm-header { text-align: center; margin-bottom: 18px; }
+.ptm-eyebrow {
+  margin: 0 0 10px; font-size: 0.74rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.26em; color: var(--panchang-saffron-deep);
+}
+.ptm-title {
+  margin: 0 0 9px; font-family: "Cinzel", "Playfair Display", Georgia, serif;
+  font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.4rem); line-height: 1.14;
+  color: var(--panchang-ink);
+}
+.ptm-subtitle { margin: 0; font-size: 0.86rem; color: var(--panchang-muted); }
+.ptm-status { padding: 16px; text-align: center; color: var(--panchang-muted); font-size: 0.9rem; }
+.ptm-status--error { color: #b33e2a; }
+
+/* ── Console (parchment banner) ─────────────────────────────────────────────── */
+/* Note: background-image set via inline style in JSX using process.env.PUBLIC_URL */
+.ptm-console {
+  position: relative;
+  aspect-ratio: 100 / 58;
+  min-height: 600px;
+  background-color: #f3e7c9;
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 2px #8d6422,
+    0 0 0 6px #d8be8a,
+    0 0 0 8px #8d6422,
+    0 0 0 11px rgba(141,100,34,0.45),
+    0 26px 60px rgba(74,50,24,0.22);
+  cursor: crosshair;
+  user-select: none;
+}
+.ptm-console::after {
+  content: "";
+  position: absolute; inset: 14px;
+  border: 1.5px dashed rgba(141,100,34,0.4);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Stage: content area inside the parchment frame */
+.ptm-stage {
+  position: absolute;
+  top: 19%; left: 16.5%; right: 16.5%; bottom: 15.5%;
+  display: flex; flex-direction: column; justify-content: center;
+  z-index: 2;
+}
+.ptm-chart { position: relative; width: 100%; }
+
+/* Track insets — align tracks to the gold axis art */
+:root { --tl: 13.6%; --tr: 13.3%; }
+.ptm-inset { margin-left: var(--tl); margin-right: var(--tr); position: relative; }
+
+/* ── Almanac strip ──────────────────────────────────────────────────────────── */
+.ptm-almanac {
+  display: flex; flex-wrap: nowrap; justify-content: center;
+  gap: 0 clamp(12px, 2vw, 26px); margin: 0 0 11px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(141,100,34,0.2);
+  overflow: hidden;
+}
+.ptm-alm {
+  display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  font-size: clamp(0.6rem, 1vw, 0.76rem); color: var(--panchang-ink);
+}
+.ptm-alm svg { flex: 0 0 auto; }
+.ptm-alm b   { font-weight: 700; }
+.ptm-alm span {
+  font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--panchang-saffron-deep);
+}
+
+/* ── Time-bar spine ─────────────────────────────────────────────────────────── */
+/* Note: background-image set via inline style in JSX */
+.ptm-bar {
+  position: relative;
+  aspect-ratio: 2200 / 92;
+}
+
+/* ── Hour tick labels ───────────────────────────────────────────────────────── */
+.ptm-ticks {
+  position: relative; height: 16px;
+  margin: 9px var(--tr) 0 var(--tl);
+}
+.ptm-ticks span {
+  position: absolute; top: 0; transform: translateX(-50%);
+  font-size: 0.6rem; color: rgba(78,58,31,0.74); white-space: nowrap; font-weight: 600;
+}
+.ptm-ticks span::before {
+  content: ""; position: absolute; top: -7px; left: 50%;
+  width: 1px; height: 4px; background: rgba(120,85,35,0.45); transform: translateX(-50%);
+}
+
+/* ── Window lanes ───────────────────────────────────────────────────────────── */
+.ptm-lanes { margin: 10px var(--tr) 8px var(--tl); position: relative; }
+.ptm-lane  { position: relative; height: 30px; margin-bottom: 5px; }
+.ptm-lane:last-child { margin-bottom: 0; }
+.ptm-window {
+  position: absolute; top: 0; height: 30px;
+  border-radius: 999px;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+  padding: 0 11px; white-space: nowrap; overflow: visible;
+  font-size: 0.71rem; font-weight: 700; color: #fff; cursor: pointer;
+  transition: filter 0.16s ease, box-shadow 0.16s ease;
+}
+.ptm-window svg { flex: 0 0 auto; }
+.ptm-window--good    { background: rgba(60,110,68,0.82);  border: 1px solid rgba(255,240,200,0.45); box-shadow: 0 2px 7px rgba(40,80,40,0.20); }
+.ptm-window--caution { background: rgba(168,55,38,0.80);  border: 1px solid rgba(255,225,210,0.35); box-shadow: 0 2px 7px rgba(120,40,28,0.18); }
+.ptm-window--neutral { background: rgba(168,120,40,0.78); border: 1px solid rgba(255,235,200,0.4); }
+.ptm-window:hover    { filter: brightness(1.08); }
+.ptm-window.is-active { filter: brightness(1.13); box-shadow: 0 5px 14px rgba(40,40,20,0.28), 0 0 0 2px rgba(255,236,180,0.75); }
+
+/* ── Limb rows ──────────────────────────────────────────────────────────────── */
+.ptm-limbs    { margin-top: 10px; position: relative; }
+.ptm-limb     { position: relative; height: 24px; margin-bottom: 5px; }
+.ptm-row-label {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: var(--tl); padding-right: 8px; text-align: right;
+  font-size: 0.64rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--panchang-saffron-deep);
+}
+.ptm-limb__track { position: absolute; inset: 0; margin: 0 var(--tr) 0 var(--tl); }
+.ptm-seg {
+  position: absolute; top: 0; height: 24px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center; padding: 0 9px;
+  font-size: 0.7rem; font-weight: 600; white-space: nowrap; overflow: hidden;
+  border: 1px solid transparent;
+}
+.ptm-seg--tithi     { background: rgba(179,77,34,0.14);  color: #8a4015; border-color: rgba(179,77,34,0.26); }
+.ptm-seg--nakshatra { background: rgba(94,116,65,0.16);  color: #47592e; border-color: rgba(94,116,65,0.3); }
+.ptm-seg--yoga      { background: rgba(198,127,32,0.15); color: #7a5616; border-color: rgba(198,127,32,0.3); }
+.ptm-seg--karana    { background: rgba(86,96,128,0.15);  color: #424a63; border-color: rgba(86,96,128,0.3); }
+.ptm-seg.is-active  {
+  filter: saturate(1.3) brightness(0.98);
+  box-shadow: 0 0 0 1.5px rgba(140,95,28,0.5), 0 2px 6px rgba(80,50,16,0.14);
+  font-weight: 700;
+}
+.ptm-seg--hide-label { font-size: 0 !important; }
+
+/* ── Cursor ─────────────────────────────────────────────────────────────────── */
+.ptm-cursor {
+  position: absolute; left: 0; top: -4px; bottom: 28px; width: 2px;
+  transform: translateX(-50%); pointer-events: none; z-index: 4;
+  background: linear-gradient(180deg,
+    rgba(137,85,28,0) 0%, rgba(137,85,28,0.5) 8%,
+    rgba(235,198,97,0.92) 50%, rgba(137,85,28,0.5) 92%, rgba(137,85,28,0) 100%);
+}
+.ptm-cursor__ring {
+  position: absolute; left: 50%; width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid rgba(255,234,158,0.92); box-shadow: 0 0 0 7px rgba(255,218,101,0.16);
+  transform: translate(-50%, -50%); animation: ptm-pulse 2.6s ease-in-out infinite;
+}
+.ptm-cursor__dot {
+  position: absolute; left: 50%; width: 9px; height: 9px; border-radius: 50%;
+  background: radial-gradient(circle, #fff7b5 0%, #f2ab3e 72%);
+  box-shadow: 0 0 16px rgba(246,184,61,0.64); transform: translate(-50%, -50%);
+}
+
+/* ── Magnifying lens ────────────────────────────────────────────────────────── */
+.ptm-lens {
+  position: absolute; top: 64px;
+  width: 244px; aspect-ratio: 566 / 586;
+  transform: translateX(-50%); z-index: 7; pointer-events: none;
+  transition: left 0.09s linear;
+}
+/* Note: background-image set via inline style in JSX */
+.ptm-lens__art {
+  position: absolute; inset: 0;
+  filter: drop-shadow(0 16px 26px rgba(80,50,16,0.30));
+}
+.ptm-lens__glass {
+  position: absolute; left: 64.7%; top: 33%;
+  width: 53%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  border-radius: 50%; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 9%;
+  background: radial-gradient(circle at 32% 28%, rgba(255,255,255,0.93) 0%, rgba(250,245,232,0.86) 62%, rgba(244,236,216,0.82) 100%);
+}
+.ptm-lens__glass::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background-color: rgba(255,248,230,0); transition: background-color 0.28s ease; pointer-events: none;
+}
+.ptm-lens__glass[data-tint="good"]::before    { background-color: rgba(64,130,75,0.16); }
+.ptm-lens__glass[data-tint="caution"]::before { background-color: rgba(179,62,42,0.16); }
+.ptm-lens__content {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; max-width: 100%;
+}
+.ptm-lens__time {
+  font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #5b5f2d; margin: 0 0 2px;
+}
+.ptm-lens__name {
+  font-family: "Playfair Display", Georgia, serif; font-size: 1.04rem; font-weight: 700;
+  line-height: 1.12; color: var(--panchang-ink); margin: 0 0 2px;
+}
+.ptm-lens__subline          { font-size: 0.7rem; font-weight: 500; margin: 0; }
+.ptm-lens__subline--good    { color: #5e7441; }
+.ptm-lens__subline--caution { color: #9d3f1e; }
+.ptm-lens__range            { font-size: 0.7rem; font-weight: 600; color: #4a3820; margin: 3px 0 0; }
+
+/* ── Critical Guidance bar ──────────────────────────────────────────────────── */
+.ptm-guidance {
+  margin: 20px 14px 0; border-radius: var(--panchang-radius-md); padding: 14px 20px;
+  font-size: 0.92rem; font-weight: 700; line-height: 1.5;
+  display: flex; align-items: flex-start; gap: 12px;
+  transition: background 0.28s ease, border-color 0.28s ease, color 0.28s ease;
+}
+.ptm-guidance__icon         { font-size: 1.05rem; line-height: 1.4; flex: 0 0 auto; }
+.ptm-guidance--auspicious   { background: linear-gradient(135deg, rgba(50,100,58,0.10), rgba(80,130,78,0.07)); border-left: 4px solid #3d7344; color: #2d4a26; }
+.ptm-guidance--inauspicious { background: linear-gradient(135deg, rgba(150,50,32,0.10), rgba(180,70,42,0.07)); border-left: 4px solid #b33e2a; color: #7a2810; }
+.ptm-guidance--default      { background: rgba(198,127,32,0.09); border-left: 4px solid #c67f20; color: #5a3a10; }
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes ptm-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.76; }
+  50%       { transform: translate(-50%, -50%) scale(1.14); opacity: 1.00; }
+}
+@keyframes ptm-fade-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1.00); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ptm-cursor__ring { animation: none; }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 959px) {
+  .ptm-lens__name { font-size: 0.92rem; }
+}
+@media (max-width: 720px) {
+  .ptm-console { aspect-ratio: 100 / 78; min-height: 520px; }
+  .ptm-stage   { top: 18%; left: 14%; right: 14%; bottom: 14%; }
+  :root        { --tl: 12%; --tr: 12%; }
+  .ptm-alm span { display: none; }
+  .ptm-alm      { gap: 4px; }
+  .ptm-lens     { width: 188px; top: 52px; }
+  .ptm-lens__name { font-size: 0.8rem; }
+  .ptm-row-label  { font-size: 0.54rem; }
+}
+@media (max-width: 460px) {
+  .ptm-console { aspect-ratio: 100 / 104; min-height: 480px; }
+  .ptm-almanac { gap: 0 10px; }
+  .ptm-alm     { font-size: 0.56rem; }
+  .ptm-lens    { width: 150px; top: 40px; }
+  .ptm-guidance { font-size: 0.82rem; margin: 16px 6px 0; }
+}
+/* ── END PAN-TM-1 ────────────────────────────────────────────────────────── */

@@ -4,7 +4,7 @@ import { SEO } from '../../components/SEO';
 import { LiveTVPanel } from '../../components/LiveTVPanel';
 import { Card } from '../../components/ui/card';
 import { PanchangShareCard, ShareButtons } from '../../components/ShareCard';
-import PanchangCosmicMap from '../../components/PanchangCosmicMap';
+import PanchangCosmicMap from '../../components/PanchangCosmicMapV2';
 import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap, MapPin, Globe, ChevronDown, Clock } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { safeClaimPunyaAction } from '../../lib/punyaRewards';
