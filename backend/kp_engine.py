@@ -425,9 +425,9 @@ def build_birth_snapshot(payload: ReportInput) -> dict[str, Any]:
             "midheaven_degree": degree_in_sign(angles["midheaven"]),
         },
         "cusps": cusp_details,
-        "house_signs": house_signs,
-        "house_lords": house_lords,
-        "whole_sign_houses": whole_sign_houses(asc_sign),
+        "house_signs": {str(k): v for k, v in house_signs.items()},
+        "house_lords": {str(k): v for k, v in house_lords.items()},
+        "whole_sign_houses": {str(k): v for k, v in whole_sign_houses(asc_sign).items()},
         "planets": planets,
         "moon_nakshatra": planets["Moon"]["kp"]["nakshatra"],
     }
@@ -556,24 +556,24 @@ def planet_strength(planet_name: str, details: dict[str, Any], ascendant_sign: s
     return score, reasons
 
 
-def house_relevance_for_planet(snapshot: dict[str, Any], planet_name: str) -> dict[int, int]:
+def house_relevance_for_planet(snapshot: dict[str, Any], planet_name: str) -> dict[str, int]:
     planets = snapshot["planets"]
     houses = snapshot["house_lords"]
-    result = {house: 0 for house in range(1, 13)}
+    result: dict[str, int] = {str(house): 0 for house in range(1, 13)}
     details = planets[planet_name]
-    result[int(details["whole_sign_house"])] += 3
+    result[str(int(details["whole_sign_house"]))] += 3
     for house, lord in houses.items():
         if lord == planet_name:
-            result[int(house)] += 2
+            result[str(int(house))] += 2
     kp = details["kp"]
     for linked_planet in (kp["nakshatra_lord"], kp["sub_lord"], kp["sub_sub_lord"]):
         if linked_planet not in planets:
             continue
         linked = planets[linked_planet]
-        result[int(linked["whole_sign_house"])] += 1
+        result[str(int(linked["whole_sign_house"]))] += 1
         for house, lord in houses.items():
             if lord == linked_planet:
-                result[int(house)] += 1
+                result[str(int(house))] += 1
     return result
 
 
@@ -581,10 +581,10 @@ def significators(snapshot: dict[str, Any], target_houses: set[int]) -> list[dic
     items: list[dict[str, Any]] = []
     for planet_name in ("Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"):
         relevance = house_relevance_for_planet(snapshot, planet_name)
-        hit_houses = sorted(house for house in target_houses if relevance[house] > 0)
+        hit_houses = sorted(house for house in target_houses if relevance[str(house)] > 0)
         if not hit_houses:
             continue
-        total = sum(relevance[house] for house in hit_houses)
+        total = sum(relevance[str(house)] for house in hit_houses)
         items.append(
             {
                 "planet": planet_name,
@@ -600,10 +600,10 @@ def significators(snapshot: dict[str, Any], target_houses: set[int]) -> list[dic
 
 def longevity_classification(snapshot: dict[str, Any]) -> dict[str, Any]:
     asc_sign = snapshot["angles"]["ascendant_sign"]
-    asc_lord = snapshot["house_lords"][1]
-    eighth_lord = snapshot["house_lords"][8]
-    second_lord = snapshot["house_lords"][2]
-    seventh_lord = snapshot["house_lords"][7]
+    asc_lord = snapshot["house_lords"]["1"]
+    eighth_lord = snapshot["house_lords"]["8"]
+    second_lord = snapshot["house_lords"]["2"]
+    seventh_lord = snapshot["house_lords"]["7"]
     asc_score, asc_reasons = planet_strength(asc_lord, snapshot["planets"][asc_lord], asc_sign)
     eighth_score, eighth_reasons = planet_strength(eighth_lord, snapshot["planets"][eighth_lord], asc_sign)
     saturn_score, saturn_reasons = planet_strength("Saturn", snapshot["planets"]["Saturn"], asc_sign)
@@ -791,7 +791,7 @@ def vulnerable_systems(snapshot: dict[str, Any]) -> list[dict[str, Any]]:
 
 def dasha_health_intensity(snapshot: dict[str, Any], planet_name: str) -> int:
     relevance = house_relevance_for_planet(snapshot, planet_name)
-    return relevance[1] + relevance[6] + relevance[8] + relevance[12]
+    return relevance["1"] + relevance["6"] + relevance["8"] + relevance["12"]
 
 
 def risk_score_for_date(snapshot: dict[str, Any], timeline: dict[str, Any], target_date: date) -> dict[str, Any] | None:
@@ -905,7 +905,7 @@ def critical_period_alerts(snapshot: dict[str, Any], timeline: dict[str, Any], r
     moon_point = float(snapshot["planets"]["Moon"]["longitude"])
     point_22nd_drekkana = normalize_longitude(asc_point + 210.0)
     point_64th_navamsa = normalize_longitude(moon_point + 210.0)
-    maraka_lords = {snapshot["house_lords"][2], snapshot["house_lords"][7]}
+    maraka_lords = {snapshot["house_lords"]["2"], snapshot["house_lords"]["7"]}
 
     current = current_dasha_periods(timeline, reference_date)
     for role, lord in (("Maha", current["maha_dasha"]["planet"]), ("Antar", current["antar_dasha"]["planet"])):
