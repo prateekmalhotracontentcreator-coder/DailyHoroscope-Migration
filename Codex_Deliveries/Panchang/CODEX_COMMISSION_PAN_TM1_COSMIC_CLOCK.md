@@ -4,6 +4,7 @@
 > Issued: 2026-06-03 · Revised: 2026-06-04
 > Priority: 🟠 HIGH
 > Type: CD Visual Redesign -- HTML + CSS + Interaction prototype only.
+> **Theme: Light (Golden Beige) ONLY. No dark / cr-ambient / cr-tactical variants. Single theme, locked.**
 
 ---
 
