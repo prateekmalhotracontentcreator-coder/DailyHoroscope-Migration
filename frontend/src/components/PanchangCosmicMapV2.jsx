@@ -5,9 +5,8 @@ const BACKEND_URL  = process.env.REACT_APP_BACKEND_URL;
 const PUBLIC_URL   = process.env.PUBLIC_URL || "";
 const API = `${BACKEND_URL}/api`;
 
-// ── Day axis constants (4 AM → 8 PM) ──────────────────────────────────────────
-const DAY_START = 4;
-const DAY_END   = 20;
+// ── Day axis: computed dynamically from location sunrise/sunset ───────────────
+// No hardcoded constants -- every city uses its own local day range.
 
 // ── Panchang name tables (same as PanchangCosmicMap) ─────────────────────────
 const TITHI_NAMES = [
@@ -51,21 +50,51 @@ function formatHour(value) {
   return `${t}:${String(sm).padStart(2, "0")} ${suffix}`;
 }
 
-function hourFromDate(iso) {
+// Extract city-local hour directly from the ISO string's time portion.
+// The backend generates timestamps in the queried city's local timezone
+// (e.g. "2026-06-05T07:38:00+02:00" for Zurich). Reading new Date(iso).getHours()
+// would re-interpret that in the USER's browser timezone -- wrong for every
+// non-local visitor. We extract the T-prefixed time portion instead, which
+// is always the correct city-local hour.
+function hourFromISO(iso) {
+  const match = iso && iso.match(/T(\d{2}):(\d{2}):(\d{2})/);
+  if (match) {
+    return parseInt(match[1], 10) + parseInt(match[2], 10) / 60 + parseInt(match[3], 10) / 3600;
+  }
+  // Fallback: should not be reached with well-formed API responses
   const d = new Date(iso);
-  return d.getHours() + d.getMinutes() / 60 + d.getSeconds() / 3600;
+  return d.getUTCHours() + d.getUTCMinutes() / 60;
 }
 
-function hourFromClock(dateVal, clock) {
-  const [h, m] = clock.split(":").map(Number);
-  const d = new Date(`${dateVal}T00:00:00`);
-  d.setHours(h, m, 0, 0);
-  return d.getHours() + d.getMinutes() / 60;
+// Clock strings like "05:23" from day.summary are already city-local -- just parse numbers.
+function hourFromClock(clock) {
+  const parts = clock.replace(/[^\d:]/g, "").split(":");
+  return parseInt(parts[0], 10) + (parseInt(parts[1], 10) || 0) / 60;
 }
 
-// Converts decimal hour to % on the 4 AM - 8 PM axis (clamped 0-100)
-function pct(hour) {
-  return clamp((hour - DAY_START) / (DAY_END - DAY_START) * 100, 0, 100);
+// Converts decimal hour to % on a given axis (clamped 0-100)
+function pct(hour, axisStart, axisEnd) {
+  return clamp((hour - axisStart) / Math.max(axisEnd - axisStart, 1) * 100, 0, 100);
+}
+
+// Build city-appropriate hour ticks from axisStart to axisEnd
+function buildHourTicks(axisStart, axisEnd) {
+  const hours = Math.round(axisEnd - axisStart);
+  return Array.from({ length: hours + 1 }, (_, i) => {
+    const h = axisStart + i;
+    const p = hours > 0 ? (i / hours) * 100 : 0;
+    // Label every even hour; force label on first, last, noon, midnight
+    const isKey = h === axisStart || h === axisEnd || h === 12 || h === 0;
+    const showLabel = isKey || i % 2 === 0;
+    let label = "";
+    if (showLabel) {
+      if (h === 0 || h === 24) label = "12am";
+      else if (h === 12)       label = "12pm";
+      else if (h < 12)         label = `${h}am`;
+      else                     label = `${h - 12}pm`;
+    }
+    return { hour: h, pct: p, label };
+  });
 }
 
 function solarIntensity(hour, rise, set) {
@@ -76,18 +105,18 @@ function solarIntensity(hour, rise, set) {
 
 function nextName(names, idx) { return names[idx % names.length]; }
 
-function buildRowSegments(label, segment, names) {
+function buildRowSegments(segment, names, axisStart, axisEnd) {
   if (!segment) return [];
-  const startH = segment.start ? hourFromDate(segment.start) : DAY_START;
-  const endH   = segment.end   ? hourFromDate(segment.end)   : DAY_END;
-  const vs = clamp(startH, DAY_START, DAY_END);
-  const ve = clamp(endH,   DAY_START, DAY_END);
+  const startH = segment.start ? hourFromISO(segment.start) : axisStart;
+  const endH   = segment.end   ? hourFromISO(segment.end)   : axisEnd;
+  const vs = clamp(startH, axisStart, axisEnd);
+  const ve = clamp(endH,   axisStart, axisEnd);
   const segs = [];
   if (ve > vs) segs.push({ start: vs, end: ve, name: segment.name });
-  if (segment.end && endH < DAY_END)
-    segs.push({ start: clamp(endH, DAY_START, DAY_END), end: DAY_END, name: nextName(names, segment.index) });
+  if (segment.end && endH < axisEnd)
+    segs.push({ start: clamp(endH, axisStart, axisEnd), end: axisEnd, name: nextName(names, segment.index) });
   if (!segs.length)
-    segs.push({ start: DAY_START, end: DAY_END, name: segment.name });
+    segs.push({ start: axisStart, end: axisEnd, name: segment.name });
   return segs;
 }
 
@@ -121,27 +150,13 @@ function packWindowsIntoLanes(windows) {
   return lanes;
 }
 
-// Build the hour-tick array for 4 AM-8 PM (17 ticks)
-const HOUR_TICKS = Array.from({ length: 17 }, (_, i) => {
-  const h = DAY_START + i;
-  const p = (i / 16) * 100;
-  let label;
-  if (h < 12)      label = h === 4 ? "4am" : (i % 2 === 0 ? `${h}` : "");
-  else if (h === 12) label = "12pm";
-  else               label = (i % 2 === 0 ? `${h - 12}` : "");
-  // Force labels on 4am, 8am, 12pm, 4pm, 8pm
-  if (h === 4)  label = "4am";
-  if (h === 8)  label = "8am";
-  if (h === 12) label = "12pm";
-  if (h === 16) label = "4pm";
-  if (h === 20) label = "8pm";
-  return { hour: h, pct: p, label };
-});
+// Hour ticks are built dynamically per location in the ptmData memo.
 
 function formatLongDate(iso) {
   try {
-    const d = new Date(`${iso}T12:00:00+05:30`);
-    return d.toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    // Parse as noon UTC to avoid date rollover for any timezone
+    const d = new Date(`${iso}T12:00:00Z`);
+    return d.toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
   } catch { return iso; }
 }
 
@@ -164,7 +179,7 @@ function subline(quality) {
   return "Neutral";
 }
 
-function getStateAtPct(focusPct, windows, sunrisePct, sunsetPct) {
+function getStateAtPct(focusPct, windows, sunrisePct, sunsetPct, axisStart, axisEnd) {
   const inside = windows.filter(w => focusPct >= w.leftPct && focusPct <= w.leftPct + w.widthPct);
   inside.sort((a, b) => {
     if (a.quality === "good" && b.quality !== "good") return -1;
@@ -173,10 +188,11 @@ function getStateAtPct(focusPct, windows, sunrisePct, sunsetPct) {
   });
   const w = inside[0] || null;
 
-  // Interpolate decimal hour from focusPct
-  const decimalHour = DAY_START + (focusPct / 100) * (DAY_END - DAY_START);
-  const rise = DAY_START + (sunrisePct / 100) * (DAY_END - DAY_START);
-  const set  = DAY_START + (sunsetPct  / 100) * (DAY_END - DAY_START);
+  // Interpolate city-local decimal hour from focusPct using the location's axis
+  const span = axisEnd - axisStart;
+  const decimalHour = axisStart + (focusPct / 100) * span;
+  const rise = axisStart + (sunrisePct / 100) * span;
+  const set  = axisStart + (sunsetPct  / 100) * span;
   const sol  = solarIntensity(decimalHour, rise, set);
 
   return {
@@ -240,20 +256,28 @@ export default function PanchangCosmicMapV2({ locationSlug = "new-delhi-india", 
   const ptmData = useMemo(() => {
     if (!day) return null;
 
-    const sunriseH  = hourFromClock(day.date, day.summary.sunrise);
-    const sunsetH   = hourFromClock(day.date, day.summary.sunset);
+    // City-local hours -- parse clock strings directly (already local time from API)
+    const sunriseH = hourFromClock(day.summary.sunrise);
+    const sunsetH  = hourFromClock(day.summary.sunset);
 
-    const sunrisePct = pct(sunriseH);
-    const sunsetPct  = pct(sunsetH);
+    // Dynamic day axis: 1h before sunrise, 2h after sunset, clamped 0-24.
+    // This ensures all cities (London midsummer sunset 21:20, etc.) show all windows.
+    const axisStart = Math.max(Math.floor(sunriseH) - 1, 0);
+    const axisEnd   = Math.min(Math.ceil(sunsetH)   + 2, 24);
 
-    // Build windows from day_quality_windows (already have quality: good/caution/neutral)
+    const sunrisePct = pct(sunriseH, axisStart, axisEnd);
+    const sunsetPct  = pct(sunsetH,  axisStart, axisEnd);
+
+    // Build windows -- hourFromISO extracts city-local time from the ISO offset string,
+    // so "07:38:00+02:00" (Zurich) and "07:38:00+05:30" (Delhi) both yield 7.633h correctly
+    // regardless of what timezone the user's browser is in.
     const rawWindows = [...(day.day_quality_windows || []), ...(day.special_timing_windows || [])];
     const windows = rawWindows
       .map(w => {
-        const startH = hourFromDate(w.start);
-        const endH   = hourFromDate(w.end);
-        const lp = pct(startH);
-        const wp = pct(endH) - pct(startH);
+        const startH = hourFromISO(w.start);
+        const endH   = hourFromISO(w.end);
+        const lp = pct(startH, axisStart, axisEnd);
+        const wp = pct(endH,   axisStart, axisEnd) - lp;
         if (wp <= 0) return null;
         return {
           label:     w.label,
@@ -267,25 +291,28 @@ export default function PanchangCosmicMapV2({ locationSlug = "new-delhi-india", 
 
     // Build limb rows (Tithi / Nakshatra / Yoga / Karana)
     const limbDefs = [
-      { label: "Tithi",     segment: day.panchang?.tithi,     names: TITHI_NAMES    },
-      { label: "Nakshatra", segment: day.panchang?.nakshatra, names: NAKSHATRA_NAMES },
-      { label: "Yoga",      segment: day.panchang?.yoga,      names: YOGA_NAMES     },
-      { label: "Karana",    segment: day.panchang?.karana,    names: KARANA_NAMES   },
+      { label: "Tithi",     segment: day.panchang?.tithi,     names: TITHI_NAMES     },
+      { label: "Nakshatra", segment: day.panchang?.nakshatra, names: NAKSHATRA_NAMES  },
+      { label: "Yoga",      segment: day.panchang?.yoga,      names: YOGA_NAMES      },
+      { label: "Karana",    segment: day.panchang?.karana,    names: KARANA_NAMES    },
     ];
     const limbRows = limbDefs.map(def => ({
       label: def.label,
       tone:  def.label.toLowerCase(),
-      segments: buildRowSegments(def.label, def.segment, def.names).map(s => ({
+      segments: buildRowSegments(def.segment, def.names, axisStart, axisEnd).map(s => ({
         name:     s.name,
-        leftPct:  pct(s.start),
-        widthPct: pct(s.end) - pct(s.start),
+        leftPct:  pct(s.start, axisStart, axisEnd),
+        widthPct: pct(s.end,   axisStart, axisEnd) - pct(s.start, axisStart, axisEnd),
       })),
     }));
 
-    // Suggested focus: Abhijit Muhurta midpoint, else Amrit Kalam, else noon
+    // Build hour ticks for this city's actual day span
+    const hourTicks = buildHourTicks(axisStart, axisEnd);
+
+    // Suggested focus: Abhijit Muhurta midpoint, else Amrit Kalam, else midday
     const focus = windows.find(w => w.label === "Abhijit Muhurta")
                || windows.find(w => w.label === "Amrit Kalam")
-               || { leftPct: 50, widthPct: 0 };
+               || { leftPct: pct(12, axisStart, axisEnd), widthPct: 0 };
     const suggestedFocusPct = focus.leftPct + focus.widthPct / 2;
 
     return {
@@ -293,12 +320,15 @@ export default function PanchangCosmicMapV2({ locationSlug = "new-delhi-india", 
       dateLabel:     formatLongDate(day.date),
       sunriseLabel:  day.summary.sunrise,
       sunsetLabel:   day.summary.sunset,
-      moonriseLabel: day.summary.moonrise ?? "--",
+      moonriseLabel: day.summary.moonrise ?? "-",
       pakshaLabel:   day.panchang?.paksha ?? "",
       sunrisePct,
       sunsetPct,
+      axisStart,
+      axisEnd,
       windows,
       limbRows,
+      hourTicks,
       suggestedFocusPct,
     };
   }, [day, locationSlug]);
@@ -311,7 +341,7 @@ export default function PanchangCosmicMapV2({ locationSlug = "new-delhi-india", 
   // ── Current state at focusPct ──────────────────────────────────────────────
   const focusState = useMemo(() => {
     if (!ptmData) return null;
-    return getStateAtPct(focusPct, ptmData.windows, ptmData.sunrisePct, ptmData.sunsetPct);
+    return getStateAtPct(focusPct, ptmData.windows, ptmData.sunrisePct, ptmData.sunsetPct, ptmData.axisStart, ptmData.axisEnd);
   }, [focusPct, ptmData]);
 
   // ── Active window / limb segment highlights ────────────────────────────────
@@ -459,9 +489,9 @@ export default function PanchangCosmicMapV2({ locationSlug = "new-delhi-india", 
                 {/* Time-bar spine (art) */}
                 <div className="ptm-bar" style={{ backgroundImage: `url(${PUBLIC_URL}/panchang/time-bar-spine.png)`, backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "100% 100%" }} />
 
-                {/* Hour labels */}
+                {/* Hour labels -- city-local, built from dynamic axis */}
                 <div className="ptm-ticks">
-                  {HOUR_TICKS.map(tick => (
+                  {ptmData.hourTicks.map(tick => (
                     <span key={tick.hour} style={{ left: `${tick.pct}%` }}>
                       {tick.label}
                     </span>
