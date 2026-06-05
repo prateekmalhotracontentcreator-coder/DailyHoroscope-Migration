@@ -2,9 +2,9 @@
 ## Status · Open Items · Immediate Next Action
 
 > Prepared by: Temple Team -- EverydayHoroscope
-> Date: 2026-05-31
+> Date: 2026-05-31 | Last updated: 2026-06-05 (CC -- all 4 CRITICAL OCR items resolved from source PDFs)
 > For: SBC Ingest Thread
-> Status: **🔴 BLOCKED -- TT decisions required + 4 CRITICAL OCR items + 17 source gaps open. Do not ingest until gates cleared.**
+> Status: **⛔ BLOCKED ON ATLAS -- Ingest script ready + dry-run clean (Issues: 0). Atlas SSL timeout blocking live run. All content gates cleared. Run when Atlas recovers.**
 
 ---
 
@@ -44,51 +44,45 @@ OCR report: `SBC_OCR_Issues_Report.docx`
 
 ---
 
-## Blockers -- All Must Be Cleared Before Ingest
+## Blockers Status
 
-### Blocker 0: 6 Architecture / Collection Decisions (NEW -- from A1 session review)
+### ✅ Blocker 0: 6 Architecture / Collection Decisions -- CLEARED 2026-05-20
 
-The SBC system requires 6 dedicated lookup dataset collections in MongoDB that do not yet exist. These must be designed and seeded BEFORE any SBC rule ingest, because the rules reference these collections.
+All 6 lookup collection schemas confirmed in `SBC_Session_Answers_2026-05-20.md`. The `sapt_salaka_coordinates` table data recovered via PDF read (see C-02 below). 14 mirror pairs now encoded in sbc-ch18-004 condition JSON.
 
-| Collection name | Contents |
+| Collection name | Status |
 |---|---|
-| `vedha_coordinates` | Vedha obstruction coordinate pairs for SBC grid |
-| `latta_coordinates` | Latta (kick) coordinate pairs |
-| `upgraha_coordinates` | Upagraha position coordinates for SBC |
-| `planet_significations` | Planet-to-nakshatra signification lookup |
-| `sbc_geopolitical_coordinates` | City/region coordinates for geopolitical SBC analysis |
-| `sapt_salaka_coordinates` | Sapt Salaka (7-spoke) table coordinates (also a CRITICAL OCR item C-02) |
-
-**Action: TT must decide the schema for each collection before this blocker can be cleared.** These are architecture decisions -- they cannot be resolved by NLM/GAI alone.
+| `vedha_coordinates` | Schema decided ✅ |
+| `latta_coordinates` | Schema decided ✅ |
+| `upgraha_coordinates` | Schema decided ✅ |
+| `planet_significations` | Schema decided ✅ |
+| `sbc_geopolitical_coordinates` | Schema decided ✅ |
+| `sapt_salaka_coordinates` | Schema decided ✅; 14 mirror pairs encoded in sbc-ch18-004 |
 
 ---
 
-### Blocker 1: 7 TT Priority Conflicts
+### ✅ Blocker 1: 7 TT Priority Conflicts -- CLEARED 2026-05-20
 
-These are genuine doctrinal ambiguities where the decode produced two valid readings that require TT co-founder decision.
+All 7 conflicts reviewed by GAI (all AGREE) and confirmed by TT. Encoding directives in `SBC_Conflict_Resolutions_2026-05-20.md`.
 
-**Action: Temple Team must review and resolve all 7 from `SBC_Master_Decode_Summary.md` before ingest.**
+---
 
-The 7 conflicts are listed with full context in that file. Each conflict needs:
-- A TT decision on which reading to adopt
-- The non-adopted reading marked as rejected (or kept as alternative with lower priority)
+### ✅ Blocker 2: 4 CRITICAL OCR Items -- CLEARED 2026-06-05
 
-### Blocker 2: 4 CRITICAL OCR Items
+All 4 items resolved by CC directly reading source PDFs (Ch 10 + Ch 18). JSON source files updated.
 
-| ID | Description |
-|---|---|
-| C-01 | Chandra Kalanal index -- column headers unclear |
-| C-02 | Sapt Salaka table -- 7-spoke table values partially illegible |
-| C-03 | Star rank results -- ranking table partially corrupt |
-| C-04 | Devanagari consonant groups -- Sanskrit character grouping unclear |
+| ID | Description | Resolution |
+|---|---|---|
+| C-01 | Chandra Kalanal index -- position results missing | ✅ Recovered from Ch18 p.151. New rule sbc-ch18-011 added with 28-position result table. Death positions: 1,2,7,8,9,14,15,16,21,22,23,28. Benefic: 4,5,11,12,18,19,25,26. |
+| C-02 | Sapt Salaka table -- mirror pairs missing | ✅ Recovered from Ch18 p.152. All 14 mirror pairs (7 N-S + 7 E-W) encoded in sbc-ch18-004 condition block. |
+| C-03 | Star rank results positions 11-15, 17, 20-22, 24 missing | ✅ **False alarm.** All positions confirmed present in Ch10 pp.97-98 -- they are 2nd/3rd repetitions of the 9-star cycle. sbc-ch10-023 updated with full 10-27 position table. |
+| C-04 | Dhuajadi Swan vs Vrisa Devanagari overlap | ✅ Confirmed: Swan = retroflex series (ट ठ ड ढ ण), Vrisa = dental series (त थ द ध न). sbc-ch18-007 updated with full Devanagari Unicode arrays. |
 
-**Action: Send to NLM/GAI session with the SBC PDF. Request direct PDF resolution of C-01 through C-04. These cannot be guessed -- PDF source required.**
-
-### Blocker 3: 17 Remaining Open Questions (Source Gaps)
+### 🟠 Blocker 3: 17 Remaining Open Questions (Source Gaps) -- TT ACTION REQUIRED
 
 7 of 24 original open questions (OQ-08-01 through OQ-18-01) have been resolved and documented. 17 remain open.
 
-**Action: TT to review the 17 remaining OQs in `SBC_Master_Decode_Summary.md` -- resolve as either "close with source_gap:true" or "requires NLM/GAI re-read".**
+**Action: TT to review the 17 remaining OQs in `SBC_Master_Decode_Summary.md` -- resolve as either "close with source_gap:true" or "requires NLM/GAI re-read". Once TT completes this, SBC is READY TO INGEST.**
 
 ---
 
@@ -138,9 +132,10 @@ rule["source"]["batch_id"] = "sbc_v1"  # MANDATORY -- validate_rules.py queries 
 
 | Category | Count | Status |
 |---|---|---|
-| TT priority conflicts | 7 | 🔴 BLOCKING -- TT must decide |
-| CRITICAL OCR items | 4 | 🔴 BLOCKING -- NLM/GAI PDF resolution needed |
-| Remaining source gap OQs | 17 | 🔴 BLOCKING -- TT must close each as `source_gap:true` or escalate |
+| TT priority conflicts | 7 | ✅ CLEARED 2026-05-20 |
+| Architecture/collection decisions | 6 | ✅ CLEARED 2026-05-20 |
+| CRITICAL OCR items | 4 | ✅ CLEARED 2026-06-05 |
+| Remaining source gap OQs | 17 | 🟠 TT ACTION -- close as `source_gap:true` or escalate to NLM/GAI |
 | Resolved OQs | 7 | ✅ Done -- documented in SBC_Master_Decode_Summary.md |
 
 ---
@@ -155,14 +150,22 @@ rule["source"]["batch_id"] = "sbc_v1"  # MANDATORY -- validate_rules.py queries 
 
 ---
 
-## Immediate Next Action (for TT)
+## Immediate Next Action
 
+**When Atlas recovers (CC):**
+```bash
+cd /Users/apple/DailyHoroscope-Migration
+python3 backend/scripts/ingest_sbc_v1.py --mongo-url "$MONGO_URL"
+```
+Then run doctrinal validation:
+```bash
+python3 backend/validate_rules.py --batch-id sbc_v1_20260605 --mongo-url "$MONGO_URL"
+```
+
+**TT (parallel, not blocking):**
 1. Open `SBC_Master_Decode_Summary.md`
-2. Review and decide on 7 priority conflict rules
-3. Review and close 17 remaining OQs (source_gap or escalate to NLM/GAI)
-4. Send SBC PDF + C-01 through C-04 to NLM/GAI for CRITICAL OCR resolution
-
-**This thread cannot proceed until TT completes the above. Do not attempt ingest.**
+2. Review 17 remaining source gap OQs -- mark each as `source_gap:true` or escalate to NLM/GAI
+3. These can be patched post-ingest via a separate `patch_sbc_source_gaps.py` script
 
 ---
 

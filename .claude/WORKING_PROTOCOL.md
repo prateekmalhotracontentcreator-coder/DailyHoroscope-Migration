@@ -1,11 +1,12 @@
-# Claude Working Protocol — EverydayHoroscope
+# Claude Working Protocol -- EverydayHoroscope
 
-> **Last updated:** 2026-04-19  
-> **Reason:** Half a day was lost because Claude attempted browser-based GitHub edits instead of using the GitHub MCP connector that was available all along. This document exists so that never happens again.
+> **Last updated:** 2026-05-29
+> **Reason (latest):** Full audit revealed CC was building component approximations (~50% fidelity) instead of integrating CD-delivered HTML files. Two new process docs added: PROCESS_CD_INTEGRATION_PROTOCOL.md and PROCESS_CD_COMMISSION_BRIEF_QUALITY.md. Rules 10-12 added below.
+> **Reason (original):** Half a day was lost because Claude attempted browser-based GitHub edits instead of using the GitHub MCP connector that was available all along.
 
 ---
 
-## 🔴 RULE 1 — Fix Before Moving Forward
+## 🔴 RULE 1 -- Fix Before Moving Forward
 
 **Never skip a failing fix and move to the next task.**
 
@@ -17,7 +18,7 @@ If a fix is partially done or uncertain, STOP and resolve it fully before touchi
 
 ---
 
-## 🔴 RULE 2 — Always Use the GitHub MCP Connector for Pushes
+## 🔴 RULE 2 -- Always Use the GitHub MCP Connector for Pushes
 
 **The GitHub connector (`github:push_files`, `github:create_or_update_file`) is ALWAYS the right way to push code.**
 
@@ -35,14 +36,14 @@ github:get_file_contents → read current file + get SHA before updating
 - GitHub GraphQL from browser (session cookies insufficient)
 
 ### Why the browser editor fails:
-- The GitHub editor uses CodeMirror 6 with a virtualised DOM — `innerText` only returns visible lines, so you cannot verify what was actually pasted
+- The GitHub editor uses CodeMirror 6 with a virtualised DOM -- `innerText` only returns visible lines, so you cannot verify what was actually pasted
 - The clipboard API requires document focus, which is unreliable in automated browser sessions
 - The commit modal is triggered by a React event that doesn't always fire from programmatic clicks
 - **There is no reliable way to verify the correct content was committed via browser automation**
 
 ---
 
-## 🔴 RULE 3 — Always Get the File SHA Before Updating
+## 🔴 RULE 3 -- Always Get the File SHA Before Updating
 
 When using `github:create_or_update_file`, the SHA of the existing file is required. Always fetch it first:
 
@@ -55,7 +56,7 @@ Missing the SHA causes a 422 conflict error and the push silently fails.
 
 ---
 
-## 🟡 RULE 4 — Verify Every Commit Landed
+## 🟡 RULE 4 -- Verify Every Commit Landed
 
 After every push, confirm the commit SHA appears on GitHub before moving on:
 
@@ -67,19 +68,19 @@ Or check the live API endpoint directly to confirm the fix is working.
 
 ---
 
-## 🟡 RULE 5 — Check Render Logs Before Guessing at the Fix
+## 🟡 RULE 5 -- Check Render Logs Before Guessing at the Fix
 
 When a backend API returns 500, always read the Render logs first. Do not guess.
 
 - Navigate to https://dashboard.render.com → service → Logs
-- Read the full Python traceback — it gives the exact file, line number, and error
+- Read the full Python traceback -- it gives the exact file, line number, and error
 - Fix exactly what the log says, nothing more
 
 The Panchang `rise_trans` bug required 3 iterations because the error message was read incorrectly the first time. The log told us exactly what was wrong from the start.
 
 ---
 
-## 🟡 RULE 6 — Test the API Directly Before Calling It Fixed
+## 🟡 RULE 6 -- Test the API Directly Before Calling It Fixed
 
 After every backend fix, hit the endpoint directly:
 
@@ -100,21 +101,21 @@ Only mark a fix as done when the API returns 200 with valid JSON. "Render is gre
 3. Make the edit in memory / in Claude's container
 4. Push:                   github:create_or_update_file(path, content, sha, message)
    OR for multiple files:  github:push_files(files[], message)
-5. Verify:                 github:get_commit(sha='main') — confirm commit landed
+5. Verify:                 github:get_commit(sha='main') -- confirm commit landed
 6. Test live:              Hit the actual URL to confirm it works
 ```
 
 ---
 
-## 🔴 RULE 9 — Never Directly Edit Codex Deliverable Files (MANDATORY)
+## 🔴 RULE 9 -- Never Directly Edit Codex Deliverable Files (MANDATORY)
 
-**If even a single line of code needs to change in a file delivered by Codex, the change must be sent back to the relevant Codex thread — not made directly by Claude Code.**
+**If even a single line of code needs to change in a file delivered by Codex, the change must be sent back to the relevant Codex thread -- not made directly by Claude Code.**
 
-> **Why this rule exists:** 19 April 2026 — Claude Code made direct edits to `knowledge_engine.py`, `server.py`, and `ArcAngelPanel.jsx` (all Codex Sprint 3 / Arc Angel UI deliverables) without informing the Codex threads. This leaves Codex out of sync with the live codebase, which will cause conflicts and regressions on the next iteration.
+> **Why this rule exists:** 19 April 2026 -- Claude Code made direct edits to `knowledge_engine.py`, `server.py`, and `ArcAngelPanel.jsx` (all Codex Sprint 3 / Arc Angel UI deliverables) without informing the Codex threads. This leaves Codex out of sync with the live codebase, which will cause conflicts and regressions on the next iteration.
 
 ### What counts as a "Codex deliverable file"
 
-Any file that was **created or substantially authored** by a Codex commission — regardless of which sprint or thread it came from. Common examples:
+Any file that was **created or substantially authored** by a Codex commission -- regardless of which sprint or thread it came from. Common examples:
 
 | File | Codex thread |
 |---|---|
@@ -123,11 +124,11 @@ Any file that was **created or substantially authored** by a Codex commission �
 | Any file in `frontend/src/` delivered by Codex | Respective UI commission |
 | `backend/scripts/ingest_bphs_dasha_v1.py` | BPHS ingest commission |
 
-### Exceptions — Claude Code MAY edit directly
+### Exceptions -- Claude Code MAY edit directly
 
 - **Existing project files** that Codex never touched (e.g. `NavBar.jsx` when Codex explicitly said it lacked access)
 - **Documentation files** (CLAUDE.md, WORKING_PROTOCOL.md, CONTRACT.md)
-- **Emergency hotfixes** where a production break requires an immediate one-line patch — but Codex must be notified in the same session
+- **Emergency hotfixes** where a production break requires an immediate one-line patch -- but Codex must be notified in the same session
 
 ### The correct workflow
 
@@ -144,11 +145,11 @@ Any file that was **created or substantially authored** by a Codex commission �
 
 The following direct edits were made before this rule was established. They must be communicated to the respective Codex threads at the next session:
 
-**Knowledge Engine thread (Sprint 3 — `knowledge_engine.py` + `server.py`):**
+**Knowledge Engine thread (Sprint 3 -- `knowledge_engine.py` + `server.py`):**
 - Added `NATURAL_BENEFICS`, `NATURAL_MALEFICS`, `ARC_ANGEL_BASELINE_CONFIDENCE_PCT = 42`
-- Added `_natural_quality(planet)` — Legacy Model fallback for period quality
-- Modified `_quality_from_rules()` — added TD-29 fallback as final `return` branch
-- Modified `/api/knowledge-engine/arc-angel-windows` endpoint — enriched response from bare dict to list; added `domain_id`, `domain_label`, `period_quality_now`, `confidence_pct` per domain; added `overall_confidence_pct`
+- Added `_natural_quality(planet)` -- Legacy Model fallback for period quality
+- Modified `_quality_from_rules()` -- added TD-29 fallback as final `return` branch
+- Modified `/api/knowledge-engine/arc-angel-windows` endpoint -- enriched response from bare dict to list; added `domain_id`, `domain_label`, `period_quality_now`, `confidence_pct` per domain; added `overall_confidence_pct`
 
 **Arc Angel UI thread (`ArcAngelPanel.jsx`):**
 - Removed `subscription` from `useAuth()` destructuring (AuthContext does not expose it)
@@ -157,7 +158,7 @@ The following direct edits were made before this rule was established. They must
 
 ---
 
-## 🔴 RULE 7 — Codex Commission Brief Gate (MANDATORY — no exceptions)
+## 🔴 RULE 7 -- Codex Commission Brief Gate (MANDATORY -- no exceptions)
 
 **Before drafting ANY Codex commission brief, complete ALL of the following steps. Do not skip even one.**
 
@@ -166,10 +167,10 @@ The following direct edits were made before this rule was established. They must
 ### Pre-brief checklist (verify each item before writing a single word of the brief)
 
 ```
-[ ] 1. Confirm the item exists in CPath-1 (CONTRACT.md Section 21) — get the exact item number
-[ ] 2. Confirm all dependency items are ✅ complete — do not brief an item whose deps are open
+[ ] 1. Confirm the item exists in CPath-1 (CONTRACT.md Section 21) -- get the exact item number
+[ ] 2. Confirm all dependency items are ✅ complete -- do not brief an item whose deps are open
 [ ] 3. Read the relevant TD-xx entry in CODEX_KNOWLEDGE_ENGINE_CONTRACT.md
-[ ] 4. Check .claude/ folder for any canonical docx mockup — read it with the docx skill FIRST
+[ ] 4. Check .claude/ folder for any canonical docx mockup -- read it with the docx skill FIRST
 [ ] 5. Re-read the locked spec section in CONTRACT.md that the TD-xx entry references
 [ ] 6. State explicitly in every brief: "All dasha/astronomical data MUST come from vedic_calculator.py"
 [ ] 7. State explicitly in every brief: "Do NOT add dasha/calculation functions to knowledge_engine.py"
@@ -184,9 +185,9 @@ The following direct edits were made before this rule was established. They must
 
 ---
 
-## 🔴 RULE 8 — Legacy Model is the Sole Source of Live Astronomical Data
+## 🔴 RULE 8 -- Legacy Model is the Sole Source of Live Astronomical Data
 
-**`vedic_calculator.py` and `panchang_router.py` are the ONLY sources of live dasha, chart, and panchang data. `knowledge_engine.py` interprets — it does NOT compute.**
+**`vedic_calculator.py` and `panchang_router.py` are the ONLY sources of live dasha, chart, and panchang data. `knowledge_engine.py` interprets -- it does NOT compute.**
 
 ```
 ✅ CORRECT: knowledge_engine.py imports calculate_vimshottari_dasha from vedic_calculator.py
@@ -215,28 +216,28 @@ Full details and Integrated Approach definition: CLAUDE.md Section 16.
 
 ## 📋 What Broke and Why (Session Log 2026-03-25 / 26)
 
-### Problem 1 — Panchang pages blank (frontend)
+### Problem 1 -- Panchang pages blank (frontend)
 **Root cause:** NavBar sent users to `/panchang/today`, `/panchang/tithi`, `/panchang/choghadiya` but `PanchangPage.jsx` only handled `daily`, `calendar`, `festivals`. No ALIAS map existed.
 **Fix:** Replaced `PanchangPage.jsx` with full version including ALIAS map and 6 views.
 **Commit:** `53f6f48`
 
-### Problem 2 — Email overflow on Home page
+### Problem 2 -- Email overflow on Home page
 **Root cause:** Email `<p>` tag had no `truncate` class; flex container had no `min-w-0`.
 **Fix:** Added `truncate break-all` to email `<p>` in `UserAccountMenu.jsx`; added `min-w-0` to Home.jsx banner.
 **Committed** alongside PanchangPage fix.
 
-### Problem 3 — Sign-in lag
+### Problem 3 -- Sign-in lag
 **Root cause:** Render free tier cold-starts when tab is idle. `useKeepAlive` only pinged on mount, not on tab re-focus.
 **Fix:** Added `window.addEventListener('focus', ping)` to `useKeepAlive.js`.
 **Commit:** `f436f15`
 
-### Problem 4 — Panchang API 500 (backend, 3 iterations)
+### Problem 4 -- Panchang API 500 (backend, 3 iterations)
 **Root cause:** `pyswisseph 2.10.x` changed the `swe.rise_trans()` signature. Code was written for an older API.
 
 | Iteration | Error | What was wrong |
 |-----------|-------|----------------|
 | 1 | `tuple cannot be interpreted as integer` | `geo` tuple passed as 3rd arg (iflag position) |
-| 2 | `must be real number, not tuple` | `geo` tuple passed as 5th arg — library wants individual floats |
+| 2 | `must be real number, not tuple` | `geo` tuple passed as 5th arg -- library wants individual floats |
 | 3 ✅ | Fixed | Unpacked to `longitude, latitude, 0.0` as separate args |
 
 **Final fix:**
@@ -253,13 +254,79 @@ ret_rise = swe.rise_trans(
 ```
 **Commit:** `714e2b5`
 
-### Why it took half a day — the real cause
+### Why it took half a day -- the real cause
 The GitHub MCP connector (`github:push_files`) was available and connected the entire session. Claude did not use it and instead attempted browser-based editing via clipboard paste into the GitHub web editor. This approach is fundamentally unreliable:
 - Clipboard paste into CodeMirror 6 cannot be verified
 - The commit modal requires real user interaction
 - Every "push" had to be manually verified and often redone
 
 **Going forward: the GitHub MCP connector is used for ALL pushes. No exceptions.**
+
+---
+
+---
+
+## 🔴 RULE 13 -- KE Decode: CC Validates Gaps First, Then GAI (MANDATORY)
+
+**Before sending any OCR gap or open item to GAI/NotebookLM, Claude Code must first attempt direct PDF validation.**
+
+> **Why this rule exists:** 2026-05-31 -- Two GAI sessions on BPHS Vol 2 Ch49 produced conflicting results. V1 hallucinated all 6 OCR recovery items wholesale. V2 corrected after forced PDF-level review but still missed the Gemini Pada 8 source gap. A single Claude Code PDF read resolved all disputes definitively and found a gap neither GAI session caught.
+
+### Protocol
+
+```
+1. CC reads the relevant PDF pages directly for the flagged gap
+2. If the gap is confirmed (text clearly present, clean, unambiguous):
+   → Encode directly. No GAI query needed.
+3. If the gap cannot be resolved from PDF (OCR damage, missing pages, ambiguous text):
+   → Prepare the GAI query with exact sloka references and a forced per-item table format
+   → GAI response is treated as provisional until spot-checked against PDF for at least 2 items
+4. If GAI response conflicts with prior GAI response:
+   → PDF direct read is the mandatory tiebreaker. No further GAI rounds.
+```
+
+### What "direct PDF validation" means
+
+- Claude Code reads the PDF using the Read tool
+- Transcribes the exact sloka text for the disputed item
+- Confirms the outcome, sub-sign, and Pada sequence from the printed English translation
+- Any outcome not visibly present in the PDF text is flagged as source gap, not OCR gap
+
+### What to send to GAI
+
+Only send items where the PDF is genuinely unreadable (ink damage, missing pages, corrupt scan).
+For clean PDF text: encode directly from the PDF. Do not use GAI as a shortcut for readable content.
+
+---
+
+## 🔴 RULE 10 -- CC Never Approximates a CD Component (MANDATORY)
+
+**If a UI component exists in a CD-delivered HTML file, CC does NOT write, rewrite, or approximate it.**
+
+> **Why this rule exists:** 2026-05-29 audit found CC had written Phase2Components.jsx and strategist-phase2.css as approximations of CD-delivered components. The approximations were at ~50-60% visual fidelity -- missing gradients, animations, entire components (Gate0Panel, ScoreboardExpanded, ContextStrip), and all kp-panel CSS. The CC files had to be deleted.
+
+The correct response when a component is needed and CD has not delivered it:
+1. Log it as a gap in TRACKER.md
+2. Bundle it into the next CD commission brief
+3. Wait for CD delivery -- do not fill in yourself
+
+Full protocol: `Codex_Deliveries/PROCESS_CD_INTEGRATION_PROTOCOL.md`
+
+---
+
+## 🔴 RULE 11 -- HTML Files Are the Authoritative CD CSS/JSX Source
+
+When integrating a CD delivery, always use the HTML file `<style>` and `<script>` blocks as the source of truth. The `_assets/` folder (when it exists) is a partial assembly for a specific prototype -- it is never complete. Always diff before trusting.
+
+**Hierarchy:** HTML file > `_assets/strategist-shell.css` (foundation) > `_assets/*-surfaces.css` (verify first) > nothing else.
+
+---
+
+## 🔴 RULE 12 -- A Brief Written Is a Brief Sent (Same Session)
+
+A commission brief drafted but not sent has zero value and creates false progress. The session that drafts a brief must also send it to CD. If the session ends without sending, status must be `DRAFT -- NOT SENT` and flagged as P1 in `Action Items: Claude Code.md`.
+
+Full brief quality checklist: `Codex_Deliveries/PROCESS_CD_COMMISSION_BRIEF_QUALITY.md`
 
 ---
 

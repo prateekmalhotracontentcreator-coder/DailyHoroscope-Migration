@@ -136,7 +136,7 @@ Next step:  Begin ingest with 300 Combinations (Priority 1)
 | P2-1 | KP Astrology | 256 / 77 files | 44 issues (2 P0, 15 P1) | Verify entries 248-249; claim_axis retroactive pass |
 | P2-2 | BPHS Vol 1 | 200+ (Ch11-Ch24) | 26 issues (6 HIGH open) | Category D: 7 doctrinal ambiguities → TT decision |
 | P2-3 | BPHS Vol 2 | TBD | OCR report ready | Work through 9 next actions in BPHS_Vol2_TempleTeam_Brief.docx |
-| P2-4 | Medical Astrology | TBD | 81 issues (2 Grade A CRITICAL) | Chart IX zero birth data; "17/46" annotation must resolve first |
+| P2-4 | Medical Astrology | TBD | 81 issues -- ✅ ALL GRADE A+B RESOLVED 2026-05-31 | 🟢 READY FOR INGEST. Grade C: bench-004 `birth_data_unavailable:true`, Charts XI/XII/XXII `analytical_description_only:true`. gai_citation_unverified on B-7/B-8/B-11 -- Ingest Thread cross-check before co-founder approval. |
 | P2-5 | Phaladeepika | 743 (16 ch) + Tier 4 | 102 issues (6 HIGH) | Tier 4 (3 chapters) still pending decode; ingest decoded tiers only |
 
 **Dedup rule:** Run `ke_dedup_script.py` after each Phase 2 book ingested. Cross-text flags against Phase 1 books are expected (documented in each book's output folder).

@@ -4,7 +4,7 @@
 > Prepared by: Temple Team -- EverydayHoroscope
 > Date: 2026-05-31
 > For: 300 Horoscopes Vol 1 Ingest Thread
-> Status: **✅ READY -- All 3 previously blocked rules cleared 2026-05-31. Priority 2 ingest.**
+> Status: **✅ READY -- All 3 previously blocked rules cleared 2026-05-31. Priority 1 ingest (300 Combinations complete).**
 
 ---
 
@@ -16,7 +16,7 @@ Refer `KE_TEXTBOOK_DECODE/Thread_Briefs/THREAD_BRIEF_300HOROSCOPES_INGEST.md` fo
 
 ## What This Thread Owns
 
-"Three Hundred Important Combinations" Vol 1 -- 57 natal chart interpretation rules based on benchmark horoscopes. Priority 2 in the approved ingest sequence (run after 300 Combinations).
+"Three Hundred Important Combinations" Vol 1 -- 57 natal chart interpretation rules based on benchmark horoscopes. **Priority 1** in the approved ingest sequence (300 Combinations is now complete).
 
 ---
 
@@ -68,7 +68,29 @@ File: `H300_DuplicateCandidateReport.md`
 
 ---
 
-## ⚠️ Phase 2 Schema Learnings -- Apply Before Writing Script
+## ⚠️ Schema Learnings -- Apply Before Writing Script
+
+> **Two rounds of learnings are accumulated here. Read both before writing the ingest script.**
+
+### From 300 Combinations Triage (2026-06-01) -- NEW
+
+These are the hardest-won learnings -- all from a book in the same Raman family as this one:
+
+**Condition `None` in source JSON ≠ undocumented.** Check the `*_Diagnostic.md` Content Gate for that rule's yoga number before marking `tba:true`. All 14 "missing" conditions in 300 Combinations were fully documented in the Diagnostics.
+
+**Bucket B: "Not in standard classical texts" = textbook mismatch.** If a Raman rule gets flagged as "not supported by classical texts," the AI validator is comparing to BPHS. That is always Bucket B for Raman material. Patch to PHR + `validator_error:true`.
+
+**Strip speculative metadata before validation.** Do NOT add `day_night_modifier`, `engine_note`, or similar overlays unless they are explicitly stated in the source text or Diagnostic. Inferred metadata fails validation and causes re-work.
+
+**Condition encoding bugs are real.** When a multi-trigger condition says "Planet X in houses [A, B]" but the Diagnostic says "Planet X aspects houses [A, B]," these are different things. Read the Diagnostic description literally -- do not paraphrase.
+
+**`results` as list-of-dicts needs `extract_effects()`.** If the decode file has `results: [{"effect": "...", "effect_type": "..."}]` instead of plain strings, flatten them before building `interpretation.detailed`. 300 Horoscopes likely uses a different schema -- check first.
+
+**`conditions` dict is valid and must NOT be unwrapped.** If `conditions` is a rich dict (not a list), store it directly as `condition`. Do not try to iterate it as a list.
+
+---
+
+### From BPHS Vol 1 Phase 2 (2026-06-01) -- existing
 
 **Learned from BPHS Vol 1 Phase 2 (2026-06-01). Apply from the start.**
 
@@ -112,7 +134,7 @@ python3 backend/ke_dedup_script.py \
   --output-report dedup_h300_vs_bphs_vol1.md \
   --threshold 0.82
 ```
-Also run against 300 Combinations if already ingested.
+Also run against 300 Combinations (now ingested -- batch `300-combinations-v1-20260601`).
 
 **Step 2 -- Inject on every rule:**
 ```python
@@ -161,4 +183,5 @@ rule["source"]["batch_id"] = "300_horoscopes_vol1_v1"  # MANDATORY -- validate_r
 ---
 
 *Brief prepared by Temple Team -- EverydayHoroscope, 2026-05-31*
+*Updated: 2026-06-01 -- Promoted to Priority 1. Schema learnings from 300 Combinations triage added.*
 *KE Freeze LIFTED ✅ 2026-05-22. All ingest targets `horoscope_db`. Do NOT use stale `EverydayHoroscope` DB.*

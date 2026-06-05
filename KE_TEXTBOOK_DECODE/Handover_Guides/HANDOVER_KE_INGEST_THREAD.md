@@ -54,10 +54,10 @@ This anchors your output destination. **ALL progress notes, resolution summaries
 
 | Order | Book | Rules | Blocker |
 |---|---|---|---|
-| **1 -- START NOW** | 300 Combinations | 300 | None -- clean handover, no OCR issues |
-| **2** | 300 Horoscopes Vol 1 | 57 (3 blocked) | Flag h300-s01-016, h300-s04-004, h300-s04-005 to TT before ingesting those 3 |
-| **2** | Longevity Unnatural Death | 44 | Resolve 5 HIGH OCR items via NLM/GAI first (see Section 5) |
-| **3** | Destiny Numerology | 189 | Ch15 test vectors confirmed complete |
+| ✅ **1 -- COMPLETE** | 300 Combinations | 329 | ✅ INGESTED + TRIAGE COMPLETE 2026-06-01. 141 AA / 188 PHR / 0 flagged. |
+| **1 -- START NOW** | 300 Horoscopes Vol 1 | 57 | ✅ All 3 formerly blocked rules cleared (2026-05-31 PDF read). No blockers. |
+| **2** | Longevity Unnatural Death | 44 | ✅ All 5 HIGH OCR items resolved (2026-05-31). Ready. |
+| **3** | Destiny Numerology | 189 | CRITICAL + HIGH OCR items need NLM/GAI first |
 | **3** | SBC | 181 | Flag 7 blocking priority conflicts to TT; resolve 24 source gaps |
 | **LAST** | Longevity 58 chapters | ~600+ | Do NOT start -- needs explicit TT aayu bucket sign-off |
 
@@ -167,4 +167,31 @@ After each book's ingest script completes:
 
 ---
 
+---
+
+## 10. Schema Learnings from 300 Combinations Ingest (2026-06-01)
+
+Apply these to every subsequent book ingest.
+
+### L1 -- `tba: true` is temporary, not permanent
+Conditions marked `tba: true` because they were `None` in source JSON may still be fully documented in the corresponding Diagnostic file (`*_Diagnostic.md`). **Always read the Diagnostic before marking a rule tba permanently.** In 300 Combinations, 14 rules had `None` conditions in the source JSON but complete conditions in the Diagnostic Content Gate section.
+
+### L2 -- Bucket B: Textbook mismatch is the most common validator error
+When the AI validator says "not in standard classical texts" for a rule from B.V. Raman (or any non-BPHS source), it is comparing to BPHS as "standard." This is always Bucket B. Patch to PHR with `validator_error: true` + a note that the rule is from a different textbook. Do NOT reject these rules.
+
+### L3 -- Condition encoding errors are Bucket C, not Bucket B
+When an AI validator catches a genuine logical error in the condition structure (e.g., "three planets cannot simultaneously occupy two houses" → actually it correctly identified that Saturn should *aspect* the houses, not *be placed* in them), that is a real Bucket C that requires a condition fix, not a PHR patch. Re-read the original source condition carefully before deciding.
+
+### L4 -- Strip speculative metadata overlays before validation
+When adding metadata to condition dicts (e.g., `day_night_modifier`, `engine_note` with specific day/night × afflictor mappings), only include if confirmed in the source text. If the Diagnostic shows MEDIUM-LOW confidence on a note, strip the note from the condition dict and let the plain condition be validated on its own merits.
+
+### L5 -- Old-schema `conditions` can be either a list OR a dict
+In 300 Combinations old-schema rules, `conditions` was sometimes a list (simple rules) and sometimes a rich nested dict (complex multi-trigger rules). The ingest script must check `isinstance(conds, dict)` before treating it as a list. Storing a dict directly as `condition` is correct. The OP-02 fix applied this.
+
+### L6 -- `results` as list of dicts needs `extract_effects()` helper
+When `results` is a list of dicts with `effect`/`description`/`result` keys (instead of plain strings), the ingest script must use `extract_effects()` to flatten them to plain text before building `interpretation.detailed`. Plain dict repr in the interpretation field will fail AI validation.
+
+---
+
 *Handover prepared: 2026-05-30 by Claude Code Main Thread*
+*Updated: 2026-06-01 -- 300 Combinations ✅ COMPLETE, 300 Horoscopes is Priority 1. Schema learnings L1-L6 added.*

@@ -4,11 +4,15 @@
 > Prepared by: Temple Team -- EverydayHoroscope
 > Date: 2026-05-31
 > For: 300 Combinations Ingest Thread
-> Status: **✅ READY -- Priority 1 ingest. No blockers. Start immediately.**
+> Status: **✅ COMPLETE -- Ingested + Triage DONE. 141 AA / 188 PHR / 0 flagged. 2026-06-01.**
 
 ---
 
 ## One-Liner
+
+✅ **COMPLETE.** 329 rules ingested + triage done. 141 auto_approved / 188 PHR / 0 flagged. All 8 OPs closed. Awaiting co-founder sign-off on 141 auto_approved (TT). Next book: 300 Horoscopes.
+
+> This brief is preserved for schema learnings. See `THREAD_BRIEF_300HOROSCOPES_INGEST.md` for the next ingest.
 
 Refer `KE_TEXTBOOK_DECODE/Thread_Briefs/THREAD_BRIEF_300COMBINATIONS_INGEST.md` for all 300 Combinations KE Ingest.
 
@@ -161,5 +165,35 @@ rule["source"]["batch_id"] = "300_combinations_v1"  # MANDATORY -- validate_rule
 
 ---
 
+---
+
+## Post-Ingest Learnings (2026-06-01) -- Forward These to All Future Ingest Threads
+
+### What this book taught us
+
+#### Dual-schema decode files are real
+The 300 Combinations folder had TWO distinct schemas in one batch -- NEW (Y001-040, `full_text`+`condition`) and OLD (Y044-300, `results`+`polarity`+`conditions`). The ingest script must detect both and map each to the canonical KE schema. Always run the schema audit snippet before writing the ingest script.
+
+#### `conditions` dict is valid and must NOT be unwrapped
+OLD-schema rules in Y123-Y300 range stored `conditions` as a rich nested dict (not a list). This is legitimate -- the dict IS the condition structure. `isinstance(conds, dict) → store directly as condition`. Do NOT try to convert to a list.
+
+#### `results` as list-of-dicts needs flattening
+Some rules stored `results` as `[{"effect": "...", "effect_type": "..."}]` (dicts) instead of `["outcome string"]`. Use `extract_effects()` helper to flatten to plain text before building `interpretation.detailed`.
+
+#### `tba: true` is a research flag, not a permanent state
+14 rules had `conditions: None` in the source JSON and were marked `tba: true`. But the conditions were FULLY documented in the corresponding `*_Diagnostic.md` Content Gate sections. The fix: read the Diagnostics, encode the conditions, re-validate. **Always check Diagnostics before surrendering.**
+
+#### Bucket B validator textbook mismatch -- most common false flag
+The AI validator is trained on BPHS as "standard classical astrology." For rules from B.V. Raman's books (a DIFFERENT author/system), the validator consistently flags correct conditions as "not in standard texts." This is always Bucket B. No rule should be rejected on this basis alone.
+
+#### Condition encoding errors ARE real (Y271)
+One rule (Y271 Bandhana) had a genuine encoding error: I wrote `Saturn in 2nd or 12th` when the source description said `Saturn aspects the 2nd/12th house where Sun+Moon are placed`. The AI validator correctly caught this as logically problematic. Read Diagnostic condition descriptions literally before encoding.
+
+#### Speculative metadata must be stripped before validation (Y294)
+One rule (Y294 Matibhramana) had `day_night_modifier: true` and an engine_note about which malefic causes epilepsy vs insanity by day/night. This was my interpolation -- not in Raman's text. The Diagnostic showed MEDIUM-LOW confidence. Strip all speculative overlays before submitting for validation.
+
+---
+
 *Brief prepared by Temple Team -- EverydayHoroscope, 2026-05-31*
+*Updated: 2026-06-01 -- COMPLETE. Triage done. Post-ingest learnings added.*
 *KE Freeze LIFTED ✅ 2026-05-22. All ingest targets `horoscope_db`. Do NOT use stale `EverydayHoroscope` DB.*

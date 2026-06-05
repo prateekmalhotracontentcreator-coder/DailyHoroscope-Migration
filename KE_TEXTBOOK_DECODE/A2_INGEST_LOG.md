@@ -487,3 +487,200 @@ python3 backend/scripts/patch_bphs_vol1_phase2_bucket_c.py --mongo-url "$MONGO_U
 - **Total**: 696
 
 **BPHS Vol 1 Phase 2: FULLY TRIAGED.** 0 flagged. Zero GAI consultations required.
+
+---
+
+## Phase 14 -- BPHS Vol 2 Phase 1 Flagged Rules Triage (2026-06-03)
+
+### 14a -- Vol 2 Phase 1 Discovery & Inspect
+
+Confirmed all 7 BPHS Vol 2 Phase 1 batches present in `horoscope_db` (migrated from EverydayHoroscope).
+Rule ID scheme: `R-BPHS47-*` through `R-BPHS58-*`.
+
+| Batch | Chapter | Active rules | Flagged |
+|---|---|---|---|
+| bphs-ch47-dasha-20260416 | Ch47 Sun MD | 181 | 26 |
+| bphs-ch53-dasha-20260417 | Ch53 Moon MD | 158 | 27 |
+| bphs-ch54-dasha-20260417 | Ch54 Mars MD | 180 | 15 |
+| bphs-ch55-dasha-20260417 | Ch55 Rahu MD | 210 | 11 |
+| bphs-ch56-dasha-20260418 | Ch56 Jupiter MD | 175 | 17 |
+| bphs-ch57-dasha-20260419 | Ch57 Saturn MD | 209 | 26 |
+| bphs-ch58-dasha-20260419 | Ch58 Mercury MD | 178 | 14 |
+| **Total active** | | **1,291** | **136** |
+
+Deprecated rules: 324 (all orphans, 0 overlap with active -- no action needed).
+
+Inspect script: `backend/scripts/inspect_bphs_vol2_phase1_flagged.py`
+Status breakdown script: `backend/scripts/bphs_vol2_status_breakdown.py`
+Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/inspect_bphs_vol2_phase1_flagged_20260603_100633.log`
+
+**Triage classification of 136 flagged rules:**
+- Bucket A (truncation): 0
+- Bucket B (validator error): 13
+- Bucket C (genuine): 123 → sub-classified as:
+  - C_metadata (condition encoding error): 61
+  - C_empty (gap-fill, empty detailed, reject): 6
+  - C_genuine (API validator queue): **56 remaining**
+
+### 14b -- Bucket B patch (13 rules)
+
+Script: `backend/scripts/patch_bphs_vol2_phase1_bucket_b.py`
+Action: `flagged` → `pending_human_review` + `validator_error:true`
+Dry-run log: `patch_bphs_vol2_phase1_bucket_b_20260603_102524_dryrun.log`
+Live log: `patch_bphs_vol2_phase1_bucket_b_20260603_102621_live.log`
+
+**Result: 13/13 patched · 0 skipped · 0 errors ✅**
+
+All 13 are validator doctrinal errors: Rahu/Ketu exaltation/moolatrikona misapplied,
+multi-planet dasha-antardasha structure misread, pilgrimage classical context,
+benefic-in-dusthana during malefic Mahadasha.
+
+### 14c -- C_metadata patch (61 rules)
+
+Script: `backend/scripts/patch_bphs_vol2_phase1_c_metadata.py`
+Action: `flagged` → `pending_human_review` + `validator_error:true`
+Root cause: batch-level condition metadata encoding errors --
+  Ch47 (20): dasha_lord forced to Sun, antardasha_planet overwritten
+  Ch53 (15): dasha_lord set to Venus for Moon Mahadasha batch
+  Ch54  (6): antardasha_planet/dasha_lord Mars misassignment
+  Ch55  (2): Rahu batch antardasha_planet mismatches
+  Ch56  (8): antardasha_planet set to Jupiter for all non-Jupiter rules
+  Ch57  (7): Saturn batch antardasha_planet mismatches
+  Ch58  (3): Mercury batch planet mismatches
+Dry-run log: `patch_bphs_vol2_phase1_c_metadata_20260603_102707_dryrun.log`
+Live log: `patch_bphs_vol2_phase1_c_metadata_20260603_102754_live.log`
+
+**Result: 61/61 patched · 0 skipped · 0 errors ✅**
+
+### 14d -- C_empty reject (6 rules)
+
+Script: `backend/scripts/patch_bphs_vol2_phase1_c_empty_reject.py`
+Action: `flagged` → `rejected`
+All 6 are Ch57 `-GF` suffix gap-fill rules: empty detailed field,
+non-standard gap_fill_direct method, malformed condition structure.
+Dry-run log: `patch_bphs_vol2_phase1_c_empty_reject_20260603_102846_dryrun.log`
+Live log: `patch_bphs_vol2_phase1_c_empty_reject_20260603_102945_live.log`
+
+**Result: 6/6 rejected · 0 skipped · 0 errors ✅**
+
+### 14e -- C_genuine API validator + PDF read (56 rules) -- COMPLETE ✅
+
+API validator (claude-haiku-4-5) ran on 56 remaining flagged rules.
+Result: 7 validator_error → Bucket B (already in `patch_bphs_vol2_phase1_api_bucket_b.py`);
+31 genuine_issue + 18 uncertain → PDF verification against Santhanam BPHS Vol 2.
+
+**PDF verification (2026-06-03):** All 49 remaining rules read against source PDF
+(Ch.47 pp86-102, Ch.53 pp149-162, Ch.54 pp163-173, Ch.55 pp174-187,
+Ch.56 pp188-200, Ch.57 pp201-216, Ch.58 pp217-226).
+
+Result: 48/49 CONFIRMED authentic (validator errors). 1 DEFERRED.
+0 rejections.
+
+Key findings:
+- BPHS dusthana grouping (6th/8th/12th identical effects) confirmed authentic across ALL chapters
+- "dysentry" = Santhanam's authentic transliteration (Ch.53/54/56/57/58 all use it)
+- Ketu with benefics → still negative (Ch.56 sl.32, Ch.57 sl.16-18 "even if" clauses)
+- Rahu/Ketu as maraka lords (2nd/7th) is explicit BPHS formulation
+- Remedies confirmed in all chapters where validator claimed none
+- BPHS commencement-vs-later pattern (good start in dusthana) confirmed
+- 7 encoding errors noted (dasha_lord, antardasha_planet, houses_involved) -- separate fix task
+
+Deferred: R-BPHS55-086 (Mars in 9th from Rahu -- 9th not in slokas 78-79 positive grouping)
+
+**Two patch scripts ready to run (dry run first, then --live):**
+1. `patch_bphs_vol2_phase1_api_bucket_b.py` -- 7 Bucket B rules → PHR + validator_error
+2. `patch_bphs_vol2_phase1_pdf_confirmed.py` -- 47 confirmed + 1 deferred = 48 rules
+
+`patch_bphs_vol2_phase1_deferred.py` is OBSOLETE (superseded by pdf_confirmed.py).
+
+**Scripts run (2026-06-03):**
+- Bucket B live: 7/7 patched ✅ · log: `patch_bphs_vol2_phase1_api_bucket_b_20260603_113928_live.log`
+- PDF confirmed live: 49/49 patched ✅ · log: `patch_bphs_vol2_phase1_pdf_confirmed_20260603_114036_live.log`
+
+BPHS Vol 2 Phase 1 flagged triage: **136/136 rules complete. ✅**
+
+---
+
+### 14f -- Ch.52 flagged rules triage -- COMPLETE ✅
+
+Ch.52 (Sun MD antardasha effects) is in horoscope_db -- 109 rules validated (batch `bphs-ch52-dasha-20260421`).
+Validate report `backend/output/validate_ch52_dasha.md` (2026-05-02) showed 3 flagged rules.
+All 3 triaged via PDF read against Santhanam BPHS Vol 2 (Ch.52 pp627-638).
+
+| Rule ID | Sloka ref | Verdict | Notes |
+|---|---|---|---|
+| R-BPHS52-040 | Ch.52 slokas 21-22 | PDF CONFIRMED + ENCODING ERROR | Content authentic (weak/debilitated Mars → wealth loss). condition_text mis-decoded as "own sign" -- should be "debilitation sign". Encoding correction needed separately. |
+| R-BPHS52-137 | Ch.52 slokas 69-73 | PDF CONFIRMED | "If Venus be the lord of the 7th (and 2nd) there will be pains in the body and possibility of suffering from diseases." Validator incorrectly rejected maraka-lord-disease doctrine. |
+| R-BPHS52-138 | Ch.52 slokas 69-73 | PDF CONFIRMED | "There will be premature death if Venus be associated with the lord of the 6th or 8th." Validator called it "extreme" but Santhanam states it verbatim. |
+
+All 3 → PHR + validator_error:true + C_pdf_confirmed.
+
+**Patch script:** `backend/scripts/patch_bphs_ch52_flagged_triage.py`
+
+**Scripts run (2026-06-04):**
+- Dry-run log: `patch_bphs_ch52_flagged_triage_20260603_121225_dryrun.log`
+- Live log (corrected -- wrong collection in first run): `patch_bphs_ch52_flagged_triage_20260604_093832_live.log`
+
+**Ch.52 flagged triage: 3/3 rules patched. 0 flagged remaining. ✅**
+
+Note: R-BPHS52-040 condition.description encoding fix (own sign → debilitation sign) shows NO MATCH -- field may use a different subfield. Separate investigation needed. Rule triage status (PHR + validator_error) is correctly applied.
+
+**Additional encoding error noted (separate data correction):**
+- R-BPHS52-040: condition_text "own sign" → should be "debilitation sign"
+
+---
+
+### 14g -- Ch.48 migration gap identified
+
+Ch.48 ("Distinctive Effects of Vimshottari Dasa Lords") was decoded and ingested into the OLD
+EverydayHoroscope DB (batch `bphs-ch48-dasha-20260416`, 34 net-new rules, April 16 2026).
+It was NOT migrated to horoscope_db. No validate output exists for Ch.48 in horoscope_db.
+
+**Status:** Gap confirmed. Needs fresh ingest run against horoscope_db using existing RTF output
+(`BPHS_ch 48_Vol 2_Live Ingest_Post Splitting.rtf` and source decode files). Same process as Ch47/Ch53-58.
+Note: Ch.48 is a non-standard chapter (house lord dasa effects, yoga conditions -- not per-planet MD).
+dasha_lord was encoded as "Moon" in the old ingest (placeholder/error). Fresh decode recommended
+to produce correct schema-compliant rules before re-ingest.
+
+**Action owner:** TT -- commission fresh Ch.48 Codex decode + ingest script.
+
+**Decision rationale (CC 2026-06-03):** Do NOT migrate old 34 rules. Fresh decode required because:
+(1) `dasha_lord: Moon` is wrong on every rule -- Ch.48 has no fixed dasha_lord, effects depend on house lordship in natal chart.
+(2) Rules need `condition.type = "house_lord_position"` to be KE-queryable at runtime.
+(3) Harsha/Sarala/Vimala yoga rules need `yoga_check: true` treatment.
+Old rules cannot be patched to these requirements -- structural mismatch, not just field corrections.
+
+**Commission brief written:** `KE_TEXTBOOK_DECODE/Thread_Briefs/THREAD_BRIEF_BPHS_CH48_DECODE_INGEST.md`
+
+Brief covers: chapter structure (4 sections, ~37 rules), schema design (`dasha_lord: null`, `condition.type: "house_lord_position"`, yoga_check treatment for Harsha/Sarala/Vimala), rule ID convention, output file requirements, ingest process, open points.
+
+**Status: 🟡 IN PROGRESS -- Commission issued to BPHS Vol 2 Codex thread (2026-06-04). Awaiting decode delivery. Full BPHS Vol 2 review gated on Ch.48 completion.**
+
+---
+
+### 14h -- BPHS Vol 2 encoding corrections (10 rules) -- SCRIPT READY ⏳
+
+10 field-level encoding errors identified across Phase 1 + Ch.52 triage consolidated into one patch script.
+
+| Rule ID | Chapter | Field | Wrong value | Correct value | PDF ref |
+|---|---|---|---|---|---|
+| R-BPHS47-PATCH-CC30B7 | Ch.47 | dasha_lord | Sun | Jupiter | Ch.47 slokas 49-51 |
+| R-BPHS52-040 | Ch.52 | condition.description | "own sign" | "debilitation sign" | Ch.52 slokas 21-22 |
+| R-BPHS53-PATCH-094A74 | Ch.53 | dasha_lord | Venus | Moon | Ch.53 slokas 1-2 |
+| R-BPHS53-PATCH-A460E9 | Ch.53 | dasha_lord | Venus | Moon | Ch.53 slokas 36-38 |
+| R-BPHS53-PATCH-E77E96 | Ch.53 | dasha_lord | Venus | Moon | Ch.53 sloka 35 |
+| R-BPHS53-PATCH-37CB8C | Ch.53 | houses_involved | [7] | [2, 7] | Ch.53 sloka 51 |
+| R-BPHS54-PATCH-3E2164 | Ch.54 | antardasha_planet | Mars | Moon | Ch.54 slokas 70-73 |
+| R-BPHS54-PATCH-3E8999 | Ch.54 | antardasha_planet | Mars | Rahu | Ch.54 slokas 9-10 |
+| R-BPHS54-PATCH-6592D5 | Ch.54 | antardasha_planet | Mars | Jupiter | Ch.54 slokas 20-22 |
+| R-BPHS57-PATCH-0727F5 | Ch.57 | condition.description | "from Ascendant" | "from Dasa lord (Saturn)" | Ch.57 slokas 32-34 |
+
+**Script:** `backend/scripts/patch_bphs_vol2_encoding_corrections.py`
+
+**Scripts run (2026-06-04):**
+- Dry-run log: `patch_bphs_vol2_encoding_corrections_20260604_092909_dryrun.log`
+- Live log (corrected -- wrong collection in first run): `patch_bphs_vol2_encoding_corrections_20260604_093738_live.log`
+
+**Encoding corrections: 9/10 patched. ✅**
+- 9 rules patched successfully
+- R-BPHS52-040 condition.description: text was in `condition.planet_context_note` + `interpretation.summary` (not `condition.description`). Fixed via `fix_bphs52_040_condition.py` -- 2 content fields corrected, 2 validation audit trail fields intentionally preserved. ✅

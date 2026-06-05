@@ -9,9 +9,9 @@ Before writing a single line of code, read these files in order:
 
 | # | File | Purpose |
 |---|---|---|
-| 1 | **`TEMPLE_TRACKER.md`** | Master dashboard -- 17-module status index. Tells you what is CRITICAL, BLOCKED, or ACTIVE at a glance. |
-| 2 | **`Codex_Deliveries/[Module]/TRACKER.md`** | Individual module tracker for the module(s) you are about to work on. Open points, commission status, version history. |
-| 3 | **`Action Items_ Claude Code.md`** | Temple Team (TT) and Claude Code (CC) action items -- what is blocked and on whom. |
+| 1 | **`#2_MASTER_TRACKER.md`** | Master dashboard -- module status index. Tells you what is CRITICAL, BLOCKED, or ACTIVE at a glance. |
+| 2 | **`Codex_Deliveries/[Module]/TRACKER.md`** | Individual module tracker for the module(s) you are about to work on. Open points, commission status, version history. **Single source of truth for all commissions.** |
+| 3 | **`#3_ACTION_TRACKER.md`** | Temple Team (TT) and Claude Code (CC) action items -- what is blocked and on whom. Commission detail is NOT duplicated here -- see module TRACKER. |
 | 4 | **`Codex_Deliveries/List_of_Pending_Codex_Commissions.md`** | Commission queue -- what is ready to issue, in progress, or integrated. |
 
 **At the end of every session:** update `Codex_Deliveries/[Module]/TRACKER.md` for every module touched -- add a version history row, update open points, update status badge if it changed. This is mandatory -- no exceptions.
@@ -118,7 +118,7 @@ Smart quote fix for Codex output: `.claude/REFERENCE.md §Codex`
 
 ## 7. KE Ingest Freeze
 
-> **INGEST FREEZE in effect (14 May 2026).** No new chapters until KE Phase 1.2 Sprint 2 (arbitration runtime) is delivered. Validation re-runs on existing batches still allowed. All ingest targets `horoscope_db`. Do NOT use stale `EverydayHoroscope` DB.
+> **INGEST FREEZE LIFTED ✅ (confirmed 2026-05-17).** KE-Sprint2 (arbitration runtime) closed -- all 5 acceptance gates passed. Ingest of new chapters may proceed. All ingest targets `horoscope_db`. Do NOT use stale `EverydayHoroscope` DB.
 
 ---
 
@@ -126,8 +126,8 @@ Smart quote fix for Codex output: `.claude/REFERENCE.md §Codex`
 
 > This section is intentionally brief. The authoritative live state of every module is in **`TEMPLE_TRACKER.md`**. Read that file -- do not rely on a static snapshot here.
 
-**Active hotlist (as of 2026-05-15):**
-- 🔴 KE-Sprint2 (arbitration runtime) -- INGEST FREEZE until delivered
+**Active hotlist (as of 2026-05-31):**
+- ✅ KE-Sprint2 (arbitration runtime) -- CLOSED 2026-05-17, all gates passed, ingest freeze lifted
 - 🔴 KE-2A (Yoga Check) -- issue to Codex this week
 - 🟠 STR-1 (Strategist War Room visual) -- fully unblocked, issue to Codex
 - 🟠 KP-Sprint2 + IR-1 -- issue to Codex Week 1
@@ -185,9 +185,9 @@ Logged-out: most pages show public SEO landing (noindex) with auth CTA.
 ## End-of-Session Protocol (MANDATORY)
 
 Before the session closes or context is compacted, Claude Code must:
-1. Update **`Codex_Deliveries/[Module]/TRACKER.md`** for every module touched -- add version history row, update open points table, change status badge if applicable.
-2. Update **`TEMPLE_TRACKER.md`** dashboard row for any module whose status changed.
-3. Strike off any completed items in `Action Items_ Claude Code.md`.
+1. Update **`Codex_Deliveries/[Module]/TRACKER.md`** for every module touched -- add version history row, update open points table, change status badge if applicable. This is the SINGLE SOURCE OF TRUTH for commission status.
+2. Update **`#2_MASTER_TRACKER.md`** dashboard row for any module whose status changed.
+3. Strike off any completed items in `#3_ACTION_TRACKER.md` (TT/CC action items only -- do NOT add commission detail here).
 4. Update commission status in `Codex_Deliveries/List_of_Pending_Codex_Commissions.md` if any commission moved state.
 
 ---
@@ -198,4 +198,4 @@ When compacting this conversation, produce the absolute minimum summary possible
 1. The single task currently in progress (if any), in one sentence.
 2. Any explicit user instruction given in the last message that hasn't been acted on yet.
 
-Do not include architecture notes, file paths, pending backlogs, or any other context -- all of that is already in CLAUDE.md, `TEMPLE_TRACKER.md`, and `.claude/REFERENCE.md` and will be reloaded automatically.
+Do not include architecture notes, file paths, pending backlogs, or any other context -- all of that is already in CLAUDE.md, `#2_MASTER_TRACKER.md`, and `.claude/REFERENCE.md` and will be reloaded automatically.

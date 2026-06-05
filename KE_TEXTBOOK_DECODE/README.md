@@ -37,10 +37,19 @@ KE_TEXTBOOK_DECODE/
 │   ├── KP_Astrology_Decode_Guide.md
 │   └── Phaladeepika_Decode_Guide.md
 │
-├── Thread_Briefs/                      ← Status briefs for active decode threads
-│   ├── THREAD_BRIEF_PHALADEEPIKA_NLM.md   ← IN PROGRESS -- 11 chapters / 605 rules · Next: Adhyaya XV
-│   ├── THREAD_BRIEF_BPHS_VOL1_DECODE.md   ← PARTIALLY COMPLETE -- Ch11-Ch24 done
-│   └── THREAD_BRIEF_KP_DECODE.md          ← PRIMARY DECODE COMPLETE -- claim_axis pass pending
+├── Thread_Briefs/                      ← One brief per book -- paste the one-liner into each dedicated thread
+│   ├── THREAD_BRIEF_INDEX.md               ← ⭐ START HERE -- 1-liner per book + status dashboard
+│   ├── THREAD_BRIEF_BPHS_VOL1_INGEST.md    ← 🟢 READY -- Ph1 (Ch12-44) in MongoDB. Ph2 (Ch03-11, Ch25-33) ingest now.
+│   ├── THREAD_BRIEF_BPHS_VOL2_INGEST.md    ← 🟢 READY -- Ch49-51, 249 rules
+│   ├── THREAD_BRIEF_300COMBINATIONS_INGEST.md  ← ✅ READY -- Priority 1, start now
+│   ├── THREAD_BRIEF_300HOROSCOPES_INGEST.md    ← ✅ READY -- 57 rules cleared 2026-05-31
+│   ├── THREAD_BRIEF_LONGEVITY_UNNATURAL_INGEST.md ← ✅ READY -- 44 rules cleared 2026-05-31
+│   ├── THREAD_BRIEF_DESTINY_NUMEROLOGY_INGEST.md  ← 🟠 NEAR READY -- 10 HIGH OCR items pending
+│   ├── THREAD_BRIEF_SBC_INGEST.md          ← 🔴 BLOCKED -- TT + OCR decisions needed
+│   ├── THREAD_BRIEF_LONGEVITY_58CH_INGEST.md ← 🔴 HARD BLOCKED -- aayu sign-off needed
+│   ├── THREAD_BRIEF_KP_DECODE.md           ← 🟡 NEAR READY -- Cat B/C/G/H pending
+│   ├── THREAD_BRIEF_MEDICAL_ASTROLOGY_INGEST.md ← 🟢 READY -- all Grade A+B resolved 2026-05-31
+│   └── THREAD_BRIEF_PHALADEEPIKA_NLM.md    ← 🟢 READY -- all 28 chapters decoded, 743 rules
 │
 └── Schema_Docs/                        ← Schema decisions + encoding standards
     ├── PD_SCHEMA_FLAGS_GAI_CONSULTATION.md  ← Original 8 flags raised pre-Phaladeepika
@@ -80,16 +89,16 @@ KE_TEXTBOOK_DECODE/
 | Book | Decode | Rules | OCR Report | Ingest Priority | Blocker |
 |---|---|---|---|---|---|
 | 300 Combinations | ✅ Complete | 300 | None | Phase 1 -- Priority 1 | None -- start now |
-| 300 Horoscopes Vol 1 | ✅ Complete | 57 | H300_OCR_Issues_Report.docx | Phase 1 -- Priority 2 | 3 blocked rules → TT decision |
-| Longevity Unnatural Death | ✅ Complete | 44 | LU_OCR_Inconsistency_Review.docx | Phase 1 -- Priority 2 | 5 HIGH OCR items → NLM/GAI first |
-| Destiny Numerology | ✅ Complete | 189 (Ch01-15) | Book_Wide_OCR_Inconsistencies_Report.docx | Phase 1 -- Priority 3 | Ch15 TVs confirmed complete |
-| SBC | ✅ Complete | 181 | SBC_OCR_Issues_Report.docx | Phase 1 -- Priority 3 | 7 TT conflicts + 24 source gaps |
-| Longevity 58 chapters | ✅ Complete | ~600+ | -- | Phase 1 -- LAST | Aayu bucket co-founder sign-off needed |
-| KP Astrology | 🟡 Near complete | 256 / 77 files | KP_T05_OCR_Issues_Report.docx | Phase 2 -- P2-1 | Entries 248-249 verify; claim_axis pass |
-| BPHS Vol 1 | 🟡 Partial (Ch11-24) | 200+ | BPHS_Vol1_OCR_Issue_Register.docx | Phase 2 -- P2-2 | Tier 4 decode + Category D TT decision |
-| BPHS Vol 2 | ✅ Complete | TBD | BPHS_Vol2_OCR_Inconsistency_Report.docx | Phase 2 -- P2-3 | 9 next actions in brief |
-| Medical Astrology | ✅ Complete | TBD | MedAstro_OCR_Issues_Audit.md | Phase 2 -- P2-4 | 2 Grade A CRITICAL resolve first |
-| Phaladeepika | 🟡 In progress | 743 (16 ch) | Phaladeepika_Inconsistencies_Review.docx | Phase 2 -- P2-5 | Tier 4 (3 ch) decode pending |
+| 300 Horoscopes Vol 1 | ✅ Complete | 57 | H300_OCR_Issues_Report.docx | Phase 1 -- Priority 2 | ✅ All 3 blocked rules cleared 2026-05-31 |
+| Longevity Unnatural Death | ✅ Complete | 44 | LU_OCR_Inconsistency_Review.docx | Phase 1 -- Priority 2 | ✅ All 5 HIGH items resolved 2026-05-31 |
+| Destiny Numerology | ✅ Complete | 189 (Ch01-15) | Book_Wide_OCR_Inconsistencies_Report.docx | Phase 1 -- Priority 3 | 🟠 10 HIGH OCR items → NLM/GAI pass needed |
+| SBC | ✅ Complete | 181 | SBC_OCR_Issues_Report.docx | Phase 1 -- Priority 3 | 🔴 7 TT conflicts + 4 CRITICAL OCR + 17 source gaps |
+| Longevity 58 chapters | ✅ Complete | ~600+ | -- | Phase 1 -- LAST | 🔴 Aayu bucket co-founder sign-off needed |
+| KP Astrology | 🟡 Near complete | 256 / 77 files | KP_T05_OCR_Issues_Report.docx | Phase 2 -- P2-1 | Cat B/C/G/H + F-01 to F-06 pending |
+| BPHS Vol 1 | 🟢 READY | ~1,456 (37 ch) | BPHS_Vol1_OCR_Issue_Register.docx | Phase 1 -- Foundation | ✅ All 10 TT items resolved + encode pass 2026-05-31 |
+| BPHS Vol 2 | 🟢 READY | 249 (Ch49-51) | BPHS_Vol2_OCR_Inconsistency_Report.docx | Phase 1 -- Foundation | ✅ All 10 OCR items resolved + encode pass 2026-05-31 |
+| Medical Astrology | 🟢 READY FOR INGEST | TBD | MedAstro_OCR_Issues_Audit.md | Phase 2 -- P2-4 | All Grade A+B resolved 2026-05-31. gai_citation_unverified on B-7/B-8/B-11. |
+| Phaladeepika | 🟢 READY FOR INGEST | 743 (28 ch all decoded) | Phaladeepika_Inconsistencies_Review.docx | Phase 2 -- P2-5 | All 6 HIGH resolved 2026-05-31. ~25 MED → pending_review:true |
 
 ---
 

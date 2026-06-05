@@ -18,6 +18,14 @@
 
 ---
 
+## 🔴 NEW -- Added 2026-06-04
+
+| ID | Commission | Thread | Brief File | Status | Notes |
+|---|---|---|---|---|---|
+| **VC-1** | Kalachakra & Chara Dasa Computation Engines -- `vedic_calculator.py` | CC Direct | `Vedic_Calculator/CODEX_COMMISSION_DASHA_ENGINES_KAL_CHARA.md` | ✅ DELIVERED -- CC DIRECT 2026-06-04 | All 8 acceptance gates passed. 16/16 tests green. `vedic_calculator.py` extended: KALACHAKRA_PERIODS, CHARA_SIGN_LORDS, SIGN_MODALITY + 9 new functions. ENGINE_VERSION bumped v22. Unlocks 154 Kalachakra + 73 Chara KE rules. |
+
+---
+
 ## 🔴 NEW -- Added 2026-05-25
 
 | ID | Commission | Thread | Brief File | Status | Notes |

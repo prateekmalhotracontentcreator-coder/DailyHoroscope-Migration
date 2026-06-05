@@ -1,6 +1,6 @@
 # Crystal Healing -- Module Tracker
 > Path: `Codex_Deliveries/Crystal_Healing/TRACKER.md`
-> Last updated: 2026-06-04 IST · v1.2
+> Last updated: 2026-06-04 IST · v1.4
 
 ---
 
@@ -24,7 +24,8 @@
 | **CRY-2** | Expansion content | ✅ DELIVERED (pending review) | `CODEX_COMMISSION_CRY_2_EXPANSION.md` |
 | **CRY-3** | 5K engine | ✅ DELIVERED (pending review) | `CODEX_COMMISSION_CRY_3_5K_ENGINE.md` |
 | **CRY-L2** | L2/L3 fix: tightened variant distribution, diversified labels/titles, tag-based healing-property fragments | ✅ INTEGRATED 2026-06-04 | `crystal_data.py` |
-| **CRY-L3** | L1 deep reduction: FAQ rewrite (no intent slugs), healing_properties prose, remove cross-crystal name mentions, material-accurate cleansing | 🔴 READY TO ISSUE | `CODEX_COMMISSION_CRY_L3_L1_FIX.md` |
+| **CRY-L3** | L1 deep reduction: FAQ rewrite (no intent slugs), healing_properties prose, remove cross-crystal name mentions, material-accurate cleansing | 🟡 PARTIAL -- L1 progress (49.5%→32.1% Crystal, 45.4%→38.6% Intention), L2 still FAIL, L3 PASS | `CODEX_COMMISSION_CRY_L3_L1_FIX.md` |
+| **CRY-L3-CONT** | L2 fix (3 shared-phrase functions) + healing_properties prose strings | 🔴 READY TO ISSUE | `CODEX_COMMISSION_CRY_L3_CONTINUATION.md` |
 
 ---
 
@@ -38,11 +39,21 @@
 | ~~CRY-OP-4~~ | ~~Re-run ECHO/PACE scan after CRY-L2~~ | ~~CC~~ | ✅ CLOSED 2026-06-04 | Crystal 49.5% PASS, Intention 45.4% PASS. L2 0, L3 0. No regression. |
 | CRY-OP-5 | Run Layer G Serper before seeding | TT | ⛔ BLOCKED on CRY-L3 | Hold until CRY-L3 integrated and L1 < 20% |
 | CRY-OP-6 | Review CRY-2 + CRY-3 deliveries | CC | ⛔ BLOCKED on CRY-L3 | Hold until base module fully signed off |
-| CRY-OP-7 | Issue CRY-L3 commission to Codex | TT | 🔴 NEXT ACTION | Brief: `CODEX_COMMISSION_CRY_L3_L1_FIX.md`. Target: Crystal L1 < 20%, Intention L1 < 25%. |
+| ~~CRY-OP-7~~ | ~~Issue CRY-L3 commission to Codex~~ | ~~TT~~ | ✅ CLOSED | Issued. Partial delivery received 2026-06-04. L1 progress, L2 still failing. |
+| CRY-OP-8 | Issue CRY-L3-CONT to Codex | TT | 🔴 NEXT ACTION | Brief: `CODEX_COMMISSION_CRY_L3_CONTINUATION.md`. Targets L2=0 + L1<20%/<25% via 3 function fixes + healing_properties prose. |
 
 ---
 
 ## ECHO/PACE Results
+
+### CRY-L3 partial -- 2026-06-04 (Codex delivery, not yet accepted)
+
+| Page Type | Pages | L1 | L2 | L3 | Verdict |
+|---|---|---|---|---|---|
+| CRYSTAL | 50 | 32.1% | FAIL ❌ | 0 pairs ✅ | NOT ACCEPTED -- L2 + L1 target |
+| INTENTION | 20 | 38.6% | FAIL ❌ | 0 pairs ✅ | NOT ACCEPTED -- L2 + L1 target |
+
+**L2 root cause (CC diagnosis):** `_care_note` sunlight sentence (90% repeat), `_daily_use_note` middle-ground close (58%), `_who_note` non-Navaratna close (80%). See CRY-L3-CONT brief.
 
 ### CRY-L2 -- 2026-06-04 (verified by CC independent run)
 
@@ -83,7 +94,8 @@ Full report: `Codex_Deliveries/ECHO_PACE/ECHO_PACE_SCAN_RUD_CRY_FAITH_2026-05-31
 
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
-| v1.3 | 2026-06-04 | L1 root cause analysis. Diagnosed 3 structural causes of 49.5%: (1) FAQ fill-in template repeating intent slugs (20 shared tokens in worst pair Citrine/Pyrite), (2) healing_properties as keyword-pair fragments not prose, (3) cross-crystal name mentions creating artificial IDF spikes. CRY-L3 commission written targeting < 20% L1. Seed + Layer G blocked until CRY-L3 passes. | CC | `CODEX_COMMISSION_CRY_L3_L1_FIX.md` |
+| v1.4 | 2026-06-04 | CRY-L3 partial delivery received. L1: Crystal 49.5%→32.1%, Intention 45.4%→38.6%. L3 PASS. L2 still FAIL. L2 root cause diagnosed: 3 functions with fixed closing phrases at 58-90% repetition rate (`_care_note` sunlight sentence, `_daily_use_note` middle-ground close, `_who_note` non-Navaratna close). CRY-L3-CONT brief written. healing_properties still in list format, needs prose conversion. | CC | `CODEX_COMMISSION_CRY_L3_CONTINUATION.md` |
+| v1.3 | 2026-06-04 | L1 root cause analysis. Diagnosed 3 structural causes of 49.5%: (1) FAQ fill-in template repeating intent slugs, (2) healing_properties as keyword-pair fragments, (3) cross-crystal name mentions. CRY-L3 issued. | CC | `CODEX_COMMISSION_CRY_L3_L1_FIX.md` |
 | v1.2 | 2026-06-04 | CRY-L2 integrated. ECHO/PACE PASS: Crystal 49.5% L1, Intention 45.4% L1, L2 0, L3 0. App.js routes wired (7 routes). Build clean. CRY-OP-1/3/4 closed. | CC | `frontend/src/App.js` |
 | v1.1 | 2026-05-31 | ECHO/PACE scan run. L1 borderline PASS (47.7%), L2/L3 FAIL. Module BLOCKED for seeding. CRY-L2 commission ready. Tracker created. | CC | `ECHO_PACE_SCAN_RUD_CRY_FAITH_2026-05-31.md` |
 | v1.0 | 2026-05-25 | CRY-1 delivered + handover doc from Temple Team. Backend registered. CRY-2 + CRY-3 also delivered. | Codex/TT | `TEMPLE_TEAM_HANDOVER_CRY_1_CRY_2_2026-05-25.md` |
