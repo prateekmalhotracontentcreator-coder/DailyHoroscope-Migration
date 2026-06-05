@@ -277,12 +277,14 @@ async def _try_scan_chart(payload: LongevityGenerateRequest) -> dict[str, Any] |
             try:
                 result = attempt()
                 if inspect.isawaitable(result):
-                    result = await result
+                    result = await asyncio.wait_for(result, timeout=8.0)
                 if result is not None:
                     return {"source_module": module_name, "result": result}
             except TypeError:
                 continue
-            except Exception:
+            except BaseException:
+                # Catches asyncio.TimeoutError, CancelledError, and scan errors.
+                # KE scan is best-effort -- never block report generation.
                 break
     return None
 
@@ -508,8 +510,12 @@ async def generate_longevity_report(payload: LongevityGenerateRequest, request: 
     except Exception as err:
         raise HTTPException(status_code=500, detail="Longevity report generation failed.") from err
 
-    knowledge_context = await _try_scan_chart(payload)
-    narrative = await _call_claude_json(_narrative_prompt(output_payload, knowledge_context))
+    try:
+        knowledge_context = await _try_scan_chart(payload)
+        narrative = await _call_claude_json(_narrative_prompt(output_payload, knowledge_context))
+    except BaseException:
+        knowledge_context = None
+        narrative = None
     if not isinstance(narrative, dict):
         narrative = _fallback_narrative(output_payload, knowledge_context)
     output_payload = _apply_narrative(output_payload, narrative, knowledge_context)
