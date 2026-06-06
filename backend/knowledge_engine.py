@@ -1592,7 +1592,7 @@ async def _upsert_arc_angel_profile_doc(db: AsyncIOMotorDatabase, user_id: str, 
     can call it without creating a circular import with server.py."""
     await db.user_arc_angel_profile.update_one(
         {"user_id": user_id},
-        {"$set": profile_data, "$setOnInsert": {"user_id": user_id}},
+        {"$set": profile_data},
         upsert=True,
     )
 
