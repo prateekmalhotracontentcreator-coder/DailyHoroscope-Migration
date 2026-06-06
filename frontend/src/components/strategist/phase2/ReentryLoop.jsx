@@ -113,7 +113,7 @@ export function PathCard({ pathKey, path }) {
 // Step 2: score/threshold received as props (was window.SEEKER.score)
 // Props: { score, threshold, max, tier, nextTier }
 // -----------------------------------------------------------------
-export function ScoreBar({ score, threshold, max = 99, tier, nextTier }) {
+export function ScoreBar({ score, threshold, max = 99, tier, nextTier, daysObserved = null }) {
   const fillPct = (score / max) * 100;
   const threshPct = (threshold / max) * 100;
   const distance = threshold - score;
@@ -143,7 +143,7 @@ export function ScoreBar({ score, threshold, max = 99, tier, nextTier }) {
         </div>
         <div className="rl-legend-cell">
           <span className="rl-legend-cell__l">Observed</span>
-          <span className="rl-legend-cell__v">-- d</span>
+          <span className="rl-legend-cell__v">{daysObserved !== null ? `${daysObserved} d` : '-- d'}</span>
           <span className="rl-legend-cell__sub">verdict held this long</span>
         </div>
       </div>
@@ -181,6 +181,7 @@ export default function ReentryLoop({ data, asOf, density = null }) {
   const nextThreshold = data?.scoreboard?.next_threshold ?? 75;
   const nextTier      = data?.scoreboard?.next_threshold_label ?? 'Sovereign';
   const tier          = data?.scoreboard?.score_tier ?? '--';
+  const daysObserved  = data?.scoreboard?.gate0_days_since ?? null;
   const path          = REENTRY_PATHS[pathKey];
 
   return (
@@ -225,6 +226,7 @@ export default function ReentryLoop({ data, asOf, density = null }) {
           max={99}
           tier={tier}
           nextTier={nextTier}
+          daysObserved={daysObserved}
         />
       </section>
 

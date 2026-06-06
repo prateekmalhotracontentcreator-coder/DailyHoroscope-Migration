@@ -142,7 +142,7 @@ async def run_gate4(db, natal_chart: dict) -> dict:
 
     if rahu_collision:
         status = "RAHU_COLLISION"
-        narrative = "Mercury–Rahu conjunction detected. Intelligence disrupted."
+        narrative = "Mercury-Rahu conjunction detected. Intelligence disrupted."
     elif mercury_alone:
         status = "EMPTY_VESSEL"
         narrative = "Mercury solitary. Filling the Vessel activation required."
@@ -173,7 +173,7 @@ async def run_gate5(db, natal_chart: dict, location_slug: str) -> dict:
         "location_slug": location_slug,
         "records": location_records[:5],
         "substitution_applied": len(location_records) == 0,
-        "narrative": f"Geographical alignment checked for {location_slug}.",
+        "narrative": f"Geographical alignment checked for {location_slug.replace('-', ' ').replace('_', ' ').title()}.",
     }
 
 
