@@ -83,6 +83,49 @@ async def _build_war_room_state(db, user_email: str) -> dict:
     if not profile:
         return {"error": "LK profile missing -- complete /api/lk/onboard first"}
 
+    # Auto-seed birth fields from birth_profiles if the Strategist profile form
+    # has not been submitted yet -- bridges Birth Chart data into the War Room so
+    # Dasha timeline + Shadbala panel populate without a second form submission.
+    _has_birth = bool(profile.get("birth_date") or profile.get("dob"))
+    if not _has_birth:
+        try:
+            _bp = await db.birth_profiles.find_one(
+                {"user_email": user_email},
+                {"date_of_birth": 1, "time_of_birth": 1, "location": 1, "_id": 0},
+                sort=[("created_at", -1)],
+            )
+            if _bp and _bp.get("date_of_birth"):
+                _bd = _bp["date_of_birth"]
+                _tob_seed = _bp.get("time_of_birth") or "12:00"
+                _city_seed = _bp.get("location") or "New Delhi"
+                # Compute moon_longitude inline so Dasha can run
+                _moon_lon_seed: float | None = None
+                try:
+                    _seed_chart = calculate_vedic_chart(_bd, _tob_seed, _city_seed, "+05:30")
+                    _planets = _seed_chart.get("planets", {})
+                    for _k, _v in _planets.items():
+                        if "moon" in _k.lower():
+                            _sign = _v.get("sign", "Aries")
+                            _deg = _v.get("degree", 0)
+                            _SIGN_ORDER = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo",
+                                          "Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"]
+                            if _sign in _SIGN_ORDER:
+                                _moon_lon_seed = float(_SIGN_ORDER.index(_sign) * 30 + _deg)
+                            break
+                except Exception:
+                    pass
+                # Augment profile in-memory (no DB write -- user can override via form)
+                profile = {
+                    **profile,
+                    "birth_date": _bd,
+                    "tob": _tob_seed,
+                    "birth_city": _city_seed,
+                }
+                if _moon_lon_seed is not None:
+                    profile["moon_longitude"] = _moon_lon_seed
+        except Exception:
+            pass
+
     natal_chart = profile.get("natal_chart", {})
     age = profile.get("age", 30)
 

@@ -107,23 +107,28 @@ export function Gate0Panel({ gate, onReconsult, onViewReading }) {
       </div>
 
       <aside className="kp-aside">
-        <span className="kp-aside__lbl">KP reading detail</span>
-        <div className="kp-aside__rows">
-          <div className="kp-aside__row">
-            <span className="kp-aside__k">Sub-lord chain</span>
-            <span className="kp-aside__v">{gate?.sublord ?? '--'}</span>
-          </div>
-          <div className="kp-aside__row">
-            <span className="kp-aside__k">Significators</span>
-            <span className="kp-aside__sig">
-              {(gate?.significators ?? []).map((h) => <span key={h}>{h}</span>)}
-            </span>
-          </div>
-          <div className="kp-aside__row">
-            <span className="kp-aside__k">Cuspal ruler</span>
-            <span className="kp-aside__v">{gate?.cuspalRuler ?? '--'}</span>
-          </div>
-        </div>
+        {/* Show KP chain detail only when data is present; hide blank rows otherwise */}
+        {(gate?.sublord && gate.sublord !== '--') || (gate?.significators ?? []).length > 0 || (gate?.cuspalRuler && gate.cuspalRuler !== '--') ? (
+          <>
+            <span className="kp-aside__lbl">KP reading detail</span>
+            <div className="kp-aside__rows">
+              <div className="kp-aside__row">
+                <span className="kp-aside__k">Sub-lord chain</span>
+                <span className="kp-aside__v">{gate?.sublord ?? '--'}</span>
+              </div>
+              <div className="kp-aside__row">
+                <span className="kp-aside__k">Significators</span>
+                <span className="kp-aside__sig">
+                  {(gate?.significators ?? []).map((h) => <span key={h}>{h}</span>)}
+                </span>
+              </div>
+              <div className="kp-aside__row">
+                <span className="kp-aside__k">Cuspal ruler</span>
+                <span className="kp-aside__v">{gate?.cuspalRuler ?? '--'}</span>
+              </div>
+            </div>
+          </>
+        ) : null}
         <div className="kp-aside__div" />
         <div className="kp-aside__stat" style={{ '--kp-window': windowTone }}>
           <span className="kp-aside__stat-num">{days}<small>days</small></span>
