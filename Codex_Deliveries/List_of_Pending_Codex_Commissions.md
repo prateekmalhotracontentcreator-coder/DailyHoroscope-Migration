@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-31 (Session 12 -- Full ECHO/PACE scan cycle completed for all delivered modules. 8 fix commissions now READY TO ISSUE: ANGEL-3, RUD-L2, CRY-L2, FAITH-REWRITE, M3-CP-FIX, M3-TR-FIX, M2-COMPAT-FIX, TAR-SEO-FIX.)
+> Last updated: 2026-06-07 (Session 13 -- LON-2 commission brief written. KP Engine Foundation + Longevity Report Phase 2. READY TO ISSUE.)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -15,6 +15,14 @@
 | `IN PROGRESS` | Commission open in Codex. Awaiting delivery. |
 | `DELIVERED -- PENDING INTEGRATION` | Codex output received. Claude Code to review + integrate. |
 | `INTEGRATED` | Code built, committed to `main`. Commission closed. |
+
+---
+
+## 🔴 NEW -- Added 2026-06-07
+
+| ID | Commission | Thread | Brief File | Status | Notes |
+|---|---|---|---|---|---|
+| **LON-2** | KP Engine Foundation Layer + Longevity Report Phase 2 | Longevity (new thread) | `Longevity/CODEX_COMMISSION_LON_2_KP_ENGINE_FOUNDATION.md` | 🟡 READY TO ISSUE | First numbered Longevity commission (Commission H was the only prior delivery). Engine-first: formalise `KPChart` TypedDict, add `POST /api/kp/birth-chart` endpoint, surface KP Chart Panel (cusps + planets + significators) in Longevity Report. KP Oracle uses same engine foundation via KP-3 (separate thread). 8 acceptance gates. |
 
 ---
 
@@ -99,7 +107,7 @@
 
 | ID | Commission | Thread | Brief File | Status | Phase | Notes |
 |---|---|---|---|---|---|---|
-| ~~**LON-1**~~ | ~~Ayur Jyotish Longevity Report~~ | Longevity | `Longevity/CODEX_COMMISSION_LONGEVITY_REPORT_CONTRACT.md` | ✅ INTEGRATED -- commit `2a4ed4e` | Phase 2 | Backend aliases `/report`,`/save`,`/my-reports`,`/alerts`,`/report/:id`. LongevityReportPage + App.js route. Build passed. ⚠️ **TT live review of save/detail flow still required (LON-OP-1).** |
+| ~~**Commission H**~~ | ~~Ayur Jyotish Longevity & Health Report~~ | Longevity | `Longevity/CODEX_COMMISSION_LONGEVITY_REPORT_CONTRACT.md` | ✅ INTEGRATED -- commit `2a4ed4e` | Phase 2 | The only Codex brief ever issued for Longevity. "LON-1" was a CC tracking alias for this delivery -- not a separate commission. All 7 report sections live. TT verified production 2026-06-07. |
 | ~~**PAN-L1**~~ | ~~Panchang Language/Regional Pages~~ | Panchang | `Panchang/CODEX_COMMISSION_PANCHANG_LANGUAGE_PAGES.md` | ✅ INTEGRATED -- commit `2a4ed4e` | Phase 2 | PanchangPage.jsx: 5-language config, hreflang, JSON-LD. HTTP 200 on all 5 routes confirmed. |
 | **ORACLE-P3** | 5 World Oracle Modules (Bible, Islamic, Taoist, Greek, Sikh) | World Oracles | `World_Oracles/CODEX_COMMISSION_ORACLE_P3_WORLD_ORACLES.md` | ⏸ OPENED -- DEPENDENCY BLOCKED | Phase 3 | Acknowledged by Codex. No runtime work started (correct). Waiting on KP-2A + KP-2B + KP-Sprint2 fully live. Docs updated. |
 

@@ -133,6 +133,7 @@ from knowledge_schema import KnowledgeNarrativeRequest, KnowledgeNarrativeRespon
 from lk_remedies_router import router as lk_router
 from strategist_router import router as strategist_router
 from scriptural_oracle_router import router as kp_router
+from kp_chart_router import router as kp_chart_router
 from live_tv_router import router as live_tv_router
 from punya_rewards_router import router as punya_rewards_router
 from lo_shu_router import router as lo_shu_router
@@ -3325,6 +3326,7 @@ app.include_router(knowledge_router)
 app.include_router(lk_router)
 app.include_router(strategist_router)
 app.include_router(kp_router)
+app.include_router(kp_chart_router)
 app.include_router(remedies_router)
 app.include_router(remedy_matching_router)
 app.include_router(live_tv_router)

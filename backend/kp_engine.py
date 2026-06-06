@@ -6,6 +6,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 import swisseph as swe
+from typing_extensions import TypedDict
 
 
 swe.set_sid_mode(swe.SIDM_KRISHNAMURTI)  # KP system requires Newcomb/Krishnamurti ayanamsha -- not Lahiri (AYA-1)
@@ -54,6 +55,7 @@ PLANET_IDS = {
     "Saturn": swe.SATURN,
     "Rahu": swe.MEAN_NODE,
 }
+PLANET_SEQUENCE = ("Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu")
 
 DASHA_ORDER = ["Ketu", "Venus", "Sun", "Moon", "Mars", "Rahu", "Jupiter", "Saturn", "Mercury"]
 DASHA_YEARS = {
@@ -176,6 +178,78 @@ MEDICAL_DISCLAIMER = (
 )
 
 
+class KPChainSummary(TypedDict):
+    sign: str
+    sign_lord: str
+    nakshatra: str
+    star_lord: str
+    pada: int
+    sub_lord: str
+    sub_sub_lord: str
+    longitude: float
+    formatted_longitude: str
+
+
+class KPAscendant(TypedDict):
+    sign: str
+    degree: float
+    degree_label: str
+    sub_lord: str
+    sub_sub_lord: str
+    star_lord: str
+    nakshatra: str
+
+
+class KPCusp(TypedDict):
+    house: int
+    sign: str
+    degree: float
+    degree_label: str
+    star_lord: str
+    sub_lord: str
+    sub_sub_lord: str
+
+
+class KPPlanet(TypedDict):
+    sign: str
+    house: int
+    degree: float
+    degree_label: str
+    nakshatra: str
+    star_lord: str
+    sub_lord: str
+    sub_sub_lord: str
+    kp_chain: KPChainSummary
+
+
+class KPDashaPeriod(TypedDict):
+    planet: str
+    start: str
+    end: str
+
+
+class KPCurrentDasha(TypedDict):
+    maha: KPDashaPeriod
+    antar: KPDashaPeriod
+    pratyantar: KPDashaPeriod
+
+
+class KPLongevityClassification(TypedDict):
+    score: int
+    band: str
+    confidence: str
+
+
+class KPChart(TypedDict):
+    ayanamsha: str
+    ascendant: KPAscendant
+    cusps: list[KPCusp]
+    planets: dict[str, KPPlanet]
+    significators: dict[str, list[int]]
+    longevity_classification: KPLongevityClassification
+    current_dasha: KPCurrentDasha
+
+
 @dataclass
 class ReportInput:
     date_of_birth: str
@@ -203,16 +277,20 @@ def degree_in_sign(value: float) -> float:
     return round(normalize_longitude(value) % 30.0, 2)
 
 
-def format_degree(value: float) -> str:
-    degrees = normalize_longitude(value)
-    sign_name = sign_from_longitude(degrees)
-    sign_degree = degrees % 30.0
+def format_degree_in_sign(value: float) -> str:
+    sign_degree = normalize_longitude(value) % 30.0
     whole = int(sign_degree)
     minutes = int(round((sign_degree - whole) * 60.0))
     if minutes == 60:
         whole += 1
         minutes = 0
-    return f"{whole:02d}°{minutes:02d}' {sign_name}"
+    return f"{whole:02d}°{minutes:02d}'"
+
+
+def format_degree(value: float) -> str:
+    degrees = normalize_longitude(value)
+    sign_name = sign_from_longitude(degrees)
+    return f"{format_degree_in_sign(degrees)} {sign_name}"
 
 
 def local_datetime(date_text: str, time_text: str, timezone_name: str) -> datetime:
@@ -339,6 +417,7 @@ def kp_chain(longitude: float) -> dict[str, Any]:
         "sign_lord": sign_lord,
         "nakshatra": nakshatra["name"],
         "nakshatra_lord": star_lord,
+        "star_lord": star_lord,
         "pada": nakshatra["pada"],
         "sub_lord": sub_lord,
         "sub_sub_lord": sub_sub_lord,
@@ -372,7 +451,7 @@ def build_birth_snapshot(payload: ReportInput) -> dict[str, Any]:
     asc_longitude = angles["ascendant"]
     asc_sign = sign_from_longitude(asc_longitude)
     planets: dict[str, Any] = {}
-    for body in ("Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"):
+    for body in PLANET_SEQUENCE:
         longitude_value, speed_value = sidereal_longitude_and_speed(jd_ut, body)
         sign_name = sign_from_longitude(longitude_value)
         planets[body] = {
@@ -472,6 +551,10 @@ def build_vimshottari_timeline(moon_longitude: float, birth_local: datetime, lim
 def build_antar_dashas(parent_lord: str, start_date_text: str, end_date_text: str) -> list[dict[str, Any]]:
     start_dt = datetime.combine(date.fromisoformat(start_date_text), time.min, tzinfo=timezone.utc)
     end_dt = datetime.combine(date.fromisoformat(end_date_text), time.min, tzinfo=timezone.utc)
+    return build_sub_dashas(parent_lord, start_dt, end_dt)
+
+
+def build_sub_dashas(parent_lord: str, start_dt: datetime, end_dt: datetime) -> list[dict[str, Any]]:
     total_days = max(1.0, (end_dt - start_dt).days)
     parent_years = DASHA_YEARS[parent_lord]
     cursor = start_dt
@@ -499,10 +582,25 @@ def current_dasha_periods(timeline: dict[str, Any], on_date: date) -> dict[str, 
         if date.fromisoformat(antar["start"]) <= on_date <= date.fromisoformat(antar["end"]):
             antar_dasha = antar
             break
+    pratyantar_dashas = build_sub_dashas(
+        str(antar_dasha["planet"]),
+        datetime.combine(date.fromisoformat(str(antar_dasha["start"])), time.min, tzinfo=timezone.utc),
+        datetime.combine(date.fromisoformat(str(antar_dasha["end"])), time.min, tzinfo=timezone.utc),
+    )
+    pratyantar_dasha = pratyantar_dashas[-1]
+    for pratyantar in pratyantar_dashas:
+        if date.fromisoformat(pratyantar["start"]) <= on_date <= date.fromisoformat(pratyantar["end"]):
+            pratyantar_dasha = pratyantar
+            break
     return {
         "maha_dasha": maha_dasha,
         "antar_dasha": antar_dasha,
+        "pratyantar_dasha": pratyantar_dasha,
+        "maha": maha_dasha,
+        "antar": antar_dasha,
+        "pratyantar": pratyantar_dasha,
         "antar_dashas": antar_dashas,
+        "pratyantar_dashas": pratyantar_dashas,
     }
 
 
@@ -579,7 +677,7 @@ def house_relevance_for_planet(snapshot: dict[str, Any], planet_name: str) -> di
 
 def significators(snapshot: dict[str, Any], target_houses: set[int]) -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
-    for planet_name in ("Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"):
+    for planet_name in PLANET_SEQUENCE:
         relevance = house_relevance_for_planet(snapshot, planet_name)
         hit_houses = sorted(house for house in target_houses if relevance[str(house)] > 0)
         if not hit_houses:
@@ -1063,12 +1161,115 @@ def build_summary(snapshot: dict[str, Any], longevity: dict[str, Any], prakriti:
     )
 
 
-def compute_longevity_report(payload: ReportInput) -> dict[str, Any]:
+def planet_significator_map(snapshot: dict[str, Any]) -> dict[str, list[int]]:
+    mapping: dict[str, list[int]] = {}
+    for planet_name in PLANET_SEQUENCE:
+        relevance = house_relevance_for_planet(snapshot, planet_name)
+        mapping[planet_name] = [house for house in range(1, 13) if int(relevance[str(house)]) > 0]
+    return mapping
+
+
+def build_kp_chart(snapshot: dict[str, Any], longevity: dict[str, Any], current_dasha: dict[str, Any]) -> KPChart:
+    asc_longitude = float(snapshot["angles"]["ascendant_longitude"])
+    asc_kp = dict(snapshot["cusps"][0]["kp"])
+    cusp_rows: list[KPCusp] = []
+    for cusp in snapshot["cusps"]:
+        kp = dict(cusp["kp"])
+        cusp_rows.append(
+            {
+                "house": int(cusp["house"]),
+                "sign": str(cusp["sign"]),
+                "degree": float(degree_in_sign(float(cusp["longitude"]))),
+                "degree_label": format_degree_in_sign(float(cusp["longitude"])),
+                "star_lord": str(kp["star_lord"]),
+                "sub_lord": str(kp["sub_lord"]),
+                "sub_sub_lord": str(kp["sub_sub_lord"]),
+            }
+        )
+    planet_rows: dict[str, KPPlanet] = {}
+    for planet_name in PLANET_SEQUENCE:
+        details = snapshot["planets"][planet_name]
+        kp = dict(details["kp"])
+        planet_rows[planet_name] = {
+            "sign": str(details["sign"]),
+            "house": int(details["placidus_house"]),
+            "degree": float(details["degree"]),
+            "degree_label": format_degree_in_sign(float(details["longitude"])),
+            "nakshatra": str(kp["nakshatra"]),
+            "star_lord": str(kp["star_lord"]),
+            "sub_lord": str(kp["sub_lord"]),
+            "sub_sub_lord": str(kp["sub_sub_lord"]),
+            "kp_chain": {
+                "sign": str(kp["sign"]),
+                "sign_lord": str(kp["sign_lord"]),
+                "nakshatra": str(kp["nakshatra"]),
+                "star_lord": str(kp["star_lord"]),
+                "pada": int(kp["pada"]),
+                "sub_lord": str(kp["sub_lord"]),
+                "sub_sub_lord": str(kp["sub_sub_lord"]),
+                "longitude": float(kp["longitude"]),
+                "formatted_longitude": str(kp["formatted_longitude"]),
+            },
+        }
+    return {
+        "ayanamsha": "Krishnamurti",
+        "ascendant": {
+            "sign": str(snapshot["angles"]["ascendant_sign"]),
+            "degree": float(degree_in_sign(asc_longitude)),
+            "degree_label": format_degree_in_sign(asc_longitude),
+            "sub_lord": str(asc_kp["sub_lord"]),
+            "sub_sub_lord": str(asc_kp["sub_sub_lord"]),
+            "star_lord": str(asc_kp["star_lord"]),
+            "nakshatra": str(asc_kp["nakshatra"]),
+        },
+        "cusps": cusp_rows,
+        "planets": planet_rows,
+        "significators": planet_significator_map(snapshot),
+        "longevity_classification": {
+            "score": int(longevity["score"]),
+            "band": str(longevity["label"]),
+            "confidence": str(longevity["confidence"]),
+        },
+        "current_dasha": {
+            "maha": dict(current_dasha["maha_dasha"]),
+            "antar": dict(current_dasha["antar_dasha"]),
+            "pratyantar": dict(current_dasha["pratyantar_dasha"]),
+        },
+    }
+
+
+def build_longevity_context(payload: ReportInput) -> dict[str, Any]:
     snapshot = build_birth_snapshot(payload)
     reference_date = parse_reference_date(payload.reference_date, payload.timezone_name)
-    timeline = build_vimshottari_timeline(float(snapshot["planets"]["Moon"]["longitude"]), local_datetime(payload.date_of_birth, payload.time_of_birth, payload.timezone_name))
-    dasha_now = current_dasha_periods(timeline, reference_date)
+    timeline = build_vimshottari_timeline(
+        float(snapshot["planets"]["Moon"]["longitude"]),
+        local_datetime(payload.date_of_birth, payload.time_of_birth, payload.timezone_name),
+    )
+    current_dasha = current_dasha_periods(timeline, reference_date)
     longevity = longevity_classification(snapshot)
+    kp_chart = build_kp_chart(snapshot, longevity, current_dasha)
+    return {
+        "snapshot": snapshot,
+        "reference_date": reference_date,
+        "timeline": timeline,
+        "current_dasha": current_dasha,
+        "longevity": longevity,
+        "kp_chart": kp_chart,
+    }
+
+
+def compute_kp_chart(payload: ReportInput) -> KPChart:
+    return build_longevity_context(payload)["kp_chart"]
+
+
+def compute_longevity_report(payload: ReportInput) -> dict[str, Any]:
+    context = build_longevity_context(payload)
+    snapshot = context["snapshot"]
+    reference_date = context["reference_date"]
+    timeline = context["timeline"]
+    dasha_now = context["current_dasha"]
+    longevity = context["longevity"]
+    kp_chart = context["kp_chart"]
     prakriti = constitutional_health_profile(snapshot)
     vulnerabilities = vulnerable_systems(snapshot)
     susceptibility = disease_susceptibility_windows(snapshot, timeline, reference_date)
@@ -1083,6 +1284,7 @@ def compute_longevity_report(payload: ReportInput) -> dict[str, Any]:
         "medical_disclaimer": MEDICAL_DISCLAIMER,
         "summary": summary,
         "birth_snapshot": snapshot,
+        "kp_chart": kp_chart,
         "current_dasha": dasha_now,
         "vimshottari_timeline": timeline,
         "longevity_classification": longevity,

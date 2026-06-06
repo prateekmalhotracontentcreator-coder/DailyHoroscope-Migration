@@ -49,6 +49,8 @@ const SECTION_PREVIEWS = [
   },
 ];
 
+const PLANET_ORDER = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"];
+
 const initialForm = {
   user_email: "",
   city_slug: "",
@@ -165,10 +167,15 @@ export default function LongevityReportPage() {
   const [saveLoading, setSaveLoading] = useState(false);
   const [saveMessage, setSaveMessage] = useState("");
   const [narrativeOpen, setNarrativeOpen] = useState(false);
+  const [kpChartOpen, setKpChartOpen] = useState(false);
 
   useEffect(() => {
     document.title = "Ayur Jyotish | EverydayHoroscope";
   }, []);
+
+  useEffect(() => {
+    setKpChartOpen(false);
+  }, [report?.id]);
 
   useEffect(() => {
     localStorage.setItem("longevity_form", JSON.stringify(form));
@@ -198,6 +205,7 @@ export default function LongevityReportPage() {
 
   const generatedAt = useMemo(() => (report?.created_at ? formatDateTime(report.created_at) : ""), [report]);
   const output = report?.output_payload || {};
+  const kpChart = output?.kp_chart || null;
   const longevity = output?.longevity_classification || {};
   const prakriti = output?.constitutional_health_profile || {};
   const narrative = output?.narrative || {};
@@ -207,6 +215,15 @@ export default function LongevityReportPage() {
   const decadeForecast = Array.isArray(output?.decade_quality_forecast) ? output.decade_quality_forecast : [];
   const guidance = output?.remedial_guidance || {};
   const currentDasha = output?.current_dasha || {};
+  const kpPlanets = useMemo(
+    () => PLANET_ORDER.map(name => [name, kpChart?.planets?.[name]]).filter(([, value]) => value),
+    [kpChart],
+  );
+  const kpCusps = Array.isArray(kpChart?.cusps) ? kpChart.cusps : [];
+  const kpSignificators = useMemo(
+    () => PLANET_ORDER.map(name => [name, kpChart?.significators?.[name] || []]).filter(([, houses]) => houses.length),
+    [kpChart],
+  );
 
   const updateField = (key, value) => {
     setForm(prev => ({ ...prev, [key]: value }));
@@ -580,6 +597,134 @@ export default function LongevityReportPage() {
                   {output.medical_disclaimer}
                 </div>
               </SectionCard>
+
+              {kpChart ? (
+                <SectionCard title="Your KP Chart" eyebrow="Foundation Layer" className="border-[#d5a14a]/20">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <p className="max-w-3xl text-sm leading-7 text-white/66">
+                      The report below is generated from this reusable KP chart layer: Placidus cusps, Krishnamurti ayanamsha, sub-lords, and raw significator links.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setKpChartOpen(prev => !prev)}
+                      className="rounded-full border border-[#d5a14a]/25 bg-[#d5a14a]/10 px-4 py-2 text-sm font-semibold text-[#f6d79e] transition hover:bg-[#d5a14a]/18"
+                    >
+                      {kpChartOpen ? "Hide KP Chart" : "Show KP Chart"}
+                    </button>
+                  </div>
+
+                  {kpChartOpen ? (
+                    <div className="mt-6 space-y-6">
+                      <div className="grid gap-3 md:grid-cols-3">
+                        <KeyValue label="Ascendant" value={kpChart?.ascendant ? `${kpChart.ascendant.sign} ${kpChart.ascendant.degree_label}` : "Unavailable"} />
+                        <KeyValue label="Ayanamsha" value={kpChart?.ayanamsha || "Krishnamurti"} />
+                        <KeyValue label="Ascendant Sub-Lord" value={kpChart?.ascendant?.sub_lord || "Unavailable"} />
+                      </div>
+
+                      <div className="rounded-[24px] border border-white/8 bg-white/[0.03] p-4">
+                        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                          <h3 className="text-lg font-semibold text-[#fbf6ef]">Planet Placements</h3>
+                          <Badge tone="ink">{`${kpPlanets.length} planets`}</Badge>
+                        </div>
+                        <div className="overflow-x-auto">
+                          <table className="min-w-full text-left text-sm">
+                            <thead className="text-[11px] uppercase tracking-[0.24em] text-white/42">
+                              <tr className="border-b border-white/10">
+                                <th className="px-3 py-3 font-medium">Planet</th>
+                                <th className="px-3 py-3 font-medium">Sign</th>
+                                <th className="px-3 py-3 font-medium">House</th>
+                                <th className="px-3 py-3 font-medium">Nakshatra</th>
+                                <th className="px-3 py-3 font-medium">Star Lord</th>
+                                <th className="px-3 py-3 font-medium">Sub-Lord</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {kpPlanets.map(([planet, details]) => (
+                                <tr key={planet} className="border-b border-white/6 text-white/78 last:border-b-0">
+                                  <td className="px-3 py-3 font-semibold text-[#fbf6ef]">{planet}</td>
+                                  <td className="px-3 py-3">{details.sign}</td>
+                                  <td className="px-3 py-3">{details.house}</td>
+                                  <td className="px-3 py-3">{details.nakshatra}</td>
+                                  <td className="px-3 py-3">{details.star_lord}</td>
+                                  <td className="px-3 py-3">{details.sub_lord}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div className="rounded-[24px] border border-white/8 bg-white/[0.03] p-4">
+                        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                          <h3 className="text-lg font-semibold text-[#fbf6ef]">Placidus Cusp Table</h3>
+                          <Badge tone="ink">12 cusps</Badge>
+                        </div>
+                        <div className="overflow-x-auto">
+                          <table className="min-w-full text-left text-sm">
+                            <thead className="text-[11px] uppercase tracking-[0.24em] text-white/42">
+                              <tr className="border-b border-white/10">
+                                <th className="px-3 py-3 font-medium">House</th>
+                                <th className="px-3 py-3 font-medium">Cusp Sign</th>
+                                <th className="px-3 py-3 font-medium">Degree</th>
+                                <th className="px-3 py-3 font-medium">Sub-Lord</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {kpCusps.map(cusp => (
+                                <tr key={cusp.house} className="border-b border-white/6 text-white/78 last:border-b-0">
+                                  <td className="px-3 py-3 font-semibold text-[#fbf6ef]">{cusp.house}</td>
+                                  <td className="px-3 py-3">{cusp.sign}</td>
+                                  <td className="px-3 py-3">{cusp.degree_label}</td>
+                                  <td className="px-3 py-3">{cusp.sub_lord}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div className="rounded-[24px] border border-white/8 bg-white/[0.03] p-4">
+                        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                          <h3 className="text-lg font-semibold text-[#fbf6ef]">Ascendant Summary</h3>
+                          <Badge tone="ink">{kpChart?.ascendant?.nakshatra || "KP"}</Badge>
+                        </div>
+                        <p className="text-sm leading-7 text-white/72">
+                          {kpChart?.ascendant
+                            ? `${kpChart.ascendant.sign} ascendant at ${kpChart.ascendant.degree_label}, using ${kpChart.ayanamsha} ayanamsha, with ${kpChart.ascendant.sub_lord} as the ascendant cusp sub-lord.`
+                            : "Ascendant data is unavailable for this report."}
+                        </p>
+                      </div>
+
+                      {kpSignificators.length ? (
+                        <div className="rounded-[24px] border border-white/8 bg-white/[0.03] p-4">
+                          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                            <h3 className="text-lg font-semibold text-[#fbf6ef]">House Significators</h3>
+                            <Badge tone="ink">Raw KP mapping</Badge>
+                          </div>
+                          <div className="overflow-x-auto">
+                            <table className="min-w-full text-left text-sm">
+                              <thead className="text-[11px] uppercase tracking-[0.24em] text-white/42">
+                                <tr className="border-b border-white/10">
+                                  <th className="px-3 py-3 font-medium">Planet</th>
+                                  <th className="px-3 py-3 font-medium">Houses Signified</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {kpSignificators.map(([planet, houses]) => (
+                                  <tr key={planet} className="border-b border-white/6 text-white/78 last:border-b-0">
+                                    <td className="px-3 py-3 font-semibold text-[#fbf6ef]">{planet}</td>
+                                    <td className="px-3 py-3">{houses.join(", ")}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : null}
+                </SectionCard>
+              ) : null}
 
               <div className="grid gap-6 xl:grid-cols-2">
                 <SectionCard title="Longevity Classification" eyebrow="Section 01">
