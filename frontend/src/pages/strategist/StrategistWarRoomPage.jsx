@@ -6,6 +6,7 @@ import StrategistWarRoom from '../../components/strategist/war-room/StrategistWa
 import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
 import ConquestScoreboard from '../../components/strategist/phase2/ConquestScoreboard';
 import LKGateSummaries from '../../components/strategist/phase2/LKGateSummaries';
+import '../../styles/strategist-tokens.css';
 import '../../styles/strategist-2f-scoreboard.css';
 import '../../styles/strategist-2e-lkgates.css';
 
@@ -199,7 +200,14 @@ function mapWarRoomProps(dashboard, missions, layout) {
       score: Number(conquest.score) || 0,
       stampLabel: scoreboard.score_tier,
     },
-    factors: Array.isArray(conquest.factors) ? conquest.factors : [],
+    factors: Array.isArray(conquest.factors)
+      ? conquest.factors.map(f => ({
+          label: f.label || f.factor || '',
+          sub:   f.sub   || f.detail  || '',
+          delta: f.delta,
+          tone:  f.tone  || (f.delta > 0 ? 'em' : f.delta < 0 ? 'crit' : 'neutral'),
+        }))
+      : [],
     missions: Array.isArray(missions) ? missions : [],
     dasha: shapeDasha(dashboard),
     transition: formatTransitionDate(dashboard?.current_mahadasha_end),

@@ -175,7 +175,7 @@ export function KPVerdictChipProofStrip() {
 // Note: when STR-2A2 (KP Oracle integration) lands, this component
 // wires to /api/krishna-prashnavali for live gate data.
 // -----------------------------------------------------------------
-export default function KPGate0Panel({ gate, asOf, onReconsult, onViewReading }) {
+export default function KPGate0Panel({ gate, asOf, onReconsult, onViewReading, showProofStrip = false }) {
   return (
     <>
       <SectionHeader
@@ -190,7 +190,7 @@ export default function KPGate0Panel({ gate, asOf, onReconsult, onViewReading })
         onViewReading={onViewReading}
       />
 
-      <KPVerdictChipProofStrip />
+      {showProofStrip && <KPVerdictChipProofStrip />}
     </>
   );
 }

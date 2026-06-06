@@ -90,6 +90,9 @@
   color: var(--strategist-bg, var(--shell-bg));
 }
 .seg-pill__seg--on:hover { color: var(--strategist-bg, var(--shell-bg)); }
+/* Light mode: cream text on gold is too low contrast -- use dark ink instead */
+.strategist-module[data-mode="light"] .seg-pill__seg--on,
+.strategist-module[data-mode="light"] .seg-pill__seg--on:hover { color: #2C2010; }
 .seg-pill__seg:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 2px;

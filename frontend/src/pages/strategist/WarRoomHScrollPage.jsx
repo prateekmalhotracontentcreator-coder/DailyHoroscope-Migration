@@ -595,9 +595,9 @@ function PanelScoreboard({ scoreboard, score }) {
   ];
 
   const activeBand = bands.find((b, i) => {
-    const next = bands[i + 1];
-    return currentScore >= b.min && (next ? currentScore < next.min + (bands[i].min - next.min) : true);
-  }) || bands.find((b) => currentScore >= b.min);
+    const upperMin = i > 0 ? bands[i - 1].min : 100;
+    return currentScore >= b.min && currentScore < upperMin;
+  }) || bands[bands.length - 1];
 
   return (
     <div className="wrs-inner">

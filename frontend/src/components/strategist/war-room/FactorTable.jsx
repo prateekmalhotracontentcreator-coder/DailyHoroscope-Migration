@@ -13,10 +13,11 @@ function formatDelta(delta) {
   return delta > 0 ? `+${delta}` : `${delta}`;
 }
 
-export default function FactorTable({ factors = [], eyebrow = 'Factor breakdown · six contributors' }) {
+export default function FactorTable({ factors = [], eyebrow }) {
+  const label = eyebrow || `Factor breakdown · ${factors.length} contributor${factors.length !== 1 ? 's' : ''}`;
   return (
     <div className="ft">
-      <div className="ft__eyebrow">{eyebrow}</div>
+      <div className="ft__eyebrow">{label}</div>
 
       {factors.map((f, i) => (
         <div key={f.id || i} className={`ft-row ft-row--${f.tone || 'neutral'}`}>
