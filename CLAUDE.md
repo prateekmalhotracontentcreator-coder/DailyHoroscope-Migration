@@ -158,7 +158,30 @@ Full feature detail: `.claude/REFERENCE.md`
 
 ---
 
-## 10. Premium Gating
+## 10. SEO Content Classification (LOCKED -- do not change without co-founder sign-off)
+
+Two official terminology labels, decided 2026-06-07:
+
+**SEO Resource Content** -- Strategic, deep content libraries where significant build effort has been invested. These pages are gated behind Login + Subscribe (`PremiumRoute`). Not logged in → redirected to `/login`. Logged in, not premium → premium upgrade gate.
+| Module | Routes |
+|---|---|
+| Angel Numbers | `/angel-numbers/*` |
+| Lo Shu Grid | `/lo-shu-grid/*` |
+| Crystals | `/crystals/*` |
+| Rudraksha | `/rudraksha/*` |
+| Faith Hubs | `/faith/*` |
+| Tarot Library | `/tarot/spreads`, `/tarot/spread/*`, `/tarot/card/*`, `/tarot/for/*` |
+
+**SEO Marketing Content** -- Module and report landing pages, editorial content. Stays fully public. No gate. Includes all `/panchang/*`, report landing pages (`/karmic-debt-report`, `/career-blueprint-report`, etc.), module landing pages (`/the-tarot`, `/the-strategist`, `/lal-kitab-remedies`, `/the-longevity-report`), `/blog/*`, `/festivals/*`, `/celebrity-horoscopes/*`, `/about`, `/contact`, `/pricing`.
+
+**Implementation**: `SeoResourceGate` in `App.js` (component in `PremiumRoute.jsx`).
+- Not logged in → soft teaser (page visible, `pointer-events-none`, gradient fade) + `SeoResourceGateCard` with capsule "Login &amp; Subscribe for Premium Content -- It's Free" + Register Free + Login CTAs.
+- Logged in (ANY tier, including free) → full access. Free registration unlocks all SEO Resource Content.
+- `PremiumRoute` (paid gating) is NOT used for SEO Resource Content.
+
+---
+
+## 11. Premium Gating
 
 `user.is_premium` sourced from `/api/auth/me` → `auth_utils.py` (queries `db.subscriptions`).
 

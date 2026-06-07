@@ -6,7 +6,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import { AdminAuthProvider } from './context/AdminAuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { PremiumRoute } from './components/PremiumRoute';
+import { PremiumRoute, SeoResourceGate } from './components/PremiumRoute';
 import { AuthCallback } from './components/AuthCallback';
 import { Toaster } from './components/ui/sonner';
 import { CookieConsent } from './components/CookieConsent';
@@ -223,44 +223,53 @@ function App() {
                   <Route path="/compatibility/name" element={<NameCompatibilityPage />} />
                   <Route path="/compatibility/:signPair" element={<CompatibilityPage />} />
                   <Route path="/love-calculator" element={<LoveCalculatorPage />} />
-                  <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
-                  <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
-                  <Route path="/angel-numbers/:number/:intent" element={<AngelNumberIntentPage />} />
-                  <Route path="/lo-shu-grid" element={<LoShuHubPage />} />
-                  <Route path="/lo-shu-grid/calculator" element={<LoShuCalculatorPage />} />
-                  <Route path="/lo-shu-grid/missing-:number" element={<LoShuMissingNumberPage />} />
-                  <Route path="/lo-shu-grid/arrow/:slug" element={<LoShuArrowPage />} />
-                  <Route path="/lo-shu-grid/number/:n" element={<LoShuNumberPage />} />
-                  <Route path="/lo-shu-grid/for/:problem" element={<LoShuProblemPage />} />
-                  <Route path="/lo-shu-grid/personal-year/:n" element={<LoShuPersonalYearPage />} />
-                  <Route path="/crystals" element={<CrystalHubPage />} />
-                  <Route path="/crystals/calculator" element={<CrystalCalculatorPage />} />
-                  <Route path="/crystals/for/:intentionSlug" element={<CrystalIntentionPage />} />
-                  <Route path="/crystals/for/planet/:planet" element={<CrystalPlanetPage />} />
-                  <Route path="/crystals/for/sign/:sign" element={<CrystalSignPage />} />
-                  <Route path="/crystals/for/problem/:problem" element={<CrystalProblemPage />} />
-                  <Route path="/crystals/:crystalSlug" element={<CrystalPage />} />
-                  <Route path="/rudraksha" element={<RudrakshaHubPage />} />
-                  <Route path="/rudraksha/:mukhi" element={<RudrakshaMukhiPage />} />
-                  <Route path="/rudraksha/planet/:planetSlug" element={<RudrakshaPlanetPage />} />
-                  <Route path="/rudraksha/problem/:problemSlug" element={<RudrakshaProblemPage />} />
-                  <Route path="/rudraksha/sign/:signSlug" element={<RudrakshaSignPage />} />
-                  <Route path="/rudraksha/calculator" element={<RudrakshaCalculatorPage />} />
-                  <Route path="/faith" element={<FaithHubPage />} />
-                  <Route path="/faith/pathways" element={<FaithCollectionsHubPage />} />
-                  <Route path="/faith/pathways/:collectionSlug" element={<FaithCollectionPage />} />
-                  <Route path="/faith/gita" element={<FaithGitaHubPage />} />
-                  <Route path="/faith/gita/recitation" element={<FaithGitaRecitationPage />} />
-                  <Route path="/faith/gita/chapter/:chapter" element={<FaithGitaChapterPage />} />
-                  <Route path="/faith/gita/:chapterVerse/:situationSlug" element={<GitaVersePage />} />
-                  <Route path="/faith/bible" element={<FaithBibleHubPage />} />
-                  <Route path="/faith/bible/topic/:topicSlug" element={<FaithBibleTopicPage />} />
-                  <Route path="/faith/bible/:topicSlug/:transitionSlug" element={<BibleTopicPage />} />
-                  <Route path="/faith/transit" element={<FaithTransitHubPage />} />
-                  <Route path="/faith/transit/:transitSlug/:tradition" element={<TransitScripturePage />} />
-                  <Route path="/faith/daily" element={<FaithDailyHubPage />} />
-                  <Route path="/faith/daily/:sign/:month" element={<DailyScripturePage />} />
-                  <Route path="/faith/daily/:sign" element={<FaithDailySignPage />} />
+                  {/* ── SEO Resource Content: Angel Numbers ─────────────────────────────── */}
+                  <Route path="/angel-numbers" element={<SeoResourceGate feature="Angel Numbers Library"><AngelNumbersHubPage /></SeoResourceGate>} />
+                  <Route path="/angel-numbers/:number" element={<SeoResourceGate feature="Angel Numbers Library"><AngelNumberPage /></SeoResourceGate>} />
+                  <Route path="/angel-numbers/:number/:intent" element={<SeoResourceGate feature="Angel Numbers Library"><AngelNumberIntentPage /></SeoResourceGate>} />
+
+                  {/* ── SEO Resource Content: Lo Shu Grid ───────────────────────────────── */}
+                  <Route path="/lo-shu-grid" element={<SeoResourceGate feature="Lo Shu Grid Library"><LoShuHubPage /></SeoResourceGate>} />
+                  <Route path="/lo-shu-grid/calculator" element={<SeoResourceGate feature="Lo Shu Grid Library"><LoShuCalculatorPage /></SeoResourceGate>} />
+                  <Route path="/lo-shu-grid/missing-:number" element={<SeoResourceGate feature="Lo Shu Grid Library"><LoShuMissingNumberPage /></SeoResourceGate>} />
+                  <Route path="/lo-shu-grid/arrow/:slug" element={<SeoResourceGate feature="Lo Shu Grid Library"><LoShuArrowPage /></SeoResourceGate>} />
+                  <Route path="/lo-shu-grid/number/:n" element={<SeoResourceGate feature="Lo Shu Grid Library"><LoShuNumberPage /></SeoResourceGate>} />
+                  <Route path="/lo-shu-grid/for/:problem" element={<SeoResourceGate feature="Lo Shu Grid Library"><LoShuProblemPage /></SeoResourceGate>} />
+                  <Route path="/lo-shu-grid/personal-year/:n" element={<SeoResourceGate feature="Lo Shu Grid Library"><LoShuPersonalYearPage /></SeoResourceGate>} />
+
+                  {/* ── SEO Resource Content: Crystals ───────────────────────────────────── */}
+                  <Route path="/crystals" element={<SeoResourceGate feature="Crystal Library"><CrystalHubPage /></SeoResourceGate>} />
+                  <Route path="/crystals/calculator" element={<SeoResourceGate feature="Crystal Library"><CrystalCalculatorPage /></SeoResourceGate>} />
+                  <Route path="/crystals/for/:intentionSlug" element={<SeoResourceGate feature="Crystal Library"><CrystalIntentionPage /></SeoResourceGate>} />
+                  <Route path="/crystals/for/planet/:planet" element={<SeoResourceGate feature="Crystal Library"><CrystalPlanetPage /></SeoResourceGate>} />
+                  <Route path="/crystals/for/sign/:sign" element={<SeoResourceGate feature="Crystal Library"><CrystalSignPage /></SeoResourceGate>} />
+                  <Route path="/crystals/for/problem/:problem" element={<SeoResourceGate feature="Crystal Library"><CrystalProblemPage /></SeoResourceGate>} />
+                  <Route path="/crystals/:crystalSlug" element={<SeoResourceGate feature="Crystal Library"><CrystalPage /></SeoResourceGate>} />
+
+                  {/* ── SEO Resource Content: Rudraksha ─────────────────────────────────── */}
+                  <Route path="/rudraksha" element={<SeoResourceGate feature="Rudraksha Library"><RudrakshaHubPage /></SeoResourceGate>} />
+                  <Route path="/rudraksha/:mukhi" element={<SeoResourceGate feature="Rudraksha Library"><RudrakshaMukhiPage /></SeoResourceGate>} />
+                  <Route path="/rudraksha/planet/:planetSlug" element={<SeoResourceGate feature="Rudraksha Library"><RudrakshaPlanetPage /></SeoResourceGate>} />
+                  <Route path="/rudraksha/problem/:problemSlug" element={<SeoResourceGate feature="Rudraksha Library"><RudrakshaProblemPage /></SeoResourceGate>} />
+                  <Route path="/rudraksha/sign/:signSlug" element={<SeoResourceGate feature="Rudraksha Library"><RudrakshaSignPage /></SeoResourceGate>} />
+                  <Route path="/rudraksha/calculator" element={<SeoResourceGate feature="Rudraksha Library"><RudrakshaCalculatorPage /></SeoResourceGate>} />
+
+                  {/* ── SEO Resource Content: Faith ──────────────────────────────────────── */}
+                  <Route path="/faith" element={<SeoResourceGate feature="Faith Hubs"><FaithHubPage /></SeoResourceGate>} />
+                  <Route path="/faith/pathways" element={<SeoResourceGate feature="Faith Hubs"><FaithCollectionsHubPage /></SeoResourceGate>} />
+                  <Route path="/faith/pathways/:collectionSlug" element={<SeoResourceGate feature="Faith Hubs"><FaithCollectionPage /></SeoResourceGate>} />
+                  <Route path="/faith/gita" element={<SeoResourceGate feature="Faith Hubs"><FaithGitaHubPage /></SeoResourceGate>} />
+                  <Route path="/faith/gita/recitation" element={<SeoResourceGate feature="Faith Hubs"><FaithGitaRecitationPage /></SeoResourceGate>} />
+                  <Route path="/faith/gita/chapter/:chapter" element={<SeoResourceGate feature="Faith Hubs"><FaithGitaChapterPage /></SeoResourceGate>} />
+                  <Route path="/faith/gita/:chapterVerse/:situationSlug" element={<SeoResourceGate feature="Faith Hubs"><GitaVersePage /></SeoResourceGate>} />
+                  <Route path="/faith/bible" element={<SeoResourceGate feature="Faith Hubs"><FaithBibleHubPage /></SeoResourceGate>} />
+                  <Route path="/faith/bible/topic/:topicSlug" element={<SeoResourceGate feature="Faith Hubs"><FaithBibleTopicPage /></SeoResourceGate>} />
+                  <Route path="/faith/bible/:topicSlug/:transitionSlug" element={<SeoResourceGate feature="Faith Hubs"><BibleTopicPage /></SeoResourceGate>} />
+                  <Route path="/faith/transit" element={<SeoResourceGate feature="Faith Hubs"><FaithTransitHubPage /></SeoResourceGate>} />
+                  <Route path="/faith/transit/:transitSlug/:tradition" element={<SeoResourceGate feature="Faith Hubs"><TransitScripturePage /></SeoResourceGate>} />
+                  <Route path="/faith/daily" element={<SeoResourceGate feature="Faith Hubs"><FaithDailyHubPage /></SeoResourceGate>} />
+                  <Route path="/faith/daily/:sign/:month" element={<SeoResourceGate feature="Faith Hubs"><DailyScripturePage /></SeoResourceGate>} />
+                  <Route path="/faith/daily/:sign" element={<SeoResourceGate feature="Faith Hubs"><FaithDailySignPage /></SeoResourceGate>} />
                   <Route path="/ekadashi" element={<DevotionalDatePage type="ekadashi" />} />
                   <Route path="/amavasya" element={<DevotionalDatePage type="amavasya" />} />
                   <Route path="/purnima" element={<DevotionalDatePage type="purnima" />} />
@@ -368,17 +377,18 @@ function App() {
                   <Route path="/tarot" element={<TarotPage />} />
                   <Route path="/the-tarot" element={<TarotLanding />} />
                   <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
-                  <Route path="/tarot/spreads" element={<TarotSeoHubPage />} />
-                  <Route path="/tarot/spread/:spreadSlug" element={<TarotSpreadPage />} />
-                  <Route path="/tarot/card/:cardSlug" element={<TarotCardPage />} />
-                  <Route path="/tarot/for/:intentionSlug" element={<TarotIntentionPage />} />
+                  {/* ── SEO Resource Content: Tarot Library ─────────────────────────────── */}
+                  <Route path="/tarot/spreads" element={<SeoResourceGate feature="Tarot Library"><TarotSeoHubPage /></SeoResourceGate>} />
+                  <Route path="/tarot/spread/:spreadSlug" element={<SeoResourceGate feature="Tarot Library"><TarotSpreadPage /></SeoResourceGate>} />
+                  <Route path="/tarot/card/:cardSlug" element={<SeoResourceGate feature="Tarot Library"><TarotCardPage /></SeoResourceGate>} />
+                  <Route path="/tarot/for/:intentionSlug" element={<SeoResourceGate feature="Tarot Library"><TarotIntentionPage /></SeoResourceGate>} />
                   <Route path="/remedies" element={<RemedyPage />} />
                   <Route path="/remedies/:dosha" element={<RemedyHubPage />} />
                   {/* /kundali = free public entry point for Vedic Kundali */}
                   <Route path="/kundali" element={<KundaliPage />} />
                   <Route path="/kundali/view/:chartId" element={<KundaliPage />} />
-                  <Route path="/lagna-kundali" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace -- D1 through all divisional charts -- is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
-                  <Route path="/lagna-kundali/chart/:chartId" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
+                  <Route path="/lagna-kundali" element={<SeoResourceGate feature="Lagna Kundali"><KundaliPage /></SeoResourceGate>} />
+                  <Route path="/lagna-kundali/chart/:chartId" element={<SeoResourceGate feature="Lagna Kundali"><KundaliPage /></SeoResourceGate>} />
 
                   {/* Lumina -- Spiritual companion module */}
                   <Route path="/lumina" element={<LuminaPage />} />

@@ -466,6 +466,116 @@ def _build_etymology_items(verse: dict, situation: dict) -> list[dict[str, str]]
     return items
 
 
+def _verse_focus_fragment(verse: dict) -> str:
+    translation = verse.get("translation", "")
+    words = [word.strip(" ,.;:!?()[]") for word in translation.split() if len(word.strip(" ,.;:!?()[]")) > 4]
+    return " ".join(words[:4]).lower() if words else "the verse's central instruction"
+
+
+GITA_TRANSLATION_SKIP = {
+    "dhritarashtra", "sanjaya", "being", "place", "after", "their", "there", "which", "would",
+    "these", "those", "shall", "unto", "with", "from", "your", "have", "were", "this",
+}
+
+
+def _translation_keywords(verse: dict, limit: int = 3) -> list[str]:
+    cleaned: list[str] = []
+    for raw in verse.get("translation", "").replace("--", " ").replace("-", " ").split():
+        word = raw.strip(" ,.;:!?()[]'\"").lower()
+        word = "".join(char for char in word if char.isalpha())
+        if len(word) < 5 or word in GITA_TRANSLATION_SKIP or word in cleaned:
+            continue
+        cleaned.append(word)
+        if len(cleaned) == limit:
+            break
+    if not cleaned:
+        cleaned = ["discipline", "alignment", "steadiness"][:limit]
+    while len(cleaned) < limit:
+        cleaned.append(cleaned[-1])
+    return cleaned
+
+
+def _gita_seed(chapter: int, verse_number: int, situation_slug: str, modulus: int) -> int:
+    return _hash_index(str(chapter), str(verse_number), situation_slug, modulus=modulus)
+
+
+def _gita_summary(verse: dict, situation: dict) -> str:
+    keywords = _translation_keywords(verse, limit=2)
+    seed = _gita_seed(verse["chapter"], verse["verse"], situation["slug"], modulus=8)
+    options = [
+        f"Bhagavad Gita {verse['reference']} reads {situation['label'].lower()} through {keywords[0]} and {keywords[1]}, giving the page a verse-led frame instead of a generic encouragement layer.",
+        f"For {situation['label'].lower()}, Bhagavad Gita {verse['reference']} turns on the words {keywords[0]} and {keywords[1]}, so the guidance comes from this verse's own pressure points.",
+        f"This reading of Bhagavad Gita {verse['reference']} uses {keywords[0]} and {keywords[1]} to interpret {situation['label'].lower()} with more specificity than a fixed situation template can provide.",
+        f"Bhagavad Gita {verse['reference']} becomes a distinct page for {situation['label'].lower()} by anchoring the guidance in {keywords[0]} and {keywords[1]} rather than in reusable boilerplate.",
+        f"In this Faith route, Bhagavad Gita {verse['reference']} meets {situation['label'].lower()} by pressing the language of {keywords[0]} and {keywords[1]} into the lived problem itself.",
+        f"Rather than repeating one situation paragraph, this page lets Bhagavad Gita {verse['reference']} speak through {keywords[0]} and {keywords[1]} inside {situation['label'].lower()}.",
+        f"For readers facing {situation['label'].lower()}, Bhagavad Gita {verse['reference']} is summarized here through {keywords[0]} and {keywords[1]}, which changes the center of gravity verse by verse.",
+        f"This page treats Bhagavad Gita {verse['reference']} as a unique response to {situation['label'].lower()}, built around the translation words {keywords[0]} and {keywords[1]}.",
+    ]
+    return options[seed]
+
+
+def _gita_hook(verse: dict, situation: dict) -> str:
+    keywords = _translation_keywords(verse, limit=3)
+    focus = _verse_focus_fragment(verse)
+    sit = _situation_vocabulary(situation)
+    seed = _gita_seed(verse["chapter"], verse["verse"], situation["slug"], modulus=8)
+    options = [
+        f"In {situation['label'].lower()}, the mind is often pulled toward {sit[0]}. Bhagavad Gita {verse['reference']} answers through {keywords[0]} and {keywords[1]}, redirecting attention toward {sit[1]}.",
+        f"{situation['label']} becomes harder when the inner story is ruled by {sit[0]}. Here the verse uses {keywords[0]}, {keywords[1]}, and {keywords[2]} to produce a cleaner version of {focus}.",
+        f"When {situation['label'].lower()} gets emotionally loud, Bhagavad Gita {verse['reference']} brings in {keywords[0]} and {keywords[1]} so the heart is not governed by {sit[0]}.",
+        f"This verse does not treat {situation['label'].lower()} as a generic struggle. It uses {keywords[0]} and {keywords[1]} to redirect the reader toward {sit[1]}.",
+        f"In this reading, {keywords[0]} and {keywords[1]} expose the exact pressure hiding inside {situation['label'].lower()}, especially when {sit[0]} starts steering attention.",
+        f"The force of Bhagavad Gita {verse['reference']} lies in how {keywords[0]} and {keywords[1]} steady a reader who is drifting away from {sit[1]}.",
+        f"When this life pressure begins scripting the future, Bhagavad Gita {verse['reference']} pushes back with {keywords[0]}, {keywords[1]}, and {keywords[2]}.",
+        f"Bhagavad Gita {verse['reference']} meets {situation['label'].lower()} through {keywords[0]} and {keywords[1]}, giving the page a verse-shaped rather than {sit[0]}-shaped center.",
+    ]
+    return options[seed]
+
+
+def _gita_application(verse: dict, situation: dict) -> str:
+    keywords = _translation_keywords(verse, limit=5)
+    sit = _situation_vocabulary(situation)
+    seed = _gita_seed(verse["chapter"], verse["verse"], situation["slug"], modulus=8)
+    options = [
+        f"Applied today, the verse asks you to practice {keywords[0]} through {sit[2]}. Let {keywords[1]} define the next task instead of letting {sit[0]} define the whole day.",
+        f"In practical use, Bhagavad Gita {verse['reference']} makes {keywords[0]} concrete: {sit[2]}. Work the next duty in that spirit, and let {keywords[1]} replace reflexive overreaction.",
+        f"The application here is not broad inspiration but disciplined use of {keywords[0]}. In {situation['label'].lower()}, that means {sit[2]} while {keywords[1]} keeps the pace cleaner than {sit[0]}.",
+        f"To apply this verse, translate {keywords[0]} into one act: {sit[2]}. Then hold to {keywords[1]} long enough that {sit[0]} stops dictating every inner conclusion.",
+        f"Bhagavad Gita {verse['reference']} becomes practical when {keywords[0]} is moved into behavior. Use it by choosing {sit[2]}, and let {keywords[1]} interrupt the {sit[0]} loop.",
+        f"One faithful use of this verse is to treat {keywords[0]} as the rule for the next decision. In {situation['label'].lower()}, that looks like {sit[2]} while {keywords[2]} keeps the response steady.",
+        f"The verse is applied well when {keywords[0]} and {keywords[1]} become visible in the next hours, not merely admired. Start with {sit[2]} and let the emotional temperature settle.",
+        f"For this situation, the verse turns practical when {keywords[0]} shapes the next duty and {keywords[1]} narrows attention. Use {keywords[2]} to carry out {sit[2]}.",
+    ]
+    return options[seed]
+
+
+def _situation_vocabulary(situation: dict) -> list[str]:
+    """Returns 3 high-specificity tokens unique to this situation."""
+    def _pick(text: str) -> str:
+        words = [w.strip(".,;:").lower() for w in text.split() if len(w) > 4]
+        candidates = [w for w in words if w not in {
+            "when", "that", "this", "from", "with", "into", "their", "which",
+            "about", "toward", "through", "instead", "without", "become"
+        }]
+        return candidates[0] if candidates else words[0] if words else "steadiness"
+
+    return [
+        _pick(situation["hidden_fear"]),
+        _pick(situation["practice_shift"]),
+        _pick(situation["action_focus"]),
+    ]
+
+
+def _how_to_apply_steps(verse: dict, situation: dict) -> list[str]:
+    verse_focus = _verse_focus_fragment(verse)
+    return [
+        f"Name the exact place where {situation['label'].lower()} is pushing you away from {situation['practice_shift']}.",
+        f"Read {verse['reference']} once slowly and ask how '{verse_focus}' changes the next duty in front of you.",
+        f"Take one action that matches {situation['action_focus']} before you ask the situation to feel easier.",
+    ]
+
+
 def _top_situations_for_verse(chapter: int, verse: int, limit: int = 5) -> list[dict]:
     start = _hash_index(str(chapter), str(verse), modulus=len(GITA_SITUATIONS))
     items: list[dict] = []
@@ -502,12 +612,192 @@ def get_gita_page(chapter: int, verse_number: int, situation_slug: str) -> dict 
     ]
     top_situations = [item for item in related_situations if item["slug"] != situation_slug][:5]
     recitation = _verse_recitation_payload(verse)
+    how_to_apply = _how_to_apply_steps(verse, situation)
+    verse_focus = _verse_focus_fragment(verse)
+    summary = _gita_summary(verse, situation)
+    hook = _gita_hook(verse, situation)
+    application = _gita_application(verse, situation)
+    focus_words = _translation_keywords(verse, limit=3)
+    sit_vocab = _situation_vocabulary(situation)
+    seed = _gita_seed(chapter, verse_number, situation_slug, modulus=4)
+    etymology_options = [
+        f"{focus_words[0].capitalize()}: that word in {verse['reference']} carries more weight for {situation['label'].lower()} than it does read in isolation. It names the internal posture the situation is actually demanding.",
+        f"When {situation['label'].lower()} tightens, the temptation is to reach for reassurance. This verse offers {focus_words[0]} instead - a more demanding word, and a more honest one.",
+        f"The problem in {situation['label'].lower()} is rarely the circumstance itself. It is usually the loss of {focus_words[0]} that makes the circumstance unmanageable. This verse restores that word to the center.",
+        f"What does {focus_words[0]} mean inside {situation['label'].lower()}? {verse['reference']} answers that exactly: not as philosophy, but as a practical description of what the next steady act looks like.",
+        f"Without {focus_words[0]}, {sit_vocab[0]} fills the gap. {verse['reference']} is chosen here because it names the alternative precisely, not broadly.",
+        f"In the dharmic reading of this verse, {focus_words[0]} is not a feeling to be cultivated but a posture to be chosen. {situation['label'].lower()} is where that choice becomes unavoidable.",
+        f"{sit_vocab[0].capitalize()} is the inner pattern {situation['label'].lower()} reliably produces. {focus_words[0]} in {verse['reference']} is what interrupts it - not by removing the difficulty, but by changing the reader's relationship to it.",
+        f"If {situation['label'].lower()} is active today, this verse asks for one thing: {focus_words[0]}. Not patience, not optimism, not strategy - specifically {focus_words[0]}, as the verse names it.",
+    ]
+    etymology_intro = etymology_options[_gita_seed(chapter, verse_number, situation_slug, modulus=8)]
+    transit_options = [
+        f"This verse often becomes more vivid during {situation['transit_label'].lower()}, when {situation['planet_label']} themes press on the same nerves this situation already exposes. In dasha language, seasons ruled by {situation['planet_label']} can magnify the demand for maturity, timing, and inner steadiness. That is why the linked transit reading helps here: it translates {verse_focus} into the emotional weather of the moment.",
+        f"{situation['transit_label']} tends to light up the same part of life that this verse is already disciplining. When {situation['planet_label']} periods intensify the atmosphere, the companion transit page helps move {verse_focus} from timeless teaching into timely practice.",
+        f"In transit work, {situation['transit_label']} often exposes the same weak seam that Bhagavad Gita {verse['reference']} is correcting. That makes the linked transit page useful because it carries {verse_focus} into the current emotional climate rather than leaving it on the page.",
+        f"Readers often feel this verse more sharply during {situation['transit_label'].lower()}, especially when {situation['planet_label']} themes amplify urgency or pressure. The transit companion shows how {verse_focus} behaves when timing itself becomes part of the lesson.",
+    ]
+    transit_layer = transit_options[seed]
+    prompt_seed = _gita_seed(chapter, verse_number, situation_slug, modulus=8)
+    practice_prompts = [
+        [
+            f"Name the exact moment today when {focus_words[0]} was available but went unused.",
+            f"Before the next decision arrives, ask: does this choice reflect {focus_words[1]} or does it avoid the difficulty {situation['label'].lower()} is producing?",
+            f"Tonight, record whether {focus_words[2]} appeared in behavior or only in intention.",
+        ],
+        [
+            f"Write one sentence defining what {focus_words[0]} actually looks like in your current circumstances - not in general, but today.",
+            f"Choose one act before the day peaks that demonstrates {focus_words[1]} in the face of {situation['label'].lower()}.",
+            f"At day's end: was {focus_words[0]} something you practiced, or something you planned to practice?",
+        ],
+        [
+            f"Ask: where is {focus_words[0]} being crowded out by urgency or avoidance right now?",
+            f"Take the next available duty and apply {focus_words[1]} to it directly, before the moment passes.",
+            f"Close the day by noting one place where {focus_words[2]} shaped a choice more than reaction did.",
+        ],
+        [
+            f"Reframe the hardest part of {situation['label'].lower()} through the lens of {focus_words[0]}: what does it look like from that angle?",
+            f"Make {focus_words[1]} the rule for the next hour - not the aspiration for the day, just the rule for the next hour.",
+            f"Before sleep: did {focus_words[2]} become visible in action today, or did it stay in the realm of understanding only?",
+        ],
+        [
+            f"{focus_words[0].capitalize()} -- where is it being practiced right now, not where it is being hoped for?",
+            f"The next available act: can {focus_words[1]} be the shape it takes rather than the outcome it seeks?",
+            f"{focus_words[2].capitalize()} in behavior today -- note one instance, however small.",
+        ],
+        [
+            f"{focus_words[0].capitalize()} expressed in the next ten minutes: what would that look like, concretely?",
+            f"Where is {focus_words[1]} absent from {situation['label'].lower()} right now -- the exact gap, not the general one?",
+            f"{focus_words[2].capitalize()} before sleep: practiced in a single act, or carried only as awareness?",
+        ],
+        [
+            f"In {situation['label'].lower()}, {focus_words[0]} is either growing or shrinking -- which is true right now?",
+            f"{focus_words[1].capitalize()} applied once before the day closes: name the act, not the intention.",
+            f"Did {focus_words[2]} govern any decision today, or did something else take its place?",
+        ],
+        [
+            f"{focus_words[0].capitalize()} as the standard for the next single choice: does the choice meet it?",
+            f"Where would {focus_words[1]} change the outcome of {situation['label'].lower()} most if it were applied now?",
+            f"End the day by noting whether {focus_words[2]} was present in one act, absent from all, or somewhere between.",
+        ],
+    ][prompt_seed]
+    faq_seed = _gita_seed(chapter, verse_number, situation_slug, modulus=7)
+    if faq_seed == 0:
+        faq = [
+            {
+                "q": f"What does Bhagavad Gita {chapter}:{verse_number} mean for {situation['label'].lower()} through {focus_words[0]}?",
+                "a": f"{focus_words[0].capitalize()} is the verse's central offering for this situation. Not as sentiment, but as the specific discipline the circumstance is asking for. Without it, {situation['label'].lower()} stays emotionally loud. With it, the next act becomes clearer.",
+            },
+            {
+                "q": f"How can I apply {focus_words[0]} from this Gita verse if I am facing {situation['label'].lower()}?",
+                "a": f"Start with {focus_words[0]}. Not as an ideal but as an action: name one choice today where {focus_words[0]} is the rule instead of the outcome. That is the verse made practical.",
+            },
+            {
+                "q": f"Which timing season makes Bhagavad Gita {chapter}:{verse_number} especially vivid for {focus_words[1]}?",
+                "a": f"The {sit_vocab[1]} season is the strongest companion. It amplifies the same pressure {focus_words[1]} is designed to steady, which is why the linked transit reading reinforces this verse.",
+            },
+        ]
+    elif faq_seed == 1:
+        faq = [
+            {
+                "q": f"Why is Bhagavad Gita {chapter}:{verse_number} a strong verse for {situation['label'].lower()} around {focus_words[0]}?",
+                "a": f"Because it names {focus_words[0]} in a context that matches {situation['label'].lower()} rather than offering a general encouragement that could apply anywhere. The specificity is the point.",
+            },
+            {
+                "q": f"What should I do first with this verse if {focus_words[0]} is being tested inside {situation['label'].lower()} today?",
+                "a": f"Find where {focus_words[0]} is being tested right now - the specific place, not the general pattern. Then let the verse speak to that exact point before widening back out to interpretation.",
+            },
+            {
+                "q": f"When does {focus_words[1]} in this verse feel hardest to hold?",
+                "a": f"The {sit_vocab[1]} cycle is when {focus_words[1]} stops being theoretical. Once that window is active, the verse becomes a working reference rather than background reading.",
+            },
+        ]
+    elif faq_seed == 2:
+        faq = [
+            {
+                "q": f"What inner shift does Bhagavad Gita {chapter}:{verse_number} ask for in {situation['label'].lower()} through {focus_words[0]}?",
+                "a": f"A move toward {focus_words[0]}, which sounds abstract until it is made into a single next action. The verse is asking for the behavior, not the feeling that would make the behavior easier.",
+            },
+            {
+                "q": f"How can {focus_words[0]} from this verse become practical before the day ends?",
+                "a": f"Carry {focus_words[0]} into one choice before the day closes. Not the most important choice - any choice. The verse becomes real in practice, not in comprehension.",
+            },
+            {
+                "q": f"When does this verse become especially vivid in timing work around {focus_words[1]}?",
+                "a": f"During the {sit_vocab[1]} season, when {focus_words[1]} is precisely what the timing pressure makes hardest. That friction is what makes the verse feel less theoretical and more necessary.",
+            },
+        ]
+    elif faq_seed == 3:
+        faq = [
+            {
+                "q": f"Why does Bhagavad Gita {chapter}:{verse_number} use {focus_words[2]} alongside {focus_words[0]} for {situation['label'].lower()}?",
+                "a": f"{focus_words[0].capitalize()} addresses what is visible in the situation; {focus_words[2]} addresses what is interior. This verse moves from one to the other, which is why it stays usable even after the outer circumstances shift.",
+            },
+            {
+                "q": f"What does this verse name that is easy to overlook in {situation['label'].lower()}?",
+                "a": f"It names {focus_words[2]} as the quality {situation['label'].lower()} requires before the mind can settle. Without that interior move, the situation stays complicated even when the external pressure eases.",
+            },
+            {
+                "q": f"When does this verse carry the most weight in {situation['label'].lower()}?",
+                "a": f"When {sit_vocab[2]} is the undercurrent of the moment and {focus_words[2]} is the answer that keeps getting deferred. That gap is where this verse becomes most direct.",
+            },
+        ]
+    elif faq_seed == 4:
+        faq = [
+            {
+                "q": f"What is the opening move this verse teaches for {situation['label'].lower()} through {focus_words[0]}?",
+                "a": f"Stop treating {focus_words[0]} as something to feel and start treating it as something to do. The verse is clearest when carried into the first available act of the day.",
+            },
+            {
+                "q": f"How does {focus_words[1]} help when {situation['label'].lower()} creates pressure to react?",
+                "a": f"It creates a gap between the pressure and the reaction. The verse is asking for {focus_words[1]} not as a permanent quality but as the next deliberate response.",
+            },
+            {
+                "q": f"When is the {sit_vocab[0]} frame most useful for reading this verse?",
+                "a": f"When {focus_words[0]} is what {situation['label'].lower()} is pulling away from rather than toward. The {sit_vocab[0]} frame holds the verse steady in that exact pull.",
+            },
+        ]
+    elif faq_seed == 5:
+        faq = [
+            {
+                "q": f"Why does this verse stay usable across repeated encounters with {situation['label'].lower()}?",
+                "a": f"Because it is not addressing the event but the quality required to navigate it. {focus_words[0].capitalize()} does not expire when the situation changes; it becomes more refined with each return.",
+            },
+            {
+                "q": f"What happens when {focus_words[1]} slips during {situation['label'].lower()}?",
+                "a": f"The situation narrows. Return to the verse: not to feel {focus_words[1]} again, but to repeat the smallest act that embodies it, even imperfectly.",
+            },
+            {
+                "q": f"How does the transit layer build on what this verse is training in {focus_words[2]}?",
+                "a": f"The transit layer shows when {focus_words[2]} is under seasonal pressure. The verse supplies the same discipline through a different grammar, so both routes reinforce a single aim.",
+            },
+        ]
+    else:
+        faq = [
+            {
+                "q": f"What makes Bhagavad Gita {chapter}:{verse_number} a better fit for {situation['label'].lower()} than a comfort passage?",
+                "a": f"A comfort passage offers reassurance; this verse offers a discipline. It names {focus_words[0]} as the correct answer to {situation['label'].lower()}: not a feeling to seek but a practice to begin.",
+            },
+            {
+                "q": f"How small should the first step be when applying {focus_words[1]} from this verse?",
+                "a": f"Small enough to complete today regardless of how {situation['label'].lower()} is going. One named act that embodies {focus_words[1]} is sufficient. Build from there.",
+            },
+            {
+                "q": f"When does the practice suggested by this verse appear to fail in {situation['label'].lower()}?",
+                "a": f"When {focus_words[1]} is treated as a destination rather than a direction. The verse is not measuring outcome; it is maintaining orientation through the {sit_vocab[2]} stage.",
+            },
+        ]
+    title = (
+        f"Bhagavad Gita c{chapter}v{verse_number} - "
+        f"{focus_words[0].capitalize()} {focus_words[1].capitalize()} {focus_words[2].capitalize()} "
+        f"for {situation['label']}"
+    )
 
     return {
         "id": f"faith-gita-{chapter}-{verse_number}-{situation_slug}",
         "route": route,
-        "title": f"Bhagavad Gita {chapter}:{verse_number} for {situation['label']}",
-        "meta_title": f"Bhagavad Gita {chapter}:{verse_number} for {situation['label']}"[:60],
+        "title": title,
+        "meta_title": title[:60],
         "meta_description": (
             f"Bhagavad Gita {chapter}:{verse_number} for {situation['label'].lower()} with verse meaning, practical guidance, and transit insight."
         )[:155],
@@ -521,59 +811,16 @@ def get_gita_page(chapter: int, verse_number: int, situation_slug: str) -> dict 
         "source": verse["source"],
         "situation_slug": situation_slug,
         "situation_label": situation["label"],
-        "summary": (
-            f"This page reads Bhagavad Gita {chapter}:{verse_number} through the lived reality of {situation['label'].lower()}, "
-            f"keeping the verse grounded in action, emotional honesty, and a specific spiritual response."
-        ),
-        "hook": (
-            f"{situation['hook']} {situation['hidden_fear']} Bhagavad Gita {chapter}:{verse_number} helps by interrupting that spiral "
-            f"and re-centering the reader around {situation['practice_shift']}. The verse does not ask for denial. "
-            f"It asks for a truer next step, which is why it becomes especially useful when a situation feels too emotionally loud to think through cleanly."
-        ),
-        "etymology_intro": (
-            f"The language of the verse slows the mind down. Instead of rushing toward relief, it sharpens the exact posture "
-            f"needed when {situation['label'].lower()} is active."
-        ),
+        "summary": summary,
+        "hook": hook,
+        "etymology_intro": etymology_intro,
         "etymology_items": etymology_items,
-        "application": (
-            f"In practical terms, this verse pushes against the most expensive habit in {situation['label'].lower()}: reacting as though emotional intensity must make the decision. "
-            f"Today, apply it through {situation['action_focus']}. That may sound simple, but simplicity is precisely what restores traction here. "
-            f"The point is not to solve the whole story before sunset. It is to stop handing the next faithful move over to fear, shame, exhaustion, or resentment. "
-            f"Once the next clean action is named, the situation loses some of its power to define your identity."
-        ),
-        "practice_prompts": [
-            f"Write one sentence naming what {situation['label'].lower()} is trying to make you believe.",
-            f"Choose the next duty that matches {situation['practice_shift']}, even if the result is still unknown.",
-            f"End the day by noting whether your choices came from pressure or from alignment.",
-        ],
-        "transit_layer": (
-            f"This verse often becomes more vivid during {situation['transit_label'].lower()}, when {situation['planet_label']} themes press on the same nerves this situation already exposes. "
-            f"In dasha language, seasons ruled by {situation['planet_label']} can magnify the demand for maturity, timing, and inner steadiness. "
-            f"That is why the companion transit page matters here: it helps translate the verse from timeless teaching into the emotional weather of the moment."
-        ),
-        "faq": [
-            {
-                "q": f"What does Bhagavad Gita {chapter}:{verse_number} mean for {situation['label'].lower()}?",
-                "a": (
-                    f"It means the verse should be read as guidance for {situation['practice_shift']}. "
-                    f"The teaching does not erase the pain of the situation, but it does challenge the false story that panic should decide what happens next."
-                ),
-            },
-            {
-                "q": f"How can I apply this Gita verse today if I am facing {situation['label'].lower()}?",
-                "a": (
-                    f"Use the verse to choose one concrete action before chasing emotional certainty. "
-                    f"In this situation, disciplined movement matters more than dramatic motivation because it starts restoring agency immediately."
-                ),
-            },
-            {
-                "q": f"Which transit or season makes Bhagavad Gita {chapter}:{verse_number} especially relevant here?",
-                "a": (
-                    f"{situation['transit_label']} is a strong companion because it highlights the same growth edge. "
-                    f"If life already feels pressured in that direction, the verse becomes a steadier way to respond than guesswork or fear."
-                ),
-            },
-        ],
+        "application": application,
+        "how_to_apply_title": f"How to apply Bhagavad Gita {chapter}:{verse_number} in {situation['label']}",
+        "how_to_apply": how_to_apply,
+        "practice_prompts": practice_prompts,
+        "transit_layer": transit_layer,
+        "faq": faq,
         "recitation": recitation,
         "related_situations": related_situations,
         "top_situations": top_situations,

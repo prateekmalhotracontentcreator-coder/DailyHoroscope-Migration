@@ -267,6 +267,7 @@ def _build_topics() -> list[dict]:
 
 BIBLE_TOPICS = _build_topics()
 TOPIC_INDEX = {item["slug"]: item for item in BIBLE_TOPICS}
+TOPIC_ORDINAL = {item["slug"]: index for index, item in enumerate(BIBLE_TOPICS)}
 
 SOURCE_SUPPORT_TOPIC_MAP = {
     "worry": ["Anxiety", "Comfort", "Peace", "Uncertainty"],
@@ -1085,6 +1086,342 @@ def _meaning_tags_for_topic(topic_slug: str) -> list[dict]:
     return tags
 
 
+def _word_study_for_topic(topic_slug: str, transition: dict | None = None) -> dict:
+    topic = TOPIC_INDEX[topic_slug]
+    title = f"Word study: {topic['term']}"
+    if transition is not None:
+        title = f"Word study for {transition['label']} {transition['chart_point']}: {topic['term']}"
+    meaning = topic["term_note"]
+    if transition is not None:
+        meaning = (
+            f"For {transition['label'].lower()}, {topic['term']} names the kind of inner movement where {topic['term_note']}."
+        )
+    transition_tail = (
+        f" In {transition['label'].lower()}, it keeps the emphasis on {transition['faith_need']} while filtering out the panic story this season likes to generate."
+        if transition is not None
+        else ""
+    )
+    return {
+        "term": topic["term"],
+        "title": title,
+        "meaning": meaning,
+        "application": (
+            f"For the {topic['label'].lower()} theme, this word keeps the reading close to {topic['promise_angle']}.{transition_tail} "
+            f"It stops the page from floating above the real pressure of the transition and keeps the interpretation close to lived obedience."
+        ),
+        "source_pdf": "Bible Meanings.pdf",
+    }
+
+
+def _symbolic_note_for_topic(topic_slug: str, featured_meaning: dict | None, transition: dict | None = None) -> dict | None:
+    if TOPIC_ORDINAL[topic_slug] % 10 not in {0, 3, 6} or featured_meaning is None:
+        return None
+    topic = TOPIC_INDEX[topic_slug]
+    transition_tail = (
+        f" In {transition['label'].lower()}, that picture helps the reader hold {transition['practice']} with more steadiness."
+        if transition is not None
+        else ""
+    )
+    return {
+        "title": (
+            f"Symbolic note for {transition['label']} {transition['house'].replace('-', ' ')}: {featured_meaning['label']}"
+            if transition is not None
+            else f"Symbolic note: {featured_meaning['label']}"
+        ),
+        "label": featured_meaning["label"],
+        "note": (
+            f"In the {topic['label'].lower()} cluster, {featured_meaning['label'].lower()} works as a controlled symbolic cue. "
+            f"It helps the reader picture {featured_meaning['note'][0].lower() + featured_meaning['note'][1:]} without copying devotional source prose.{transition_tail}"
+        ),
+        "source_pdf": "Bible Meanings.pdf",
+    }
+
+
+def _bible_faq(topic: dict, transition: dict, gita_situation: dict) -> list[dict]:
+    selector = _hash_index(topic["slug"], transition["slug"], modulus=8)
+    if selector == 0:
+        return [
+            {
+                "q": f"When {transition['label'].lower()} feels sharp, why start with {topic['label'].lower()}?",
+                "a": f"Because {topic['label'].lower()} gives {transition['faith_need']} a scriptural name before the mind reduces the transition to urgency alone.",
+            },
+            {
+                "q": f"What prayer language fits {transition['label'].lower()} under this promise?",
+                "a": f"Start where {transition['label'].lower()} is pressing hardest. Ask for the {topic['term'].lower()} this passage offers. Close with one concrete act before the day ends.",
+            },
+            {
+                "q": f"How does the paired Gita route sharpen {transition['label'].lower()}?",
+                "a": f"It describes the same pressure through {gita_situation['label'].lower()}, which helps the reader compare pastoral comfort with disciplined action.",
+            },
+        ]
+    if selector == 1:
+        return [
+            {
+                "q": f"Which part of {transition['label'].lower()} does the {topic['label'].lower()} theme actually steady?",
+                "a": f"It steadies the inner place where urgency starts narrating the whole day and {transition['faith_need']} becomes hardest to keep in view.",
+            },
+            {
+                "q": f"How should someone pray about {transition['chart_point']} pressure during {transition['label'].lower()}?",
+                "a": f"Name the pressure around {transition['chart_point']} plainly, ask for the grace this page highlights, then turn that prayer into one clean next step.",
+            },
+            {
+                "q": f"Why is there a Gita bridge for {transition['house'].replace('-', ' ')} themes here?",
+                "a": f"Because the Gita cross-link translates the same life area into duty language, not just reassurance language.",
+            },
+        ]
+    if selector == 2:
+        return [
+            {
+                "q": f"How does {topic['label'].lower()} steady {transition['label'].lower()}?",
+                "a": f"It steadies the transition by giving {transition['faith_need']} a promise-shaped center before fear turns the moment into a verdict.",
+            },
+            {
+                "q": f"What kind of prayer fits {transition['label'].lower()} when the theme is {topic['label'].lower()}?",
+                "a": f"Use a prayer that tells the truth about the strain, asks for the exact mercy this page names, and closes with one act of obedience.",
+            },
+            {
+                "q": f"Why pair this page with the Gita situation of {gita_situation['label'].lower()}?",
+                "a": f"Because that situation names a parallel pressure pattern and offers a second spiritual grammar for the same season.",
+            },
+        ]
+    if selector == 3:
+        return [
+            {
+                "q": f"What should be noticed first inside {transition['label'].lower()} on this page?",
+                "a": f"Notice where the threshold is rewriting your inner speech, because that is usually where {topic['label'].lower()} is most needed.",
+            },
+            {
+                "q": f"How can prayer stay concrete during {transition['label'].lower()}?",
+                "a": f"Anchor prayer to one named burden, one named grace, and one named response so the heart does not drift into vagueness.",
+            },
+            {
+                "q": f"What does the Gita comparison add that the promise page does not?",
+                "a": f"It adds a discipline lens, showing how the same burden behaves when read through duty, timing, and steadier motive.",
+            },
+        ]
+    if selector == 4:
+        return [
+            {
+                "q": f"Why is {topic['label'].lower()} stronger here than a generic comfort verse?",
+                "a": f"Because it reaches the exact need for {transition['faith_need']} instead of offering comfort that could belong anywhere.",
+            },
+            {
+                "q": f"When praying through {transition['label'].lower()}, what should come after honesty?",
+                "a": f"After honesty, ask for the grace this text names and let it direct one concrete act before the day closes.",
+            },
+            {
+                "q": f"How should the Gita bridge be used without diluting the Bible reading?",
+                "a": f"Use it as a companion lens after the promise is clear, not before. Let scripture comfort first, then let the Gita sharpen practice.",
+            },
+        ]
+    if selector == 5:
+        return [
+            {
+                "q": f"When does this promise page become most useful in {transition['label'].lower()}?",
+                "a": f"When the transition starts collapsing meaning into panic, because {topic['label'].lower()} restores a truer center for the next response.",
+            },
+            {
+                "q": f"What is the cleanest way to pray this promise today?",
+                "a": f"Tell the truth about the burden, receive the grace the passage offers, and let that grace govern one concrete action before the day closes.",
+            },
+            {
+                "q": f"Why does the page point toward {gita_situation['label'].lower()} on the Gita side?",
+                "a": f"Because the same season can be understood through promise and through discipline, and seeing both keeps the page richer than a single tradition silo.",
+            },
+        ]
+    if selector == 6:
+        return [
+            {
+                "q": f"What does {topic['label'].lower()} offer that advice alone cannot in {transition['label'].lower()}?",
+                "a": f"It offers {transition['faith_need']} a named foundation rather than a strategy. Advice changes with circumstances; a promise holds the same ground.",
+            },
+            {
+                "q": f"How should prayer move differently when {transition['label'].lower()} is the dominant pressure?",
+                "a": f"Let it name what is true, ask for the specific help this text points to, and close with the smallest act that reflects {topic['label'].lower()} rather than fear.",
+            },
+            {
+                "q": f"What does the Gita connection add that the Bible page cannot carry alone?",
+                "a": f"It adds the language of duty and action to a page that already carries promise. Together they address both what to trust and what to do.",
+            },
+        ]
+    return [
+        {
+            "q": f"How does {topic['label'].lower()} reframe what {transition['label'].lower()} is demanding?",
+            "a": f"It shifts the question from survival to faithfulness: what is {transition['faith_need']} asking to be trusted with right now? A named promise makes that question answerable.",
+        },
+        {
+            "q": f"What is the most important use of this page during {transition['label'].lower()}?",
+            "a": f"Use it to name the grace available before urgency narrows what feels possible. {topic['label'].capitalize()} gives {transition['faith_need']} a shape, which steadies the next decision.",
+        },
+        {
+            "q": f"How should the Gita path deepen this Bible reading without replacing it?",
+            "a": f"Read the Bible promise first to establish what is true. Then use the Gita crosslink to convert that truth into a discipline -- a way of acting that reflects what you have just received.",
+        },
+    ]
+
+
+def _bible_seed(topic_slug: str, transition_slug: str, modulus: int) -> int:
+    return _hash_index(topic_slug, transition_slug, modulus=modulus)
+
+
+def _first_content_token(text: str) -> str:
+    """Returns the first non-trivial word (>4 chars, not a stop connector) from a phrase."""
+    skip = {
+        "which", "their", "about", "being", "those", "these", "where", "while",
+        "there", "every", "often", "since", "until", "under", "might", "would",
+        "could", "shall", "feels", "makes", "turns", "keeps", "gives",
+    }
+    for raw in text.split():
+        word = raw.strip(".,;:!?").lower()
+        if len(word) > 4 and word not in skip:
+            return word
+    return text.split()[0].lower() if text.strip() else "steadiness"
+
+
+def _bible_verse_keywords(verse: dict, limit: int = 3) -> list[str]:
+    words: list[str] = []
+    for raw in verse.get("text", "").replace("-", " ").split():
+        word = raw.strip(" ,.;:!?()[]'\"").lower()
+        word = "".join(char for char in word if char.isalpha())
+        if len(word) < 5 or word in {"shall", "thee", "unto", "therefore", "whatsoever", "through", "because", "which"} or word in words:
+            continue
+        words.append(word)
+        if len(words) == limit:
+            break
+    if not words:
+        words = ["mercy", "strength", "steadiness"][:limit]
+    while len(words) < limit:
+        words.append(words[-1])
+    return words
+
+
+def _bible_summary(topic: dict, transition: dict, verse: dict) -> str:
+    words = _bible_verse_keywords(verse, limit=2)
+    seed = _bible_seed(topic["slug"], transition["slug"], modulus=8)
+    options = [
+        f"{words[0].capitalize()} is the entry word on this page. {verse['reference']} brings that word into {transition['label'].lower()} so {topic['label'].lower()} is read as a precise promise rather than a generic comfort.",
+        f"When {transition['label'].lower()} is the threshold, this page lets {verse['reference']} lead with {words[0]} and {words[1]} before any commentary widens the frame.",
+        f"Not a broad reassurance page but a {words[0]} page: that is how {topic['label'].lower()} is handled here for {transition['label'].lower()}.",
+        f"What allows {topic['label'].lower()} to speak freshly to {transition['label'].lower()} is the vocabulary of {verse['reference']}, especially {words[0]} beside {words[1]}.",
+        f"{verse['reference']} enters this page through two terms - {words[0]} and {words[1]} - and those terms keep the promise attached to the real transition.",
+        f"Read the page from the verse outward: {words[0]} first, {words[1]} next, and only then the larger topic of {topic['label'].lower()} for {transition['label'].lower()}.",
+        f"For this page, {topic['label'].lower()} is not the headline so much as the destination. {words[0]} in {verse['reference']} is what gets the reader there.",
+        f"Here the promise begins at word level. {words[0].capitalize()} and {words[1]} do the opening work, so {transition['label'].lower()} is interpreted by scripture rather than by mood.",
+    ]
+    return options[seed]
+
+
+def _bible_emotional_frame(topic: dict, transition: dict, verse: dict) -> str:
+    words = _bible_verse_keywords(verse, limit=3)
+    seed = _bible_seed(topic["slug"], transition["slug"], modulus=8)
+    options = [
+        f"{transition['label']} often {transition['core_pain']}. Into that atmosphere, {verse['reference']} brings {words[0]} and {words[1]}, reminding the reader that the deeper need is still {transition['faith_need']}.",
+        f"When identity or energy is being pressed by {transition['label'].lower()}, the words {words[0]} and {words[1]} keep the page from collapsing into vague reassurance.",
+        f"{transition['label']} can send a person toward urgency. This page interrupts that motion with {words[0]}, {words[1]}, and {words[2]}, because {transition['faith_need']} is the real pressure underneath.",
+        f"Decisions made during {transition['label'].lower()} easily borrow their tone from fear. {verse['reference']} resists that borrowing by foregrounding {words[0]} and {words[1]}.",
+        f"{topic['label']} matters here because {transition['label'].lower()} has its own emotional weather. The verse language of {words[0]} and {words[1]} gives that weather a truthful spiritual frame.",
+        f"If the heart is thinning out under {transition['label'].lower()}, start with the verse's own vocabulary. {words[0].capitalize()} and {words[1]} keep the page close to scripture and close to need at the same time.",
+        f"Before this page becomes guidance, it becomes naming. {words[0].capitalize()}, {words[1]}, and {words[2]} tell the truth about what {transition['label'].lower()} is stirring.",
+        f"The transition is not only external; it also alters inner tone. That is why {verse['reference']} leans on {words[0]} and {words[1]} instead of offering a slogan-sized comfort.",
+    ]
+    return options[seed]
+
+
+def _bible_application(topic: dict, transition: dict, verse: dict, support_lead: dict | None, application_tail: str) -> str:
+    words = _bible_verse_keywords(verse, limit=3)
+    seed = _bible_seed(topic["slug"], transition["slug"], modulus=8)
+    support_phrase = support_lead["reference"] if support_lead else "Psalm 23:1"
+    tail = application_tail or "let the next step stay concrete and obedient."
+    options = [
+        f"Let {verse['reference']} become practical through one disciplined decision. Use {words[0]} to guide {transition['practice']}, then {tail} Pair it with {support_phrase} so the movement is reinforced from a second angle.",
+        f"Today the page is applied by taking {topic['label'].lower()} out of abstraction. Start with {transition['practice']}, let {words[0]} and {words[1]} shape the choice, and keep {support_phrase} nearby if urgency returns.",
+        f"The next wise move in {transition['label'].lower()} is usually smaller and cleaner than the mind expects. Make {words[0]} the rule for action, practice {transition['practice']}, and let {support_phrase} steady the same line of response.",
+        f"Carry the verse into behavior before interpretation grows larger. Choose {transition['practice']}, let {words[1]} interrupt emotional overreach, and use {support_phrase} if the promise needs a second witness.",
+        f"This promise becomes real when it governs the next obedient act. Build around {transition['practice']}, keep {words[0]} and {words[2]} visible, and let {support_phrase} reinforce the same response without extra noise.",
+        f"What should happen after reading? {transition['practice'].capitalize()} should happen. Let {words[0]} set the tone, let {words[1]} narrow the step, and let {support_phrase} confirm the direction.",
+        f"Not the whole life plan - just the next faithful move. Through {words[0]}, this page turns {transition['practice']} into something concrete, while {support_phrase} keeps the heart from drifting.",
+        f"Begin with one obedient action and let theology catch up afterward. {words[0].capitalize()} belongs in the next decision, {words[2]} belongs in the inner posture, and {support_phrase} belongs close at hand.",
+    ]
+    return options[seed]
+
+
+def _bible_hermeneutical(
+    topic: dict,
+    transition: dict,
+    verse: dict,
+    verse_excerpt: str,
+    symbolic_note: str,
+    support_lead: dict | None,
+    transition_frame: str,
+    featured_meaning: dict | None,
+) -> str:
+    seed = _bible_seed(topic["slug"], transition["slug"], modulus=8)
+    sym_label = featured_meaning["label"].lower() if featured_meaning else "steadiness"
+    support_ref = support_lead["reference"] if support_lead else "Psalm 23:1"
+    support_topic = support_lead["source_topic"].lower() if support_lead else "steady prayer"
+    frame_clause = transition_frame + " " if transition_frame else ""
+    faith_token = _first_content_token(transition["faith_need"])
+    pain_token = _first_content_token(transition["core_pain"])
+    symbolic_clause = (
+        f"{sym_label} here becomes a cue for {faith_token} while {transition['label'].lower()} is active"
+    )
+
+    options = [
+        (
+            f"The line '{verse_excerpt}...' from {verse['reference']} is what anchors this page to {transition['label'].lower()}. "
+            f"{frame_clause}"
+            f"It speaks to the need for {faith_token} - not as a guarantee that {transition['label'].lower()} will pass quickly, but as a truthful frame for living inside it. "
+            f"{symbolic_clause}, which is why this verse stays usable when {pain_token} tightens. "
+            f"A supporting thread, {support_ref}, keeps the same promise from a second scriptural angle without adding noise."
+        ),
+        (
+            f"In {transition['label'].lower()}, {pain_token} rises quickly. {frame_clause}"
+            f"That is the pressure this page is meant to meet, using {topic['promise_angle']} as its pastoral entry. "
+            f"{verse['reference']} is not here generically; it approaches {faith_token} from the exact angle this threshold exposes. "
+            f"{symbolic_clause}, and {support_ref} extends the response into a second verse bank."
+        ),
+        (
+            f"The deeper need in {transition['label'].lower()} is {faith_token}, and {verse['reference']} addresses it through {topic['promise_angle']} rather than through comfort alone. "
+            f"{frame_clause}"
+            f"The line '{verse_excerpt}...' is chosen because it does not bypass the emotional difficulty - it names the need and then gives the reader a truthful anchor. "
+            f"In the symbolic lexicon, {symbolic_clause}. {support_ref} reinforces the same pastoral movement from a different scriptural starting point."
+        ),
+        (
+            f"This page approaches {transition['label'].lower()} through the lens of {topic['promise_angle']}, using {verse['reference']} as the primary scriptural voice. "
+            f"{frame_clause}"
+            f"'{verse_excerpt}...' lands directly on {faith_token} - the grace this threshold is actually asking for. "
+            f"{symbolic_clause}. "
+            f"The nearby thread in {support_ref} grounds the promise in a second passage so the page does not rest on a single verse alone."
+        ),
+        (
+            f"The symbolic current running through {transition['label'].lower()} often surfaces as {symbolic_clause}. "
+            f"{frame_clause}"
+            f"{verse['reference']} meets this current through {topic['promise_angle']}, especially in the line '{verse_excerpt}...' where the promise is most direct. "
+            f"That is why {faith_token} can be met here without bypassing the real weight of {pain_token}. "
+            f"The supporting reference, {support_ref}, reinforces the same response from the {support_topic} thread in the Scripture for Every Moment bank."
+        ),
+        (
+            f"{support_ref} is not the anchor on this page; {verse['reference']} is. "
+            f"{frame_clause}"
+            f"The anchor matters because {transition['label'].lower()} is asking for {faith_token}, and the phrase '{verse_excerpt}...' names that need without softening the threshold. "
+            f"Then {symbolic_clause}, while the supporting verse keeps the same promise from standing alone."
+        ),
+        (
+            f"{verse['reference']} is positioned here not for comfort alone but for clarity about {faith_token} while {transition['label'].lower()} reshapes the inner landscape. "
+            f"{frame_clause}"
+            f"The line '{verse_excerpt}...' names that reshaping from a scriptural angle, and {sym_label} becomes the symbolic thread that keeps it grounded. "
+            f"A supporting passage, {support_ref}, carries the same promise into a second register without adding noise."
+        ),
+        (
+            f"What {transition['label'].lower()} exposes is the need for {faith_token}, and {verse['reference']} addresses that need before urgency can collapse it. "
+            f"{frame_clause}"
+            f"'{verse_excerpt}...' carries the weight of {pain_token} without minimising it, which is why this page holds as a stable anchor under pressure. "
+            f"{symbolic_clause.capitalize()}, and {support_ref} reinforces the same promise from a second doctrinal source."
+        ),
+    ]
+    return options[seed]
+
+
 def _topic_specific_transition_frame(topic_slug: str, transition: dict) -> str:
     topic = TOPIC_INDEX[topic_slug]
     if topic["source_slug"] != "financial-need":
@@ -1202,12 +1539,20 @@ def get_bible_page(topic_slug: str, transition_slug: str) -> dict | None:
     transition_frame = _topic_specific_transition_frame(topic_slug, transition)
     application_tail = _topic_specific_application_tail(topic_slug, transition)
     bridge_tail = _topic_specific_bridge_tail(topic_slug, transition)
+    word_study = _word_study_for_topic(topic_slug, transition)
+    symbolic_note_data = _symbolic_note_for_topic(topic_slug, featured_meaning, transition)
+    faq = _bible_faq(topic, transition, gita_situation)
+    summary = _bible_summary(topic, transition, verse)
+    emotional_frame = _bible_emotional_frame(topic, transition, verse)
+    application = _bible_application(topic, transition, verse, support_lead, application_tail)
+    title_word = _bible_verse_keywords(verse, limit=1)[0].capitalize()
+    title = f"Bible Promises for {transition['label']} - {topic['label']} on {title_word}"
 
     return {
         "id": f"faith-bible-{topic_slug}-{transition_slug}",
         "route": route,
-        "title": f"Bible Promises for {transition['label']} - {topic['label']}",
-        "meta_title": f"Bible Promises for {transition['label']} - {topic['label']}"[:60],
+        "title": title,
+        "meta_title": title[:60],
         "meta_description": (
             f"Bible promises for {transition['label'].lower()} on {topic['label'].lower()} with pastoral guidance and a parallel Gita bridge."
         )[:155],
@@ -1218,58 +1563,25 @@ def get_bible_page(topic_slug: str, transition_slug: str) -> dict | None:
         "reference": verse["reference"],
         "verse_text": verse["text"],
         "source": f"{verse['source_label']} - {verse['source_section_title']}",
-        "summary": (
-            f"This page approaches {transition['label'].lower()} through the Bible theme of {topic['label'].lower()}, "
-            f"keeping the promise practical, emotionally honest, and connected to a parallel Vedic bridge."
+        "summary": summary,
+        "emotional_frame": emotional_frame,
+        "hermeneutical": _bible_hermeneutical(
+            topic, transition, verse, verse_excerpt, symbolic_note,
+            support_lead, transition_frame, featured_meaning
         ),
-        "emotional_frame": (
-            f"{transition['label']} often {transition['core_pain']}. In that kind of season, even sincere people can start making decisions from depletion, urgency, or numbness. "
-            f"The deeper spiritual need is usually {transition['faith_need']}. That is why this page opens with {topic['label'].lower()}: not as a slogan, but as a lens that helps the heart breathe again "
-            f"while the transition is still unresolved."
-        ),
-        "hermeneutical": (
-            f"In {verse['reference']}, the promise arrives through the line '{verse_excerpt}...' and speaks directly to {topic['promise_angle']}. "
-            f"A useful biblical theme word here is {topic['term']}, pointing to {topic['term_note']}. In {transition['label'].lower()}, that matters because {transition['core_pain']}, and the heart starts searching for relief faster than it searches for truth. "
-            f"{transition_frame + ' ' if transition_frame else ''}"
-            f"A supporting symbolic cue for this page is {featured_meaning['label'].lower() if featured_meaning else 'steadiness'}, which suggests {symbolic_note[0].lower() + symbolic_note[1:]}. "
-            f"A nearby support thread from the Scripture for Every Moment bank is {support_lead['source_topic'].lower() if support_lead else 'steady prayer'}, which keeps this page grounded in {support_lead['reference'] if support_lead else 'Psalm 23:1'} as well as in the main promise text. "
-            f"The verse promises God's nearness, direction, mercy, or provision in a way that strengthens faithful response. It does not promise an instant shortcut, emotional anesthesia, or freedom from all process. "
-            f"Read it as a promise that steadies the soul precisely where this transition feels most vulnerable."
-        ),
-        "application": (
-            f"Today, let this promise become concrete through one decision and one practice. In {transition['label'].lower()}, the next wise move is usually not dramatic. It is disciplined. "
-            f"{transition['practice'].capitalize()}. {application_tail + ' ' if application_tail else ''}Then build one short prayer around {topic['label'].lower()}: name the part of the transition that feels least manageable, ask for the grace this promise highlights, and choose one clean action before the day closes. "
-            f"If you need a second anchor, pair the page with {support_lead['reference'] if support_lead else 'Psalm 23:1'} and let that supporting verse reinforce the same response from another biblical angle. "
-            f"The point is to act from a steadier center, so {transition['label'].lower()} stops dictating the whole internal climate."
-        ),
+        "word_study_title": word_study["title"],
+        "word_study": word_study,
+        "symbolic_note_title": symbolic_note_data["title"] if symbolic_note_data else "",
+        "symbolic_note": symbolic_note_data,
+        "application": application,
         "vedic_bridge": (
             f"Vedic tradition would often read this same pressure through the lens of {gita_situation['label'].lower()}, especially during {transition['transit_label'].lower()}. "
             f"The linked Gita page uses {gita_cross['reference']} and places the strain near {transition['chart_point']} themes and the {transition['house'].replace('-', ' ')}. "
             f"{bridge_tail + ' ' if bridge_tail else ''}"
-            f"The Bhagavad Gita counterpart is not trying to replace the Bible promise. It names the same human tension in a different spiritual language: discipline, truthfulness, and alignment under pressure. "
-            f"That makes the cross-link useful when you want both pastoral reassurance and a sharper duty-centered frame for this exact transition."
+            f"The Gita counterpart names the same human tension with a different spiritual grammar around {transition['chart_point']} and {transition['house'].replace('-', ' ')} concerns. "
+            f"That makes the cross-link useful when {transition['label'].lower()} needs both pastoral reassurance and a second disciplined lens."
         ),
-        "faq": [
-            {
-                "q": f"What Bible promise helps with {transition['label'].lower()}?",
-                "a": (
-                    f"This page uses the theme of {topic['label'].lower()} because {transition['label'].lower()} often needs exactly that kind of reassurance and correction. "
-                    f"The promise is meant to steady the next faithful move, not merely to sound comforting."
-                ),
-            },
-            {
-                "q": f"How should I pray during {transition['label'].lower()}?",
-                "a": (
-                    f"Pray specifically about the fear, fatigue, or confusion under the transition. Then ask for the grace this topic names and for wisdom to practice it in one concrete decision today."
-                ),
-            },
-            {
-                "q": f"Is there a Gita page that speaks to {transition['label'].lower()} too?",
-                "a": (
-                    f"Yes. This page links to a parallel Gita situation page so you can compare how the same pressure is handled through another disciplined spiritual vocabulary."
-                ),
-            },
-        ],
+        "faq": faq,
         "supporting_references": supporting_references,
         "meaning_tags": meaning_tags,
         "featured_meaning_tag": featured_meaning,
@@ -1319,6 +1631,9 @@ def get_bible_topic_payload(topic_slug: str) -> dict | None:
     transitions = _top_transitions_for_topic(topic_slug, limit=10)
     supporting_references = _select_supporting_references(topic_slug, "topic-preview", limit=8)
     meaning_tags = _meaning_tags_for_topic(topic_slug)
+    featured_meaning = meaning_tags[_hash_index(topic_slug, "topic-preview", modulus=len(meaning_tags))] if meaning_tags else None
+    word_study = _word_study_for_topic(topic_slug)
+    symbolic_note = _symbolic_note_for_topic(topic_slug, featured_meaning)
     return {
         "title": f"{topic['label']} Bible Promise Hub",
         "meta_title": f"{topic['label']} Bible Promises by Transition",
@@ -1334,6 +1649,10 @@ def get_bible_topic_payload(topic_slug: str) -> dict | None:
         "topic_label": topic["label"],
         "theme_term": topic["term"],
         "theme_term_note": topic["term_note"],
+        "word_study_title": word_study["title"],
+        "word_study": word_study,
+        "symbolic_note_title": symbolic_note["title"] if symbolic_note else "",
+        "symbolic_note": symbolic_note,
         "sample_reference": verse["reference"],
         "sample_text": verse["text"],
         "sample_source": f"{verse['source_label']} - {verse['source_section_title']}",
