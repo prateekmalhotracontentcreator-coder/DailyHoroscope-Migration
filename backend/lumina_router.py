@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-# ENGINE_VERSION: lumina-router-1.0.0
+# ENGINE_VERSION: lumina-router-1.1.0
 # Host app wiring:
 # from backend.lumina_router import router as lumina_router
 # app.include_router(lumina_router)
@@ -21,6 +21,7 @@ from lumina_prompt_service import (
     generate_kingdom_vision,
     generate_scripture_paragraphs,
     generate_situation_insight,
+    get_daily_scripture,
     normalize_scripture_mode,
 )
 
@@ -253,9 +254,38 @@ def _serialize_prayer(document: dict[str, Any]) -> PrayerRecord:
     )
 
 
+def _verse_cache_key(scripture_mode: str, reference: str) -> str:
+    """Matches the key format used by seed_faith_daily_haiku.py."""
+    slug = reference.lower().replace(" ", "-").replace(":", "-")
+    return f"{scripture_mode}_{slug}"
+
+
 @router.get("/daily-verse", response_model=DailyVerseResponse)
-async def get_daily_verse(scripture_mode: ScriptureMode = Query("BIBLE")) -> DailyVerseResponse:
+async def get_daily_verse(
+    scripture_mode: ScriptureMode = Query("BIBLE"),
+    request: Request = None,
+) -> DailyVerseResponse:
     normalized = normalize_scripture_mode(scripture_mode)
+
+    # ── Check pre-seeded verse cache (no API cost) ───────────────────────────
+    if request is not None:
+        try:
+            db = getattr(getattr(request.app, "state", None), "db", None)
+            if db is not None:
+                verse = get_daily_scripture(normalized)
+                cache_key = _verse_cache_key(normalized, verse["reference"])
+                cached = await db.lumina_verse_cache.find_one({"cache_key": cache_key})
+                if cached:
+                    cached.pop("_id", None)
+                    cached.pop("cache_key", None)
+                    cached.pop("scripture_mode", None)
+                    cached.pop("ai_generated", None)
+                    cached.pop("model", None)
+                    return DailyVerseResponse(scripture_mode=normalized, **cached)
+        except Exception:
+            pass  # fall through to live API call on any cache error
+
+    # ── Fall back to live Anthropic API call ─────────────────────────────────
     content = await generate_daily_verse_breakdown(normalized)
     return DailyVerseResponse(scripture_mode=normalized, **content)
 
