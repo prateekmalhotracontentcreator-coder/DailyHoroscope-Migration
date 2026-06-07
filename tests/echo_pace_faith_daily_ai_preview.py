@@ -92,11 +92,14 @@ def _build_prompt(page: dict) -> str:
     return (
         "You write unique SEO spiritual content for a Faith devotional website.\n"
         "Every sentence must be SPECIFIC to this exact sign-month combination -- nothing interchangeable with any other page.\n\n"
+        "CRITICAL RULE: The context fields below are THEMATIC GUIDANCE only. "
+        "Do NOT quote, paraphrase, or echo their exact wording in your output. "
+        "Generate your own fresh language that captures the same spirit.\n\n"
         f"PAGE: {sign_name} x {month_name}\n"
         f"Sign: {element} element, ruled by {ruler}\n"
-        f"Sign growth edge: {growth_edge}\n"
+        f"Sign growth theme: {growth_edge}\n"
         f"Sign seasonal focus: {seasonal_focus}\n"
-        f"Sign daily practice: {daily_practice}\n"
+        f"Sign daily practice theme: {daily_practice}\n"
         f"Month energy: {month_energy}\n"
         f"Month seasonal note: {seasonal_note}\n\n"
         f"Gita verse assigned: {gita_ref}\n"
@@ -105,10 +108,10 @@ def _build_prompt(page: dict) -> str:
         f'Bible text: "{bible_text}"\n\n'
         "Return valid JSON only (no markdown fences, no extra keys):\n"
         "{\n"
-        f'  "summary": "90-105 words. What {month_name} means spiritually for {sign_name}. Name {element} energy and this exact month energy explicitly. No generic forecast language.",\n'
-        f'  "gita_application": "70-85 words. How {gita_ref} shapes {sign_name} behavior in {month_name}. Use at least one phrase from the verse text. Tie to: {growth_edge}.",\n'
-        f'  "bible_application": "70-85 words. How {bible_ref} speaks to {sign_name} in {month_name}. Use at least one phrase from the verse text. Tie to: {seasonal_focus}.",\n'
-        f'  "month_focus": "80-95 words. Primary spiritual training for {sign_name} this month. Name {growth_edge} and {month_energy} explicitly. Practical, not poetic."\n'
+        f'  "summary": "90-105 words. What {month_name} means spiritually for {sign_name}. Name {element} energy and this month\'s specific energy. No generic forecast language. Your own words throughout.",\n'
+        f'  "gita_application": "70-85 words. How {gita_ref} speaks to {sign_name}\'s core challenge in {month_name}. Quote at least one phrase from the verse text. Express the growth theme in your own language -- do not echo the context fields.",\n'
+        f'  "bible_application": "70-85 words. How {bible_ref} addresses {sign_name}\'s seasonal focus in {month_name}. Quote at least one phrase from the verse text. Express the seasonal theme in your own language -- do not echo the context fields.",\n'
+        f'  "month_focus": "80-95 words. The primary spiritual discipline for {sign_name} in {month_name}. Address the sign\'s core growth challenge and this month\'s energy -- expressed entirely in your own words. Practical, not poetic."\n'
         "}"
     )
 
