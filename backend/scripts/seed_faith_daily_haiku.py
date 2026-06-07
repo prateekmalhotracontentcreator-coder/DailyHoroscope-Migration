@@ -57,6 +57,7 @@ import json
 import os
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import anthropic
@@ -69,9 +70,19 @@ if str(ROOT) not in sys.path:
 from faith_seo_data import SIGN_INDEX, MONTH_INDEX, build_daily_pages
 from lumina_prompt_service import DAILY_SCRIPTURES, _daily_fallback
 
-HAIKU_MODEL = "claude-3-5-haiku-20241022"
+HAIKU_MODEL = "claude-haiku-4-5"
 CONCURRENT = 5          # conservative: avoids Haiku rate-limit bursts
 _JSON_FENCE = re.compile(r"^```(?:json)?\s*|\s*```$", re.IGNORECASE | re.MULTILINE)
+
+# ── Logging (tee to file + stdout) ───────────────────────────────────────────
+_LOG_FILE: Path | None = None
+
+def _log(msg: str) -> None:
+    """Print to stdout and append to log file (if --log-file requested)."""
+    print(msg)
+    if _LOG_FILE is not None:
+        with _LOG_FILE.open("a", encoding="utf-8") as fh:
+            fh.write(msg + "\n")
 
 
 # ── Prompt builders ──────────────────────────────────────────────────────────
@@ -165,14 +176,14 @@ async def _call(
             raw = _JSON_FENCE.sub("", response.content[0].text).strip()
             return json.loads(raw)
         except json.JSONDecodeError as exc:
-            print(f"  ❌ JSON parse error [{label}]: {exc}")
+            _log(f"  ❌ JSON parse error [{label}]: {exc}")
             return None
         except anthropic.RateLimitError:
-            print(f"  ⚠️  Rate limit hit [{label}] -- retrying after 10s")
+            _log(f"  ⚠️  Rate limit hit [{label}] -- retrying after 10s")
             await asyncio.sleep(10)
             return None
         except Exception as exc:
-            print(f"  ❌ API error [{label}]: {exc}")
+            _log(f"  ❌ API error [{label}]: {exc}")
             return None
 
 
@@ -196,7 +207,7 @@ async def seed_daily(
             doc = await collection.find_one({"sign_slug": s, "month_slug": m}, {"ai_generated": 1})
             if doc and doc.get("ai_generated"):
                 skipped += 1
-                print(f"  ↷  {label} -- already seeded")
+                _log(f"  ↷  {label} -- already seeded")
                 return
 
         prompt = _build_daily_prompt(page)
@@ -222,11 +233,11 @@ async def seed_daily(
         }
 
         if dry_run:
-            print(f"  [dry-run] {label}")
+            _log(f"  [dry-run] {label}")
             summary_preview = doc["summary"][:90]
-            print(f"    summary     : {summary_preview}...")
-            print(f"    gita_app    : {gita_app[:60]}...")
-            print(f"    bible_app   : {bible_app[:60]}...")
+            _log(f"    summary     : {summary_preview}...")
+            _log(f"    gita_app    : {gita_app[:60]}...")
+            _log(f"    bible_app   : {bible_app[:60]}...")
             inserted += 1
         else:
             await collection.update_one(
@@ -234,7 +245,7 @@ async def seed_daily(
                 {"$set": doc},
                 upsert=True,
             )
-            print(f"  ✓  {label}")
+            _log(f"  ✓  {label}")
             inserted += 1
 
     await asyncio.gather(*[_one(p) for p in pages])
@@ -269,7 +280,7 @@ async def seed_lumina(
             doc = await collection.find_one({"cache_key": cache_key}, {"ai_generated": 1})
             if doc and doc.get("ai_generated"):
                 skipped += 1
-                print(f"  ↷  {label} -- already cached")
+                _log(f"  ↷  {label} -- already cached")
                 return
 
         prompt = _build_lumina_prompt(mode, verse)
@@ -292,8 +303,8 @@ async def seed_lumina(
         }
 
         if dry_run:
-            print(f"  [dry-run] {label}")
-            print(f"    speak_it : {doc['speak_it'][:80]}...")
+            _log(f"  [dry-run] {label}")
+            _log(f"    speak_it : {doc['speak_it'][:80]}...")
             inserted += 1
         else:
             await collection.update_one(
@@ -301,7 +312,7 @@ async def seed_lumina(
                 {"$set": doc},
                 upsert=True,
             )
-            print(f"  ✓  {label}")
+            _log(f"  ✓  {label}")
             inserted += 1
 
     await asyncio.gather(*[_one(mode, verse) for mode, verse in all_verses])
@@ -311,6 +322,13 @@ async def seed_lumina(
 # ── Entry point ──────────────────────────────────────────────────────────────
 
 async def _run(args: argparse.Namespace) -> None:
+    global _LOG_FILE
+    if args.log_file:
+        _LOG_FILE = Path(args.log_file)
+        _LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        _LOG_FILE.write_text(f"# Faith Seeder Log -- {datetime.now().isoformat()}\n", encoding="utf-8")
+        _log(f"Logging to: {_LOG_FILE.resolve()}")
+
     client = anthropic.AsyncAnthropic(api_key=args.api_key)
     motor_client = AsyncIOMotorClient(args.mongo_url)
     db = motor_client[args.db_name]
@@ -321,17 +339,17 @@ async def _run(args: argparse.Namespace) -> None:
 
     # ── Phase 1A: DAILY ──────────────────────────────────────────────────────
     if do_daily:
-        print(f"\n{'─'*60}")
-        print("Phase 1A  →  faith_daily_pages  (144 pages)")
-        print(f"Model: {HAIKU_MODEL}  |  Concurrent: {CONCURRENT}")
+        _log(f"\n{'─'*60}")
+        _log("Phase 1A  →  faith_daily_pages  (144 pages)")
+        _log(f"Model: {HAIKU_MODEL}  |  Concurrent: {CONCURRENT}")
         if args.dry_run:
-            print("DRY RUN -- no writes to MongoDB")
-        print(f"{'─'*60}")
+            _log("DRY RUN -- no writes to MongoDB")
+        _log(f"{'─'*60}")
 
         pages = build_daily_pages()
         if args.limit:
             pages = pages[: args.limit]
-            print(f"(Limited to first {args.limit} pages for testing)")
+            _log(f"(Limited to first {args.limit} pages for testing)")
 
         coll = db.faith_daily_pages
         await coll.create_index(
@@ -339,25 +357,27 @@ async def _run(args: argparse.Namespace) -> None:
         )
 
         ins, skp, err = await seed_daily(client, coll, pages, semaphore, args.dry_run)
-        print(f"\n  DAILY  ✓{ins} seeded  ↷{skp} skipped  ❌{err} errors")
+        _log(f"\n  DAILY  ✓{ins} seeded  ↷{skp} skipped  ❌{err} errors")
 
     # ── Phase 1B: LUMINA VERSE CACHE ─────────────────────────────────────────
     if do_lumina:
-        print(f"\n{'─'*60}")
-        print("Phase 1B  →  lumina_verse_cache  (14 verses: 7 Bible + 7 Gita)")
-        print(f"Model: {HAIKU_MODEL}  |  Concurrent: {CONCURRENT}")
+        _log(f"\n{'─'*60}")
+        _log("Phase 1B  →  lumina_verse_cache  (14 verses: 7 Bible + 7 Gita)")
+        _log(f"Model: {HAIKU_MODEL}  |  Concurrent: {CONCURRENT}")
         if args.dry_run:
-            print("DRY RUN -- no writes to MongoDB")
-        print(f"{'─'*60}")
+            _log("DRY RUN -- no writes to MongoDB")
+        _log(f"{'─'*60}")
 
         coll = db.lumina_verse_cache
         await coll.create_index("cache_key", unique=True, background=True)
 
         ins, skp, err = await seed_lumina(client, coll, semaphore, args.dry_run)
-        print(f"\n  LUMINA  ✓{ins} seeded  ↷{skp} skipped  ❌{err} errors")
+        _log(f"\n  LUMINA  ✓{ins} seeded  ↷{skp} skipped  ❌{err} errors")
 
     motor_client.close()
-    print("\n✅  Done.\n")
+    _log("\n✅  Done.\n")
+    if _LOG_FILE:
+        print(f"\n📄 Full log saved → {_LOG_FILE.resolve()}")
 
 
 def main() -> None:
@@ -395,8 +415,19 @@ def main() -> None:
         action="store_true",
         help="Generate + print content without writing to MongoDB",
     )
+    parser.add_argument(
+        "--log-file",
+        default=None,
+        help="Path to log file (tees all output to file + stdout). "
+             "Auto-named if you pass 'auto': scripts/logs/faith_seed_TIMESTAMP.log",
+    )
 
     args = parser.parse_args()
+
+    # Auto-name log file
+    if args.log_file == "auto":
+        ts = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        args.log_file = str(Path(__file__).parent / "logs" / f"faith_seed_{ts}.log")
 
     missing = []
     if not args.mongo_url:
