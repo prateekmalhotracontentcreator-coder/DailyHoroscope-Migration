@@ -21,8 +21,8 @@ const config = {
     url: 'https://www.everydayhoroscope.in/the-arc-angel',
   },
   features: [
-    { title: 'Health & Fitness', body: 'Your body's astrological constitution, vulnerability windows, and best practices based on the 1st and 6th houses.' },
-    { title: 'Career & Finances', body: '10th house career strength, 2nd and 11th house wealth signals, and the current Dasha's professional influence.' },
+    { title: 'Health & Fitness', body: "Your body's astrological constitution, vulnerability windows, and best practices based on the 1st and 6th houses." },
+    { title: 'Career & Finances', body: "10th house career strength, 2nd and 11th house wealth signals, and the current Dasha's professional influence." },
     { title: 'Love & Family', body: '7th house partnership indicators, 5th house love potential, 4th house domestic harmony - all with timing overlays.' },
     { title: 'Spirituality & Purpose', body: '9th house dharma, 12th house moksha potential, and which planetary period is spiritually active for you right now.' },
     { title: 'Live Dasha Timing', body: 'Each of the 12 domains is rated in context of your current Mahadasha and Antardasha - not static, but live against your life calendar.' },

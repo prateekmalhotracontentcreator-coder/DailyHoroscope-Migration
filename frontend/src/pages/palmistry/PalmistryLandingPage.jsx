@@ -21,7 +21,7 @@ const config = {
     url: 'https://www.everydayhoroscope.in/the-palmistry',
   },
   features: [
-    { title: 'Palm Shape & Element Type', body: 'Earth, Air, Fire, or Water - your hand's elemental type sets the foundation for your character and life approach.' },
+    { title: 'Palm Shape & Element Type', body: "Earth, Air, Fire, or Water - your hand's elemental type sets the foundation for your character and life approach." },
     { title: 'Life, Heart & Head Lines', body: 'The three major lines analysed for length, depth, breaks, and forks - revealing vitality, emotional capacity, and intellectual style.' },
     { title: 'Fate Line Analysis', body: 'Present or absent, strong or faint - the Fate Line reveals career destiny, stability, and the role of external forces in your path.' },
     { title: 'Mount Dominance', body: 'Which planetary mount is most prominent - Jupiter, Saturn, Sun, Mercury, Venus, or Moon - and what it reveals about your dominant drive.' },

@@ -308,6 +308,7 @@ class InterpretationRuleDocument(StrictDocument):
     approval_status: ApprovalStatus = "pending_review"
     life_domain: str
     claim_axis: str
+    secondary_axis: str | None = None
     claim_scope: ClaimScope
     claim_polarity: ClaimPolarity
     timing_bias: TimingBias
@@ -350,6 +351,14 @@ class InterpretationRuleDocument(StrictDocument):
         if lowered not in VALID_CLAIM_AXES:
             raise ValueError(f"Unsupported claim_axis: {value}")
         return lowered or value
+
+    @field_validator("secondary_axis")
+    @classmethod
+    def validate_secondary_axis(cls, value: str | None) -> str | None:
+        lowered = _lower_or_none(value)
+        if lowered is not None and lowered not in VALID_CLAIM_AXES:
+            raise ValueError(f"Unsupported secondary_axis: {value}")
+        return lowered
 
     @field_validator("engine_dependency")
     @classmethod

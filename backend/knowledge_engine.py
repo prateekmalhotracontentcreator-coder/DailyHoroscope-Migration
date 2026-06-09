@@ -385,6 +385,9 @@ class ChartFacts:
     aspect_targets: dict[str, set[int]] = field(default_factory=lambda: defaultdict(set))
     aspected_by: dict[int, set[str]] = field(default_factory=lambda: defaultdict(set))
     varga_dignities: dict[str, dict[str, Any]] = field(default_factory=dict)
+    kp_chains: dict[str, dict[str, str]] = field(default_factory=dict)
+    kp_significations: dict[str, list[int]] = field(default_factory=dict)
+    cuspal_sub_lords: dict[int, str] = field(default_factory=dict)
 
 
 @dataclass
@@ -433,6 +436,7 @@ def extract_chart_facts(chart: dict[str, Any]) -> ChartFacts:
     _populate_dasha_facts(chart, facts)
     _populate_aspect_facts(facts)
     _populate_varga_dignity_facts(chart, facts)
+    _populate_kp_facts(chart, facts)
     return facts
 
 
@@ -451,6 +455,7 @@ def _extract_planet_positions(chart: dict[str, Any]) -> dict[str, dict[str, Any]
                 "retrograde": bool(payload.get("retrograde")),
                 "dignity": normalize_dignity(payload.get("dignity")),
                 "combust": bool(payload.get("combust")),
+                "longitude": float(payload["longitude"]) if isinstance(payload.get("longitude"), (int, float)) else None,
             }
 
     d1_chart = ((chart.get("charts") or {}).get("D1") or {})
@@ -466,6 +471,7 @@ def _extract_planet_positions(chart: dict[str, Any]) -> dict[str, dict[str, Any]
             "retrograde": bool(graha.get("retrograde")),
             "dignity": normalize_dignity(graha.get("dignity")),
             "combust": bool(graha.get("combust")),
+            "longitude": float(graha["longitude"]) if isinstance(graha.get("longitude"), (int, float)) else None,
         }
     return positions
 
@@ -583,6 +589,122 @@ def _populate_varga_dignity_facts(chart: dict[str, Any], facts: ChartFacts) -> N
         facts.varga_dignities[planet] = {"count": count, "tier": VIMSHOPAKA_TIERS.get(count)}
 
 
+def _normalize_house_numbers(value: Any) -> list[int]:
+    if value is None:
+        return []
+    items = value if isinstance(value, (list, tuple, set)) else [value]
+    houses: set[int] = set()
+    for item in items:
+        try:
+            house = int(item)
+        except Exception:
+            continue
+        if 1 <= house <= 12:
+            houses.add(house)
+    return sorted(houses)
+
+
+def _extract_cusp_longitudes(chart: dict[str, Any]) -> dict[int, float]:
+    cusp_longitudes: dict[int, float] = {}
+
+    def _read_cusp_items(items: Any) -> None:
+        if isinstance(items, dict):
+            for raw_house, raw_value in items.items():
+                try:
+                    house = int(raw_house)
+                except Exception:
+                    continue
+                value = raw_value
+                if isinstance(raw_value, dict):
+                    value = raw_value.get("longitude", raw_value.get("degree", raw_value.get("lon")))
+                if isinstance(value, (int, float)) and 1 <= house <= 12:
+                    cusp_longitudes[house] = float(value)
+            return
+        if not isinstance(items, list):
+            return
+        for index, raw_value in enumerate(items, start=1):
+            value = raw_value
+            if isinstance(raw_value, dict):
+                value = raw_value.get("longitude", raw_value.get("degree", raw_value.get("lon")))
+            if isinstance(value, (int, float)):
+                cusp_longitudes[index] = float(value)
+
+    _read_cusp_items(chart.get("cusps"))
+    _read_cusp_items(chart.get("kp_cusps"))
+    _read_cusp_items((chart.get("kp_chart") or {}).get("cusps"))
+    return cusp_longitudes
+
+
+def _populate_kp_facts(chart: dict[str, Any], facts: ChartFacts) -> None:
+    from kp_engine import kp_chain
+
+    reverse_house_lords: dict[str, list[int]] = defaultdict(list)
+    for house, lord in facts.house_lords.items():
+        normalized_lord = normalize_planet_name(lord)
+        if normalized_lord:
+            reverse_house_lords[normalized_lord].append(int(house))
+    for houses in reverse_house_lords.values():
+        houses.sort()
+
+    for planet, payload in facts.planet_positions.items():
+        longitude = payload.get("longitude")
+        if isinstance(longitude, (int, float)):
+            chain = kp_chain(float(longitude))
+            facts.kp_chains[planet] = {
+                "star_lord": str(chain["star_lord"]),
+                "sub_lord": str(chain["sub_lord"]),
+                "sub_sub_lord": str(chain["sub_sub_lord"]),
+            }
+
+    for planet, payload in facts.planet_positions.items():
+        score_by_house: dict[int, int] = defaultdict(int)
+        house = payload.get("house")
+        if house is not None:
+            try:
+                score_by_house[int(house)] += 3
+            except Exception:
+                pass
+
+        if planet not in {"Rahu", "Ketu"}:
+            for house_num in reverse_house_lords.get(planet, []):
+                score_by_house[house_num] += 2
+
+        chain = facts.kp_chains.get(planet)
+        if chain:
+            for linked_planet in (chain["star_lord"], chain["sub_lord"], chain["sub_sub_lord"]):
+                linked_payload = facts.planet_positions.get(linked_planet)
+                if linked_payload and linked_payload.get("house") is not None:
+                    try:
+                        score_by_house[int(linked_payload["house"])] += 1
+                    except Exception:
+                        pass
+                if linked_planet not in {"Rahu", "Ketu"}:
+                    for house_num in reverse_house_lords.get(linked_planet, []):
+                        score_by_house[house_num] += 1
+
+        facts.kp_significations[planet] = sorted(house_num for house_num, score in score_by_house.items() if score > 0)
+
+    cusp_longitudes = _extract_cusp_longitudes(chart)
+    for house_num, longitude in cusp_longitudes.items():
+        facts.cuspal_sub_lords[int(house_num)] = str(kp_chain(float(longitude))["sub_lord"])
+
+
+def get_t05_enrichment(planet: str, facts: ChartFacts) -> dict[str, Any] | None:
+    from kp_sublord_table import get_sub_entry_for_sign
+
+    planet_name = normalize_planet_name(planet)
+    if not planet_name:
+        return None
+    payload = facts.planet_positions.get(planet_name)
+    chain = facts.kp_chains.get(planet_name)
+    if not payload or not chain:
+        return None
+    sign = payload.get("sign")
+    if not sign:
+        return None
+    return get_sub_entry_for_sign(chain["star_lord"], chain["sub_lord"], str(sign))
+
+
 def _populate_aspect_facts(facts: ChartFacts) -> None:
     for planet, payload in facts.planet_positions.items():
         house = payload.get("house")
@@ -633,7 +755,40 @@ def _condition_anchor_keys(condition: dict[str, Any]) -> set[str]:
     if condition_type == "dasha_period":
         return {canonical_key(condition_type, normalize_planet_name(condition.get("dasha_lord")), condition.get("level"))}
     if condition_type == "kp_sublord":
-        return {canonical_key(condition_type, condition.get("cusp_num"), normalize_planet_name(condition.get("sub_lord")))}
+        keys: set[str] = set()
+        planet = normalize_planet_name(condition.get("planet"))
+        house = condition.get("house")
+        star_lord = normalize_planet_name(condition.get("star_lord") or condition.get("lord"))
+        if planet and house is not None and star_lord:
+            keys.add(canonical_key(condition_type, planet, house, star_lord))
+        if house is not None and star_lord:
+            keys.add(canonical_key(condition_type, house, star_lord))
+        cusp_num = condition.get("cusp_num")
+        sub_lord = normalize_planet_name(condition.get("sub_lord"))
+        if cusp_num is not None and sub_lord:
+            keys.add(canonical_key(condition_type, cusp_num, sub_lord))
+        return keys
+    if condition_type == "kp_planet_signification":
+        planet = normalize_planet_name(condition.get("planet"))
+        houses = _normalize_house_numbers(condition.get("houses") or condition.get("house") or condition.get("target_house"))
+        if not houses:
+            return {canonical_key(condition_type, planet)}
+        return {canonical_key(condition_type, planet, *houses)}
+    if condition_type == "kp_star_lord":
+        planet = normalize_planet_name(condition.get("planet"))
+        star_lord = normalize_planet_name(condition.get("star_lord") or condition.get("lord"))
+        return {canonical_key(condition_type, planet, star_lord)}
+    if condition_type == "kp_csl":
+        house = condition.get("house") or condition.get("cusp_num")
+        sub_lord = normalize_planet_name(condition.get("sub_lord") or condition.get("lord"))
+        return {canonical_key(condition_type, house, sub_lord)}
+    if condition_type == "kp_signification_chain":
+        planet = normalize_planet_name(condition.get("planet"))
+        houses = _normalize_house_numbers(condition.get("houses") or condition.get("house") or condition.get("target_houses"))
+        return {canonical_key(condition_type, planet, *houses)}
+    if condition_type == "kp_profession_ruler":
+        profession = condition.get("profession")
+        return {canonical_key(condition_type, profession)}
     if condition_type == "transit":
         return {canonical_key(condition_type, normalize_planet_name(condition.get("planet")), condition.get("transit_house"))}
     if condition_type == "composite":
@@ -709,11 +864,80 @@ def _condition_matches(condition: dict[str, Any], facts: ChartFacts) -> bool:
     if condition_type == "yoga_combination":
         from ke_yoga_evaluator import evaluate_yoga_check
         return evaluate_yoga_check(condition, facts).matched
+    if condition_type == "kp_sublord":
+        planet = normalize_planet_name(condition.get("planet"))
+        house = condition.get("house")
+        star_lord = normalize_planet_name(condition.get("star_lord") or condition.get("lord"))
+        if planet and house is not None:
+            try:
+                house_num = int(house)
+            except Exception:
+                return False
+            payload = facts.planet_positions.get(planet)
+            if not payload or payload.get("house") != house_num:
+                return False
+        if star_lord and planet:
+            chain = facts.kp_chains.get(planet)
+            if not chain or chain.get("star_lord") != star_lord:
+                return False
+        cusp_num = condition.get("cusp_num")
+        sub_lord = normalize_planet_name(condition.get("sub_lord"))
+        if cusp_num is not None and sub_lord:
+            if facts.cuspal_sub_lords.get(int(cusp_num)) != sub_lord:
+                return False
+        return True
+    if condition_type == "kp_planet_signification":
+        planet = normalize_planet_name(condition.get("planet"))
+        if not planet:
+            return False
+        target_houses = _normalize_house_numbers(condition.get("houses") or condition.get("house") or condition.get("target_house"))
+        if not target_houses:
+            return bool(facts.kp_significations.get(planet))
+        actual_houses = set(facts.kp_significations.get(planet, []))
+        return set(target_houses).issubset(actual_houses)
+    if condition_type == "kp_star_lord":
+        planet = normalize_planet_name(condition.get("planet"))
+        if not planet:
+            return False
+        target = normalize_planet_name(condition.get("star_lord") or condition.get("lord"))
+        if not target:
+            return False
+        return (facts.kp_chains.get(planet) or {}).get("star_lord") == target
+    if condition_type == "kp_csl":
+        house = condition.get("house") or condition.get("cusp_num")
+        target = normalize_planet_name(condition.get("sub_lord") or condition.get("lord") or condition.get("star_lord"))
+        if house is None or not target:
+            return False
+        try:
+            house_num = int(house)
+        except Exception:
+            return False
+        return facts.cuspal_sub_lords.get(house_num) == target
+    if condition_type == "kp_signification_chain":
+        planet = normalize_planet_name(condition.get("planet"))
+        if not planet:
+            return False
+        target_houses = _normalize_house_numbers(condition.get("houses") or condition.get("house") or condition.get("target_houses"))
+        if not target_houses:
+            return False
+        actual_houses = set(facts.kp_significations.get(planet, []))
+        return set(target_houses).issubset(actual_houses)
+    if condition_type == "kp_profession_ruler":
+        from kp_sublord_table import get_profession_entry
+
+        profession = condition.get("profession")
+        if not profession:
+            return False
+        return get_profession_entry(str(profession)) is not None
     if condition_type == "composite":
         sub_conditions = condition.get("sub_conditions") or []
         operator = str(condition.get("operator") or "and").lower()
         results = [_condition_matches(sub, facts) for sub in sub_conditions]
-        return all(results) if operator == "and" else any(results)
+        if operator == "and":
+            return all(results)
+        if operator == "or":
+            return any(results)
+        return False
     return False
 
 

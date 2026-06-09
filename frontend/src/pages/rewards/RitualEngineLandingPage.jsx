@@ -24,9 +24,9 @@ const config = {
     { title: 'Planetary Affliction Scan', body: 'Identifies which planets are combust, debilitated, in enemy signs, or under low Shadbala - the root causes of repeated obstacles.' },
     { title: 'Gemstone Protocol', body: 'Traditional Vedic gemstone recommendations matched to your strongest benefic planets, with metal, weight, and finger guidance.' },
     { title: 'Mantra & Puja Guidance', body: 'Planet-specific mantras, count, timing, and devotional context for maximum ritual coherence.' },
-    { title: 'Fasting Calendar', body: 'Auspicious fasting days derived from your chart's planetary dominants and current Dasha pattern.' },
+    { title: 'Fasting Calendar', body: "Auspicious fasting days derived from your chart's planetary dominants and current Dasha pattern." },
     { title: 'Behavioural Remedies', body: 'Practical daily and weekly actions - charity, diet, direction, and conduct shifts that reinforce remediation.' },
-    { title: 'Knowledge Engine Personalisation', body: 'Powered by EverydayHoroscope's Vedic Knowledge Engine and applied to your exact planetary signature.' },
+    { title: 'Knowledge Engine Personalisation', body: "Powered by EverydayHoroscope's Vedic Knowledge Engine and applied to your exact planetary signature." },
   ],
   steps: [
     { title: 'Your chart is scanned for afflictions', body: 'Debilitated planets, combust planets, and Dosha indicators are identified across all 9 Vedic planets.' },

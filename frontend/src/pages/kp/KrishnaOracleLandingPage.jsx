@@ -22,10 +22,10 @@ const config = {
   },
   features: [
     { title: '18×18 Bhagavad Gita Grid', body: '324 cells drawn from Srimad Bhagavad Gita. Your selection is guided by sincere intent - not by chance or random number.' },
-    { title: 'Four Sacred Verdicts', body: 'YES, WAIT, NO, and PRAY - each drawn from Krishna's teachings and matched to a specific chaupai.' },
+    { title: 'Four Sacred Verdicts', body: "YES, WAIT, NO, and PRAY - each drawn from Krishna's teachings and matched to a specific chaupai." },
     { title: 'Live Dasha Fingerprinting', body: 'Every reading carries your Mahadasha and Antardasha overlay - the planetary energy governing you at the exact moment of your question.' },
     { title: 'Planetary Transit Overlay', body: 'Current transits of major planets are factored into your reading context, deepening the astrological resonance of each answer.' },
-    { title: 'Sacred Remedy per Reading', body: 'Each of the 36 answers carries its own module-specific sacred remedy and behavioural practice drawn from Lord Krishna's teachings.' },
+    { title: 'Sacred Remedy per Reading', body: "Each of the 36 answers carries its own module-specific sacred remedy and behavioural practice drawn from Lord Krishna's teachings." },
     { title: 'KP Birth Chart Analysis', body: 'Built-in Krishnamurti Paddhati chart panel - your full natal chart computed with Swiss Ephemeris to sub-degree precision.' },
   ],
   steps: [
