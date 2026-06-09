@@ -14,7 +14,7 @@ import {
   AlertTriangle, CheckCircle, Zap, Star,
   Heart, Copy, Send, X, Bell, Phone, Tag,
   Clock, CalendarClock, PlusCircle, History, Wifi, WifiOff,
-  Globe, Image
+  Globe, Image, Target
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
