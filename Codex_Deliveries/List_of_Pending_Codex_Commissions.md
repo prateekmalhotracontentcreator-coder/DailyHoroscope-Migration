@@ -1,9 +1,9 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-06-07 (Session 13 -- LON-2 commission brief written. KP Engine Foundation + Longevity Report Phase 2. READY TO ISSUE.)
+> Last updated: 2026-06-08 (Session 15 -- GRW-1 Transit Segmentation commission brief written. Premium Audit CC commission written. KE New Thread Handover written.)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
-> **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
+> **Per-module open points, status, and revision history → `#2_MASTER_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
 
 ---
 
@@ -18,11 +18,26 @@
 
 ---
 
+## 🔴 NEW -- Added 2026-06-08
+
+| ID | Commission | Thread | Brief File | Status | Notes |
+|---|---|---|---|---|---|
+| **GRW-1** | Transit-Based User Segmentation & Campaign Engine | Growth thread | `Growth/CODEX_COMMISSION_GRW_1_TRANSIT_SEGMENTATION.md` | ✅ CC-VERIFIED 2026-06-08 -- PENDING TT LIVE VALIDATION | 17/17 structural checks pass. `transit_segmentation_service.py` (297L). Consent gate ✅. Daily transit cache ✅. 2 admin endpoints ✅. TransitCampaignsTab.jsx ✅. TT: add `transit_alerts_consent` opt-in checkbox, validate `/admin/transit-segments/summary` on Render. |
+| **GRW-2** | Post-Purchase Email Lifecycle Automation (3-stage Day 0/3/7 sequences) | Growth thread | `Growth/CODEX_COMMISSION_GRW_2_EMAIL_LIFECYCLE.md` | ✅ CC-VERIFIED 2026-06-08 -- PENDING TT LIVE VALIDATION | `lifecycle_email_service.py` (351L). Non-blocking hook in `verify_payment` ✅. APScheduler Day 3+7 jobs ✅. Cancel flow ✅. LifecycleSequencesTab.jsx ✅. TT: trigger a test payment on Render and confirm Stage 1 email arrives. |
+| **GRW-3** | Intelligence Dashboard -- GSC Index Health + SERPER Keyword Intel | Growth thread | `Growth/CODEX_COMMISSION_GRW_3_INTELLIGENCE_DASHBOARD.md` | ✅ CC-VERIFIED 2026-06-08 -- PENDING TT ENV VARS + LIVE VALIDATION | `intelligence_service.py` (312L). SERPER key guard ✅. GSC OAuth endpoints ✅. APScheduler daily/weekly jobs ✅. IntelligenceTab.jsx ✅. TT: add `SERPER_API_KEY` + `GSC_CLIENT_ID/SECRET` to Render, then validate Intelligence tab. |
+| **GRW-4** | B2B Sales Lead CRM (Light) -- pipeline tracker in admin | Growth thread | `Growth/CODEX_COMMISSION_GRW_4_SALES_CRM.md` | ✅ CC-VERIFIED 2026-06-08 -- PENDING TT LIVE VALIDATION | 5 CRUD endpoints + summary ✅. `sales_leads` collection ✅. SalesLeadsTab.jsx (384L) ✅. TT: open Leads tab on Render, add a test lead, verify stage update. |
+| **SOCIAL-1** | Instagram + X (Twitter) Social Posting | Growth thread | `Growth/CODEX_COMMISSION_SOCIAL_1_INSTAGRAM_X.md` | ✅ CC-VERIFIED 2026-06-08 -- PENDING TT ENV VARS + LIVE VALIDATION | Instagram no-image guard ✅. X truncation at 280 chars ✅. Status endpoints ✅. Multi-channel result shape ✅. ENGINE_VERSION bumped to v31. TT: add `INSTAGRAM_BUSINESS_ACCOUNT_ID` + 4 `TWITTER_*` keys to Render, then validate Social Media tab. |
+| **PREM-AUDIT-1** | Premium Reports & Modules Audit -- Structure, Pricing & Legal Disclaimers | New thread (CC research) | `.claude/briefs/CC_COMMISSION_PREMIUM_AUDIT_PRICING_LEGAL_2026-06-08.md` | 🟡 READY TO ISSUE | Research + planning only. No code changes. Output: master inventory table (25 reports + 12 modules, SEO page Y/N per row), report section proposals, pricing recommendations, legal disclaimer text + placement rules. |
+| **SEO-LP-1** | 9 Module SEO Landing Pages -- Kundali Suite + Premium Modules + Companions | New thread (all 9 in one) | `SEO/CODEX_COMMISSION_SEO_LP_MODULE_LANDINGS.md` | ✅ INTEGRATED 2026-06-09 | 9 pages + `ModuleLandingPage.jsx` shared frame + App.js routes + sitemap.xml. All 9 routes smoke-tested (production build, Playwright): H1 ✅ features ✅ steps ✅ FAQ ✅ footer ✅ 0 JS errors. Pending commit + deploy. |
+
+---
+
 ## 🔴 NEW -- Added 2026-06-07
 
 | ID | Commission | Thread | Brief File | Status | Notes |
 |---|---|---|---|---|---|
-| **LON-2** | KP Engine Foundation Layer + Longevity Report Phase 2 | Longevity (new thread) | `Longevity/CODEX_COMMISSION_LON_2_KP_ENGINE_FOUNDATION.md` | 🟡 READY TO ISSUE | First numbered Longevity commission (Commission H was the only prior delivery). Engine-first: formalise `KPChart` TypedDict, add `POST /api/kp/birth-chart` endpoint, surface KP Chart Panel (cusps + planets + significators) in Longevity Report. KP Oracle uses same engine foundation via KP-3 (separate thread). 8 acceptance gates. |
+| **LON-2** | KP Engine Foundation Layer + Longevity Report Phase 2 | Longevity (new thread) | `Longevity/CODEX_COMMISSION_LON_2_KP_ENGINE_FOUNDATION.md` | ✅ CC-VERIFIED 2026-06-07 -- commit `6ee790b` | All 8 gates pass. `KPChart` TypedDict, `build_kp_chart()`, `POST /api/kp/birth-chart`, KP Chart Panel in Longevity Report. Pending TT push + live verify (LON-OP-4). |
+| **KP-3** | KP Oracle KP Chart Panel -- shared component + Oracle + Ask Question integration | KP Oracle thread | `KP/CODEX_COMMISSION_KP_3_CHART_PANEL.md` | 🟡 READY TO ISSUE | Extract `KPChartPanel.jsx` from Longevity, plug into `KrishnaOraclePage.jsx` + `AskQuestionPage.jsx`. Frontend-driven `POST /api/kp/birth-chart` call -- no new backend endpoint. 8 acceptance gates. Depends on LON-2 ✅. |
 
 ---
 

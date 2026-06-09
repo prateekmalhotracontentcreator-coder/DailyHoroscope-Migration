@@ -82,6 +82,15 @@ const TarotSeoHubPage = lazy(() => import('./pages/tarot-seo/TarotSeoHubPage'));
 const TarotSpreadPage = lazy(() => import('./pages/tarot-seo/TarotSpreadPage'));
 const TarotCardPage = lazy(() => import('./pages/tarot-seo/TarotCardPage'));
 const TarotIntentionPage = lazy(() => import('./pages/tarot-seo/TarotIntentionPage'));
+const BirthChartLandingPage = lazy(() => import('./pages/kundali/BirthChartLandingPage'));
+const KundaliMilanLandingPage = lazy(() => import('./pages/kundali/KundaliMilanLandingPage'));
+const BrihatKundliLandingPage = lazy(() => import('./pages/kundali/BrihatKundliLandingPage'));
+const KrishnaOracleLandingPage = lazy(() => import('./pages/kp/KrishnaOracleLandingPage'));
+const PalmistryLandingPage = lazy(() => import('./pages/palmistry/PalmistryLandingPage'));
+const ArcAngelLandingPage = lazy(() => import('./pages/arc-angel/ArcAngelLandingPage'));
+const RitualEngineLandingPage = lazy(() => import('./pages/rewards/RitualEngineLandingPage'));
+const LuminaLandingPage = lazy(() => import('./pages/lumina/LuminaLandingPage'));
+const NumerologyLandingPage = lazy(() => import('./pages/numerology/NumerologyLandingPage'));
 const HoroscopeSignPage = lazy(() => import('./pages/horoscope/HoroscopeSignPage').then(m => ({ default: m.HoroscopeSignPage })));
 const RemedyPage = lazy(() => import('./pages/remedies/RemedyPage').then(m => ({ default: m.RemedyPage })));
 const KundaliPage = lazy(() => import('./pages/kundali/KundaliPage'));
@@ -376,6 +385,16 @@ function App() {
                   <Route path="/palmistry" element={<PalmistryPage />} />
                   <Route path="/tarot" element={<TarotPage />} />
                   <Route path="/the-tarot" element={<TarotLanding />} />
+                  {/* SEO-LP-1: Module SEO Landing Pages */}
+                  <Route path="/the-birth-chart" element={<BirthChartLandingPage />} />
+                  <Route path="/the-kundali-milan" element={<KundaliMilanLandingPage />} />
+                  <Route path="/the-brihat-kundli" element={<BrihatKundliLandingPage />} />
+                  <Route path="/the-krishna-oracle" element={<KrishnaOracleLandingPage />} />
+                  <Route path="/the-palmistry" element={<PalmistryLandingPage />} />
+                  <Route path="/the-arc-angel" element={<ArcAngelLandingPage />} />
+                  <Route path="/the-ritual-engine" element={<RitualEngineLandingPage />} />
+                  <Route path="/the-lumina" element={<LuminaLandingPage />} />
+                  <Route path="/the-numerology" element={<NumerologyLandingPage />} />
                   <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
                   {/* ── SEO Resource Content: Tarot Library ─────────────────────────────── */}
                   <Route path="/tarot/spreads" element={<SeoResourceGate feature="Tarot Library"><TarotSeoHubPage /></SeoResourceGate>} />
