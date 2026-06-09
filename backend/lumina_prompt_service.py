@@ -18,64 +18,131 @@ _GITA_REF_PATTERN = re.compile(r"(\d+):(\d+)")
 
 DAILY_SCRIPTURES: dict[ScriptureMode, list[dict[str, str]]] = {
     "BIBLE": [
-        {
-            "reference": "Joshua 1:8",
-            "text": "This book of the law shall not depart out of thy mouth; but thou shalt meditate therein day and night.",
-        },
-        {
-            "reference": "Isaiah 41:10",
-            "text": "Fear thou not; for I am with thee: be not dismayed; for I am thy God.",
-        },
-        {
-            "reference": "Psalm 23:1",
-            "text": "The Lord is my shepherd; I shall not want.",
-        },
-        {
-            "reference": "Romans 8:28",
-            "text": "And we know that all things work together for good to them that love God.",
-        },
-        {
-            "reference": "Philippians 4:6",
-            "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God.",
-        },
-        {
-            "reference": "2 Timothy 1:7",
-            "text": "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind.",
-        },
-        {
-            "reference": "John 15:5",
-            "text": "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit.",
-        },
+        # Week 1
+        {"reference": "Joshua 1:8",       "text": "This book of the law shall not depart out of thy mouth; but thou shalt meditate therein day and night."},
+        {"reference": "Isaiah 41:10",      "text": "Fear thou not; for I am with thee: be not dismayed; for I am thy God."},
+        {"reference": "Psalm 23:1",        "text": "The Lord is my shepherd; I shall not want."},
+        {"reference": "Romans 8:28",       "text": "And we know that all things work together for good to them that love God."},
+        {"reference": "Philippians 4:6",   "text": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God."},
+        {"reference": "2 Timothy 1:7",     "text": "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind."},
+        {"reference": "John 15:5",         "text": "I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit."},
+        # Week 2
+        {"reference": "Psalm 27:1",        "text": "The Lord is my light and my salvation; whom shall I fear? the Lord is the strength of my life; of whom shall I be afraid?"},
+        {"reference": "Psalm 37:4",        "text": "Delight thyself also in the Lord; and he shall give thee the desires of thine heart."},
+        {"reference": "Psalm 46:1",        "text": "God is our refuge and strength, a very present help in trouble."},
+        {"reference": "Psalm 91:1",        "text": "He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty."},
+        {"reference": "Psalm 119:105",     "text": "Thy word is a lamp unto my feet, and a light unto my path."},
+        {"reference": "Psalm 139:14",      "text": "I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works."},
+        {"reference": "Proverbs 3:5-6",    "text": "Trust in the Lord with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths."},
+        # Week 3
+        {"reference": "Proverbs 4:7",      "text": "Wisdom is the principal thing; therefore get wisdom: and with all thy getting get understanding."},
+        {"reference": "Proverbs 16:3",     "text": "Commit thy works unto the Lord, and thy thoughts shall be established."},
+        {"reference": "Isaiah 26:3",       "text": "Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee."},
+        {"reference": "Isaiah 40:31",      "text": "But they that wait upon the Lord shall renew their strength; they shall mount up with wings as eagles."},
+        {"reference": "Isaiah 43:2",       "text": "When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee."},
+        {"reference": "Isaiah 55:8-9",     "text": "For my thoughts are not your thoughts, neither are your ways my ways, saith the Lord. For as the heavens are higher than the earth, so are my ways higher than your ways."},
+        {"reference": "Jeremiah 29:11",    "text": "For I know the thoughts that I think toward you, saith the Lord, thoughts of peace, and not of evil, to give you an expected end."},
+        # Week 4
+        {"reference": "Lamentations 3:22-23", "text": "It is of the Lord's mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness."},
+        {"reference": "Micah 6:8",         "text": "He hath shewed thee, O man, what is good; and what doth the Lord require of thee, but to do justly, and to love mercy, and to walk humbly with thy God?"},
+        {"reference": "Zephaniah 3:17",    "text": "The Lord thy God in the midst of thee is mighty; he will save, he will rejoice over thee with joy; he will rest in his love."},
+        {"reference": "Deuteronomy 31:6",  "text": "Be strong and of a good courage, fear not, nor be afraid of them: for the Lord thy God, he it is that doth go with thee; he will not fail thee, nor forsake thee."},
+        {"reference": "Numbers 6:24-26",   "text": "The Lord bless thee, and keep thee: the Lord make his face shine upon thee, and be gracious unto thee: the Lord lift up his countenance upon thee, and give thee peace."},
+        {"reference": "Ecclesiastes 3:1",  "text": "To every thing there is a season, and a time to every purpose under the heaven."},
+        {"reference": "Genesis 1:27",      "text": "So God created man in his own image, in the image of God created he him; male and female created he them."},
+        # Week 5
+        {"reference": "Matthew 5:3",       "text": "Blessed are the poor in spirit: for theirs is the kingdom of heaven."},
+        {"reference": "Matthew 5:8",       "text": "Blessed are the pure in heart: for they shall see God."},
+        {"reference": "Matthew 5:9",       "text": "Blessed are the peacemakers: for they shall be called the children of God."},
+        {"reference": "Matthew 6:33",      "text": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you."},
+        {"reference": "Matthew 11:28",     "text": "Come unto me, all ye that labour and are heavy laden, and I will give you rest."},
+        {"reference": "John 8:32",         "text": "And ye shall know the truth, and the truth shall make you free."},
+        {"reference": "John 14:27",        "text": "Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you."},
+        # Week 6
+        {"reference": "Romans 5:3-4",      "text": "We glory in tribulations also: knowing that tribulation worketh patience; and patience, experience; and experience, hope."},
+        {"reference": "Romans 12:2",       "text": "Be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."},
+        {"reference": "1 Corinthians 13:13","text": "And now abideth faith, hope, charity, these three; but the greatest of these is charity."},
+        {"reference": "2 Corinthians 5:7", "text": "For we walk by faith, not by sight."},
+        {"reference": "Galatians 5:22-23", "text": "The fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law."},
+        {"reference": "Ephesians 2:8",     "text": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God."},
+        {"reference": "Ephesians 6:10",    "text": "Finally, my brethren, be strong in the Lord, and in the power of his might."},
+        # Week 7
+        {"reference": "Philippians 4:7",   "text": "The peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus."},
+        {"reference": "Philippians 4:13",  "text": "I can do all things through Christ which strengtheneth me."},
+        {"reference": "Colossians 3:23",   "text": "Whatsoever ye do, do it heartily, as to the Lord, and not unto men."},
+        {"reference": "Hebrews 11:1",      "text": "Now faith is the substance of things hoped for, the evidence of things not seen."},
+        {"reference": "Hebrews 12:1",      "text": "Let us lay aside every weight, and the sin which doth so easily beset us, and let us run with patience the race that is set before us."},
+        {"reference": "James 1:5",         "text": "If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him."},
+        {"reference": "1 Peter 5:7",       "text": "Casting all your care upon him; for he careth for you."},
+        # Week 8
+        {"reference": "1 John 4:18",       "text": "There is no fear in love; but perfect love casteth out fear."},
+        {"reference": "Revelation 21:4",   "text": "And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain."},
+        {"reference": "Song of Solomon 2:4","text": "He brought me to the banqueting house, and his banner over me was love."},
+        {"reference": "Psalm 34:18",       "text": "The Lord is nigh unto them that are of a broken heart; and saveth such as be of a contrite spirit."},
     ],
     "GITA": [
-        {
-            "reference": "Bhagavad Gita 2:47",
-            "text": "You have a right to perform your prescribed duty, but you are not entitled to the fruits of action.",
-        },
-        {
-            "reference": "Bhagavad Gita 4:7",
-            "text": "Whenever righteousness declines and unrighteousness rises, I manifest Myself.",
-        },
-        {
-            "reference": "Bhagavad Gita 6:5",
-            "text": "One must elevate, not degrade, oneself by the mind. The mind alone is the friend of the self, and the mind alone is the enemy of the self.",
-        },
-        {
-            "reference": "Bhagavad Gita 9:22",
-            "text": "To those who are constantly devoted and who worship Me with love, I give what they lack and preserve what they have.",
-        },
-        {
-            "reference": "Bhagavad Gita 10:10",
-            "text": "To those who are constantly devoted and serve Me with love, I give the understanding by which they can come to Me.",
-        },
-        {
-            "reference": "Bhagavad Gita 12:15",
-            "text": "One by whom the world is not disturbed and who is not disturbed by the world is dear to Me.",
-        },
-        {
-            "reference": "Bhagavad Gita 18:66",
-            "text": "Abandon all varieties of duty and simply surrender unto Me. I shall deliver you from all sinful reactions; do not fear.",
-        },
+        # Week 1
+        {"reference": "Bhagavad Gita 2:47",  "text": "You have a right to perform your prescribed duty, but you are not entitled to the fruits of action."},
+        {"reference": "Bhagavad Gita 4:7",   "text": "Whenever righteousness declines and unrighteousness rises, I manifest Myself."},
+        {"reference": "Bhagavad Gita 6:5",   "text": "One must elevate, not degrade, oneself by the mind. The mind alone is the friend of the self, and the mind alone is the enemy of the self."},
+        {"reference": "Bhagavad Gita 9:22",  "text": "To those who are constantly devoted and who worship Me with love, I give what they lack and preserve what they have."},
+        {"reference": "Bhagavad Gita 10:10", "text": "To those who are constantly devoted and serve Me with love, I give the understanding by which they can come to Me."},
+        {"reference": "Bhagavad Gita 12:15", "text": "One by whom the world is not disturbed and who is not disturbed by the world is dear to Me."},
+        {"reference": "Bhagavad Gita 18:66", "text": "Abandon all varieties of duty and simply surrender unto Me. I shall deliver you from all sinful reactions; do not fear."},
+        # Week 2
+        {"reference": "Bhagavad Gita 2:14",  "text": "O son of Kunti, the non-permanent appearance of happiness and distress, and their disappearance in due course, are like the appearance and disappearance of winter and summer seasons. One must learn to tolerate them without being disturbed."},
+        {"reference": "Bhagavad Gita 2:20",  "text": "For the soul there is never birth nor death at any time. It has not come into being, does not come into being, and will not come into being. It is unborn, eternal, ever-existing, and primeval."},
+        {"reference": "Bhagavad Gita 2:22",  "text": "As a person puts on new garments, giving up old ones, the soul accepts new material bodies, giving up the old and useless ones."},
+        {"reference": "Bhagavad Gita 2:48",  "text": "Perform your duty equipoised, O Arjuna, abandoning all attachment to success or failure. Such equanimity is called yoga."},
+        {"reference": "Bhagavad Gita 2:50",  "text": "By rendering devotional service unto the Supreme, one is freed from the reactions of all activities. Therefore strive for yoga, which is the art of all work."},
+        {"reference": "Bhagavad Gita 2:55",  "text": "When a man gives up all varieties of desire for sense gratification and when his mind, thus purified, finds satisfaction in the self alone, then he is said to be in pure transcendental consciousness."},
+        {"reference": "Bhagavad Gita 3:19",  "text": "Therefore, without being attached to the fruits of activities, one should act as a matter of duty, for by working without attachment one attains the Supreme."},
+        # Week 3
+        {"reference": "Bhagavad Gita 3:21",  "text": "Whatever action a great man performs, common men follow. And whatever standards he sets by exemplary acts, all the world pursues."},
+        {"reference": "Bhagavad Gita 3:27",  "text": "The bewildered spirit soul thinks himself the doer of activities that are in actuality carried out by the three modes of material nature."},
+        {"reference": "Bhagavad Gita 3:42",  "text": "The working senses are superior to dull matter; mind is higher than the senses; intelligence is still higher than the mind; and the soul is even higher than the intelligence."},
+        {"reference": "Bhagavad Gita 4:11",  "text": "As all surrender unto Me, I reward them accordingly. Everyone follows My path in all respects, O son of Prtha."},
+        {"reference": "Bhagavad Gita 4:38",  "text": "In this world, there is nothing so sublime and pure as transcendental knowledge. Such knowledge is the mature fruit of all mysticism, and one who is accomplished in devotional service enjoys this knowledge within himself."},
+        {"reference": "Bhagavad Gita 4:39",  "text": "A faithful person dedicated to transcendental knowledge, who subdues his senses, quickly attains the supreme spiritual peace."},
+        {"reference": "Bhagavad Gita 5:7",   "text": "One who works in devotion, who is a pure soul, and who controls his mind and senses is dear to everyone, and everyone is dear to him. Though always working, such a man is never entangled."},
+        # Week 4
+        {"reference": "Bhagavad Gita 5:18",  "text": "The humble sage, by virtue of true knowledge, sees with equal vision a learned brahmin, a cow, an elephant, a dog and a dog-eater."},
+        {"reference": "Bhagavad Gita 5:29",  "text": "A person in full consciousness of Me, knowing Me to be the ultimate beneficiary of all sacrifices and the Supreme Lord of all planets and demigods, attains peace from the pangs of material miseries."},
+        {"reference": "Bhagavad Gita 6:17",  "text": "He who is regulated in his habits of eating, sleeping, recreation and work can mitigate all material pains by practicing the yoga system."},
+        {"reference": "Bhagavad Gita 6:19",  "text": "As a lamp in a windless place does not waver, so the transcendentalist whose mind is controlled remains always steady in his meditation on the transcendent Self."},
+        {"reference": "Bhagavad Gita 6:26",  "text": "From wherever the mind wanders due to its flickering and unsteady nature, one must certainly withdraw it and bring it back under the control of the Self."},
+        {"reference": "Bhagavad Gita 6:35",  "text": "The mind is restless and difficult to restrain, but it is possible to subdue it by suitable practice and by detachment, O son of Kunti."},
+        {"reference": "Bhagavad Gita 7:8",   "text": "O son of Kunti, I am the taste of water, the light of the sun and the moon, the syllable om in the Vedic mantras; I am the sound in ether and ability in man."},
+        # Week 5
+        {"reference": "Bhagavad Gita 7:14",  "text": "This divine energy of Mine, consisting of the three modes of material nature, is difficult to overcome. But those who have surrendered unto Me can easily cross beyond it."},
+        {"reference": "Bhagavad Gita 7:19",  "text": "After many births and deaths, he who is actually in knowledge surrenders unto Me, knowing Me to be the cause of all causes and all that is. Such a great soul is very rare."},
+        {"reference": "Bhagavad Gita 8:7",   "text": "Always think of Me and carry out your prescribed duty. With your activities dedicated to Me and your mind and intelligence fixed on Me, you will attain Me without doubt."},
+        {"reference": "Bhagavad Gita 9:26",  "text": "If one offers Me with love and devotion a leaf, a flower, fruit or water, I will accept it."},
+        {"reference": "Bhagavad Gita 9:27",  "text": "Whatever you do, whatever you eat, whatever you offer or give away, and whatever austerities you perform -- do that as an offering to Me."},
+        {"reference": "Bhagavad Gita 10:8",  "text": "I am the source of all spiritual and material worlds. Everything emanates from Me. The wise who know this engage in My devotional service and worship Me with all their hearts."},
+        {"reference": "Bhagavad Gita 12:6-7","text": "For those who worship Me with devotion, meditating on My transcendental form and carrying their oblations to Me -- I swiftly rescue them from the ocean of birth and death."},
+        # Week 6
+        {"reference": "Bhagavad Gita 12:13-14","text": "One who is not envious but is a kind friend to all living entities, free from false ego, equal in happiness and distress, tolerant, always satisfied, self-controlled, and engaged in devotional service -- such a devotee is very dear to Me."},
+        {"reference": "Bhagavad Gita 13:8",  "text": "Humbleness, pridelessness, nonviolence, tolerance, simplicity, approaching a bona fide spiritual master, cleanliness, steadiness and self-control -- these are declared to be knowledge."},
+        {"reference": "Bhagavad Gita 14:6",  "text": "The mode of goodness, being purer than the others, is illuminating, and it frees one from all sinful reactions. Those situated in that mode become conditioned by a sense of happiness and knowledge."},
+        {"reference": "Bhagavad Gita 15:15", "text": "I am seated in everyone's heart, and from Me come remembrance, knowledge and forgetfulness. By all the Vedas I am to be known."},
+        {"reference": "Bhagavad Gita 16:1-3","text": "Fearlessness, purification of one's existence, cultivation of spiritual knowledge, charity, self-control, nonviolence, truthfulness, freedom from anger -- these transcendental qualities belong to godly men."},
+        {"reference": "Bhagavad Gita 17:3",  "text": "According to one's existence under the various modes of nature, one evolves a particular kind of faith. The living being is said to be of a particular faith according to the modes he has acquired."},
+        {"reference": "Bhagavad Gita 18:20", "text": "That knowledge by which one undivided spiritual nature is seen in all living entities, though they are divided into innumerable forms, is knowledge in the mode of goodness."},
+        # Week 7
+        {"reference": "Bhagavad Gita 18:37", "text": "That which in the beginning may be just like poison but at the end is just like nectar, and which awakens one to self-realization, is said to be happiness in the mode of goodness."},
+        {"reference": "Bhagavad Gita 18:45", "text": "By following his qualities of work, every man can become perfect. Now hear from Me how this can be done."},
+        {"reference": "Bhagavad Gita 18:55", "text": "One can understand the Supreme Personality of Godhead as He is only by devotional service. And when one is in full consciousness by such devotion, one can enter into the kingdom of God."},
+        {"reference": "Bhagavad Gita 18:63", "text": "Thus I have explained to you knowledge still more confidential. Deliberate on this fully, and then do what you wish to do."},
+        {"reference": "Bhagavad Gita 18:65", "text": "Always think of Me, become My devotee, worship Me and offer your homage unto Me. Thus you will come to Me without fail. I promise you this because you are My very dear friend."},
+        {"reference": "Bhagavad Gita 18:78", "text": "Wherever there is Krishna, the master of all mystics, and wherever there is Arjuna, the supreme archer, there will also certainly be opulence, victory, extraordinary power, and morality."},
+        {"reference": "Bhagavad Gita 5:22",  "text": "An intelligent person does not take part in the sources of misery arising from contact with the material senses. Such pleasures have a beginning and an end, and the wise man does not delight in them."},
+        # Week 8
+        {"reference": "Bhagavad Gita 2:62-63","text": "While contemplating the objects of the senses, a person develops attachment; from attachment lust develops; from lust anger arises; from anger comes delusion, then loss of memory, then loss of intelligence, and then one falls down."},
+        {"reference": "Bhagavad Gita 6:40",  "text": "A transcendentalist engaged in auspicious activities does not meet with destruction either in this world or in the spiritual world; one who does good is never overcome by evil."},
+        {"reference": "Bhagavad Gita 13:22", "text": "The living entity in material nature follows the ways of life, enjoying the three modes of nature. This is due to his association with that material nature, and thus he meets with good and evil."},
+        {"reference": "Bhagavad Gita 3:16",  "text": "One who does not follow in human life the cycle of sacrifice thus established by the Vedas certainly leads a life full of sin. Living only for the satisfaction of the senses, such a person lives in vain."},
+        {"reference": "Bhagavad Gita 4:24",  "text": "A person who is fully absorbed in Krishna consciousness is sure to attain the spiritual kingdom, for his full contribution to spiritual activities makes the consummation absolute."},
     ],
 }
 

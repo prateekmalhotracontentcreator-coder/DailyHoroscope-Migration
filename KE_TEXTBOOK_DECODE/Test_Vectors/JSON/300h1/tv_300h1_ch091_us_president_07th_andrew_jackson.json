@@ -6,7 +6,7 @@
   "public_figure": true,
   "subject": {
     "name": "Andrew Jackson",
-    "description": "Andrew Jackson was born to Presbyterian Scots-Irish immigrants. Jackson was· the 7th",
+    "description": "Andrew Jackson was born to Presbyterian Scots-Irish immigrants. Jackson was\u00b7 the 7th",
     "nationality": "American"
   },
   "birth_data": {
@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "computation_error": "no_date"
   },
   "planet_positions_from_table": {
     "LAGNA": {

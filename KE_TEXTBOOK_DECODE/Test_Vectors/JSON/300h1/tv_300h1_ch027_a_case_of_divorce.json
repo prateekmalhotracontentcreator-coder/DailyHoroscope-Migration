@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "skip_reason": "no_time"
   },
   "planet_positions_from_table": {
     "LAGNA": {
@@ -179,7 +180,7 @@
     },
     {
       "obs_id": "obs-003",
-      "verbatim": "Jupiter is linked to Saturn, while Ketu is in star \" · of Jupiter.",
+      "verbatim": "Jupiter is linked to Saturn, while Ketu is in star \" \u00b7 of Jupiter.",
       "condition_type_guess": "kp_planet_signification",
       "science_id": "kp_jyotish",
       "claim_axis": "career",

@@ -1063,12 +1063,26 @@ def _daily_seed_content(sign_slug: str, month_slug: str) -> dict:
     sign = SIGN_INDEX[sign_slug]
     month = MONTH_INDEX[month_slug]
     month_number = _month_position(month_slug)
-    gita = deepcopy(GITA_REFERENCES[(month_number + len(sign_slug)) % len(GITA_REFERENCES)])
-    bible = deepcopy(BIBLE_REFERENCES[(month_number + len(month_slug)) % len(BIBLE_REFERENCES)])
+    gita = deepcopy(GITA_REFERENCES[_hash_index(sign_slug, month_slug, "gita", modulus=len(GITA_REFERENCES))])
+    bible = deepcopy(BIBLE_REFERENCES[_hash_index(sign_slug, month_slug, "bible", modulus=len(BIBLE_REFERENCES))])
     chapter, verse = _chapter_verse_from_reference(gita["reference"])
     gita_cross_link = f"/faith/gita/{chapter}-{verse}/{sign_slug}-season" if chapter and verse else "/faith/gita"
     transit_choice = TRANSIT_SLUGS[_hash_index(sign_slug, month_slug, modulus=len(TRANSIT_SLUGS))]
-    title = f"{sign['name']} Spiritual Guide - {month['name']} for {month['month_energy']}"
+    _MONTH_TITLE_HOOKS = {
+        "january":   "Renewal and Clarity",
+        "february":  "Inner Truth and Devotion",
+        "march":     "Courage and Emergence",
+        "april":     "Abundance and Steadiness",
+        "may":       "Purpose and Alignment",
+        "june":      "Openness and Grace",
+        "july":      "Depth and Surrender",
+        "august":    "Harvest and Gratitude",
+        "september": "Balance and Discernment",
+        "october":   "Release and Trust",
+        "november":  "Stillness and Reflection",
+        "december":  "Return and Consecration",
+    }
+    title = f"{sign['name']} {month['name']}: {sign['modality']} {sign['element']} -- {sign['ruler']}'s {_MONTH_TITLE_HOOKS[month_slug]}"
     today = _today_iso()
 
     practices = [

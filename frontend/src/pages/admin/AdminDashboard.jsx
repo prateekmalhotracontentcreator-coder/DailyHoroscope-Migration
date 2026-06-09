@@ -24,6 +24,10 @@ import { RemediesAdminPanel } from './RemediesAdminPanel';
 import { PunyaRewardsAdminPanel } from './PunyaRewardsAdminPanel';
 import { DiagnosticsTab } from '../../components/admin/DiagnosticsTab';
 import { EchoPaceTab } from '../../components/admin/EchoPaceTab';
+import { TransitCampaignsTab } from '../../components/admin/TransitCampaignsTab';
+import { LifecycleSequencesTab } from '../../components/admin/LifecycleSequencesTab';
+import { IntelligenceTab } from '../../components/admin/IntelligenceTab';
+import { SalesLeadsTab } from '../../components/admin/SalesLeadsTab';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -141,13 +145,15 @@ export const AdminDashboard = () => {
   const [subLoading,      setSubLoading]       = useState(false);
   const [notifLogs,       setNotifLogs]        = useState([]);
   const [scheduled,       setScheduled]        = useState([]);
-  const [notifTab,        setNotifTab]         = useState('subscribers'); // subscribers | compose | scheduled | history | social
+  const [notifTab,        setNotifTab]         = useState('subscribers');
   const [socialForm,      setSocialForm]       = useState({ message: '', image_url: '', channels: ['facebook'] });
   const [socialPosting,   setSocialPosting]    = useState(false);
   const [socialResults,   setSocialResults]    = useState(null);
   const [socialLogs,      setSocialLogs]       = useState([]);
   const [socialImageFile, setSocialImageFile]  = useState(null);
   const [ytStatus,        setYtStatus]         = useState(null); // {connected, has_credentials, connected_at}
+  const [instagramStatus, setInstagramStatus]  = useState(null);
+  const [xStatus,         setXStatus]          = useState(null);
   const [ytConnecting,    setYtConnecting]     = useState(false);
   const [subForm,         setSubForm]          = useState({ name: '', email: '', phone: '', tags: '' });
   const [editingSub,      setEditingSub]       = useState(null);
@@ -182,7 +188,9 @@ export const AdminDashboard = () => {
     if (activeTab === 'contacts')      fetchContacts();
     if (activeTab === 'reports')       fetchReports();
     if (activeTab === 'health')        fetchHealth();
-    if (activeTab === 'notifications') { fetchSubscribers(); fetchNotifLogs(); fetchScheduled(); fetchSocialLogs(); fetchYtStatus(); }
+    if (activeTab === 'notifications') {
+      fetchSubscribers(); fetchNotifLogs(); fetchScheduled(); fetchSocialLogs(); fetchYtStatus(); fetchInstagramStatus(); fetchXStatus();
+    }
   }, [activeTab]);
 
   const fetchSubscribers = async () => {
@@ -212,6 +220,20 @@ export const AdminDashboard = () => {
     try {
       const res = await axios.get(`${API}/admin/youtube/status`, { headers: getAuthHeaders() });
       setYtStatus(res.data);
+    } catch {}
+  };
+
+  const fetchInstagramStatus = async () => {
+    try {
+      const res = await axios.get(`${API}/admin/instagram/status`, { headers: getAuthHeaders() });
+      setInstagramStatus(res.data);
+    } catch {}
+  };
+
+  const fetchXStatus = async () => {
+    try {
+      const res = await axios.get(`${API}/admin/x/status`, { headers: getAuthHeaders() });
+      setXStatus(res.data);
     } catch {}
   };
 
@@ -323,6 +345,10 @@ export const AdminDashboard = () => {
   const handleSocialPost = async () => {
     if (!socialForm.message.trim()) { toast.error('Message is required'); return; }
     if (!socialForm.channels.length) { toast.error('Select at least one channel'); return; }
+    if (socialForm.channels.includes('instagram') && !socialImageFile && !socialForm.image_url) {
+      toast.error('Instagram requires an image.');
+      return;
+    }
     setSocialPosting(true); setSocialResults(null);
     try {
       let res;
@@ -342,8 +368,9 @@ export const AdminDashboard = () => {
           channels: socialForm.channels,
         }, { headers: getAuthHeaders() });
       }
-      setSocialResults(res.data.results);
-      const allOk = res.data.results.every(r => r.success);
+      const resultList = Array.isArray(res.data.results) ? res.data.results : Object.values(res.data.results || {});
+      setSocialResults(resultList);
+      const allOk = resultList.every(r => r.success);
       if (allOk) {
         toast.success('Posted successfully!');
         setSocialForm(p => ({ ...p, message: '', image_url: '' }));
@@ -512,12 +539,56 @@ export const AdminDashboard = () => {
     { id: 'users',          label: 'Users',          icon: Users },
     { id: 'reports',        label: 'Reports',        icon: FileText },
     { id: 'payments',       label: 'Payments',       icon: CreditCard },
+    { id: 'leads',          label: 'Leads',          icon: Target },
     { id: 'contacts',       label: 'Messages',       icon: MessageSquare },
     { id: 'blog',           label: 'Blog',           icon: BookOpen },
     { id: 'library',        label: 'Library',        icon: BookOpen },
     { id: 'remedies',       label: 'Remedies',       icon: ShieldCheck },
     { id: 'notifications',  label: 'Notifications',  icon: Bell },
+    { id: 'intelligence',   label: 'Intelligence',   icon: Globe },
     { id: 'rewards',        label: 'Rewards',        icon: Star },
+  ];
+
+  const xCharCount = socialForm.message.length;
+  const xCounterClass =
+    xCharCount > 280 ? 'text-red-400'
+    : xCharCount >= 260 ? 'text-yellow-400'
+    : 'text-gray-500';
+  const socialChannels = [
+    {
+      id: 'facebook',
+      label: 'Facebook',
+      available: true,
+      status: 'Page token ready',
+      statusClass: 'text-green-400',
+      note: null,
+    },
+    {
+      id: 'instagram',
+      label: 'Instagram',
+      available: instagramStatus?.configured === true,
+      status: instagramStatus?.configured
+        ? `Account ID: ${instagramStatus?.account_id ? 'configured' : 'connected'}`
+        : 'Not configured',
+      statusClass: instagramStatus?.configured ? 'text-green-400' : 'text-yellow-400',
+      note: 'Requires image upload',
+    },
+    {
+      id: 'x',
+      label: 'X (Twitter)',
+      available: xStatus?.configured === true,
+      status: xStatus?.configured ? 'API keys configured' : 'Not configured',
+      statusClass: xStatus?.configured ? 'text-green-400' : 'text-yellow-400',
+      note: '280 character max',
+    },
+    {
+      id: 'youtube',
+      label: 'YouTube',
+      available: ytStatus?.connected === true,
+      status: ytStatus?.connected ? 'Channel connected' : 'Connect above',
+      statusClass: ytStatus?.connected ? 'text-green-400' : 'text-yellow-400',
+      note: 'Uploads run in background',
+    },
   ];
 
   return (
@@ -1000,6 +1071,8 @@ export const AdminDashboard = () => {
         {/* LIBRARY */}
         {activeTab === 'library' && <LibraryConsolePage getAuthHeaders={getAuthHeaders} />}
         {activeTab === 'remedies' && <RemediesAdminPanel getAuthHeaders={getAuthHeaders} />}
+        {activeTab === 'leads' && <SalesLeadsTab getAuthHeaders={getAuthHeaders} />}
+        {activeTab === 'intelligence' && <IntelligenceTab getAuthHeaders={getAuthHeaders} />}
         {activeTab === 'rewards' && <PunyaRewardsAdminPanel getAuthHeaders={getAuthHeaders} />}
 
         {/* NOTIFICATIONS */}
@@ -1012,6 +1085,8 @@ export const AdminDashboard = () => {
                 { id: 'compose',     label: 'Compose',      icon: Send },
                 { id: 'scheduled',   label: 'Scheduled',    icon: CalendarClock },
                 { id: 'history',     label: 'History',      icon: History },
+                { id: 'transit',     label: 'Transit Campaigns', icon: Zap },
+                { id: 'lifecycle',   label: 'Lifecycle',    icon: Clock },
                 { id: 'social',      label: 'Social Media', icon: Globe },
               ].map(({ id, label, icon: Icon }) => (
                 <Button key={id} onClick={() => setNotifTab(id)} size="sm"
@@ -1293,6 +1368,14 @@ export const AdminDashboard = () => {
               </Card>
             )}
 
+            {notifTab === 'transit' && (
+              <TransitCampaignsTab getAuthHeaders={getAuthHeaders} />
+            )}
+
+            {notifTab === 'lifecycle' && (
+              <LifecycleSequencesTab getAuthHeaders={getAuthHeaders} />
+            )}
+
             {/* SOCIAL MEDIA */}
             {notifTab === 'social' && (
               <div className="space-y-4">
@@ -1351,25 +1434,22 @@ export const AdminDashboard = () => {
                   {/* Channels */}
                   <div className="mb-4">
                     <Label className="text-gray-400 text-xs mb-2 block">Channels</Label>
-                    <div className="flex flex-wrap gap-3">
-                      {[
-                        { id: 'facebook',  label: 'Facebook',  available: true },
-                        { id: 'instagram', label: 'Instagram', available: false },
-                        { id: 'x',         label: 'X (Twitter)', available: false },
-                        { id: 'youtube',   label: 'YouTube',   available: ytStatus?.connected === true },
-                      ].map(({ id, label, available }) => (
-                        <label key={id} className={`flex items-center gap-2 text-sm cursor-pointer ${!available ? 'opacity-50' : ''}`}>
-                          <input type="checkbox" disabled={!available}
-                            checked={socialForm.channels.includes(id)}
-                            onChange={e => setSocialForm(p => ({
-                              ...p,
-                              channels: e.target.checked ? [...p.channels, id] : p.channels.filter(c => c !== id)
-                            }))}
-                            className="accent-yellow-500"
-                          />
-                          <span className="text-gray-300">{label}</span>
-                          {!available && id === 'youtube' && <span className="text-xs text-gray-500">-- connect above</span>}
-                          {!available && id !== 'youtube' && <span className="text-xs text-gray-500">-- coming soon</span>}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {socialChannels.map(({ id, label, available, status, statusClass, note }) => (
+                        <label key={id} className={`rounded-lg border border-gray-700 bg-gray-900/40 p-3 cursor-pointer transition-colors ${available ? 'hover:border-gold/40' : 'opacity-70'}`}>
+                          <div className="flex items-center gap-2 text-sm">
+                            <input type="checkbox" disabled={!available}
+                              checked={socialForm.channels.includes(id)}
+                              onChange={e => setSocialForm(p => ({
+                                ...p,
+                                channels: e.target.checked ? [...p.channels, id] : p.channels.filter(c => c !== id)
+                              }))}
+                              className="accent-yellow-500"
+                            />
+                            <span className="text-gray-200">{label}</span>
+                          </div>
+                          <p className={`text-xs mt-2 ${statusClass}`}>{status}{available ? ' \u2705' : ' \u26a0\ufe0f'}</p>
+                          {note && <p className="text-[11px] text-gray-500 mt-1">{note}</p>}
                         </label>
                       ))}
                     </div>
@@ -1385,7 +1465,13 @@ export const AdminDashboard = () => {
                       rows={5}
                       className="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-md p-3 resize-y focus:outline-none focus:ring-1 focus:ring-yellow-500"
                     />
-                    <p className="text-gray-500 text-xs mt-1">{socialForm.message.length} characters</p>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mt-1">
+                      <p className="text-gray-500 text-xs">Use {'{{date}}'}, {'{{tithi}}'}, and similar dynamic tokens if needed.</p>
+                      <p className={`text-xs ${socialForm.channels.includes('x') ? xCounterClass : 'text-gray-500'}`}>
+                        {xCharCount} characters
+                        {socialForm.channels.includes('x') && ' for X'}
+                      </p>
+                    </div>
                   </div>
 
                   {/* Image -- upload file OR paste URL */}
@@ -1433,7 +1519,7 @@ export const AdminDashboard = () => {
                           <div>
                             <p className="text-white text-sm capitalize font-medium">{r.channel}</p>
                             {r.success
-                              ? <p className="text-green-400 text-xs">Posted · ID: {r.post_id}</p>
+                              ? <p className="text-green-400 text-xs">Posted · ID: {r.post_id || r.tweet_id || r.video_id || 'available in history'}{r.truncated ? ' · Truncated for X' : ''}</p>
                               : <p className="text-red-400 text-xs">{r.error}</p>}
                           </div>
                         </div>

@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "computation_error": "no_coords"
   },
   "planet_positions_from_table": {
     "LAGNA": {
@@ -173,7 +174,7 @@
     },
     {
       "obs_id": "obs-002",
-      "verbatim": "Jupiter is in 02nd house and aspects 10tt• house.",
+      "verbatim": "Jupiter is in 02nd house and aspects 10tt\u2022 house.",
       "condition_type_guess": "planet_in_house",
       "science_id": "kp_jyotish",
       "claim_axis": "career",

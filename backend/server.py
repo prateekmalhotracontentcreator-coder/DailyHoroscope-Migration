@@ -39,6 +39,7 @@ import io
 import asyncio
 import tempfile
 from concurrent.futures import ThreadPoolExecutor
+from urllib.parse import quote as url_quote
 
 # ── Google / YouTube libraries (optional -- graceful fallback if not installed) ─
 try:
@@ -50,6 +51,12 @@ try:
     GOOGLE_LIBS_AVAILABLE = True
 except ImportError:
     GOOGLE_LIBS_AVAILABLE = False
+
+try:
+    from requests_oauthlib import OAuth1Session
+    TWITTER_LIBS_AVAILABLE = True
+except ImportError:
+    TWITTER_LIBS_AVAILABLE = False
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf, generate_brihat_kundli_pdf, generate_report_password
 import vedic_calculator as vedic_calculator_module
 from vedic_calculator import build_dasha_timeline, calculate_vedic_chart, calculate_ashtakoot, check_mangal_dosha, generate_north_indian_chart_svg
@@ -71,6 +78,9 @@ from models.diagnostics import (
 )
 from models.gst import GSTLedgerEntry
 from models.orders import ForceHealOrderRequest
+import lifecycle_email_service
+import transit_segmentation_service
+from intelligence_service import fetch_gsc_index_health, fetch_serper_intel, _gsc_site_url
 from remedies_router import router as remedies_router
 from crystal_router import router as crystal_router
 from compatibility_router import router as compatibility_router
@@ -138,6 +148,7 @@ from live_tv_router import router as live_tv_router
 from punya_rewards_router import router as punya_rewards_router
 from lo_shu_router import router as lo_shu_router
 from angel_numbers_router import router as angel_numbers_router
+from notification_whatsapp_service import send_whatsapp_text
 from echo_pace_router import router as echo_pace_router, ensure_echo_pace_indexes
 from auspicious_router import router as auspicious_router
 try:
@@ -178,6 +189,11 @@ client = AsyncIOMotorClient(
 db = client[os.environ['DB_NAME']]
 
 app = FastAPI()
+_TRANSIT_SEGMENT_CACHE: dict[str, Any] = {"fetched_at": None, "payload": None}
+_INTELLIGENCE_CACHE_STATE: dict[str, Any] = {
+    "gsc": {"fetched_at": None, "payload": None},
+    "serper": {"fetched_at": None, "payload": None},
+}
 
 
 def utc_now() -> datetime:
@@ -575,6 +591,7 @@ class BirthProfile(BaseModel):
     latitude: float | None = None
     longitude: float | None = None
     timezone: str | None = None
+    transit_alerts_consent: bool = False
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class BirthProfileCreate(BaseModel):
@@ -582,6 +599,7 @@ class BirthProfileCreate(BaseModel):
     latitude: float | None = None
     longitude: float | None = None
     timezone: str | None = None
+    transit_alerts_consent: bool = False
 
 class BirthChartReport(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -714,6 +732,48 @@ class PaymentIntentRequest(BaseModel):
     report_id: Optional[str] = None
     user_email: str
     order_context: Dict[str, Any] = Field(default_factory=dict)
+
+
+class TransitCampaignRequest(BaseModel):
+    segment_id: str
+    subject: str
+    body: str
+    channels: List[str]
+    limit: int = 200
+
+
+class SalesLeadCreateRequest(BaseModel):
+    company_name: str
+    website: str = ""
+    industry: str = "other"
+    country: str = "India"
+    contact_name: str = ""
+    contact_email: str = ""
+    contact_phone: str = ""
+    stage: str = "discovered"
+    alignment_score: int = 50
+    deal_value_inr: int = 0
+    partnership_type: str = "other"
+    notes: str = ""
+    next_action: str = ""
+    next_action_date: Optional[datetime] = None
+
+
+class SalesLeadUpdateRequest(BaseModel):
+    company_name: Optional[str] = None
+    website: Optional[str] = None
+    industry: Optional[str] = None
+    country: Optional[str] = None
+    contact_name: Optional[str] = None
+    contact_email: Optional[str] = None
+    contact_phone: Optional[str] = None
+    stage: Optional[str] = None
+    alignment_score: Optional[int] = None
+    deal_value_inr: Optional[int] = None
+    partnership_type: Optional[str] = None
+    notes: Optional[str] = None
+    next_action: Optional[str] = None
+    next_action_date: Optional[datetime] = None
 
 # ── Notification / Subscriber Models ──────────────────────────────────────────
 
@@ -985,8 +1045,17 @@ async def get_birth_profile(profile_id: str):
     return BirthProfile(**profile)
 
 @api_router.get("/profile/birth", response_model=List[BirthProfile])
-async def list_birth_profiles():
-    profiles = await db.birth_profiles.find({}, {"_id": 0}).to_list(1000)
+async def list_birth_profiles(request: Request):
+    try:
+        user = await get_current_user(request, db)
+    except Exception:
+        user = None
+
+    query: dict[str, Any] = {}
+    if user and user.email:
+        query["user_email"] = user.email
+
+    profiles = await db.birth_profiles.find(query, {"_id": 0}).sort("created_at", -1).to_list(1000)
     for p in profiles:
         if isinstance(p['created_at'], str): p['created_at'] = datetime.fromisoformat(p['created_at'])
     return profiles
@@ -1784,6 +1853,63 @@ async def mark_gateway_open(razorpay_order_id: str):
     return {"status": "ok"}
 
 
+def _derive_lifecycle_product_type(report_type: str) -> str:
+    mapping = {
+        "premium_monthly": "subscription",
+        "birth_chart": "birth_chart",
+        "brihat_kundli": "brihat_kundli",
+        "kundali_milan": "kundali_milan",
+        "numerology": "numerology",
+        "longevity": "longevity",
+    }
+    return mapping.get(report_type, "default")
+
+
+def _derive_lifecycle_product_name(report_type: str) -> str:
+    labels = {
+        "premium_monthly": "Premium Subscription",
+        "birth_chart": "Birth Chart",
+        "brihat_kundli": "Brihat Kundli Pro",
+        "kundali_milan": "Kundali Milan",
+        "numerology": "Numerology Reading",
+        "longevity": "Longevity Report",
+    }
+    return labels.get(report_type, report_type.replace("_", " ").title() or "Reading")
+
+
+async def _resolve_lifecycle_user_name(user_email: str, report_id: str = "") -> str:
+    normalized_email = _normalize_email(user_email)
+    user_doc = await db.users.find_one({"email": normalized_email}, {"_id": 0, "name": 1})
+    if user_doc and user_doc.get("name"):
+        return str(user_doc["name"])
+    if report_id:
+        birth_profile = await db.birth_profiles.find_one({"id": report_id}, {"_id": 0, "name": 1})
+        if birth_profile and birth_profile.get("name"):
+            return str(birth_profile["name"])
+    profile = await db.birth_profiles.find_one(
+        {"user_email": normalized_email},
+        {"_id": 0, "name": 1},
+        sort=[("created_at", -1)],
+    )
+    return str((profile or {}).get("name") or "Seeker")
+
+
+async def _trigger_lifecycle_sequence(razorpay_order_id: str, razorpay_payment_id: str, fallback_email: str) -> None:
+    payment_doc = await db.payments.find_one({"razorpay_order_id": razorpay_order_id}, {"_id": 0})
+    if not payment_doc:
+        return
+    user_email = _normalize_email(payment_doc.get("user_email") or fallback_email)
+    user_name = await _resolve_lifecycle_user_name(user_email, payment_doc.get("report_id", ""))
+    await lifecycle_email_service.create_sequence(
+        db=db,
+        user_email=user_email,
+        user_name=user_name,
+        product_type=_derive_lifecycle_product_type(payment_doc.get("report_type", "")),
+        product_name=_derive_lifecycle_product_name(payment_doc.get("report_type", "")),
+        payment_id=razorpay_payment_id,
+    )
+
+
 @api_router.post("/webhooks/razorpay", status_code=200)
 async def razorpay_webhook(
     request: Request,
@@ -1855,6 +1981,7 @@ async def verify_payment(razorpay_order_id: str, razorpay_payment_id: str, razor
         if payment_doc['report_type'] == "premium_monthly":
             subscription = UserSubscription(user_email=user_email, subscription_type="premium_monthly", status="active", stripe_subscription_id=razorpay_payment_id, expires_at=datetime.now(timezone.utc) + timedelta(days=30))
             await db.subscriptions.insert_one(subscription.model_dump(mode='json'))
+        asyncio.create_task(_trigger_lifecycle_sequence(razorpay_order_id, razorpay_payment_id, user_email))
         return {"status": "success", "message": "Payment verified successfully", "payment_id": razorpay_payment_id}
     except razorpay.errors.SignatureVerificationError:
         logging.error("Payment signature verification failed")
@@ -2023,7 +2150,24 @@ async def get_me(request: Request):
             if expires_at.tzinfo is None:
                 expires_at = expires_at.replace(tzinfo=timezone.utc)
             is_premium = expires_at > now
-    return UserResponse(user_id=user.user_id, email=user.email, name=user.name, picture=user.picture, is_premium=is_premium)
+    birth_profile = await db.birth_profiles.find_one(
+        {"user_email": user.email},
+        {"_id": 0},
+        sort=[("created_at", -1)],
+    )
+    return UserResponse(
+        user_id=user.user_id,
+        email=user.email,
+        name=user.name,
+        picture=user.picture,
+        is_premium=is_premium,
+        birth_date=birth_profile.get("date_of_birth") if birth_profile else None,
+        birth_time=birth_profile.get("time_of_birth") if birth_profile else None,
+        birth_location=birth_profile.get("location") if birth_profile else None,
+        birth_lat=birth_profile.get("latitude") if birth_profile else None,
+        birth_lon=birth_profile.get("longitude") if birth_profile else None,
+        birth_timezone_name=birth_profile.get("timezone") if birth_profile else None,
+    )
 
 @api_router.post("/auth/logout")
 async def logout(request: Request, response: Response):
@@ -2223,13 +2367,97 @@ async def get_notification_logs(request: Request, limit: int = 200):
 class SocialPostRequest(BaseModel):
     message: str
     image_url: Optional[str] = None
-    channels: List[str] = ["facebook"]   # "facebook" | "instagram" (future)
+    channels: List[str] = ["facebook"]
 
 class SocialPostResult(BaseModel):
     channel: str
     success: bool
     post_id: Optional[str] = None
+    tweet_id: Optional[str] = None
+    video_id: Optional[str] = None
     error: Optional[str] = None
+    truncated: bool = False
+
+
+def _social_results_payload(results: list[SocialPostResult]) -> dict[str, Any]:
+    payload: dict[str, Any] = {}
+    for result in results:
+        payload[result.channel] = result.model_dump()
+    return payload
+
+
+def _public_api_base(request: Request) -> str:
+    return (
+        os.environ.get("BACKEND_PUBLIC_URL")
+        or os.environ.get("PUBLIC_API_BASE_URL")
+        or str(request.base_url).rstrip("/")
+    ).rstrip("/")
+
+
+async def _store_social_asset(image_bytes: bytes, filename: str, content_type: str) -> str:
+    asset_id = str(uuid.uuid4())
+    await db.social_media_assets.insert_one(
+        {
+            "asset_id": asset_id,
+            "filename": filename,
+            "content_type": content_type,
+            "image_bytes": image_bytes,
+            "created_at": utc_now(),
+        }
+    )
+    return asset_id
+
+
+async def _download_remote_image(image_url: str) -> tuple[bytes, str]:
+    async with httpx.AsyncClient(timeout=45) as client:
+        response = await client.get(image_url)
+        response.raise_for_status()
+        content_type = response.headers.get("content-type", "image/png").split(";")[0]
+        return response.content, content_type
+
+
+def _twitter_configured() -> bool:
+    return all(
+        os.environ.get(key)
+        for key in [
+            "TWITTER_API_KEY",
+            "TWITTER_API_SECRET",
+            "TWITTER_ACCESS_TOKEN",
+            "TWITTER_ACCESS_TOKEN_SECRET",
+        ]
+    )
+
+
+def _post_to_x_sync(message: str, image_bytes: bytes | None = None, content_type: str = "image/png") -> dict[str, Any]:
+    if not TWITTER_LIBS_AVAILABLE:
+        raise RuntimeError("requests-oauthlib not installed")
+    session = OAuth1Session(
+        os.environ.get("TWITTER_API_KEY"),
+        client_secret=os.environ.get("TWITTER_API_SECRET"),
+        resource_owner_key=os.environ.get("TWITTER_ACCESS_TOKEN"),
+        resource_owner_secret=os.environ.get("TWITTER_ACCESS_TOKEN_SECRET"),
+    )
+    media_id = None
+    if image_bytes:
+        upload_response = session.post(
+            "https://upload.twitter.com/1.1/media/upload.json",
+            files={"media": ("image", image_bytes, content_type)},
+            timeout=60,
+        )
+        upload_response.raise_for_status()
+        media_id = (upload_response.json() or {}).get("media_id_string")
+
+    payload: dict[str, Any] = {"text": message}
+    if media_id:
+        payload["media"] = {"media_ids": [media_id]}
+
+    tweet_response = session.post(
+        "https://api.twitter.com/2/tweets",
+        json=payload,
+        timeout=60,
+    )
+    tweet_response.raise_for_status()
+    return tweet_response.json() or {}
 
 async def _get_page_access_token(system_token: str, page_id: str) -> str:
     """Exchange a System User token for a Page-scoped access token.
@@ -2314,6 +2542,27 @@ async def _post_to_instagram(message: str, image_url: Optional[str] = None) -> S
     except Exception as e:
         return SocialPostResult(channel="instagram", success=False, error=str(e))
 
+
+async def _post_to_x(message: str, image_url: Optional[str] = None, image_bytes: bytes | None = None, content_type: str = "image/png") -> SocialPostResult:
+    if not _twitter_configured():
+        return SocialPostResult(channel="x", success=False, error="X credentials not configured")
+
+    truncated = False
+    if len(message) > 280:
+        message = message[:277] + "..."
+        truncated = True
+
+    try:
+        if image_url and image_bytes is None:
+            image_bytes, content_type = await _download_remote_image(image_url)
+        payload = await asyncio.to_thread(_post_to_x_sync, message, image_bytes, content_type)
+        tweet_id = (((payload or {}).get("data")) or {}).get("id")
+        if tweet_id:
+            return SocialPostResult(channel="x", success=True, tweet_id=tweet_id, post_id=tweet_id, truncated=truncated)
+        return SocialPostResult(channel="x", success=False, error="Tweet created without ID", truncated=truncated)
+    except Exception as exc:
+        return SocialPostResult(channel="x", success=False, error=str(exc), truncated=truncated)
+
 async def _post_image_to_facebook(image_bytes: bytes, filename: str, caption: str) -> SocialPostResult:
     """Upload raw image bytes directly to Facebook Page -- no third-party hosting needed."""
     page_id      = os.environ.get("FACEBOOK_PAGE_ID", "")
@@ -2341,11 +2590,36 @@ async def _post_image_to_facebook(image_bytes: bytes, filename: str, caption: st
 async def _youtube_upload_task(image_bytes: bytes, message: str):
     """Background task: encode + upload to YouTube, then save to post log."""
     result = await _post_image_to_youtube(image_bytes, title=message[:100], description=message)
-    log_doc = {"channel": result.channel, "success": result.success, "post_id": result.post_id,
+    log_doc = {"channel": result.channel, "success": result.success, "post_id": result.post_id or result.video_id,
                "error": result.error, "message_preview": message[:100],
                "posted_at": datetime.now(timezone.utc).isoformat()}
     await db.social_post_logs.insert_one(log_doc)
     logging.info(f"[YouTube] Background task complete -- success={result.success} post_id={result.post_id} error={result.error}")
+
+
+@api_router.get("/social/assets/{asset_id}", name="get_social_asset")
+async def get_social_asset(asset_id: str):
+    asset = await db.social_media_assets.find_one({"asset_id": asset_id}, {"_id": 0})
+    if not asset:
+        raise HTTPException(status_code=404, detail="Asset not found")
+    return StreamingResponse(
+        io.BytesIO(asset.get("image_bytes") or b""),
+        media_type=asset.get("content_type") or "image/png",
+        headers={"Cache-Control": "public, max-age=86400"},
+    )
+
+
+@api_router.get("/admin/instagram/status")
+async def get_instagram_status(request: Request):
+    await require_admin(request, db)
+    account_id = os.environ.get("INSTAGRAM_BUSINESS_ACCOUNT_ID")
+    return {"configured": bool(account_id), "account_id": account_id or None}
+
+
+@api_router.get("/admin/x/status")
+async def get_x_status(request: Request):
+    await require_admin(request, db)
+    return {"configured": _twitter_configured()}
 
 @api_router.post("/admin/social/post-image")
 async def post_image_to_social(
@@ -2362,6 +2636,15 @@ async def post_image_to_social(
     channel_list = [c.strip() for c in channels.split(",") if c.strip()]
     results = []
     yt_queued = False
+    asset_id = None
+    asset_url = None
+    if "instagram" in channel_list:
+        asset_id = await _store_social_asset(
+            image_bytes,
+            image.filename or "social-card.png",
+            image.content_type or "image/png",
+        )
+        asset_url = f"{_public_api_base(request)}/api/social/assets/{asset_id}"
     for channel in channel_list:
         if channel == "facebook":
             results.append(await _post_image_to_facebook(image_bytes, image.filename or "card.png", message))
@@ -2373,38 +2656,47 @@ async def post_image_to_social(
                                             error="Uploading in background (~2 min) -- check Post History to confirm"))
             yt_queued = True
         elif channel == "instagram":
-            results.append(SocialPostResult(channel="instagram", success=False, error="Direct image upload for Instagram coming soon"))
+            results.append(await _post_to_instagram(message, asset_url))
+        elif channel == "x":
+            results.append(await _post_to_x(message, image_bytes=image_bytes, content_type=image.content_type or "image/png"))
         else:
             results.append(SocialPostResult(channel=channel, success=False, error="Channel not supported"))
     # Log sync results immediately; YouTube background task logs itself when done
-    log_docs = [{"channel": r.channel, "success": r.success, "post_id": r.post_id,
+    log_docs = [{"channel": r.channel, "success": r.success, "post_id": r.post_id or r.tweet_id or r.video_id,
                  "error": r.error, "message_preview": message[:100],
                  "posted_at": datetime.now(timezone.utc).isoformat()} for r in results if r.post_id != "queued"]
     if log_docs:
         await db.social_post_logs.insert_many(log_docs)
     if yt_queued:
         logging.info("[YouTube] Upload queued as background task -- response returned immediately")
-    return {"results": [r.model_dump() for r in results]}
+    return {"success": any(result.success for result in results), "results": _social_results_payload(results)}
 
 @api_router.post("/admin/social/post")
 async def post_to_social(request: Request, payload: SocialPostRequest):
     await require_admin(request, db)
     if not payload.message.strip():
         raise HTTPException(status_code=400, detail="Message is required")
+    if "instagram" in payload.channels and not payload.image_url:
+        raise HTTPException(status_code=400, detail="Instagram requires an image. Please upload one.")
     results = []
     for channel in payload.channels:
         if channel == "facebook":
             results.append(await _post_to_facebook(payload.message, payload.image_url))
         elif channel == "instagram":
             results.append(await _post_to_instagram(payload.message, payload.image_url))
+        elif channel == "x":
+            results.append(await _post_to_x(payload.message, image_url=payload.image_url))
+        elif channel == "youtube":
+            results.append(SocialPostResult(channel="youtube", success=False, error="Use image upload flow for YouTube posts"))
         else:
             results.append(SocialPostResult(channel=channel, success=False, error="Channel not yet supported"))
     # Log to DB
-    log_docs = [{"channel": r.channel, "success": r.success, "post_id": r.post_id,
+    log_docs = [{"channel": r.channel, "success": r.success, "post_id": r.post_id or r.tweet_id or r.video_id,
                  "error": r.error, "message_preview": payload.message[:100],
                  "posted_at": datetime.now(timezone.utc).isoformat()} for r in results]
-    await db.social_post_logs.insert_many(log_docs)
-    return {"results": [r.model_dump() for r in results]}
+    if log_docs:
+        await db.social_post_logs.insert_many(log_docs)
+    return {"success": any(result.success for result in results), "results": _social_results_payload(results)}
 
 @api_router.get("/admin/social/logs")
 async def get_social_logs(request: Request, limit: int = 100):
@@ -2763,6 +3055,350 @@ async def change_admin_password(request: Request, password_request: ChangePasswo
 
 @api_router.get("/admin/verify")
 async def verify_admin(request: Request): return {"authenticated": await require_admin(request, db)}
+
+
+def _cache_is_fresh(fetched_at: Any, *, hours: int) -> bool:
+    if isinstance(fetched_at, str):
+        fetched_at = datetime.fromisoformat(fetched_at)
+    if not isinstance(fetched_at, datetime):
+        return False
+    if fetched_at.tzinfo is None:
+        fetched_at = fetched_at.replace(tzinfo=timezone.utc)
+    return (utc_now() - fetched_at) < timedelta(hours=hours)
+
+
+async def _lookup_whatsapp_phone(user_email: str) -> Optional[str]:
+    normalized_email = _normalize_email(user_email)
+    pref = await db.notification_preferences.find_one(
+        {"user_email": normalized_email},
+        {"_id": 0, "whatsapp_phone": 1},
+    )
+    if pref and pref.get("whatsapp_phone"):
+        return str(pref["whatsapp_phone"])
+    subscriber = await db.subscribers.find_one({"email": normalized_email}, {"_id": 0, "phone": 1})
+    return (subscriber or {}).get("phone")
+
+
+@api_router.get("/admin/transit-segments/summary")
+async def get_transit_segment_summary(request: Request):
+    await require_admin(request, db)
+    if _cache_is_fresh(_TRANSIT_SEGMENT_CACHE.get("fetched_at"), hours=4):
+        return _TRANSIT_SEGMENT_CACHE["payload"]
+    payload = await transit_segmentation_service.get_segment_summary(db)
+    _TRANSIT_SEGMENT_CACHE["fetched_at"] = utc_now()
+    _TRANSIT_SEGMENT_CACHE["payload"] = payload
+    return payload
+
+
+@api_router.post("/admin/transit-campaigns/trigger")
+async def trigger_transit_campaign(request: Request, payload: TransitCampaignRequest):
+    await require_admin(request, db)
+    recipients = await transit_segmentation_service.get_segment_user_emails(
+        db,
+        payload.segment_id,
+        limit=max(1, min(payload.limit, 500)),
+    )
+    sent = failed = skipped_no_consent = 0
+    logs: list[NotificationLog] = []
+
+    for recipient in recipients:
+        if not recipient.get("email"):
+            skipped_no_consent += 1
+            continue
+        for channel in payload.channels:
+            log = NotificationLog(
+                subject=payload.subject,
+                channel=channel,
+                recipient_name=recipient.get("name", "Seeker"),
+                recipient_email=recipient.get("email"),
+            )
+            if channel == "email":
+                ok = await send_email_notification(
+                    recipient["email"],
+                    payload.subject,
+                    _branded_email(recipient.get("name", "Seeker"), payload.body),
+                )
+                log.status = "sent" if ok else "failed"
+                if ok:
+                    sent += 1
+                else:
+                    failed += 1
+                    log.error = "Email send failed"
+            elif channel == "whatsapp":
+                phone = await _lookup_whatsapp_phone(recipient["email"])
+                log.recipient_phone = phone
+                if not phone:
+                    log.status = "failed"
+                    log.error = "No WhatsApp phone"
+                    failed += 1
+                else:
+                    wa_result = await send_whatsapp_text(phone, payload.body, db=db)
+                    ok = wa_result.get("status") == "sent"
+                    log.status = "sent" if ok else "failed"
+                    log.error = wa_result.get("error")
+                    if ok:
+                        sent += 1
+                    else:
+                        failed += 1
+            else:
+                log.status = "failed"
+                log.error = f"Unsupported channel: {channel}"
+                failed += 1
+            logs.append(log)
+
+    if logs:
+        await db.notification_logs.insert_many([log.model_dump() for log in logs])
+    return {
+        "sent": sent,
+        "failed": failed,
+        "skipped_no_consent": skipped_no_consent,
+        "segment": payload.segment_id,
+    }
+
+
+@api_router.get("/admin/lifecycle-sequences")
+async def get_lifecycle_sequences(request: Request, status: str = "all", limit: int = 100):
+    await require_admin(request, db)
+    rows = await lifecycle_email_service.list_sequences(db, status=status, limit=max(1, min(limit, 500)))
+    return {"sequences": _serialize_document(rows), "total": len(rows)}
+
+
+@api_router.post("/admin/lifecycle-sequences/{sequence_id}/cancel")
+async def cancel_lifecycle_sequence(request: Request, sequence_id: str):
+    await require_admin(request, db)
+    ok = await lifecycle_email_service.cancel_sequence(db, sequence_id)
+    if not ok:
+        raise HTTPException(status_code=404, detail="Lifecycle sequence not found")
+    return {"success": True, "sequence_id": sequence_id}
+
+
+def _gsc_redirect_uri(request: Request) -> str:
+    return str(request.url_for("gsc_callback"))
+
+
+def _gsc_client_config(redirect_uri: str) -> dict[str, Any]:
+    client_id = os.environ.get("GSC_CLIENT_ID", "")
+    client_secret = os.environ.get("GSC_CLIENT_SECRET", "")
+    return {
+        "web": {
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "redirect_uris": [redirect_uri],
+        }
+    }
+
+
+@api_router.get("/admin/gsc/status")
+async def get_gsc_status(request: Request):
+    await require_admin(request, db)
+    token_doc = await db.admin_oauth_tokens.find_one({"service": "gsc"}, {"_id": 0})
+    return {
+        "connected": bool(token_doc),
+        "site_url": _gsc_site_url() if token_doc else None,
+        "connected_at": _serialize_document(token_doc).get("connected_at") if token_doc else None,
+    }
+
+
+@api_router.get("/admin/gsc/auth-url")
+async def get_gsc_auth_url(request: Request):
+    await require_admin(request, db)
+    if not GOOGLE_LIBS_AVAILABLE:
+        raise HTTPException(status_code=503, detail="Google API libraries not installed on server")
+    client_id = os.environ.get("GSC_CLIENT_ID", "")
+    client_secret = os.environ.get("GSC_CLIENT_SECRET", "")
+    if not client_id or not client_secret:
+        raise HTTPException(status_code=400, detail="GSC_CLIENT_ID and GSC_CLIENT_SECRET not set on Render")
+    redirect_uri = _gsc_redirect_uri(request)
+    flow = GoogleFlow.from_client_config(
+        _gsc_client_config(redirect_uri),
+        scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
+        redirect_uri=redirect_uri,
+    )
+    auth_url, _state = flow.authorization_url(
+        access_type="offline",
+        prompt="consent",
+        include_granted_scopes="true",
+    )
+    return {"auth_url": auth_url}
+
+
+@api_router.get("/admin/gsc/callback", name="gsc_callback")
+async def gsc_callback(request: Request, code: str = "", error: str = ""):
+    if error:
+        raise HTTPException(status_code=400, detail=error)
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing authorization code")
+    if not GOOGLE_LIBS_AVAILABLE:
+        raise HTTPException(status_code=503, detail="Google API libraries not installed on server")
+
+    redirect_uri = _gsc_redirect_uri(request)
+    flow = GoogleFlow.from_client_config(
+        _gsc_client_config(redirect_uri),
+        scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
+        redirect_uri=redirect_uri,
+    )
+    flow.fetch_token(code=code)
+    creds = flow.credentials
+    await db.admin_oauth_tokens.update_one(
+        {"service": "gsc"},
+        {
+            "$set": {
+                "service": "gsc",
+                "access_token": creds.token,
+                "refresh_token": creds.refresh_token,
+                "scopes": list(creds.scopes or ["https://www.googleapis.com/auth/webmasters.readonly"]),
+                "connected_at": utc_now(),
+                "updated_at": utc_now(),
+                "site_url": _gsc_site_url(),
+            }
+        },
+        upsert=True,
+    )
+    return HTMLResponse(
+        """
+        <html><body style="font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:32px;">
+        <h2 style="color:#4ade80">✅ Google Search Console Connected!</h2>
+        <p>You can close this window and return to the Intelligence tab.</p>
+        <script>
+          if (window.opener) { window.opener.postMessage({type:'gsc_connected'}, '*'); }
+          setTimeout(() => window.close(), 1200);
+        </script>
+        </body></html>
+        """
+    )
+
+
+@api_router.post("/admin/gsc/disconnect")
+async def disconnect_gsc(request: Request):
+    await require_admin(request, db)
+    await db.admin_oauth_tokens.delete_one({"service": "gsc"})
+    return {"message": "GSC disconnected"}
+
+
+@api_router.get("/admin/intelligence/gsc")
+async def get_intelligence_gsc(request: Request):
+    await require_admin(request, db)
+    doc = await db.intelligence_cache.find_one({"cache_key": "gsc_index_health"}, {"_id": 0})
+    return _serialize_document(doc or {"cache_key": "gsc_index_health", "data": None})
+
+
+@api_router.get("/admin/intelligence/gsc/refresh")
+async def refresh_intelligence_gsc(request: Request):
+    await require_admin(request, db)
+    doc = await fetch_gsc_index_health(db)
+    return _serialize_document(doc)
+
+
+@api_router.get("/admin/intelligence/serper")
+async def get_intelligence_serper(request: Request):
+    await require_admin(request, db)
+    doc = await db.intelligence_cache.find_one({"cache_key": "serper_intel"}, {"_id": 0})
+    payload = _serialize_document(doc or {"cache_key": "serper_intel", "data": None})
+    payload["configured"] = bool(os.environ.get("SERPER_API_KEY"))
+    return payload
+
+
+@api_router.get("/admin/intelligence/serper/refresh")
+async def refresh_intelligence_serper(request: Request):
+    await require_admin(request, db)
+    doc = await fetch_serper_intel(db)
+    return _serialize_document(doc)
+
+
+@api_router.get("/admin/sales-leads/summary")
+async def get_sales_leads_summary(request: Request):
+    await require_admin(request, db)
+    rows = await db.sales_leads.find({"active": {"$ne": False}}, {"_id": 0}).to_list(5000)
+    stages = ["discovered", "contacted", "qualified", "proposal_sent", "closed_won", "closed_lost"]
+    by_stage = {stage: 0 for stage in stages}
+    total_pipeline_value = 0
+    score_sum = 0
+    scored_count = 0
+    for row in rows:
+        stage = row.get("stage", "discovered")
+        if stage in by_stage:
+            by_stage[stage] += 1
+        if stage != "closed_lost":
+            total_pipeline_value += int(row.get("deal_value_inr") or 0)
+        if isinstance(row.get("alignment_score"), (int, float)):
+            score_sum += float(row["alignment_score"])
+            scored_count += 1
+    return {
+        "total": len(rows),
+        "by_stage": by_stage,
+        "total_pipeline_value_inr": total_pipeline_value,
+        "avg_alignment_score": round(score_sum / scored_count, 2) if scored_count else 0,
+    }
+
+
+@api_router.get("/admin/sales-leads")
+async def list_sales_leads(
+    request: Request,
+    stage: str = "all",
+    industry: str = "all",
+    search: str = "",
+):
+    await require_admin(request, db)
+    query: dict[str, Any] = {"active": {"$ne": False}}
+    if stage != "all":
+        query["stage"] = stage
+    if industry != "all":
+        query["industry"] = industry
+    rows = await db.sales_leads.find(query, {"_id": 0}).sort("alignment_score", -1).to_list(5000)
+    if search.strip():
+        needle = search.strip().lower()
+        rows = [
+            row for row in rows
+            if needle in str(row.get("company_name", "")).lower()
+            or needle in str(row.get("website", "")).lower()
+            or needle in str(row.get("contact_name", "")).lower()
+        ]
+    return {"leads": _serialize_document(rows), "total": len(rows)}
+
+
+@api_router.post("/admin/sales-leads")
+async def create_sales_lead(request: Request, payload: SalesLeadCreateRequest):
+    await require_admin(request, db)
+    if not payload.company_name.strip():
+        raise HTTPException(status_code=400, detail="Company Name is required")
+    document = payload.model_dump()
+    document.update(
+        {
+            "lead_id": str(uuid.uuid4()),
+            "created_at": utc_now(),
+            "updated_at": utc_now(),
+            "active": True,
+        }
+    )
+    await db.sales_leads.insert_one(document)
+    return {"success": True, "lead": _serialize_document(document)}
+
+
+@api_router.put("/admin/sales-leads/{lead_id}")
+async def update_sales_lead(request: Request, lead_id: str, payload: SalesLeadUpdateRequest):
+    await require_admin(request, db)
+    update_data = {k: v for k, v in payload.model_dump().items() if v is not None}
+    if not update_data:
+        raise HTTPException(status_code=400, detail="No update data provided")
+    update_data["updated_at"] = utc_now()
+    result = await db.sales_leads.update_one({"lead_id": lead_id, "active": {"$ne": False}}, {"$set": update_data})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Sales lead not found")
+    return {"success": True}
+
+
+@api_router.delete("/admin/sales-leads/{lead_id}")
+async def delete_sales_lead(request: Request, lead_id: str):
+    await require_admin(request, db)
+    result = await db.sales_leads.update_one(
+        {"lead_id": lead_id},
+        {"$set": {"active": False, "updated_at": utc_now()}},
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Sales lead not found")
+    return {"success": True}
 
 
 @api_router.get("/admin/diagnostics/{search_value}")
@@ -3459,6 +4095,57 @@ async def ensure_gst_ledger_indexes():
     )
 
 
+async def ensure_growth_indexes():
+    await db["lifecycle_sequences"].create_index([("sequence_id", 1)], unique=True, name="idx_lifecycle_sequence_id")
+    await db["lifecycle_sequences"].create_index([("user_email", 1), ("started_at", -1)], name="idx_lifecycle_user_started")
+    await db["intelligence_cache"].create_index([("cache_key", 1)], unique=True, name="idx_intelligence_cache_key")
+    await db["intelligence_cache"].create_index(
+        [("fetched_at", 1)],
+        expireAfterSeconds=8 * 24 * 60 * 60,
+        name="ttl_intelligence_cache",
+    )
+    await db["sales_leads"].create_index([("lead_id", 1)], unique=True, name="idx_sales_lead_id")
+    await db["sales_leads"].create_index([("active", 1), ("stage", 1)], name="idx_sales_active_stage")
+    await db["sales_leads"].create_index([("active", 1), ("industry", 1)], name="idx_sales_active_industry")
+    await db["social_media_assets"].create_index(
+        [("created_at", 1)],
+        expireAfterSeconds=7 * 24 * 60 * 60,
+        name="ttl_social_media_assets",
+    )
+
+
+async def intelligence_gsc_scheduler():
+    try:
+        await fetch_gsc_index_health(db)
+    except Exception as exc:
+        await db.notification_logs.insert_one(
+            NotificationLog(
+                subject="GSC intelligence scheduler",
+                channel="system_error",
+                recipient_name="Temple Team",
+                status="failed",
+                error=str(exc),
+            ).model_dump()
+        )
+        logging.error("GSC intelligence scheduler failed: %s", exc, exc_info=True)
+
+
+async def intelligence_serper_scheduler():
+    try:
+        await fetch_serper_intel(db)
+    except Exception as exc:
+        await db.notification_logs.insert_one(
+            NotificationLog(
+                subject="SERPER intelligence scheduler",
+                channel="system_error",
+                recipient_name="Temple Team",
+                status="failed",
+                error=str(exc),
+            ).model_dump()
+        )
+        logging.error("SERPER intelligence scheduler failed: %s", exc, exc_info=True)
+
+
 async def evict_stale_carts():
     threshold = utc_now() - timedelta(hours=48)
     await db["orders_ledger"].delete_many({
@@ -3591,7 +4278,9 @@ async def startup_event():
     await ensure_diagnostics_indexes()
     await ensure_orders_ledger_indexes()
     await ensure_gst_ledger_indexes()
+    await ensure_growth_indexes()
     await ensure_echo_pace_indexes(db)
+    lifecycle_email_service.configure_runtime(db=db, scheduler=scheduler)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(hour=18, minute=30, timezone="UTC"), id="daily_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)
@@ -3605,6 +4294,8 @@ async def startup_event():
     scheduler.add_job(heal_stuck_orders, CronTrigger(hour=2, minute=0, timezone="UTC"), id="shc_stuck_order_heal", replace_existing=True)
     scheduler.add_job(ingest_vendor_emails, CronTrigger(hour=4, minute=0, timezone="UTC"), id="shc_vendor_email_ingest", replace_existing=True)
     scheduler.add_job(generate_gst_summary, CronTrigger(hour=6, minute=0, timezone="UTC"), id="shc_gst_daily_summary", replace_existing=True)
+    scheduler.add_job(intelligence_gsc_scheduler, CronTrigger(hour=6, minute=0, timezone="UTC"), id="gsc_daily", replace_existing=True)
+    scheduler.add_job(intelligence_serper_scheduler, CronTrigger(day_of_week="mon", hour=7, minute=0, timezone="UTC"), id="serper_weekly", replace_existing=True)
     scheduler.add_job(triage_support_tickets, CronTrigger(hour=8, minute=0, timezone="UTC"), id="shc_support_triage", replace_existing=True)
     scheduler.start()
     logging.info("Horoscope prefetch scheduler started")

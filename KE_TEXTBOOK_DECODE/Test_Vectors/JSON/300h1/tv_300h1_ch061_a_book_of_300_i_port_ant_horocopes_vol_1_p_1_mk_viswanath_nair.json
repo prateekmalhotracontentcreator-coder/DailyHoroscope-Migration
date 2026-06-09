@@ -6,7 +6,7 @@
   "public_figure": true,
   "subject": {
     "name": "A Book Of 300 I Port Ant Horocopes Vol-1-P-1 Mk Viswanath Nair",
-    "description": "US PRESIDENT# 41 -·GEORGE BUSH SR",
+    "description": "US PRESIDENT# 41 -\u00b7GEORGE BUSH SR",
     "nationality": null
   },
   "birth_data": {
@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "skip_reason": "no_time"
   },
   "planet_positions_from_table": {
     "LAGNA": {

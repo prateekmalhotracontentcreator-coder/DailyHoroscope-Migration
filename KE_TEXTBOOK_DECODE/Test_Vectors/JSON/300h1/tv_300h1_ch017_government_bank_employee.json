@@ -26,8 +26,8 @@
   "chart_verification": {
     "lagna_stated_in_book": null,
     "moon_sign_stated_in_book": null,
-    "lagna_computed": null,
-    "moon_sign_computed": null,
+    "lagna_computed": "Sagittarius",
+    "moon_sign_computed": "Aries",
     "engine_matches_book": null,
     "mismatch_notes": ""
   },
@@ -132,7 +132,7 @@
   },
   "test_status": {
     "extraction_complete": false,
-    "chart_computed": false,
+    "chart_computed": true,
     "rules_evaluated": false
   }
 }

@@ -46,6 +46,12 @@ class UserResponse(BaseModel):
     name: str
     picture: Optional[str] = None
     is_premium: bool = False
+    birth_date: Optional[str] = None
+    birth_time: Optional[str] = None
+    birth_location: Optional[str] = None
+    birth_lat: Optional[float] = None
+    birth_lon: Optional[float] = None
+    birth_timezone_name: Optional[str] = None
 
 # Helper Functions
 def hash_password(password: str) -> str:

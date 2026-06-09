@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "skip_reason": "no_time"
   },
   "planet_positions_from_table": {
     "LAGNA": {
@@ -159,7 +160,7 @@
   "author_observations": [
     {
       "obs_id": "obs-001",
-      "verbatim": "Jupiter and Sun are conjunct with proximity to Venus.· 10th lord Mercury is in star of Jupiter ..",
+      "verbatim": "Jupiter and Sun are conjunct with proximity to Venus.\u00b7 10th lord Mercury is in star of Jupiter ..",
       "condition_type_guess": "kp_star_lord",
       "science_id": "kp_jyotish",
       "claim_axis": "career",

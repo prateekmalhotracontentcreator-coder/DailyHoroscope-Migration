@@ -26,8 +26,8 @@
   "chart_verification": {
     "lagna_stated_in_book": null,
     "moon_sign_stated_in_book": null,
-    "lagna_computed": null,
-    "moon_sign_computed": null,
+    "lagna_computed": "Taurus",
+    "moon_sign_computed": "Scorpio",
     "engine_matches_book": null,
     "mismatch_notes": ""
   },
@@ -180,7 +180,7 @@
     },
     {
       "obs_id": "obs-006",
-      "verbatim": "These combinations made native to be higher level and • eventually led to post of President of India.",
+      "verbatim": "These combinations made native to be higher level and \u2022 eventually led to post of President of India.",
       "condition_type_guess": "kp_planet_signification",
       "science_id": "kp_jyotish",
       "claim_axis": "career",
@@ -199,7 +199,7 @@
   },
   "test_status": {
     "extraction_complete": false,
-    "chart_computed": false,
+    "chart_computed": true,
     "rules_evaluated": false
   }
 }

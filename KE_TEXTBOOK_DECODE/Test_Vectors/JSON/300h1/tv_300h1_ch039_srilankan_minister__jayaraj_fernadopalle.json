@@ -26,9 +26,9 @@
   "chart_verification": {
     "lagna_stated_in_book": "Virgo",
     "moon_sign_stated_in_book": "Scorpio",
-    "lagna_computed": null,
-    "moon_sign_computed": null,
-    "engine_matches_book": null,
+    "lagna_computed": "Virgo",
+    "moon_sign_computed": "Scorpio",
+    "engine_matches_book": true,
     "mismatch_notes": ""
   },
   "planet_positions_from_table": {
@@ -228,7 +228,7 @@
   },
   "test_status": {
     "extraction_complete": true,
-    "chart_computed": false,
+    "chart_computed": true,
     "rules_evaluated": false
   }
 }

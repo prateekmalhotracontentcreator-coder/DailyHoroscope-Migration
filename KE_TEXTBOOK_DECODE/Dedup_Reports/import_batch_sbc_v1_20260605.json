@@ -1,0 +1,27 @@
+{
+  "batch_id": "sbc_v1_20260605",
+  "book": "Sarvato Bhadra Chakra",
+  "ingested_at": "2026-06-08T14:46:37.110973+00:00",
+  "total_rules": 182,
+  "inserted": 182,
+  "updated": 0,
+  "chapters": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    17,
+    18
+  ],
+  "status": "ingested"
+}

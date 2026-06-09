@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "skip_reason": "no_time"
   },
   "planet_positions_from_table": {
     "LAGNA": {
@@ -156,7 +157,7 @@
   "author_observations": [
     {
       "obs_id": "obs-001",
-      "verbatim": "Mars is posited in 03•d house and it is aspecting 101h house, passing on power to job.",
+      "verbatim": "Mars is posited in 03\u2022d house and it is aspecting 101h house, passing on power to job.",
       "condition_type_guess": "planet_in_house",
       "science_id": "kp_jyotish",
       "claim_axis": "career",
@@ -176,7 +177,7 @@
     },
     {
       "obs_id": "obs-003",
-      "verbatim": "Mars (09-Central) is in 3•d house and aspect Ketu in 10.",
+      "verbatim": "Mars (09-Central) is in 3\u2022d house and aspect Ketu in 10.",
       "condition_type_guess": "planet_in_house",
       "science_id": "kp_jyotish",
       "claim_axis": "career",

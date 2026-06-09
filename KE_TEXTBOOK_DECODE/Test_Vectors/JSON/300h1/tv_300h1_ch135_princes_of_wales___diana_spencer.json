@@ -21,7 +21,7 @@
     "ayanamsha": "lahiri",
     "ayanamsha_stated": null,
     "ocr_corrected": true,
-    "notes": "OCR year was 1901 — corrected to 1961. OCR time \"1G:45·:00\" — hard-corrected to 16:45:00. Historical records suggest 19:45 BST; book states 16:45."
+    "notes": "OCR year was 1901 \u2014 corrected to 1961. OCR time \"1G:45\u00b7:00\" \u2014 hard-corrected to 16:45:00. Historical records suggest 19:45 BST; book states 16:45."
   },
   "chart_verification": {
     "lagna_stated_in_book": "Scorpio",
@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "computation_error": "no_coords"
   },
   "planet_positions_from_table": {
     "LAGNA": {

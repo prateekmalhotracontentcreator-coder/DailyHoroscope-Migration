@@ -55,7 +55,7 @@ from faith_seo_data import SIGN_INDEX, MONTH_INDEX, build_daily_pages
 
 STOP = set("a an the is are was were be been being have has had do does did will would could should may might shall can need am i we you he she it they them their this that these those of in on at to for with by from about as into through during before after above below between but or and not no nor so yet both either neither each every all any few more most other some such only own same than too very just".split())
 
-HAIKU_MODEL = "claude-haiku-4-5"
+SONNET_MODEL = "claude-sonnet-4-5"
 CONCURRENT  = 5
 _JSON_FENCE = re.compile(r"^```(?:json)?\s*|\s*```$", re.IGNORECASE | re.MULTILINE)
 
@@ -108,10 +108,10 @@ def _build_prompt(page: dict) -> str:
         f'Bible text: "{bible_text}"\n\n'
         "Return valid JSON only (no markdown fences, no extra keys):\n"
         "{\n"
-        f'  "summary": "90-105 words. What {month_name} means spiritually for {sign_name}. Name {element} energy and this month\'s specific energy. No generic forecast language. Your own words throughout.",\n'
-        f'  "gita_application": "70-85 words. How {gita_ref} speaks to {sign_name}\'s core challenge in {month_name}. Quote at least one phrase from the verse text. Express the growth theme in your own language -- do not echo the context fields.",\n'
-        f'  "bible_application": "70-85 words. How {bible_ref} addresses {sign_name}\'s seasonal focus in {month_name}. Quote at least one phrase from the verse text. Express the seasonal theme in your own language -- do not echo the context fields.",\n'
-        f'  "month_focus": "80-95 words. The primary spiritual discipline for {sign_name} in {month_name}. Address the sign\'s core growth challenge and this month\'s energy -- expressed entirely in your own words. Practical, not poetic."\n'
+        f'  "summary": "120-140 words. What {month_name} means spiritually for {sign_name}. Name {element} energy, {ruler}\'s influence, and this month\'s specific energy -- all three must appear explicitly. Ground it in this sign\'s actual character, not generic forecast language. Your own distinctive voice throughout.",\n'
+        f'  "gita_application": "90-110 words. How {gita_ref} speaks to {sign_name}\'s core challenge in {month_name}. Reference specific language or imagery from the verse -- weave a key word or phrase into your own sentence, not a verbatim block quote. Apply the verse to the concrete inner life of {sign_name} in {month_name}. Express the growth theme in your own language -- do not echo the context fields.",\n'
+        f'  "bible_application": "90-110 words. How {bible_ref} addresses {sign_name}\'s seasonal focus in {month_name}. Reference specific language or imagery from the verse -- weave a key word or phrase into your own sentence, not a verbatim block quote. Apply the verse to the concrete inner life of {sign_name} in {month_name}. Express the seasonal theme in your own language -- do not echo the context fields.",\n'
+        f'  "month_focus": "110-130 words. The primary spiritual discipline for {sign_name} in {month_name}. Open with a sentence that names {sign_name} and {month_name} explicitly. Describe the discipline concretely -- what it looks like in daily action, what internal resistance it meets, and why it matters specifically for {sign_name}\'s growth in {month_name}. Practical and specific, not poetic."\n'
         "}"
     )
 
@@ -122,8 +122,8 @@ async def _call(client, prompt: str, label: str, sem: asyncio.Semaphore) -> dict
     async with sem:
         try:
             resp = await client.messages.create(
-                model=HAIKU_MODEL,
-                max_tokens=900,
+                model=SONNET_MODEL,
+                max_tokens=2500,
                 temperature=0.7,
                 messages=[{"role": "user", "content": prompt}],
             )
@@ -298,7 +298,7 @@ async def _run(args: argparse.Namespace) -> None:
 
     template_pages = build_daily_pages()
     _log(f"\nTemplate pages loaded: {len(template_pages)}")
-    _log(f"Model: {HAIKU_MODEL}  |  Concurrent: {CONCURRENT}")
+    _log(f"Model: {SONNET_MODEL}  |  Concurrent: {CONCURRENT}")
     _log(f"\nGenerating AI content for all {len(template_pages)} pages...\n")
 
     merged_pages = await generate_merged_pages(args.api_key, template_pages)

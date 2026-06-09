@@ -16,7 +16,7 @@
     "time_utc": null,
     "latitude": 42.3833,
     "longitude": 18.9167,
-    "place": "Cetin·e Yu oslavia",
+    "place": "Cetin\u00b7e Yu oslavia",
     "time_confidence": "unknown",
     "ayanamsha": "lahiri",
     "ayanamsha_stated": null,
@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "skip_reason": "no_time"
   },
   "planet_positions_from_table": {
     "LAGNA": {

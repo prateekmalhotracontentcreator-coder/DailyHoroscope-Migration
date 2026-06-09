@@ -17,6 +17,11 @@ VALID_CONDITION_TYPES = [
     "dasha_of_house_lord",
     "transit",
     "kp_sublord",
+    "kp_planet_signification",
+    "kp_star_lord",
+    "kp_csl",
+    "kp_signification_chain",
+    "kp_profession_ruler",
     "composite",
     "engine_specification",
     "planet_in_house_and_sign",
@@ -46,12 +51,15 @@ LEGACY_CLAIM_SCOPES = [
 VALID_CLAIM_AXES = [
     "general",
     "general_trend",
+    "career",
     "career_growth",
     "career_timing",
     "career_trend",
+    "health",
     "wealth",
     "wealth_trend",
     "financial_security",
+    "marriage",
     "marriage_timing",
     "relationship_quality",
     "relationships_trend",
@@ -68,6 +76,10 @@ VALID_CLAIM_AXES = [
     "learning_outcome",
     "longevity",
     "longevity_trend",
+    "timing",
+    "death_timing",
+    "death_mode",
+    "spouse_longevity",
 ]
 
 STANDARD_PLANETS = [

@@ -27,12 +27,19 @@ import {
 } from "lucide-react";
 
 import { SEO } from "../../components/SEO";
+import KPChartPanel from "../../components/KPChartPanel";
 import { ShareButtons } from "../../components/ShareCard";
 import { useAuth } from "../../context/AuthContext";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
 const API = `${BACKEND_URL}/api/oracle/krishna-prashnavali`;
 const PROFILE_API = `${BACKEND_URL}/api/profile/birth`;
+const KP_CHART_API = `${BACKEND_URL}/api/kp/birth-chart`;
+
+function normalizeKPTimeZone(value) {
+  if (!value) return "Asia/Kolkata";
+  return /^[+-]\d{2}:\d{2}$/.test(value) ? "Asia/Kolkata" : value;
+}
 
 const FOCUS_AREAS = [
   { slug: "job_change_promotion", name: "Job Change / Promotion", icon: Briefcase, description: "Should I accept this or wait?" },
@@ -178,6 +185,9 @@ export default function AskQuestionPage() {
   const [loadingLineIndex, setLoadingLineIndex] = useState(0);
   const [birthProfile, setBirthProfile] = useState(null);
   const [birthProfileLoading, setBirthProfileLoading] = useState(false);
+  const [kpChart, setKpChart] = useState(null);
+  const [kpChartLoading, setKpChartLoading] = useState(false);
+  const [kpChartError, setKpChartError] = useState("");
   const [reading, setReading] = useState(null);
   const shareCardRef = useRef(null);
 
@@ -199,6 +209,8 @@ export default function AskQuestionPage() {
   useEffect(() => {
     if (!user) {
       setBirthProfile(null);
+      setKpChart(null);
+      setKpChartError("");
       return;
     }
     let active = true;
@@ -221,6 +233,50 @@ export default function AskQuestionPage() {
       active = false;
     };
   }, [user]);
+
+  useEffect(() => {
+    const hasCompleteBirthData = Boolean(
+      user &&
+      birthProfile?.date_of_birth &&
+      birthProfile?.time_of_birth &&
+      birthProfile?.latitude != null &&
+      birthProfile?.longitude != null,
+    );
+    if (!hasCompleteBirthData) {
+      setKpChart(null);
+      setKpChartError("");
+      return;
+    }
+
+    let active = true;
+    async function loadKPChart() {
+      setKpChartLoading(true);
+      setKpChartError("");
+      try {
+        const response = await axios.post(KP_CHART_API, {
+          date_of_birth: birthProfile.date_of_birth,
+          time_of_birth: birthProfile.time_of_birth,
+          latitude: Number(birthProfile.latitude),
+          longitude: Number(birthProfile.longitude),
+          timezone: normalizeKPTimeZone(birthProfile.timezone),
+          place_label: birthProfile.location || null,
+        });
+        if (!active) return;
+        setKpChart(response.data || null);
+      } catch (error) {
+        if (!active) return;
+        setKpChart(null);
+        setKpChartError(error?.response?.data?.detail || "Unable to load your KP chart right now.");
+      } finally {
+        if (active) setKpChartLoading(false);
+      }
+    }
+
+    loadKPChart();
+    return () => {
+      active = false;
+    };
+  }, [user, birthProfile]);
 
   function resetForAnotherQuestion() {
     setStep("focus");
@@ -256,6 +312,10 @@ export default function AskQuestionPage() {
       payload.birth_time = birthProfile.time_of_birth;
       payload.birth_place = birthProfile.location;
       payload.timezone_offset = birthProfile.timezone || "+05:30";
+      if (birthProfile?.latitude != null && birthProfile?.longitude != null) {
+        payload.latitude = Number(birthProfile.latitude);
+        payload.longitude = Number(birthProfile.longitude);
+      }
     }
 
     setLoading(true);
@@ -437,6 +497,24 @@ export default function AskQuestionPage() {
                     <p className="m-0 rounded-2xl border border-[#d9a84a]/20 bg-[#d9a84a]/10 px-4 py-3 text-sm font-medium text-[#f5d189]">
                       You are in {reading.current_mahadasha}{reading.current_antardasha ? ` · ${reading.current_antardasha}` : ""}
                     </p>
+                    {kpChartLoading && !kpChart ? (
+                      <div className="mt-5 rounded-[1.2rem] border border-white/10 bg-black/18 p-4">
+                        <p className="m-0 text-sm leading-7 text-white/70">Loading your KP natal chart...</p>
+                      </div>
+                    ) : kpChart ? (
+                      <KPChartPanel
+                        kpChart={kpChart}
+                        theme="oracle"
+                        title="Your KP Chart"
+                        eyebrow="Natal Foundation"
+                        description="Your Ask Question reading uses the same natal KP layer: Placidus cusps, sub-lords, and significators drawn directly from your birth chart."
+                        className="mt-5"
+                      />
+                    ) : kpChartError ? (
+                      <div className="mt-5 rounded-[1.2rem] border border-rose-400/20 bg-rose-400/10 p-4">
+                        <p className="m-0 text-sm leading-7 text-rose-100">{kpChartError}</p>
+                      </div>
+                    ) : null}
                     <p className="m-0 mt-4 text-sm leading-7 text-white/76">{reading.astro_context || "Your dasha adds timing and emotional context to this Bhagavad Gita answer."}</p>
                     <div className="mt-5 rounded-[1.2rem] border border-white/10 bg-black/18 p-4">
                       <p className="m-0 text-xs uppercase tracking-[0.22em] text-[#d9a84a]/70">What this means for you</p>
@@ -511,4 +589,3 @@ export default function AskQuestionPage() {
     </div>
   );
 }
-

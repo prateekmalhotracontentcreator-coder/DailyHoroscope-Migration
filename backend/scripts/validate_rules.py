@@ -25,8 +25,8 @@ TS       = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
 LOG_PATH = LOG_DIR / f"validate_rules_{TS}.log"
 
 _buf: list[str] = []
-def out(msg: str = "") -> None:
-    print(msg); _buf.append(msg)
+def out(msg: str = "", **kwargs) -> None:
+    print(msg, **kwargs); _buf.append(msg)
 def _write_log(p: Path) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text("\n".join(_buf) + "\n", encoding="utf-8")

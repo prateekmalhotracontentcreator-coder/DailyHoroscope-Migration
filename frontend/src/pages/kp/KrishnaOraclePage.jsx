@@ -6,6 +6,7 @@ import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 
 import KrishnaOracleGrid from "../../components/KrishnaOracleGrid";
+import KPChartPanel from "../../components/KPChartPanel";
 import SharedBirthCityPicker from "../../components/SharedBirthCityPicker";
 import KrishnaShareCard from "../../components/KrishnaShareCard";
 import { ShareButtons } from "../../components/ShareCard";
@@ -13,6 +14,12 @@ import KrishnaRitualScreen from "../../components/kp/KrishnaRitualScreen";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
 const API = `${BACKEND_URL}/api/oracle/krishna-prashnavali`;
+const KP_CHART_API = `${BACKEND_URL}/api/kp/birth-chart`;
+
+function normalizeKPTimeZone(value) {
+  if (!value) return "Asia/Kolkata";
+  return /^[+-]\d{2}:\d{2}$/.test(value) ? "Asia/Kolkata" : value;
+}
 
 function formatTimestamp(value) {
   try {
@@ -241,9 +248,12 @@ function KrishnaOracleApp() {
   const [questionError, setQuestionError] = useState("");
 
   // Birth details for dasha computation
-  const [birthForm, setBirthForm] = useState({ date_of_birth: "", time_of_birth: "", latitude: "", longitude: "", timezone_offset: "+05:30", place_label: "", city_slug: "" });
+  const [birthForm, setBirthForm] = useState({ date_of_birth: "", time_of_birth: "", latitude: "", longitude: "", timezone_offset: "+05:30", timezone_name: "Asia/Kolkata", place_label: "", city_slug: "" });
   const [birthFormOpen, setBirthFormOpen] = useState(false);
   const [birthAutoFilled, setBirthAutoFilled] = useState(false);
+  const [kpChart, setKpChart] = useState(null);
+  const [kpChartLoading, setKpChartLoading] = useState(false);
+  const [kpChartError, setKpChartError] = useState("");
 
   const gridMatrix = metadata?.grid_matrix || [];
 
@@ -309,12 +319,62 @@ function KrishnaOracleApp() {
           latitude: p.latitude ?? "",
           longitude: p.longitude ?? "",
           timezone_offset: tzOffset,
+          timezone_name: normalizeKPTimeZone(p.timezone),
           place_label: p.location || "",
+          city_slug: "",
         });
         setBirthAutoFilled(true);
       })
       .catch(() => { setBirthFormOpen(true); });
   }, [user]);
+
+  useEffect(() => {
+    if (!user) {
+      setKpChart(null);
+      setKpChartError("");
+      return;
+    }
+    const hasCompleteBirthData = Boolean(
+      birthForm.date_of_birth &&
+      birthForm.time_of_birth &&
+      birthForm.latitude !== "" &&
+      birthForm.longitude !== "",
+    );
+    if (!hasCompleteBirthData) {
+      setKpChart(null);
+      setKpChartError("");
+      return;
+    }
+
+    let active = true;
+    async function loadKPChart() {
+      setKpChartLoading(true);
+      setKpChartError("");
+      try {
+        const response = await axios.post(KP_CHART_API, {
+          date_of_birth: birthForm.date_of_birth,
+          time_of_birth: birthForm.time_of_birth,
+          latitude: Number(birthForm.latitude),
+          longitude: Number(birthForm.longitude),
+          timezone: normalizeKPTimeZone(birthForm.timezone_name),
+          place_label: birthForm.place_label || null,
+        });
+        if (!active) return;
+        setKpChart(response.data || null);
+      } catch (fetchError) {
+        if (!active) return;
+        setKpChart(null);
+        setKpChartError(fetchError?.response?.data?.detail || "Unable to load your KP chart right now.");
+      } finally {
+        if (active) setKpChartLoading(false);
+      }
+    }
+
+    loadKPChart();
+    return () => {
+      active = false;
+    };
+  }, [user, birthForm.date_of_birth, birthForm.time_of_birth, birthForm.latitude, birthForm.longitude, birthForm.place_label, birthForm.timezone_name]);
 
   async function loadPastReading(reportId) {
     if (!reportId) return;
@@ -362,7 +422,7 @@ function KrishnaOracleApp() {
     setError("");
     setQuestionError("");
     try {
-      const birthPayload = (birthForm.date_of_birth && birthForm.time_of_birth && birthForm.latitude !== "")
+      const birthPayload = (birthForm.date_of_birth && birthForm.time_of_birth && birthForm.latitude !== "" && birthForm.longitude !== "")
         ? {
             date_of_birth: birthForm.date_of_birth,
             time_of_birth: birthForm.time_of_birth,
@@ -558,6 +618,7 @@ function KrishnaOracleApp() {
                       latitude: city.latitude,
                       longitude: city.longitude,
                       timezone_offset: tzOffset,
+                      timezone_name: city.timezone || "Asia/Kolkata",
                     }));
                   }}
                   wrapperStyle={{ width: "100%" }}
@@ -582,6 +643,48 @@ function KrishnaOracleApp() {
             </div>
           )}
         </div>
+
+        {birthForm.date_of_birth && birthForm.time_of_birth && birthForm.latitude !== "" && birthForm.longitude !== "" ? (
+          kpChartLoading && !kpChart ? (
+            <SectionCard title="Your KP Chart" eyebrow="Natal Foundation">
+              <div className="space-y-4">
+                <div className="h-4 w-48 rounded-full bg-amber-200/20 dark:bg-amber-100/10" />
+                <div className="grid gap-3 md:grid-cols-3">
+                  <div className="h-20 rounded-2xl border border-amber-200/40 bg-white/40 dark:border-amber-900/30 dark:bg-stone-950/30" />
+                  <div className="h-20 rounded-2xl border border-amber-200/40 bg-white/40 dark:border-amber-900/30 dark:bg-stone-950/30" />
+                  <div className="h-20 rounded-2xl border border-amber-200/40 bg-white/40 dark:border-amber-900/30 dark:bg-stone-950/30" />
+                </div>
+              </div>
+            </SectionCard>
+          ) : kpChart ? (
+            <KPChartPanel
+              kpChart={kpChart}
+              theme="oracle"
+              title="Your KP Chart"
+              eyebrow="Natal Foundation"
+              description="This natal KP layer stays available above the oracle grid, so each reading rests on your Placidus cusps, sub-lords, and significator map."
+            />
+          ) : kpChartError ? (
+            <SectionCard title="Your KP Chart" eyebrow="Natal Foundation">
+              <p className="m-0 text-sm leading-7 text-rose-700 dark:text-rose-200">{kpChartError}</p>
+            </SectionCard>
+          ) : null
+        ) : (
+          <SectionCard title="Your KP Chart" eyebrow="Natal Foundation">
+            <p className="m-0 text-sm leading-7 text-stone-700 dark:text-amber-100/75">
+              Add your full birth details, including birthplace coordinates, to unlock your persistent KP natal chart above the oracle grid.
+            </p>
+            <div className="mt-5">
+              <button
+                type="button"
+                onClick={() => setBirthFormOpen(true)}
+                className="inline-flex items-center rounded-full border border-amber-300/60 bg-amber-50/60 px-5 py-3 text-sm font-semibold text-amber-800 transition hover:bg-amber-100/80 dark:border-amber-700/40 dark:bg-amber-900/20 dark:text-amber-300 dark:hover:bg-amber-900/40"
+              >
+                Add Birth Details
+              </button>
+            </div>
+          </SectionCard>
+        )}
 
         <SectionCard title="Selection Grid" eyebrow="Deterministic Matrix">
           {loadingMeta ? (

@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "computation_error": "no_date"
   },
   "planet_positions_from_table": {
     "LAGNA": {
@@ -185,7 +186,7 @@
     },
     {
       "obs_id": "obs-006",
-      "verbatim": "1•1 marriage took place in 1984 during Jupiter-Venus.",
+      "verbatim": "1\u20221 marriage took place in 1984 during Jupiter-Venus.",
       "condition_type_guess": "kp_planet_signification",
       "science_id": "kp_jyotish",
       "claim_axis": "marriage",
@@ -215,7 +216,7 @@
     },
     {
       "obs_id": "obs-010",
-      "verbatim": "In Jupiter-Rahu native divorced from 1•1 wife.",
+      "verbatim": "In Jupiter-Rahu native divorced from 1\u20221 wife.",
       "condition_type_guess": "kp_planet_signification",
       "science_id": "kp_jyotish",
       "claim_axis": "marriage",

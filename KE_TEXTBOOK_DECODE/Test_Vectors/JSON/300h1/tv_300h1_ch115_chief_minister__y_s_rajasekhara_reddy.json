@@ -29,7 +29,8 @@
     "lagna_computed": null,
     "moon_sign_computed": null,
     "engine_matches_book": null,
-    "mismatch_notes": ""
+    "mismatch_notes": "",
+    "computation_error": "no_coords"
   },
   "planet_positions_from_table": {
     "LAGNA": {

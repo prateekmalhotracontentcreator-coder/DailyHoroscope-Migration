@@ -4,6 +4,104 @@
 
 ---
 
+## KE Batch Validation SOP
+> Locked 2026-06-08. DO NOT add intermediate triage steps -- they cost extra API calls with zero benefit.
+
+### The One-Pass Rule
+Every new KE batch (ingested rules at `approval_status: "flagged"`) must be processed in **ONE validation run**, not two or three. The previous Remedies batch wasted API spend by splitting into: audit → triage → validate-PHR → validate-Bucket-C. That was wrong.
+
+**Correct flow for any flagged batch:**
+```
+Ingest batch → rules land at approval_status: "flagged"
+       ↓
+Run: python3 backend/scripts/validate_[batch_name].py --dry-run   # review first
+Run: python3 backend/scripts/validate_[batch_name].py             # live
+       ↓
+Outcomes: auto_approved | fixed+auto_approved | rejected
+       ↓
+Update TRACKER.md + #2_MASTER_TRACKER.md
+```
+
+No triage script. No PHR intermediate state (unless a human genuinely needs to review before approval). No second pass.
+
+### Validation Script Template -- Key Requirements
+
+1. **Query**: `approval_status: {"$in": ["pending_review", "pending_human_review", "flagged"]}`, `source.batch_id: {"$in": [target_batches]}` -- ingest scripts vary: SBC assigns `pending_human_review`, Remedies assigned `pending_review`. Always cast a wide net.
+2. **Model**: `claude-haiku-4-5-20251001` for batch validation (cheap, fast, accurate for structured fixes). `claude-sonnet-4-6` only if haiku fails to provide a fix_value inline (rare).
+3. **Batch size**: 7-10 rules per API call depending on field verbosity.
+4. **Prompt must state explicitly** (copy-paste for every new batch):
+   - What the library IS (classical Vedic / modern remedy / SBC / LK / etc.)
+   - What NOT to flag (e.g. for remedy library: never flag for non-classical Vedic framework)
+   - Validate ONLY: completeness, field consistency, language quality, internal consistency
+5. **Fix fields**: always use dot-notation paths. Use `FIELD_PATH_MAP` to normalise bare names:
+   ```python
+   FIELD_PATH_MAP = {
+       "trigger_condition":  "condition.trigger_condition",
+       "planets_involved":   "condition.planets_involved",
+       "houses_involved":    "condition.houses_involved",
+       "start_day":          "interpretation.start_day",
+       "mantra":             "interpretation.mantra",
+       "summary":            "interpretation.summary",
+       "detailed":           "interpretation.detailed",
+   }
+   ```
+6. **Multi-fix support**: response format must be `"fixes": [{"fix_field": ..., "fix_value": ...}]` array, not single fix_field/fix_value. Allows fixing planets_involved + houses_involved + start_day + mantra in one verdict.
+7. **DB writes**:
+   - APPROVE → `approval_status: "auto_approved"`, `validation.verdict: "approved"`, add revalidation note
+   - FIX → same as APPROVE + apply all fix fields atomically in one `$set`
+   - REJECT → `approval_status: "rejected"`, `rejection_reason`, `rejected_at`
+   - Error → leave at `flagged`, add `validation.revalidation_error` note
+
+### When NOT to use AI validation (bulk-promote instead)
+
+AI validation is only justified when rules have a **data-entry layer** that could introduce errors -- wrong mantras, empty condition arrays, wrong start days, truncated text from hand-authoring.
+
+**Do NOT use paid API for:**
+- Textbook-decoded rules where `full_text` is the verbatim passage (SBC, BPHS chapters) -- structural validation at ingest is sufficient
+- Rules where condition arrays are intentionally empty by design (SBC uses engine_specification conditions, not planet/house arrays)
+- Any batch where ingest structural validation passed 0 issues AND content is classical knowledge not hand-authored
+
+**Use `promote_*_to_auto_approved.py` pattern instead:** bulk MongoDB `update_many` → `auto_approved`. No API cost.
+
+**Decision rule:** Before writing a validation script, check: *what specific field errors am I expecting to find?* If the answer is "none -- it came from a clean textbook decode," bulk-promote.
+
+### Prompt DO NOT flags by library type
+
+| Library | DO NOT flag for |
+|---|---|
+| Remedies -- Crystals / Chakra | Non-classical Vedic, crystal healing, chakra framework, modern gemstones |
+| Remedies -- Gemstones | Non-classical Vedic provenance. Flag ONLY: empty arrays, wrong start day, factual errors |
+| Remedies -- Dhana / LK | Non-classical Vedic. LK has its own planetary rulerships -- do not apply BPHS rules |
+| SBC (Shani/Brahma/Chandra) | Non-BPHS framework -- SBC is a specific school; do not cross-validate with standard Vedic |
+| BPHS chapters | Nothing classical is wrong by definition. Flag only: truncated text, condition mismatch, incoherence |
+
+### Reference Scripts (use as base for new batches)
+| Script | Batch | Notes |
+|---|---|---|
+| `backend/scripts/validate_remedy_library.py` | Remedies PHR (93 rules) | PHR + validator_error query. Good template for modern remedy libs. |
+| `backend/scripts/validate_bucket_c_remedies.py` | Remedies flagged (42 rules) | Multi-fix array format. FIELD_PATH_MAP normalisation. Best current template. |
+
+**For any new batch**: copy `validate_bucket_c_remedies.py`, update query (batch_ids), update system prompt (library type + DO NOT flags), run dry-run first, then live.
+
+### Cost Reference (2026-06-08 actuals)
+- 135 Remedy rules validated across 2 scripts: ~$0.08-0.12 total (haiku batch + no sonnet calls needed -- haiku provided all fix_values inline)
+- If the correct one-pass approach had been used: ~$0.04-0.06 (single script, 20 API calls @ batch-size 7)
+- Waste from triage-then-validate pattern: ~50% of API spend
+
+---
+
+## Ayanamsha Decision Register
+
+Full register: **`AYANAMSHA_DECISION_REGISTER.md`** (repo root) -- read before any pyswisseph computation change.
+
+**One-line rule:**
+- Vedic features (birth chart, dasha, panchang, kundali): `swe.SIDM_LAHIRI`
+- KP features (sub-lords, cusps, KP Oracle): `swe.SIDM_KRISHNAMURTI`
+
+**Live bug (AYA-1):** `backend/kp_engine.py` line 11 uses `SIDM_LAHIRI` -- must be `SIDM_KRISHNAMURTI`. Fix pending TT sign-off. Difference = 5.795 arcminutes at J2000.
+
+---
+
 ## Panchang Engine Detail
 
 **What it computes:** Sunrise/Sunset/Moonrise/Moonset (with seconds), Tithi, Nakshatra, Yoga, Karana, Paksha, Lunar month, Samvat, Sun/Moon signs, Amrit Kalam, Special Yogas (Amrit Siddhi, Sarvartha Siddhi, Ravi Yoga), True Choghadiya (8 daylight + 8 night slots).
