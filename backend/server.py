@@ -973,7 +973,7 @@ async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     user_prompts = {"daily": "Generate today's Vedic horoscope for " + sign + ".", "tomorrow": "Generate tomorrow's Vedic horoscope for " + sign + ".", "weekly": "Generate this week's Vedic horoscope for " + sign + ".", "monthly": "Generate this month's Vedic horoscope for " + sign + "."}
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-        message = llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=1024, system=system_prompts[horoscope_type], messages=[{"role": "user", "content": user_prompts[horoscope_type]}])
+        message = llm.messages.create(model="claude-sonnet-4-5", max_tokens=1024, system=system_prompts[horoscope_type], messages=[{"role": "user", "content": user_prompts[horoscope_type]}])
         return message.content[0].text
     except Exception as e:
         logging.error("Error generating horoscope: %s", str(e))
@@ -1358,7 +1358,7 @@ async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
     user_prompt = "Write the complete Janma Kundali report for " + profile.name + " using ONLY the calculated data below.\n\n" + chart_summary + "\n\nEvery section must cite specific planets with house numbers."
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-        message = llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=2048, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
+        message = llm.messages.create(model="claude-sonnet-4-5", max_tokens=2048, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
         return message.content[0].text
     except Exception as e:
         logging.error("Error generating birth chart: %s", str(e))
@@ -1487,7 +1487,7 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
     user_prompt = "Generate Brihat Kundli Pro report for " + request.full_name + " using ONLY this chart:\n\n" + chart_summary + "\n\nReturn ONLY valid JSON. Complete ALL fields."
     try:
         llm = anthropic.AsyncAnthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-        message = await llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=16000, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
+        message = await llm.messages.create(model="claude-sonnet-4-5", max_tokens=16000, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
         response_text = message.content[0].text
         import re, json
         clean = re.sub(r'```(?:json)?\s*', '', response_text).replace('```', '').strip()
@@ -1645,7 +1645,7 @@ async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthP
     user_prompt = "Write Kundali Milan report for " + person1.name + " and " + person2.name + ".\n\n" + chart_text + "\n\nCompatibility score is " + str(compatibility_score) + "/36 \u2014 final. Explain each Koota score for this couple."
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-        message = llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=4096, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
+        message = llm.messages.create(model="claude-sonnet-4-5", max_tokens=4096, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
         return compatibility_score, message.content[0].text, ashtakoot_data
     except Exception as e:
         logging.error("Error generating Kundali Milan: %s", str(e))
