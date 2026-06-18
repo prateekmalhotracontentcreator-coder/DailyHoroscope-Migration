@@ -5,26 +5,28 @@ import { ArrowRight, Zap } from 'lucide-react';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ELEMENT_STYLES = {
-  Fire:  { pill: 'text-orange-400 border-orange-400/30 bg-orange-400/8',  glow: 'rgba(251,146,60,0.12)' },
-  Earth: { pill: 'text-emerald-400 border-emerald-400/30 bg-emerald-400/8', glow: 'rgba(52,211,153,0.10)' },
-  Air:   { pill: 'text-sky-400 border-sky-400/30 bg-sky-400/8',           glow: 'rgba(56,189,248,0.10)' },
-  Water: { pill: 'text-blue-400 border-blue-400/30 bg-blue-400/8',         glow: 'rgba(96,165,250,0.10)' },
+  Fire:  { pill: 'text-orange-400 border-orange-400/30 bg-orange-400/8' },
+  Earth: { pill: 'text-emerald-400 border-emerald-400/30 bg-emerald-400/8' },
+  Air:   { pill: 'text-sky-400 border-sky-400/30 bg-sky-400/8' },
+  Water: { pill: 'text-blue-400 border-blue-400/30 bg-blue-400/8' },
 };
 
 function SkeletonCard() {
   return (
-    <div className="rounded-xl border border-border bg-card p-4 flex flex-col gap-3 animate-pulse">
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-border" />
-        <div className="flex-1 space-y-1.5">
-          <div className="h-3.5 bg-border rounded w-16" />
-          <div className="h-2.5 bg-border rounded w-24" />
+    <div className="rounded-xl border border-border bg-card p-5 animate-pulse">
+      <div className="overflow-hidden">
+        <div className="float-left mr-4 mb-2 w-24 h-24 rounded-xl bg-border" />
+        <div className="space-y-2 pt-1">
+          <div className="h-4 bg-border rounded w-24" />
+          <div className="h-3 bg-border rounded w-32" />
+          <div className="h-5 bg-border rounded w-14" />
         </div>
-      </div>
-      <div className="space-y-1.5 pt-1">
-        <div className="h-2.5 bg-border rounded w-full" />
-        <div className="h-2.5 bg-border rounded w-5/6" />
-        <div className="h-2.5 bg-border rounded w-4/6" />
+        <div className="space-y-2 mt-3">
+          <div className="h-3 bg-border rounded w-full" />
+          <div className="h-3 bg-border rounded w-11/12" />
+          <div className="h-3 bg-border rounded w-10/12" />
+          <div className="h-3 bg-border rounded w-9/12" />
+        </div>
       </div>
     </div>
   );
@@ -44,7 +46,7 @@ export function DailyQuickLookSection() {
         const data = await res.json();
         if (!cancelled) setQuotes(data);
       } catch {
-        // silently fail -- section just stays hidden
+        // silently fail -- section stays hidden
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -66,11 +68,11 @@ export function DailyQuickLookSection() {
             Today's energy for every sign
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm leading-relaxed">
-            A one-line cosmic mood for each sign, drawn from today's Vedic daily horoscope.
+            A cosmic mood for each sign, drawn from today's Vedic daily horoscope.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {loading
             ? Array.from({ length: 12 }).map((_, i) => <SkeletonCard key={i} />)
             : quotes.map((sign) => {
@@ -80,36 +82,45 @@ export function DailyQuickLookSection() {
                     key={sign.id}
                     type="button"
                     onClick={() => navigate(`/horoscope/daily/${sign.id}`)}
-                    className="group text-left rounded-xl border border-border bg-card p-4 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_8px_30px_-5px_rgba(197,160,89,0.15)]"
-                    style={{ '--glow': es.glow }}
+                    className="group text-left rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_8px_30px_-5px_rgba(197,160,89,0.15)]"
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2.5">
+                    {/*
+                      Newspaper L-shape: symbol (96 px) floated top-left.
+                      Header text fills the ~60 px to its right, then the quote
+                      starts while the symbol is still floating -- so the first
+                      line(s) of the quote wrap alongside the symbol's lower
+                      portion before spanning full width below it.
+                    */}
+                    <div className="overflow-hidden">
+                      <div className="float-left mr-4 mb-2">
                         <div
-                          className="w-10 h-10 rounded-full border border-gold/20 flex items-center justify-center text-xl leading-none flex-shrink-0"
+                          className="w-24 h-24 rounded-xl border border-gold/20 flex items-center justify-center text-4xl leading-none"
                           style={{ backgroundColor: 'rgba(197,160,89,0.07)' }}
                         >
                           {sign.symbol}
                         </div>
-                        <div>
-                          <p className="text-sm font-semibold font-playfair leading-tight group-hover:text-gold transition-colors">
-                            {sign.name}
-                          </p>
-                          <p className="text-[10px] text-muted-foreground leading-tight mt-0.5">
-                            {sign.dates}
-                          </p>
-                        </div>
                       </div>
-                      <span className={`text-[9px] font-semibold uppercase tracking-wider border rounded-full px-2 py-0.5 flex-shrink-0 ${es.pill}`}>
-                        {sign.element}
-                      </span>
+
+                      {/* Header block: shorter than 96 px so quote wraps alongside symbol bottom */}
+                      <div className="mb-2">
+                        <p className="text-base font-semibold font-playfair leading-tight group-hover:text-gold transition-colors">
+                          {sign.name}
+                        </p>
+                        <p className="text-[11px] text-muted-foreground mt-1 leading-tight">
+                          {sign.dates}
+                        </p>
+                        <span className={`inline-block mt-2 text-[9px] font-semibold uppercase tracking-wider border rounded-full px-2 py-0.5 ${es.pill}`}>
+                          {sign.element}
+                        </span>
+                      </div>
+
+                      {/* Quote is inside the BFC so it flows around the float -- L-shape */}
+                      <p className="text-sm leading-6 text-muted-foreground font-playfair italic">
+                        "{sign.quote}"
+                      </p>
                     </div>
 
-                    <p className="text-xs leading-5 text-muted-foreground font-playfair italic line-clamp-3 flex-1">
-                      "{sign.quote}"
-                    </p>
-
-                    <div className="flex items-center gap-1 text-gold text-[10px] font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-1 text-gold text-[10px] font-semibold uppercase tracking-wider mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
                       Full reading <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                     </div>
                   </button>

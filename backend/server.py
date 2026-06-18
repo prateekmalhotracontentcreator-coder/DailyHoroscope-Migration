@@ -1033,10 +1033,32 @@ async def get_daily_horoscope_quotes():
         pairs = await asyncio.gather(*[_gen(s) for s in missing])
         for sign, content in pairs:
             cached[sign] = content
+    def _extract_quick_look(raw: str) -> str:
+        """Return ~5 complete lines of content, no section headers."""
+        if not raw:
+            return ""
+        # Skip lines that are section headers (end with ':') or empty
+        sentences = []
+        for line in raw.split('\n'):
+            stripped = line.strip()
+            if not stripped or stripped.endswith(':'):
+                continue
+            sentences.append(stripped)
+        text = ' '.join(sentences)
+        if len(text) <= 320:
+            return text
+        # Truncate at last sentence boundary before 320 chars
+        window = text[:320]
+        for marker in ['. ', '! ', '? ']:
+            idx = window.rfind(marker)
+            if idx > 80:
+                return window[:idx + 1].strip()
+        return window.strip()
+
     result = []
     for sd in ZODIAC_SIGNS:
         raw = cached.get(sd["id"], "")
-        quote = next((ln.strip() for ln in raw.split('\n') if ln.strip()), "")
+        quote = _extract_quick_look(raw)
         result.append({"id": sd["id"], "name": sd["name"], "symbol": sd["symbol"], "dates": sd["dates"], "element": sd["element"], "quote": quote})
     return result
 
