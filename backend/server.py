@@ -1045,6 +1045,8 @@ async def get_daily_horoscope_quotes():
                 continue
             sentences.append(stripped)
         text = ' '.join(sentences)
+        if text:
+            text = text[0].upper() + text[1:]
         if len(text) <= 320:
             return text
         # Truncate at last sentence boundary before 320 chars

@@ -82,39 +82,35 @@ export function DailyQuickLookSection() {
                     key={sign.id}
                     type="button"
                     onClick={() => navigate(`/horoscope/daily/${sign.id}`)}
-                    className="group text-left rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_8px_30px_-5px_rgba(197,160,89,0.15)]"
+                    className="group w-full text-left rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_8px_30px_-5px_rgba(197,160,89,0.15)]"
                   >
                     {/*
-                      Newspaper L-shape: symbol (96 px) floated top-left.
-                      Header text fills the ~60 px to its right, then the quote
-                      starts while the symbol is still floating -- so the first
-                      line(s) of the quote wrap alongside the symbol's lower
-                      portion before spanning full width below it.
+                      Newspaper L-shape: float block (symbol + name + dates + element)
+                      sits top-left; quote flows to its right then full-width below.
                     */}
                     <div className="overflow-hidden">
-                      <div className="float-left mr-4 mb-2">
+                      {/* Float contains image + caption -- name/dates/element below symbol */}
+                      <div className="float-left mr-4 mb-2 w-24">
                         <div
                           className="w-24 h-24 rounded-xl border border-gold/20 flex items-center justify-center text-4xl leading-none"
                           style={{ backgroundColor: 'rgba(197,160,89,0.07)' }}
                         >
                           {sign.symbol}
                         </div>
+                        <div className="mt-2 text-center">
+                          <p className="text-sm font-semibold font-playfair leading-tight group-hover:text-gold transition-colors">
+                            {sign.name}
+                          </p>
+                          <p className="text-[10px] text-muted-foreground mt-0.5 leading-tight">
+                            {sign.dates}
+                          </p>
+                          <span className={`inline-block mt-1.5 text-[9px] font-semibold uppercase tracking-wider border rounded-full px-2 py-0.5 ${es.pill}`}>
+                            {sign.element}
+                          </span>
+                        </div>
                       </div>
 
-                      {/* Header block: shorter than 96 px so quote wraps alongside symbol bottom */}
-                      <div className="mb-2">
-                        <p className="text-base font-semibold font-playfair leading-tight group-hover:text-gold transition-colors">
-                          {sign.name}
-                        </p>
-                        <p className="text-[11px] text-muted-foreground mt-1 leading-tight">
-                          {sign.dates}
-                        </p>
-                        <span className={`inline-block mt-2 text-[9px] font-semibold uppercase tracking-wider border rounded-full px-2 py-0.5 ${es.pill}`}>
-                          {sign.element}
-                        </span>
-                      </div>
-
-                      {/* Quote is inside the BFC so it flows around the float -- L-shape */}
+                      {/* Quote flows to the right of the float, then full-width below -- L-shape */}
                       <p className="text-sm leading-6 text-muted-foreground font-playfair italic">
                         "{sign.quote}"
                       </p>
