@@ -14,18 +14,21 @@ const ELEMENT_STYLES = {
 function SkeletonCard() {
   return (
     <div className="rounded-xl border border-border bg-card p-5 animate-pulse">
-      <div className="overflow-hidden">
-        <div className="float-left mr-4 mb-2 w-24 h-24 rounded-xl bg-border" />
-        <div className="space-y-2 pt-1">
-          <div className="h-4 bg-border rounded w-24" />
-          <div className="h-3 bg-border rounded w-32" />
-          <div className="h-5 bg-border rounded w-14" />
+      <div className="flex gap-4 items-start">
+        <div className="flex-shrink-0 w-24">
+          <div className="w-24 h-24 rounded-xl bg-border" />
+          <div className="mt-2 space-y-1.5">
+            <div className="h-3.5 bg-border rounded w-16 mx-auto" />
+            <div className="h-3 bg-border rounded w-20 mx-auto" />
+            <div className="h-4 bg-border rounded w-12 mx-auto" />
+          </div>
         </div>
-        <div className="space-y-2 mt-3">
+        <div className="flex-1 min-w-0 space-y-2 pt-1">
           <div className="h-3 bg-border rounded w-full" />
           <div className="h-3 bg-border rounded w-11/12" />
           <div className="h-3 bg-border rounded w-10/12" />
           <div className="h-3 bg-border rounded w-9/12" />
+          <div className="h-3 bg-border rounded w-8/12" />
         </div>
       </div>
     </div>
@@ -84,20 +87,17 @@ export function DailyQuickLookSection() {
                     onClick={() => navigate(`/horoscope/daily/${sign.id}`)}
                     className="group w-full text-left rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_8px_30px_-5px_rgba(197,160,89,0.15)]"
                   >
-                    {/*
-                      Newspaper L-shape: float block (symbol + name + dates + element)
-                      sits top-left; quote flows to its right then full-width below.
-                    */}
-                    <div className="overflow-hidden">
-                      {/* Float contains image + caption -- name/dates/element below symbol */}
-                      <div className="float-left mr-4 mb-2 w-24">
+                    {/* Two-column layout: symbol+caption left, quote right -- both top-aligned */}
+                    <div className="flex gap-4 items-start">
+                      {/* Left column: symbol image with name / dates / element below */}
+                      <div className="flex-shrink-0 w-24 text-center">
                         <div
                           className="w-24 h-24 rounded-xl border border-gold/20 flex items-center justify-center text-4xl leading-none"
                           style={{ backgroundColor: 'rgba(197,160,89,0.07)' }}
                         >
                           {sign.symbol}
                         </div>
-                        <div className="mt-2 text-center">
+                        <div className="mt-2">
                           <p className="text-sm font-semibold font-playfair leading-tight group-hover:text-gold transition-colors">
                             {sign.name}
                           </p>
@@ -110,10 +110,12 @@ export function DailyQuickLookSection() {
                         </div>
                       </div>
 
-                      {/* Quote flows to the right of the float, then full-width below -- L-shape */}
-                      <p className="text-sm leading-6 text-muted-foreground font-playfair italic">
-                        "{sign.quote}"
-                      </p>
+                      {/* Right column: quote starts at the same top row as the symbol */}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm leading-6 text-muted-foreground font-playfair italic">
+                          "{sign.quote}"
+                        </p>
+                      </div>
                     </div>
 
                     <div className="flex items-center gap-1 text-gold text-[10px] font-semibold uppercase tracking-wider mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
