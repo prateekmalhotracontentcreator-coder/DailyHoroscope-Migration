@@ -22,14 +22,12 @@ You are the **Tarot thread**. Your scope is:
 
 | Priority | File | What it Contains |
 |---|---|---|
-| 🔴 MUST READ | `Codex_Deliveries/Tarot/TRACKER.md` | Live Tarot module status (v1.4) |
-| 🔴 MUST READ | `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_1.md` | TAR-SEO-1 full brief -- what was built, how to integrate |
-| 🔴 MUST READ | `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_2_REWRITE.md` | TAR-SEO-2 brief -- content rewrite scope |
-| 🟠 READ | `Codex_Deliveries/Tarot/TAROT_V4_UI_RECONCILIATION_NOTE_2026-05-22.md` | Context on how TAR-v4 was reconciled against existing page |
+| 🔴 MUST READ | `Codex_Deliveries/Tarot/TAROT_FILE_MANIFEST.md` | **Complete file inventory** -- every frontend/backend/test file, its route, status, and architecture rules. Read before touching anything. |
+| 🔴 MUST READ | `Codex_Deliveries/Tarot/TRACKER.md` | Live Tarot module status (v2.1) |
 | 🟠 READ | `Codex_Deliveries/Tarot/TAR_ECHO_PACE_GAI_CONSULTATION.md` | ECHO/PACE content quality guidance for Tarot SEO pages |
-| 🟠 READ | `Codex_Deliveries/Tarot/TAR_SEO_TITLE_HUMANIZATION_LIST.md` | Pre-approved humanized titles for Tarot SEO pages |
-| 🟡 REFERENCE | `#5_CODEX_COMMISSION_TABLE.md` (MODULE 8) | Master commission status for Tarot |
-| 🟡 REFERENCE | `#3_ACTION_TRACKER.md` (M-15) | TAR-SEO-1 integration action item |
+| 🟠 READ | `Codex_Deliveries/Tarot/TAROT_V4_UI_RECONCILIATION_NOTE_2026-05-22.md` | Context on how TAR-v4 was reconciled against existing page |
+| 🟡 REFERENCE | `Codex_Deliveries/Tarot/TAR_SEO_TITLE_HUMANIZATION_LIST.md` | ✅ RESOLVED -- titles humanized in TAR-SEO-2 |
+| 🟡 REFERENCE | `#3_ACTION_TRACKER.md` (Tarot Thread) | Open commission actions |
 
 ---
 

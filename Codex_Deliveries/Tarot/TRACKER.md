@@ -1,7 +1,8 @@
 # Tarot -- Module Tracker
 > Path: `Codex_Deliveries/Tarot/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-29 · v1.6
+> Last updated: 2026-06-18 · v2.1
+> **⚠️ Before starting any Tarot work: read `TAROT_FILE_MANIFEST.md` first -- complete file inventory with routes, status, and architecture rules.**
 
 ---
 
