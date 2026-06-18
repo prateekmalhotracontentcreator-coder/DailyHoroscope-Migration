@@ -1,7 +1,7 @@
 # Temple Tracker -- Master Index
 > EverydayHoroscope · Module Status Dashboard
 > **Read this at session start. Then open the individual module tracker for the module you are working on.**
-> Last updated: 2026-06-09 v7.5 (Growth #26 added: GRW-1→SOCIAL-1 CC-verified, TT live validation pending 8 Render env vars. KE: 5 Layer B architectural rulings locked. KE-OP-18 🔴 CRITICAL: KP condition types (`kp_planet_signification`/`kp_star_lord`/`kp_csl`) not implemented in `_condition_matches` -- entire KP corpus returns False. Script updated to include PHR rules (~10,234 total). KE-OP-19/20/21 opened.)
+> Last updated: 2026-06-18 v9.13 (KE: `planet_in_avastha` handler complete (commit 2e0a3cb) -- all 4 BPHS Ch45 avastha systems evaluable. KE-OP-41 CC-half DONE. TT action: run inspect_bphs1_ch45_avastha.py with MONGO_URL → identify 36 rule contents → CC encodes conditions.)
 
 ---
 
@@ -36,7 +36,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 
 | # | Module | Tracker | Status | Hottest Open Point | Owner |
 |---|---|---|---|---|---|
-| 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🟡 ACTIVE | **DB ~12,095 total · auto_approved ~5,892 · flagged ~995 · rejected ~112.** Phase 4B script ✅ BUILT (10,234-rule corpus). **🔴 KE-OP-18 CRITICAL: `kp_planet_signification`/`kp_star_lord`/`kp_csl` not in `_condition_matches` -- KP corpus returns False unconditionally. Engine change needed before Layer B is meaningful.** KE-OP-19 (dasha-gate audit) · KE-OP-20 (secondary_axis schema) · KE-OP-21 (composite audit). 5 architectural rulings locked. Layer C LLM-as-Judge mandatory before KE-OP-4. | TT/CC |
+| 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🟡 ACTIVE | **✅ 2,770/2,770 auto_approved. ✅ KE-MND-1 Gate 2 DEPLOYED 2026-06-18 (commit a99d527)** -- Render auto-deploy triggered. TT: smoke-test `GET /api/mundane/scan?domain=governance&country_code=IN&query_date=2026-08-12`. Gate 5 durations computed (gate5_verification.py). **TT: cross-check 4 events vs Drik Panchang (M-52).** ⛔ **LAYER C Run 4 BLOCKED** -- must clear KE-OP-41 (BPHS Ch45 Avastha conditions) + KE-OP-40 pre-B (300C L1/L2 verification) before running. Layer C arch fix (Mundane V22) done (commit 37aa191). | TT/CC |
 | 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | KP-Sprint2 ✅ INTEGRATED `20d4d29` (AskQuestionPage, 60-route logic router, ask endpoint). KP-2B ✅ INTEGRATED `20f7b83` (ritual screen, 3-pillar UX, astro enrichment). **KP-OP-10: Share card format needs redesign. KP-OP-11: Report structure UX review. TT to verify both deliveries on production (acceptance checklists).** | TT |
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` confirmed live. `krishna_prashnavali_remedies` seeded (36 records). REM-P1 ready to issue. | TT |
