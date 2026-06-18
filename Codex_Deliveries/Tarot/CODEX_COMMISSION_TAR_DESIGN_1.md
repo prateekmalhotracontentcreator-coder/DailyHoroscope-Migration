@@ -1,17 +1,84 @@
 # TAR-DESIGN-1 Commission Brief -- Tarot Module UI/UX Upgrade
 > Commission ID: TAR-DESIGN-1
 > Thread: Claude Design (dedicated design thread)
-> Date: 2026-06-18
+> Date: 2026-06-18 · Updated: 2026-06-18 (v2 -- theme direction + prototype-first gate added)
 > Status: READY TO ISSUE
 > Depends on: TAR-SEO-1 ✅ · TAR-SEO-2 ✅ · TAR-v4 ✅ · SVG deck (78 cards -- pending TT delivery)
 
 ---
 
+## ⚠️ PROCESS GATE -- PROTOTYPE BEFORE CODE
+
+**Do not cut JSX until TT has approved a visual prototype.**
+
+Deliver Step 1 first: an HTML/inline-CSS rendered prototype showing the key surfaces (TarotPage Daily Draw tab, TarotLanding hero, TarotHistoryPage card grid, one SEO page header). TT will sign off on the visual direction before Step 2 (paste-ready JSX) begins. The card-back yantra tone and deck-surface colours are locked at prototype sign-off -- after which TT issues the 78 SVGs.
+
+Prior design plan artifact for reference: `TAR-DESIGN-1 · Complete Design Plan.html` (delivered by Claude Design, held by TT).
+
+---
+
 ## 1. Objective
 
-Upgrade the Tarot module across all surfaces -- the interactive draw tool, the SEO content pages, and the incoming combination pages -- into a cohesive, premium, temple-aesthetic experience that can receive a custom SVG card deck (78 cards).
+Upgrade the Tarot module across all surfaces -- the interactive draw tool, the SEO content pages, and the incoming combination pages -- into a cohesive, premium **web-app experience** that feels like a native product, not a content page.
+
+**Visual identity: Purple + Gold on dark.** The Tarot module adopts a distinct Purple + Gold palette within the Temple dark system -- purple as the primary module accent (replacing the generic gold-only treatment used elsewhere), gold retained for highlights, CTA borders, and premium indicators.
+
+**Web-app reference: match the Longevity module** (`frontend/src/pages/reports/LongevityReportPage.jsx`). The Longevity module is the benchmark for what "web-app feel" means in this codebase: deep dark background (`bg-[#101423]`), heavy backdrop blur (`backdrop-blur-xl`), large rounded panels (`rounded-[28px]`), serif section headings (`font-serif text-[#fbf6ef]`), gold/sage/rose badge system, `shadow-[0_30px_80px_rgba(2,6,23,0.24)]` depth. The Tarot module must reach this level of finish across all 10 files.
 
 This is a **design-only commission.** No backend changes. No new routes. No data model changes. The upgrade touches only JSX, CSS-in-JS, and Tailwind class structure within existing files.
+
+---
+
+## 1b. Purple + Gold Colour Palette (Tarot Module Accent System)
+
+Tarot is the only module in the app that uses purple as its primary accent. Every other module uses gold as primary. This gives Tarot a distinctive identity while staying inside the Temple dark system.
+
+```
+Module bg:          bg-[#0d0b14]  (deep purple-dark, slightly warmer than Longevity's #101423)
+Panel surface:      bg-[#13102a]/88  (purple-tinted dark panel)
+Panel border:       border-purple-500/20
+Backdrop blur:      backdrop-blur-xl
+Primary accent:     text-purple-400  (#a78bfa)  -- headings, active states, icons
+Gold highlight:     text-gold (#c5a059)           -- CTA borders, star ratings, premium badges
+Gold glow:          shadow-[0_0_32px_rgba(167,139,250,0.25)]  (purple glow, not gold)
+Eyebrow text:       text-purple-400/70  uppercase tracking-[0.3em]
+Body text:          text-[#e8e0f0]  (warm white with purple undertone)
+Muted text:         text-white/55
+Badge -- arcana:    border-purple-400/40 bg-purple-400/10 text-purple-300
+Badge -- gold:      border-[#d5a14a]/40 bg-[#d5a14a]/10 text-[#f3c978]  (from Longevity -- reuse exactly)
+Badge -- suits:
+  Wands:            border-amber-400/40 bg-amber-400/10 text-amber-300
+  Cups:             border-blue-400/40  bg-blue-400/10  text-blue-300
+  Swords:           border-slate-400/40 bg-slate-400/10 text-slate-300
+  Pentacles:        border-emerald-400/40 bg-emerald-400/10 text-emerald-300
+```
+
+**GlassCard -- Tarot variant:**
+```
+rounded-[24px] border border-purple-500/20 bg-[#13102a]/70 shadow-[0_20px_60px_rgba(2,0,20,0.3)] backdrop-blur-xl
+```
+(mirrors Longevity's `rounded-[28px] border border-white/10 bg-[#101423]/88` but purple-tinted)
+
+**SectionCard -- Tarot variant (for major content blocks):**
+```
+rounded-[28px] border border-purple-500/15 bg-[#13102a]/88 p-5 shadow-[0_30px_80px_rgba(2,0,20,0.28)] backdrop-blur-xl sm:p-7
+```
+
+---
+
+## 1c. Typography (Longevity Pattern -- Replicate Exactly)
+
+Longevity uses `font-serif` (Georgia) for display headings with `text-[#fbf6ef]`. Replicate this pattern:
+
+```
+Module eyebrow:   text-[11px] uppercase tracking-[0.3em] text-purple-400/70
+Section heading:  font-serif text-2xl text-[#fbf6ef] sm:text-[2rem]
+Body:             text-sm leading-7 text-white/62  (Longevity pattern)
+Value text:       text-sm leading-6 text-white/82
+Labels:           text-[11px] uppercase tracking-[0.24em] text-white/45
+```
+
+**Font removal (mandatory):** `font-cinzel` and `font-playfair` appear in `TarotLanding.jsx` and are not in the production font build. Replace entirely with `font-serif` (Georgia fallback) for headings and default sans for body. Do not introduce any new font imports.
 
 ---
 
@@ -58,24 +125,27 @@ frontend/src/App.js      (routes only -- no design changes needed)
 
 ---
 
-## 3. Design System -- Temple App Tokens (MANDATORY)
+## 3. Design System -- Tarot Module Tokens (MANDATORY)
 
-All UI must use these tokens. Do not introduce arbitrary hex values or inline colours.
+The Tarot module uses a **Purple + Gold on deep-dark** palette, distinct from the app's generic gold-only treatment. All values are defined in §1b above. Summary for quick reference:
 
 ```
-Background:         bg-background
-Card surface:       bg-card
-Primary text:       text-foreground
-Secondary text:     text-muted-foreground
-Gold accent:        text-gold / border-gold / bg-gold   →  #c5a059
-GlassCard:          rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm
-Premium border:     border-gold/30
-Glow:               box-shadow: 0 0 32px rgba(197,160,89,0.65)
+Module bg:        bg-[#0d0b14]
+Panel surface:    bg-[#13102a]/88  +  backdrop-blur-xl
+Panel border:     border-purple-500/20  (or border-purple-500/15 for major sections)
+Panel rounding:   rounded-[24px] standard  /  rounded-[28px] major sections
+Panel shadow:     shadow-[0_20px_60px_rgba(2,0,20,0.3)]
+Primary accent:   text-purple-400  (#a78bfa)
+Gold highlight:   text-gold (#c5a059)  -- CTA, star ratings, premium only
+Body text:        text-[#e8e0f0]  /  text-white/62  /  text-white/82
+Eyebrow:          text-[11px] uppercase tracking-[0.3em] text-purple-400/70
+Section heading:  font-serif text-2xl text-[#fbf6ef]
 ```
 
-Typography: system fonts only (`font-family: Georgia, 'Times New Roman', serif` for display headings; sans-serif for body via Tailwind default).
+**Reference implementation:** `frontend/src/pages/reports/LongevityReportPage.jsx` -- `SectionCard`, `Badge`, `KeyValue` components show the exact Longevity pattern. Replicate the depth, blur, and typographic hierarchy; swap green/emerald accents for purple.
 
 Iconography: Lucide React only. No new icon libraries.
+No new npm packages. Tailwind, Radix UI, Vaul are all available.
 
 ---
 
@@ -419,6 +489,14 @@ Zero errors required. Warnings are acceptable if they are pre-existing.
 ---
 
 ## 13. Acceptance Checklist
+
+**Step 1 -- Prototype (required before JSX)**
+- [ ] HTML prototype delivered covering: TarotPage Daily Draw tab, TarotLanding hero, TarotHistoryPage card grid, one SEO page header
+- [ ] Purple + Gold palette visible -- deep `#0d0b14` bg, `purple-400` accent, gold highlights
+- [ ] Panel depth matches Longevity reference -- `rounded-[28px]`, `backdrop-blur-xl`, large shadow
+- [ ] TT sign-off received → card-back tone locked → 78 SVGs issued → Step 2 begins
+
+**Step 2 -- JSX Delivery**
 
 **Interactive Draw Tool**
 - [ ] `TarotPage.jsx` -- card reveal shimmer, reversed overlay, upgraded drawer interior, upgraded card back, all 5 tab designs upgraded
