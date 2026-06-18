@@ -199,6 +199,100 @@ MOOLATRIKONA_SIGNS = {
     "Venus": "Libra",
     "Saturn": "Aquarius",
 }
+
+# ── Avastha (planetary state) lookup tables ──────────────────────────────────
+# BPHS Ch45 -- four avastha systems used by the KE rule corpus.
+
+# Baladi (5 age-based states) -- determined by degree within sign.
+# Odd signs (Aries/Gemini/Leo/Libra/Sagittarius/Aquarius = 0-indexed 0,2,4,6,8,10):
+#   0-6° Bala, 6-12° Kumara, 12-18° Yuva, 18-24° Vriddha, 24-30° Mrita
+# Even signs: reversed order.
+_BALADI_ODD  = ("bala", "kumara", "yuva", "vriddha", "mrita")
+_BALADI_EVEN = ("mrita", "vriddha", "yuva", "kumara", "bala")
+
+# Jagradi (3 consciousness states) -- determined by dignity.
+_JAGRADI_AWAKE = frozenset({"own", "own_sign", "moolatrikona", "exalted"})
+_JAGRADI_DREAM = frozenset({"friendly", "friend", "neutral", "great_friend"})
+_JAGRADI_SLEEP = frozenset({"enemy", "debilitated"})
+
+# Deeptadi (9 dignity/combust/retrograde states) -- priority order matters.
+# Lajjitadi (6 house+conjunction states) -- computed in _populate_avastha_facts.
+_WATERY_SIGNS  = frozenset({"cancer", "scorpio", "pisces"})
+_LAJJITA_MALEF = frozenset({"Sun", "Saturn", "Rahu", "Ketu"})
+
+
+def _compute_baladi_avastha(longitude: float) -> str:
+    deg_in_sign = longitude % 30.0
+    sign_idx    = int(longitude // 30) % 12
+    sector      = min(int(deg_in_sign // 6), 4)
+    return (_BALADI_ODD if sign_idx % 2 == 0 else _BALADI_EVEN)[sector]
+
+
+def _populate_avastha_facts(facts: "ChartFacts") -> None:
+    """Pre-compute all four avastha systems for every planet, add canonical keys."""
+    for planet, payload in facts.planet_positions.items():
+        lon     = payload.get("longitude")
+        dignity = (payload.get("dignity") or "").lower()
+        combust = bool(payload.get("combust"))
+        retro   = bool(payload.get("retrograde"))
+        house   = payload.get("house")
+        sign    = (payload.get("sign") or "").lower()
+
+        # Baladi -- requires sidereal longitude
+        if lon is not None:
+            baladi = _compute_baladi_avastha(float(lon))
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "baladi", baladi))
+
+        # Jagradi -- dignity-based
+        if dignity in _JAGRADI_AWAKE:
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "jagradi", "jagrita"))
+        elif dignity in _JAGRADI_DREAM:
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "jagradi", "swapna"))
+        elif dignity in _JAGRADI_SLEEP:
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "jagradi", "sushupti"))
+
+        # Deeptadi -- dignity + combust + retrograde (priority order)
+        if combust and dignity == "enemy":
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "kopa"))
+        elif combust:
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "vikala"))
+        elif retro and dignity == "enemy":
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "khala"))
+        elif dignity == "exalted":
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "deepta"))
+        elif dignity in {"own", "own_sign", "moolatrikona"}:
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "svastha"))
+        elif dignity in {"great_friend", "best_friend"}:
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "pramudita"))
+        elif dignity in {"friendly", "friend"}:
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "shanta"))
+        elif dignity == "enemy":
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "dina"))
+        elif dignity == "debilitated":
+            facts.keys.add(canonical_key("planet_in_avastha", planet, "deeptadi", "dukhita"))
+
+        # Lajjitadi -- house + conjunction; requires house_planets to be populated
+        if house is not None:
+            h = int(house)
+            house_set = frozenset(facts.house_planets.get(h, []))
+            others    = house_set - {planet}
+            has_malef = bool(others & NATURAL_MALEFICS)
+            has_benef = bool(others & NATURAL_BENEFICS)
+
+            if h == 5 and (others & _LAJJITA_MALEF):
+                facts.keys.add(canonical_key("planet_in_avastha", planet, "lajjitadi", "lajjita"))
+            if dignity in {"own", "own_sign", "exalted", "moolatrikona"} and h in {1, 4, 7, 10}:
+                facts.keys.add(canonical_key("planet_in_avastha", planet, "lajjitadi", "garvita"))
+            if dignity == "enemy" or (has_malef and not has_benef):
+                facts.keys.add(canonical_key("planet_in_avastha", planet, "lajjitadi", "kshudita"))
+            if sign in _WATERY_SIGNS and not has_benef:
+                facts.keys.add(canonical_key("planet_in_avastha", planet, "lajjitadi", "trushita"))
+            if has_benef:
+                facts.keys.add(canonical_key("planet_in_avastha", planet, "lajjitadi", "mudita"))
+            if has_malef or combust:
+                facts.keys.add(canonical_key("planet_in_avastha", planet, "lajjitadi", "kshobhita"))
+
+
 DASA_VARGA = ["D1", "D2", "D3", "D7", "D9", "D10", "D12", "D16", "D30", "D60"]
 VIMSHOPAKA_TIERS = {
     2: "Parijatamsa",
@@ -431,6 +525,7 @@ def extract_chart_facts(chart: dict[str, Any]) -> ChartFacts:
             facts.keys.add(canonical_key("planet_combust", planet, True))
 
     _populate_conjunction_facts(facts)
+    _populate_avastha_facts(facts)
     _populate_house_lord_facts(chart, facts)
     _populate_yoga_facts(chart, facts)
     _populate_dasha_facts(chart, facts)
@@ -941,6 +1036,13 @@ def _condition_anchor_keys(condition: dict[str, Any]) -> set[str]:
         if planet:
             return {canonical_key("planet_in_house", planet, 6)}
         return set()
+    if condition_type == "planet_in_avastha":
+        planet         = normalize_planet_name(condition.get("planet"))
+        avastha_system = str(condition.get("avastha_system") or "").lower()
+        avastha        = str(condition.get("avastha") or "").lower()
+        if planet and avastha_system and avastha:
+            return {canonical_key("planet_in_avastha", planet, avastha_system, avastha)}
+        return set()
     return set()
 
 
@@ -1212,6 +1314,74 @@ def _condition_matches(condition: dict[str, Any], facts: ChartFacts) -> bool:
         if not planet:
             return False
         return (facts.planet_positions.get(planet) or {}).get("house") in {6, 8, 12}
+    if condition_type == "planet_in_avastha":
+        planet         = normalize_planet_name(condition.get("planet"))
+        avastha_system = str(condition.get("avastha_system") or "").lower()
+        avastha        = str(condition.get("avastha") or "").lower()
+        if not planet or not avastha:
+            return False
+        payload = facts.planet_positions.get(planet) or {}
+        dignity = (payload.get("dignity") or "").lower()
+        combust = bool(payload.get("combust"))
+        retro   = bool(payload.get("retrograde"))
+        house   = payload.get("house")
+        sign    = (payload.get("sign") or "").lower()
+
+        if avastha_system == "baladi" or avastha in set(_BALADI_ODD + _BALADI_EVEN):
+            lon = payload.get("longitude")
+            if lon is None:
+                return False
+            return _compute_baladi_avastha(float(lon)) == avastha
+
+        if avastha_system == "jagradi" or avastha in {"jagrita", "swapna", "sushupti"}:
+            if avastha == "jagrita":
+                return dignity in _JAGRADI_AWAKE
+            if avastha == "swapna":
+                return dignity in _JAGRADI_DREAM
+            if avastha == "sushupti":
+                return dignity in _JAGRADI_SLEEP
+            return False
+
+        if avastha_system == "deeptadi" or avastha in {
+            "deepta", "svastha", "pramudita", "shanta", "dina", "dukhita", "vikala", "khala", "kopa"
+        }:
+            if avastha == "kopa":      return combust and dignity == "enemy"
+            if avastha == "vikala":    return combust
+            if avastha == "khala":     return retro and dignity == "enemy"
+            if avastha == "deepta":    return dignity == "exalted"
+            if avastha == "svastha":   return dignity in {"own", "own_sign", "moolatrikona"}
+            if avastha == "pramudita": return dignity in {"great_friend", "best_friend"}
+            if avastha == "shanta":    return dignity in {"friendly", "friend"}
+            if avastha == "dina":      return dignity == "enemy" and not combust
+            if avastha == "dukhita":   return dignity == "debilitated"
+            return False
+
+        if avastha_system == "lajjitadi" or avastha in {
+            "lajjita", "garvita", "kshudita", "trushita", "mudita", "kshobhita"
+        }:
+            if house is None:
+                return False
+            h         = int(house)
+            house_set = frozenset(facts.house_planets.get(h, []))
+            others    = house_set - {planet}
+            has_malef = bool(others & NATURAL_MALEFICS)
+            has_benef = bool(others & NATURAL_BENEFICS)
+
+            if avastha == "lajjita":
+                return h == 5 and bool(others & _LAJJITA_MALEF)
+            if avastha == "garvita":
+                return dignity in {"own", "own_sign", "exalted", "moolatrikona"} and h in {1, 4, 7, 10}
+            if avastha == "kshudita":
+                return dignity == "enemy" or (has_malef and not has_benef)
+            if avastha == "trushita":
+                return sign in _WATERY_SIGNS and not has_benef
+            if avastha == "mudita":
+                return has_benef
+            if avastha == "kshobhita":
+                return has_malef or combust
+            return False
+
+        return False
     return False
 
 
