@@ -22,6 +22,17 @@ This is a **design-only commission.** No backend changes. No new routes. No data
 frontend/src/pages/tarot/TarotPage.jsx
 ```
 
+### Standalone Pages (live routes -- currently unstyled or off-token)
+```
+frontend/src/pages/tarot/TarotLanding.jsx     # /the-tarot  -- uses amber/cinzel/playfair, not Temple tokens
+frontend/src/pages/tarot/TarotHistoryPage.jsx # /tarot/history -- uses raw BEM CSS, no Tailwind at all
+```
+
+### Feedback Utility (wire a UI -- backend endpoint already exists)
+```
+frontend/src/utils/tarotFeedback.js           # POST /api/tarot/feedback -- no UI currently exists
+```
+
 ### SEO Content Pages (secondary surface)
 ```
 frontend/src/pages/tarot-seo/TarotSeoHubPage.jsx
@@ -237,6 +248,116 @@ CTA strip: 3 buttons -- "Full card meaning" | "Learn the spread" | "Draw live"
 
 ---
 
+## 7b. TarotLanding.jsx -- Token Alignment (`/the-tarot`)
+
+**Current problem:** This public SEO landing page uses a completely separate colour system from the rest of the app:
+- Background: `bg-[radial-gradient(...)]` with hardcoded dark hex values
+- Text: `text-amber-50`, `text-amber-100/70`, `text-amber-400`
+- Fonts: `font-cinzel`, `font-playfair` (not available in Temple token set)
+- Buttons: `bg-amber-500` hardcoded
+
+**Required changes -- align to Temple token system:**
+
+1. Replace all `amber-*` colour references with Temple equivalents:
+   - `text-amber-400` → `text-gold`
+   - `border-amber-400/10` → `border-gold/10`
+   - `bg-amber-500` (CTA button) → `bg-gold text-neutral-900`
+   - `text-amber-100` → `text-foreground`
+   - `text-amber-100/55` → `text-muted-foreground`
+
+2. Replace `font-cinzel` / `font-playfair` (not in the build) with:
+   - Headings: `font-serif` (Georgia fallback, already in Tailwind config)
+   - Body: default sans-serif
+
+3. Background: replace hardcoded radial gradient with:
+   ```jsx
+   className="min-h-screen bg-background text-foreground"
+   ```
+   Add a subtle gold radial glow overlay as a positioned `<div>` using `bg-gold/[0.06]` with `blur-3xl` for the hero section only.
+
+4. Feature tiles + spread cards + FAQ items: convert from custom rounded-2xl border classes to GlassCard pattern.
+
+5. CTA sections: preserve layout and copy exactly. Only token-swap colours.
+
+6. Preserve all `FEATURES`, `SPREADS`, `FAQS` data arrays exactly -- no content changes.
+
+---
+
+## 7c. TarotHistoryPage.jsx -- Full Redesign (`/tarot/history`)
+
+**Current problem:** This Premium page uses **raw BEM CSS class names only** (`tarot-history-page`, `tarot-history-card`, etc.) with no Tailwind and no Temple tokens. It is completely unstyled in the production build.
+
+**Required: full redesign using Tailwind + Temple tokens. Match the structure of the History tab in `TarotPage.jsx`.**
+
+Layout spec:
+
+```
+Page wrapper:     min-h-screen bg-background text-foreground px-4 py-8 max-w-4xl mx-auto
+
+Hero section:
+  Eyebrow:        text-xs uppercase tracking-widest text-gold/60 mb-2
+  H1:             text-2xl font-bold text-foreground mb-1
+  Subtitle:       text-sm text-muted-foreground
+
+Filter bar:       flex gap-2 mt-6 mb-6
+  Buttons:        "All Readings" | "Bookmarked"
+  Active style:   border border-gold text-gold bg-gold/10 rounded-full px-4 py-1.5 text-sm
+  Inactive style: border border-gold/20 text-muted-foreground rounded-full px-4 py-1.5 text-sm
+
+Loading state:    text-center text-muted-foreground py-12 with Loader2 spin icon
+
+Error state:      text-center text-red-400 py-8
+
+Empty state:      GlassCard, centred, text-muted-foreground, BookOpen icon, "Your archive is waiting for its first entry."
+
+Reading grid:     grid gap-4 sm:grid-cols-2
+
+Reading card (per item):
+  Wrapper:        GlassCard + hover:border-gold/40 transition
+  Card thumbnail: 40×60px inline SVG preview (if svgData available) or Star icon in gold/20 circle
+  Card name:      font-semibold text-foreground text-sm
+  Date:           text-xs text-muted-foreground
+  Focus area:     coloured dot + text-xs label
+  Summary:        text-sm text-muted-foreground line-clamp-2 mt-1
+  Actions row:
+    Bookmark btn: BookmarkCheck (filled, gold) if bookmarked | Bookmark (outline, muted) if not
+    Feedback btn: Star icon -- opens inline star-rating (see §7d below)
+
+Pagination:       "Load More" button -- border-gold/30 text-muted-foreground hover:border-gold
+```
+
+---
+
+## 7d. Feedback UI -- Wire `tarotFeedback.js` into the Reading Experience
+
+**Current problem:** `frontend/src/utils/tarotFeedback.js` calls `POST /api/tarot/feedback` (rating + comment) but there is **no UI anywhere** that calls this function. The feature is dead.
+
+**Required: add a lightweight feedback component** in two locations:
+
+**Location 1: Vaul drawer in `TarotPage.jsx`** (shown after reading guidance, below the action strip)
+
+```
+┌─────────────────────────────────────┐
+│  Was this reading helpful?          │
+│  ★ ★ ★ ★ ★  (tap to rate)          │
+│  [Optional comment...       ]  Send │
+└─────────────────────────────────────┘
+```
+
+Spec:
+- 5-star tap rating: render 5 `Star` (Lucide) icons, filled gold up to selected rating
+- Comment input: single-line text input, shown only after a star is tapped
+- Send button: calls `submitTarotFeedback({ readingId, rating, comment })` from `tarotFeedback.js`
+- After send: replace with "Thank you ✦" confirmation in gold, auto-dismiss after 2s
+- One submission per reading per session (track in local state -- do not re-show if already submitted)
+- Do NOT show for logged-out users
+
+**Location 2: `TarotHistoryPage.jsx`** reading cards (§7c above)
+
+Same 5-star component, rendered inline on each history card. Pre-populate with existing rating if `item.rating` is present in the API response.
+
+---
+
 ## 8. Responsive Breakpoints
 
 All grids must be mobile-first. Reference breakpoints:
@@ -299,16 +420,29 @@ Zero errors required. Warnings are acceptable if they are pre-existing.
 
 ## 13. Acceptance Checklist
 
+**Interactive Draw Tool**
 - [ ] `TarotPage.jsx` -- card reveal shimmer, reversed overlay, upgraded drawer interior, upgraded card back, all 5 tab designs upgraded
+- [ ] Feedback star-rating UI wired in Vaul drawer -- calls `submitTarotFeedback`, one-per-session guard, "Thank you ✦" confirmation
+
+**Standalone Pages (previously missing from brief)**
+- [ ] `TarotLanding.jsx` -- all amber/cinzel/playfair tokens replaced with Temple system; GlassCard tiles; gold CTA; no visual regression on layout
+- [ ] `TarotHistoryPage.jsx` -- BEM CSS fully replaced with Tailwind/Temple; grid layout, GlassCard cards, filter bar, empty/loading/error states, feedback stars per card
+
+**SEO Content Pages**
 - [ ] `TarotSeoHubPage.jsx` -- hero section, GlassCard spread grid, category pills, FAQ
 - [ ] `TarotSpreadPage.jsx` -- hero section, position accordion, how-to steps, FAQ
 - [ ] `TarotCardPage.jsx` -- card image frame, meaning tabs, keywords, best spreads pills
 - [ ] `TarotIntentionPage.jsx` -- hero GlassCard, best cards grid
+
+**Phase 2 Shells**
 - [ ] `TarotCardHubPage.jsx` -- shell built: filter tabs, 6-col grid, suit colour coding
 - [ ] `TarotCombinationPage.jsx` -- shell built: breadcrumb, synthesis block, position accordion, action step strip, related combos, CTA strip
+
+**Cross-cutting**
 - [ ] All gold token usage -- no arbitrary hex colours introduced
 - [ ] Mobile layouts verified (all grids collapse correctly at sm/md)
 - [ ] All Punya hooks preserved
+- [ ] `font-cinzel` and `font-playfair` references removed (not in production font build)
 - [ ] Build passes: `CI=true DISABLE_ESLINT_PLUGIN=true npx craco build`
 
 ---
@@ -318,6 +452,9 @@ Zero errors required. Warnings are acceptable if they are pre-existing.
 | File | Purpose |
 |---|---|
 | `frontend/src/pages/tarot/TarotPage.jsx` | Current interactive tool -- all 5 tabs |
+| `frontend/src/pages/tarot/TarotLanding.jsx` | Public landing page -- `/the-tarot` -- needs token alignment |
+| `frontend/src/pages/tarot/TarotHistoryPage.jsx` | Premium history page -- `/tarot/history` -- needs full redesign |
+| `frontend/src/utils/tarotFeedback.js` | Feedback API utility -- needs UI wired |
 | `frontend/src/pages/tarot-seo/TarotSeoHubPage.jsx` | Current spread hub |
 | `frontend/src/pages/tarot-seo/TarotSpreadPage.jsx` | Current spread detail |
 | `frontend/src/pages/tarot-seo/TarotCardPage.jsx` | Current card detail |
