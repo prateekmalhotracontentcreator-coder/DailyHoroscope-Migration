@@ -7,6 +7,7 @@ import { SEO } from '../../components/SEO';
 import { Button } from '../../components/ui/button';
 import { Card } from '../../components/ui/card';
 import { fetchPunyaSummary } from '../../lib/punyaRewards';
+import { DailyQuickLookSection } from '../../components/DailyQuickLookSection';
 import {
   Sparkles, Star, Sun, Calendar, TrendingUp, Heart,
   Crown, ArrowRight, Check, Moon, Gift, Trophy, Coins
@@ -377,6 +378,9 @@ export const Landing = () => {
           )}
         </div>
       </section>
+
+      {/* DAILY QUICK LOOK */}
+      <DailyQuickLookSection />
 
       {/* FEATURES */}
       <section id="features" ref={ref('features')} className="py-20 px-4 border-t border-border/50" style={anim('features', 100)}>

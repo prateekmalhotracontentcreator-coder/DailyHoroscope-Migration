@@ -1013,6 +1013,33 @@ async def prefetch_status():
     monthly_count = await db.horoscopes.count_documents({'type': 'monthly', 'prediction_date': monthly_date})
     return {'daily': {'cached': daily_count, 'total': 12, 'date': daily_date}, 'tomorrow': {'cached': tomorrow_count, 'total': 12, 'date': tomorrow_date}, 'weekly': {'cached': weekly_count, 'total': 12, 'date': weekly_date}, 'monthly': {'cached': monthly_count, 'total': 12, 'date': monthly_date}, 'total_cached': daily_count + tomorrow_count + weekly_count + monthly_count}
 
+@api_router.get("/horoscope/daily/quotes")
+async def get_daily_horoscope_quotes():
+    """Return mood quote (first sentence) for all 12 signs -- public, no auth required."""
+    prediction_date = get_prediction_date('daily')
+    sign_ids = [s["id"] for s in ZODIAC_SIGNS]
+    docs = await db.horoscopes.find(
+        {"type": "daily", "prediction_date": prediction_date, "sign": {"$in": sign_ids}},
+        {"_id": 0, "sign": 1, "content": 1}
+    ).to_list(12)
+    cached = {d["sign"]: d["content"] for d in docs}
+    missing = [s for s in sign_ids if s not in cached]
+    if missing:
+        async def _gen(sign):
+            content = await generate_horoscope_with_llm(sign, "daily")
+            h = Horoscope(sign=sign, type="daily", content=content, prediction_date=prediction_date)
+            await db.horoscopes.insert_one(h.model_dump(mode='json'))
+            return sign, content
+        pairs = await asyncio.gather(*[_gen(s) for s in missing])
+        for sign, content in pairs:
+            cached[sign] = content
+    result = []
+    for sd in ZODIAC_SIGNS:
+        raw = cached.get(sd["id"], "")
+        quote = next((ln.strip() for ln in raw.split('\n') if ln.strip()), "")
+        result.append({"id": sd["id"], "name": sd["name"], "symbol": sd["symbol"], "dates": sd["dates"], "element": sd["element"], "quote": quote})
+    return result
+
 @api_router.get("/horoscope/{sign}/{type}", response_model=Horoscope)
 async def get_horoscope(sign: str, type: HoroscopeType):
     valid_signs = [s["id"] for s in ZODIAC_SIGNS]
