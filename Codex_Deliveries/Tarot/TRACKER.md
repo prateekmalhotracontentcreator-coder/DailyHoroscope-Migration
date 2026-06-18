@@ -28,6 +28,7 @@
 | **TAR-SEO-1** | Tarot SEO module (hub + spreads + cards + intentions) | 🟢 INTEGRATED + DEPLOYED | `CODEX_COMMISSION_TAR_SEO_1.md` |
 | **TAR-SEO-2** | Tarot SEO data rewrite (copyright + quality fix) | 🟢 QA-CLEARED (ECHO/PACE strict + Layer G full pass) | `CODEX_COMMISSION_TAR_SEO_2_REWRITE.md` |
 | **TAR-SEO-3** | Tarot Combination Pages -- 4,621 pages (78 cards × 60 spreads + card hub) | 🟡 READY TO ISSUE | `CODEX_COMMISSION_TAR_SEO_3_COMBINATIONS.md` |
+| **TAR-DESIGN-1** | Tarot Module UI/UX Upgrade -- interactive tool + SEO pages + Phase 2 shells | 🟡 READY TO ISSUE | `CODEX_COMMISSION_TAR_DESIGN_1.md` |
 
 ---
 
