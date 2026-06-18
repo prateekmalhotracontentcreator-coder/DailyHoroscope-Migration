@@ -151,6 +151,7 @@ from angel_numbers_router import router as angel_numbers_router
 from notification_whatsapp_service import send_whatsapp_text
 from echo_pace_router import router as echo_pace_router, ensure_echo_pace_indexes
 from auspicious_router import router as auspicious_router
+from mundane_router import router as mundane_router
 try:
     from longevity_router import router as longevity_router
     _longevity_router_ok = True
@@ -3971,6 +3972,7 @@ app.include_router(lo_shu_router)
 app.include_router(angel_numbers_router, prefix="/api/seo")
 app.include_router(echo_pace_router)
 app.include_router(auspicious_router)
+app.include_router(mundane_router)
 if _longevity_router_ok and longevity_router is not None:
     app.include_router(longevity_router)
 

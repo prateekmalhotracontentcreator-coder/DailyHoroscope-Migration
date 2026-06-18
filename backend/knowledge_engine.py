@@ -437,6 +437,7 @@ def extract_chart_facts(chart: dict[str, Any]) -> ChartFacts:
     _populate_aspect_facts(facts)
     _populate_varga_dignity_facts(chart, facts)
     _populate_kp_facts(chart, facts)
+    _populate_extended_chart_facts(chart, facts)
     return facts
 
 
@@ -729,6 +730,23 @@ def _vedic_aspect_targets(planet: str, house: int) -> set[int]:
     return {((house - 1 + offset - 1) % 12) + 1 for offset in offsets}
 
 
+def _populate_extended_chart_facts(chart: dict[str, Any], facts: ChartFacts) -> None:
+    # Lagna sign -- used by lagna_sign / sign_match conditions
+    lagna = chart.get("lagna") or {}
+    lagna_sign = normalize_sign_name(lagna.get("sign"))
+    if lagna_sign:
+        facts.keys.add(canonical_key("lagna_sign", lagna_sign))
+
+    # Bhava combination -- structural facts; add key for every house (all 12 bhavas exist)
+    for h in range(1, 13):
+        facts.keys.add(canonical_key("bhava_combination", h))
+
+    # Dasha of house lord -- fire when current Maha dasha planet lords a given house
+    for source_house, lord in facts.house_lords.items():
+        if "Maha" in facts.dasha_levels.get(lord, set()):
+            facts.keys.add(canonical_key("dasha_of_house_lord", source_house))
+
+
 def _condition_anchor_keys(condition: dict[str, Any]) -> set[str]:
     condition_type = condition.get("type")
     if condition_type == "planet_in_house":
@@ -796,6 +814,133 @@ def _condition_anchor_keys(condition: dict[str, Any]) -> set[str]:
         for sub in condition.get("sub_conditions") or []:
             keys.update(_condition_anchor_keys(sub))
         return keys
+    # ── Extended condition types ──────────────────────────────────────────────
+    if condition_type == "planet_occupation":
+        planet = normalize_planet_name(condition.get("planet"))
+        house = condition.get("house")
+        if planet and house is not None:
+            return {canonical_key("planet_in_house", planet, house)}
+        return set()
+    if condition_type == "sign_placement":
+        planet = normalize_planet_name(condition.get("planet"))
+        sign = normalize_sign_name(condition.get("sign"))
+        if planet and sign:
+            return {canonical_key("planet_in_sign", planet, sign)}
+        return set()
+    if condition_type == "planet_in_house_in_sign":
+        ext_keys: set[str] = set()
+        planet = normalize_planet_name(condition.get("planet"))
+        house = condition.get("house")
+        sign = normalize_sign_name(condition.get("sign"))
+        if planet and house is not None:
+            ext_keys.add(canonical_key("planet_in_house", planet, house))
+        if planet and sign:
+            ext_keys.add(canonical_key("planet_in_sign", planet, sign))
+        return ext_keys
+    if condition_type == "planet_in_house_special":
+        ext_keys = set()
+        planet = normalize_planet_name(condition.get("planet"))
+        house = condition.get("house")
+        special = condition.get("special_state") or ""
+        if planet and house is not None:
+            ext_keys.add(canonical_key("planet_in_house", planet, house))
+        if planet and special:
+            _SPECIAL_TO_DIGNITY = {"exalted": "exalted", "debilitated": "debilitated", "own_sign": "own"}
+            ext_keys.add(canonical_key("planet_dignity", planet, _SPECIAL_TO_DIGNITY.get(special, special)))
+        return ext_keys
+    if condition_type == "yoga_combination":
+        yoga_name = condition.get("yoga_name")
+        if yoga_name:
+            return {canonical_key("yoga", yoga_name)}
+        return set()
+    if condition_type == "dasha_planet":
+        antar = normalize_planet_name(condition.get("antardasha_planet"))
+        if antar:
+            return {canonical_key("dasha_period", antar, "Antar")}
+        lord = normalize_planet_name(condition.get("dasha_lord"))
+        if lord:
+            return {canonical_key("dasha_period", lord, "Maha")}
+        return set()
+    if condition_type == "multi_condition":
+        ext_keys = set()
+        for sub in condition.get("conditions") or []:
+            if isinstance(sub, dict):
+                ext_keys.update(_condition_anchor_keys(sub))
+        if not ext_keys:
+            mc_planets = condition.get("planets_involved") or []
+            mc_houses = condition.get("houses_involved") or []
+            if mc_planets and mc_houses:
+                p = normalize_planet_name(mc_planets[0])
+                if p:
+                    ext_keys.add(canonical_key("planet_in_house", p, mc_houses[0]))
+        return ext_keys
+    if condition_type == "vedic_yoga":
+        vy_planets = condition.get("planets_involved") or []
+        vy_houses = condition.get("houses_involved") or []
+        if vy_planets and vy_houses:
+            p = normalize_planet_name(vy_planets[0])
+            if p:
+                return {canonical_key("planet_in_house", p, vy_houses[0])}
+        return set()
+    if condition_type in ("dosha", "planetary_combination"):
+        ext_keys = set()
+        yc = condition.get("yoga_check") or {}
+        if yc.get("checkable") and yc.get("type") == "planet_in_house":
+            yp = normalize_planet_name(yc.get("planet") or "")
+            yh_list = yc.get("houses") or []
+            if yp and yh_list:
+                ext_keys.add(canonical_key("planet_in_house", yp, yh_list[0]))
+        if not ext_keys:
+            dc_planets = condition.get("planets_involved") or []
+            dc_houses = condition.get("houses_involved") or []
+            if dc_planets and dc_houses:
+                p = normalize_planet_name(dc_planets[0])
+                if p:
+                    ext_keys.add(canonical_key("planet_in_house", p, dc_houses[0]))
+        return ext_keys
+    if condition_type in ("lagna_sign", "sign_match"):
+        sign = normalize_sign_name(condition.get("sign") or "")
+        if sign:
+            return {canonical_key("lagna_sign", sign)}
+        return set()
+    if condition_type == "dasha_of_house_lord":
+        house = condition.get("house")
+        if house is not None:
+            return {canonical_key("dasha_of_house_lord", house)}
+        return set()
+    if condition_type == "lord_placement":
+        lp_houses = condition.get("houses_involved") or []
+        source = int(condition.get("source_house") or 1)
+        ext_keys = set()
+        for h in lp_houses[:2]:
+            ext_keys.add(canonical_key("house_lord_in_house", source, h))
+        return ext_keys
+    if condition_type == "bhava_combination":
+        house = condition.get("house")
+        if house is not None:
+            return {canonical_key("bhava_combination", house)}
+        return set()
+    if condition_type == "remedy_trigger":
+        mapping = condition.get("astrological_mapping") or {}
+        rt_planets = mapping.get("planet") or condition.get("planets_involved") or []
+        statuses = mapping.get("status") or []
+        ext_keys = set()
+        for p in rt_planets[:1]:
+            pn = normalize_planet_name(p)
+            if not pn:
+                continue
+            if "debilitated" in statuses:
+                ext_keys.add(canonical_key("planet_dignity", pn, "debilitated"))
+            if "combust" in statuses:
+                ext_keys.add(canonical_key("planet_combust", pn, True))
+            if not ext_keys:
+                ext_keys.add(canonical_key("planet_in_house", pn, 1))
+        return ext_keys
+    if condition_type == "planet_signification":
+        planet = normalize_planet_name(condition.get("planet") or "")
+        if planet:
+            return {canonical_key("planet_in_house", planet, 6)}
+        return set()
     return set()
 
 
@@ -938,6 +1083,135 @@ def _condition_matches(condition: dict[str, Any], facts: ChartFacts) -> bool:
         if operator == "or":
             return any(results)
         return False
+    # ── Extended condition type matchers ─────────────────────────────────────
+    if condition_type == "planet_occupation":
+        planet = normalize_planet_name(condition.get("planet"))
+        payload = facts.planet_positions.get(planet or "")
+        if not payload:
+            return False
+        house = condition.get("house")
+        if house is not None and payload.get("house") != house:
+            return False
+        return True
+    if condition_type == "sign_placement":
+        planet = normalize_planet_name(condition.get("planet"))
+        sign = normalize_sign_name(condition.get("sign"))
+        return (facts.planet_positions.get(planet or "") or {}).get("sign") == sign
+    if condition_type == "planet_in_house_in_sign":
+        planet = normalize_planet_name(condition.get("planet"))
+        payload = facts.planet_positions.get(planet or "")
+        if not payload:
+            return False
+        if payload.get("house") != condition.get("house"):
+            return False
+        sign = normalize_sign_name(condition.get("sign"))
+        if sign and payload.get("sign") != sign:
+            return False
+        return True
+    if condition_type == "planet_in_house_special":
+        planet = normalize_planet_name(condition.get("planet"))
+        payload = facts.planet_positions.get(planet or "")
+        if not payload:
+            return False
+        if payload.get("house") != condition.get("house"):
+            return False
+        special = condition.get("special_state") or ""
+        if special:
+            _SPECIAL_TO_DIGNITY = {"exalted": "exalted", "debilitated": "debilitated", "own_sign": "own"}
+            if payload.get("dignity") != _SPECIAL_TO_DIGNITY.get(special, special):
+                return False
+        return True
+    if condition_type == "dasha_planet":
+        antar = normalize_planet_name(condition.get("antardasha_planet"))
+        if antar:
+            return "Antar" in facts.dasha_levels.get(antar, set())
+        lord = normalize_planet_name(condition.get("dasha_lord"))
+        if lord:
+            return "Maha" in facts.dasha_levels.get(lord, set())
+        return False
+    if condition_type == "multi_condition":
+        mc_conditions = condition.get("conditions") or []
+        if not mc_conditions:
+            return True
+        operator = str(condition.get("operator") or "and").lower()
+        results = [_condition_matches(sub, facts) for sub in mc_conditions if isinstance(sub, dict)]
+        if not results:
+            return True
+        if operator == "or":
+            return any(results)
+        return all(results)
+    if condition_type == "vedic_yoga":
+        vy_planets = condition.get("planets_involved") or []
+        vy_houses = condition.get("houses_involved") or []
+        if not vy_planets and not vy_houses:
+            return False
+        if vy_planets and vy_houses:
+            pn = normalize_planet_name(vy_planets[0])
+            payload = facts.planet_positions.get(pn or "")
+            return bool(payload and payload.get("house") in vy_houses)
+        return False
+    if condition_type in ("dosha", "planetary_combination"):
+        yc = condition.get("yoga_check") or {}
+        if yc.get("checkable") and yc.get("type") == "planet_in_house":
+            yp = normalize_planet_name(yc.get("planet") or "")
+            yh_list = yc.get("houses") or []
+            if yp and yh_list:
+                payload = facts.planet_positions.get(yp)
+                return bool(payload and payload.get("house") in yh_list)
+        dc_planets = condition.get("planets_involved") or []
+        dc_houses = condition.get("houses_involved") or []
+        if dc_planets and dc_houses:
+            pn = normalize_planet_name(dc_planets[0])
+            payload = facts.planet_positions.get(pn or "")
+            return bool(payload and payload.get("house") in dc_houses)
+        return False
+    if condition_type in ("lagna_sign", "sign_match"):
+        sign = normalize_sign_name(condition.get("sign") or "")
+        if not sign:
+            return condition_type == "lagna_sign"
+        return canonical_key("lagna_sign", sign) in facts.keys
+    if condition_type == "dasha_of_house_lord":
+        house = condition.get("house")
+        if house is None:
+            return False
+        lord = facts.house_lords.get(int(house))
+        if not lord:
+            return False
+        return "Maha" in facts.dasha_levels.get(lord, set())
+    if condition_type == "lord_placement":
+        lp_houses = condition.get("houses_involved") or []
+        source = int(condition.get("source_house") or 1)
+        lord = facts.house_lords.get(source)
+        if not lord:
+            return False
+        target = (facts.planet_positions.get(lord) or {}).get("house")
+        if not lp_houses:
+            return True
+        return target in lp_houses
+    if condition_type == "bhava_combination":
+        house = condition.get("house")
+        if house is None:
+            return False
+        return canonical_key("bhava_combination", house) in facts.keys
+    if condition_type == "remedy_trigger":
+        mapping = condition.get("astrological_mapping") or {}
+        rt_planets = mapping.get("planet") or condition.get("planets_involved") or []
+        statuses = mapping.get("status") or []
+        for p in rt_planets[:1]:
+            pn = normalize_planet_name(p)
+            if not pn:
+                continue
+            payload = facts.planet_positions.get(pn) or {}
+            if "debilitated" in statuses and payload.get("dignity") == "debilitated":
+                return True
+            if "combust" in statuses and bool(payload.get("combust")):
+                return True
+        return False
+    if condition_type == "planet_signification":
+        planet = normalize_planet_name(condition.get("planet") or "")
+        if not planet:
+            return False
+        return (facts.planet_positions.get(planet) or {}).get("house") in {6, 8, 12}
     return False
 
 
@@ -2666,6 +2940,35 @@ class KnowledgeEngine:
     def index_refresh_status(self) -> dict[str, Any]:
         return self.index_store.refresh_status()
 
+    async def _scan_mundane_context(
+        self,
+        claim_axis: str,
+        query_date: str,
+        country_code: str = "IN",
+    ) -> dict[str, Any]:
+        """
+        Layer 3 of Triple Confirmation -- fires mundane_macro rules against
+        Core Tool event data (eclipses, ingresses, foundation chart transits).
+        Returns: fired_rules, top_mundane_factor, mundane_polarity, triple_confirmation.
+        """
+        try:
+            from mundane_engine import mundane_scan
+            return await mundane_scan(
+                claim_axis=claim_axis,
+                query_date=query_date,
+                country_code=country_code,
+                db=self.db,
+            )
+        except Exception as exc:
+            logger.warning("_scan_mundane_context error: %s", exc)
+            return {
+                "fired_rules": [],
+                "top_mundane_factor": None,
+                "mundane_polarity": None,
+                "triple_confirmation": False,
+                "error": str(exc),
+            }
+
     async def scan_chart(
         self,
         chart: dict[str, Any],
@@ -2673,7 +2976,9 @@ class KnowledgeEngine:
         max_rules: int = 50,
         context: dict[str, Any] | KnowledgeRequestContext | None = None,
         dasha_timeline: list[dict[str, Any]] | None = None,
-    ) -> list[dict[str, Any]]:
+        country_code: str | None = None,
+        query_date: str | None = None,
+    ) -> list[dict[str, Any]] | dict[str, Any]:
         snapshot = self.index_store.snapshot
         facts = extract_chart_facts(chart)
         request_context = context if isinstance(context, KnowledgeRequestContext) else KnowledgeRequestContext(**(context or {}))
@@ -2723,7 +3028,24 @@ class KnowledgeEngine:
             )
 
         matches.sort(key=lambda item: (item["score"], item.get("priority", 0), item.get("effective_confidence", 0)), reverse=True)
-        return matches[: max_rules]
+        truncated = matches[: max_rules]
+
+        if country_code is not None or query_date is not None:
+            effective_date = query_date or __import__("datetime").datetime.utcnow().strftime("%Y-%m-%d")
+            effective_cc = country_code or "IN"
+            primary_axis = (
+                request_context.claim_axis
+                if hasattr(request_context, "claim_axis") and request_context.claim_axis
+                else "career"
+            )
+            mundane_ctx = await self._scan_mundane_context(
+                claim_axis=primary_axis,
+                query_date=effective_date,
+                country_code=effective_cc,
+            )
+            return {"matched_rules": truncated, "mundane_context": mundane_ctx}
+
+        return truncated
 
     async def generate_narrative(
         self,
@@ -2929,7 +3251,9 @@ async def scan_chart(
     context: dict[str, Any] | KnowledgeRequestContext | None = None,
     dasha_timeline: list[dict[str, Any]] | None = None,
     db: AsyncIOMotorDatabase | None = None,
-) -> list[dict[str, Any]]:
+    country_code: str | None = None,
+    query_date: str | None = None,
+) -> list[dict[str, Any]] | dict[str, Any]:
     engine = get_default_knowledge_engine(db)
     return await engine.scan_chart(
         chart=chart,
@@ -2937,4 +3261,6 @@ async def scan_chart(
         max_rules=max_rules,
         context=context,
         dasha_timeline=dasha_timeline,
+        country_code=country_code,
+        query_date=query_date,
     )
